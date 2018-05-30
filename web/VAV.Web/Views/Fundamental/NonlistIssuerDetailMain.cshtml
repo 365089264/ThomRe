@@ -1,0 +1,249 @@
+﻿@model VAV.Web.ViewModels.Fundamental.NonlistIssuerDetailViewModel
+@{
+}
+@if (Model.IsserInfo == null || Model.BondList == null)
+{
+    <div class=""><span class="colorBlock-header-span">@Resources.Global.Empty_Result</span></div>
+}
+else
+{
+    var tabId = "fundamentalDetail" + Model.ComCode;
+    var headerName = tabId + "header";
+    var tabToShow = Request.QueryString["show"] ?? "";
+    <div class="colorBlock-header"><span class="colorBlock-header-span" id="@headerName">@Model.IsserInfo.COM_NAME</span></div>
+
+    <div id="@tabId" class="bankWMPDetailTabs" style="height: -webkit-calc(100% - 38px); margin: 0 6px 6px;">
+
+        <ul>
+            <li><a href="#fundamentalDetail@(Model.ComCode)_baseTabs">@Resources.Global.WMP_BasicInformation</a></li>
+            <li><a href="~/Fundamental/NonlistIssuerDetailTable?ID=@Model.ComCode&page=tabb">@Resources.Global.UnlistIsser_Balance_Sheet</a></li>
+            <li><a href="~/Fundamental/NonlistIssuerDetailTable?ID=@Model.ComCode&page=tacb">@Resources.Global.UnlistIsser_Cash_Flow</a></li>
+            <li><a href="~/Fundamental/NonlistIssuerDetailTable?ID=@Model.ComCode&page=tapb">@Resources.Global.UnlistIsser_Income_Statement</a></li>
+            <li><a href="~/Fundamental/NonlistIssuerRating?id=@Model.ComCode">@Resources.Global.Bond_Issuer_Rating</a></li>
+        </ul>
+        <div id="fundamentalDetail@(Model.ComCode)_baseTabs" class="css-panes">
+            <table id="detail@(Model.ComCode)" class="datatable" style="line-height: 20px;">
+                <tbody>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_Company_Name</td>
+                        <td>@Model.IsserInfo.COM_NAME</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_Abbreviation</td>
+                        <td>@Model.IsserInfo.COM_CHI_SHORT_NAME</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_LEG_PER</td>
+                        <td>@Model.IsserInfo.LEG_PER</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_Established_Date</td>
+                        <td>@Model.IsserInfo.EST_DATE</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_Com_Form</td>
+                        <td>@Model.IsserInfo.COM_ORGA_FORM</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_Com_Type</td>
+                        <td>@Model.IsserInfo.TYPE_BIG</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_Company_Website</td>
+                        <td><a href="@Model.IsserInfo.COM_WEB" class="link" target="_blank">@Model.IsserInfo.COM_WEB</a></td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_GEN_MAN</td>
+                        <td>@Model.IsserInfo.GEN_MAN</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_COM_ADDR</td>
+                        <td>@Model.IsserInfo.COM_ADDR</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_COM_ADDR_POST</td>
+                        <td>@Model.IsserInfo.COM_ADDR_POST</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_COM_CON_PER</td>
+                        <td>@Model.IsserInfo.COM_CON_PER</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_COM_TEL</td>
+                        <td>@Model.IsserInfo.COM_TEL</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_Com_Stp</td>
+                        <td>@Model.IsserInfo.COM_STP</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_Stp_Tel</td>
+                        <td>@Model.IsserInfo.STP_TEL</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_STP_CON_ADDR</td>
+                        <td>@Model.IsserInfo.STP_CON_ADDR</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_STP_MAIL</td>
+                        <td>@Model.IsserInfo.STP_MAIL</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_STP_TAX</td>
+                        <td>@Model.IsserInfo.STP_TAX</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_CUS_CON_TEL</td>
+                        <td>@Model.IsserInfo.CUS_CON_TEL</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_OFFI_ADDR</td>
+                        <td>@Model.IsserInfo.OFFI_ADDR</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_OFFI_ADDR_POST</td>
+                        <td>@Model.IsserInfo.OFFI_ADDR_POST</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_COM_FAX</td>
+                        <td>@Model.IsserInfo.COM_FAX</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_MAIL_ADDR</td>
+                        <td>@Model.IsserInfo.MAIL_ADDR</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_REG_ADDR</td>
+                        <td>@Model.IsserInfo.REG_ADDR</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_REG_ADDR_POST</td>
+                        <td>@Model.IsserInfo.REG_ADDR_POST</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_REG_CAP</td>
+                        <td>@Model.IsserInfo.REG_CAP</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_IC_REG_CODE</td>
+                        <td>@Model.IsserInfo.IC_REG_CODE</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_LOC_TAX_REG_CODE</td>
+                        <td>@Model.IsserInfo.LOC_TAX_REG_CODE</td>
+                        <td class="highlight">@Resources.Global.UnlistIsser_NAT_TAX_REG_CODE</td>
+                        <td>@Model.IsserInfo.NAT_TAX_REG_CODE</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_STAFF_SUM</td>
+                        <td>@Model.IsserInfo.STAFF_SUM</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_COM_HIS</td>
+                        <td colspan="3" style="text-indent: 2em;">@Model.IsserInfo.COM_HIS</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_MAIN_BUS</td>
+                        <td colspan="3" style="text-indent: 2em;">@Model.IsserInfo.MAIN_BUS</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_SID_BUS</td>
+                        <td colspan="3" style="text-indent: 2em;">@Model.IsserInfo.SID_BUS</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.UnlistIsser_Company_Profile</td>
+                        <td colspan="3" style="text-indent: 2em;">@Model.IsserInfo.COM_PRO</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="colorBlock-header"><span class="colorBlock-header-span">@Resources.Global.UnlistIsser_Bond_Issue_List</span></div>
+            <div id="bondlist@(Model.ComCode)" style="min-width: 328px; overflow: auto;">
+                <table id="bondlistTable@(Model.ComCode)" class="datatable Zebra" style="white-space: nowrap;">
+                    <thead>
+                        <tr class="hr">
+                            <th>@Resources.Global.Bond_Full_Name</th>
+                            <th>@Resources.Global.Bond_Code</th>
+                            <th>@Resources.Global.Short_Name</th>
+                            <th>@Resources.Global.Bond_IssueDate</th>
+                            <th>@Resources.Global.Bond_Issue_Amount</th>
+                            <th>@Resources.Global.Bond_CDC_Classify</th>
+                            <th>@Resources.Global.Bond_Coupon_class</th>
+                            <th>@Resources.Global.Coupon_Frequency</th>
+                            <th>@Resources.Global.Bond_Coupon_Rate</th>
+                            <th>@Resources.Global.Bond_Term</th>
+                            <th>@Resources.Global.Bond_AnnoucementDate</th>
+                            <th>@Resources.Global.Bond_Value_Date</th>
+                            <th>@Resources.Global.Bond_Maturity_Date</th>
+                            <th>@Resources.Global.Bond_Listing_Date</th>
+                            <th>@Resources.Global.Bond_PayDate</th>
+                            <th>@Resources.Global.Bond_Float_Index</th>
+                            <th>@Resources.Global.Bond_FloatOffset</th>
+                            <th>@Resources.Global.Type_Option</th>
+                            <th>@Resources.Global.Type_Bond_Rating</th>
+                            <th>@Resources.Global.Bond_RatingSrcDescr</th>
+                            <th>@Resources.Global.Type_Issuer_Rating</th>
+                            <th>@Resources.Global.Bond_PartyRatingSrcDescr</th>
+                            <th>@Resources.Global.Bond_Rating_Hist</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bond in Model.BondList)
+                        {
+                            <tr oncontextmenu="BondInfo.ChangeContextMenu(event,'@bond.AssetId')">
+                                <td class="textLeft readTimeTD" onclick=" BondInfo.OpenExplorer('@bond.AssetId') ">
+                                    <a href="javascript:void(0)" class="realTime"></a>
+                                    @bond.BondName
+                                </td>
+                                <td>@bond.Code</td>
+                                <td>@bond.ShortName</td>
+                                <td>@(bond.IssueDate.HasValue ? bond.IssueDate.Value.ToString("yyyy-MM-dd") : "")</td>
+                                <td>@bond.IssueAmount</td>
+                                <td>@bond.BondClassDescr</td>
+                                <td>@bond.CouponClassDescr</td>
+                                <td>@bond.PayFrequency</td>
+                                <td>@bond.InterestRate</td>
+                                <td>@bond.Term</td>
+                                <td>@(bond.AnnoucementDate.HasValue ? bond.AnnoucementDate.Value.ToString("yyyy-MM-dd") : "")</td>
+                                <td>@(bond.OrigDatedDate.HasValue ? bond.OrigDatedDate.Value.ToString("yyyy-MM-dd") : "")</td>
+                                <td>@(bond.MaturityDate.HasValue ? bond.MaturityDate.Value.ToString("yyyy-MM-dd") : "")</td>
+                                <td>@(bond.ListingDate.HasValue ? bond.ListingDate.Value.ToString("yyyy-MM-dd") : "")</td>
+                                <td>@bond.PayDate</td>
+                                <td>@bond.FloatIndexDescr</td>
+                                <td>@bond.FloatOffset</td>
+                                <td>@bond.OptionDescr</td>
+                                <td>@bond.RatingCd</td>
+                                <td>@bond.RatingSrcDescr</td>
+                                <td>@bond.PartyRatingCd</td>
+                                <td>@bond.PartyRatingSrcDescr</td>
+                                <td style="text-align: left;">
+                                    <a class="link" href='javascript:BondInfo.OpenBondRatingHist("@bond.Code", "@Resources.Global.Bond_History_Rating" + "_" + "@bond.Code" + " " + "@bond.BondName");'>@Resources.Global.View</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div>@Resources.Global.Source</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $("#@tabId").tabs({
+                beforeLoad: function(event, ui) {
+                    ui.ajaxSettings.dataTypes = ['html'];
+                    ui.jqXHR.error(function() {
+                        debugger;
+                    });
+                    if (ui.tab.data("loaded")) {
+                        event.preventDefault();
+                        return;
+                    }
+
+                    ui.jqXHR.success(function() {
+                        ui.tab.data("loaded", true);
+                    });
+
+
+                    $("#@tabId").block(
+                    {
+                        message: $('<img src="' + window.busyImageUrl + '" style="display: none;" />'),
+                        css: {
+                            top: ($("#@tabId").height() - 54) / 2 + 'px',
+                            left: ($("#@tabId").width() - 54) / 2 + 'px',
+                            width: '54px',
+                            height: '54px',
+                            border: '0px',
+                            overflow: 'visible'
+                        },
+                        overlayCSS: { backgroundColor: '#131313' }
+                    });
+                },
+                activate: function() {
+                    amplify.publish('RefreshFundamentalDetailChart', { source: "fundamentalDetailTab" });
+                    $("#@tabId").unblock();
+                }
+            });
+
+            //open rating tab
+            if ("@tabToShow" === "rating") {
+                $('#@tabId').tabs({ active: 4 });
+            }
+
+        });
+
+    </script>
+}

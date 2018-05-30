@@ -1,0 +1,852 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <Job>
+    <JobType>CnE_SYNC</JobType>
+    <TriggerInterval>1day</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>MySteel</DataProvider>
+        <source>
+          MySteel MySql
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="dLastAccess >= '{LastSyncTime}'" >
+            [MySteel].[RTMS_TABLEDATA]
+          </address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>Fanya_SYNC</JobType>
+    <TriggerInterval>1h</TriggerInterval>    
+    <mappings>
+      <table-mapping>
+        <DataProvider>Fanya</DataProvider>
+        <source>
+          Fanya HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [cne].[FanyaMetals]
+          </address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>LongZhong_SYNC</JobType>
+    <TriggerInterval>4h</TriggerInterval>    
+    <mappings>
+      <table-mapping>
+        <DataProvider>LongZhong</DataProvider>
+        <source>
+          LongZhong HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[updateDate]>= '{LastSyncTime}'" >
+            [dbo].[LongZhong_NationalPrice]
+          </address>
+        </destination>
+        <description>
+          国内市场
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>LongZhong</DataProvider>
+        <source>
+          LongZhong HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[updateDate]>= '{LastSyncTime}'" >
+            [dbo].[LongZhong_LeaveFactoryPrice]
+          </address>
+        </destination>
+        <description>
+          国内出厂
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>LongZhong</DataProvider>
+        <source>
+          LongZhong HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[updateDate]>= '{LastSyncTime}'" >
+            [dbo].[LongZhong_OilPrice]
+          </address>
+        </destination>
+        <description>
+          国内成品油
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>LongZhong</DataProvider>
+        <source>
+          LongZhong HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[updateDate]>= '{LastSyncTime}'" >
+            [dbo].[LongZhong_InternationalPrice]
+          </address>
+        </destination>
+        <description>
+          国际市场
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>CoffedData_SYNC</JobType>
+    <TriggerInterval>1day</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>Cofeed</DataProvider>
+        <source>
+          Cofeed EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [dbo].[Cofeed]
+          </address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>Smm_SYNC</JobType>
+    <TriggerInterval>1h</TriggerInterval>    
+    <mappings>
+      <table-mapping>
+        <DataProvider>Smm</DataProvider>
+        <source>
+          Smm HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[updateDateTime] >= '{LastSyncTime}'" >
+            [cne].[metals_smm_shanghai]
+          </address>
+        </destination>
+        <description>
+          上海有色
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>ReportData_SYNC</JobType>
+    <TriggerInterval>30m</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>CMAFileDB</DataProvider>
+        <source>
+          CMAFileDB EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CMAFileDB;User ID=sa;Password=p@ssw0rd" filter="[CTIME] >= '{LastSyncTime}' and [Operator]=''" >
+            [dbo].[FileDetail]
+          </address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>CusteelData_SYNC</JobType>
+    <TriggerInterval>9h</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel WebService
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [cne].[CusteelData]
+          </address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>NationalBureau_SYNC</JobType>
+    <TriggerInterval>1day</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>NationalBureau</DataProvider>
+        <source>
+          NationalBureau EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [cne].[NationalBureau]
+          </address>
+        </destination>
+        <description>
+          统计局
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>FxNews_SYNC</JobType>
+    <TriggerInterval>30m</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>FxNews</DataProvider>
+        <source>
+          FxNews FTP
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CTime] >= '{LastSyncTime}'" >
+            [dbo].[REUTERSNEWSINFO_]
+          </address>
+        </destination>
+        <description>
+          新闻
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>Oilchem_SYNC</JobType>
+    <TriggerInterval>1day</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [SdLocalRefinery].[TotalOperatingRate]
+          </address>
+        </destination>
+        <description>
+          山东地炼 2.1山东地炼常减压装置总开工率
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[ReDate] >= '{LastSyncTime}'" >
+            [SdLocalRefinery].[DeviceStatistics]
+          </address>
+        </destination>
+        <description>
+          山东地炼 2.2地炼装置统计
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[ReDate] >= '{LastSyncTime}'" >
+          [SdLocalRefinery].[DayProduction]
+          </address>
+        </destination>
+        <description>
+          山东地炼 5.1日产量
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [SdLocalRefinery].[MonthProduction]
+          </address>
+        </destination>
+        <description>
+          山东地炼 5.2月产量
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [SdLocalRefinery].[Profit]
+          </address>
+        </destination>
+        <description>
+          山东地炼 4、利润
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [SdLocalRefinery].[TotalStock]
+          </address>
+        </destination>
+        <description>
+          山东地炼 3、总库存
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [SdLocalRefinery].[GasolineIndex]
+          </address>
+        </destination>
+        <description>
+          山东地炼 汽油指数
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [SdLocalRefinery].[DieselIndex]
+          </address>
+        </destination>
+        <description>
+          山东地炼 柴油指数
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [SdLocalRefinery].[GasolineValuation]
+          </address>
+        </destination>
+        <description>
+          山东地炼 汽油估价
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Oilchem</DataProvider>
+        <source>
+          Oilchem EMail
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            [SdLocalRefinery].[DieselValuation]
+          </address>
+        </destination>
+        <description>
+          山东地炼 柴油估价
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>ChinaJci_SYNC</JobType>
+    <TriggerInterval>2h/4h</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>ChinaJci</DataProvider>
+        <source>
+          ChinaJci HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="CreateDate >= '{LastSyncTime}'" >
+            [cne].[ChinaJciInternalPrice]
+          </address>
+        </destination>
+        <description>
+          国内价格
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>ChinaJci</DataProvider>
+        <source>
+          ChinaJci HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="CreateDate >= '{LastSyncTime}'" >
+            [cne].[ChinaJciImportPrice]
+          </address>
+        </destination>
+        <description>
+          进口价格
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>ChinaJci</DataProvider>
+        <source>
+          ChinaJci HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="CreateDate >= '{LastSyncTime}'" >
+            [cne].[ChinaJciSoybeanStocksDaily]
+          </address>
+        </destination>
+        <description>
+          大豆库存日报
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>ChinaJci</DataProvider>
+        <source>
+          ChinaJci HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="CreateDate >= '{LastSyncTime}'" >
+            [cne].[ChinaJciSoybeanCrushMarginsDaily]
+          </address>
+        </destination>
+        <description>
+          大豆压榨利润日报
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>ChinaJci</DataProvider>
+        <source>
+          ChinaJci HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="CreateDate >= '{LastSyncTime}'" >
+            [cne].[ChinaJciPalmOilStocksDaily]
+          </address>
+        </destination>
+        <description>
+          棕榈油库存日报
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>ChinaJci</DataProvider>
+        <source>
+          ChinaJci HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="CreateDate >= '{LastSyncTime}'" >
+            [cne].[ChinaJciWheatCostEstimateDaily]
+          </address>
+        </destination>
+        <description>
+          小麦成本估算日报
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>ChinaJci</DataProvider>
+        <source>
+          ChinaJci HTML
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="CreateDate >= '{LastSyncTime}'" >
+            [cne].[ChinaJciCornCostEstimateDaily]
+          </address>
+        </destination>
+        <description>
+          玉米成本估算日报
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>ShanXi_SYNC</JobType>
+    <TriggerInterval>2h</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>ShanXiCoal</DataProvider>
+        <source>
+          ShanXi WebService
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SysDate] >= '{LastSyncTime}'" >
+            [cne].[ShanXiCoalWebData]
+          </address>
+        </destination>
+        <description>
+          陕西汾卫
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>FtpTimingDownLoad_SYNC</JobType>
+    <TriggerInterval>1day</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>ChinaJci</DataProvider>
+        <source>
+          CnE SqlServer
+        </source>
+        <destination>
+          <type>FTP</type>
+          <address>C:\DataFeedFtp\chinajci\</address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>Cofeed</DataProvider>
+        <source>
+          CnE SqlServer
+        </source>
+        <destination>
+          <type>FTP</type>
+          <address>C:\DataFeedFtp\cofeed\</address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>SMM</DataProvider>
+        <source>
+          CnE SqlServer
+        </source>
+        <destination>
+          <type>FTP</type>
+          <address>C:\DataFeedFtp\smm\</address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>      
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          CnE SqlServer
+        </source>
+        <destination>
+          <type>FTP</type>
+          <address>C:\DataFeedFtp\custeel\</address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>   
+      <table-mapping>
+        <DataProvider>Longzhong</DataProvider>
+        <source>
+          CnE SqlServer
+        </source>
+        <destination>
+          <type>FTP</type>
+          <address>C:\DataFeedFtp\longzhong\</address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>         
+      
+    </mappings>
+  </Job>
+  <Job>
+    <JobType>MySteelDownLoad_SYNC</JobType>
+    <TriggerInterval>1day</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>MySteel</DataProvider>
+        <source>
+          CnE SqlServer
+        </source>
+        <destination>
+          <type>FTP</type>
+          <address>C:\DataFeedFtp\dataexchange\</address>
+        </destination>
+        <description>
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>
+  
+  <!--==================================================================================-->
+  <Job>
+    <JobType>CusteelExcel_SYNC</JobType>
+    <TriggerInterval>10h</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            cne.CusteelMarketingOutputData
+          </address>
+        </destination>
+        <description>
+          重点企业营销分品种数据
+        </description>
+      </table-mapping> 
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[createTime] >= '{LastSyncTime}'" >
+            dbo.CompanyFlow
+          </address>
+        </destination>
+        <description>
+          重点企业流向统计数据
+        </description>
+      </table-mapping>     
+      
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.ScrapSteelSupplyDemand
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-废钢供应和需求量
+        </description>
+      </table-mapping>  
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.ScrapSteelBaseInventory
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-废钢基地库存
+        </description>
+      </table-mapping>       
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.OreBondedAreaInventory
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-矿石保税区库存
+        </description>
+      </table-mapping>          
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.TenDaysPeriodOutput
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-旬度产量
+        </description>
+      </table-mapping>        
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.KeyMonthOutput
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-重点月产量
+        </description>
+      </table-mapping>        
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.ColdHotRolledSheet
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-冷热轧及中板排产
+        </description>
+      </table-mapping>         
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.SteelMillInventory
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-钢厂库存
+        </description>
+      </table-mapping>        
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.IndustryFinance
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-行业财务
+        </description>
+      </table-mapping>          
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.HeavyAndMediumPlate
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-中厚板产销存
+        </description>
+      </table-mapping>       
+      <table-mapping>
+        <DataProvider>Custeel</DataProvider>
+        <source>
+          Custeel Email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            CUSteel.RateOfOperation
+          </address>
+        </destination>
+        <description>
+          中联钢基本面数据-内矿开工率
+        </description>
+      </table-mapping>           
+    </mappings> 
+  </Job>  
+  <Job>
+    <JobType>LongZhongExcel_SYNC</JobType>
+    <TriggerInterval>1day</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>longzhong</DataProvider>
+        <source>
+          longzhong email
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE;User ID=cne;Password=2@Upway)" filter="[CreateDate] >= '{LastSyncTime}'" >
+            dbo.LongZhong_Yield
+          </address>
+        </destination>
+        <description>
+          隆众石化网产品产量汇总明细
+        </description>
+      </table-mapping>
+    </mappings>
+  </Job>  
+  <Job>
+    <JobType>ZCXOutput_SYNC</JobType>
+    <TriggerInterval>1day</TriggerInterval>
+    <mappings>
+      <table-mapping>
+        <DataProvider>zcx</DataProvider>
+        <source>
+          CnE_ZCX database
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE_ZCX;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            dbo.ZCX_EnergyYieldData
+          </address>
+        </destination>
+        <description>
+          中诚信 能源产量
+        </description>
+      </table-mapping>
+      <table-mapping>
+        <DataProvider>zcx</DataProvider>
+        <source>
+          CnE_ZCX database
+        </source>
+        <destination>
+          <type>SQLSERVER</type>
+          <address con="Server=10.35.63.144;Initial Catalog=CnE_ZCX;User ID=cne;Password=2@Upway)" filter="[SyncTime] >= '{LastSyncTime}'" >
+            dbo.ZCX_ChemistryOutputData
+          </address>
+        </destination>
+        <description>
+          中诚信 化工产量
+        </description>
+      </table-mapping>      
+    </mappings>
+  </Job>    
+  
+</settings>

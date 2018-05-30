@@ -1,0 +1,84 @@
+/*
+ * jQuery UI Menubar @VERSION
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ */
+.ui-menubar
+{
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.ui-menubar-item
+{
+    float: left;
+    border: 0px !important;
+    display: inline-block !important;
+}
+
+.ui-menubar-item .ui-state-default {
+    border: 0px !important;
+}
+
+.ui-menubar-item:after {
+    content:"";
+    display: inline-block;
+    position: relative;
+    height: 14px;
+    border-right: solid 1px #adadad;
+    border-left: solid 1px #adadad;
+    right: 0px;
+    top: 4px;
+}
+
+
+.ui-menubar .ui-button {
+float: left;
+font-weight: bold;
+border-top-width: 0 !important;
+border-bottom-width: 0 !important;
+margin: 0;
+outline: none;
+color: #666666;
+
+}
+
+
+.ui-menubar .ui-button.ui-state-hover {
+    color: #ffffff;
+}
+.ui-menubar .ui-menubar-link
+{
+    border-right: 1px dashed transparent;
+    border-left: 1px dashed transparent;
+}
+
+.ui-menubar .ui-menu
+{
+    width: 200px;
+    position: absolute;
+    z-index: 9999;
+    font-weight: normal;
+    border: solid 1px #404040;
+    background-color: #fafafa;
+}
+
+.ui-menubar .ui-widget-content {
+    background: #fafafa;
+}
+
+.ui-menu-item >a >div
+{
+    text-overflow: ellipsis;
+    list-style-position: inside;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #666666;
+}
+
+.ui-menu-item >a >div:hover {
+    color: #ffffff;
+}

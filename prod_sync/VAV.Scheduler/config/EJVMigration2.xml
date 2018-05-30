@@ -1,0 +1,1037 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=bonddb;Password=bonddb;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=bonddb;Password=bonddb;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="GCODES_ASSET_STATUS_CDS" destination="GCODES_ASSET_STATUS_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSET_STATUS_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ASSET_STATUS_DESCR"/>
+      <column-mapping source="ACTIVE_FL"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GCODES_CDC_ASSET_CLASS_CDS" destination="GCODES_CDC_ASSET_CLASS_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="CDC_ASSET_CLASS_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="CDC_ASSET_CLASS_DESCR"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <!--需注释-->
+    <table-mapping source="GCODES_CNTRY_CDS" destination="GCODES_CNTRY_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="CNTRY_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="COUNTRY_NAME" isKey="true"/>
+      <column-mapping source="ISO_SCNTRY_CD"/>
+      <column-mapping source="ISO_LCNTRY_CD"/>
+      <column-mapping source="ISO_CNTRY_DESCR"/>
+      <column-mapping source="ISO_CNTRY_NUMERIC"/>
+      <column-mapping source="GLOBAL_REGION_CD"/>
+      <column-mapping source="ACTIVE_FL"/>
+      <column-mapping source="PERMID"/>
+      <column-mapping source="CNTRY_ID"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_COUPON_CLASS_CDS" destination="GCODES_COUPON_CLASS_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="COUPON_CLASS_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="COUPON_CLASS_SDESCR"/>
+      <column-mapping source="COUPON_CLASS_DESCR"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_COUPON_TYPE_CDS" destination="GCODES_COUPON_TYPE_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="COUPON_TYPE_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="COUPON_TYPE_SDESCR"  />
+      <column-mapping source="COUPON_TYPE_DESCR"/>
+      <column-mapping source="FLOAT_FL"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_CURRENCY_CDS" destination="GCODES_CURRENCY_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="CURRENCY_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="CURRENCY_DESCR"/>
+      <column-mapping source="ISO_CUR_CD"/>
+      <column-mapping source="ISO_CUR_DESCR"/>
+      <column-mapping source="ISO_CUR_NUMERIC"/>
+      <column-mapping source="ACTIVE_FL"/>
+      <column-mapping source="CUR_CD"/>
+      <column-mapping source="FACTOR"/>
+      <column-mapping source="PERMID" isKey="true"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_DAY_CNT_CDS" destination="GCODES_DAY_CNT_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="DAY_CNT_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="DAY_CNT_DESCR"/>
+      <column-mapping source="DAY_CNT_LDESCR"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_DEBT_TYPE_CDS" destination="GCODES_DEBT_TYPE_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="DEBT_TYPE_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="SHORT_DESCR"/>
+      <column-mapping source="DEBT_TYPE_DESCR"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_FREQ_CDS" destination="GCODES_FREQ_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="FREQ_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="SHORT_DESCR"/>
+      <column-mapping source="FREQ_DESCR"/>
+      <column-mapping source="CHK_DATE_COMP"/>
+      <column-mapping source="CHK_NUM"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_INDU_SECTOR_CDS" destination="GCODES_INDU_SECTOR_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="INDU_SECTOR_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="INDU_SECTOR_DESCR"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_INDU_SUBSECTOR_CDS" destination="GCODES_INDU_SUBSECTOR_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="INDU_SUBSECTOR_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="INDU_SECTOR_CD"/>
+      <column-mapping source="INDU_SUBSECTOR_DESCR"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_RANKING_CDS" destination="GCODES_RANKING_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="RANKING_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="RANKING_DESCR"/>
+      <column-mapping source="RANK"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <!--需注释-->
+    <table-mapping source="GCODES_RATING_AGENCY_CDS" destination="GCODES_RATING_AGENCY_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="RATING_AGENCY_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="RATING_AGENCY_DESCR"/>
+      <column-mapping source="RATING_AGENCY_URL"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GCODES_RATING_CDS" destination="GCODES_RATING_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="RATING_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="RATING_SRC_CD" isKey="true"/>
+      <column-mapping source="RANK"/>
+      <column-mapping source="SP_EQUIV_RANK"/>
+      <column-mapping source="ISO_LCNTRY_CD" isKey="true"/>
+      <column-mapping source="GRADE_CD"/>
+      <column-mapping source="BASE_FL"/>
+      <column-mapping source="PRELIMINARY_FL"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GCODES_RATING_CONVERSION_CDS" destination="GCODES_RATING_CONVERSION_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="RATING_SRC_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ISO_LCNTRY_CD"/>
+      <column-mapping source="RATING_CD" isKey="true"/>
+      <column-mapping source="RANK"/>
+      <column-mapping source="EQUIV_RATING_SRC_CD"/>
+      <column-mapping source="EQUIV_ISO_LCNTRY_CD"/>
+      <column-mapping source="EQUIV_RATING_CD"/>
+      <column-mapping source="EQUIV_RANK"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GCODES_RATING_SRC_CDS" destination="GCODES_RATING_SRC_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="RATING_SRC_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="RATING_SRC_DESCR"/>
+      <column-mapping source="RATING_TYPE_CD"/>
+      <column-mapping source="RATING_AGENCY_CD"/>
+      <column-mapping source="ACTIVE_FL"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GCODES_SECOFF_CDS" destination="GCODES_SECOFF_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="SECOFF_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="SECOFF_DESCR"/>
+      <column-mapping source="AUCTION_FL"/>
+      <column-mapping source="PRIVATE_PLACE_FL"/>
+      <column-mapping source="RULE_144A_FL"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GCODES_SENIORITY_CDS" destination="GCODES_SENIORITY_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="SENIORITY_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="SENIORITY_DESCR"/>
+      <column-mapping source="SENIORITY_RANK"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GCODES_SOVEREIGN_CLASS_CDS" destination="GCODES_SOVEREIGN_CLASS_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="SOVR_CLASS_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="SOVR_CLASS_DESC"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GCODES_XFI_EXCHANGE_CDS" destination="GCODES_XFI_EXCHANGE_CDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="XFI_EXCHANGE_CD" isKey="true" isImmutableKey="true" />
+      <column-mapping source="XFI_EXCHANGE_NAME"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ALT_IDENT" destination="GOVCORP_ALT_IDENT" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ALT_CD"  isKey="true"/>
+      <column-mapping source="ALT_ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ASSET_ID" isKey="true"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ASSET" destination="GOVCORP_ASSET" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSETID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="AMT_ISS_PUBLIC"/>
+      <column-mapping source="AMT_ISS_TOT"/>
+      <column-mapping source="ANNUITY_FL"/>
+      <column-mapping source="ASSET_CF_CORR_DT"/>
+      <column-mapping source="ASSET_DUPLICATE_CD"/>
+      <column-mapping source="ASSET_INFO_SRC_CD"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <column-mapping source="ASSET_SETUP_DT"/>
+      <column-mapping source="ASSET_STATUS_CD"/>
+      <column-mapping source="ASSET_SUBTYPE_CD"/>
+      <column-mapping source="ASSET_TEMPLT_CD"/>
+      <column-mapping source="ASSET_TICKER"/>
+      <column-mapping source="ASSET_TYPE_CD"/>
+      <column-mapping source="BANK_QUALIFIED_FL"/>
+      <column-mapping source="BANKWATCH_RATING_CD"/>
+      <column-mapping source="BANKWATCH_RATING_DT"/>
+      <column-mapping source="BRIDGE_SYMBOL"/>
+      <column-mapping source="CALL_TERMS_FL"/>
+      <column-mapping source="CALL_TYPE_CD"/>
+      <column-mapping source="CAPITALIZATION_FL"/>
+      <column-mapping source="CLAWBACK_TYPE_CD"/>
+      <column-mapping source="CNTRY_OF_ISS_CD"/>
+      <column-mapping source="COMMON_CODE_NM"/>
+      <column-mapping source="CONVERTIBLE_FL"/>
+      <column-mapping source="CPN_CLASS_CD"/>
+      <column-mapping source="CPN_TYPE_CD"/>
+      <column-mapping source="CREDIT_SENSITIVE_FL"/>
+      <column-mapping source="CUR_AMT_OUT_DT"/>
+      <column-mapping source="CUR_AMT_OUTSD"/>
+      <column-mapping source="CUR_INT_LEG_NM"/>
+      <column-mapping source="CUR_PRIN_CURR_CD"/>
+      <column-mapping source="CUR_PRIN_LEG_NM"/>
+      <column-mapping source="CURRENCY_CD"/>
+      <column-mapping source="CURRENT_CPN"/>
+      <column-mapping source="CUSIP"/>
+      <column-mapping source="DAY_COUNT_CD"/>
+      <column-mapping source="DBS_PID"/>
+      <column-mapping source="DCS_TYPE_CD"/>
+      <column-mapping source="DEBT_SVC_CD"/>
+      <column-mapping source="DEBT_TYPE_CD"/>
+      <column-mapping source="DEFEASED_FL"/>
+      <column-mapping source="DENOM_INCR"/>
+      <column-mapping source="DENOM_TYPE_CD"/>
+      <column-mapping source="DESCR"/>
+      <column-mapping source="DESCR_DETAIL"/>
+      <column-mapping source="DISTRIBUTION_SRC_CD"/>
+      <column-mapping source="DOM_SETTLE_CAL_CD"/>
+      <column-mapping source="DOM_SETTLE_VAL"/>
+      <column-mapping source="DOMIN_RATING_CD"/>
+      <column-mapping source="DOMIN_RATING_DT"/>
+      <column-mapping source="DP_RATING_CD"/>
+      <column-mapping source="DP_RATING_DT"/>
+      <column-mapping source="DS_SUBTYPE_CD"/>
+      <column-mapping source="DS_TYPE_CD"/>
+      <column-mapping source="DUAL_CUR_FL"/>
+      <column-mapping source="EMERGING_MARKET_FL"/>
+      <column-mapping source="EQUITY_CLAWBACK_FL"/>
+      <column-mapping source="ER_SCORE"/>
+      <column-mapping source="EUROCLEAR_NM"/>
+      <column-mapping source="EUSD_TAX_FL"/>
+      <column-mapping source="EXCH_LISTED_FL"/>
+      <column-mapping source="EXDIV_CAL_CD"/>
+      <column-mapping source="EXDIV_VAL"/>
+      <column-mapping source="EXEC_QUOTE_FL"/>
+      <column-mapping source="EXP_MATURITY_DT"/>
+      <column-mapping source="EXTEND_TERMS_FL"/>
+      <column-mapping source="FIG_RULE_CD"/>
+      <column-mapping source="FIRST_CPN_DT"/>
+      <column-mapping source="FIRST_RESET_DT"/>
+      <column-mapping source="FITCH_IBCA_RATING_CD"/>
+      <column-mapping source="FITCH_IBCA_RATING_DT"/>
+      <column-mapping source="FITCH_RATING_CD"/>
+      <column-mapping source="FITCH_RATING_DT"/>
+      <column-mapping source="FLOAT_FORMULA"/>
+      <column-mapping source="FLOAT_INDEX"/>
+      <column-mapping source="FLOAT_MULT"/>
+      <column-mapping source="FLOAT_OFFSET"/>
+      <column-mapping source="FOR_SETTLE_VAL"/>
+      <column-mapping source="FULL_BRIDGE_SYMBOL"/>
+      <column-mapping source="FUND_TERMS_FL"/>
+      <column-mapping source="FUNGED_FL"/>
+      <column-mapping source="GUARANTEE_FL"/>
+      <column-mapping source="IBCA_RATING_CD"/>
+      <column-mapping source="IBCA_RATING_DT"/>
+      <column-mapping source="IBS_CONTROL_NM"/>
+      <column-mapping source="ID_TYPE"/>
+      <column-mapping source="INFLATION_PROTECT_FL"/>
+      <column-mapping source="INT_IDX_LNK_FL"/>
+      <column-mapping source="ISIN_NM"/>
+      <column-mapping source="ISIN_SRC_CD"/>
+      <column-mapping source="ISSUERID"/>
+      <column-mapping source="LAST_CPN_DT"/>
+      <column-mapping source="LAST_RESET_DT"/>
+      <column-mapping source="LATEST_RATING_CD"/>
+      <column-mapping source="LATEST_RATING_EFF_DT"/>
+      <column-mapping source="LATEST_RATING_SRC_CD"/>
+      <column-mapping source="LEAD_UNDWRT_CD"/>
+      <column-mapping source="LIFE_CAP"/>
+      <column-mapping source="LIFE_FLOOR"/>
+      <column-mapping source="MANDATORY_TENDER_DT"/>
+      <column-mapping source="MATURITY_DT"/>
+      <column-mapping source="MDY_DEBT_CLASS_CD"/>
+      <column-mapping source="MDY_RATING_CD"/>
+      <column-mapping source="MDY_RATING_DT"/>
+      <column-mapping source="MDY_ST_RTNG_CD"/>
+      <column-mapping source="MDY_ST_RTNG_DT"/>
+      <column-mapping source="MDY_WATCH_CD"/>
+      <column-mapping source="MDY_WATCH_DT"/>
+      <column-mapping source="MIN_CREDIT_RATING_CD"/>
+      <column-mapping source="MIN_DENOM"/>
+      <column-mapping source="MTN_FL"/>
+      <column-mapping source="MTN_SHELF_ID"/>
+      <column-mapping source="MULTISTEP_FLT_FL"/>
+      <column-mapping source="NATIVE_YLD_TYPE_CD"/>
+      <column-mapping source="NEXT_CALL_DT"/>
+      <column-mapping source="NEXT_CALL_PX"/>
+      <column-mapping source="NEXT_MAND_TENDER_DT"/>
+      <column-mapping source="NEXT_PAY_DT"/>
+      <column-mapping source="NEXT_PUT_DT"/>
+      <column-mapping source="NEXT_PUT_PX"/>
+      <column-mapping source="NEXT_RESET_DT"/>
+      <column-mapping source="NEXT_SINK_AMT"/>
+      <column-mapping source="NEXT_SINK_DT"/>
+      <column-mapping source="NSIN_AGN_CD"/>
+      <column-mapping source="NSIN_NM"/>
+      <column-mapping source="OID_FL"/>
+      <column-mapping source="ORIG_AMT_ISS"/>
+      <column-mapping source="ORIG_DATED_DT"/>
+      <column-mapping source="ORIG_ISS_DT"/>
+      <column-mapping source="PAY_CAL_CD"/>
+      <column-mapping source="PAY_CAL_VAL"/>
+      <column-mapping source="PAY_FREQ_CD"/>
+      <column-mapping source="PAY_IN_PART_FL"/>
+      <column-mapping source="PERPETUAL_FL"/>
+      <column-mapping source="PHYSICAL_FORM_CD"/>
+      <column-mapping source="PIK_CSH_PMT_DT"/>
+      <column-mapping source="PIK_FL"/>
+      <column-mapping source="PIK_INKIND_PMT_DT"/>
+      <column-mapping source="POISON_PUT_FL"/>
+      <column-mapping source="PREFERRED_RIC"/>
+      <column-mapping source="PRIMARY_QUOTE_ID"/>
+      <column-mapping source="PRIN_IDX_LNK_FL"/>
+      <column-mapping source="PRIVATE_PLACE_FL"/>
+      <column-mapping source="PROJECT_NAME"/>
+      <column-mapping source="PROSP_ON_FILE_FL"/>
+      <column-mapping source="PROSP_SUPPL_DT"/>
+      <column-mapping source="PROSP_SUPPL_NM"/>
+      <column-mapping source="PROSPECTUS_DT"/>
+      <column-mapping source="PUT_TERMS_FL"/>
+      <column-mapping source="RCS_CLASS_CD"/>
+      <column-mapping source="RECORD_DT_CD"/>
+      <column-mapping source="RECORD_DT_VAL"/>
+      <column-mapping source="REDEMPTION_VAL"/>
+      <column-mapping source="REFUND_DT"/>
+      <column-mapping source="RRPS_RIC"/>
+      <column-mapping source="RTFI_US_ELIG_CD"/>
+      <column-mapping source="RTR_TICKER"/>
+      <column-mapping source="SEC_CLASS_CD"/>
+      <column-mapping source="SECONDARY_INSU_FL"/>
+      <column-mapping source="SECURED_FL"/>
+      <column-mapping source="SERIES"/>
+      <column-mapping source="SETTLE_BUS_CTR_CD"/>
+      <column-mapping source="SOVR_CLASS_CD"/>
+      <column-mapping source="SP_DEBT_CLASS_CD"/>
+      <column-mapping source="SP_RATING_CD"/>
+      <column-mapping source="SP_RATING_DT"/>
+      <column-mapping source="SP_ST_RTNG_CD"/>
+      <column-mapping source="SP_ST_RTNG_DT"/>
+      <column-mapping source="SP_WATCH_CD"/>
+      <column-mapping source="SP_WATCH_DT"/>
+      <column-mapping source="SPEC_PUT_FL"/>
+      <column-mapping source="STANDARD_YLD_TYPE_CD"/>
+      <column-mapping source="STATUS_EFF_DT"/>
+      <column-mapping source="STATUS_OF_DOCUMENT"/>
+      <column-mapping source="STICK_SUPPL_FL"/>
+      <column-mapping source="STRIP_TOTAL"/>
+      <column-mapping source="STRIPPABLE_FL"/>
+      <column-mapping source="TAP_END_DT"/>
+      <column-mapping source="TAP_ISSUE_FL"/>
+      <column-mapping source="TAX_CALL_FL"/>
+      <column-mapping source="TAX_STATUS_CD"/>
+      <column-mapping source="TOT_PROG_AMT"/>
+      <column-mapping source="TRACE_CD"/>
+      <column-mapping source="TRACE_GRADE_CD"/>
+      <column-mapping source="UNIT_CD"/>
+      <column-mapping source="VALOREN_NM"/>
+      <column-mapping source="WARRANTS_FL"/>
+      <column-mapping source="WITHHOLDING_TAX"/>
+      <column-mapping source="WPK_NM"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ASSET2" destination="GOVCORP_ASSET2" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSET_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="AAOIFI_COMPLIANT_FL"/>
+      <column-mapping source="ADDL_CREDIT_FL"/>
+      <column-mapping source="ANNOUNCEMENT_DT"/>
+      <column-mapping source="BORROWER_ID"/>
+      <column-mapping source="CALC_DISABLE_RSN"/>
+      <column-mapping source="CALLABLE_NOTATION"/>
+      <column-mapping source="CAV_MATURITY_AMT"/>
+      <column-mapping source="CDC_ASSET_CLASS_CD"/>
+      <column-mapping source="CFI"/>
+      <column-mapping source="CONVER_CD"/>
+      <column-mapping source="CUR_ACCR_DT"/>
+      <column-mapping source="CUR_INT_DEFER_FL"/>
+      <column-mapping source="CUSIP_CHANGE_CD"/>
+      <column-mapping source="CUSIP_CHANGE_DT"/>
+      <column-mapping source="DFRD_INT_CNVRSN_DT"/>
+      <column-mapping source="FACILITY"/>
+      <column-mapping source="FACILITY_AMT"/>
+      <column-mapping source="FLIP_OPT_CD"/>
+      <column-mapping source="FLIP_OPT_DT"/>
+      <column-mapping source="GREEN_BOND_FL"/>
+      <column-mapping source="ISSUE_ID"/>
+      <column-mapping source="LIQUIDATION_PREFERENCE_CD"/>
+      <column-mapping source="LOCAL_ISS_DT"/>
+      <column-mapping source="NEXT_PAR_CALL_DT"/>
+      <column-mapping source="NEXT_PAR_CALL_PX"/>
+      <column-mapping source="ODD_FIRST_CPN_FL"/>
+      <column-mapping source="ODD_LAST_CPN_FL"/>
+      <column-mapping source="ORIG_CUSIP_TYPE_CD"/>
+      <column-mapping source="PREREFUNDED_FL"/>
+      <column-mapping source="PRTL_REDEMP_FL"/>
+      <column-mapping source="REOFFERED_DT"/>
+      <column-mapping source="REOFFERED_FL"/>
+      <column-mapping source="REPO_ELIG_FL"/>
+      <column-mapping source="REPO_ELIG_ID"/>
+      <column-mapping source="RISK_CLASSIFICATIONS_CD"/>
+      <column-mapping source="RISK_COUNTRY_CD"/>
+      <column-mapping source="SECURITY_CD"/>
+      <column-mapping source="SENIORITY_CD"/>
+      <column-mapping source="SERIES"/>
+      <column-mapping source="SHARIA_OPINION_FL"/>
+      <column-mapping source="SOLVABILITY_RATIO"/>
+      <column-mapping source="STRAIGHT_BOND_FL"/>
+      <column-mapping source="SUKUK_STRUCTURE_FL"/>
+      <column-mapping source="SUPER_SINKER_FL"/>
+      <column-mapping source="SURVIVOR_OPT_FL"/>
+      <column-mapping source="TIER_CAPITAL_CD"/>
+      <column-mapping source="US_BABY_BOND_FL"/>
+      <column-mapping source="LATEST_ISS_DT"/>
+      <column-mapping source="LATEST_ISS_PX"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ASSET_DBS_XREF" destination="GOVCORP_ASSET_DBS_XREF" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSET_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="CALENDAR_CD"/>
+      <column-mapping source="CAPITALIZATION_FL"/>
+      <column-mapping source="CLEARING_CODE_FL"/>
+      <column-mapping source="COMPANY_ID"/>
+      <column-mapping source="DEFAULT_YIELD_TYPE"/>
+      <column-mapping source="HOLIDAY_CD"/>
+      <column-mapping source="INTX_FL"/>
+      <column-mapping source="LOAN_TYPE_CD"/>
+      <column-mapping source="OFFER_TYPE_CD"/>
+      <column-mapping source="OPTIONAL_IDENTIFIER"/>
+      <column-mapping source="SEND_TO_DBS_FL"/>
+      <column-mapping source="SIA_EXACT"/>
+      <column-mapping source="SPECIAL_REDEMPTIONS_FL"/>
+      <column-mapping source="STATUS_ON_LIQUIDATION"/>
+      <column-mapping source="ISSUE_DT"/>
+      <column-mapping source="CURRENT_CPN_NONANNUAL"/>
+      <column-mapping source="GOVERNMENT_BOND_TYPE_CD"/>
+      <column-mapping source="NO_CALC_NOTE"/>
+      <column-mapping source="ORG_ISSUE_SPREAD_UNDERLYING"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ASSET_EXCHANGES" destination="GOVCORP_ASSET_EXCHANGES" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSET_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="DELISTING_DT"/>
+      <column-mapping source="EXCH_CD" isKey="true"/>
+      <column-mapping source="LISTING_DT"/>
+      <column-mapping source="MIN_TRADING_LOT"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ASSET_IDENT" destination="GOVCORP_ASSET_IDENT" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSETID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ID_CD" isKey="true"/>
+      <column-mapping source="ID_EFF_DT" isKey="true"/>
+      <column-mapping source="ID_NUMBER"/>
+      <column-mapping source="ISS_TYPE_CD"/>
+      <column-mapping source="ID_TYPE"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ASSET_RIC" destination="GOVCORP_ASSET_RIC" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="QUOTE_ID" isKey="true"/>
+      <column-mapping source="ASSET_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ID_TYPE"/>
+      <column-mapping source="ACTIVE_FL"/>
+      <column-mapping source="CURRENCY_CD"/>
+      <column-mapping source="IDN_CONTRIB_CD"/>
+      <column-mapping source="PE"/>
+      <column-mapping source="PRICE_SRC_CD"/>
+      <column-mapping source="ID_SCOPE_ID"/>
+      <column-mapping source="ID_TYPE_CD" isKey="true"/>
+      <column-mapping source="ID_VALUE" isKey="true"/>
+      <column-mapping source="ID_UPPER"/>
+      <column-mapping source="OBJ_TYPE_CD"/>
+      <column-mapping source="CURRENT_FL"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_BRANCH" destination="GOVCORP_BRANCH" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="BRANCH_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="TRUSTEE_ID"/>
+      <column-mapping source="BRANCH_CNTRY_CD"/>
+      <column-mapping source="BRANCH_ORGID"/>
+      <column-mapping source="BRANCH_ZIPCODE"/>
+      <column-mapping source="BRANCH_PHONE_NUMBER"/>
+      <column-mapping source="BRANCH_CITY"/>
+      <column-mapping source="BRANCH_REGION"/>
+      <column-mapping source="BRANCH_NAME"/>
+      <column-mapping source="BRANCH_ADDRESS"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_DOCUMENT" destination="GOVCORP_DOCUMENT" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="DOC_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="DOC_FMT_CD"/>
+      <column-mapping source="DOC_REPOSITORY_CD"/>
+      <column-mapping source="DOC_TYPE_CD"/>
+      <column-mapping source="EFF_DT"/>
+      <column-mapping source="END_DT"/>
+      <column-mapping source="PARENT_DOC_ID"/>
+      <column-mapping source="REPOSITORY_DOCID"/>
+      <column-mapping source="DOC_SIZE"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_DOC_OBJ_XREF_ASSET" destination="GOVCORP_DOC_OBJ_XREF_ASSET" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="DOC_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ASSET_ID" isKey="true"/>
+      <column-mapping source="OBJ_TYPE_CD"/>
+      <column-mapping source="PRIMARY_FL"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ENHANCEMENTS" destination="GOVCORP_ENHANCEMENTS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSETID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ENHANCE_EFF_DT" isKey="true"/>
+      <column-mapping source="ADDL_CREDIT_TYPE_CD"/>
+      <column-mapping source="CRS_DFT_GUARANTOR_FL"/>
+      <column-mapping source="DEFAULT_EVENTS_GUAR_FL"/>
+      <column-mapping source="ENHANCE_END_DT"/>
+      <column-mapping source="ENHANCE_LEG_NM" isKey="true"/>
+      <column-mapping source="ESCROW_FL"/>
+      <column-mapping source="GUARANTOR_ID"/>
+      <column-mapping source="GUARANTOR_PROGRAM_CD"/>
+      <column-mapping source="GUARANTOR_TYPE_CD"/>
+      <column-mapping source="INT_COLLAT_PCT"/>
+      <column-mapping source="INT_COLLAT_TYPE_CD"/>
+      <column-mapping source="LOC_EXPIRE_DT"/>
+      <column-mapping source="NEG_PLDG_GUARANTOR_FL"/>
+      <column-mapping source="OTHR_COV_GUARANTOR_FL"/>
+      <column-mapping source="PRIN_COLLAT_PCT"/>
+      <column-mapping source="PRIN_COLLAT_TYPE_CD"/>
+      <column-mapping source="INSURANCE_FL"/>
+      <column-mapping source="GUARANTEE_CD"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_GOVT_AUCTION" destination="GOVCORP_GOVT_AUCTION" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ANNOUNCE_DT"/>
+      <column-mapping source="ASSETID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="AUCTION_DT"/>
+      <column-mapping source="AVG_BE_YLD"/>
+      <column-mapping source="AVG_DISC_YLD"/>
+      <column-mapping source="AVG_PX"/>
+      <column-mapping source="BID_RECEIVED"/>
+      <column-mapping source="BID_TO_COVER_RATIO"/>
+      <column-mapping source="BRIDGE_SYMBOL"/>
+      <column-mapping source="CASH_MGMT_BILL_FL"/>
+      <column-mapping source="CTL_BANK_ALLOT_AMT"/>
+      <column-mapping source="DIRECTBIDDER_BID_ACCEPTED"/>
+      <column-mapping source="DIRECTBIDDER_BID_RECEIVED"/>
+      <column-mapping source="DUTCH_AUCTION_FL"/>
+      <column-mapping source="FOREIGN_BID_ACCEPTED"/>
+      <column-mapping source="FOREIGN_BID_RECEIVED"/>
+      <column-mapping source="GOVT_SYMBOL"/>
+      <column-mapping source="HIGH_BE_YLD"/>
+      <column-mapping source="HIGH_DISC_YLD"/>
+      <column-mapping source="HIGH_PX"/>
+      <column-mapping source="INDIRECTBIDDER_BID_ACCEPTED"/>
+      <column-mapping source="INDIRECTBIDDER_BID_RECEIVED"/>
+      <column-mapping source="ISSUE_DT"/>
+      <column-mapping source="LOW_BE_YLD"/>
+      <column-mapping source="LOW_DISC_YLD"/>
+      <column-mapping source="LOW_PX"/>
+      <column-mapping source="NONCOMPETITIVE"/>
+      <column-mapping source="NONCOMPETITIVE_BID_RECEIVED"/>
+      <column-mapping source="OTHER_BID_ACCEPTED"/>
+      <column-mapping source="OTHER_BID_RECEIVED"/>
+      <column-mapping source="PRIMARYDEALER_BID_ACCEPTED"/>
+      <column-mapping source="PRIMARYDEALER_BID_RECEIVED"/>
+      <column-mapping source="TOTAL_ACCEPTED"/>
+      <column-mapping source="TOTAL_APPLIED_FOR"/>
+      <column-mapping source="TOTAL_COMP_BID_ACCEPTED"/>
+      <column-mapping source="TOTAL_COMP_BID_RECEIVED"/>
+      <column-mapping source="WI_ID" isKey="true"/>
+      <column-mapping source="WI_TYPE_CD"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ISS_DEF" destination="GOVCORP_ISS_DEF" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSET_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ISS_DT" isKey="true"/>
+      <column-mapping source="WI_ID" isKey="true"/>
+      <column-mapping source="PRICING_SUPPL_DT" isKey="true"/>
+      <column-mapping source="AUCTION_TYPE_CD"/>
+      <column-mapping source="AUCTION_METHOD_CD"/>
+      <column-mapping source="ISS_CURR_CD"/>
+      <column-mapping source="WI_TYPE_CD"/>
+      <column-mapping source="GRADE_AT_ISS_CD"/>
+      <column-mapping source="PRICING_SUPPL_NUM"/>
+      <column-mapping source="ACCEPTED_AUCTION_RANGE"/>
+      <column-mapping source="SEC_PRICING_REF_ID"/>
+      <column-mapping source="ISS_LEG_NM" isKey="true"/>
+      <column-mapping source="SECOFF_CD"/>
+      <column-mapping source="AVG_DISC_YLD"/>
+      <column-mapping source="BID_RECEIVED"/>
+      <column-mapping source="BID_TO_COVER_RATIO"/>
+      <column-mapping source="CTL_BANK_ALLOT_AMT"/>
+      <column-mapping source="DIRECTBIDDER_BID_ACCEPTED"/>
+      <column-mapping source="DIRECTBIDDER_BID_RECEIVED"/>
+      <column-mapping source="DISC_COMM_PER_DEBT"/>
+      <column-mapping source="DISC_COMM_PER_SH"/>
+      <column-mapping source="FOREIGN_BID_ACCEPTED"/>
+      <column-mapping source="FOREIGN_BID_RECEIVED"/>
+      <column-mapping source="HIGH_BE_YLD"/>
+      <column-mapping source="HIGH_DISC_YLD"/>
+      <column-mapping source="HIGH_YLD_PX"/>
+      <column-mapping source="INDICATIVE_AMT"/>
+      <column-mapping source="INDIRECTBIDDER_BID_ACCEPTED"/>
+      <column-mapping source="INDIRECTBIDDER_BID_RECEIVED"/>
+      <column-mapping source="ISS_AMT"/>
+      <column-mapping source="ISS_PX"/>
+      <column-mapping source="ISS_SPRD"/>
+      <column-mapping source="ISS_YLD"/>
+      <column-mapping source="LOW_BE_YLD"/>
+      <column-mapping source="LOW_DISC_YLD"/>
+      <column-mapping source="LOW_YLD_PX"/>
+      <column-mapping source="MGMT_FEE_PER_SH"/>
+      <column-mapping source="MGMT_UW_FEES_COMB"/>
+      <column-mapping source="MID_SWAPS_SPRD"/>
+      <column-mapping source="NONCOMPETITIVE_BID_ACCEPTED"/>
+      <column-mapping source="NONCOMPETITIVE_BID_RECEIVED"/>
+      <column-mapping source="OTHER_BID_ACCEPTED"/>
+      <column-mapping source="OTHER_BID_RECEIVED"/>
+      <column-mapping source="PRAECIPIUM"/>
+      <column-mapping source="PRIMARYDEALER_BID_ACCEPTED"/>
+      <column-mapping source="PRIMARYDEALER_BID_RECEIVED"/>
+      <column-mapping source="PROC_PER_DEBT"/>
+      <column-mapping source="PROC_PER_SH"/>
+      <column-mapping source="REALLOW_PER_DEBT"/>
+      <column-mapping source="REALLOW_PER_SH"/>
+      <column-mapping source="REG_EXPENSE"/>
+      <column-mapping source="REOFFER_PX"/>
+      <column-mapping source="REOFFER_SPRD"/>
+      <column-mapping source="REOFFER_YLD"/>
+      <column-mapping source="SELLING_CONC_PER_DEBT"/>
+      <column-mapping source="SELLING_CONC_PER_SH"/>
+      <column-mapping source="TOTAL_APPLIED_FOR"/>
+      <column-mapping source="TOTAL_COMP_BID_ACCEPTED"/>
+      <column-mapping source="TOTAL_COMP_BID_RECEIVED"/>
+      <column-mapping source="TOTAL_DISC_COMM"/>
+      <column-mapping source="TOTAL_FEE"/>
+      <column-mapping source="TOTAL_PROC_TO_REG"/>
+      <column-mapping source="TOTAL_PX_PUBLIC"/>
+      <column-mapping source="UNDWRT_FEE"/>
+      <column-mapping source="PRIMARYDEALER_BID_ACCEPT_NONC"/>
+      <column-mapping source="SEC_PRICING_REF_SPRD"/>
+      <column-mapping source="YIELD_TAIL"/>
+      <column-mapping source="AVG_BE_YLD"/>
+      <column-mapping source="AVG_YLD_PX"/>
+      <column-mapping source="ONLINE_ISS_AMT"/>
+      <column-mapping source="AUCTION_ANNOUNCE_DT"/>
+      <column-mapping source="AUCTION_OR_PRICING_DT"/>
+      <column-mapping source="DATED_DT"/>
+      <column-mapping source="ISS_END_DT"/>
+      <column-mapping source="CASH_MGMT_BILL_FL"/>
+      <column-mapping source="DUTCH_AUCTION_FL"/>
+      <column-mapping source="NONFIX_ISS_FL"/>
+      <column-mapping source="NONUNDERWRITTEN_SEC_INCL_FL"/>
+      <column-mapping source="SEC_PRICING_REF_TYPE_CD"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_NOTES" destination="GOVCORP_NOTES" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSETID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="LARGE_NOTE"/>
+      <column-mapping source="NOTE"/>
+      <column-mapping source="NOTE_EFF_DT" isKey="true"/>
+      <column-mapping source="NOTE_TYPE_CD" isKey="true"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_ORIG_ISS_INFO" destination="GOVCORP_ORIG_ISS_INFO" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSET_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="BMK_AT_ISSUE_ID"/>
+      <column-mapping source="CH_EUSD_EXEMPT_FL"/>
+      <column-mapping source="CONVER_CD"/>
+      <column-mapping source="DISC_COMM_PER_DEBT"/>
+      <column-mapping source="DISC_COMM_PER_SH"/>
+      <column-mapping source="ECB_CD"/>
+      <column-mapping source="EUSD_TAP_FL"/>
+      <column-mapping source="EU_JUMBO_FL"/>
+      <column-mapping source="EXTRAORDINARY_REDEMPTION_FL"/>
+      <column-mapping source="GOVT_BOND_TYPE_CD"/>
+      <column-mapping source="GRADE_AT_ISS_CD"/>
+      <column-mapping source="INSTRUMENT_TYPE_CD"/>
+      <column-mapping source="MDY_BACKED_FL"/>
+      <column-mapping source="MGMT_FEE_PER_SH"/>
+      <column-mapping source="MGMT_UW_FEES_COMB"/>
+      <column-mapping source="NONFIX_ISS_FL"/>
+      <column-mapping source="NONUNDERWRITTEN_SEC_INCL_FL"/>
+      <column-mapping source="OFFER_REGISTRANT_ID"/>
+      <column-mapping source="OFFER_REGISTRANT_NAME"/>
+      <column-mapping source="ORIG_AVG_LIFE"/>
+      <column-mapping source="ORIG_ISS_AMT"/>
+      <column-mapping source="ORIG_ISS_CPN"/>
+      <column-mapping source="ORIG_ISS_CURR_CD"/>
+      <column-mapping source="ORIG_ISS_IDX"/>
+      <column-mapping source="ORIG_ISS_PX"/>
+      <column-mapping source="ORIG_ISS_SPRD"/>
+      <column-mapping source="ORIG_ISS_YLD"/>
+      <column-mapping source="ORIG_ISSUE_DT"/>
+      <column-mapping source="ORIG_PROC_PER_DEBT"/>
+      <column-mapping source="ORIG_PROC_PER_SH"/>
+      <column-mapping source="ORIG_YLD_MATURITY"/>
+      <column-mapping source="ORIG_YLD_PAR_CALL"/>
+      <column-mapping source="OVER_ALLOT_AMT"/>
+      <column-mapping source="OVER_ALLOT_DAYS"/>
+      <column-mapping source="OVERALLOT_SHS"/>
+      <column-mapping source="PAR_VALUE"/>
+      <column-mapping source="PRAECIPIUM"/>
+      <column-mapping source="PRC_QT_MTD_CD"/>
+      <column-mapping source="PRICE_QT_BASE_VALUE"/>
+      <column-mapping source="PROGRAM_TYPE_CD"/>
+      <column-mapping source="PROSP_APPROVAL_DT"/>
+      <column-mapping source="PX_INCL_ACCR_INT_FL"/>
+      <column-mapping source="PX_QUOTE_CONVENTION_CD"/>
+      <column-mapping source="PX_QUOTE_ROUNDING_CD"/>
+      <column-mapping source="PX_TO_PUBLIC_PER_SH"/>
+      <column-mapping source="REALLOW_PER_DEBT"/>
+      <column-mapping source="REALLOW_PER_SH"/>
+      <column-mapping source="REG_EXPENSE"/>
+      <column-mapping source="REG_OVER_ALLOT_SH"/>
+      <column-mapping source="REMARKETING_DT"/>
+      <column-mapping source="REMARKETING_FL"/>
+      <column-mapping source="REOFFER_PX"/>
+      <column-mapping source="REOFFER_SPRD"/>
+      <column-mapping source="REOFFER_YLD"/>
+      <column-mapping source="RIC_DISP_NAME"/>
+      <column-mapping source="SEASONING_DT"/>
+      <column-mapping source="SECOFF_CHAR"/>
+      <column-mapping source="SECURITY_NAME"/>
+      <column-mapping source="SELLING_CONC_PER_DEBT"/>
+      <column-mapping source="SELLING_CONC_PER_SH"/>
+      <column-mapping source="SENIORITY_TYPE_CD"/>
+      <column-mapping source="SEP_TRANSFERABLE_DT"/>
+      <column-mapping source="SIMPLE_FIRST_FL"/>
+      <column-mapping source="SOLVABILITY_RATIO"/>
+      <column-mapping source="SP_BACKED_FL"/>
+      <column-mapping source="TERM_TO_MATURITY"/>
+      <column-mapping source="TOTAL_DISC_COMM"/>
+      <column-mapping source="TOTAL_FEE"/>
+      <column-mapping source="TOTAL_PROC_TO_REG"/>
+      <column-mapping source="TOTAL_PX_PUBLIC"/>
+      <column-mapping source="TOTAL_SH_OFFERED"/>
+      <column-mapping source="UNDWRT_FEE"/>
+      <column-mapping source="USE_OF_PROC_CATGRY_CD"/>
+      <column-mapping source="USE_OF_PROCEEDS"/>
+      <column-mapping source="VALUE_DATE_CD"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_PARTY" destination="GOVCORP_PARTY" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="PARTYID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ACTIVE_FL"/>
+      <column-mapping source="BANKRUPTCY_FL"/>
+      <column-mapping source="COM_STOCK_CD"/>
+      <column-mapping source="CUR_FORM15_DT"/>
+      <column-mapping source="CUR_IMMED_PARENT_ID"/>
+      <column-mapping source="CUR_ULTIMATE_PARENT_ID"/>
+      <column-mapping source="DBS_CID"/>
+      <column-mapping source="DOC_REPORT_ENTITY_ID"/>
+      <column-mapping source="EUSD_GOV_REL_FL"/>
+      <column-mapping source="FINANCIALS_FILED_FL"/>
+      <column-mapping source="FISCAL_YR_END"/>
+      <column-mapping source="FORM15_FL"/>
+      <column-mapping source="IBS_ISSUER_NM"/>
+      <column-mapping source="INDU_SECTOR_CD"/>
+      <column-mapping source="INDU_SUBSECTOR_CD"/>
+      <column-mapping source="ISSUER_ORGID"/>
+      <column-mapping source="LEGAL_COUNSEL_ID"/>
+      <column-mapping source="MDY_ISSUER_RATING_CD"/>
+      <column-mapping source="MDY_ISSUER_RATING_DT"/>
+      <column-mapping source="MDY_ISSUER_WATCH_CD"/>
+      <column-mapping source="MDY_ISSUER_WATCH_DT"/>
+      <column-mapping source="ORIG_IMMED_PARENT_ID"/>
+      <column-mapping source="ORIG_ULTIMATE_PARENT_ID"/>
+      <column-mapping source="PARTY_ADDRESS"/>
+      <column-mapping source="PARTY_BRIDGE_SYMBOL"/>
+      <column-mapping source="PARTY_CITY"/>
+      <column-mapping source="PARTY_CNTRY_CD"/>
+      <column-mapping source="PARTY_CNTRY_INCORP_CD"/>
+      <column-mapping source="PARTY_GENERAL_ALIAS_NAME"/>
+      <column-mapping source="PARTY_LAST_CHG_DT"/>
+      <column-mapping source="PARTY_LEGAL_NAME"/>
+      <column-mapping source="PARTY_LONG_NAME"/>
+      <column-mapping source="PARTY_NATIVE_LONG_NAME"/>
+      <column-mapping source="PARTY_NATIVE_SHORT_NAME"/>
+      <column-mapping source="PARTY_PHONE_NUMBER"/>
+      <column-mapping source="PARTY_REGION"/>
+      <column-mapping source="PARTY_RTR_TICKER"/>
+      <column-mapping source="PARTY_SETUP_DT"/>
+      <column-mapping source="PARTY_SHORT_NAME"/>
+      <column-mapping source="PARTY_STATE_INCORP"/>
+      <column-mapping source="PARTY_TICKER"/>
+      <column-mapping source="PARTY_URL"/>
+      <column-mapping source="PARTY_VALIDATED_DT"/>
+      <column-mapping source="PARTY_YR_INCORP"/>
+      <column-mapping source="PARTY_ZIPCODE"/>
+      <column-mapping source="PRIMARY_NAIC_CD"/>
+      <column-mapping source="PRIMARY_SIC_CD"/>
+      <column-mapping source="PRIVATE_CO_FL"/>
+      <column-mapping source="SOVR_CLASS_CD"/>
+      <column-mapping source="SP_INDU_CD"/>
+      <column-mapping source="SP_ISSUER_SHORT_RATING_CD"/>
+      <column-mapping source="SP_ISSUER_SHORT_RATING_DT"/>
+      <column-mapping source="SP_ISSUER_LONG_RATING_CD"/>
+      <column-mapping source="SP_ISSUER_LONG_RATING_DT"/>
+      <column-mapping source="SP_ISSUER_WATCH_CD"/>
+      <column-mapping source="SP_ISSUER_WATCH_DT"/>
+      <column-mapping source="STOCKVAL_NM"/>
+      <column-mapping source="TAX_STRUCT_TYPE_CD"/>
+      <column-mapping source="OA_ORG_PERMID"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_PARTY_NAME_HIST" destination="GOVCORP_PARTY_NAME_HIST" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="PARTY_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="HIST_PARTY_CNTRY_CD"/>
+      <column-mapping source="HIST_PARTY_CNTRY_INCORP_CD"/>
+      <column-mapping source="NAME_EFF_DT" isKey="true"/>
+      <column-mapping source="HIST_GENERAL_ALIAS_NAME"/>
+      <column-mapping source="HIST_LEGAL_NAME"/>
+      <column-mapping source="HIST_LONG_NAME"/>
+      <column-mapping source="HIST_NATIVE_LONG_NAME"/>
+      <column-mapping source="HIST_NATIVE_SHORT_NAME"/>
+      <column-mapping source="HIST_PARTY_ADDRESS"/>
+      <column-mapping source="HIST_PARTY_CITY"/>
+      <column-mapping source="HIST_PARTY_REGION"/>
+      <column-mapping source="HIST_PARTY_RTR_TICKER"/>
+      <column-mapping source="HIST_PARTY_TICKER"/>
+      <column-mapping source="HIST_PARTY_ZIPCODE"/>
+      <column-mapping source="HIST_PHONE_NUMBER"/>
+      <column-mapping source="HIST_SHORT_NAME"/>
+      <column-mapping source="HIST_STATE_INCORP"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_PARTY_RATING_HIST" destination="GOVCORP_PARTY_RATING_HIST" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="PARTYID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="PARTY_RATING_EFF_DT" isKey="true"/>
+      <column-mapping source="PARTY_RATING_SRC_CD" isKey="true"/>
+      <column-mapping source="PARTY_RATING_SCOPE_CD" isKey="true"/>
+      <column-mapping source="PARTY_PRELIMINARY_FL"/>
+      <column-mapping source="PARTY_RATING_ENDORSEMENT"/>
+      <column-mapping source="PARTY_RATING_CD"/>
+      <column-mapping source="PARTY_UNSOLICITED_FL"/>
+      <column-mapping source="PARTY_VERIFIED_DT"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_RATING" destination="GOVCORP_RATING" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSETID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ID_TYPE"/>
+      <column-mapping source="RATING_SRC_CD" isKey="true"/>
+      <column-mapping source="OUTLOOK_CD"/>
+      <column-mapping source="OUTLOOK_EFF_DT"/>
+      <column-mapping source="PRELIMINARY_FL"/>
+      <column-mapping source="PREV_RATING_CD"/>
+      <column-mapping source="PREV_RATING_DT"/>
+      <column-mapping source="RATING_CD"/>
+      <column-mapping source="RATING_EFF_DT"/>
+      <column-mapping source="RATING_ENDORSEMENT"/>
+      <column-mapping source="RATING_SUFFIX_CD"/>
+      <column-mapping source="UNSOLICITED_FL"/>
+      <column-mapping source="VERIFIED_DT"/>
+      <column-mapping source="WATCH_CD"/>
+      <column-mapping source="WATCH_EFF_DT"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_RATING_HIST" destination="GOVCORP_RATING_HIST" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSETID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="ID_TYPE"/>
+      <column-mapping source="RATING_EFF_DT" isKey="true"/>
+      <column-mapping source="RATING_SRC_CD" isKey="true"/>
+      <column-mapping source="PRELIMINARY_FL"/>
+      <column-mapping source="RATING_CD"/>
+      <column-mapping source="RATING_ENDORSEMENT"/>
+      <column-mapping source="RATING_SUFFIX_CD"/>
+      <column-mapping source="SRC_INFO_CD"/>
+      <column-mapping source="UNSOLICITED_FL"/>
+      <column-mapping source="VERIFIED_DT"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_TRUSTEE_XREF" destination="GOVCORP_TRUSTEE_XREF" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSET_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="BRANCH_ID" isKey="true"/>
+      <column-mapping source="TRUSTEE_RANKING_CD"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_UNDERWRITERS" destination="GOVCORP_UNDERWRITERS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="UNDWRT_ID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="UNDWRT_CD"/>
+      <column-mapping source="UNDWRT_LONG_NAME"/>
+      <column-mapping source="UNDWRT_ORGID"/>
+      <column-mapping source="UNDWRT_SETUP_DT"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GOVCORP_UNDERWRITER_XREF" destination="GOVCORP_UNDERWRITER_XREF" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ASSETID" isKey="true" isImmutableKey="true" />
+      <column-mapping source="NUM_OF_SHRS"/>
+      <column-mapping source="UNDWRT_AMT"/>
+      <column-mapping source="UNDWRT_DT" isKey="true"/>
+      <column-mapping source="UNDWRT_ID" isKey="true"/>
+      <column-mapping source="UNDWRT_RANKING_CD" isKey="true"/>
+      <column-mapping source="ASSET_LAST_CHG_DT"/>
+      <filter>
+        <![CDATA[ASSET_LAST_CHG_DT> TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND ASSET_LAST_CHG_DT<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

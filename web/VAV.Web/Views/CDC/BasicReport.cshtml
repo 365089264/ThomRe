@@ -1,0 +1,81 @@
+﻿@using VAV.Web.ViewModels.Report;
+@using VAV.Web.Common;
+
+@model BasicReportViewModel
+
+@{
+    Layout = null;
+    var datePickerId = "datePicker" + @Model.ID;
+    var selectId = "select" + @Model.ID;
+    var queryButtonId = "querySubmit" + @Model.ID;
+    var contentDivId = "contentDiv" + @Model.ID;
+    var basicStructuredReportId = "bsr" + @Model.ID;
+}
+<div id="@basicStructuredReportId">
+    <div class="colorBlock" style="min-width:328px;">
+        <div id="filterDiv" style="margin: 5px 0px 5px 10px;">
+            @Resources.Global.Report_Query_Date <input type="text" id="@datePickerId" class="dateInput" />
+            <label style="margin-left:10px;">@Resources.Global.Report_Unit</label>
+            <select id="@selectId" name="unit" class="smallSelect">
+                @foreach (var o in HtmlUtil.CookOptions("unit"))
+                {
+                    <option value="@o.ID">@o.Name</option>
+                }
+            </select>
+            <input type="button" value="@Resources.Global.Report_Query" id="@queryButtonId" />
+        </div>
+    </div>
+
+    <div class="colorBlock" id="basic" style="height: 91%;height: -webkit-calc(100% - 48px)">
+        <div class="colorBlock-header">
+            <span class="colorBlock-header-span">@Model.Name</span>
+            <a href="#" class="exportExcel" onclick="ExportReport(this, @Model.ID, true, false);">
+                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+            </a>
+        </div>
+        <div id="@contentDivId" class="ui-layout-pane" style="height: 100%; min-width: 328px;">
+            <div id="gridDiv_@Model.ID" class="gridTable">
+                <div id="emptyMessage@(Model.ID)" style="display: none; margin-left: 10px;">@Resources.Global.Empty_Result</div>
+                <table id="table@(Model.ID)" class="datatable">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+                <div>@Resources.Global.SourceCCDC</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#@datePickerId").monthpicker({
+            pattern: 'yyyy-mm',
+            startYear: 2001,
+            monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        });
+        SetMonthPickerStyle("@datePickerId");
+        $("select[class='mtz-monthpicker mtz-monthpicker-year']").css("width", "60px");
+        var reportData = @{ Html.RenderAction("GetStructuredReport", "CDC", new
+                             {
+                                 reportId = Model.ID
+                             }); };
+        $("#@datePickerId").val(reportData.ReportDate);
+        StructuredReport.BuildTable('@Model.ID',reportData);
+
+        $('#@queryButtonId')
+            .click(function() {
+                var startDate = $('#@datePickerId').val();
+                var unit = $('#@selectId option:selected').val();
+                AjaxWithBlock($('#@basicStructuredReportId').parent(), "@Url.Action("GetStructuredReport", "CDC")",
+               {
+                   reportId: @Model.ID,
+                   startDate: startDate,
+                   unit: unit
+               }, function (data) {
+                   StructuredReport.BuildTable('@Model.ID',data);
+               });
+            });
+
+    });
+</script>

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="TotalStock" destination="TotalStock" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="TotalStock" destination="TotalStock"/>
+      <column-mapping source="GasolineStock" destination="GasolineStock"/>
+      <column-mapping source="DieselStock" destination="DieselStock"/>
+      <column-mapping source="GasolineCapacityRate" destination="GasolineCapacityRate"/>
+      <column-mapping source="DieselCapacityRate" destination="DieselCapacityRate"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="TotalOperatingRate" destination="TotalOperatingRate" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="OperatingRate" destination="OperatingRate"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="DayProduction" destination="DayProduction" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="Code" destination="Code" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Company" destination="Company"/>
+      <column-mapping source="ProcessCapacity" destination="ProcessCapacity"/>
+      <column-mapping source="Gasoline" destination="Gasoline"/>
+      <column-mapping source="Diesel" destination="Diesel"/>
+      <column-mapping source="ReDate" destination="ReDate" isKey="true"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="DieselIndex" destination="DieselIndex" isOmitColumns="true" isSync="true" >
+      <column-mapping source="DieselIndex" destination="DieselIndex"/>
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+
+    <table-mapping source="DieselValuation" destination="DieselValuation" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="PriceDate" destination="PriceDate"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ProductName" destination="ProductName"/>
+      <column-mapping source="ModelName" destination="ModelName"/>
+      <column-mapping source="AreaName" destination="AreaName"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="Price" destination="Price"/>
+      <column-mapping source="ChangeRate" destination="ChangeRate"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+
+    <table-mapping source="GasolineIndex" destination="GasolineIndex" isOmitColumns="true" isSync="true" >
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Gasoline" destination="Gasoline"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="GasolineValuation" destination="GasolineValuation" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="ProductName" destination="ProductName" />
+      <column-mapping source="ModelName" destination="ModelName"/>
+      <column-mapping source="AreaName" destination="AreaName"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="PriceDate" destination="PriceDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Price" destination="Price"/>
+      <column-mapping source="ChangeRate" destination="ChangeRate"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="MonthProduction" destination="MonthProduction" isOmitColumns="true" isSync="true" >
+      <column-mapping source="Month" destination="Month" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Gasoline" destination="Gasoline"/>
+      <column-mapping source="Diesel" destination="Diesel"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="Profit" destination="Profit" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ComprehensiveOfShengliCrude" destination="ComprehensiveOfShengliCrude"/>
+      <column-mapping source="ComprehensiveOfFuel" destination="ComprehensiveOfFuel"/>
+      <column-mapping source="VacuumOfShengliCrude" destination="VacuumOfShengliCrude"/>
+      <column-mapping source="VacuumOfFuel" destination="VacuumOfFuel"/>
+      <column-mapping source="Catalysis" destination="Catalysis"/>
+      <column-mapping source="Coking" destination="Coking"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

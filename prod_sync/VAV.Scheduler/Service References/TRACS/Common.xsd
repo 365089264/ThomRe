@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://TRACS.ThomsonReuters.com/Common" elementFormDefault="qualified" targetNamespace="http://TRACS.ThomsonReuters.com/Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import namespace="Data_Contracts.Common" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/" />
+  <xs:simpleType name="ProceedsAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="CrossRate" />
+      <xs:enumeration value="FaceAmount" />
+      <xs:enumeration value="TotalProceeds" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProceedsAnchorType" nillable="true" type="tns:ProceedsAnchorType" />
+  <xs:simpleType name="QuoteType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Empty" />
+      <xs:enumeration value="Mid" />
+      <xs:enumeration value="Bid" />
+      <xs:enumeration value="Ask" />
+      <xs:enumeration value="Last" />
+      <xs:enumeration value="Default" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="QuoteType" nillable="true" type="tns:QuoteType" />
+  <xs:simpleType name="YieldConvention">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Native" />
+      <xs:enumeration value="USGovernment" />
+      <xs:enumeration value="USTBill" />
+      <xs:enumeration value="EurolandEquivalent" />
+      <xs:enumeration value="DiscountActual360" />
+      <xs:enumeration value="DiscountActual365" />
+      <xs:enumeration value="MoneyMarketActual360" />
+      <xs:enumeration value="MoneyMarketActual365" />
+      <xs:enumeration value="JapaneseCompounded" />
+      <xs:enumeration value="JapaneseSimple" />
+      <xs:enumeration value="Moosmueller" />
+      <xs:enumeration value="BraessFangmeyer" />
+      <xs:enumeration value="WeekEnd" />
+      <xs:enumeration value="ISMA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="YieldConvention" nillable="true" type="tns:YieldConvention" />
+  <xs:simpleType name="AlternativePriceYieldAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AlternativePrice" />
+      <xs:enumeration value="AlternativeYield" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AlternativePriceYieldAnchorType" nillable="true" type="tns:AlternativePriceYieldAnchorType" />
+  <xs:simpleType name="CalcMethod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ForwardIndex" />
+      <xs:enumeration value="ConstantIndex" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CalcMethod" nillable="true" type="tns:CalcMethod" />
+  <xs:simpleType name="FloatingRatePriceYieldAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Quote" />
+      <xs:enumeration value="Yield" />
+      <xs:enumeration value="DiscountMargin" />
+      <xs:enumeration value="SimpleMargin" />
+      <xs:enumeration value="AssetSwapSpread" />
+      <xs:enumeration value="Price" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FloatingRatePriceYieldAnchorType" nillable="true" type="tns:FloatingRatePriceYieldAnchorType" />
+  <xs:complexType name="RedemptionDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RedemptionType" type="tns:RedemptionType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RedemptionDate" nillable="true" type="tns:RedemptionDate" />
+  <xs:simpleType name="RedemptionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Call" />
+      <xs:enumeration value="Put" />
+      <xs:enumeration value="Maturity" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RedemptionType" nillable="true" type="tns:RedemptionType" />
+  <xs:simpleType name="ConversionAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ConversionRatio" />
+      <xs:enumeration value="ConversionPrice" />
+      <xs:enumeration value="EquityFixedCrossRate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ConversionAnchorType" nillable="true" type="tns:ConversionAnchorType" />
+  <xs:simpleType name="DividendType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Yield" />
+      <xs:enumeration value="DiscreteProportional" />
+      <xs:enumeration value="DiscreteCash" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DividendType" nillable="true" type="tns:DividendType" />
+  <xs:simpleType name="ConvertiblePriceYieldAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Quote" />
+      <xs:enumeration value="Yield" />
+      <xs:enumeration value="Price" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ConvertiblePriceYieldAnchorType" nillable="true" type="tns:ConvertiblePriceYieldAnchorType" />
+  <xs:simpleType name="PricingModel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FiniteDifferences" />
+      <xs:enumeration value="BinomialTree" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PricingModel" nillable="true" type="tns:PricingModel" />
+  <xs:simpleType name="RateModelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="YieldAtMaturity">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ZeroCurve">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RateModelType" nillable="true" type="tns:RateModelType" />
+  <xs:simpleType name="YieldWorkoutType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="YTM" />
+      <xs:enumeration value="YTW" />
+      <xs:enumeration value="YTB" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="YieldWorkoutType" nillable="true" type="tns:YieldWorkoutType" />
+  <xs:simpleType name="BmkPriceYieldAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BmkQuote" />
+      <xs:enumeration value="BmkYield" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BmkPriceYieldAnchorType" nillable="true" type="tns:BmkPriceYieldAnchorType" />
+  <xs:simpleType name="IndexLinkedPriceYieldAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Quote" />
+      <xs:enumeration value="Yield" />
+      <xs:enumeration value="Price" />
+      <xs:enumeration value="AdjustedPrice" />
+      <xs:enumeration value="RealYield" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IndexLinkedPriceYieldAnchorType" nillable="true" type="tns:IndexLinkedPriceYieldAnchorType" />
+  <xs:simpleType name="InflationFrequency">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Annual" />
+      <xs:enumeration value="SemiAnnual" />
+      <xs:enumeration value="Monthly" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InflationFrequency" nillable="true" type="tns:InflationFrequency" />
+  <xs:simpleType name="TRACSMessages.Category">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="General" />
+      <xs:enumeration value="Adfin" />
+      <xs:enumeration value="Calculation" />
+      <xs:enumeration value="Data" />
+      <xs:enumeration value="Framework" />
+      <xs:enumeration value="Service" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TRACSMessages.Category" nillable="true" type="tns:TRACSMessages.Category" />
+  <xs:complexType name="ArrayOfWarning">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Warning" nillable="true" type="tns:Warning" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWarning" nillable="true" type="tns:ArrayOfWarning" />
+  <xs:complexType name="Warning">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdditionalInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Category" type="tns:TRACSMessages.Category" />
+      <xs:element minOccurs="0" name="MessageId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Warning" nillable="true" type="tns:Warning" />
+  <xs:simpleType name="SecurityIdType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Ric" />
+      <xs:enumeration value="AssetId" />
+      <xs:enumeration value="Symbol" />
+      <xs:enumeration value="Cusip" />
+      <xs:enumeration value="Isin" />
+      <xs:enumeration value="Sedol" />
+      <xs:enumeration value="Tcm" />
+      <xs:enumeration value="DealId" />
+      <xs:enumeration value="DBSPrimaryID" />
+      <xs:enumeration value="ShortCode" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SecurityIdType" nillable="true" type="tns:SecurityIdType" />
+  <xs:simpleType name="BondType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotSet" />
+      <xs:enumeration value="Straight" />
+      <xs:enumeration value="FRN" />
+      <xs:enumeration value="Convertible" />
+      <xs:enumeration value="IndexLinked" />
+      <xs:enumeration value="Equity" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BondType" nillable="true" type="tns:BondType" />
+  <xs:simpleType name="PriceQuotationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Cash" />
+      <xs:enumeration value="Percentage" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PriceQuotationType" nillable="true" type="tns:PriceQuotationType" />
+  <xs:simpleType name="QuotationConvention">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CPX" />
+      <xs:enumeration value="GPX" />
+      <xs:enumeration value="DSC" />
+      <xs:enumeration value="YLD" />
+      <xs:enumeration value="SPD" />
+      <xs:enumeration value="MGN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="QuotationConvention" nillable="true" type="tns:QuotationConvention" />
+  <xs:simpleType name="AdditionalBondTypeInfo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="FixedThenFloating" />
+      <xs:enumeration value="FloatingThenFixed" />
+      <xs:enumeration value="FixedThenReverseFloat" />
+      <xs:enumeration value="VariableThenFloat" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AdditionalBondTypeInfo" nillable="true" type="tns:AdditionalBondTypeInfo" />
+  <xs:simpleType name="CouponCalculationMethod">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CcmBBAA">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmBBA5">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmBBA0">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmBB00">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmBBE0">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmBB0M">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmBBEM">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmA5D">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmAA5">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmA0D">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmJAP">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmW252">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmMMNL5">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmMMA0">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">14</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmMMA5">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmMM00">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmMMAA">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">17</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmFRF">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">18</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmITL">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">19</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmAA">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmA5">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">21</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmA0">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">22</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmE0">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Ccm00">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">24</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmMMNL0">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">25</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmMME0">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">26</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmBBA4">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">27</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmA5P">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">28</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CcmG0">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">29</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Ccm0AG">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Ccm05G">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">31</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CouponCalculationMethod" nillable="true" type="tns:CouponCalculationMethod" />
+  <xs:simpleType name="Frequency">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Annual" />
+      <xs:enumeration value="SemiAnnual" />
+      <xs:enumeration value="Quarterly" />
+      <xs:enumeration value="Monthly" />
+      <xs:enumeration value="D28" />
+      <xs:enumeration value="D90" />
+      <xs:enumeration value="D91" />
+      <xs:enumeration value="D92" />
+      <xs:enumeration value="R4" />
+      <xs:enumeration value="D180" />
+      <xs:enumeration value="D182" />
+      <xs:enumeration value="D183" />
+      <xs:enumeration value="R2" />
+      <xs:enumeration value="D365" />
+      <xs:enumeration value="D364" />
+      <xs:enumeration value="Id" />
+      <xs:enumeration value="Zero" />
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Ey" />
+      <xs:enumeration value="UserCode" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Frequency" nillable="true" type="tns:Frequency" />
+  <xs:simpleType name="ApproximationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Nearest" />
+      <xs:enumeration value="Interpolate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ApproximationType" nillable="true" type="tns:ApproximationType" />
+  <xs:complexType name="ArrayOfRedemption">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Redemption" nillable="true" type="tns:Redemption" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRedemption" nillable="true" type="tns:ArrayOfRedemption" />
+  <xs:complexType name="Redemption">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="RedemptionType" type="tns:RedemptionType" />
+      <xs:element minOccurs="0" name="Selected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="YieldWorkout" nillable="true" type="tns:YieldWorkoutType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Redemption" nillable="true" type="tns:Redemption" />
+  <xs:simpleType name="EmbeddedOptionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Call" />
+      <xs:enumeration value="Put" />
+      <xs:enumeration value="Both" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EmbeddedOptionType" nillable="true" type="tns:EmbeddedOptionType" />
+  <xs:simpleType name="StraightPriceYieldAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Quote" />
+      <xs:enumeration value="Yield" />
+      <xs:enumeration value="BmkSpread" />
+      <xs:enumeration value="AssetSwapSpread" />
+      <xs:enumeration value="ZeroCurveSpread" />
+      <xs:enumeration value="OptionAdjustedSpread" />
+      <xs:enumeration value="UserBondSpread" />
+      <xs:enumeration value="Price" />
+      <xs:enumeration value="SwapSpread" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StraightPriceYieldAnchorType" nillable="true" type="tns:StraightPriceYieldAnchorType" />
+  <xs:complexType name="ArrayOfRepoRateRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RepoRateRequest" nillable="true" type="tns:RepoRateRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRepoRateRequest" nillable="true" type="tns:ArrayOfRepoRateRequest" />
+  <xs:complexType name="RepoRateRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contributor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfRepoRateRequest.RepoRatePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepoRateRequest" nillable="true" type="tns:RepoRateRequest" />
+  <xs:complexType name="ArrayOfRepoRateRequest.RepoRatePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RepoRateRequest.RepoRatePoint" nillable="true" type="tns:RepoRateRequest.RepoRatePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRepoRateRequest.RepoRatePoint" nillable="true" type="tns:ArrayOfRepoRateRequest.RepoRatePoint" />
+  <xs:complexType name="RepoRateRequest.RepoRatePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepoRateRequest.RepoRatePoint" nillable="true" type="tns:RepoRateRequest.RepoRatePoint" />
+  <xs:complexType name="ArrayOfZeroCurveRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZeroCurveRequest" nillable="true" type="tns:ZeroCurveRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZeroCurveRequest" nillable="true" type="tns:ArrayOfZeroCurveRequest" />
+  <xs:complexType name="ZeroCurveRequest">
+    <xs:sequence>
+      <xs:element xmlns:q1="Data_Contracts.Common" minOccurs="0" name="CurveId" nillable="true" type="q1:CurveId" />
+      <xs:element minOccurs="0" name="CurveShiftType" nillable="true" type="tns:CurveShiftType" />
+      <xs:element minOccurs="0" name="DayCount" nillable="true" type="tns:DayCountBasis" />
+      <xs:element minOccurs="0" name="PivotDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfZeroCurveRequest.ZeroCurvePoint" />
+      <xs:element minOccurs="0" name="ShiftBPValue" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZeroCurveRequest" nillable="true" type="tns:ZeroCurveRequest" />
+  <xs:simpleType name="CurveType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Empty" />
+      <xs:enumeration value="Libor" />
+      <xs:enumeration value="Swap" />
+      <xs:enumeration value="Benchmark" />
+      <xs:enumeration value="Credit" />
+      <xs:enumeration value="CDS" />
+      <xs:enumeration value="UserDefined" />
+      <xs:enumeration value="Fixing" />
+      <xs:enumeration value="ZC" />
+      <xs:enumeration value="BDT" />
+      <xs:enumeration value="ISDA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CurveType" nillable="true" type="tns:CurveType" />
+  <xs:simpleType name="CurveShiftType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Parallel" />
+      <xs:enumeration value="Pivotal" />
+      <xs:enumeration value="UserPivotal" />
+      <xs:enumeration value="ShortEnd" />
+      <xs:enumeration value="LongEnd" />
+      <xs:enumeration value="UserScenario" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CurveShiftType" nillable="true" type="tns:CurveShiftType" />
+  <xs:simpleType name="DayCountBasis">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ActAct" />
+      <xs:enumeration value="D30360" />
+      <xs:enumeration value="D30365" />
+      <xs:enumeration value="Act360" />
+      <xs:enumeration value="Act365" />
+      <xs:enumeration value="D30E360" />
+      <xs:enumeration value="ANL365" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DayCountBasis" nillable="true" type="tns:DayCountBasis" />
+  <xs:complexType name="ArrayOfZeroCurveRequest.ZeroCurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZeroCurveRequest.ZeroCurvePoint" nillable="true" type="tns:ZeroCurveRequest.ZeroCurvePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZeroCurveRequest.ZeroCurvePoint" nillable="true" type="tns:ArrayOfZeroCurveRequest.ZeroCurvePoint" />
+  <xs:complexType name="ZeroCurveRequest.ZeroCurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Rate" type="xs:double" />
+      <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZeroCurveRequest.ZeroCurvePoint" nillable="true" type="tns:ZeroCurveRequest.ZeroCurvePoint" />
+  <xs:complexType name="ArrayOfRepoRateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RepoRateResponse" nillable="true" type="tns:RepoRateResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRepoRateResponse" nillable="true" type="tns:ArrayOfRepoRateResponse" />
+  <xs:complexType name="RepoRateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contributor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataType" nillable="true" type="tns:DepoOrRepo" />
+      <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfRepoRateResponse.RepoRatePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepoRateResponse" nillable="true" type="tns:RepoRateResponse" />
+  <xs:simpleType name="DepoOrRepo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Depo" />
+      <xs:enumeration value="Repo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DepoOrRepo" nillable="true" type="tns:DepoOrRepo" />
+  <xs:complexType name="ArrayOfRepoRateResponse.RepoRatePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RepoRateResponse.RepoRatePoint" nillable="true" type="tns:RepoRateResponse.RepoRatePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRepoRateResponse.RepoRatePoint" nillable="true" type="tns:ArrayOfRepoRateResponse.RepoRatePoint" />
+  <xs:complexType name="RepoRateResponse.RepoRatePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepoRateResponse.RepoRatePoint" nillable="true" type="tns:RepoRateResponse.RepoRatePoint" />
+  <xs:complexType name="ArrayOfZeroCurveResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZeroCurveResponse" nillable="true" type="tns:ZeroCurveResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZeroCurveResponse" nillable="true" type="tns:ArrayOfZeroCurveResponse" />
+  <xs:complexType name="ZeroCurveResponse">
+    <xs:sequence>
+      <xs:element xmlns:q2="Data_Contracts.Common" minOccurs="0" name="CurveId" nillable="true" type="q2:CurveId" />
+      <xs:element minOccurs="0" name="CurveShiftType" nillable="true" type="tns:CurveShiftType" />
+      <xs:element minOccurs="0" name="DayCount" nillable="true" type="tns:DayCountBasis" />
+      <xs:element minOccurs="0" name="PivotDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfZeroCurveResponse.ZeroCurvePoint" />
+      <xs:element minOccurs="0" name="ShiftBPValue" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZeroCurveResponse" nillable="true" type="tns:ZeroCurveResponse" />
+  <xs:complexType name="ArrayOfZeroCurveResponse.ZeroCurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZeroCurveResponse.ZeroCurvePoint" nillable="true" type="tns:ZeroCurveResponse.ZeroCurvePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZeroCurveResponse.ZeroCurvePoint" nillable="true" type="tns:ArrayOfZeroCurveResponse.ZeroCurvePoint" />
+  <xs:complexType name="ZeroCurveResponse.ZeroCurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DiscountFactor" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ShiftedDiscountFactor" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ShiftedRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ZeroCurveResponse.ZeroCurvePoint" nillable="true" type="tns:ZeroCurveResponse.ZeroCurvePoint" />
+  <xs:simpleType name="ReferenceBondPriceYieldAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Yield" />
+      <xs:enumeration value="Price" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReferenceBondPriceYieldAnchorType" nillable="true" type="tns:ReferenceBondPriceYieldAnchorType" />
+  <xs:simpleType name="CurveSource">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IDN" />
+      <xs:enumeration value="User" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CurveSource" nillable="true" type="tns:CurveSource" />
+  <xs:simpleType name="LunaCurveType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Empty" />
+      <xs:enumeration value="Libor" />
+      <xs:enumeration value="Swap" />
+      <xs:enumeration value="Benchmark" />
+      <xs:enumeration value="Credit" />
+      <xs:enumeration value="CDS" />
+      <xs:enumeration value="UserDefined" />
+      <xs:enumeration value="Fixing" />
+      <xs:enumeration value="ZC" />
+      <xs:enumeration value="BDT" />
+      <xs:enumeration value="ISDA" />
+      <xs:enumeration value="SpreadZC" />
+      <xs:enumeration value="SpreadYC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LunaCurveType" nillable="true" type="tns:LunaCurveType" />
+  <xs:simpleType name="InterpolationMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CubicDiscountFactor" />
+      <xs:enumeration value="CubicRate" />
+      <xs:enumeration value="LinearWithoutExtrapolation" />
+      <xs:enumeration value="VolatilityCurve" />
+      <xs:enumeration value="LinearWithExtrapolation" />
+      <xs:enumeration value="LogLinear" />
+      <xs:enumeration value="NaturalCubicSplineWithoutExtrapolation" />
+      <xs:enumeration value="NaturalCubicSplineWithExtrapolation" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InterpolationMode" nillable="true" type="tns:InterpolationMode" />
+  <xs:simpleType name="CashFlowElementTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DIF" />
+      <xs:enumeration value="DIV" />
+      <xs:enumeration value="DRF" />
+      <xs:enumeration value="DRFB" />
+      <xs:enumeration value="DRFA" />
+      <xs:enumeration value="DRV" />
+      <xs:enumeration value="DNF" />
+      <xs:enumeration value="DNFAIS" />
+      <xs:enumeration value="DNFADS" />
+      <xs:enumeration value="DNV" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CashFlowElementTypeEnum" nillable="true" type="tns:CashFlowElementTypeEnum" />
+  <xs:simpleType name="CashFlowScheduleTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACC" />
+      <xs:enumeration value="FIX" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CashFlowScheduleTypeEnum" nillable="true" type="tns:CashFlowScheduleTypeEnum" />
+  <xs:complexType name="ArrayOfCashflow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cashflow" nillable="true" type="tns:Cashflow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCashflow" nillable="true" type="tns:ArrayOfCashflow" />
+  <xs:complexType name="Cashflow">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnnualRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CapitalPercent" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CapitalValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CouponPercentage" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CouponValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cashflow" nillable="true" type="tns:Cashflow" />
+  <xs:simpleType name="PxType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PriceGross" />
+      <xs:enumeration value="PriceClean" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PxType" nillable="true" type="tns:PxType" />
+  <xs:complexType name="ZeroCurvesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://TRACS.ThomsonReuters.com/" base="q3:ServiceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZeroCurvesRequest" nillable="true" type="tns:ZeroCurvesRequest" />
+  <xs:complexType name="ZeroCurvesResponce">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://TRACS.ThomsonReuters.com/" base="q4:ServiceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ZeroCouponCurves" nillable="true" type="tns:ArrayOfZeroCurveResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZeroCurvesResponce" nillable="true" type="tns:ZeroCurvesResponce" />
+</xs:schema>

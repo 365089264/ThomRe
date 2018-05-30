@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5278F65E-CE51-4269-A848-2F22E380CD64}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VAV.Entities</RootNamespace>
+    <AssemblyName>VAV.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ALLFILESINFO.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANK_FIN_DETAIL.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANK_FIN_PRD.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANK_FIN_PRD_PROSP.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANK_FIN_PRD_PROSP_DATA.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOND.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BondDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BondDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BondDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BondDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BondDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BONDFUTURECONTRACT.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOND_BASIC_INFO.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOND_FIN_BALA_TABB.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOND_FIN_CASH_TACB.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOND_FIN_PROF_TAPB.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOND_ISSER_INFO.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOND_ISS_INFO.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOND_RATE_INFO.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOND_SIZE_CHAN.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BUSINESSTYPEINFO.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CFP_FEE_CHNG.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CFP_ISS_ORG.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CFP_PROFITSHEET.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMA.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMA.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CMAEx.cs" />
+    <Compile Include="CnE_New.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CnE_New.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CnE_New.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CnE_New.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CnE_New.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CnE_New.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CNE_ZCXNew.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CNE_ZCXNew.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CNE_ZCXNew.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CNE_ZCXNew.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CNE_ZCXNewEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CNE_ZCXNewEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="COALCHARTLEGEND.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COALFILTER.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COLUMNDEFINITION.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISC_ACCE_CFP.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DISC_ACCE_CFP_DATA.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EJVASSET.cs">
+      <DependentUpon>OpenMarketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEDETAIL.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEINFO.cs">
+      <DependentUpon>IPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILETYPEINFO.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FILEVISITLOG.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIN_PRD_RPT.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FIN_PRD_RPT_DATA.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FUNDAMENTALFIELDMAPPING.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GCODES_CDC_ASSET_CLASS_CDS.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GCODES_COUPON_CLASS_CDS.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GCODES_SECOFF_CDS.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GETNEWFILE.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GETNEWINSTITUTION.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GETRESEACHREPORTBYTYPE.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_REF.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GOVCORP_ASSET_IDENT.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOMEANNOUNCEMENT.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOMEFILE.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOMEITEM.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HOMEMODULE.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INSTITUTIONINFO.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IPP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IPP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ITEMDEFINITION.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOCALIZATION.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MENU.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MENUNODEACTION.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MENUNODELAYOUT.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MODULEINFO.cs">
+      <DependentUpon>IPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpenMarketEntitys.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenMarketEntitys.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OpenMarketModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenMarketModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpenMarketModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenMarketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OPENMARKETOPERATION.cs">
+      <DependentUpon>OpenMarketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OPERATORINFO.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORG_PROFILE.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PUB_AREA_CODE.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PUB_CURY_TYPE.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PUB_ORG_INFO.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PUB_PAR.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RATE_ORG_INFO_F.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RATE_REP.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RATE_REP_DATA.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPORTCOLUMNDEFINITION.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPORTDEFINITION.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPORTEXTRAHEADERDEFINITION.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResearchReportEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResearchReportEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResearchReportEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResearchReportEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResearchReportEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="RES_INFO_DATA.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ROLEPERMISSION.cs">
+      <DependentUpon>ResearchReportEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SRDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SRDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SRDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SRDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SRDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SRDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SUBMITTER.cs">
+      <DependentUpon>IPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TABLE_CONFIG.cs">
+      <DependentUpon>SRDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOPIC.cs">
+      <DependentUpon>IPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOPICAPPROVER.cs">
+      <DependentUpon>IPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TRUST_PROFILE.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TYPELIST.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TYPEORDER.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="USERCOLUMNSETTING.cs">
+      <DependentUpon>CMA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPPColumnDefinitionEx.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="REPORTCOLUMNDEFINITIONEx.cs" />
+    <Compile Include="ResearchReportEx.cs" />
+    <Compile Include="V_ASSET.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_bondClass.cs" />
+    <Compile Include="V_BOND_ABS.cs">
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_BOND_CN.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_BOND_EN.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_OPENMARKET.cs">
+      <DependentUpon>OpenMarketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_OPENMARKET_SEARCH.cs">
+      <DependentUpon>OpenMarketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_WMP_AREA_DIC.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_WMP_BANK_PROD.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_WMP_CFP.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_WMP_TRUST.cs">
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WMP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WMP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WMP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ZCX.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZCX.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZCX.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZCX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZCX.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZCX.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ZCXEx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="WMP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WMP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="CMA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CMA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="BondDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BondDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="CnE_New.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CnE_New.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="OpenMarketEntitys.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OpenMarketEntitys.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="IPP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>IPP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="CNE_ZCXNewEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CNE_ZCXNewEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <EntityDeploy Include="ResearchReportEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ResearchReportEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ResearchReportEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ResearchReportEntities.edmx</DependentUpon>
+      <LastGenOutput>ResearchReportEntities.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ResearchReportEntities.edmx.diagram">
+      <DependentUpon>ResearchReportEntities.edmx</DependentUpon>
+    </None>
+    <None Include="ResearchReportEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ResearchReportEntities.edmx</DependentUpon>
+      <LastGenOutput>ResearchReportEntities.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="SRDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SRDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="WMP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WMP.Context.cs</LastGenOutput>
+    </None>
+    <None Include="WMP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WMP.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="ZCX.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ZCX.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BondDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BondDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BondDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BondDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="CMA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CMA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CMA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CMA.cs</LastGenOutput>
+    </Content>
+    <Content Include="CnE_New.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CnE_New.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CnE_New.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CnE_New.cs</LastGenOutput>
+    </Content>
+    <Content Include="CNE_ZCXNew.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CNE_ZCXNew.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CNE_ZCXNew.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CNE_ZCXNew.cs</LastGenOutput>
+    </Content>
+    <Content Include="IPP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IPP.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="IPP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IPP.cs</LastGenOutput>
+    </Content>
+    <Content Include="OpenMarketModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OpenMarketModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="OpenMarketModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>OpenMarketModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="SRDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SRDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SRDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SRDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="ZCX.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ZCX.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ZCX.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ZCX.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

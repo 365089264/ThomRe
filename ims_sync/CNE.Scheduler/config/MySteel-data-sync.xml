@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>MYSQL</type>
+    <conn>Host=61.129.113.112;port=3306;database=SYNC_REUTERS;user=sync_reuters01;password=fYu2$BmE5$nH;CharSet=utf8;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+
+
+    <table-mapping source="RTMS_TABLEDATA" destination="RTMS_TABLEDATA" >
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="code"/>
+      <column-mapping source="times"/>
+      <column-mapping source="value"/>
+      <column-mapping source="STATUS"/>
+      <column-mapping source="lastAccess"/>
+      <column-mapping source="dLastAccess"/>
+      <filter>
+        <![CDATA[dLastAccess >= str_to_date({LastSyncTime},'%m/%d/%Y %h:%i:%s %p') AND dLastAccess <= str_to_date({CurrentSyncTime},'%m/%d/%Y %h:%i:%s %p')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

@@ -1,0 +1,34 @@
+﻿@model List<VAV.Web.ViewModels.WMP.BrokerContentModel>
+
+@if (Model.Count > 0)
+{
+    <table class="datatable Zebra">
+        <thead>
+            <tr class="hr">
+                <th>@Resources.WMP.Broker_Announcement_Name</th>
+                <th>@Resources.WMP.Broker_DECLAREDATE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                @if (item.IS_ACCE=="1")
+                {
+                    <td><a class="link" href="@Url.Action("DonwloadBrokerContent", "WMP", new { id = item.SEQ })">@item.TITLE</a></td>
+                }
+                else
+                {
+                    <td><a class="link" onclick="WMP.ShowBrokerTextContent(@Json.Encode(item));return false;" href="javascript:void(0);">@item.TITLE</a></td>
+                }
+                <td>@item.DECLAREDATE.ToString("yyyy-MM-dd")</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    @Resources.Global.Empty_Result
+}
+<div>@Resources.Global.Source</div>

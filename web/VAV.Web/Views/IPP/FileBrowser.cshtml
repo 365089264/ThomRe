@@ -1,0 +1,323 @@
+﻿@Scripts.Render("~/js/angular")
+@Scripts.Render("~/js/ippCommon")
+@{
+    var startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+}
+<div class="colorBlock" ng-app="FileBrowser" ng-controller="FileBrowserController" style="min-width: 1024px">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span" title="{{pageTitle}}">{{truncatedPageTitle}}</span>
+        <div style="float: right; margin-right: 30px; line-height: 30px;">
+            <input data-ippsearch type="text" style="width: 200px;" />
+            <input type="button" value="@Resources.IPP.IPP_QueryTopic" ng-click="SearchFile()" />
+        </div>
+    </div>
+    <div class="container">
+        <div class="colorBlock ">
+            <div class="filterBlock">
+                <div style="float: left;line-height: 30px;">
+                    <div style="width: 105px; display: inline-block;">
+                        <label style="padding: 0 0 0 10px;">@Resources.IPP.IPP_Title</label>
+                    </div>
+                    <input type="text" ng-model="title" style="width: 140px" />
+                    <div style="width: 45px; display: inline-block;">
+                        <label style="padding: 0 0 0 10px;">@Resources.IPP.IPP_Author</label>
+                    </div>
+                    <input type="text" ng-model="author" style="width: 140px" />
+                    <input type="button" value="@Resources.IPP.IPP_Query" ng-click="queryFile()" style="vertical-align: baseline;" />
+                    <input type="button" value="@Resources.Global.AdvancedSearch" ng-click="toggleAdvancedSearch()" style="vertical-align: baseline;" />
+                </div>
+                <div class="filterBlock-right">
+                    <input type="button" ng-click="toggleFollowTopic()" ng-show="!following && tid!=0" value="@Resources.IPP.IPP_Follow" />
+                    <input type="button" ng-click="toggleFollowTopic()" ng-show="following && tid!=0" value="@Resources.IPP.IPP_UnFollow" />
+                    <input type="button" ng-click="publishFile()" value="@Resources.IPP.IPP_Publish_File" />
+                    <a ng-show="(tid || 0) && chatroomUrl && (chatroomUrl != '')" ng-href="rmchat://room/thomsonreuters.com/{{chatroomUrl}}"><input type="button" value="@Resources.IPP.IPP_Chatroom" /></a>
+                </div>
+                <div ng-show="showAdvancedSearch" style="float: left; ">
+                    <div style="width: 105px; display: inline-block;">
+                        <input type="checkbox" ng-model="enableDate" />
+                        <label style="padding: 0 0 0 10px;">@Resources.IPP.IPP_Submit_Date</label>
+                    </div>
+                    <input type="text" datepicker ng-model="startDate" style="width: 140px" />
+                    <div style="width: 45px; display: inline-block;">
+                        <label style="padding: 0 0 0 10px;">@Resources.IPP.IPP_To</label>
+                    </div>
+                    <input type="text" datepicker ng-model="endDate" style="width: 140px" />
+                    <label style="padding: 0 0 0 10px;">@Resources.IPP.IPP_Descr</label>
+                    <input type="text" ng-model="description" style="width: 140px" />
+                    <label style="padding: 0 0 0 10px;">@Resources.IPP.IPP_Source</label>
+                    <input type="text" ng-model="source" style="width: 140px" />
+                </div>
+            </div>
+            <div loading-block class="colorBlock">
+                <div ng-show="files.length == 0 && showEmptyResultText" style="margin: 10px;">@Resources.Global.Empty_Result</div>
+                <div ng-show="files.length > 0">
+                    <div pagination-label class="paginateOfLable"></div>
+                    <div style="width: 300px; float: right; padding-right: 80px">
+                        <div pagination-pager>
+                        </div>
+                    </div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table ng-show="files.length > 0" class="datatable">
+                        <thead>
+                            <tr>
+                                <th sort order="(isEn ? 'TITLEEN' : 'TITLECN')" by="orderBy.field" asc="orderBy.asc">
+                                    @Resources.IPP.IPP_Title
+                                </th>
+                                <th sort order="'Author'" by="orderBy.field" asc="orderBy.asc">
+                                    @Resources.IPP.IPP_Author
+                                </th>
+                                <th sort order="'Submiter'" by="orderBy.field" asc="orderBy.asc">
+                                    @Resources.IPP.IPP_Submiter
+                                </th>
+                                <th sort order="'REPORTDATE'" by="orderBy.field" asc="orderBy.asc">
+                                    @Resources.IPP.IPP_Create_Date
+                                </th>
+                                <th sort order="'SubmitDate'" by="orderBy.field" asc="orderBy.asc">
+                                    @Resources.IPP.IPP_Submit_Date
+                                </th>
+                                <th sort order="(isEn ? 'DescrEn' : 'DescrCn')" by="orderBy.field" asc="orderBy.asc">
+                                    @Resources.IPP.IPP_Descr
+                                </th>
+                                <th sort order="'Source'" by="orderBy.field" asc="orderBy.asc">
+                                    @Resources.IPP.IPP_Source
+                                </th>
+                                <th sort order="'Hits'" by="orderBy.field" asc="orderBy.asc">
+                                    @Resources.IPP.IPP_Hit
+                                </th>
+                                <th>
+                                    @Resources.IPP.IPP_IsFollowing
+                                </th>
+                                <th>
+                                    @Resources.IPP.IPP_Rating
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in files">
+                                <td class="width-limited" title="{{ isEn ? item.TITLEEN : item.TITLECN}}">
+                                    <span ng-class='{top : item.DISPLAYORDER == 1}'>&nbsp;</span><a class="link" href="javascript:void(0);" ng-click="donwload(item.ID)">{{ isEn ? item.TITLEEN : item.TITLECN}}</a>
+                                </td>
+                                <td class="width-limited" ng-switch on="item.AUTHORRM != ''" title="RM:      {{item.AUTHORRM}}
+Email:  {{item.AuthorEmail}}">
+                                    <a ng-switch-when="true" class="link" ng-href="rm://{{item.AUTHORRM}}/?message=Hi">{{item.AUTHOR}}</a>
+                                    <span ng-switch-when="false">{{item.AUTHOR}}</span>
+                                    <span ng-switch-default>{{item.AUTHOR}}</span>
+                                </td>
+                                <td ng-switch on="item.SUBMITERRM != ''" title="RM:      {{item.SUBMITERRM}}
+Email:  {{item.Submiter}}">
+                                    <a ng-switch-when="true" class="link" ng-href="rm://{{item.SUBMITERRM}}/?message=Hi">{{item.SUBMITERNAME}}</a>
+                                    <span ng-switch-when="false">{{item.SUBMITERNAME}}</span>
+                                    <span ng-switch-default>{{item.SUBMITERNAME}}</span>
+                                </td>
+                                <td>
+                                    {{item.REPORTDATE}}
+                                </td>
+                                <td>
+                                    {{item.SUBMITDATE}}
+                                </td>
+                                <td class="width-limited" title="{{isEn ? item.DESCRCN : item.DESCRCN}}">
+                                    {{ isEn ? item.DESCRCN : item.DESCRCN}}
+                                </td>
+                                <td class="width-limited" title="{{item.SOURCE}}">
+                                    {{item.SOURCE}}
+                                </td>
+                                <td class="number-td">
+                                    {{item.HITS}}
+                                </td>
+                                <td class="button-td">
+                                    <input type="button" ng-click="toggleFollowFile(item)" ng-hide="item.FOLLOWING" value="@Resources.IPP.IPP_Follow" />
+                                    <input type="button" ng-click="toggleFollowFile(item)" ng-show="item.FOLLOWING" value="@Resources.IPP.IPP_UnFollow" />
+                                </td>
+                                <td>
+                                    <div ipp-rating rating-value="item.RATING" max="5" on-rating-selected="saveRatingToServer(item.ID)"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    angular.module('FileBrowser', ['ippCommon'])
+        .config( [
+            '$compileProvider',
+            function( $compileProvider )
+            {   //add "rm" to url white list
+                $compileProvider.aHrefSanitizationWhitelist(/^\s*(rm|http|rmchat):/);
+            }
+        ])
+        .controller('FileBrowserController', [
+            '$scope', '$http', function($scope, $http) {
+                $scope.isEn = @VAV.Web.Localization.CultureHelper.IsEnglishCulture().ToString().ToLower();
+                $scope.tid = @ViewBag.TopicID;
+                $scope.queryStr = "@ViewBag.queryStr";
+                $scope.pageTitle = "@Html.Raw(ViewBag.PageTitle)";
+                $scope.truncatedPageTitle = "@Html.Raw(ViewBag.TruncatedPageTitle)";
+                $scope.chatroomUrl = "@ViewBag.ChatroomUrl";
+                $scope.following = @ViewBag.Following;
+                $scope.fileID = @ViewBag.FileID;
+                $scope.currentPage = 1;
+                $scope.pageSize = 50;
+                $scope.files = [];
+                $scope.total = [];
+                $scope.enableDate = false;
+                $scope.startDate = "@startDate";
+                $scope.endDate = "@endDate";
+                $scope.showAdvancedSearch = false;
+                $scope.shouldBlock = false;
+                $scope.showEmptyResultText = false;
+                $scope.orderBy = { field: "@ViewBag.Order", asc: @ViewBag.Asc.ToString().ToLower() };
+
+                $scope.SearchFile = function() {
+                    if ($scope.searhKey)
+                        IPPCommon.OpenWindow('/ipp/filebrowser?q=' + $scope.searhKey);
+                };
+
+                $scope.donwload = function(id) {
+                    IPPCommon.DownloadFile(id);
+                };
+
+                $scope.publishFile = function() {
+                    var url = '';
+                    if ($scope.tid == 0) {
+                       url="/IPP/FileEditor?previousRequest=fileBrowser";
+                    }else{
+                       url="/IPP/FileEditor?previousRequest=fileBrowser&topicid=" + $scope.tid;
+                    }
+                    IPPCommon.ShowDailog({
+                        url:url,
+                        h:710,
+                        w:850
+                        });
+                };
+
+                $scope.toggleFollowTopic = function() {
+                    $http.get("/IPP/FollowTopic", {
+                        params: {
+                            id: $scope.tid
+                        }
+                    }).success(function(data) {
+                        $scope.following = !$scope.following;
+                    });
+                };
+
+                $scope.toggleFollowFile = function(item) {
+                    $http.get("/IPP/FollowFile", {
+                        params: {
+                            id: item.ID
+                        }
+                    }).success(function(data) {
+                        debugger;
+                        item.FOLLOWING = !(item.FOLLOWING=='1');
+                    });
+                };
+
+                $scope.OpenTopic = function(topic) {
+                    $scope.tid = parseInt(topic);
+                    $scope.$apply();
+                };
+
+                $scope.refreshPage = function() {
+                    $http.get("/IPP/GetTopicName", {
+                        params: {
+                            id: $scope.tid
+                        }
+                    }).success(function(data) {
+                        $scope.pageTitle = data.Name;
+                        $scope.truncatedPageTitle = data.TruncatedName;
+                        $scope.chatroomUrl = data.RMLink;
+                    });
+                    $scope.queryStr = "";
+                    $scope.currentPage = 1;
+                    $scope.orderBy = { field: "", asc: null };
+                    $scope.startDate = "@startDate";
+                    $scope.endDate = "@endDate";
+                    $scope.showAdvancedSearch = false;
+                    $scope.title = "";
+                    $scope.author = "";
+                    $scope.description = "";
+                    $scope.source = "";
+                    $scope.fileID = 0;
+                    $scope.loadData();
+                };
+
+                $scope.queryFile = function() {
+                    $scope.orderBy = { field: "", asc: null };
+                    $scope.currentPage = 1;
+                    $scope.fileID = 0;
+                    $scope.loadData();
+                };
+
+                $scope.onSelectPage = function(page) {
+                    $scope.currentPage = page;
+                    $scope.loadData();
+                };
+
+                $scope.loadData = function() {
+                    $scope.shouldBlock = true;
+                    var orderby = $scope.orderBy.field === "" ? "" : $scope.orderBy.field + " " + ($scope.orderBy.asc ? "ASC" : "DESC");
+                    $http.get('/IPP/QueryFiles', {
+                            params: {
+                                id: $scope.tid,
+                                q: $scope.queryStr,
+                                title: $scope.title,
+                                author: $scope.author,
+                                pageNo: $scope.currentPage,
+                                pageSize: $scope.pageSize,
+                                enableDate: $scope.enableDate,
+                                startDate: $scope.startDate,
+                                endDate: $scope.endDate,
+                                description: $scope.description,
+                                source: $scope.source,
+                                order: orderby,
+                                isHtml: true,
+                                fileID: $scope.fileID
+                            }
+                        })
+                        .success(function(data) {
+                            $scope.files = data.Data;
+                            $scope.total = data.Total;
+                            $scope.shouldBlock = false;
+                            if ($scope.files.length == 0) {
+                                $scope.showEmptyResultText = true;
+                            }
+                        });
+                };
+
+                $scope.toggleAdvancedSearch = function() {
+                    $scope.showAdvancedSearch = !$scope.showAdvancedSearch;
+                };
+                $scope.saveRatingToServer = function(id) {
+                    IPPCommon.OpenRating(id, $scope.loadData);
+                };
+                $scope.$watch('tid', function(newValue, oldValue) {
+                    if (newValue === oldValue) {
+                        return;
+                    } //  first run , old value equals new value
+                    $scope.refreshPage();
+                });
+
+                $scope.$watch("orderBy.asc", function(newValue, oldValue) {
+                    if (newValue === oldValue) {
+                        return;
+                    } //  first run , old value equals new value
+                    $scope.loadData();
+                });
+
+                $scope.$watch("orderBy.field", function(newValue, oldValue) {
+                    if (newValue === oldValue) {
+                        return;
+                    } //  first run , old value equals new value
+                    $scope.loadData();
+                });
+                $scope.loadData();
+            }
+        ]);
+</script>

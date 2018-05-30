@@ -1,0 +1,177 @@
+﻿@using VAV.Model.IPP
+@using VAV.Web.Localization
+@Scripts.Render("~/js/angular")
+@Scripts.Render("~/js/ippCommon")
+<div style="min-width: 800px" data-ng-app="IPPHomeApp" data-ng-controller="HomeController">
+    <div class="IPPHomeHeader">
+        @if (CultureHelper.IsEnglishCulture())
+        {
+            <div class="IPPHomeLogo"></div>
+        }
+        else
+        {
+            <div class="IPPHomeLogoCN"></div>
+        }
+        <input type="text" class="IPPHomeHeaderElement" data-ippsearch style="width: 20%;float: left">
+        <input type="button" value="@Resources.IPP.IPP_QueryTopic" class="IPPHomeHeaderElement" style="float: left"
+               data-ng-click="SearchFile()" />
+        <ul id="menubar" style="position: absolute; top: 50px; left: 85%;">
+            <li><a href="#">@Resources.IPP.IPP_MyDocument</a>
+                <ul style="width: 125px;">
+                    <li><a href="#" data-url="/ipp/MyDocument/FavoriteFiles">@Resources.IPP.IPP_MyFavorite</a></li>
+                    <li><a href="#" data-url="/ipp/MyDocument/prePublish">@Resources.IPP.IPP_PrePublished</a></li>
+                    <li><a href="#" data-url="/ipp/MyDocument/published">@Resources.IPP.IPP_Published</a></li>
+                    @if (ViewBag.InternalUser)
+                    {
+                        <li><a href="#" data-url="/ipp/MyDocument/preApprove">@Resources.IPP.IPP_PendingApprove</a></li>
+                        <li><a href="#" data-url="/ipp/MyDocument/approved">@Resources.IPP.IPP_Approveds</a></li>
+                        <li><a href="#" data-url="/ipp/MyDocument/topicManagement">@Resources.IPP.IPP_TopicManagement</a></li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="IPPHomeBody">
+        <div class="IPPHomeBodyLeft">
+            <div class="colorBlock IPPHomeLeftTitle">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Resources.IPP.IPP_HotTopic</span>
+                    <select class="IPPHomePeriod" data-ng-options="p as p.Name for p in periods" data-ng-model="selectedTopicPeriod"
+                        data-ng-change="UpdateHotTopic()">
+                    </select>
+                </div>
+                <div class="IPPHomeGroup">
+                    <div data-ng-repeat="topic in hotTopics">
+                        <div class="IPPHomeCellHit">
+                            <a href="#" data-ng-click="OpenTopic(topic)">{{topic.Name}}</a></div>
+                        <div class="IPPHomeHitCount">
+                            ({{topic.Hits}})</div>
+                    </div>
+                </div>
+            </div>
+            @foreach (Tuple<string, List<HomeHotItem>> s in ViewBag.StaticTopics)
+            {
+                <div class="colorBlock IPPHomeLeftTitle">
+                    <div class="colorBlock-header">
+                        <span class="colorBlock-header-span">@s.Item1</span>
+                    </div>
+                    <div class="IPPHomeGroup">
+                        @foreach (var i in s.Item2)
+                        {
+                            <div class='IPPHomeCell'>
+                                <a href="#" onclick="IPPHome.OpenTopic('@i.ID')">@i.Name</a></div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="IPPHomeBodyRight">
+            <div class="colorBlock">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Resources.IPP.IPP_Announcement</span>
+                </div>
+                <div style="padding: 10px; height: 120px; overflow: hidden">
+                    <marquee behavior="scroll" direction="up" scrollamount="1" height="100%" onmouseover="stop()"
+                        onmouseout="start()">
+                        @foreach (var a in ViewBag.Announcement)
+                        {
+                            <div>@Html.Raw(a)</div>
+                            <hr/>
+                        }
+                    </marquee>
+                </div>
+            </div>
+            <div class="colorBlock" style="float: left">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Resources.IPP.IPP_BillBoard</span>
+                    <input style="float: right; margin-top: 4px; margin-left: 2px" type="button" value="@Resources.Global.Common_More"
+                        data-ng-click="HotFileMore()" />
+                    <select class="IPPHomePeriod" data-ng-options="p as p.Name for p in periods" data-ng-model="selectedFilePeriod"
+                        data-ng-change="UpdateHotFile()">
+                    </select>
+                </div>
+                <div class="IPPHomeRowRight" data-ng-repeat="file in hotFiles">
+                    <input type="button" value="{{file.Rank}}" data-ng-click="SingleBrowser(file)" class="IPPHomeRightLCell"/>
+                    <div class="IPPHomeRightM1Cell"><a href="#" data-ng-click="OpenFile(file)" title="{{file.Name}}">{{file.Name}}</a></div>
+                    <div class="IPPHomeRightR1Cell">({{file.Hits}})</div>
+                </div>
+            </div>
+            <div class="colorBlock" style="float: left;">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Resources.IPP.IPP_Latest</span>
+                </div>
+                @foreach (HomeHotItem file in ViewBag.LatestFile)
+                {
+                    <div class="IPPHomeRowRight">
+                        <input type="button" value="@file.Rank" onclick="IPPHome.SigneBrowser(@file.TopicID,@file.ID)" class="IPPHomeRightLCell"/>
+                        <div class="IPPHomeRightMCell"> <a href="#" onclick="IPPHome.OpenFile('@file.ID')" title="@file.Name">@file.Name</a></div>
+                        <div class="IPPHomeRightRCell">@file.SubmitDate</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $("#menubar").menubar({
+                    autoExpand: true,
+                    menuIcon: true,
+                    buttons: true,
+                    select: function(event, ui) {
+                        var a = ui.item.find('a');
+                        IPPCommon.OpenWindow(a.data('url'));
+                    }
+                });
+    });
+    var IPPHome = (function (my) {
+        my.OpenTopic = function (id) {
+            IPPCommon.OpenWindow('/ipp/filebrowser?id=' + id);
+        };
+        my.OpenFile = function (id) {
+            IPPCommon.DownloadFile(id);
+        };
+        my.SigneBrowser = function(topicid, fileid) {
+            IPPCommon.OpenWindow('/ipp/SingleFileBrowser?topicId=' + topicid + '&fileId=' +fileid);
+        };
+        return my;
+    } (IPPHome || {}));
+
+    angular.module('IPPHomeApp', ['ippCommon']).controller('HomeController', ['$scope', '$http', function($scope, $http) {
+        $scope.periods = [{ pTag: '1w', Name: '@Resources.IPP.IPP_Latest1W' }, { pTag: '2w', Name: '@Resources.IPP.IPP_Latest2W' }, { pTag: '1m', Name: '@Resources.IPP.IPP_Latest1M' }, { pTag: '3m', Name: '@Resources.IPP.IPP_Latest3M' }, { pTag: 'all', Name: '@Resources.Global.WMP_Yield_All' }];
+        $scope.selectedTopicPeriod = $scope.periods[0];
+        $scope.selectedFilePeriod = $scope.periods[0];
+        $scope.hotTopics = @{ Html.RenderAction("GetHotTopic", "IPP", new { period = "1w", isHtml = true }); };
+        $scope.hotFiles = @{ Html.RenderAction("GetHotFile", "IPP", new { period = "1w", isHtml = true }); };
+        $scope.UpdateHotTopic = function() {
+            $http.get('/IPP/GetHotTopic', { params: { period: $scope.selectedTopicPeriod.pTag } }).success(function(data) {
+                $scope.hotTopics = data;
+            });
+        };
+        $scope.UpdateHotFile = function() {
+            $http.get('/IPP/GetHotFile', { params: { period: $scope.selectedFilePeriod.pTag } }).success(function(data) {
+                $scope.hotFiles = data;
+            });
+        };
+        $scope.OpenFile = function(file) {
+            IPPHome.OpenFile(file.ID);
+        };
+        $scope.SearchFile = function() {
+            if ($scope.searhKey)
+                IPPCommon.OpenWindow('/ipp/filebrowser?q=' + $scope.searhKey);
+        };
+        $scope.OpenTopic = function(topic) {
+            if (typeof topic === 'object') {
+                IPPHome.OpenTopic(topic.ID);
+            } else {
+                IPPHome.OpenTopic(topic);
+            }
+        };
+        $scope.SingleBrowser = function(file) {
+            IPPHome.SigneBrowser(file.TopicID, file.ID);
+        };
+        $scope.HotFileMore = function() {
+            IPPCommon.OpenWindow('/ipp/SingleFileBrowser');
+        };
+    }]);
+</script>

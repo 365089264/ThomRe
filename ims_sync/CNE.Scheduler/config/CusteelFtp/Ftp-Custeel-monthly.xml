@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;</conn>
+  </source-db>
+  <fileSavePath>C:\DataFeedFtp\custeel\</fileSavePath>
+  <hostname>10.35.63.144</hostname>
+  <username>ftpupload</username>
+  <password>ftpupload</password>
+  <targetDir>custeel</targetDir>
+  <fileName>Custeel_{fileDateFormat}_monthly.xls</fileName>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <mappings>
+    <table-mapping source="View_Custeel_Ftp" destination="Custeelmonthly" >
+      <column-mapping source="code"                  />
+      <column-mapping source="re_date"               />
+      <column-mapping source="Standard_re_date"               />      
+      <column-mapping source="datavalue"             />
+      <column-mapping source="syncTime"              />
+      <column-mapping source="ProductName_EN"        />
+      <column-mapping source="Specification_EN"      />
+      <column-mapping source="Type_EN"               />
+      <column-mapping source="LocationofSale_EN"     />
+      <column-mapping source="Description_EN"        />
+      <column-mapping source="Datatype_EN"           />
+      <column-mapping source="Unit_EN"               />
+      <column-mapping source="UpdateFrequency_EN"    />
+      <column-mapping source="ProductName_CN"        />
+      <column-mapping source="Specification_CN"      />
+      <column-mapping source="Type_CN"               />
+      <column-mapping source="LocationofSale_CN"     />
+      <column-mapping source="Description_CN"        />
+      <column-mapping source="Datatype_CN"           />
+      <column-mapping source="Unit_CN"               />
+      <column-mapping source="UpdateFrequency_CN"    />
+      <filter>
+        <![CDATA[UpdateFrequency_EN = 'Monthly' AND syncTime >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+  </mappings>
+</settings>

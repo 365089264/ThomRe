@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;</conn>
+  </source-db>
+  <fileSavePath>C:\DataFeedFtp\dataexchange\</fileSavePath>
+  <hostname>10.35.63.144</hostname>
+  <username>ftpupload</username>
+  <password>ftpupload</password>
+  <targetDir>dataexchange</targetDir>
+  <fileName>mysteel_{fileDateFormat}.xlsx</fileName>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <mappings>
+    <table-mapping source="RTMS_TABLEDATA" destination="TABLEDATA" >
+      <column-mapping source="id" />
+      <column-mapping source="code"/>
+      <column-mapping source="times"/>
+      <column-mapping source="value"/>
+      <column-mapping source="STATUS"/>
+      <column-mapping source="dLastAccess" destination="lastAccess"/>
+      <filter>
+        <![CDATA[dLastAccess >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+  </mappings>
+</settings>

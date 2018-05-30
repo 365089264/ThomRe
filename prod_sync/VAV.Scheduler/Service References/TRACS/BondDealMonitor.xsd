@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://TRACS.ThomsonReuters.com/BondDealMonitor" elementFormDefault="qualified" targetNamespace="http://TRACS.ThomsonReuters.com/BondDealMonitor" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/Common" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/BondDealMonitor/Common" />
+  <xs:import namespace="Data_Contracts.Common" />
+  <xs:complexType name="BDMRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://TRACS.ThomsonReuters.com/" base="q1:ServiceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CalculateAllBondsAsStraightBonds" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DisableOptionAdjustedSpread" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfBondRequest" />
+          <xs:element xmlns:q2="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RepoRateList" nillable="true" type="q2:ArrayOfRepoRateRequest" />
+          <xs:element minOccurs="0" name="RequestTimestamp" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TradeDate" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q3="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ZeroCurveList" nillable="true" type="q3:ArrayOfZeroCurveRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BDMRequest" nillable="true" type="tns:BDMRequest" />
+  <xs:complexType name="ArrayOfBondRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BondRequest" nillable="true" type="tns:BondRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBondRequest" nillable="true" type="tns:ArrayOfBondRequest" />
+  <xs:complexType name="BondRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BondId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferenceKey" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BondRequest" nillable="true" type="tns:BondRequest" />
+  <xs:complexType name="StraightBondRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonBondRequest">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AlternativePriceYieldAnchorType" type="q4:AlternativePriceYieldAnchorType" />
+          <xs:element minOccurs="0" name="AlternativePriceYieldAnchorValue" nillable="true" type="xs:double" />
+          <xs:element xmlns:q5="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AlternativeYieldConvention" nillable="true" type="q5:YieldConvention" />
+          <xs:element minOccurs="0" name="AswRequests" nillable="true" type="tns:ArrayOfASWRequest" />
+          <xs:element xmlns:q6="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BmkApproximationType" nillable="true" type="q6:ApproximationType" />
+          <xs:element minOccurs="0" name="FlatRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FlatVolatility" nillable="true" type="xs:double" />
+          <xs:element xmlns:q7="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PriceYieldAnchorType" nillable="true" type="q7:StraightPriceYieldAnchorType" />
+          <xs:element xmlns:q8="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RedemptionDate" nillable="true" type="q8:RedemptionDate" />
+          <xs:element minOccurs="0" name="UserBondId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StraightBondRequest" nillable="true" type="tns:StraightBondRequest" />
+  <xs:complexType name="CommonBondRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BondRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContributionAskPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionAskPriceSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionAskYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionBidPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionBidPriceSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionBidYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="HistoricalPriceAskField" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HistoricalPriceBidField" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PriceYieldAnchorValue" nillable="true" type="xs:double" />
+          <xs:element xmlns:q9="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ProceedsAnchorType" type="q9:ProceedsAnchorType" />
+          <xs:element minOccurs="0" name="ProceedsAnchorValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ProceedsCurrency" nillable="true" type="xs:string" />
+          <xs:element xmlns:q10="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="QuoteType" nillable="true" type="q10:QuoteType" />
+          <xs:element minOccurs="0" name="SettleDate" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q11="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="YieldConvention" nillable="true" type="q11:YieldConvention" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CommonBondRequest" nillable="true" type="tns:CommonBondRequest" />
+  <xs:complexType name="FloatingRateNoteRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonBondRequest">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AlternativePriceYieldAnchorType" type="q12:AlternativePriceYieldAnchorType" />
+          <xs:element minOccurs="0" name="AlternativePriceYieldAnchorValue" nillable="true" type="xs:double" />
+          <xs:element xmlns:q13="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AlternativeYieldConvention" nillable="true" type="q13:YieldConvention" />
+          <xs:element xmlns:q14="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CalculationMethod" nillable="true" type="q14:CalcMethod" />
+          <xs:element minOccurs="0" name="FlatRate" nillable="true" type="xs:double" />
+          <xs:element xmlns:q15="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PriceYieldAnchorType" nillable="true" type="q15:FloatingRatePriceYieldAnchorType" />
+          <xs:element minOccurs="0" name="ProjectedIndex" nillable="true" type="xs:double" />
+          <xs:element xmlns:q16="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RedemptionDate" nillable="true" type="q16:RedemptionDate" />
+          <xs:element minOccurs="0" name="RepoRate" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FloatingRateNoteRequest" nillable="true" type="tns:FloatingRateNoteRequest" />
+  <xs:complexType name="ConvertibleBondRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonBondRequest">
+        <xs:sequence>
+          <xs:element xmlns:q17="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ConversionAnchorType" nillable="true" type="q17:ConversionAnchorType" />
+          <xs:element minOccurs="0" name="ConversionAnchorValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CreditSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="DividendGrowthRate" nillable="true" type="xs:double" />
+          <xs:element xmlns:q18="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="DividendType" nillable="true" type="q18:DividendType" />
+          <xs:element minOccurs="0" name="DividendYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityBorrowRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityCrossRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityPriceShift" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityQuote" nillable="true" type="xs:double" />
+          <xs:element xmlns:q19="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="EquityQuoteType" nillable="true" type="q19:QuoteType" />
+          <xs:element minOccurs="0" name="EquityVolatility" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FlatRate" nillable="true" type="xs:double" />
+          <xs:element xmlns:q20="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PriceYieldAnchorType" nillable="true" type="q20:ConvertiblePriceYieldAnchorType" />
+          <xs:element xmlns:q21="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PricingModel" nillable="true" type="q21:PricingModel" />
+          <xs:element xmlns:q22="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RateModelType" nillable="true" type="q22:RateModelType" />
+          <xs:element xmlns:q23="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="YieldWorkout" nillable="true" type="q23:YieldWorkoutType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConvertibleBondRequest" nillable="true" type="tns:ConvertibleBondRequest" />
+  <xs:complexType name="IndexLinkedBondRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonBondRequest">
+        <xs:sequence>
+          <xs:element xmlns:q24="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AlternativePriceYieldAnchorType" type="q24:AlternativePriceYieldAnchorType" />
+          <xs:element minOccurs="0" name="AlternativePriceYieldAnchorValue" nillable="true" type="xs:double" />
+          <xs:element xmlns:q25="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AlternativeYieldConvention" nillable="true" type="q25:YieldConvention" />
+          <xs:element xmlns:q26="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BmkPriceYieldAnchorType" nillable="true" type="q26:BmkPriceYieldAnchorType" />
+          <xs:element minOccurs="0" name="BmkPriceYieldAnchorValue" nillable="true" type="xs:double" />
+          <xs:element xmlns:q27="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BmkQuoteType" nillable="true" type="q27:QuoteType" />
+          <xs:element minOccurs="0" name="BmkRic" nillable="true" type="xs:string" />
+          <xs:element xmlns:q28="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BmkYieldConvention" nillable="true" type="q28:YieldConvention" />
+          <xs:element xmlns:q29="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PriceYieldAnchorType" nillable="true" type="q29:IndexLinkedPriceYieldAnchorType" />
+          <xs:element xmlns:q30="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ProjectedInflationFreq" nillable="true" type="q30:InflationFrequency" />
+          <xs:element minOccurs="0" name="ProjectedInflationRate" nillable="true" type="xs:double" />
+          <xs:element xmlns:q31="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RealYieldConvention" nillable="true" type="q31:YieldConvention" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IndexLinkedBondRequest" nillable="true" type="tns:IndexLinkedBondRequest" />
+  <xs:complexType name="EquityResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonBondResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EquityResponse" nillable="true" type="tns:EquityResponse" />
+  <xs:complexType name="CommonBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BondResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccruedDays" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="AccruedInterest" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AssetId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BondCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ContributionAskPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionAskPriceSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionAskYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionBidPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionBidPriceSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ContributionBidYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CouponRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CrossRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="DaysToMaturity" nillable="true" type="xs:int" />
+          <xs:element xmlns:q32="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="EmbeddedOption" nillable="true" type="q32:EmbeddedOptionType" />
+          <xs:element minOccurs="0" name="FaceAmount" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ISIN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IssuerCountry" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IssuerDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IssuerId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaturityDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PVBP" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="PVBPTradeAmount" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Principal" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ProceedsCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Quote" nillable="true" type="xs:double" />
+          <xs:element xmlns:q33="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="QuoteConvention" nillable="true" type="q33:QuotationConvention" />
+          <xs:element minOccurs="0" name="QuoteSource" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="QuoteTimeStamp" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q34="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="QuoteType" nillable="true" type="q34:QuoteType" />
+          <xs:element minOccurs="0" name="SettleDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SettleRule" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ticker" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TotalProceeds" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="YearsToMaturity" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Yield" nillable="true" type="xs:double" />
+          <xs:element xmlns:q35="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="YieldConvention" nillable="true" type="q35:YieldConvention" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CommonBondResponse" nillable="true" type="tns:CommonBondResponse" />
+  <xs:complexType name="BondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q36="http://TRACS.ThomsonReuters.com/" base="q36:ServiceItemResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BondId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q37="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BondIdType" type="q37:SecurityIdType" />
+          <xs:element xmlns:q38="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BondType" type="q38:BondType" />
+          <xs:element minOccurs="0" name="ReferenceKey" type="xs:int" />
+          <xs:element xmlns:q39="http://TRACS.ThomsonReuters.com/BondDealMonitor/Common" minOccurs="0" name="Status" nillable="true" type="q39:Status" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BondResponse" nillable="true" type="tns:BondResponse" />
+  <xs:complexType name="ConvertibleBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonBondResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BondFloor" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ConversionPremium" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ConversionPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ConversionPriceCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ConversionRatio" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ConvexityDown" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ConvexityRatio" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ConvexityUp" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CreditSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CurrentYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Delta" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="DividendGrowthRate" nillable="true" type="xs:double" />
+          <xs:element xmlns:q40="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="DividendType" nillable="true" type="q40:DividendType" />
+          <xs:element minOccurs="0" name="DividendYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityBorrowRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityCrossPair" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EquityCrossRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EquityFixedCrossRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityPriceShift" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityQuote" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityQuoteSource" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EquityQuoteTimeStamp" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q41="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="EquityQuoteType" nillable="true" type="q41:QuoteType" />
+          <xs:element minOccurs="0" name="EquityRic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EquityVolatility" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EquityVolatilityCaption" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FairPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Gamma" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ImpliedCreditSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ImpliedVolatility" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="IsMultiCurrency" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MacaulayDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ModifiedDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ParityCash" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ParityPercent" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="PremiumToBondFloor" nillable="true" type="xs:double" />
+          <xs:element xmlns:q42="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PriceQuotationType" nillable="true" type="q42:PriceQuotationType" />
+          <xs:element xmlns:q43="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PricingModel" nillable="true" type="q43:PricingModel" />
+          <xs:element xmlns:q44="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RateModelType" nillable="true" type="q44:RateModelType" />
+          <xs:element minOccurs="0" name="Theta" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Vega" nillable="true" type="xs:double" />
+          <xs:element xmlns:q45="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="YieldWorkout" nillable="true" type="q45:YieldWorkoutType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConvertibleBondResponse" nillable="true" type="tns:ConvertibleBondResponse" />
+  <xs:complexType name="IndexLinkedBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonBondResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdjustedPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AlternativePrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AlternativeYield" nillable="true" type="xs:double" />
+          <xs:element xmlns:q46="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AlternativeYieldConvention" nillable="true" type="q46:YieldConvention" />
+          <xs:element minOccurs="0" name="AverageLife" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="BmkAssetId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BmkQuote" nillable="true" type="xs:double" />
+          <xs:element xmlns:q47="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BmkQuoteConvention" nillable="true" type="q47:QuotationConvention" />
+          <xs:element minOccurs="0" name="BmkQuoteSource" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BmkQuoteTimeStamp" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q48="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BmkQuoteType" nillable="true" type="q48:QuoteType" />
+          <xs:element minOccurs="0" name="BmkRic" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BmkYield" nillable="true" type="xs:double" />
+          <xs:element xmlns:q49="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BmkYieldConvention" nillable="true" type="q49:YieldConvention" />
+          <xs:element minOccurs="0" name="BreakEvenInflationRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Convexity" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CurrentIndex" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FixingMethod" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IndexBase" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="IndexName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IndexRatio" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="LookbackPeriod" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MacaulayDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ModifiedDuration" nillable="true" type="xs:double" />
+          <xs:element xmlns:q50="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ProjectedInflationFreq" nillable="true" type="q50:InflationFrequency" />
+          <xs:element minOccurs="0" name="ProjectedInflationRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="RealYield" nillable="true" type="xs:double" />
+          <xs:element xmlns:q51="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RealYieldConvention" nillable="true" type="q51:YieldConvention" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IndexLinkedBondResponse" nillable="true" type="tns:IndexLinkedBondResponse" />
+  <xs:complexType name="StraightBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonBondResponse">
+        <xs:sequence>
+          <xs:element xmlns:q52="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AdditionalBondTypeInfo" nillable="true" type="q52:AdditionalBondTypeInfo" />
+          <xs:element minOccurs="0" name="AlternativePrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AlternativeYield" nillable="true" type="xs:double" />
+          <xs:element xmlns:q53="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AlternativeYieldConvention" nillable="true" type="q53:YieldConvention" />
+          <xs:element minOccurs="0" name="AssetSwapSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AswResponses" nillable="true" type="tns:ArrayOfASWResponse" />
+          <xs:element minOccurs="0" name="AverageLife" nillable="true" type="xs:double" />
+          <xs:element xmlns:q54="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BmkApproximationType" nillable="true" type="q54:ApproximationType" />
+          <xs:element minOccurs="0" name="BmkCaptionPoint1Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BmkCaptionPoint1Yield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="BmkCaptionPoint2Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BmkCaptionPoint2Yield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="BmkSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Convexity" nillable="true" type="xs:double" />
+          <xs:element xmlns:q55="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CouponCalculationMethod" nillable="true" type="q55:CouponCalculationMethod" />
+          <xs:element minOccurs="0" name="CreditSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CreditSpreadCaptionPoint1Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditSpreadCaptionPoint2Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CurrentRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FirstCouponDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FlatVolatility" nillable="true" type="xs:double" />
+          <xs:element xmlns:q56="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="Frequency" nillable="true" type="q56:Frequency" />
+          <xs:element minOccurs="0" name="ImpliedTEDPriceSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="LastCouponDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MacaulayDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ModifiedDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="OptionAdjustedSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="RateSource" nillable="true" type="xs:string" />
+          <xs:element xmlns:q57="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RedemptionSchedule" nillable="true" type="q57:ArrayOfRedemption" />
+          <xs:element minOccurs="0" name="SpreadAdjustedTED" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SwapSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SwapSpreadCaptionPoint1Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SwapSpreadCaptionPoint2Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SwapYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Upfront" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="UserBondSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="YTYTEDSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ZeroCurveSpread" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StraightBondResponse" nillable="true" type="tns:StraightBondResponse" />
+  <xs:complexType name="ArrayOfASWResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ASWResponse" nillable="true" type="tns:ASWResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfASWResponse" nillable="true" type="tns:ArrayOfASWResponse" />
+  <xs:complexType name="ASWResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ASW" nillable="true" type="xs:double" />
+      <xs:element xmlns:q58="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CouponCalculationMethod" nillable="true" type="q58:CouponCalculationMethod" />
+      <xs:element minOccurs="0" name="CrossRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="FirstCouponDate" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q59="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="Frequency" nillable="true" type="q59:Frequency" />
+      <xs:element minOccurs="0" name="LastCouponDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Notional" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="RateSource" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferenceKey" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ASWResponse" nillable="true" type="tns:ASWResponse" />
+  <xs:complexType name="FloatingRateNoteResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonBondResponse">
+        <xs:sequence>
+          <xs:element xmlns:q60="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AdditionalBondTypeInfo" nillable="true" type="q60:AdditionalBondTypeInfo" />
+          <xs:element minOccurs="0" name="AdjustedMargin" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AdjustedPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AdjustedTotalMargin" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AlternativePrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AlternativeYield" nillable="true" type="xs:double" />
+          <xs:element xmlns:q61="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AlternativeYieldConvention" nillable="true" type="q61:YieldConvention" />
+          <xs:element minOccurs="0" name="AssetSwapSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AverageLife" nillable="true" type="xs:double" />
+          <xs:element xmlns:q62="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CalculationMethod" nillable="true" type="q62:CalcMethod" />
+          <xs:element minOccurs="0" name="Convexity" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CouponFormula" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DiscountMargin" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="IndexDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="NeutralPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="NextCoupon" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ProjectedIndex" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="QuotedMargin" nillable="true" type="xs:double" />
+          <xs:element xmlns:q63="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RedemptionSchedule" nillable="true" type="q63:ArrayOfRedemption" />
+          <xs:element minOccurs="0" name="RepoRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SimpleMargin" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SpreadDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="YTMSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ZeroCurveSpread" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FloatingRateNoteResponse" nillable="true" type="tns:FloatingRateNoteResponse" />
+  <xs:complexType name="ArrayOfASWRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ASWRequest" nillable="true" type="tns:ASWRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfASWRequest" nillable="true" type="tns:ArrayOfASWRequest" />
+  <xs:complexType name="ASWRequest">
+    <xs:sequence>
+      <xs:element xmlns:q64="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CouponCalculationMethod" nillable="true" type="q64:CouponCalculationMethod" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="FirstCouponDate" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q65="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="Frequency" nillable="true" type="q65:Frequency" />
+      <xs:element minOccurs="0" name="LastCouponDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RateSource" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferenceKey" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ASWRequest" nillable="true" type="tns:ASWRequest" />
+  <xs:complexType name="BDMResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q66="http://TRACS.ThomsonReuters.com/" base="q66:ServiceResponse">
+        <xs:sequence>
+          <xs:element xmlns:q67="Data_Contracts.Common" minOccurs="0" name="BDTCurveList" nillable="true" type="q67:ArrayOfCurve" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfBondResponse" />
+          <xs:element xmlns:q68="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RepoRateList" nillable="true" type="q68:ArrayOfRepoRateResponse" />
+          <xs:element minOccurs="0" name="TradeDate" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q69="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ZeroCurveList" nillable="true" type="q69:ArrayOfZeroCurveResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BDMResponse" nillable="true" type="tns:BDMResponse" />
+  <xs:complexType name="ArrayOfBondResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BondResponse" nillable="true" type="tns:BondResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBondResponse" nillable="true" type="tns:ArrayOfBondResponse" />
+</xs:schema>

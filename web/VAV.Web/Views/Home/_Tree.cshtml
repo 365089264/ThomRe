@@ -1,0 +1,93 @@
+﻿@using VAV.Model.Data
+@model VAV.Web.ViewModels.Home.TreeViewModel
+@{
+    Layout = null;
+}
+@helper BuildTree(MenuNode node)
+{
+    //Action Type: 1,add report;2,refresh tree;3,redirect page;0,none
+    <ul>
+        <li @if (!@node.Children.Any(x => x.IsTreeVisible)) { @Html.Raw("tag='file'") } id="@node.Id" reportid='@node.ReportId' action='@node.ActionType' trace='@node.TraceName' data-ric='@node.Ric'>
+            <a>@node.DisplayName</a>
+            @foreach (var subNode in node.Children)
+            {
+                if (subNode.IsTreeVisible)
+                {
+                    @BuildTree(subNode)
+                }
+            }
+        </li>
+
+    </ul>
+}
+<span class="homeNavHeader">@Model.Root.DisplayName</span>
+<div class="treeWrapper">
+    <div id="innerTree" style="display: none; position: relative; top: -30px; left: -15px; min-width: 400px;" class="treeBackground">
+        @BuildTree(Model.Root)
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+    $(function() {
+
+        window.tree = jQuery("#innerTree").jstree({
+            themeroller: {
+                item_leaf: false,
+                item_clsd: false,
+                item_open: false
+            },
+            plugins: ["html_data", "ui", "themeroller"],
+            core: { "initially_open": [@Html.Raw(Model.OpenNodeCode)] },
+            "ui": {
+                "initially_select": ["@Model.SelectedReportID"],
+                "select_limit": 1
+            }
+        }).bind("select_node.jstree", function(event, data) {
+            var obj = data.rslt.obj;
+            if (obj.attr("tag") == "file") {
+                MessageRouter({
+                    nodeid: obj.attr('id'),
+                    reportid: obj.attr('reportid'),
+                    action: obj.attr('action'),
+                    nodetext: obj.text(),
+                    source: 'tree',
+                    trace: obj.attr('trace'),
+                    ric: obj.data('ric')
+                });
+            }
+        });
+    var treeView = $('#treeView').block(
+            {
+                message: $('<img src="' +window.busyImageUrl +'" style="display: none;">'),
+                css: {
+                    top: (window.tree.height() - 54) / 2 + 'px',
+                    left: (window.tree.width() - 54) / 2 + 'px',
+                    width: '54px',
+                    height:'54px',
+                    border: '0px'
+                },
+                overlayCSS: { backgroundColor: 'transparent'}
+            }
+        );
+            setTimeout(function () {
+                if (window.tree) {
+                    window.tree.show();                    
+                }
+            treeView.unblock();
+        }, 1000);    
+        
+    amplify.subscribe('OpenReport', function (data) {
+        if(data.source !='tree') {
+            $.jstree._focused().select_node('#'+data.treeid, true);
+        }
+    });
+    amplify.subscribe('TabActive', function (data) {
+        var node = tree.find('li[reportid=' + data.reportid + ']');
+        if (node.length == 1) {
+            $.jstree._focused().select_node('#' + node.attr('id'), true);
+        }
+    });
+    })
+    
+</script>

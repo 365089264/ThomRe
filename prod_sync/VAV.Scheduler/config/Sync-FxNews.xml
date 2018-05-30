@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="REUTERSNEWSINFO" destination="REUTERSNEWSINFO" isSync="true"  isKeepObsoleteDestinationData="true" >
+      <column-mapping source="NewsId" destination="NewsId" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="NewsTitle" destination="NewsTitle"/>
+      <column-mapping source="NewsContent" destination="NewsContent"/>
+      <column-mapping source="NewsTime" destination="NewsTime"/>
+      <column-mapping source="CTime" destination="CTime"/>
+      <filter>
+        <![CDATA[ CTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

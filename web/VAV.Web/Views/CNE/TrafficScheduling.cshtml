@@ -1,0 +1,365 @@
+﻿<div class="StatisticalContent" style="min-width: 500px; height: 100%; width: -webkit-calc(100% - 5px);"
+    id="mainPage">
+    <div class="Statistical">
+        <div class="StatisticalTop">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@ViewBag.Name</span> <a id="" href="#" class="exportExcel"
+                        onclick="CoalTraffic.ExportExcelChart(this)">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                </div>
+                <div id="priceChartContainer" style="position: absolute; height: 90%; width: 99%;
+                    height: -webkit-calc(90%+5px ); width: -webkit-calc(99% - 2px);">
+                </div>
+            </div>
+        </div>
+        <div class="StatisticalBottom">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 10px);">
+                <div class="colorBlock">
+                    <div class="Statisticalfilter">
+                    </div>
+                </div>
+                <div>
+                    <div id="paginateOfLable" class="paginateOfLable">
+                    </div>
+                    <a href="#" class="exportExcel" onclick="CoalTraffic.ExportExcelTable(this)">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                    <div style="width: 300px; float: right; padding-right: 80px">
+                        <div id="paginateOfLableDetail">
+                        </div>
+                    </div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div style="height: -webkit-calc(100% - 28px); overflow:scroll">
+                    <table id="CoalPortTraffic" class="datatable Zebra" style="white-space: nowrap; cursor: pointer;width:100%">
+                        <thead>
+                            <tr class="hr">
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'area_chi_name')">@Resources.CnE.Coal_Traffic_Port
+                                    <span></span>
+                                </th>
+                                 <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'end_date')">@Resources.Global.Date
+                                    <span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A001')">@Resources.CnE.Coal_Traffic_Track
+                                    <span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A002')">@Resources.CnE.Coal_Traffic_DayNight_Track<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A003')">@Resources.CnE.Coal_Traffic_Num<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A004')">@Resources.CnE.Coal_Traffic_Railway<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A005')">@Resources.CnE.Coal_Traffic_Road<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A006')">@Resources.CnE.Coal_Traffic_Boat<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A007')">@Resources.CnE.Coal_Traffic_Trough<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A008')">@Resources.CnE.Coal_Traffic_Filed<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A009')">@Resources.CnE.Coal_Traffic_Anchor<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A010')">@Resources.CnE.Coal_Traffic_Anchor_Num<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A011')">@Resources.CnE.Coal_Traffic_Park<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A012')">@Resources.CnE.Coal_Traffic_RailCar<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'A013')">@Resources.CnE.Coal_BrownCoal<span></span>
+                                </th>
+                                <th class="sortColumn" onclick="CoalTraffic.sortByColumnName(this,'par_name')">@Resources.CnE.Coal_Traffic_Frequency<span></span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div>@Resources.Global.Source</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var CoalTraffic = (function(my) {
+        my.strOrderFilter = '';
+        var pageIndex = 1;
+        my.BuildRowTemplate = function(rawData) {
+            var tpl = '';
+            $.each(rawData, function(key, value) {
+                tpl += '<tr data-key=\'KeyWord\'  onclick="CoalTraffic.GetRowChart(this)">';
+                for (var i in value) {
+                    if (i == "area_uni_code") {
+                        tpl = tpl + '<td style="display:none;">' + value[i] + '</td>';
+                    } else {
+                        tpl = tpl + '<td style="border-right:1px solid #363636">' + value[i] + '</td>';
+
+                    }
+                }
+                tpl = tpl + '</tr>';
+            });
+
+            return tpl;
+        };
+        my.AddRowSelectedCSS = function(row) {
+            $("#CoalPortTraffic tr").removeClass("SelectedRow");
+            $(row).addClass("SelectedRow");
+        };
+        my.GetRowChart = function(row) {
+            var $key = $(row).find("td").eq(0).text();
+            my.AddRowSelectedCSS(row);
+            AjaxWithBlock($('#mainPage'), '/Cne/GetPageChartData', {
+                key: $key
+            }, function(mydata) {
+                my.UpdatePriceChartData(mydata);
+
+            });
+
+        };
+        my.SelectedFirstRow = function() {
+            var row = $("#CoalPortTraffic tr").eq(1);
+            my.GetRowChart(row);
+            my.AddRowSelectedCSS(row);
+        };
+        my.appendTable = function(mydata) {
+            var markup = my.BuildRowTemplate(mydata);
+            $('#CoalPortTraffic tbody').empty();
+            $('#CoalPortTraffic tbody').append(markup);
+        };
+        my.showPageLabel = function(page, pageSize, total) {
+            var start = (page - 1) * pageSize + 1;
+            var end = page * pageSize;
+            $("#paginateOfLable").html(start + '-' + end + ' @Resources.Global.WMP_of ' + total);
+        }
+        my.showTableWithPager = function(mydata, pageCount, pagerSize, currentPage) {
+            my.appendTable(mydata);
+            var orderStr = my.strOrderFilter == "" ? "area_uni_code desc" : my.strOrderFilter;
+            my.Pager(pageCount, orderStr, "", pagerSize);
+            my.showPageLabel(currentPage, pagerSize, pageCount);
+        }
+        my.updatePagedTableData = function(strOrder, strWhere, pageIndex) {
+            AjaxWithBlock($('#mainPage'), '/CnE/GetPortSchedularPagedData', {
+                strOrder: strOrder,
+                strWhere: strWhere,
+                pageIndex: pageIndex
+            }, function(mydata) {
+                my.appendTable(mydata.RowData);
+                my.Pager(mydata.Total, strOrder, "", mydata.PageSize);
+                my.SelectedFirstRow();
+            });
+
+        };
+        my.sortByColumnName = function(thobj, columnName) {
+            var obj = $(thobj);
+            obj.parent().find("th").removeClass("sortColumn");
+            obj.addClass("sortColumn");
+            var descend = obj.attr("tag");
+            if (!descend) {
+                obj.attr("tag", "ASC");
+                descend = "ASC";
+            } else {
+                var dec = (descend == "ASC") ? "DESC" : "ASC";
+                obj.attr("tag", dec);
+                descend = dec;
+            }
+            var strOrder = columnName + " " + descend;
+            my.strOrderFilter = strOrder;
+            pageIndex = 1;
+            my.updatePagedTableData(strOrder, "", 1);
+        };
+        my.Pager = function(totalCount, strOrder, strWhere, pageSize) {
+            if (Math.ceil(totalCount / pageSize) == 1) {
+                return;
+            }
+            $('#paginateOfLableDetail').paginate({
+                count: Math.ceil(totalCount / pageSize),
+                start: 1,
+                display: 10,
+                border: false,
+                text_color: '#00B3E3',
+                background_color: 'none',
+                text_hover_color: '#28D2FF',
+                background_hover_color: 'none',
+                images: false,
+                mouse: 'press',
+                onChange: function(page) {
+                    pageIndex = page;
+                    AjaxWithBlock($('#mainPage'), '/CnE/GetPortSchedularPagedData', {
+                        strOrder: strOrder,
+                        strWhere: strWhere,
+                        pageIndex: page
+                    }, function(mydata) {
+                        my.appendTable(mydata.RowData);
+                        my.showPageLabel(page, pageSize, mydata.Total);
+                        my.SelectedFirstRow();
+                    });
+                },
+                firstText: "@Resources.Global.Paginate_First",
+                lastText: "@Resources.Global.Paginate_Last"
+            });
+        };
+        my.GetExcelTitle = function() {
+            var title = '';
+            $("#CoalPortTraffic thead th").each(function(i, th) {
+                var txt = $.trim($(th).text());
+                title += txt + ",";
+            });
+            return title;
+        };
+        my.ExportExcelTable = function(link) {
+            var header = my.GetExcelTitle();
+            $(link).attr("href", '/CNE/ExportExcelForPortSchedularTable'
+                + '?strOrder=' + my.strOrderFilter
+                + '&strWhere='
+                + '&pageIndex=' + pageIndex
+                + '&strHeader=' + header
+                + "&unix=" + new Date()
+            );
+        };
+        my.ExportExcelChart = function(link) {
+            var term = my.Chart.rangeSelector.selected;
+            var $term = -100;
+            switch (term) {
+            case 0:
+                $term = -1;
+                break;
+            case 1:
+                $term = -3;
+                break;
+            case 2:
+                $term = -6;
+                break;
+            case 3:
+                $term = -12;
+                break;
+            case 4:
+                $term = -60;
+                break;
+            case 5:
+                $term = -100;
+                break;
+            }
+            var row = $('#CoalPortTraffic tbody .SelectedRow');
+            var $key = row.first().find('td').first().text();
+            var startTime = row.first().find('td').eq(2).text();
+            var header = my.GetExcelTitle();
+            $(link).attr("href", '/CNE/ExportExcelForPortSchedularTable'
+                + '?strOrder=' + my.strOrderFilter
+                + '&strWhere='
+                + '&pageIndex=' + pageIndex
+                + '&strHeader=' + header
+                + "&isChart=1"
+                + "&key=" + $key
+                + "&term=" + $term
+                + "&startTime=" + startTime
+                + "&unix=" + new Date()
+            );
+        };
+        my.UpdatePriceChartData = function(chartDatas) {
+            var modData = [];
+            $.each(chartDatas.series, function(i, data) {
+                modData[i] = {
+                    name: data.name,
+                    type: 'line',
+                    id: 'primary',
+                    data: data.data
+                }
+            });
+            my.Chart = Highcharts.StockChart({
+                rangeSelector: {
+                    buttons: [
+                        {
+                            type: 'month',
+                            count: 1,
+                            text: '1m'
+                        },
+                        {
+                            type: 'month',
+                            count: 3,
+                            text: '3m'
+                        },
+                        {
+                            type: 'month',
+                            count: 6,
+                            text: '6m'
+                        },
+                        {
+                            type: 'year',
+                            count: 1,
+                            text: '1y'
+                        },
+                        {
+                            type: 'year',
+                            count: 5,
+                            text: '5y'
+                        }, {
+                            type: 'all',
+                            text: 'All'
+                        }
+                    ],
+                    inputDateFormat: '%Y-%m-%d',
+                    inputEditDateFormat: '%Y-%m-%d',
+                    inputEnabled: true,
+                    selected: 0
+                },
+                chart: {
+                    renderTo: 'priceChartContainer',
+                    zoomType: 'x'
+                },
+                title: { text: "@Resources.CnE.Coal_Schedular" },
+                yAxis: { title: { text: "@Resources.CnE.Coal_Unit" } },
+                series: modData,
+                legend: {
+                    align: 'left',
+                    verticalAlign: 'top',
+                    x: 0,
+                    y: 50,
+                    layout: 'vertical',
+                    floating: true,
+                    enabled: true
+                },
+
+                tooltip: {
+                    formatter: function() {
+                        var s = Highcharts.dateFormat('%Y-%m-%d', this.x);
+                        $.each(this.points, function(i, point) {
+                            s += '<br/><span style="color:' + point.series.color + '">' + point.series.name + '</span>: ' + Highcharts.numberFormat(point.y, 2);
+                        });
+                        return s;
+                    }
+                },
+                credits: { href: 'http://thomsonreuters.com/', text: '' }
+            });
+        }
+        return my;
+    })(CoalTraffic || {});
+
+    $(function () {
+
+         amplify.subscribe('RefreshChart', function () { 
+           var parent = $('#priceChartContainer');
+            setTimeout(function(){
+                                    if(parent.parent().width()){
+                                        CoalTraffic.Chart.setSize(parent.parent().width(), parent.parent().height()-25, false);
+                                    }
+                }, 500
+            );
+        });
+         var data = @{ Html.RenderAction("GetPageDataFirst", "CNE",
+                                    new
+                                    {
+
+                                        strOrder = "area_uni_code desc",
+                                        strWhere = "",
+                                        pageIndex = 1
+                                    });
+                    };
+        CoalTraffic.showTableWithPager(data.Table.RowData,data.Table.Total,data.Table.PageSize,1);
+        CoalTraffic.UpdatePriceChartData(data.Chart);
+        var row=$("#CoalPortTraffic tr").eq(1);
+        CoalTraffic .AddRowSelectedCSS(row);
+    });
+</script>

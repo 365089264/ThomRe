@@ -1,0 +1,1073 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VAV.Entities.Store" Alias="Self" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="VAVEntitiesStoreContainer">
+          <EntitySet Name="BANK_FIN_PRD_PROSP_DATA" EntityType="VAV.Entities.Store.BANK_FIN_PRD_PROSP_DATA" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="BUSINESSTYPEINFO" EntityType="VAV.Entities.Store.BUSINESSTYPEINFO" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="DISC_ACCE_CFP_DATA" EntityType="VAV.Entities.Store.DISC_ACCE_CFP_DATA" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="FILEDETAIL" EntityType="VAV.Entities.Store.FILEDETAIL" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="FILETYPEINFO" EntityType="VAV.Entities.Store.FILETYPEINFO" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="FILEVISITLOG" EntityType="VAV.Entities.Store.FILEVISITLOG" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="FIN_PRD_RPT_DATA" EntityType="VAV.Entities.Store.FIN_PRD_RPT_DATA" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="INSTITUTIONINFO" EntityType="VAV.Entities.Store.INSTITUTIONINFO" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="OPERATORINFO" EntityType="VAV.Entities.Store.OPERATORINFO" store:Type="Tables" store:Schema="FILEDB" store:Name="OPERATORINFO">
+            <DefiningQuery>SELECT 
+      "OPERATORINFO"."OPERATORS" AS "OPERATORS", 
+      "OPERATORINFO"."EMAIL" AS "EMAIL", 
+      "OPERATORINFO"."RM" AS "RM"
+      FROM "FILEDB"."OPERATORINFO" "OPERATORINFO"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RATE_REP_DATA" EntityType="VAV.Entities.Store.RATE_REP_DATA" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="RES_INFO_DATA" EntityType="VAV.Entities.Store.RES_INFO_DATA" store:Type="Tables" Schema="FILEDB" />
+          <EntitySet Name="ROLEPERMISSIONS" EntityType="VAV.Entities.Store.ROLEPERMISSIONS" store:Type="Tables" store:Schema="FILEDB" store:Name="ROLEPERMISSIONS">
+            <DefiningQuery>SELECT 
+      "ROLEPERMISSIONS"."ROLENAME" AS "ROLENAME", 
+      "ROLEPERMISSIONS"."PERMISSIONID" AS "PERMISSIONID"
+      FROM "FILEDB"."ROLEPERMISSIONS" "ROLEPERMISSIONS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ALLFILESINFO" EntityType="VAV.Entities.Store.ALLFILESINFO" store:Type="Views" store:Schema="FILEDB" store:Name="ALLFILESINFO">
+            <DefiningQuery>SELECT 
+      "ALLFILESINFO"."FILEID" AS "FILEID", 
+      "ALLFILESINFO"."BIZCODE" AS "BIZCODE", 
+      "ALLFILESINFO"."FILETYPECODE" AS "FILETYPECODE", 
+      "ALLFILESINFO"."FILENAMEEN" AS "FILENAMEEN", 
+      "ALLFILESINFO"."INSTITUTIONNAMEEN" AS "INSTITUTIONNAMEEN", 
+      "ALLFILESINFO"."FILETYPENAME" AS "FILETYPENAME", 
+      "ALLFILESINFO"."INSTITUTIONINFOCODE" AS "INSTITUTIONINFOCODE", 
+      "ALLFILESINFO"."FILENAMECN" AS "FILENAMECN", 
+      "ALLFILESINFO"."EXTENSION" AS "EXTENSION"
+      FROM "FILEDB"."ALLFILESINFO" "ALLFILESINFO"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GETNEWFILE" EntityType="VAV.Entities.Store.GETNEWFILE" store:Type="Views" store:Schema="FILEDB" store:Name="GETNEWFILE">
+            <DefiningQuery>SELECT 
+      "GETNEWFILE"."TITLECN" AS "TITLECN", 
+      "GETNEWFILE"."TITLEEN" AS "TITLEEN", 
+      "GETNEWFILE"."STATUS" AS "STATUS", 
+      "GETNEWFILE"."SUBMITERNAME" AS "SUBMITERNAME", 
+      "GETNEWFILE"."SUBMITER" AS "SUBMITER", 
+      "GETNEWFILE"."SUBMITERRM" AS "SUBMITERRM", 
+      "GETNEWFILE"."SUBMITDATE" AS "SUBMITDATE", 
+      "GETNEWFILE"."APPROVER" AS "APPROVER", 
+      "GETNEWFILE"."FILETYPE" AS "FILETYPE", 
+      "GETNEWFILE"."RIC" AS "RIC", 
+      "GETNEWFILE"."HITS" AS "HITS", 
+      "GETNEWFILE"."AUTHOR" AS "AUTHOR", 
+      "GETNEWFILE"."TAG" AS "TAG", 
+      "GETNEWFILE"."UPLOADTYPE" AS "UPLOADTYPE", 
+      "GETNEWFILE"."SOURCES" AS "SOURCES", 
+      "GETNEWFILE"."REPORTDATE" AS "REPORTDATE", 
+      "GETNEWFILE"."ISCOMMUNICATABLE" AS "ISCOMMUNICATABLE", 
+      "GETNEWFILE"."SYNCID" AS "SYNCID", 
+      "GETNEWFILE"."SYNCTOPICCODE" AS "SYNCTOPICCODE", 
+      "GETNEWFILE"."SYNCMODULEID" AS "SYNCMODULEID", 
+      "GETNEWFILE"."LASTCHANGEDATE" AS "LASTCHANGEDATE"
+      FROM "FILEDB"."GETNEWFILE" "GETNEWFILE"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GETNEWINSTITUTION" EntityType="VAV.Entities.Store.GETNEWINSTITUTION" store:Type="Views" store:Schema="FILEDB" store:Name="GETNEWINSTITUTION">
+            <DefiningQuery>SELECT 
+      "GETNEWINSTITUTION"."NAMECN" AS "NAMECN", 
+      "GETNEWINSTITUTION"."NAMEEN" AS "NAMEEN", 
+      "GETNEWINSTITUTION"."MODULEID" AS "MODULEID", 
+      "GETNEWINSTITUTION"."CREATER" AS "CREATER", 
+      "GETNEWINSTITUTION"."ISAPPROVE" AS "ISAPPROVE", 
+      "GETNEWINSTITUTION"."ISINTERNALAPPROVE" AS "ISINTERNALAPPROVE", 
+      "GETNEWINSTITUTION"."ISDIRECTDELETE" AS "ISDIRECTDELETE", 
+      "GETNEWINSTITUTION"."HITS" AS "HITS", 
+      "GETNEWINSTITUTION"."RMLINK" AS "RMLINK", 
+      "GETNEWINSTITUTION"."TAG" AS "TAG", 
+      "GETNEWINSTITUTION"."CREATEDATE" AS "CREATEDATE", 
+      "GETNEWINSTITUTION"."SYNCCODE" AS "SYNCCODE", 
+      "GETNEWINSTITUTION"."LASTCHANGEDATE" AS "LASTCHANGEDATE", 
+      "GETNEWINSTITUTION"."INSTITUTIONORDER" AS "INSTITUTIONORDER"
+      FROM "FILEDB"."GETNEWINSTITUTION" "GETNEWINSTITUTION"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GETRESEACHREPORTBYTYPE" EntityType="VAV.Entities.Store.GETRESEACHREPORTBYTYPE" store:Type="Views" store:Schema="FILEDB" store:Name="GETRESEACHREPORTBYTYPE">
+            <DefiningQuery>SELECT 
+      "GETRESEACHREPORTBYTYPE"."NUM" AS "NUM", 
+      "GETRESEACHREPORTBYTYPE"."CODE" AS "CODE", 
+      "GETRESEACHREPORTBYTYPE"."INSTITUTIONNAMECN" AS "INSTITUTIONNAMECN", 
+      "GETRESEACHREPORTBYTYPE"."INSTITUTIONNAMEEN" AS "INSTITUTIONNAMEEN", 
+      "GETRESEACHREPORTBYTYPE"."MTIME" AS "MTIME", 
+      "GETRESEACHREPORTBYTYPE"."INSTITUTIONEXTENSION" AS "INSTITUTIONEXTENSION", 
+      "GETRESEACHREPORTBYTYPE"."INSTITUTIONORDER" AS "INSTITUTIONORDER", 
+      "GETRESEACHREPORTBYTYPE"."FILETYPENAMECN" AS "FILETYPENAMECN", 
+      "GETRESEACHREPORTBYTYPE"."FILETYPENAMEEN" AS "FILETYPENAMEEN", 
+      "GETRESEACHREPORTBYTYPE"."BUSINESSCODETYPE" AS "BUSINESSCODETYPE", 
+      "GETRESEACHREPORTBYTYPE"."TYPEORDER" AS "TYPEORDER", 
+      "GETRESEACHREPORTBYTYPE"."FILETYPECTIME" AS "FILETYPECTIME", 
+      "GETRESEACHREPORTBYTYPE"."FILETYPECODE" AS "FILETYPECODE", 
+      "GETRESEACHREPORTBYTYPE"."FILENAMECN" AS "FILENAMECN", 
+      "GETRESEACHREPORTBYTYPE"."FILENAMEEN" AS "FILENAMEEN", 
+      "GETRESEACHREPORTBYTYPE"."FILEID" AS "FILEID", 
+      "GETRESEACHREPORTBYTYPE"."EXTENSION" AS "EXTENSION", 
+      "GETRESEACHREPORTBYTYPE"."REPORTDATE" AS "REPORTDATE"
+      FROM "FILEDB"."GETRESEACHREPORTBYTYPE" "GETRESEACHREPORTBYTYPE"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BZTYPE" Association="VAV.Entities.Store.FK_BZTYPE">
+            <End Role="BUSINESSTYPEINFO" EntitySet="BUSINESSTYPEINFO" />
+            <End Role="FILETYPEINFO" EntitySet="FILETYPEINFO" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0014262" Association="VAV.Entities.Store.SYS_C0014262">
+            <End Role="FILETYPEINFO" EntitySet="FILETYPEINFO" />
+            <End Role="FILEDETAIL" EntitySet="FILEDETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0014263" Association="VAV.Entities.Store.SYS_C0014263">
+            <End Role="INSTITUTIONINFO" EntitySet="INSTITUTIONINFO" />
+            <End Role="FILEDETAIL" EntitySet="FILEDETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0014264" Association="VAV.Entities.Store.SYS_C0014264">
+            <End Role="BUSINESSTYPEINFO" EntitySet="BUSINESSTYPEINFO" />
+            <End Role="FILEDETAIL" EntitySet="FILEDETAIL" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BANK_FIN_PRD_PROSP_DATA">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="20" />
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="ACCE_ROUTE" Type="varchar2" MaxLength="1020" />
+          <Property Name="ISSYNCED" Type="number" Precision="1" />
+        </EntityType>
+        <EntityType Name="BUSINESSTYPEINFO">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="ID_C" Type="number" Nullable="false" />
+          <Property Name="CODE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="BUSINESSTYPENAMECN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="BUSINESSTYPENAMEEN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="COMMENT_C" Type="nvarchar2" MaxLength="500" />
+          <Property Name="CTIME" Type="timestamp" />
+          <Property Name="MTIME" Type="timestamp" />
+          <Property Name="ISVALID" Type="number" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DISC_ACCE_CFP_DATA">
+          <Key>
+            <PropertyRef Name="DISC_ID" />
+            <PropertyRef Name="ACCE_ORDER" />
+          </Key>
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="DISC_ID" Type="varchar2" Nullable="false" MaxLength="36" />
+          <Property Name="ACCE_ORDER" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ACCE_ROUTE" Type="varchar2" MaxLength="510" />
+          <Property Name="ISSYNCED" Type="number" Precision="1" />
+        </EntityType>
+        <EntityType Name="FILEDETAIL">
+          <Key>
+            <PropertyRef Name="FILEID" />
+          </Key>
+          <Property Name="FILEID" Type="number" Nullable="false" />
+          <Property Name="FILETYPECODE" Type="nvarchar2" Nullable="false" MaxLength="1000" />
+          <Property Name="FILENAMECN" Type="nvarchar2" MaxLength="500" />
+          <Property Name="FILENAMEEN" Type="nvarchar2" MaxLength="500" />
+          <Property Name="UPLOADDATE" Type="date" />
+          <Property Name="AUTHOR" Type="nvarchar2" MaxLength="500" />
+          <Property Name="REPORTDATE" Type="date" />
+          <Property Name="COMMENTS" Type="nvarchar2" MaxLength="500" />
+          <Property Name="OPERATORS" Type="nvarchar2" MaxLength="50" />
+          <Property Name="ISVALID" Type="number" Nullable="false" />
+          <Property Name="EXTENSION" Type="varchar2" MaxLength="10" />
+          <Property Name="INSTITUTIONINFOCODE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FILESIZE" Type="nvarchar2" MaxLength="50" />
+          <Property Name="FILEORDER" Type="float" Precision="126" />
+          <Property Name="CTIME" Type="timestamp" />
+          <Property Name="MTIME" Type="timestamp" />
+          <Property Name="BUSINESSTYPE" Type="nvarchar2" MaxLength="50" />
+          <Property Name="PHYSICAL_PATH" Type="nvarchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="FILETYPEINFO">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="ID_C" Type="number" Nullable="false" />
+          <Property Name="CODE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="BUSINESSCODETYPE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FILENAMECN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FILENAMEEN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="COMMENTS" Type="nvarchar2" MaxLength="500" />
+          <Property Name="CTIME" Type="timestamp" />
+          <Property Name="MTIME" Type="timestamp" />
+          <Property Name="TYPEORDER" Type="float" Precision="126" />
+          <Property Name="ISVALID" Type="number" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILEVISITLOG">
+          <Key>
+            <PropertyRef Name="VISITLOGID" />
+          </Key>
+          <Property Name="VISITLOGID" Type="number" Nullable="false" />
+          <Property Name="FILEID" Type="number" Nullable="false" />
+          <Property Name="USERID" Type="nvarchar2" MaxLength="500" />
+          <Property Name="VISITDATETIME" Type="timestamp" />
+        </EntityType>
+        <EntityType Name="FIN_PRD_RPT_DATA">
+          <Key>
+            <PropertyRef Name="RPT_ID" />
+          </Key>
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="RPT_ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ACCE_ROUTE" Type="varchar2" MaxLength="1020" />
+          <Property Name="ISSYNCED" Type="number" Precision="1" />
+        </EntityType>
+        <EntityType Name="INSTITUTIONINFO">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="ID_C" Type="number" Nullable="false" />
+          <Property Name="CODE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="COUNTRY" Type="nvarchar2" MaxLength="50" />
+          <Property Name="INSTITUTIONNAMECN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="INSTITUTIONNAMEEN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="COMMENTS" Type="nvarchar2" MaxLength="500" />
+          <Property Name="INSTITUTIONORDER" Type="float" Precision="126" />
+          <Property Name="CTIME" Type="timestamp" />
+          <Property Name="MTIME" Type="timestamp" />
+          <Property Name="EXTENSION" Type="varchar2" MaxLength="10" />
+          <Property Name="ISVALID" Type="number" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'FILEDB.OPERATORINFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OPERATORINFO">
+          <Key>
+            <PropertyRef Name="OPERATORS" />
+          </Key>
+          <Property Name="OPERATORS" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="EMAIL" Type="nvarchar2" MaxLength="100" />
+          <Property Name="RM" Type="nvarchar2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="RATE_REP_DATA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="20" />
+          <Property Name="CCXEID" Type="date" />
+          <Property Name="RATE_ID" Type="number" Precision="20" />
+          <Property Name="RATE_FILE_PATH" Type="nvarchar2" MaxLength="255" />
+          <Property Name="ISSYNCED" Type="number" Precision="1" />
+        </EntityType>
+        <EntityType Name="RES_INFO_DATA">
+          <Key>
+            <PropertyRef Name="RES_ID" />
+          </Key>
+          <Property Name="RES_ID" Type="number" Nullable="false" Precision="20" />
+          <Property Name="CCXEID" Type="date" />
+          <Property Name="RES_FILE_PATH" Type="nvarchar2" MaxLength="255" />
+          <Property Name="ISSYNCED" Type="number" Precision="1" />
+          <Property Name="FILEID" Type="number" Nullable="false" Precision="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'FILEDB.ROLEPERMISSIONS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ROLEPERMISSIONS">
+          <Key>
+            <PropertyRef Name="ROLENAME" />
+            <PropertyRef Name="PERMISSIONID" />
+          </Key>
+          <Property Name="ROLENAME" Type="nvarchar2" Nullable="false" MaxLength="128" />
+          <Property Name="PERMISSIONID" Type="nvarchar2" Nullable="false" MaxLength="322" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'FILEDB.ALLFILESINFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ALLFILESINFO">
+          <Key>
+            <PropertyRef Name="FILEID" />
+            <PropertyRef Name="BIZCODE" />
+            <PropertyRef Name="FILETYPECODE" />
+            <PropertyRef Name="INSTITUTIONNAMEEN" />
+            <PropertyRef Name="FILETYPENAME" />
+            <PropertyRef Name="INSTITUTIONINFOCODE" />
+          </Key>
+          <Property Name="FILEID" Type="number" Nullable="false" />
+          <Property Name="BIZCODE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FILETYPECODE" Type="nvarchar2" Nullable="false" MaxLength="1000" />
+          <Property Name="FILENAMEEN" Type="nvarchar2" MaxLength="500" />
+          <Property Name="INSTITUTIONNAMEEN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FILETYPENAME" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="INSTITUTIONINFOCODE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FILENAMECN" Type="nvarchar2" MaxLength="500" />
+          <Property Name="EXTENSION" Type="varchar2" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'FILEDB.GETNEWFILE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-4000 specified by the facet description.  The column 'RATING' in the table 'FILEDB.GETNEWFILE' was excluded.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-4000 specified by the facet description.  The column 'DESCRCN' in the table 'FILEDB.GETNEWFILE' was excluded.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-4000 specified by the facet description.  The column 'DESCREN' in the table 'FILEDB.GETNEWFILE' was excluded.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-2000 specified by the facet description.  The column 'AUTHORRM' in the table 'FILEDB.GETNEWFILE' was excluded.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-2000 specified by the facet description.  The column 'AUTHOREMAIL' in the table 'FILEDB.GETNEWFILE' was excluded.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-4000 specified by the facet description.  The column 'FILENAME' in the table 'FILEDB.GETNEWFILE' was excluded.
+      -->
+        <EntityType Name="GETNEWFILE">
+          <Key>
+            <PropertyRef Name="SOURCES" />
+            <PropertyRef Name="SYNCID" />
+            <PropertyRef Name="SYNCTOPICCODE" />
+          </Key>
+          <Property Name="TITLECN" Type="nvarchar2" MaxLength="500" />
+          <Property Name="TITLEEN" Type="nvarchar2" MaxLength="500" />
+          <Property Name="STATUS" Type="number" />
+          <Property Name="SUBMITERNAME" Type="nvarchar2" MaxLength="50" />
+          <Property Name="SUBMITER" Type="nvarchar2" MaxLength="100" />
+          <Property Name="SUBMITERRM" Type="nvarchar2" MaxLength="100" />
+          <Property Name="SUBMITDATE" Type="timestamp" />
+          <Property Name="APPROVER" Type="char" MaxLength="34" />
+          <Property Name="FILETYPE" Type="varchar2" MaxLength="10" />
+          <Property Name="RIC" Type="varchar2" MaxLength="69" />
+          <Property Name="HITS" Type="number" />
+          <Property Name="AUTHOR" Type="nvarchar2" MaxLength="500" />
+          <Property Name="TAG" Type="nvarchar2" MaxLength="225" />
+          <Property Name="UPLOADTYPE" Type="char" MaxLength="14" />
+          <Property Name="SOURCES" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="REPORTDATE" Type="date" />
+          <Property Name="ISCOMMUNICATABLE" Type="number" />
+          <Property Name="SYNCID" Type="number" Nullable="false" />
+          <Property Name="SYNCTOPICCODE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="SYNCMODULEID" Type="number" />
+          <Property Name="LASTCHANGEDATE" Type="timestamp" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'FILEDB.GETNEWINSTITUTION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-2000 specified by the facet description.  The column 'DESCN' in the table 'FILEDB.GETNEWINSTITUTION' was excluded.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-2000 specified by the facet description.  The column 'DESEN' in the table 'FILEDB.GETNEWINSTITUTION' was excluded.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-4000 specified by the facet description.  The column 'IMAGE' in the table 'FILEDB.GETNEWINSTITUTION' was excluded.
+      warning 6006: The facet 'MaxLength' with a value '0' is outside the range 1-4000 specified by the facet description.  The column 'IMAGENAME' in the table 'FILEDB.GETNEWINSTITUTION' was excluded.
+      -->
+        <EntityType Name="GETNEWINSTITUTION">
+          <Key>
+            <PropertyRef Name="NAMECN" />
+            <PropertyRef Name="NAMEEN" />
+            <PropertyRef Name="SYNCCODE" />
+          </Key>
+          <Property Name="NAMECN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="NAMEEN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="MODULEID" Type="number" />
+          <Property Name="CREATER" Type="char" MaxLength="34" />
+          <Property Name="ISAPPROVE" Type="number" />
+          <Property Name="ISINTERNALAPPROVE" Type="number" />
+          <Property Name="ISDIRECTDELETE" Type="number" />
+          <Property Name="HITS" Type="number" />
+          <Property Name="RMLINK" Type="char" MaxLength="28" />
+          <Property Name="TAG" Type="varchar2" MaxLength="19" />
+          <Property Name="CREATEDATE" Type="date" />
+          <Property Name="SYNCCODE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="LASTCHANGEDATE" Type="timestamp" />
+          <Property Name="INSTITUTIONORDER" Type="float" Precision="126" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'FILEDB.GETRESEACHREPORTBYTYPE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="GETRESEACHREPORTBYTYPE">
+          <Key>
+            <PropertyRef Name="CODE" />
+            <PropertyRef Name="INSTITUTIONNAMECN" />
+            <PropertyRef Name="INSTITUTIONNAMEEN" />
+            <PropertyRef Name="FILETYPENAMECN" />
+            <PropertyRef Name="FILETYPENAMEEN" />
+            <PropertyRef Name="BUSINESSCODETYPE" />
+            <PropertyRef Name="FILETYPECODE" />
+            <PropertyRef Name="FILEID" />
+          </Key>
+          <Property Name="NUM" Type="number" />
+          <Property Name="CODE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="INSTITUTIONNAMECN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="INSTITUTIONNAMEEN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="MTIME" Type="timestamp" />
+          <Property Name="INSTITUTIONEXTENSION" Type="varchar2" MaxLength="10" />
+          <Property Name="INSTITUTIONORDER" Type="float" Precision="126" />
+          <Property Name="FILETYPENAMECN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FILETYPENAMEEN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="BUSINESSCODETYPE" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="TYPEORDER" Type="float" Precision="126" />
+          <Property Name="FILETYPECTIME" Type="timestamp" />
+          <Property Name="FILETYPECODE" Type="nvarchar2" Nullable="false" MaxLength="1000" />
+          <Property Name="FILENAMECN" Type="nvarchar2" MaxLength="500" />
+          <Property Name="FILENAMEEN" Type="nvarchar2" MaxLength="500" />
+          <Property Name="FILEID" Type="number" Nullable="false" />
+          <Property Name="EXTENSION" Type="varchar2" MaxLength="10" />
+          <Property Name="REPORTDATE" Type="date" />
+        </EntityType>
+        <Association Name="FK_BZTYPE">
+          <End Role="BUSINESSTYPEINFO" Type="VAV.Entities.Store.BUSINESSTYPEINFO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FILETYPEINFO" Type="VAV.Entities.Store.FILETYPEINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUSINESSTYPEINFO">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="FILETYPEINFO">
+              <PropertyRef Name="BUSINESSCODETYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0014262">
+          <End Role="FILETYPEINFO" Type="VAV.Entities.Store.FILETYPEINFO" Multiplicity="1" />
+          <End Role="FILEDETAIL" Type="VAV.Entities.Store.FILEDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILETYPEINFO">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="FILEDETAIL">
+              <PropertyRef Name="FILETYPECODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0014263">
+          <End Role="INSTITUTIONINFO" Type="VAV.Entities.Store.INSTITUTIONINFO" Multiplicity="1" />
+          <End Role="FILEDETAIL" Type="VAV.Entities.Store.FILEDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTITUTIONINFO">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="FILEDETAIL">
+              <PropertyRef Name="INSTITUTIONINFOCODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0014264">
+          <End Role="BUSINESSTYPEINFO" Type="VAV.Entities.Store.BUSINESSTYPEINFO" Multiplicity="0..1" />
+          <End Role="FILEDETAIL" Type="VAV.Entities.Store.FILEDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUSINESSTYPEINFO">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="FILEDETAIL">
+              <PropertyRef Name="BUSINESSTYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'FILEDB.EMAILKEYWORDS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="EMAILKEYWORDS">
+        <Property Name="ISVALID" Type="number" />
+        <Property Name="BUSINESSCODE" Type="nvarchar2" MaxLength="1000" />
+        <Property Name="INSITITUTIONCODE" Type="nvarchar2" MaxLength="1000" />
+        <Property Name="EMAIL" Type="nvarchar2" MaxLength="1000" />
+        <Property Name="TYPECODE" Type="nvarchar2" MaxLength="1000" />
+        <Property Name="SORTID" Type="number" />
+        <Property Name="INPUT" Type="nvarchar2" MaxLength="1000" />
+        <Property Name="TRANSLATE" Type="nvarchar2" MaxLength="1000" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'FILEDB.MD5EXAMINATION' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="MD5EXAMINATION">
+        <Property Name="FILEMD5" Type="nvarchar2" MaxLength="1000" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VAV.Entities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ResearchReportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BANK_FIN_PRD_PROSP_DATA" EntityType="VAV.Entities.BANK_FIN_PRD_PROSP_DATA" />
+          <EntitySet Name="BUSINESSTYPEINFOes" EntityType="VAV.Entities.BUSINESSTYPEINFO" />
+          <EntitySet Name="DISC_ACCE_CFP_DATA" EntityType="VAV.Entities.DISC_ACCE_CFP_DATA" />
+          <EntitySet Name="FILEDETAILs" EntityType="VAV.Entities.FILEDETAIL" />
+          <EntitySet Name="FILETYPEINFOes" EntityType="VAV.Entities.FILETYPEINFO" />
+          <EntitySet Name="FILEVISITLOGs" EntityType="VAV.Entities.FILEVISITLOG" />
+          <EntitySet Name="FIN_PRD_RPT_DATA" EntityType="VAV.Entities.FIN_PRD_RPT_DATA" />
+          <EntitySet Name="INSTITUTIONINFOes" EntityType="VAV.Entities.INSTITUTIONINFO" />
+          <EntitySet Name="OPERATORINFOes" EntityType="VAV.Entities.OPERATORINFO" />
+          <EntitySet Name="RATE_REP_DATA" EntityType="VAV.Entities.RATE_REP_DATA" />
+          <EntitySet Name="RES_INFO_DATA" EntityType="VAV.Entities.RES_INFO_DATA" />
+          <EntitySet Name="ROLEPERMISSIONS" EntityType="VAV.Entities.ROLEPERMISSION" />
+          <EntitySet Name="ALLFILESINFOes" EntityType="VAV.Entities.ALLFILESINFO" />
+          <EntitySet Name="GETNEWFILEs" EntityType="VAV.Entities.GETNEWFILE" />
+          <EntitySet Name="GETNEWINSTITUTIONs" EntityType="VAV.Entities.GETNEWINSTITUTION" />
+          <EntitySet Name="GETRESEACHREPORTBYTYPEs" EntityType="VAV.Entities.GETRESEACHREPORTBYTYPE" />
+          <AssociationSet Name="FK_BZTYPE" Association="VAV.Entities.FK_BZTYPE">
+            <End Role="BUSINESSTYPEINFO" EntitySet="BUSINESSTYPEINFOes" />
+            <End Role="FILETYPEINFO" EntitySet="FILETYPEINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0014264" Association="VAV.Entities.SYS_C0014264">
+            <End Role="BUSINESSTYPEINFO" EntitySet="BUSINESSTYPEINFOes" />
+            <End Role="FILEDETAIL" EntitySet="FILEDETAILs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0014262" Association="VAV.Entities.SYS_C0014262">
+            <End Role="FILETYPEINFO" EntitySet="FILETYPEINFOes" />
+            <End Role="FILEDETAIL" EntitySet="FILEDETAILs" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C0014263" Association="VAV.Entities.SYS_C0014263">
+            <End Role="INSTITUTIONINFO" EntitySet="INSTITUTIONINFOes" />
+            <End Role="FILEDETAIL" EntitySet="FILEDETAILs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BANK_FIN_PRD_PROSP_DATA">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Name="INNER_CODE" Type="Decimal" Nullable="false" Precision="20" Scale="0" />
+          <Property Name="CTIME" Type="DateTime" Nullable="false" />
+          <Property Name="MTIME" Type="DateTime" Nullable="false" />
+          <Property Name="ACCE_ROUTE" Type="String" MaxLength="1020" Unicode="false" FixedLength="false" />
+          <Property Name="ISSYNCED" Type="Int16" />
+        </EntityType>
+        <EntityType Name="BUSINESSTYPEINFO">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="ID_C" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CODE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BUSINESSTYPENAMECN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BUSINESSTYPENAMEEN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="COMMENT_C" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="CTIME" Type="DateTime" Precision="6" />
+          <Property Name="MTIME" Type="DateTime" Precision="6" />
+          <Property Name="ISVALID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="FILETYPEINFOes" Relationship="VAV.Entities.FK_BZTYPE" FromRole="BUSINESSTYPEINFO" ToRole="FILETYPEINFO" />
+          <NavigationProperty Name="FILEDETAILs" Relationship="VAV.Entities.SYS_C0014264" FromRole="BUSINESSTYPEINFO" ToRole="FILEDETAIL" />
+        </EntityType>
+        <EntityType Name="DISC_ACCE_CFP_DATA">
+          <Key>
+            <PropertyRef Name="DISC_ID" />
+            <PropertyRef Name="ACCE_ORDER" />
+          </Key>
+          <Property Name="CTIME" Type="DateTime" Nullable="false" />
+          <Property Name="MTIME" Type="DateTime" Nullable="false" />
+          <Property Name="DISC_ID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
+          <Property Name="ACCE_ORDER" Type="Int64" Nullable="false" />
+          <Property Name="ACCE_ROUTE" Type="String" MaxLength="510" Unicode="false" FixedLength="false" />
+          <Property Name="ISSYNCED" Type="Int16" />
+        </EntityType>
+        <EntityType Name="FILEDETAIL">
+          <Key>
+            <PropertyRef Name="FILEID" />
+          </Key>
+          <Property Name="FILEID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FILETYPECODE" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="FILENAMECN" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="FILENAMEEN" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="UPLOADDATE" Type="DateTime" />
+          <Property Name="AUTHOR" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="REPORTDATE" Type="DateTime" />
+          <Property Name="COMMENTS" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="OPERATORS" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ISVALID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EXTENSION" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="INSTITUTIONINFOCODE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FILESIZE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FILEORDER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CTIME" Type="DateTime" Precision="6" />
+          <Property Name="MTIME" Type="DateTime" Precision="6" />
+          <Property Name="BUSINESSTYPE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PHYSICAL_PATH" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="BUSINESSTYPEINFO" Relationship="VAV.Entities.SYS_C0014264" FromRole="FILEDETAIL" ToRole="BUSINESSTYPEINFO" />
+          <NavigationProperty Name="FILETYPEINFO" Relationship="VAV.Entities.SYS_C0014262" FromRole="FILEDETAIL" ToRole="FILETYPEINFO" />
+          <NavigationProperty Name="INSTITUTIONINFO" Relationship="VAV.Entities.SYS_C0014263" FromRole="FILEDETAIL" ToRole="INSTITUTIONINFO" />
+        </EntityType>
+        <EntityType Name="FILETYPEINFO">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="ID_C" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CODE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BUSINESSCODETYPE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FILENAMECN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FILENAMEEN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="COMMENTS" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="CTIME" Type="DateTime" Precision="6" />
+          <Property Name="MTIME" Type="DateTime" Precision="6" />
+          <Property Name="TYPEORDER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ISVALID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="BUSINESSTYPEINFO" Relationship="VAV.Entities.FK_BZTYPE" FromRole="FILETYPEINFO" ToRole="BUSINESSTYPEINFO" />
+          <NavigationProperty Name="FILEDETAILs" Relationship="VAV.Entities.SYS_C0014262" FromRole="FILETYPEINFO" ToRole="FILEDETAIL" />
+        </EntityType>
+        <EntityType Name="FILEVISITLOG">
+          <Key>
+            <PropertyRef Name="VISITLOGID" />
+          </Key>
+          <Property Name="VISITLOGID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="FILEID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="USERID" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="VISITDATETIME" Type="DateTime" Precision="6" />
+        </EntityType>
+        <EntityType Name="FIN_PRD_RPT_DATA">
+          <Key>
+            <PropertyRef Name="RPT_ID" />
+          </Key>
+          <Property Name="CTIME" Type="DateTime" Nullable="false" />
+          <Property Name="MTIME" Type="DateTime" Nullable="false" />
+          <Property Name="RPT_ID" Type="Int64" Nullable="false" />
+          <Property Name="ACCE_ROUTE" Type="String" MaxLength="1020" Unicode="false" FixedLength="false" />
+          <Property Name="ISSYNCED" Type="Int16" />
+        </EntityType>
+        <EntityType Name="INSTITUTIONINFO">
+          <Key>
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="ID_C" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CODE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="COUNTRY" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="INSTITUTIONNAMECN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="INSTITUTIONNAMEEN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="COMMENTS" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="INSTITUTIONORDER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CTIME" Type="DateTime" Precision="6" />
+          <Property Name="MTIME" Type="DateTime" Precision="6" />
+          <Property Name="EXTENSION" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ISVALID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="FILEDETAILs" Relationship="VAV.Entities.SYS_C0014263" FromRole="INSTITUTIONINFO" ToRole="FILEDETAIL" />
+        </EntityType>
+        <EntityType Name="OPERATORINFO">
+          <Key>
+            <PropertyRef Name="OPERATORS" />
+          </Key>
+          <Property Name="OPERATORS" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="RM" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="RATE_REP_DATA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="20" Scale="0" />
+          <Property Name="CCXEID" Type="DateTime" />
+          <Property Name="RATE_ID" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="RATE_FILE_PATH" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ISSYNCED" Type="Int16" />
+        </EntityType>
+        <EntityType Name="RES_INFO_DATA">
+          <Key>
+            <PropertyRef Name="RES_ID" />
+          </Key>
+          <Property Name="RES_ID" Type="Decimal" Nullable="false" Precision="20" Scale="0" />
+          <Property Name="CCXEID" Type="DateTime" />
+          <Property Name="RES_FILE_PATH" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ISSYNCED" Type="Int16" />
+          <Property Name="FILEID" Type="Decimal" Nullable="false" Precision="20" Scale="0" />
+        </EntityType>
+        <EntityType Name="ROLEPERMISSION">
+          <Key>
+            <PropertyRef Name="ROLENAME" />
+            <PropertyRef Name="PERMISSIONID" />
+          </Key>
+          <Property Name="ROLENAME" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PERMISSIONID" Type="String" Nullable="false" MaxLength="322" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ALLFILESINFO">
+          <Key>
+            <PropertyRef Name="FILEID" />
+            <PropertyRef Name="BIZCODE" />
+            <PropertyRef Name="FILETYPECODE" />
+            <PropertyRef Name="INSTITUTIONNAMEEN" />
+            <PropertyRef Name="FILETYPENAME" />
+            <PropertyRef Name="INSTITUTIONINFOCODE" />
+          </Key>
+          <Property Name="FILEID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="BIZCODE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FILETYPECODE" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="FILENAMEEN" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="INSTITUTIONNAMEEN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FILETYPENAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="INSTITUTIONINFOCODE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FILENAMECN" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="EXTENSION" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="GETNEWFILE">
+          <Key>
+            <PropertyRef Name="SOURCES" />
+            <PropertyRef Name="SYNCID" />
+            <PropertyRef Name="SYNCTOPICCODE" />
+          </Key>
+          <Property Name="TITLECN" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="TITLEEN" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="STATUS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SUBMITERNAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SUBMITER" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="SUBMITERRM" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="SUBMITDATE" Type="DateTime" Precision="6" />
+          <Property Name="APPROVER" Type="String" MaxLength="34" Unicode="false" FixedLength="true" />
+          <Property Name="FILETYPE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RIC" Type="String" MaxLength="69" Unicode="false" FixedLength="false" />
+          <Property Name="HITS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="AUTHOR" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="TAG" Type="String" MaxLength="225" Unicode="true" FixedLength="false" />
+          <Property Name="UPLOADTYPE" Type="String" MaxLength="14" Unicode="false" FixedLength="true" />
+          <Property Name="SOURCES" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="REPORTDATE" Type="DateTime" />
+          <Property Name="ISCOMMUNICATABLE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SYNCID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="SYNCTOPICCODE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SYNCMODULEID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LASTCHANGEDATE" Type="DateTime" Precision="6" />
+        </EntityType>
+        <EntityType Name="GETNEWINSTITUTION">
+          <Key>
+            <PropertyRef Name="NAMECN" />
+            <PropertyRef Name="NAMEEN" />
+            <PropertyRef Name="SYNCCODE" />
+          </Key>
+          <Property Name="NAMECN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="NAMEEN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MODULEID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CREATER" Type="String" MaxLength="34" Unicode="false" FixedLength="true" />
+          <Property Name="ISAPPROVE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ISINTERNALAPPROVE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ISDIRECTDELETE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="HITS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="RMLINK" Type="String" MaxLength="28" Unicode="false" FixedLength="true" />
+          <Property Name="TAG" Type="String" MaxLength="19" Unicode="false" FixedLength="false" />
+          <Property Name="CREATEDATE" Type="DateTime" />
+          <Property Name="SYNCCODE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LASTCHANGEDATE" Type="DateTime" Precision="6" />
+          <Property Name="INSTITUTIONORDER" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="GETRESEACHREPORTBYTYPE">
+          <Key>
+            <PropertyRef Name="CODE" />
+            <PropertyRef Name="INSTITUTIONNAMECN" />
+            <PropertyRef Name="INSTITUTIONNAMEEN" />
+            <PropertyRef Name="FILETYPENAMECN" />
+            <PropertyRef Name="FILETYPENAMEEN" />
+            <PropertyRef Name="BUSINESSCODETYPE" />
+            <PropertyRef Name="FILETYPECODE" />
+            <PropertyRef Name="FILEID" />
+          </Key>
+          <Property Name="NUM" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CODE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="INSTITUTIONNAMECN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="INSTITUTIONNAMEEN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MTIME" Type="DateTime" Precision="6" />
+          <Property Name="INSTITUTIONEXTENSION" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="INSTITUTIONORDER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="FILETYPENAMECN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FILETYPENAMEEN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BUSINESSCODETYPE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TYPEORDER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="FILETYPECTIME" Type="DateTime" Precision="6" />
+          <Property Name="FILETYPECODE" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="FILENAMECN" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="FILENAMEEN" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="FILEID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EXTENSION" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="REPORTDATE" Type="DateTime" />
+        </EntityType>
+        <Association Name="FK_BZTYPE">
+          <End Role="BUSINESSTYPEINFO" Type="VAV.Entities.BUSINESSTYPEINFO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FILETYPEINFO" Type="VAV.Entities.FILETYPEINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUSINESSTYPEINFO">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="FILETYPEINFO">
+              <PropertyRef Name="BUSINESSCODETYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0014264">
+          <End Role="BUSINESSTYPEINFO" Type="VAV.Entities.BUSINESSTYPEINFO" Multiplicity="0..1" />
+          <End Role="FILEDETAIL" Type="VAV.Entities.FILEDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BUSINESSTYPEINFO">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="FILEDETAIL">
+              <PropertyRef Name="BUSINESSTYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0014262">
+          <End Role="FILETYPEINFO" Type="VAV.Entities.FILETYPEINFO" Multiplicity="1" />
+          <End Role="FILEDETAIL" Type="VAV.Entities.FILEDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILETYPEINFO">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="FILEDETAIL">
+              <PropertyRef Name="FILETYPECODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C0014263">
+          <End Role="INSTITUTIONINFO" Type="VAV.Entities.INSTITUTIONINFO" Multiplicity="1" />
+          <End Role="FILEDETAIL" Type="VAV.Entities.FILEDETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSTITUTIONINFO">
+              <PropertyRef Name="CODE" />
+            </Principal>
+            <Dependent Role="FILEDETAIL">
+              <PropertyRef Name="INSTITUTIONINFOCODE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VAVEntitiesStoreContainer" CdmEntityContainer="ResearchReportEntities">
+          <EntitySetMapping Name="BANK_FIN_PRD_PROSP_DATA">
+            <EntityTypeMapping TypeName="VAV.Entities.BANK_FIN_PRD_PROSP_DATA">
+              <MappingFragment StoreEntitySet="BANK_FIN_PRD_PROSP_DATA">
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="ACCE_ROUTE" ColumnName="ACCE_ROUTE" />
+                <ScalarProperty Name="ISSYNCED" ColumnName="ISSYNCED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BUSINESSTYPEINFOes">
+            <EntityTypeMapping TypeName="VAV.Entities.BUSINESSTYPEINFO">
+              <MappingFragment StoreEntitySet="BUSINESSTYPEINFO">
+                <ScalarProperty Name="ID_C" ColumnName="ID_C" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="BUSINESSTYPENAMECN" ColumnName="BUSINESSTYPENAMECN" />
+                <ScalarProperty Name="BUSINESSTYPENAMEEN" ColumnName="BUSINESSTYPENAMEEN" />
+                <ScalarProperty Name="COMMENT_C" ColumnName="COMMENT_C" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DISC_ACCE_CFP_DATA">
+            <EntityTypeMapping TypeName="VAV.Entities.DISC_ACCE_CFP_DATA">
+              <MappingFragment StoreEntitySet="DISC_ACCE_CFP_DATA">
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="DISC_ID" ColumnName="DISC_ID" />
+                <ScalarProperty Name="ACCE_ORDER" ColumnName="ACCE_ORDER" />
+                <ScalarProperty Name="ACCE_ROUTE" ColumnName="ACCE_ROUTE" />
+                <ScalarProperty Name="ISSYNCED" ColumnName="ISSYNCED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILEDETAILs">
+            <EntityTypeMapping TypeName="VAV.Entities.FILEDETAIL">
+              <MappingFragment StoreEntitySet="FILEDETAIL">
+                <ScalarProperty Name="FILEID" ColumnName="FILEID" />
+                <ScalarProperty Name="FILETYPECODE" ColumnName="FILETYPECODE" />
+                <ScalarProperty Name="FILENAMECN" ColumnName="FILENAMECN" />
+                <ScalarProperty Name="FILENAMEEN" ColumnName="FILENAMEEN" />
+                <ScalarProperty Name="UPLOADDATE" ColumnName="UPLOADDATE" />
+                <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+                <ScalarProperty Name="REPORTDATE" ColumnName="REPORTDATE" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="OPERATORS" ColumnName="OPERATORS" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="EXTENSION" ColumnName="EXTENSION" />
+                <ScalarProperty Name="INSTITUTIONINFOCODE" ColumnName="INSTITUTIONINFOCODE" />
+                <ScalarProperty Name="FILESIZE" ColumnName="FILESIZE" />
+                <ScalarProperty Name="FILEORDER" ColumnName="FILEORDER" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="BUSINESSTYPE" ColumnName="BUSINESSTYPE" />
+                <ScalarProperty Name="PHYSICAL_PATH" ColumnName="PHYSICAL_PATH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILETYPEINFOes">
+            <EntityTypeMapping TypeName="VAV.Entities.FILETYPEINFO">
+              <MappingFragment StoreEntitySet="FILETYPEINFO">
+                <ScalarProperty Name="ID_C" ColumnName="ID_C" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="BUSINESSCODETYPE" ColumnName="BUSINESSCODETYPE" />
+                <ScalarProperty Name="FILENAMECN" ColumnName="FILENAMECN" />
+                <ScalarProperty Name="FILENAMEEN" ColumnName="FILENAMEEN" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="TYPEORDER" ColumnName="TYPEORDER" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILEVISITLOGs">
+            <EntityTypeMapping TypeName="VAV.Entities.FILEVISITLOG">
+              <MappingFragment StoreEntitySet="FILEVISITLOG">
+                <ScalarProperty Name="VISITLOGID" ColumnName="VISITLOGID" />
+                <ScalarProperty Name="FILEID" ColumnName="FILEID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="VISITDATETIME" ColumnName="VISITDATETIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FIN_PRD_RPT_DATA">
+            <EntityTypeMapping TypeName="VAV.Entities.FIN_PRD_RPT_DATA">
+              <MappingFragment StoreEntitySet="FIN_PRD_RPT_DATA">
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="RPT_ID" ColumnName="RPT_ID" />
+                <ScalarProperty Name="ACCE_ROUTE" ColumnName="ACCE_ROUTE" />
+                <ScalarProperty Name="ISSYNCED" ColumnName="ISSYNCED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTITUTIONINFOes">
+            <EntityTypeMapping TypeName="VAV.Entities.INSTITUTIONINFO">
+              <MappingFragment StoreEntitySet="INSTITUTIONINFO">
+                <ScalarProperty Name="ID_C" ColumnName="ID_C" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+                <ScalarProperty Name="INSTITUTIONNAMECN" ColumnName="INSTITUTIONNAMECN" />
+                <ScalarProperty Name="INSTITUTIONNAMEEN" ColumnName="INSTITUTIONNAMEEN" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="INSTITUTIONORDER" ColumnName="INSTITUTIONORDER" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="EXTENSION" ColumnName="EXTENSION" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPERATORINFOes">
+            <EntityTypeMapping TypeName="VAV.Entities.OPERATORINFO">
+              <MappingFragment StoreEntitySet="OPERATORINFO">
+                <ScalarProperty Name="OPERATORS" ColumnName="OPERATORS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="RM" ColumnName="RM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RATE_REP_DATA">
+            <EntityTypeMapping TypeName="VAV.Entities.RATE_REP_DATA">
+              <MappingFragment StoreEntitySet="RATE_REP_DATA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="RATE_ID" ColumnName="RATE_ID" />
+                <ScalarProperty Name="RATE_FILE_PATH" ColumnName="RATE_FILE_PATH" />
+                <ScalarProperty Name="ISSYNCED" ColumnName="ISSYNCED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RES_INFO_DATA">
+            <EntityTypeMapping TypeName="VAV.Entities.RES_INFO_DATA">
+              <MappingFragment StoreEntitySet="RES_INFO_DATA">
+                <ScalarProperty Name="RES_ID" ColumnName="RES_ID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="RES_FILE_PATH" ColumnName="RES_FILE_PATH" />
+                <ScalarProperty Name="ISSYNCED" ColumnName="ISSYNCED" />
+                <ScalarProperty Name="FILEID" ColumnName="FILEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLEPERMISSIONS">
+            <EntityTypeMapping TypeName="VAV.Entities.ROLEPERMISSION">
+              <MappingFragment StoreEntitySet="ROLEPERMISSIONS">
+                <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+                <ScalarProperty Name="PERMISSIONID" ColumnName="PERMISSIONID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ALLFILESINFOes">
+            <EntityTypeMapping TypeName="VAV.Entities.ALLFILESINFO">
+              <MappingFragment StoreEntitySet="ALLFILESINFO">
+                <ScalarProperty Name="FILEID" ColumnName="FILEID" />
+                <ScalarProperty Name="BIZCODE" ColumnName="BIZCODE" />
+                <ScalarProperty Name="FILETYPECODE" ColumnName="FILETYPECODE" />
+                <ScalarProperty Name="FILENAMEEN" ColumnName="FILENAMEEN" />
+                <ScalarProperty Name="INSTITUTIONNAMEEN" ColumnName="INSTITUTIONNAMEEN" />
+                <ScalarProperty Name="FILETYPENAME" ColumnName="FILETYPENAME" />
+                <ScalarProperty Name="INSTITUTIONINFOCODE" ColumnName="INSTITUTIONINFOCODE" />
+                <ScalarProperty Name="FILENAMECN" ColumnName="FILENAMECN" />
+                <ScalarProperty Name="EXTENSION" ColumnName="EXTENSION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GETNEWFILEs">
+            <EntityTypeMapping TypeName="VAV.Entities.GETNEWFILE">
+              <MappingFragment StoreEntitySet="GETNEWFILE">
+                <ScalarProperty Name="TITLECN" ColumnName="TITLECN" />
+                <ScalarProperty Name="TITLEEN" ColumnName="TITLEEN" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="SUBMITERNAME" ColumnName="SUBMITERNAME" />
+                <ScalarProperty Name="SUBMITER" ColumnName="SUBMITER" />
+                <ScalarProperty Name="SUBMITERRM" ColumnName="SUBMITERRM" />
+                <ScalarProperty Name="SUBMITDATE" ColumnName="SUBMITDATE" />
+                <ScalarProperty Name="APPROVER" ColumnName="APPROVER" />
+                <ScalarProperty Name="FILETYPE" ColumnName="FILETYPE" />
+                <ScalarProperty Name="RIC" ColumnName="RIC" />
+                <ScalarProperty Name="HITS" ColumnName="HITS" />
+                <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+                <ScalarProperty Name="TAG" ColumnName="TAG" />
+                <ScalarProperty Name="UPLOADTYPE" ColumnName="UPLOADTYPE" />
+                <ScalarProperty Name="SOURCES" ColumnName="SOURCES" />
+                <ScalarProperty Name="REPORTDATE" ColumnName="REPORTDATE" />
+                <ScalarProperty Name="ISCOMMUNICATABLE" ColumnName="ISCOMMUNICATABLE" />
+                <ScalarProperty Name="SYNCID" ColumnName="SYNCID" />
+                <ScalarProperty Name="SYNCTOPICCODE" ColumnName="SYNCTOPICCODE" />
+                <ScalarProperty Name="SYNCMODULEID" ColumnName="SYNCMODULEID" />
+                <ScalarProperty Name="LASTCHANGEDATE" ColumnName="LASTCHANGEDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GETNEWINSTITUTIONs">
+            <EntityTypeMapping TypeName="VAV.Entities.GETNEWINSTITUTION">
+              <MappingFragment StoreEntitySet="GETNEWINSTITUTION">
+                <ScalarProperty Name="NAMECN" ColumnName="NAMECN" />
+                <ScalarProperty Name="NAMEEN" ColumnName="NAMEEN" />
+                <ScalarProperty Name="MODULEID" ColumnName="MODULEID" />
+                <ScalarProperty Name="CREATER" ColumnName="CREATER" />
+                <ScalarProperty Name="ISAPPROVE" ColumnName="ISAPPROVE" />
+                <ScalarProperty Name="ISINTERNALAPPROVE" ColumnName="ISINTERNALAPPROVE" />
+                <ScalarProperty Name="ISDIRECTDELETE" ColumnName="ISDIRECTDELETE" />
+                <ScalarProperty Name="HITS" ColumnName="HITS" />
+                <ScalarProperty Name="RMLINK" ColumnName="RMLINK" />
+                <ScalarProperty Name="TAG" ColumnName="TAG" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="SYNCCODE" ColumnName="SYNCCODE" />
+                <ScalarProperty Name="LASTCHANGEDATE" ColumnName="LASTCHANGEDATE" />
+                <ScalarProperty Name="INSTITUTIONORDER" ColumnName="INSTITUTIONORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GETRESEACHREPORTBYTYPEs">
+            <EntityTypeMapping TypeName="VAV.Entities.GETRESEACHREPORTBYTYPE">
+              <MappingFragment StoreEntitySet="GETRESEACHREPORTBYTYPE">
+                <ScalarProperty Name="NUM" ColumnName="NUM" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="INSTITUTIONNAMECN" ColumnName="INSTITUTIONNAMECN" />
+                <ScalarProperty Name="INSTITUTIONNAMEEN" ColumnName="INSTITUTIONNAMEEN" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="INSTITUTIONEXTENSION" ColumnName="INSTITUTIONEXTENSION" />
+                <ScalarProperty Name="INSTITUTIONORDER" ColumnName="INSTITUTIONORDER" />
+                <ScalarProperty Name="FILETYPENAMECN" ColumnName="FILETYPENAMECN" />
+                <ScalarProperty Name="FILETYPENAMEEN" ColumnName="FILETYPENAMEEN" />
+                <ScalarProperty Name="BUSINESSCODETYPE" ColumnName="BUSINESSCODETYPE" />
+                <ScalarProperty Name="TYPEORDER" ColumnName="TYPEORDER" />
+                <ScalarProperty Name="FILETYPECTIME" ColumnName="FILETYPECTIME" />
+                <ScalarProperty Name="FILETYPECODE" ColumnName="FILETYPECODE" />
+                <ScalarProperty Name="FILENAMECN" ColumnName="FILENAMECN" />
+                <ScalarProperty Name="FILENAMEEN" ColumnName="FILENAMEEN" />
+                <ScalarProperty Name="FILEID" ColumnName="FILEID" />
+                <ScalarProperty Name="EXTENSION" ColumnName="EXTENSION" />
+                <ScalarProperty Name="REPORTDATE" ColumnName="REPORTDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

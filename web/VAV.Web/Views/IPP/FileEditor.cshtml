@@ -1,0 +1,217 @@
+@model VAV.Web.ViewModels.IPP.IPPFile
+@using System.Threading
+
+@{
+    Layout = null;
+    ViewBag.Title = "File Editor";
+    var datePickerId = "ReportDate";
+    var fileSizeAlert = Resources.IPP.IPP_File_Size_Alert;
+    var status = Model.Status;
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<div class="colorBlock" style="height:640px; margin-top:5px; min-width: 800px; overflow:auto;">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Resources.IPP.IPP_Uplaod_Header</span>
+    </div>
+    @using (Html.BeginForm("Upload", "IPP", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div style="color:Red;">
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+            <div id="alertMessage"></div>
+        </div>
+            
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.PreviousRequest)
+        @Html.HiddenFor(m => m.SubmitterID)
+        @Html.HiddenFor(m => m.Submiter)
+
+        <ol class="IPP_ol">
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Title_Cn *</label></div>
+                @Html.TextBoxFor(m => m.TitleCn, new { @class = "IPPFELargeDiv" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Title_En *</label></div>
+                @Html.TextBoxFor(m => m.TitleEn, new { @class = "IPPFELargeDiv" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Module</label></div>
+                @Html.DropDownListFor(m => m.Module, @Model.ModuleItems, new Dictionary<string, object> { { "onchange", "javascript:FileEditor.UpdateTopicOption('#Module', '#Topic');" }, { "class", "IPPFEDpl" } })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Topic</label></div>
+                @Html.DropDownListFor(m => m.Topic, @Model.TopicItems, new { @class = "IPPFEDpl" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Desc_Cn</label></div>
+                @Html.TextAreaFor(m => m.DescriptionCn, new { @class = "IPPFETextArea" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Desc_En</label></div>
+                @Html.TextAreaFor(m => m.DescriptionEn, new { @class = "IPPFETextArea" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Upload_Type</label></div>
+                @Html.DropDownListFor(m => m.UploadType, Model.UploadTypeItems, new Dictionary<string, object> { { "onchange", "javascript:FileEditor.UpdateUpload();" }, { "class", "IPPFEDpl" } })
+            </li>
+            <li id="Upload_Website" tag="upload">
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Website</label></div>
+                @Html.TextBoxFor(m => m.WebsiteRic, new { @class = "IPPFELargeDiv" })
+            </li>
+            <li id="Upload_File" tag="upload">
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_File</label></div>
+                @Html.TextBoxFor(m => m.FileName, new { @style="margin-left:15px; width:570px;", @readonly = "readonly" })
+                <input type="button" style="width:77px;" value="@Resources.IPP.IPP_Upload" id="uploadBtn" onclick="FileEditor.Upload()" />
+                <input type="file" name="file" id="file" style="display:none"/>
+            </li>
+            <li id="Upload_Ric" tag="upload">
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Ric_Type</label></div>
+                <div style="float:left;">@Html.DropDownListFor(m => m.FileType, @Model.RicTypeItems, new { @style = "width: 114px; margin-left: 15px;" })</div>
+                <div class="IPPFERightLabel"><label>RIC</label></div>
+                @Html.TextBoxFor(m => m.EikonRic, new { @class = "IPPFEMiddleDiv" })
+            </li>
+            <li >
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.Top</label></div>
+                <div style="float: left;">@Html.CheckBoxFor(m => m.IsSetTop, new { style = "margin-left: 15px;" })</div>
+                <div style="clear: both;"></div>
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Create_Date</label></div>
+                <div style="float:left;">@Html.TextBoxFor(m => m.ReportDate, new { @readonly = "readonly", @class = "IPPFESmallDiv" })</div>
+                <div class="IPPFERightLabel" style="padding-top:3px;"><label>@Resources.IPP.IPP_Author</label></div>
+                <div style="float:left;">
+                    @Html.TextBoxFor(m => m.Author, new { @style = "width: 55px; margin-left: 15px;" })
+                </div>    
+                <div class="IPPFERightLabel" style="width:70px;padding-top:3px;"><label>@Resources.IPP.IPP_Source</label></div>
+                @Html.TextBoxFor(m => m.Source, new { @style = "width: 265px; margin-left: 19px;" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Author_Email</label></div>
+                <div style="float:left;">@Html.TextBoxFor(m => m.AuthorEmail, new { @class = "IPPFESmallDiv" })</div>
+                <div class="IPPFERightLabel"><label>@Resources.IPP.IPP_Author_Rm</label></div>
+                @Html.TextBoxFor(m => m.AuthorRM, new { @class = "IPPFESpecialDiv" })
+            </li>
+                <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Submiter</label></div>
+                <div style="float:left;">@Html.TextBoxFor(m => m.SubmiterName, new { @class = "IPPFESmallDiv", @readonly = "readonly" })</div>
+                <div class="IPPFERightLabel"><label>@Resources.IPP.IPP_Tag</label></div>
+                @Html.TextBoxFor(m => m.Tag, new { @class = "IPPFESpecialDiv", placeholder = @Resources.IPP.IPP_Sperator, onfocus = "this.placeholder = ''", onblur = "this.placeholder = '" + @Resources.IPP.IPP_Sperator + "'" })
+            </li>
+        </ol>
+        <div style="margin: 20px 0px 0px 350px">
+            <input type="submit" value="@Resources.IPP.IPP_Save" name="submit" id="saveBtn" onclick="return FileEditor.CheckFile()"/>
+            <input class="toggle" type="submit" value="@Resources.IPP.IPP_Publish" name="submit" id="submitBtn" onclick="return FileEditor.CheckFile()"/>
+            <input class="toggle" style="display:none;" type="submit" value="@Resources.IPP.IPP_Cancle" id="cancleBtn" onclick="$('#tempDailog').dialog('close');return false;" />
+        </div>
+    }
+</div>
+<script type="text/javascript">
+
+    var FileEditor = (function (my) {
+        my.CheckFile = function () {
+            var uploadType = $('#UploadType option:selected').val();
+            if (uploadType == 'Upload_File') {
+                var fileList = $("#file")[0].files;
+                if (fileList.length == 0 && $('#FileName').val() == '') {
+                    $('#alertMessage').text('@Resources.IPP.IPP_File_Not_Null');
+                    return false;
+                }
+                $("#alertMessage").text('');
+                for (var i = 0, file; file = fileList[i]; i++) {
+                    if (file.size > (5 * 1024 * 1024)) {
+                        $('#alertMessage').text('@Resources.IPP.IPP_File_Size_Alert');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+            else if (uploadType == 'Upload_Website') {
+                if ($('#WebsiteRic').val() == '') {
+                    $("#alertMessage").text('@Resources.IPP.IPP_WebSite_Not_Null');
+                    return false;
+                }
+            }
+            else {
+                if ($('#EikonRic').val() == '') {
+                    $("#alertMessage").text('@Resources.IPP.IPP_RIC_Not_Null');
+                    return false;
+                }
+            }
+        };
+
+        my.BuildTopicSelect = function (sl, data) {
+            var markup = FileEditor.BuildTopicOptionTempl();
+            $.template("optionTemplate", markup);
+            $(sl + ' option').remove();
+            $.tmpl("optionTemplate", data).appendTo(sl);
+        };
+
+        my.BuildTopicOptionTempl = function () {
+            var tpl = '<option value="${Id}">';
+            tpl = tpl + '${Name}</option>';
+            return tpl;
+        };
+
+        my.UpdateTopicOption = function (module, topicSl) {
+            var id = $(module).val();
+            $.ajax({
+                type: 'Get',
+                url: '/IPP/UpdateTopicByModule',
+                data: { id: id },
+                success: function (data) {
+                    FileEditor.BuildTopicSelect(topicSl, data);
+                },
+                error: function () {
+                    debugger;
+                },
+                async: true
+            });
+        };
+
+        my.UpdateUpload = function () {
+            var id = $("#UploadType").val();
+            $("li[id!='" + id + "'][tag='upload']").hide();
+            $("#" + id).show();
+        }
+
+        my.Upload = function (){
+            $('#file').trigger('click');
+        }
+
+        return my;
+    } (FileEditor || {}))
+
+    $(function () {
+        FileEditor.UpdateUpload();
+
+        $('#file').bind('change', function () {
+            var fileList = $("#file")[0].files;
+            for (var i = 0, file; file = fileList[i]; i++) {
+                var fileName = file.name.split('.')[0];
+                if ($('#TitleCn').val() == '' && $('#TitleEn').val() == '') {
+                    $('#TitleCn').val(fileName);
+                    $('#TitleEn').val(fileName);
+                };
+                $('#FileName').val(file.name);
+            }
+        });
+
+        $.datepicker.setDefaults($.datepicker.regional["@Thread.CurrentThread.CurrentUICulture.Name"]);
+
+        $("#@datePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+
+        if (@status == 2) { 
+            $('#Module option:not(:selected)').prop('disabled', true);
+            $('#Topic option:not(:selected)').prop('disabled', true);
+            $('.toggle').toggle();
+        }
+    }); 
+
+</script>

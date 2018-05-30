@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;</conn>
+  </source-db>
+  <fileSavePath>C:\DataFeedFtp\smm\</fileSavePath>
+  <hostname>10.35.63.144</hostname>
+  <username>ftpupload</username>
+  <password>ftpupload</password>
+  <targetDir>smm</targetDir>
+  <fileName>SMM_{fileDateFormat}.xls</fileName>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <mappings>
+    <table-mapping source="View_SMM_Ftp" destination="SMM" >
+ 
+      <column-mapping source="code"                       />
+      <column-mapping source="re_date"                    />
+      <column-mapping source="datavalue"                  />
+      <column-mapping source="syncTime"                   />
+      <column-mapping source="ProductName_EN"             />
+      <column-mapping source="Specification_EN"           />
+      <column-mapping source="Grade_EN"                   />
+      <column-mapping source="Brand_EN"                   />
+      <column-mapping source="Location_EN"                />
+      <column-mapping source="Locationofproduction_EN"    />
+      <column-mapping source="Producer_EN"                />
+      <column-mapping source="DataType_EN"                />
+      <column-mapping source="Unit_EN"                    />
+      <column-mapping source="UpdateFrequency_EN"         />
+      <column-mapping source="ProductName_CN"             />
+      <column-mapping source="Specification_CN"           />
+      <column-mapping source="Grade_CN"                   />
+      <column-mapping source="Brand_CN"                   />
+      <column-mapping source="Location_CN"                />
+      <column-mapping source="Locationofproduction_CN"    />
+      <column-mapping source="Producer_CN"                />
+      <column-mapping source="DataType_CN"                />
+      <column-mapping source="Unit_CN"                    />
+      <column-mapping source="UpdateFrequency_CN"       />
+      <filter>
+        <![CDATA[synctime >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+  </mappings>
+</settings>

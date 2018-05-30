@@ -1,0 +1,64 @@
+﻿@using System.Data;
+@using System.Web.Helpers;
+@using VAV.Web.ViewModels.Report;
+@using VAV.Web.Common;
+
+@model BasicReportViewModel
+
+@{
+    Layout = null;
+    var datePickerId = "datePicker" + @Model.ID;
+    var endDatePickerId = "endDatePicker" + @Model.ID;
+    var date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0, 0).ToString("yyyy-MM");
+}
+
+<div id="filterDiv" style="margin: 5px 0px 5px 0px">
+    @Resources.Global.Report_Query_From:
+    <input type="text" id="@datePickerId" value="@date"/>
+    @Resources.Global.Report_Query_End:
+    <input type="text" id="@endDatePickerId" value="@date"/>
+    @Resources.Global.Report_Type:
+    <select id="" name="type">
+        @foreach (var o in HtmlUtil.CookOptions("type"))
+        {
+            <option>@o</option>    
+        }
+    </select>
+    <input type="checkbox" id="category"/>@Resources.Global.Report_Category
+    <select id="" name="coption">
+         @foreach (var o in HtmlUtil.CookOptions("category"))
+        {
+            <option>@o</option>    
+        }
+    </select>
+    @Resources.Global.Report_Unit:
+     <select id="" name="unit">
+        @foreach (var o in HtmlUtil.CookOptions("unit"))
+        {
+            <option>@o</option>    
+        }
+    </select>
+    <input type="checkbox" id="expire" />@Resources.Global.Report_Expire
+    <input type="button" id="querySubmit" value="@Resources.Global.Report_Query"/>
+    <a href="#">
+        <img id="imgExport" src="../../Content/themes/base/images/excel_icon.png" />
+    </a>
+    <input type="hidden" id="reportId"/>
+</div>
+<div id="">
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").monthpicker({
+            pattern: 'yyyy-mm',
+            selectedYear: 2012,
+            startYear: 2001,
+            finalYear: 2013,
+            monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        });
+
+        SetMonthPickerStyle("@datePickerId");
+    });
+
+</script>

@@ -1,0 +1,142 @@
+﻿@using VAV.Web.Common;
+@using VAV.Web.ViewModels.OpenMarket;
+@model RatesAnalysisReportViewModel
+@{
+    Layout = null;
+    var datePickerId = "datePicker" + @Model.ID;
+    var endDatePickerId = "endDatePicker" + @Model.ID;
+    var queryButtonId = "query" + @Model.ID;
+    var contentDivId = "contentDiv" + @Model.ID;
+    var unitSelectId = "uselect" + @Model.ID;
+    var startDate = new DateTime(DateTime.Now.Year - 1, DateTime.Now.Month, 1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var ratesAnalysisReportUrl = VirtualPathUtility.ToAbsolute("~/OpenMarket/RefreshRatesAnalysisReport");
+
+}
+<div class="colorBlock"style="min-width:650px;">
+    <div id="filterDiv" style="margin: 5px 0px 0px 5px; height: 30px;">
+        <div style="float: left;">
+            @Resources.Global.Report_Query_From
+            <input type="text" id="@datePickerId" value="@startDate" class="dateInput"/>
+            @Resources.Global.Report_Query_End
+            <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput"/>
+        </div>
+        <div style="float:left;">
+            <input type="text" onclick="ShowOpenMarketOptions();" class="textInput" id="openMarketOptiont"/>
+            <div class="colorBlock">
+                <div id="openMarketOptionDiv" class="optionDiv" style="display: none;">
+                    <input id="openMarketCheckAll" type="checkbox" onclick="OpenMarketCheckAll(this)" style="margin-left:10px;"/><label style="margin-left:3px;">@Resources.Global.Select_All</label>
+                    <ul class="openMarketOption" style="line-height:20px; margin-top:10px;">
+                        <li style="margin: 3px 0px 3px 4px;"><label style="margin-left:3px;">@Resources.Global.Type_CBankBill</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="CBB_3M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">3 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="CBB_6M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">6 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="CBB_1Y" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">1 @Resources.Global.Term_Year</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="CBB_3Y" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">3 @Resources.Global.Term_Year</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><label style="margin-left:3px;">@Resources.Global.Type_Repo</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" checked="checked" value="Repo_7D" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">7 @Resources.Global.Term_Day</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" checked="checked" value="Repo_14D" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">14 @Resources.Global.Term_Day</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Repo_21D" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">21 @Resources.Global.Term_Day</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Repo_1M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">1 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Repo_3M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">3 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Repo_6M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">6 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><label style="margin-left:3px;">@Resources.Global.Type_ReverseRepo</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" checked="checked" value="Reverse Repo_7D" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">7 @Resources.Global.Term_Day</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" checked="checked" value="Reverse Repo_14D" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">14 @Resources.Global.Term_Day</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Reverse Repo_21D" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">21 @Resources.Global.Term_Day</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Reverse Repo_1M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">1 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Reverse Repo_3M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">3 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Reverse Repo_6M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left: 3px;">6 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><label style="margin-left:3px;">@Resources.Global.OpenMarketMLFAlias</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Mlf_3M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">3 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Mlf_6M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left: 3px;">6 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Mlf_1Y" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">1 @Resources.Global.Term_Year</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><label style="margin-left:3px;">@Resources.Global.Type_Fmd</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Fmd_3M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">3 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Fmd_6M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">6 @Resources.Global.Term_Month</label></li>
+                        <li style="margin: 3px 0px 3px 4px;"><input type="checkbox" value="Fmd_9M" onclick="AddOpenMarketSelectCount(this)"/><label style="margin-left:3px;">9 @Resources.Global.Term_Month</label></li>
+                    </ul>
+                </div>
+            </div>
+            <input type="hidden" id="openMarketSelectedOptionCount" value="0"/>
+        </div>
+        <div style="float:left;">
+            @Resources.Global.Report_Unit
+            <select id="@unitSelectId" name="unit" class="smallSelect">
+                @foreach (var o in HtmlUtil.CookOptions("unit"))
+                {
+                    <option value ="@o.ID">@o.Name</option>    
+                }
+            </select>
+        </div>
+        <div style="float: left;">
+            <input type="button" id="@queryButtonId" value="@Resources.Global.Report_Query" onclick="RefreshRatesAnalysisReport(@Model.ID, '@ratesAnalysisReportUrl')"/>
+            <input type="hidden" id="reportId" />
+        </div>
+    </div>
+</div>
+<div id="@contentDivId" style="height: 91%; height: -webkit-calc(100% - 48px);min-width:580px; ">
+        @Html.Partial("_RatesAnalysisContent", Model)
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        $("#ui-datepicker-div").css("border", "solid 1px black");
+
+        $("#openMarketSelectedOptionCount").val(4)
+        $("#openMarketOptiont").val(4 + "@Resources.Global.Selected");
+
+        $("#openMarketOptionDiv").bind("clickoutside", function (event) {
+            if ($(event.target).attr('id') != "openMarketOptiont" && $(this).css("display") != "none") {
+                $(this).hide();
+                var count = parseInt($("#openMarketSelectedOptionCount").val(), 10);
+                if (count == 0)
+                    $("#openMarketOptiont").val("@Resources.Global.Tip_PleaseSelect");
+            }
+        });
+    });
+
+    function ShowOpenMarketOptions() {
+         if ($("#openMarketOptionDiv").css("display") == "none")
+             $("#openMarketOptionDiv").show();
+         else
+             $("#openMarketOptionDiv").hide();
+     }
+
+     function AddOpenMarketSelectCount(radio) {
+         var count = parseInt($("#openMarketSelectedOptionCount").val(), 10);
+
+         if ($(radio).is(":checked")) {
+             count += 1;
+         }
+         else {
+             count -= 1;
+         }
+
+         $("#openMarketSelectedOptionCount").val(count);
+         $("#openMarketOptiont").val(count + "@Resources.Global.Selected");
+     }
+
+     function OpenMarketCheckAll(radio) {
+         var count = $(".openMarketOption").children().length - 4;
+
+         if ($(radio).is(":checked")) {
+             $(".openMarketOption input").each(function () {
+                $(this).prop('checked', true);
+             });
+         }
+         else {
+             $(".openMarketOption input").each(function () {
+                $(this).prop('checked', false);
+             });
+             count = 0;
+         }
+
+         $("#openMarketSelectedOptionCount").val(count);
+         $("#openMarketOptiont").val(count + "@Resources.Global.Selected");
+     }
+
+</script>

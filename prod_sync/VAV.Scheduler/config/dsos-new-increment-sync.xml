@@ -1,0 +1,951 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+	<source-db>
+		<type>sybase</type>
+		<conn>Driver={Adaptive Server Enterprise};server=164.179.108.15;port=4100;uid=reporter;password=reporter;charset=utf8;</conn>
+	</source-db>
+	<destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=bonddb;Password=bonddb;</conn>
+	</destination-db>
+	<sql-command-timeout>1800</sql-command-timeout>
+	<mappings>
+		<table-mapping source="govcorp..asset" destination="govcorp_asset">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="amt_iss_public"/>
+			<column-mapping source="amt_iss_tot"/>
+			<column-mapping source="annuity_fl"/>
+			<column-mapping source="asset_cf_corr_dt"/>
+			<column-mapping source="asset_duplicate_cd"/>
+			<column-mapping source="asset_info_src_cd"/>
+			<column-mapping source="asset_last_chg_dt"/>
+			<column-mapping source="asset_setup_dt"/>
+			<column-mapping source="asset_status_cd"/>
+			<column-mapping source="asset_subtype_cd"/>
+			<column-mapping source="asset_templt_cd"/>
+			<column-mapping source="asset_ticker"/>
+			<column-mapping source="asset_type_cd"/>
+			<column-mapping source="bank_qualified_fl"/>
+			<column-mapping source="bankwatch_rating_cd"/>
+			<column-mapping source="bankwatch_rating_dt"/>
+			<column-mapping source="bridge_symbol"/>
+			<column-mapping source="call_terms_fl"/>
+			<column-mapping source="call_type_cd"/>
+			<column-mapping source="capitalization_fl"/>
+			<column-mapping source="clawback_type_cd"/>
+			<column-mapping source="cntry_of_iss_cd"/>
+			<column-mapping source="common_code_nm"/>
+			<column-mapping source="convertible_fl"/>
+			<column-mapping source="cpn_class_cd"/>
+			<column-mapping source="cpn_type_cd"/>
+			<column-mapping source="credit_sensitive_fl"/>
+			<column-mapping source="cur_amt_out_dt"/>
+			<column-mapping source="cur_amt_outsd"/>
+			<column-mapping source="cur_int_leg_nm"/>
+			<column-mapping source="cur_prin_curr_cd"/>
+			<column-mapping source="cur_prin_leg_nm"/>
+			<column-mapping source="currency_cd"/>
+			<column-mapping source="current_cpn"/>
+			<column-mapping source="dbs_pid"/>
+			<column-mapping source="dcs_type_cd"/>
+			<column-mapping source="debt_svc_cd"/>
+			<column-mapping source="debt_type_cd"/>
+			<column-mapping source="defeased_fl"/>
+			<column-mapping source="denom_incr"/>
+			<column-mapping source="denom_type_cd"/>
+			<column-mapping source="descr"/>
+			<column-mapping source="descr_detail"/>
+			<column-mapping source="distribution_src_cd"/>
+			<column-mapping source="dom_settle_cal_cd"/>
+			<column-mapping source="dom_settle_val"/>
+			<column-mapping source="domin_rating_cd"/>
+			<column-mapping source="domin_rating_dt"/>
+			<column-mapping source="dp_rating_cd"/>
+			<column-mapping source="dp_rating_dt"/>
+			<column-mapping source="ds_subtype_cd"/>
+			<column-mapping source="ds_type_cd"/>
+			<column-mapping source="dual_cur_fl"/>
+			<column-mapping source="emerging_market_fl"/>
+			<column-mapping source="equity_clawback_fl"/>
+			<column-mapping source="euroclear_nm"/>
+			<column-mapping source="eusd_tax_fl"/>
+			<column-mapping source="exch_listed_fl"/>
+			<column-mapping source="exdiv_cal_cd"/>
+			<column-mapping source="exdiv_val"/>
+			<column-mapping source="exec_quote_fl"/>
+			<column-mapping source="exp_maturity_dt"/>
+			<column-mapping source="extend_terms_fl"/>
+			<column-mapping source="fig_rule_cd"/>
+			<column-mapping source="first_cpn_dt"/>
+			<column-mapping source="first_reset_dt"/>
+			<column-mapping source="fitch_ibca_rating_cd"/>
+			<column-mapping source="fitch_ibca_rating_dt"/>
+			<column-mapping source="fitch_rating_cd"/>
+			<column-mapping source="fitch_rating_dt"/>
+			<column-mapping source="float_formula"/>
+			<column-mapping source="float_index"/>
+			<column-mapping source="float_mult"/>
+			<column-mapping source="float_offset"/>
+			<column-mapping source="for_settle_val"/>
+			<column-mapping source="full_bridge_symbol"/>
+			<column-mapping source="fund_terms_fl"/>
+			<column-mapping source="funged_fl"/>
+			<column-mapping source="guarantee_fl"/>
+			<column-mapping source="ibca_rating_cd"/>
+			<column-mapping source="ibca_rating_dt"/>
+			<column-mapping source="ibs_control_nm"/>
+			<column-mapping source="inflation_protect_fl"/>
+			<column-mapping source="int_idx_lnk_fl"/>
+			<column-mapping source="isin_nm"/>
+			<column-mapping source="isin_src_cd"/>
+			<column-mapping source="last_cpn_dt"/>
+			<column-mapping source="last_reset_dt"/>
+			<column-mapping source="latest_rating_cd"/>
+			<column-mapping source="latest_rating_eff_dt"/>
+			<column-mapping source="latest_rating_src_cd"/>
+			<column-mapping source="lead_undwrt_cd"/>
+			<column-mapping source="life_cap"/>
+			<column-mapping source="life_floor"/>
+			<column-mapping source="mandatory_tender_dt"/>
+			<column-mapping source="maturity_dt"/>
+			<column-mapping source="mdy_debt_class_cd"/>
+			<column-mapping source="mdy_rating_cd"/>
+			<column-mapping source="mdy_rating_dt"/>
+			<column-mapping source="mdy_st_rtng_cd"/>
+			<column-mapping source="mdy_st_rtng_dt"/>
+			<column-mapping source="mdy_watch_cd"/>
+			<column-mapping source="mdy_watch_dt"/>
+			<column-mapping source="min_credit_rating_cd"/>
+			<column-mapping source="min_denom"/>
+			<column-mapping source="mtn_fl"/>
+			<column-mapping source="mtn_shelf_id"/>
+			<column-mapping source="multistep_flt_fl"/>
+			<column-mapping source="native_yld_type_cd"/>
+			<column-mapping source="next_call_dt"/>
+			<column-mapping source="next_call_px"/>
+			<column-mapping source="next_mand_tender_dt"/>
+			<column-mapping source="next_pay_dt"/>
+			<column-mapping source="next_put_dt"/>
+			<column-mapping source="next_put_px"/>
+			<column-mapping source="next_reset_dt"/>
+			<column-mapping source="next_sink_amt"/>
+			<column-mapping source="next_sink_dt"/>
+			<column-mapping source="nsin_agn_cd"/>
+			<column-mapping source="nsin_nm"/>
+			<column-mapping source="oid_fl"/>
+			<column-mapping source="orig_amt_iss"/>
+			<column-mapping source="orig_dated_dt"/>
+			<column-mapping source="orig_iss_dt"/>
+			<column-mapping source="pay_cal_cd"/>
+			<column-mapping source="pay_cal_val"/>
+			<column-mapping source="pay_freq_cd"/>
+			<column-mapping source="pay_in_part_fl"/>
+			<column-mapping source="perpetual_fl"/>
+			<column-mapping source="physical_form_cd"/>
+			<column-mapping source="pik_csh_pmt_dt"/>
+			<column-mapping source="pik_fl"/>
+			<column-mapping source="pik_inkind_pmt_dt"/>
+			<column-mapping source="poison_put_fl"/>
+			<column-mapping source="preferred_ric"/>
+			<column-mapping source="primary_quote_id"/>
+			<column-mapping source="prin_idx_lnk_fl"/>
+			<column-mapping source="private_place_fl"/>
+			<column-mapping source="project_name"/>
+			<column-mapping source="prosp_on_file_fl"/>
+			<column-mapping source="prosp_suppl_dt"/>
+			<column-mapping source="prosp_suppl_nm"/>
+			<column-mapping source="prospectus_dt"/>
+			<column-mapping source="put_terms_fl"/>
+			<column-mapping source="rcs_class_cd"/>
+			<column-mapping source="record_dt_cd"/>
+			<column-mapping source="record_dt_val"/>
+			<column-mapping source="redemption_val"/>
+			<column-mapping source="refund_dt"/>
+			<column-mapping source="rrps_ric"/>
+			<column-mapping source="rtfi_us_elig_cd"/>
+			<column-mapping source="rtr_ticker"/>
+			<column-mapping source="sec_class_cd"/>
+			<column-mapping source="secondary_insu_fl"/>
+			<column-mapping source="secured_fl"/>
+			<column-mapping source="series"/>
+			<column-mapping source="settle_bus_ctr_cd"/>
+			<column-mapping source="sovr_class_cd"/>
+			<column-mapping source="sp_debt_class_cd"/>
+			<column-mapping source="sp_rating_cd"/>
+			<column-mapping source="sp_rating_dt"/>
+			<column-mapping source="sp_st_rtng_cd"/>
+			<column-mapping source="sp_st_rtng_dt"/>
+			<column-mapping source="sp_watch_cd"/>
+			<column-mapping source="sp_watch_dt"/>
+			<column-mapping source="spec_put_fl"/>
+			<column-mapping source="standard_yld_type_cd"/>
+			<column-mapping source="status_eff_dt"/>
+			<column-mapping source="status_of_document"/>
+			<column-mapping source="stick_suppl_fl"/>
+			<column-mapping source="strip_total"/>
+			<column-mapping source="strippable_fl"/>
+			<column-mapping source="tap_end_dt"/>
+			<column-mapping source="tap_issue_fl"/>
+			<column-mapping source="tax_call_fl"/>
+			<column-mapping source="tax_status_cd"/>
+			<column-mapping source="tot_prog_amt"/>
+			<column-mapping source="trace_cd"/>
+			<column-mapping source="trace_grade_cd"/>
+			<column-mapping source="unit_cd"/>
+			<column-mapping source="valoren_nm"/>
+			<column-mapping source="warrants_fl"/>
+			<column-mapping source="withholding_tax"/>
+			<column-mapping source="wpk_nm"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<!--Added mapping by Yuan Yong-->
+			<column-mapping source="issuer_id" destination="issuerId"/>
+			<column-mapping source="day_count_cd"/>
+			<filter>
+				<![CDATA[(cntry_of_iss_cd = 'CN' OR sec_class_cd in ('DSUM', 'FORM')) AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime}]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..alt_ident" destination="govcorp_alt_ident">
+			<column-mapping source="alt_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="alt_cd" isKey="true"/>
+			<column-mapping source="asset_id" isKey="true"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+    <table-mapping source="govcorp..asset_ident" destination="govcorp_asset_ident">
+      <column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="id_cd" isKey="true"/>
+      <column-mapping source="id_eff_dt" isKey="true"/>
+      <column-mapping source="id_number" />
+      <column-mapping source="iss_type_cd"/>
+      <column-mapping source="" destination="id_type" value="E"/>
+      <filter>
+        <![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+      </filter>
+    </table-mapping>
+
+		<table-mapping source="govcorp..rating" destination="govcorp_rating">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rating_src_cd" isKey="true"/>
+			<column-mapping source="outlook_cd"/>
+			<column-mapping source="outlook_eff_dt"/>
+			<column-mapping source="preliminary_fl"/>
+			<column-mapping source="prev_rating_cd"/>
+			<column-mapping source="prev_rating_dt"/>
+			<column-mapping source="rating_cd"/>
+			<column-mapping source="rating_eff_dt"/>
+			<column-mapping source="rating_endorsement"/>
+			<column-mapping source="rating_suffix_cd"/>
+			<column-mapping source="unsolicited_fl"/>
+			<column-mapping source="verified_dt"/>
+			<column-mapping source="watch_cd"/>
+			<column-mapping source="watch_eff_dt"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..rating_hist" destination="govcorp_rating_hist">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rating_eff_dt" isKey="true"/>
+			<column-mapping source="rating_src_cd" isKey="true"/>
+			<column-mapping source="preliminary_fl"/>
+			<column-mapping source="rating_cd"/>
+			<column-mapping source="rating_endorsement"/>
+			<column-mapping source="rating_suffix_cd"/>
+			<column-mapping source="src_info_cd"/>
+			<column-mapping source="unsolicited_fl"/>
+			<column-mapping source="verified_dt"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<filter>
+				<![CDATA[asset_id IN(SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..idxref_id_obj_xref_quote x inner join govcorp..quote q on q.quote_id = x.quote_id" destination="govcorp_asset_ric">
+			<column-mapping source="quote_id" sourceTableAlias="q" isKey="true"/>
+			<column-mapping source="asset_id" sourceTableAlias="q" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="active_fl" sourceTableAlias="q"/>
+			<column-mapping source="currency_cd" sourceTableAlias="q"/>
+			<column-mapping source="idn_contrib_cd" sourceTableAlias="q"/>
+			<column-mapping source="pe" sourceTableAlias="q"/>
+			<column-mapping source="price_src_cd" sourceTableAlias="q"/>
+			<column-mapping source="id_scope_id" sourceTableAlias="x"/>
+			<column-mapping source="id_type_cd" sourceTableAlias="x" isKey="true"/>
+			<column-mapping source="id_value" sourceTableAlias="x" isKey="true"/>
+			<column-mapping source="id_upper" sourceTableAlias="x"/>
+			<column-mapping source="obj_type_cd" sourceTableAlias="x"/>
+			<column-mapping source="current_fl" sourceTableAlias="x"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<filter>
+				<![CDATA[x.quote_id IN (SELECT quote_id FROM govcorp..quote WHERE price_src_cd='CPT' AND asset_id IN(SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})) AND x.id_type_cd NOT IN ('EPS')]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..party" destination="govcorp_party">
+			<column-mapping source="party_id" destination="partyId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="active_fl"/>
+			<column-mapping source="bankruptcy_fl"/>
+			<column-mapping source="com_stock_cd"/>
+			<column-mapping source="cur_form15_dt"/>
+			<column-mapping source="cur_immed_parent_id"/>
+			<column-mapping source="cur_ultimate_parent_id"/>
+			<column-mapping source="doc_report_entity_id"/>
+			<column-mapping source="eusd_gov_rel_fl"/>
+			<column-mapping source="financials_filed_fl"/>
+			<column-mapping source="fiscal_yr_end"/>
+			<column-mapping source="form15_fl"/>
+			<column-mapping source="ibs_issuer_nm"/>
+			<column-mapping source="indu_sector_cd"/>
+			<column-mapping source="indu_subsector_cd"/>
+			<column-mapping source="issuer_orgid"/>
+			<column-mapping source="legal_counsel_id"/>
+			<column-mapping source="mdy_issuer_rating_cd"/>
+			<column-mapping source="mdy_issuer_rating_dt"/>
+			<column-mapping source="mdy_issuer_watch_cd"/>
+			<column-mapping source="mdy_issuer_watch_dt"/>
+			<column-mapping source="orig_immed_parent_id"/>
+			<column-mapping source="orig_ultimate_parent_id"/>
+			<column-mapping source="party_address"/>
+			<column-mapping source="party_bridge_symbol"/>
+			<column-mapping source="party_city"/>
+			<column-mapping source="party_cntry_cd"/>
+			<column-mapping source="party_cntry_incorp_cd"/>
+			<column-mapping source="party_general_alias_name"/>
+			<column-mapping source="party_last_chg_dt"/>
+			<column-mapping source="party_legal_name"/>
+			<column-mapping source="party_long_name"/>
+			<column-mapping source="party_native_long_name"/>
+			<column-mapping source="party_native_short_name"/>
+			<column-mapping source="party_phone_number"/>
+			<column-mapping source="party_region"/>
+			<column-mapping source="party_rtr_ticker"/>
+			<column-mapping source="party_setup_dt"/>
+			<column-mapping source="party_short_name"/>
+			<column-mapping source="party_state_incorp"/>
+			<column-mapping source="party_ticker"/>
+			<column-mapping source="party_url"/>
+			<column-mapping source="party_validated_dt"/>
+			<column-mapping source="party_yr_incorp"/>
+			<column-mapping source="party_zipcode"/>
+			<column-mapping source="primary_naic_cd"/>
+			<column-mapping source="primary_sic_cd"/>
+			<column-mapping source="private_co_fl"/>
+			<column-mapping source="sovr_class_cd"/>
+			<column-mapping source="sp_indu_cd"/>
+			<column-mapping source="sp_issuer_short_rating_cd"/>
+			<column-mapping source="sp_issuer_short_rating_dt"/>
+			<column-mapping source="sp_issuer_long_rating_cd"/>
+			<column-mapping source="sp_issuer_long_rating_dt"/>
+			<column-mapping source="sp_issuer_watch_cd"/>
+			<column-mapping source="sp_issuer_watch_dt"/>
+			<column-mapping source="stockval_nm"/>
+			<column-mapping source="tax_struct_type_cd"/>
+			<filter>
+				<![CDATA[(party_id in (SELECT issuer_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime}))]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..party_rating_hist" destination="govcorp_party_rating_hist">
+			<column-mapping source="party_id" destination="partyId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="party_rating_eff_dt" isKey="true"/>
+			<column-mapping source="party_rating_src_cd" isKey="true"/>
+			<column-mapping source="party_rating_scope_cd" isKey="true"/>
+			<column-mapping source="party_preliminary_fl"/>
+			<column-mapping source="party_rating_cd"/>
+			<column-mapping source="party_unsolicited_fl"/>
+			<column-mapping source="party_verified_dt"/>
+			<filter>
+				<![CDATA[party_id IN (SELECT p.party_id FROM govcorp..party p WHERE (p.party_id IN (SELECT issuer_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})))]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..asset2" destination="govcorp_asset2">
+			<column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="aaoifi_compliant_fl"/>
+			<column-mapping source="addl_credit_fl"/>
+			<column-mapping source="announcement_dt"/>
+			<!--<column-mapping source="borrower_id" destination="borrower_id"/>-->
+			<column-mapping source="calc_disable_rsn"/>
+			<column-mapping source="callable_notation"/>
+			<column-mapping source="cav_maturity_amt"/>
+			<column-mapping source="cdc_asset_class_cd"/>
+			<column-mapping source="cfi"/>
+			<column-mapping source="conver_cd"/>
+			<column-mapping source="cur_int_defer_fl"/>
+			<column-mapping source="cusip_change_cd"/>
+			<column-mapping source="cusip_change_dt"/>
+			<column-mapping source="dfrd_int_cnvrsn_dt"/>
+			<column-mapping source="facility"/>
+			<column-mapping source="facility_amt"/>
+			<column-mapping source="flip_opt_cd"/>
+			<column-mapping source="flip_opt_dt"/>
+			<column-mapping source="green_bond_fl"/>
+			<!--<column-mapping source="issue_id" destination="issue_id"/>-->
+			<column-mapping source="liquidation_preference_cd"/>
+			<column-mapping source="local_iss_dt"/>
+			<column-mapping source="next_par_call_dt"/>
+			<column-mapping source="next_par_call_px"/>
+			<column-mapping source="odd_first_cpn_fl"/>
+			<column-mapping source="odd_last_cpn_fl"/>
+			<column-mapping source="orig_cusip_type_cd"/>
+			<column-mapping source="prerefunded_fl"/>
+			<column-mapping source="prtl_redemp_fl"/>
+			<column-mapping source="reoffered_dt"/>
+			<column-mapping source="reoffered_fl"/>
+			<column-mapping source="repo_elig_fl"/>
+			<!--<column-mapping source="repo_elig_id" destination="repo_elig_id"/>-->
+			<column-mapping source="risk_classifications_cd"/>
+			<column-mapping source="risk_country_cd"/>
+			<column-mapping source="security_cd"/>
+			<column-mapping source="seniority_cd"/>
+			<column-mapping source="series"/>
+			<column-mapping source="sharia_opinion_fl"/>
+			<column-mapping source="solvability_ratio"/>
+			<column-mapping source="straight_bond_fl"/>
+			<column-mapping source="sukuk_structure_fl"/>
+			<column-mapping source="super_sinker_fl"/>
+			<column-mapping source="survivor_opt_fl"/>
+			<column-mapping source="tier_capital_cd"/>
+			<column-mapping source="us_baby_bond_fl"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT asset_id FROM govcorp..asset WHERE (cntry_of_iss_cd = 'CN' OR sec_class_cd in ('DSUM', 'FORM')) and asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="gcodes..rating_agency_cds" destination="gcodes_rating_agency_cds">
+			<column-mapping source="rating_agency_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rating_agency_descr"/>
+			<column-mapping source="rating_agency_url"/>
+			<filter>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="gcodes..rating_src_cds" destination="gcodes_rating_src_cds">
+			<column-mapping source="rating_src_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rating_src_descr"/>
+			<column-mapping source="rating_type_cd"/>
+			<column-mapping source="rating_agency_cd"/>
+			<column-mapping source="active_fl"/>
+			<filter>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..orig_iss_info" destination="govcorp_orig_iss_info">
+			<column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="bmk_at_issue_id"/>
+			<column-mapping source="ch_eusd_exempt_fl"/>
+			<column-mapping source="conver_cd"/>
+			<column-mapping source="disc_comm_per_debt"/>
+			<column-mapping source="disc_comm_per_sh"/>
+			<column-mapping source="ecb_cd"/>
+			<column-mapping source="eusd_tap_fl"/>
+			<column-mapping source="eu_jumbo_fl"/>
+			<column-mapping source="extraordinary_redemption_fl"/>
+			<column-mapping source="govt_bond_type_cd"/>
+			<column-mapping source="grade_at_iss_cd"/>
+			<column-mapping source="instrument_type_cd"/>
+			<column-mapping source="mdy_backed_fl"/>
+			<column-mapping source="mgmt_fee_per_sh"/>
+			<column-mapping source="mgmt_uw_fees_comb"/>
+			<column-mapping source="nonfix_iss_fl"/>
+			<column-mapping source="nonunderwritten_sec_incl_fl"/>
+			<column-mapping source="offer_registrant_id"/>
+			<column-mapping source="offer_registrant_name"/>
+			<column-mapping source="orig_avg_life"/>
+			<column-mapping source="orig_iss_amt"/>
+			<column-mapping source="orig_iss_cpn"/>
+			<column-mapping source="orig_iss_curr_cd"/>
+			<column-mapping source="orig_iss_idx"/>
+			<column-mapping source="orig_iss_px"/>
+			<column-mapping source="orig_iss_sprd"/>
+			<column-mapping source="orig_iss_yld"/>
+			<column-mapping source="orig_issue_dt"/>
+			<column-mapping source="orig_proc_per_debt"/>
+			<column-mapping source="orig_proc_per_sh"/>
+			<column-mapping source="orig_yld_maturity"/>
+			<column-mapping source="orig_yld_par_call"/>
+			<column-mapping source="over_allot_amt"/>
+			<column-mapping source="over_allot_days"/>
+			<column-mapping source="overallot_shs"/>
+			<column-mapping source="par_value"/>
+			<column-mapping source="praecipium"/>
+			<column-mapping source="prc_qt_mtd_cd"/>
+			<column-mapping source="price_qt_base_value"/>
+			<column-mapping source="program_type_cd"/>
+			<column-mapping source="prosp_approval_dt"/>
+			<column-mapping source="px_incl_accr_int_fl"/>
+			<column-mapping source="px_quote_convention_cd"/>
+			<column-mapping source="px_quote_rounding_cd"/>
+			<column-mapping source="px_to_public_per_sh"/>
+			<column-mapping source="reallow_per_debt"/>
+			<column-mapping source="reallow_per_sh"/>
+			<column-mapping source="reg_expense"/>
+			<column-mapping source="reg_over_allot_sh"/>
+			<column-mapping source="remarketing_dt"/>
+			<column-mapping source="remarketing_fl"/>
+			<column-mapping source="reoffer_px"/>
+			<column-mapping source="reoffer_sprd"/>
+			<column-mapping source="reoffer_yld"/>
+			<column-mapping source="ric_disp_name"/>
+			<column-mapping source="seasoning_dt"/>
+			<column-mapping source="secoff_char"/>
+			<column-mapping source="security_name"/>
+			<column-mapping source="selling_conc_per_debt"/>
+			<column-mapping source="selling_conc_per_sh"/>
+			<column-mapping source="seniority_type_cd"/>
+			<column-mapping source="sep_transferable_dt"/>
+			<column-mapping source="simple_first_fl"/>
+			<column-mapping source="solvability_ratio"/>
+			<column-mapping source="sp_backed_fl"/>
+			<column-mapping source="term_to_maturity"/>
+			<column-mapping source="total_disc_comm"/>
+			<column-mapping source="total_fee"/>
+			<column-mapping source="total_proc_to_reg"/>
+			<column-mapping source="total_px_public"/>
+			<column-mapping source="total_sh_offered"/>
+			<column-mapping source="undwrt_fee"/>
+			<column-mapping source="use_of_proc_catgry_cd"/>
+			<column-mapping source="use_of_proceeds"/>
+			<column-mapping source="value_date_cd"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..asset_exchanges" destination="govcorp_asset_exchanges">
+			<column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="delisting_dt"/>
+			<column-mapping source="exch_cd" isKey="true"/>
+			<column-mapping source="listing_dt"/>
+			<column-mapping source="min_trading_lot"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="gcodes..freq_cds" destination="gcodes_freq_cds">
+			<column-mapping source="freq_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="short_descr"/>
+			<column-mapping source="freq_descr"/>
+			<column-mapping source="chk_date_comp"/>
+			<column-mapping source="chk_num"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..asset_status_cds" destination="gcodes_asset_status_cds">
+			<column-mapping source="asset_status_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="asset_status_descr"/>
+			<column-mapping source="active_fl"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..cdc_asset_class_cds" destination="gcodes_cdc_asset_class_cds">
+			<column-mapping source="cdc_asset_class_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="cdc_asset_class_descr"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..currency_cds" destination="gcodes_currency_cds">
+			<column-mapping source="currency_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="currency_descr"/>
+			<column-mapping source="iso_cur_cd"/>
+			<column-mapping source="iso_cur_descr"/>
+			<column-mapping source="iso_cur_numeric"/>
+			<column-mapping source="active_fl"/>
+			<column-mapping source="cur_cd"/>
+			<column-mapping source="factor"/>
+			<column-mapping source="permid"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..day_cnt_cds" destination="gcodes_day_cnt_cds">
+			<column-mapping source="day_cnt_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="day_cnt_descr"/>
+			<column-mapping source="day_cnt_ldescr"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..coupon_class_cds" destination="gcodes_coupon_class_cds">
+			<column-mapping source="coupon_class_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="coupon_class_sdescr"/>
+			<column-mapping source="coupon_class_descr"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..coupon_type_cds" destination="gcodes_coupon_type_cds">
+			<column-mapping source="coupon_type_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="coupon_type_sdescr"/>
+			<column-mapping source="coupon_type_descr"/>
+			<column-mapping source="float_fl"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..seniority_cds" destination="gcodes_seniority_cds">
+			<column-mapping source="seniority_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="seniority_descr"/>
+			<column-mapping source="seniority_rank"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..rating_cds" destination="gcodes_rating_cds">
+			<column-mapping source="rating_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rating_src_cd" isKey="true"/>
+			<column-mapping source="rank"/>
+			<column-mapping source="sp_equiv_rank"/>
+			<column-mapping source="iso_lcntry_cd" isKey="true"/>
+			<column-mapping source="grade_cd"/>
+			<column-mapping source="base_fl"/>
+			<column-mapping source="preliminary_fl"/>
+			<filter>
+				<![CDATA[rating_cd in (SELECT a.rating_cd FROM govcorp..rating a WHERE a.asset_id in (SELECT b.asset_id FROM govcorp..asset b WHERE (b.cntry_of_iss_cd = 'CN' OR b.sec_class_cd in ('DSUM', 'FORM')) AND b.asset_last_chg_dt >= {LastSyncTime} AND b.asset_last_chg_dt <= {CurrentSyncTime}))]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="gcodes..rating_conversion_cds" destination="gcodes_rating_conversion_cds">
+			<column-mapping source="rating_src_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="iso_lcntry_cd"/>
+			<column-mapping source="rating_cd" isKey="true"/>
+			<column-mapping source="rank"/>
+			<column-mapping source="equiv_rating_src_cd"/>
+			<column-mapping source="equiv_iso_lcntry_cd"/>
+			<column-mapping source="equiv_rating_cd"/>
+			<column-mapping source="equiv_rank"/>
+		</table-mapping>
+
+		<table-mapping source="govcorp..enhancements" destination="govcorp_enhancements">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="enhance_eff_dt" isKey="true"/>
+			<column-mapping source="addl_credit_type_cd"/>
+			<column-mapping source="crs_dft_guarantor_fl"/>
+			<column-mapping source="default_events_guar_fl"/>
+			<column-mapping source="enhance_end_dt"/>
+			<column-mapping source="enhance_leg_nm" isKey="true"/>
+			<column-mapping source="escrow_fl"/>
+			<column-mapping source="guarantor_id"/>
+			<column-mapping source="guarantor_program_cd"/>
+			<column-mapping source="guarantor_type_cd"/>
+			<column-mapping source="int_collat_pct"/>
+			<column-mapping source="int_collat_type_cd"/>
+			<column-mapping source="loc_expire_dt"/>
+			<column-mapping source="neg_pldg_guarantor_fl"/>
+			<column-mapping source="othr_cov_guarantor_fl"/>
+			<column-mapping source="prin_collat_pct"/>
+			<column-mapping source="prin_collat_type_cd"/>
+			<column-mapping source="insurance_fl"/>
+			<column-mapping source="guarantee_cd"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..notes" destination="govcorp_notes">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<!--<column-mapping source="large_note"/>-->
+			<column-mapping source="note"/>
+			<column-mapping source="note_eff_dt" isKey="true"/>
+			<column-mapping source="note_type_cd" isKey="true"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+		
+		<table-mapping source="govcorp..asset_dbs_xref" destination="govcorp_asset_dbs_xref">
+			<column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="calendar_cd"/>
+			<column-mapping source="capitalization_fl"/>
+			<column-mapping source="clearing_code_fl"/>
+			<column-mapping source="company_id"/>
+			<column-mapping source="default_yield_type"/>
+			<column-mapping source="holiday_cd"/>
+			<column-mapping source="intx_fl"/>
+			<column-mapping source="loan_type_cd"/>
+			<column-mapping source="offer_type_cd"/>
+			<column-mapping source="optional_identifier"/>
+			<column-mapping source="send_to_dbs_fl"/>
+			<column-mapping source="sia_exact"/>
+			<column-mapping source="special_redemptions_fl"/>
+			<column-mapping source="status_on_liquidation"/>
+			<column-mapping source="issue_dt"/>
+			<column-mapping source="current_cpn_nonannual"/>
+			<column-mapping source="government_bond_type_cd"/>
+			<column-mapping source="no_calc_note"/>
+			<column-mapping source="org_issue_spread_underlying"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..party_name_hist" destination="govcorp_party_name_hist">
+			<column-mapping source="party_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="hist_party_cntry_cd"/>
+			<column-mapping source="hist_party_cntry_incorp_cd"/>
+			<column-mapping source="name_eff_dt" isKey="true"/>
+			<column-mapping source="hist_general_alias_name"/>
+			<column-mapping source="hist_legal_name"/>
+			<column-mapping source="hist_long_name"/>
+			<column-mapping source="hist_native_long_name"/>
+			<column-mapping source="hist_native_short_name"/>
+			<column-mapping source="hist_party_address"/>
+			<column-mapping source="hist_party_city"/>
+			<column-mapping source="hist_party_region"/>
+			<column-mapping source="hist_party_rtr_ticker"/>
+			<column-mapping source="hist_party_ticker"/>
+			<column-mapping source="hist_party_zipcode"/>
+			<column-mapping source="hist_phone_number"/>
+			<column-mapping source="hist_short_name"/>
+			<column-mapping source="hist_state_incorp"/>
+			<filter>
+				<![CDATA[(party_id in (SELECT issuer_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime}))]]>
+			</filter>
+		</table-mapping>
+		
+		<table-mapping source="govcorp..underwriter_xref" destination="govcorp_underwriter_xref">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="num_of_shrs"/>
+			<column-mapping source="undwrt_amt"/>
+			<column-mapping source="undwrt_dt" isKey="true"/>
+			<column-mapping source="undwrt_id" isKey="true"/>
+			<column-mapping source="undwrt_ranking_cd" isKey="true"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..govt_auction" destination="govcorp_govt_auction">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="announce_dt"/>
+			<column-mapping source="auction_dt"/>
+			<column-mapping source="avg_be_yld"/>
+			<column-mapping source="avg_disc_yld"/>
+			<column-mapping source="avg_px"/>
+			<column-mapping source="bid_received"/>
+			<column-mapping source="bid_to_cover_ratio"/>
+			<column-mapping source="bridge_symbol"/>
+			<column-mapping source="cash_mgmt_bill_fl"/>
+			<column-mapping source="ctl_bank_allot_amt"/>
+			<column-mapping source="directbidder_bid_accepted"/>
+			<column-mapping source="directbidder_bid_received"/>
+			<column-mapping source="dutch_auction_fl"/>
+			<column-mapping source="foreign_bid_accepted"/>
+			<column-mapping source="foreign_bid_received"/>
+			<column-mapping source="govt_symbol"/>
+			<column-mapping source="high_be_yld"/>
+			<column-mapping source="high_disc_yld"/>
+			<column-mapping source="high_px"/>
+			<column-mapping source="indirectbidder_bid_accepted"/>
+			<column-mapping source="indirectbidder_bid_received"/>
+			<column-mapping source="issue_dt"/>
+			<column-mapping source="low_be_yld"/>
+			<column-mapping source="low_disc_yld"/>
+			<column-mapping source="low_px"/>
+			<column-mapping source="noncompetitive"/>
+			<column-mapping source="noncompetitive_bid_received"/>
+			<column-mapping source="other_bid_accepted"/>
+			<column-mapping source="other_bid_received"/>
+			<column-mapping source="primarydealer_bid_accepted"/>
+			<column-mapping source="primarydealer_bid_received"/>
+			<column-mapping source="total_accepted"/>
+			<column-mapping source="total_applied_for"/>
+			<column-mapping source="total_comp_bid_accepted"/>
+			<column-mapping source="total_comp_bid_received"/>
+			<column-mapping source="wi_id" isKey="true"/>
+			<column-mapping source="wi_type_cd"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..underwriters" destination="govcorp_underwriters">
+			<column-mapping source="undwrt_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="undwrt_cd"/>
+			<column-mapping source="undwrt_long_name"/>
+			<column-mapping source="undwrt_orgid"/>
+			<column-mapping source="undwrt_setup_dt"/>
+			<filter>
+				<![CDATA[undwrt_id IN (SELECT b.undwrt_id FROM govcorp..underwriter_xref b WHERE b.asset_id in (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime}))]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..doc_obj_xref_asset" destination="govcorp_doc_obj_xref_asset">
+			<column-mapping source="doc_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="asset_id" isKey="true"/>
+			<column-mapping source="obj_type_cd"/>
+			<column-mapping source="primary_fl"/>
+			<filter>
+				<![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..document" destination="govcorp_document">
+			<column-mapping source="doc_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="doc_fmt_cd"/>
+			<column-mapping source="doc_repository_cd"/>
+			<column-mapping source="doc_type_cd"/>
+			<column-mapping source="eff_dt"/>
+			<column-mapping source="end_dt"/>
+			<column-mapping source="parent_doc_id"/>
+			<column-mapping source="repository_docid"/>
+			<column-mapping source="doc_size"/>
+			<filter>
+				<![CDATA[doc_id IN (SELECT a.doc_id FROM govcorp..doc_obj_xref_asset a WHERE a.asset_id in (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime}))]]>
+			</filter>
+		</table-mapping>
+
+    <table-mapping source="govcorp..iss_def" destination="govcorp_iss_def">
+      <column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="iss_dt" isKey="true" />
+      <column-mapping source="wi_id" isKey="true" />
+      <column-mapping source="pricing_suppl_dt" isKey="true" />
+      <column-mapping source="auction_type_cd"/>
+      <column-mapping source="auction_method_cd"/>
+      <column-mapping source="iss_curr_cd"/>
+      <column-mapping source="wi_type_cd"/>
+      <column-mapping source="grade_at_iss_cd"/>
+      <column-mapping source="pricing_suppl_num"/>
+      <column-mapping source="accepted_auction_range"/>
+      <column-mapping source="sec_pricing_ref_id"/>
+      <column-mapping source="iss_leg_nm" isKey="true"/>
+      <column-mapping source="secoff_cd"/>
+      <column-mapping source="avg_disc_yld"/>
+      <column-mapping source="bid_received"/>
+      <column-mapping source="bid_to_cover_ratio"/>
+      <column-mapping source="ctl_bank_allot_amt"/>
+      <column-mapping source="directbidder_bid_accepted"/>
+      <column-mapping source="directbidder_bid_received"/>
+      <column-mapping source="disc_comm_per_debt"/>
+      <column-mapping source="disc_comm_per_sh"/>
+      <column-mapping source="foreign_bid_accepted"/>
+      <column-mapping source="foreign_bid_received"/>
+      <column-mapping source="high_be_yld"/>
+      <column-mapping source="high_disc_yld"/>
+      <column-mapping source="high_yld_px"/>
+      <column-mapping source="indicative_amt"/>
+      <column-mapping source="indirectbidder_bid_accepted"/>
+      <column-mapping source="indirectbidder_bid_received"/>
+      <column-mapping source="iss_amt"/>
+      <column-mapping source="iss_px"/>
+      <column-mapping source="iss_sprd"/>
+      <column-mapping source="iss_yld"/>
+      <column-mapping source="low_be_yld"/>
+      <column-mapping source="low_disc_yld"/>
+      <column-mapping source="low_yld_px"/>
+      <column-mapping source="mgmt_fee_per_sh"/>
+      <column-mapping source="mgmt_uw_fees_comb"/>
+      <column-mapping source="mid_swaps_sprd"/>
+      <column-mapping source="noncompetitive_bid_accepted"/>
+      <column-mapping source="noncompetitive_bid_received"/>
+      <column-mapping source="other_bid_accepted"/>
+      <column-mapping source="other_bid_received"/>
+      <column-mapping source="praecipium"/>
+      <column-mapping source="primarydealer_bid_accepted"/>
+      <column-mapping source="primarydealer_bid_received"/>
+      <column-mapping source="proc_per_debt"/>
+      <column-mapping source="proc_per_sh"/>
+      <column-mapping source="reallow_per_debt"/>
+      <column-mapping source="reallow_per_sh"/>
+      <column-mapping source="reg_expense"/>
+      <column-mapping source="reoffer_px"/>
+      <column-mapping source="reoffer_sprd"/>
+      <column-mapping source="reoffer_yld"/>
+      <column-mapping source="selling_conc_per_debt"/>
+      <column-mapping source="selling_conc_per_sh"/>
+      <column-mapping source="total_applied_for"/>
+      <column-mapping source="total_comp_bid_accepted"/>
+      <column-mapping source="total_comp_bid_received"/>
+      <column-mapping source="total_disc_comm"/>
+      <column-mapping source="total_fee"/>
+      <column-mapping source="total_proc_to_reg"/>
+      <column-mapping source="total_px_public"/>
+      <column-mapping source="undwrt_fee"/>
+      <column-mapping source="primarydealer_bid_accept_nonc"/>
+      <column-mapping source="sec_pricing_ref_sprd"/>
+      <column-mapping source="yield_tail"/>
+      <column-mapping source="avg_be_yld"/>
+      <column-mapping source="avg_yld_px"/>
+      <column-mapping source="online_iss_amt"/>
+      <column-mapping source="auction_announce_dt"/>
+      <column-mapping source="auction_or_pricing_dt"/>
+      <column-mapping source="dated_dt"/>
+      <column-mapping source="iss_end_dt"/>
+      <column-mapping source="cash_mgmt_bill_fl"/>
+      <column-mapping source="dutch_auction_fl"/>
+      <column-mapping source="nonfix_iss_fl"/>
+      <column-mapping source="nonunderwritten_sec_incl_fl"/>
+      <column-mapping source="sec_pricing_ref_type_cd"/>
+      <filter>
+        <![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= GETDATE())]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="govcorp..branch" destination="govcorp_branch">
+      <column-mapping source="branch_id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="trustee_id"/>
+      <column-mapping source="branch_cntry_cd"/>
+      <column-mapping source="branch_orgid"/>
+      <column-mapping source="branch_zipcode"/>
+      <column-mapping source="branch_phone_number"/>
+      <column-mapping source="branch_city"/>
+      <column-mapping source="branch_region"/>
+      <column-mapping source="branch_name"/>
+      <column-mapping source="branch_address"/>
+    </table-mapping>
+
+    <table-mapping source="govcorp..trustee_xref" destination="govcorp_trustee_xref">
+      <column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="branch_id" isKey="true"/>
+      <column-mapping source="trustee_ranking_cd"/>
+      <filter>
+        <![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE (a.cntry_of_iss_cd = 'CN' OR a.sec_class_cd in ('DSUM', 'FORM')) AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+      </filter>
+    </table-mapping>
+    
+		<!--<table-mapping source="gcodes..dbs_stat_on_liq_cds" destination="gcodes_dbs_stat_on_liq_cds">
+			<column-mapping source="dbs_stat_on_liq_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="dbs_stat_on_liq_descr"/>
+		</table-mapping>-->
+
+		<table-mapping source="gcodes..xfi_exchange_cds" destination="gcodes_xfi_exchange_cds">
+			<column-mapping source="xfi_exchange_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="xfi_exchange_name"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..indu_sector_cds" destination="gcodes_indu_sector_cds">
+			<column-mapping source="indu_sector_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="indu_sector_descr"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..indu_subsector_cds" destination="gcodes_indu_subsector_cds">
+			<column-mapping source="indu_subsector_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="indu_sector_cd"/>
+			<column-mapping source="indu_subsector_descr"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..secoff_cds" destination="gcodes_secoff_cds">
+			<column-mapping source="secoff_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="secoff_descr"/>
+			<column-mapping source="auction_fl"/>
+			<column-mapping source="private_place_fl"/>
+			<column-mapping source="rule_144a_fl"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..ranking_cds" destination="gcodes_ranking_cds">
+			<column-mapping source="ranking_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="ranking_descr"/>
+			<column-mapping source="rank"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..sovereign_class_cds" destination="gcodes_sovereign_class_cds">
+			<column-mapping source="sovr_class_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="sovr_class_desc"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..debt_type_cds" destination="gcodes_debt_type_cds">
+			<column-mapping source="debt_type_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="short_descr"/>
+			<column-mapping source="debt_type_descr"/>
+		</table-mapping>
+
+	</mappings>
+
+	<post-sync-tasks>
+	</post-sync-tasks>
+
+	<custom-bonds>
+	</custom-bonds>
+</settings>

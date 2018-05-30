@@ -1,0 +1,413 @@
+﻿@using VAV.Web.Common
+@{
+    var datePickerId = "datePicker" + @ViewBag.ID;
+    var endDatePickerId = "endDatePicker" + @ViewBag.ID;
+    var startDate = DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var productNameId = "productName" + @ViewBag.ID;
+    var regionSelectId = "wmpYTregionSelect";
+    var citySelectId = "citySelect" + @ViewBag.ID;
+}
+<div class="colorBlock" style="min-width: 880px;">
+    <div class="Statisticalfilter">
+        <div style="height: 25px;">
+            <div class="wmpDivSec">@Resources.Global.Report_Query_Date</div>
+            <input type="text" id="@datePickerId" value="@startDate" class="dateInput" readonly/>
+            <label style="margin-left: 10px;">@Resources.Global.WMP_Sale_Date_To</label>
+            <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput" readonly/>
+            @Resources.Global.WMP_Bank_Type
+            @Html.DropDownList("wmpYTBankType", UIStaticDataCache.Instance.WMPBankType, new { @class = "medium2Select", multiple = "multiple" })
+            @Resources.Global.WMP_Bank
+            <select id="wmpBankYTBank" class="medium2Select" multiple="multiple">
+            </select>
+            <input type="button" value="@Resources.Global.Report_Query" onclick="WMP.UpdateBankYTData()"/>
+            <input type="button" value="@Resources.Global.AdvancedSearch" onclick="AdvanceQuery(this,'#wmpBankYieldTrendAdvanced','#wmpBankYieldTrend','@Resources.Global.AdvancedSearch','@Resources.Global.HideAdvancedSearch',' -webkit-calc(100% - 41px)',' -webkit-calc(100% - 66px)')"/>
+        </div>
+        <div id="wmpBankYieldTrendAdvanced" style="display: none">
+            <div style="height: 25px;">
+                <div class="wmpDivSec">@Resources.Global.WMP_Region</div>
+                <div style="float: left;width: 130px;">@Html.DropDownList(@regionSelectId, UIStaticDataCache.Instance.WMPRegion, new { @class = "largeSelect", multiple = "multiple" })</div>
+                <div class="wmpDivSec">@Resources.Global.WMP_City</div>
+                <div style="float: left;width: 130px;"><select id="@citySelectId" multiple="multiple" ></select></div>
+                <div class="wmpDivSec"> @Resources.Global.WMP_Prod_Name</div>
+                <div style="float: left;"><input class="text" id="@productNameId" name="@productNameId" style="width:118px;" type="text" value="" /></div>
+            </div>
+            <div style="height: 25px;clear: both;">
+                <div class="wmpDivSec">@Resources.Global.WMP_Currency</div>
+                <div style="float: left;">@Html.DropDownList("wmpBankYTCurrency", HtmlUtil.CookSelectOptions("wmpCurrency"), new { @class = "largeSelect" })</div>
+                <div class="wmpDivSec">@Resources.Global.WMP_Yield_Type</div>
+                <div style="float: left;">@Html.DropDownList("wmpBankYTYieldType", HtmlUtil.CookSelectOptions("wmpYieldType"), new { @class = "largeSelect" })</div>
+                <div class="wmpDivSec">@Resources.Global.WMP_Invest_Bid_Type</div>
+                <div style="float: left;">@Html.DropDownList("wmpBankYTInvestBidType", HtmlUtil.CookSelectOptions("wmpInvestOption"), new { @class = "largeSelect" })</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wmpBankYieldTrend" class="StatisticalContent" style="min-width: 880px;">
+    <div class="Statistical">
+        <div class="StatisticalTop">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                <div class="colorBlock-header">
+                    <div>
+                        <span class="colorBlock-header-span">@Resources.Global.WMP_The_Results</span>
+                    </div>
+                </div>
+                <div>
+                    <div style="position: absolute; left: 10px; top: 30px">
+                        <fieldset id="wmpBankYTCheckboxGroup">
+                            <legend class="colorBlock-header-span">@Resources.Global.Category_Term</legend>
+                            <p>
+                                <input value="LT1M" type="checkbox" checked="checked"/>@Resources.Global.WMP_Trend_PT_LT1M</p>
+                            <p>
+                                <input value="1MTo3M" type="checkbox"/>@Resources.Global.WMP_Trend_PT_1MTo3M</p>
+                            <p>
+                                <input value="3MTo6M" type="checkbox"/>@Resources.Global.WMP_Trend_PT_3MTo6M</p>
+                            <p>
+                                <input value="6MTo12M" type="checkbox"/>@Resources.Global.WMP_Trend_PT_6MTo12M</p>
+                            <p>
+                                <input value="GT12M" type="checkbox"/>@Resources.Global.WMP_Trend_PT_GT12M</p>
+                        </fieldset>
+                    </div>
+                    <div id="wmpYieldTrendChartContainer" style="position: absolute; width: 77%; height: 82%;
+                        width: -webkit-calc(100% - 160px); height: -webkit-calc(100% - 50px); margin: 5px 0px 5px 145px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="StatisticalBottom">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 10px);">
+                <div class="colorBlock-header">
+                    <div>
+                        <span class="colorBlock-header-span">@Resources.Global.WMP_Financial_Details</span>
+                    </div>
+                </div>
+                <div>
+                    <div id="wmpBankYTPaginateOfLabel" class="paginateOfLable">
+                    </div>
+                    <a href="#" class="exportExcel" onclick="WMP.ExportExcelBankYTDetails(this);">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                    <div style="width: 300px; float: right; padding-right: 80px">
+                        <div id="wmpBankYTPaginate">
+                        </div>
+                    </div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div style="height: -webkit-calc(100% - 56px); overflow: auto">
+                    <table id="wmpBankYTDetailTable" class="datatable Zebra" style="white-space: nowrap;">
+                        <thead>
+                            <tr class="hr">
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div>@Resources.Global.Source</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var WMP = (function (my) {
+        var bytCurrentPage = 1;
+        my.UpdateYTChartData = function(chartData) {
+            my.YTChart = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'wmpYieldTrendChartContainer',
+                    zoomType: 'None',
+                    type: 'line'
+                },
+                title: {
+                    text: '@Resources.Global.Fundamental_SummaryGraph'
+                },
+                xAxis: {
+                    type: 'datetime'
+                },
+                yAxis: {
+                    title: {
+                        text: '@Resources.Global.WMP_TheHighestExpectedRevenue',
+                        offset: WMP.yieldTrend.chartYTitleMargin,
+                        align: 'high',
+			            rotation: 0,
+			            floating: true,
+			            y: -6,
+			            x: 0
+                    }
+                },
+                plotOptions: {
+                    column: { borderWidth: 0},
+                    series: {
+                        cursor: 'pointer',
+                        point: {
+                            events: {
+                                click: function() {
+                                    var banks='all';
+                                    if($("#wmpYTBankType option").length!=$("#wmpYTBankType option:selected").length||$("#wmpBankYTBank option").length!=$("#wmpBankYTBank option:selected").length)
+                                    {
+                                        if($("#wmpBankYTBank option:selected").length==0)return;
+                                        banks = $('#wmpBankYTBank').val();
+                                        if(banks != null) banks = banks.join();
+                                    }
+                                    var city='all';
+                                    if($("#@regionSelectId option").length!=$("#@regionSelectId option:selected").length||$("#@citySelectId option").length!=$("#@citySelectId option:selected").length)
+                                    {
+                                        if($("#@citySelectId option:selected").length==0)return;
+                                        city = $('#@citySelectId').val();
+                                        if(city != null) city = city.join();
+                                    }
+                                    var cTerm = $('#wmpBankYTCheckboxGroup p:contains("' + this.series.name + '") input').val();
+                                    $('#wmpBankYTCheckboxGroup').data('selected', cTerm);
+                                    bytCurrentPage = 1;
+                                    AjaxWithBlock($('#wmpBankYieldTrend'), '/WMP/GetYieldTrendDetail', {
+                                        start: $("#@datePickerId").val(),
+                                        end: $("#@endDatePickerId").val(),
+                                        term:cTerm,
+                                        bankType:"all",
+                                        bank:banks,
+                                        prodName: $("#@productNameId").val(),
+                                        area: city,
+                                        currency:$('#wmpBankYTCurrency').val(),
+                                        yieldType:$('#wmpBankYTYieldType').val(),
+                                        investType:$('#wmpBankYTInvestBidType').val(),
+                                        currentPage: bytCurrentPage,
+                                        id: @ViewBag.ID
+                                        }, WMP.UpdateYTTableData);
+                                }
+                            }
+                        }
+                    }
+                },
+                series: chartData.series,
+                legend: { enabled: true },
+                tooltip: { formatter: function () { return Highcharts.dateFormat('%Y-%m-%d', this.x) + '<br><b>' + this.point.series.name + '</b>: ' + Highcharts.numberFormat(this.y,2); } }
+            });
+        };
+        my.UpdateYTTableData = function(data) {
+            bytCurrentPage = data.CurrentPage;
+            $.template("colTemp", '<th>${Name}</th>');
+            $('#wmpBankYTDetailTable thead tr').empty();
+            $.tmpl("colTemp", data.ColumTemplate).appendTo("#wmpBankYTDetailTable thead tr");
+            var markup = WMP.BuildRowTemplate(data.ColumTemplate,'/WMP/BankWMPDetail/');
+            $.template("rowTemplate", markup);
+            $('#wmpBankYTDetailTable tbody').empty();
+            $.tmpl("rowTemplate", data.RowData).appendTo("#wmpBankYTDetailTable tbody");
+            var start = (data.CurrentPage - 1) * data.PageSize + 1;
+            var end = data.CurrentPage * data.PageSize;
+            if (end > data.Total) end = data.Total;
+            $('#wmpBankYTPaginateOfLabel').html(start + '-' + end + '@Resources.Global.WMP_of' + data.Total);
+            if(data.Total == 0) {
+                $('#wmpBankYTPaginateOfLabel,#wmpBankYTPaginate').hide();
+                return;
+            } else {
+                $('#wmpBankYTPaginateOfLabel,#wmpBankYTPaginate').show();
+            }
+            $('#wmpBankYTPaginate').paginate({
+                count: Math.ceil(data.Total / data.PageSize),
+                start: data.CurrentPage,
+                display: 10,
+                border: false,
+                text_color: '#00B3E3',
+                background_color: 'none',
+                text_hover_color: '#28D2FF',
+                background_hover_color: 'none',
+                images: false,
+                mouse: 'press',
+                onChange: function(page) {
+                    var banks='all';
+                    if($("#wmpYTBankType option").length!=$("#wmpYTBankType option:selected").length||$("#wmpBankYTBank option").length!=$("#wmpBankYTBank option:selected").length)
+                    {
+                        if($("#wmpBankYTBank option:selected").length==0)return;
+                        banks = $('#wmpBankYTBank').val();
+                        if(banks != null) banks = banks.join();
+                    }
+                    var city='all';
+                    if($("#@regionSelectId option").length!=$("#@regionSelectId option:selected").length||$("#@citySelectId option").length!=$("#@citySelectId option:selected").length)
+                    {
+                        if($("#@citySelectId option:selected").length==0)return;
+                        city = $('#@citySelectId').val();
+                        if(city != null) city = city.join();
+                    }
+                    AjaxWithBlock($('#wmpBankYTDetailTable'), '/WMP/GetYieldTrendDetail', {
+                        start: $("#@datePickerId").val(),
+                        end: $("#@endDatePickerId").val(),
+                        term:$('#wmpBankYTCheckboxGroup').data('selected'),
+                        bankType:"all",
+                        bank:banks,
+                        prodName: $("#@productNameId").val(),
+                        area: city,
+                        currency:$('#wmpBankYTCurrency').val(),
+                        yieldType:$('#wmpBankYTYieldType').val(),
+                        investType:$('#wmpBankYTInvestBidType').val(),
+                        currentPage: page,
+                        id: @ViewBag.ID
+                        }, my.UpdateYTTableData);
+                },
+                firstText: '@Resources.Global.Paginate_First',
+                lastText: '@Resources.Global.Paginate_Last'
+            });
+        };
+        my.GetSelectedBankYTTerms = function() {
+            var selectedValues = [];
+            $('#wmpBankYTCheckboxGroup input:checked').map(function(x, y) { return $(y).val(); }).each(function(x, y) { selectedValues.push(y); });
+            return selectedValues.join();
+        };
+
+        my.ExportExcelBankYTDetails = function(link) {
+            var banks='all';
+            if($("#wmpYTBankType option").length!=$("#wmpYTBankType option:selected").length||$("#wmpBankYTBank option").length!=$("#wmpBankYTBank option:selected").length)
+            {
+                if($("#wmpBankYTBank option:selected").length==0)return;
+                banks = $('#wmpBankYTBank').val();
+                if(banks != null) banks = banks.join();
+            }
+            var city='all';
+            if($("#@regionSelectId option").length!=$("#@regionSelectId option:selected").length||$("#@citySelectId option").length!=$("#@citySelectId option:selected").length)
+            {
+                if($("#@citySelectId option:selected").length==0)return;
+                city = $('#@citySelectId').val();
+                if(city != null) city = city.join();
+            }
+                     
+            $(link).attr("href", '@Url.Action("ExportExcelForYieldTrendDetail", "WMP")'
+                + '?start=' + $("#@datePickerId").val()
+                    + '&end=' + $("#@endDatePickerId").val()
+                        + '&term=' + $('#wmpBankYTCheckboxGroup').data('selected')
+                            + '&bankType=' + "all"
+                                + '&bank='+ banks
+                                    + '&currency=' + $('#wmpBankYTCurrency').val()
+                                         + '&yieldType=' + $('#wmpBankYTYieldType').val()
+                                            + '&investType=' + $('#wmpBankYTInvestBidType').val()
+                                                + '&id=@ViewBag.ID'
+                                                    +'&currentPage='+bytCurrentPage
+                                                        + '&prodName=' + $("#@productNameId").val()
+                                                           + '&area=' + city
+            );
+        };
+        my.UpdateBankYTData = function() {
+            debugger;
+            var banks='all';
+            if($("#wmpYTBankType option").length!=$("#wmpYTBankType option:selected").length||$("#wmpBankYTBank option").length!=$("#wmpBankYTBank option:selected").length)
+            {
+                if($("#wmpBankYTBank option:selected").length==0)return;
+                banks = $('#wmpBankYTBank').val();
+                if(banks != null) banks = banks.join();
+            }
+            var city='all';
+            if($("#@regionSelectId option").length!=$("#@regionSelectId option:selected").length||$("#@citySelectId option").length!=$("#@citySelectId option:selected").length)
+            {
+                if($("#@citySelectId option:selected").length==0)return;
+                city = $('#@citySelectId').val();
+                if(city != null) city = city.join();
+            }
+            AjaxWithBlock($('#wmpBankYieldTrend'), '/WMP/GetYieldTrendData', {
+                start: $("#@datePickerId").val(),
+                end: $("#@endDatePickerId").val(),
+                term: WMP.GetSelectedBankYTTerms(),
+                bankType: "all",
+                bank: banks,
+                prodName: $("#@productNameId").val(),
+                area: city,
+                currency: $('#wmpBankYTCurrency').val(),
+                yieldType: $('#wmpBankYTYieldType').val(),
+                investType: $('#wmpBankYTInvestBidType').val(),
+                id: @ViewBag.ID
+                }, function(data) {
+                    WMP.UpdateYTChartData(data.chart);
+                    WMP.UpdateYTTableData(data.table);
+                });
+        };
+        return my;
+    } (WMP || {}));
+
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true, changeYear: true, dateFormat: 'yy-mm-dd'
+        });
+        amplify.subscribe('RefreshChart', function () {
+            var parent = $('#wmpYieldTrendChartContainer');
+            setTimeout(function() {
+                WMP.YTChart.setSize(parent.width() , parent.height(), false);
+            }, 200);
+        });
+        $('#wmpBankYTCheckboxGroup input').change(function() {
+            debugger;
+            var banks='all';
+            if($("#wmpYTBankType option").length!=$("#wmpYTBankType option:selected").length||$("#wmpBankYTBank option").length!=$("#wmpBankYTBank option:selected").length)
+            {
+                if($("#wmpBankYTBank option:selected").length==0)return;
+                banks = $('#wmpBankYTBank').val();
+                if(banks != null) banks = banks.join();
+            }
+            var city='all';
+            if($("#@regionSelectId option").length!=$("#@regionSelectId option:selected").length||$("#@citySelectId option").length!=$("#@citySelectId option:selected").length)
+            {
+                if($("#@citySelectId option:selected").length==0)return;
+                city = $('#@citySelectId').val();
+                if(city != null) city = city.join();
+            }
+            AjaxWithBlock($('#wmpBankYieldTrend'), '/WMP/GetYieldTrendData', {
+                start: $("#@datePickerId").val(),
+                end: $("#@endDatePickerId").val(),
+                term: WMP.GetSelectedBankYTTerms(),
+                bankType: "all",
+                bank: banks,
+                prodName: $("#@productNameId").val(),
+                area: city,
+                currency: $('#wmpBankYTCurrency').val(),
+                yieldType: $('#wmpBankYTYieldType').val(),
+                investType: $('#wmpBankYTInvestBidType').val(),
+                id :@ViewBag.ID
+                }, function(cdata) {
+                    WMP.UpdateYTChartData(cdata.chart);
+                    WMP.UpdateYTTableData(cdata.table);
+                });
+            $('#wmpBankYTCheckboxGroup').data('selected', $('#wmpBankYTCheckboxGroup input:checked').length == 0 ? '' : $('#wmpBankYTCheckboxGroup input:checked').val());
+        });
+        var data = @{ Html.RenderAction("GetYieldTrendData", "WMP", new
+                      {
+                          start = startDate,
+                          end = endDate,
+                          bankType = "all",
+                          bank = "all",
+                          prodName="",
+                          area="all",
+                          currency = "1",
+                          yieldType = "all",
+                          investType = "all",
+                          term = "LT1M",
+                          isHTML = true,
+                          id = ViewBag.ID
+                      }); };
+        WMP.UpdateYTChartData(data.chart);
+        WMP.UpdateYTTableData(data.table);
+        var optionData = @{ Html.RenderAction("GetMultipleBankOptionByType", "WMP", new { typeCode = "all" }); };
+        WMP.BuildBankMultiSelect("#wmpBankYTBank", optionData);
+        $("#wmpYTBankType").multiselect({
+            buttonMinWidth: 115,
+            menuMinWidth: 240,
+            checkAllText: '@Resources.Global.Select_All',
+            uncheckAllText: '@Resources.Global.Unselect_All',
+            noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+            selectedText: '#@Resources.Global.Selected',
+            close: function () {
+                WMP.UpdateMultipleBankOption('#wmpYTBankType','#wmpBankYTBank');
+            }
+        });
+        var regionOptionData = @{ Html.RenderAction("GetMultipleCityOptionByType", "WMP", new { regionCode = "all" }); };
+        WMP.BuildGeneralMultiSelect("#@citySelectId", regionOptionData, WMP.BuildCityOptionTempl());
+        $("#@regionSelectId").multiselect({
+            buttonMinWidth: 115,
+            menuMinWidth: 120,
+            checkAllText: '@Resources.Global.Select_All',
+            uncheckAllText: '@Resources.Global.Unselect_All',
+            noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+            selectedText: '#@Resources.Global.Selected',
+            close: function () {
+                WMP.UpdateMultipleCityOption("#@regionSelectId" ,"#@citySelectId");
+            }
+        });
+        $('#wmpBankYTCheckboxGroup').data('selected', $('#wmpBankYTCheckboxGroup input:checked').val());
+    });
+</script>

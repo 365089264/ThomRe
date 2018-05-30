@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SysMon.AppTrace" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SysMon.AppTrace" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="AppTraceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Off" />
+      <xs:enumeration value="Calculation" />
+      <xs:enumeration value="Framework" />
+      <xs:enumeration value="DataRequest" />
+      <xs:enumeration value="Rfa" />
+      <xs:enumeration value="All" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AppTraceType" nillable="true" type="tns:AppTraceType" />
+  <xs:simpleType name="AppTraceLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Summary" />
+      <xs:enumeration value="Detail" />
+      <xs:enumeration value="Scrutiny" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AppTraceLevel" nillable="true" type="tns:AppTraceLevel" />
+</xs:schema>

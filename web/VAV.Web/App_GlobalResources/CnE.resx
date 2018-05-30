@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CNE_SdR_DailyOutputCapacity" xml:space="preserve">
+    <value>Process Capability (10K ton)</value>
+  </data>
+  <data name="CNE_SdR_DailyOutputDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="CNE_SdR_DailyOutputDiesel" xml:space="preserve">
+    <value>Diesel（ton）</value>
+  </data>
+  <data name="CNE_SdR_DailyOutputGasoline" xml:space="preserve">
+    <value>Gasoline（ton）</value>
+  </data>
+  <data name="CNE_SdR_DailyOutputTitle" xml:space="preserve">
+    <value>Daily Output</value>
+  </data>
+  <data name="CNE_SdR_Device" xml:space="preserve">
+    <value>Equipment</value>
+  </data>
+  <data name="CNE_SdR_DeviceTitle" xml:space="preserve">
+    <value>Equipment Detail</value>
+  </data>
+  <data name="CNE_SdR_DeviceUpdate" xml:space="preserve">
+    <value>Update Date</value>
+  </data>
+  <data name="CNE_SdR_DeviceYieldByTon" xml:space="preserve">
+    <value>10Kton</value>
+  </data>
+  <data name="CNE_SdR_Refinery" xml:space="preserve">
+    <value>Refinery</value>
+  </data>
+  <data name="CNE_SdR_YieldByBarrel" xml:space="preserve">
+    <value>Barrels/Day</value>
+  </data>
+  <data name="CNE_ShangDonLocalRefinery" xml:space="preserve">
+    <value>Shandong Local Refinery</value>
+  </data>
+  <data name="Diesel" xml:space="preserve">
+    <value>Diesel</value>
+  </data>
+  <data name="Gasoline" xml:space="preserve">
+    <value>Gasoline</value>
+  </data>
+  <data name="GDT_ChartInventoryName" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="GDT_ChartOuputName" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="GDT_ChartSalesName" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="GDT_FanyaSource" xml:space="preserve">
+    <value>Source:Fanya, Thomson Reuters</value>
+  </data>
+  <data name="GDT_InventoryTitle" xml:space="preserve">
+    <value>Inventory Table</value>
+  </data>
+  <data name="GDT_NBS_Statement" xml:space="preserve">
+    <value>NBS do not publish industrial data of January</value>
+  </data>
+  <data name="GDT_OutputTitle" xml:space="preserve">
+    <value>Output Table</value>
+  </data>
+  <data name="GDT_PriceChartPriceAvgName" xml:space="preserve">
+    <value>Price AVG</value>
+  </data>
+  <data name="GDT_PriceChartPriceName" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="GDT_PriceChart_" xml:space="preserve">
+    <value>ALL</value>
+  </data>
+  <data name="GDT_PriceTitle" xml:space="preserve">
+    <value>Price Spline</value>
+  </data>
+  <data name="GDT_SalesTitle" xml:space="preserve">
+    <value>Sales Table</value>
+  </data>
+  <data name="GDT_ShippingSource" xml:space="preserve">
+    <value>Source:Shanghai Shipping Freight Exchange Co., Ltd.,Thomson Reuters</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="Valuation" xml:space="preserve">
+    <value>Valuation</value>
+  </data>
+  <data name="CNYTonne" xml:space="preserve">
+    <value>CNY/Tonne</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="StockCapacityRate" xml:space="preserve">
+    <value>Stock Capacity Rate</value>
+  </data>
+  <data name="Coal_BrownCoal" xml:space="preserve">
+    <value>Lignite Arrivals(Wagon)</value>
+  </data>
+  <data name="Coal_Traffic_Anchor" xml:space="preserve">
+    <value>Vessels Anchored(Vessel)</value>
+  </data>
+  <data name="Coal_Traffic_Anchor_Num" xml:space="preserve">
+    <value>Vessels Expected(Vessel)</value>
+  </data>
+  <data name="Coal_Traffic_Boat" xml:space="preserve">
+    <value>Shipment(10000 MT)</value>
+  </data>
+  <data name="Coal_Traffic_DayNight_Track" xml:space="preserve">
+    <value>Rail Cars Unloaded(Wagon)</value>
+  </data>
+  <data name="Coal_Traffic_Filed" xml:space="preserve">
+    <value>Stock(10000 MT)</value>
+  </data>
+  <data name="Coal_Traffic_Frequency" xml:space="preserve">
+    <value>Update Frequency</value>
+  </data>
+  <data name="Coal_Traffic_Num" xml:space="preserve">
+    <value>Rail Volume Unloaded(10000 MT)</value>
+  </data>
+  <data name="Coal_Traffic_Park" xml:space="preserve">
+    <value>Berth(Vessel)</value>
+  </data>
+  <data name="Coal_Traffic_Port" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Coal_Traffic_RailCar" xml:space="preserve">
+    <value>Rail Cars Arrivals(Wagon)</value>
+  </data>
+  <data name="Coal_Traffic_Railway" xml:space="preserve">
+    <value>Rail Inflow(10000 MT)</value>
+  </data>
+  <data name="Coal_Traffic_Road" xml:space="preserve">
+    <value>Road Inflow(10000 MT)</value>
+  </data>
+  <data name="Coal_Traffic_Track" xml:space="preserve">
+    <value>Rail Cars Unloaded(car)</value>
+  </data>
+  <data name="Coal_Traffic_Trough" xml:space="preserve">
+    <value>Throughput(10000 MT)</value>
+  </data>
+  <data name="Coal_Schedular" xml:space="preserve">
+    <value>The port of coal mine</value>
+  </data>
+  <data name="Coal_Unit" xml:space="preserve">
+    <value>Unit:10000 MT</value>
+  </data>
+  <data name="CNE_BalanceTable" xml:space="preserve">
+    <value>供需平衡表</value>
+  </data>
+  <data name="CNE_Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="GDT_SupplyDemandTable" xml:space="preserve">
+    <value>SupplyDemandBallanceTable</value>
+  </data>
+  <data name="GDT_SupplyDemandItem" xml:space="preserve">
+    <value>SupplyDemandItem</value>
+  </data>
+</root>

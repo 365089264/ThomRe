@@ -1,0 +1,235 @@
+﻿@using VAV.Model.Data.Bond;
+
+@model Tuple <IEnumerable<BondDetail>,int>
+
+@{
+    Layout = null;
+    var talbeName = "bondDetail" + Model.Item2;
+}
+
+<table id="@talbeName" class="datatable" style="cursor:pointer;">
+    <thead>
+        <tr class="hr">
+            <th align="center">
+                @Resources.Global.Bond_Code
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Name
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_IssueDate
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_IssueAmount (@Resources.Global.Unit_Option_K)
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Coupon_class
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Coupon_Frequency
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Coupon_Rate
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Value_Date
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Maturity_Date
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Listing_Date
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Term
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Issue_Price
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Ref_Yield
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Option
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_ISBN
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Rating
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Rating_Agency
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Party_Rating
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Party_Rating_Agency
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_CDC_Classify
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Issuer
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Issuer_Rating
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Rating_Hist
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Float_Index
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Spread
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Day_Count
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Currency
+            </th>
+            <th align="center">
+                @Resources.Global.Bond_Seniority 
+            </th>
+            <th>
+                @Resources.Global.Bond_IssueComment
+            </th>
+            <th>
+                @Resources.Global.Bond_Markets
+            </th>
+            <th>
+                @Resources.Global.Bond_Trustee
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Item1.Count() > 0)
+        {
+            foreach (var r in Model.Item1)
+            {
+                var amount = r.IssueAmount == null ? "" : string.Format("{0:N2}", r.IssueAmount);
+                var issueDate = r.IssueDate == null ? "" : ((DateTime)r.IssueDate).ToString("yyyy-MM-dd");
+                var valueDate = r.ValueDate == null ? "" : ((DateTime)r.ValueDate).ToString("yyyy-MM-dd");
+                var maturityDate = r.MaturityDate == null ? "" : ((DateTime)r.MaturityDate).ToString("yyyy-MM-dd");
+                var listringDate = r.ListingDate == null ? "" : ((DateTime)r.ListingDate).ToString("yyyy-MM-dd");
+                var term = r.Term == null ? "" : r.Term + (r.OrigAvgLife < 1 ? Resources.Global.Time_Day : Resources.Global.Time_Year);
+
+                //used for bond depository balance report
+                var cssClass = r.IsIssued ? "iss" : "";
+                if (string.IsNullOrEmpty(cssClass))
+                {
+                    cssClass += (r.IsMatured ? "mau" : "");
+                }
+                else
+                {
+                    cssClass += (r.IsMatured ? " mau" : "");
+                }
+                
+                <tr class="@cssClass" onContextMenu="BondInfo.ChangeContextMenu(event,'@r.AssetId')">
+                    <td style="text-align: left;">@r.Code
+                    </td>
+                    <td style="text-align: left;">@r.BondName
+                    </td>
+                    <td style="text-align: left;">@issueDate
+                    </td>
+                    <td>@amount
+                    </td>
+                    <td style="text-align: left;">@r.CouponClass
+                    </td>
+                    <td style="text-align: left;">@r.CouponFreq
+                    </td>
+                    <td>@r.CouponRate
+                    </td>
+                    <td style="text-align: left;">@valueDate
+                    </td>
+                    <td style="text-align: left;">@maturityDate
+                    </td>
+                    <td style="text-align: left;">@listringDate
+                    </td>
+                    <td>@term
+                    </td>
+                    <td>@r.IssuePrice
+                    </td>
+                    <td>@r.RefYield
+                    </td>
+                    <td style="text-align: left;">@r.Option
+                    </td>
+                    <td style="text-align: left;">@r.ISBN
+                    </td>
+                    <td style="text-align: left;">@r.BondRating
+                    </td>
+                    <td style="text-align: left;">@r.BondRatingAgency
+                    </td>
+                    <td style="text-align: left;">@r.PartyRating
+                    </td>
+                    <td style="text-align: left;">@r.PartyRatingAgency
+                    </td>                                      
+                    <td style="text-align: left;">@r.CDCTypeName
+                    </td>
+                    <td style="text-align: left;">
+                        @if (!string.IsNullOrEmpty(r.Code))
+                        {
+                            <a class="link" href='javascript:BondInfo.OpenIssuerDetail("@r.Code", "@r.Issuer" );'>@r.Issuer</a>
+                        }
+                        else
+                        {
+                            @r.Issuer
+                        }
+                    </td>
+                    <td style="text-align: left;">
+                        @if (!string.IsNullOrEmpty(r.Code))
+                        {
+                            <a class="link" href='javascript:BondInfo.OpenIssuerDetailToRating("@r.Code", "@r.Issuer" );'>@Resources.Global.View</a>
+                        }
+                    </td>
+                    <td style="text-align: left;">
+                        @if (!string.IsNullOrEmpty(r.Code))
+                        {
+                            <a class="link" href='javascript:BondInfo.OpenBondRatingHist("@r.Code", "@Resources.Global.Bond_History_Rating" + "_" + "@r.Code" + " " + "@r.BondName");'>@Resources.Global.View</a>
+                        }
+                    </td> 
+                    <td>@r.FloatIndex
+                    </td>
+                    <td>@r.Spread
+                    </td>
+                    <td style="text-align: left;">@r.DayCount
+                    </td>
+                    <td style="text-align: left;">@r.Currency
+                    </td>
+                    <td style="text-align: left;">@r.Seniority
+                    </td>
+                    <td>@r.issueComment</td>
+                    <td>@r.ExchangeName</td>
+                    <td>@r.TrusteeName</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<div>@Resources.Global.Source</div>
+<script type="text/javascript">
+    $(function () {
+        $(".mau").hide();
+
+        var checkItem = '@ViewData["CheckItem"]';
+        if (checkItem == "issue") {
+            $(".iss").show();
+            $(".mau").hide();
+            $(".iss.mau").show();
+        }
+        else {
+            $(".iss").hide();
+            $(".mau").show();
+            $(".iss.mau").show();
+        }
+
+        $("tr[style!='display: none;']:even").addClass('row-e');
+        $("tr[style!='display: none;']:odd").addClass('row-o');
+        $("tr[style='display: none;']:even").addClass('row-e');
+        $("tr[style='display: none;']:odd").addClass('row-o');
+    });
+    
+</script>

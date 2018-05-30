@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="CHINAJCICORNCOSTESTIMATEDAIL" destination="CHINAJCICORNCOSTESTIMATEDAIL" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="COUNTRY" destination="COUNTRY"/>
+      <column-mapping source="MONTH" destination="MONTH"/>
+      <column-mapping source="BASIS" destination="BASIS"/>
+      <column-mapping source="LME" destination="LME"/>
+      <column-mapping source="CBOT" destination="CBOT"/>
+      <column-mapping source="CNF" destination="CNF"/>
+      <column-mapping source="DUTY" destination="DUTY"/>
+      <column-mapping source="LASTDUTY" destination="LASTDUTY"/>
+      <column-mapping source="FREIGHT" destination="FREIGHT"/>
+      <column-mapping source="RATE" destination="RATE"/>
+      <column-mapping source="RE_DATE" destination="RE_DATE" isKey="true"/>
+      <column-mapping source="FREEIMPORT" destination="FREEIMPORT"/>
+      <column-mapping source="MYKEY" destination="MYKEY" isImmutableKey="true" isKey="true" />
+      <column-mapping source="CREATEDATE" destination="CREATEDATE"/>
+      <filter>
+        <![CDATA[mykey<>'no' and CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CHINAJCIIMPORTPRICE" destination="CHINAJCIIMPORTPRICE" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="COUNTRY" destination="COUNTRY"  isKey="true"/>
+      <column-mapping source="PRO_NAME" destination="PRO_NAME" isKey="true" />
+      <column-mapping source="PRICE" destination="PRICE"  isKey="true"/>
+      <column-mapping source="CNF" destination="CNF"  isKey="true" />
+      <column-mapping source="GRADE" destination="GRADE" />
+      <column-mapping source="RMB" destination="RMB" />
+      <column-mapping source="MOST" destination="MOST" />
+      <column-mapping source="PACK" destination="PACK" />
+      <column-mapping source="SHIP" destination="SHIP" isKey="true" />
+      <column-mapping source="RE_DATE" destination="RE_DATE" isKey="true" />
+      <column-mapping source="FARE" destination="FARE" />
+      <column-mapping source="LME" destination="LME" />
+      <column-mapping source="RATE" destination="RATE" />
+      <column-mapping source="DUTY" destination="DUTY" />
+      <column-mapping source="TAX" destination="TAX" />
+      <column-mapping source="PORT" destination="PORT" />
+      <column-mapping source="JRATE" destination="JRATE" isKey="true" />
+      <column-mapping source="MYKEY" destination="MYKEY"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CREATEDATE" destination="CREATEDATE" />
+      <column-mapping source="ISHISTORY" destination="ISHISTORY" />
+      <filter>
+        <![CDATA[mykey<>'no' and CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CHINAJCIINTERNALPRICE" destination="CHINAJCIINTERNALPRICE" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="PRO_NAME" destination="PRO_NAME" />
+      <column-mapping source="PRICE" destination="PRICE" />
+      <column-mapping source="GRADE" destination="GRADE" isKey="true"  />
+      <column-mapping source="MOPE" destination="MOPE" isKey="true"  />
+      <column-mapping source="CDAREA" destination="CDAREA" isKey="true"  />
+      <column-mapping source="SBAREA" destination="SBAREA" isKey="true"  />
+      <column-mapping source="REMARK" destination="REMARK" />
+      <column-mapping source="RE_DATE" destination="RE_DATE" isKey="true" />
+      <column-mapping source="MYKEY" destination="MYKEY" isKey="true" isImmutableKey="true" />
+      <column-mapping source="CREATEDATE" destination="CREATEDATE" />
+      <column-mapping source="ISHISTORY" destination="ISHISTORY" />
+      <filter>
+        <![CDATA[mykey<>'no' and CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CHINAJCIPALMOILSTOCKSDAILY" destination="CHINAJCIPALMOILSTOCKSDAILY" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="AREA" destination="AREA" />
+      <column-mapping source="STOCK" destination="STOCK" />
+      <column-mapping source="RE_DATE" destination="RE_DATE" isKey="true" />
+      <column-mapping source="MYKEY" destination="MYKEY" isKey="true" isImmutableKey="true" />
+      <column-mapping source="CREATEDATE" destination="CREATEDATE" />
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CHINAJCISOYBEANCRUSHMARGINSD" destination="CHINAJCISOYBEANCRUSHMARGINSD" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="AREA" destination="AREA" />
+      <column-mapping source="SB" destination="SB" />
+      <column-mapping source="SM" destination="SM" />
+      <column-mapping source="SO" destination="SO" />
+      <column-mapping source="PROFIT" destination="PROFIT" />
+      <column-mapping source="SMP" destination="SMP" />
+      <column-mapping source="RE_DATE" destination="RE_DATE" isKey="true" />
+      <column-mapping source="MYKEY" destination="MYKEY" isKey="true" isImmutableKey="true" />
+      <column-mapping source="CREATEDATE" destination="CREATEDATE" />
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CHINAJCISOYBEANSTOCKSDAILY" destination="CHINAJCISOYBEANSTOCKSDAILY" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="AREA" destination="AREA" />
+      <column-mapping source="STOCK" destination="STOCK" />
+      <column-mapping source="RE_DATE" destination="RE_DATE" isKey="true" />
+      <column-mapping source="MYKEY" destination="MYKEY" isKey="true" isImmutableKey="true" />
+      <column-mapping source="CREATEDATE" destination="CREATEDATE" />
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CHINAJCIWHEATCOSTESTIMATEDAI" destination="CHINAJCIWHEATCOSTESTIMATEDAI" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="COUNTRY" destination="COUNTRY" />
+      <column-mapping source="PRO_NAME" destination="PRO_NAME" />
+      <column-mapping source="BASIS" destination="BASIS" />
+      <column-mapping source="LME" destination="LME" />
+      <column-mapping source="CBOT" destination="CBOT" />
+      <column-mapping source="CNF" destination="CNF" />
+      <column-mapping source="TAX" destination="TAX" />
+      <column-mapping source="CHTAX" destination="CHTAX" />
+      <column-mapping source="FREIGHT" destination="FREIGHT" />
+      <column-mapping source="RATE" destination="RATE" />
+      <column-mapping source="RE_DATE" destination="RE_DATE" isKey="true"  />
+      <column-mapping source="LASTCHOOSE" destination="LASTCHOOSE" />
+      <column-mapping source="MYKEY" destination="MYKEY" isImmutableKey="true" isKey="true" />
+      <column-mapping source="CREATEDATE" destination="CREATEDATE" />
+      <filter>
+        <![CDATA[CreateDate > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>"
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

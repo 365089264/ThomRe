@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=zcx;Password=zcx;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=filedb;Password=filedb;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="RATE_REP" destination="RATE_REP_DATA" isContainFilePath="true"
+                   filePath="C:/DataFeedApp/ZCXClient/ZCX/ADD_DATA" destinationFilePath="/ZCX/RATE" pathColumn="RATE_FILE_PATH">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="RATE_FILE_PATH" destination="RATE_FILE_PATH"/>
+      
+      <filter>
+        <![CDATA[ (org_uni_code =200010882 or org_uni_code =200022215) and CCXEID > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND CCXEID <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND ISVALID = 1 and RATE_FILE_PATH is not null]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+  <mappings>
+    <table-mapping source="RATE_REP" destination="RATE_REP_DATA" isContainFilePath="true" isCheckFileSynced="true"
+                   filePath="C:/DataFeedApp/ZCXClient/ZCX/ADD_DATA" destinationFilePath="/ZCX/RATE" pathColumn="RATE_FILE_PATH">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="RATE_FILE_PATH" destination="RATE_FILE_PATH"/>
+
+      <filter>
+        <![CDATA[ (org_uni_code =200010882 or org_uni_code =200022215) and CCXEID >TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam')-1 AND CCXEID <= TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND ISVALID = 1 and RATE_FILE_PATH is not null]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

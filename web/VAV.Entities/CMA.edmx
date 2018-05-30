@@ -1,0 +1,955 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Model1StoreContainer">
+          <EntitySet Name="COALCHARTLEGEND" EntityType="Model1.Store.COALCHARTLEGEND" store:Type="Tables" store:Schema="CMA" store:Name="COALCHARTLEGEND">
+            <DefiningQuery>SELECT 
+      "COALCHARTLEGEND"."REPORTID" AS "REPORTID", 
+      "COALCHARTLEGEND"."CHARTSQL" AS "CHARTSQL", 
+      "COALCHARTLEGEND"."UNIT" AS "UNIT", 
+      "COALCHARTLEGEND"."LEGEND" AS "LEGEND", 
+      "COALCHARTLEGEND"."CHARTYLABEL_CN" AS "CHARTYLABEL_CN", 
+      "COALCHARTLEGEND"."CHARTYLABEL_EN" AS "CHARTYLABEL_EN", 
+      "COALCHARTLEGEND"."CHARTTITLE_CN" AS "CHARTTITLE_CN", 
+      "COALCHARTLEGEND"."CHARTTITLE_EN" AS "CHARTTITLE_EN"
+      FROM "CMA"."COALCHARTLEGEND" "COALCHARTLEGEND"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COALFILTER" EntityType="Model1.Store.COALFILTER" store:Type="Tables" store:Schema="CMA" store:Name="COALFILTER">
+            <DefiningQuery>SELECT 
+      "COALFILTER"."ID" AS "ID", 
+      "COALFILTER"."REPORTID" AS "REPORTID", 
+      "COALFILTER"."FILERSQL" AS "FILERSQL", 
+      "COALFILTER"."ISPRIMARY" AS "ISPRIMARY", 
+      "COALFILTER"."DEFAULTARG" AS "DEFAULTARG", 
+      "COALFILTER"."NAME_CN" AS "NAME_CN", 
+      "COALFILTER"."NAME_EN" AS "NAME_EN", 
+      "COALFILTER"."FIELDNAME" AS "FIELDNAME", 
+      "COALFILTER"."FILERSQL_EN" AS "FILERSQL_EN"
+      FROM "CMA"."COALFILTER" "COALFILTER"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="COLUMNDEFINITION" EntityType="Model1.Store.COLUMNDEFINITION" store:Type="Tables" store:Schema="CMA" store:Name="COLUMNDEFINITION">
+            <DefiningQuery>SELECT 
+      "COLUMNDEFINITION"."ID" AS "ID", 
+      "COLUMNDEFINITION"."ITEMID" AS "ITEMID", 
+      "COLUMNDEFINITION"."DIRECTION" AS "DIRECTION", 
+      "COLUMNDEFINITION"."COLUMNNAME_CN" AS "COLUMNNAME_CN", 
+      "COLUMNDEFINITION"."COLUMNNAME_EN" AS "COLUMNNAME_EN", 
+      "COLUMNDEFINITION"."HEADER_CN" AS "HEADER_CN", 
+      "COLUMNDEFINITION"."HEADER_EN" AS "HEADER_EN", 
+      "COLUMNDEFINITION"."DISPLAY_FORMAT" AS "DISPLAY_FORMAT", 
+      "COLUMNDEFINITION"."COLUMN_TYPE" AS "COLUMN_TYPE", 
+      "COLUMNDEFINITION"."IS_SORT" AS "IS_SORT", 
+      "COLUMNDEFINITION"."COLUMN_ORDER" AS "COLUMN_ORDER"
+      FROM "CMA"."COLUMNDEFINITION" "COLUMNDEFINITION"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HOMEANNOUNCEMENT" EntityType="Model1.Store.HOMEANNOUNCEMENT" store:Type="Tables" store:Schema="CMA" store:Name="HOMEANNOUNCEMENT">
+            <DefiningQuery>SELECT 
+      "HOMEANNOUNCEMENT"."ID" AS "ID", 
+      "HOMEANNOUNCEMENT"."CONTENTEN" AS "CONTENTEN", 
+      "HOMEANNOUNCEMENT"."CONTENTCN" AS "CONTENTCN", 
+      "HOMEANNOUNCEMENT"."ISVALID" AS "ISVALID"
+      FROM "CMA"."HOMEANNOUNCEMENT" "HOMEANNOUNCEMENT"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HOMEFILE" EntityType="Model1.Store.HOMEFILE" store:Type="Tables" store:Schema="CMA" store:Name="HOMEFILE">
+            <DefiningQuery>SELECT 
+      "HOMEFILE"."ID" AS "ID", 
+      "HOMEFILE"."FILETYPE" AS "FILETYPE"
+      FROM "CMA"."HOMEFILE" "HOMEFILE"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HOMEITEM" EntityType="Model1.Store.HOMEITEM" store:Type="Tables" Schema="CMA" />
+          <EntitySet Name="HOMEMODULE" EntityType="Model1.Store.HOMEMODULE" store:Type="Tables" Schema="CMA" />
+          <EntitySet Name="ITEMDEFINITION" EntityType="Model1.Store.ITEMDEFINITION" store:Type="Tables" store:Schema="CMA" store:Name="ITEMDEFINITION">
+            <DefiningQuery>SELECT 
+      "ITEMDEFINITION"."ID" AS "ID", 
+      "ITEMDEFINITION"."REPORTID" AS "REPORTID", 
+      "ITEMDEFINITION"."ITEMID" AS "ITEMID", 
+      "ITEMDEFINITION"."VIEWMODELNAME1" AS "VIEWMODELNAME1", 
+      "ITEMDEFINITION"."VIEWMODELNAME2" AS "VIEWMODELNAME2", 
+      "ITEMDEFINITION"."VIEWNAME1" AS "VIEWNAME1", 
+      "ITEMDEFINITION"."VIEWNAME2" AS "VIEWNAME2", 
+      "ITEMDEFINITION"."TABLENAME1" AS "TABLENAME1", 
+      "ITEMDEFINITION"."TABLEFILTER1" AS "TABLEFILTER1", 
+      "ITEMDEFINITION"."TABLENAME2" AS "TABLENAME2", 
+      "ITEMDEFINITION"."TABLEFILTER2" AS "TABLEFILTER2", 
+      "ITEMDEFINITION"."TABNAME_CN" AS "TABNAME_CN", 
+      "ITEMDEFINITION"."TABNAME_EN" AS "TABNAME_EN", 
+      "ITEMDEFINITION"."CHARTSP1" AS "CHARTSP1", 
+      "ITEMDEFINITION"."CHARTSP2" AS "CHARTSP2", 
+      "ITEMDEFINITION"."TABORDER" AS "TABORDER", 
+      "ITEMDEFINITION"."ISVALID" AS "ISVALID", 
+      "ITEMDEFINITION"."LEGEND" AS "LEGEND"
+      FROM "CMA"."ITEMDEFINITION" "ITEMDEFINITION"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LOCALIZATION" EntityType="Model1.Store.LOCALIZATION" store:Type="Tables" Schema="CMA" />
+          <EntitySet Name="MENU" EntityType="Model1.Store.MENU" store:Type="Tables" store:Schema="CMA" store:Name="MENU">
+            <DefiningQuery>SELECT 
+      "MENU"."ID" AS "ID", 
+      "MENU"."PARENT_ID" AS "PARENT_ID", 
+      "MENU"."IS_REPORT" AS "IS_REPORT", 
+      "MENU"."ENGLISH_NAME" AS "ENGLISH_NAME", 
+      "MENU"."CHINESE_NAME" AS "CHINESE_NAME", 
+      "MENU"."CHINESE_NAME_TW" AS "CHINESE_NAME_TW", 
+      "MENU"."RIC" AS "RIC", 
+      "MENU"."GROUP_TYPE" AS "GROUP_TYPE", 
+      "MENU"."REPORT_ID" AS "REPORT_ID", 
+      "MENU"."NODEORDER" AS "NODEORDER", 
+      "MENU"."ACTIONTYPE" AS "ACTIONTYPE", 
+      "MENU"."ISVISIBLE" AS "ISVISIBLE", 
+      "MENU"."ISTREEVISIBLE" AS "ISTREEVISIBLE"
+      FROM "CMA"."MENU" "MENU"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MENUNODEACTION" EntityType="Model1.Store.MENUNODEACTION" store:Type="Tables" store:Schema="CMA" store:Name="MENUNODEACTION">
+            <DefiningQuery>SELECT 
+      "MENUNODEACTION"."NODEID" AS "NODEID", 
+      "MENUNODEACTION"."ACTIONURL" AS "ACTIONURL"
+      FROM "CMA"."MENUNODEACTION" "MENUNODEACTION"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MENUNODELAYOUT" EntityType="Model1.Store.MENUNODELAYOUT" store:Type="Tables" store:Schema="CMA" store:Name="MENUNODELAYOUT">
+            <DefiningQuery>SELECT 
+      "MENUNODELAYOUT"."REPORT_ID" AS "REPORT_ID", 
+      "MENUNODELAYOUT"."NODE_ID" AS "NODE_ID", 
+      "MENUNODELAYOUT"."DISPLAY_STYLE" AS "DISPLAY_STYLE"
+      FROM "CMA"."MENUNODELAYOUT" "MENUNODELAYOUT"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="REPORTCOLUMNDEFINITION" EntityType="Model1.Store.REPORTCOLUMNDEFINITION" store:Type="Tables" store:Schema="CMA" store:Name="REPORTCOLUMNDEFINITION">
+            <DefiningQuery>SELECT 
+      "REPORTCOLUMNDEFINITION"."REPORT_ID" AS "REPORT_ID", 
+      "REPORTCOLUMNDEFINITION"."COLUMN_NAME" AS "COLUMN_NAME", 
+      "REPORTCOLUMNDEFINITION"."HEADER_TEXT_EN" AS "HEADER_TEXT_EN", 
+      "REPORTCOLUMNDEFINITION"."HEADER_TEXT_CN" AS "HEADER_TEXT_CN", 
+      "REPORTCOLUMNDEFINITION"."DISPLAY_FORMAT" AS "DISPLAY_FORMAT", 
+      "REPORTCOLUMNDEFINITION"."COLUMN_TYPE" AS "COLUMN_TYPE", 
+      "REPORTCOLUMNDEFINITION"."IS_SORTABLE" AS "IS_SORTABLE", 
+      "REPORTCOLUMNDEFINITION"."COLUMN_INDEX" AS "COLUMN_INDEX", 
+      "REPORTCOLUMNDEFINITION"."COLUMN_STYLE" AS "COLUMN_STYLE", 
+      "REPORTCOLUMNDEFINITION"."IS_DETAIL_COLUMN" AS "IS_DETAIL_COLUMN"
+      FROM "CMA"."REPORTCOLUMNDEFINITION" "REPORTCOLUMNDEFINITION"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="REPORTDEFINITION" EntityType="Model1.Store.REPORTDEFINITION" store:Type="Tables" store:Schema="CMA" store:Name="REPORTDEFINITION">
+            <DefiningQuery>SELECT 
+      "REPORTDEFINITION"."ID" AS "ID", 
+      "REPORTDEFINITION"."VIEW_NAME" AS "VIEW_NAME", 
+      "REPORTDEFINITION"."TABLE_NAME" AS "TABLE_NAME", 
+      "REPORTDEFINITION"."VIEWMODEL_NAME" AS "VIEWMODEL_NAME", 
+      "REPORTDEFINITION"."COLUMN_LIST" AS "COLUMN_LIST", 
+      "REPORTDEFINITION"."ENGLISH_NAME" AS "ENGLISH_NAME", 
+      "REPORTDEFINITION"."CHINESE_NAME" AS "CHINESE_NAME", 
+      "REPORTDEFINITION"."REPORT_TYPE" AS "REPORT_TYPE"
+      FROM "CMA"."REPORTDEFINITION" "REPORTDEFINITION"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="REPORTEXTRAHEADERDEFINITION" EntityType="Model1.Store.REPORTEXTRAHEADERDEFINITION" store:Type="Tables" store:Schema="CMA" store:Name="REPORTEXTRAHEADERDEFINITION">
+            <DefiningQuery>SELECT 
+      "REPORTEXTRAHEADERDEFINITION"."REPORT_ID" AS "REPORT_ID", 
+      "REPORTEXTRAHEADERDEFINITION"."EXTRA_HEADER_TEXT_CN" AS "EXTRA_HEADER_TEXT_CN", 
+      "REPORTEXTRAHEADERDEFINITION"."EXTRA_HEADER_TEXT_EN" AS "EXTRA_HEADER_TEXT_EN", 
+      "REPORTEXTRAHEADERDEFINITION"."EXTRA_HEADER_COLUMN_SPAN" AS "EXTRA_HEADER_COLUMN_SPAN", 
+      "REPORTEXTRAHEADERDEFINITION"."EXTRA_HEADER_LEVEL" AS "EXTRA_HEADER_LEVEL"
+      FROM "CMA"."REPORTEXTRAHEADERDEFINITION" "REPORTEXTRAHEADERDEFINITION"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="USERCOLUMNSETTINGS" EntityType="Model1.Store.USERCOLUMNSETTINGS" store:Type="Tables" Schema="CMA" />
+          <AssociationSet Name="HOMEITEM_FK1" Association="Model1.Store.HOMEITEM_FK1">
+            <End Role="HOMEMODULE" EntitySet="HOMEMODULE" />
+            <End Role="HOMEITEM" EntitySet="HOMEITEM" />
+          </AssociationSet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.COALCHARTLEGEND' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="COALCHARTLEGEND">
+          <Key>
+            <PropertyRef Name="REPORTID" />
+            <PropertyRef Name="CHARTSQL" />
+            <PropertyRef Name="UNIT" />
+            <PropertyRef Name="LEGEND" />
+          </Key>
+          <Property Name="REPORTID" Type="number" Nullable="false" />
+          <Property Name="CHARTSQL" Type="nvarchar2" Nullable="false" MaxLength="250" />
+          <Property Name="UNIT" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="LEGEND" Type="nvarchar2" Nullable="false" MaxLength="100" />
+          <Property Name="CHARTYLABEL_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="CHARTYLABEL_EN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="CHARTTITLE_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="CHARTTITLE_EN" Type="nvarchar2" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.COALFILTER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="COALFILTER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="REPORTID" Type="number" />
+          <Property Name="FILERSQL" Type="nvarchar2" MaxLength="250" />
+          <Property Name="ISPRIMARY" Type="number" />
+          <Property Name="DEFAULTARG" Type="nvarchar2" MaxLength="100" />
+          <Property Name="NAME_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="NAME_EN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="FIELDNAME" Type="nvarchar2" MaxLength="100" />
+          <Property Name="FILERSQL_EN" Type="nvarchar2" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.COLUMNDEFINITION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="COLUMNDEFINITION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="ITEMID" Type="number" />
+          <Property Name="DIRECTION" Type="number" />
+          <Property Name="COLUMNNAME_CN" Type="nvarchar2" MaxLength="255" />
+          <Property Name="COLUMNNAME_EN" Type="nvarchar2" MaxLength="255" />
+          <Property Name="HEADER_CN" Type="nvarchar2" MaxLength="255" />
+          <Property Name="HEADER_EN" Type="nvarchar2" MaxLength="255" />
+          <Property Name="DISPLAY_FORMAT" Type="nvarchar2" MaxLength="255" />
+          <Property Name="COLUMN_TYPE" Type="nvarchar2" MaxLength="255" />
+          <Property Name="IS_SORT" Type="number" Precision="1" />
+          <Property Name="COLUMN_ORDER" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.HOMEANNOUNCEMENT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="HOMEANNOUNCEMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="CONTENTEN" />
+            <PropertyRef Name="CONTENTCN" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="CONTENTEN" Type="nclob" Nullable="false" />
+          <Property Name="CONTENTCN" Type="nclob" Nullable="false" />
+          <Property Name="ISVALID" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.HOMEFILE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="HOMEFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="FILETYPE" Type="nvarchar2" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="HOMEITEM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="NAMECN" Type="nvarchar2" MaxLength="200" />
+          <Property Name="NAMEEN" Type="nvarchar2" MaxLength="200" />
+          <Property Name="MODULEID" Type="number" />
+          <Property Name="TYPE" Type="varchar2" MaxLength="50" />
+          <Property Name="TYPEVALUE" Type="nvarchar2" MaxLength="200" />
+          <Property Name="ISVALID" Type="number" />
+          <Property Name="TYPEPARAM" Type="nvarchar2" MaxLength="200" />
+          <Property Name="DISPLAYORDER" Type="number" />
+          <Property Name="MTIME" Type="timestamp" />
+        </EntityType>
+        <EntityType Name="HOMEMODULE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="NAMECN" Type="nvarchar2" MaxLength="200" />
+          <Property Name="NAMEEN" Type="nvarchar2" MaxLength="200" />
+          <Property Name="ISMAIN" Type="number" />
+          <Property Name="ISVALID" Type="number" />
+          <Property Name="DISPLAYORDER" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.ITEMDEFINITION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ITEMDEFINITION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="REPORTID" Type="number" />
+          <Property Name="ITEMID" Type="number" />
+          <Property Name="VIEWMODELNAME1" Type="nvarchar2" MaxLength="255" />
+          <Property Name="VIEWMODELNAME2" Type="nvarchar2" MaxLength="255" />
+          <Property Name="VIEWNAME1" Type="nvarchar2" MaxLength="255" />
+          <Property Name="VIEWNAME2" Type="nvarchar2" MaxLength="255" />
+          <Property Name="TABLENAME1" Type="nvarchar2" MaxLength="255" />
+          <Property Name="TABLEFILTER1" Type="nvarchar2" MaxLength="255" />
+          <Property Name="TABLENAME2" Type="nvarchar2" MaxLength="255" />
+          <Property Name="TABLEFILTER2" Type="nvarchar2" MaxLength="255" />
+          <Property Name="TABNAME_CN" Type="nvarchar2" MaxLength="255" />
+          <Property Name="TABNAME_EN" Type="nvarchar2" MaxLength="255" />
+          <Property Name="CHARTSP1" Type="nvarchar2" MaxLength="50" />
+          <Property Name="CHARTSP2" Type="nvarchar2" MaxLength="50" />
+          <Property Name="TABORDER" Type="number" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="LEGEND" Type="nvarchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LOCALIZATION">
+          <Key>
+            <PropertyRef Name="TABLE_NAME" />
+            <PropertyRef Name="TABLE_CD" />
+          </Key>
+          <Property Name="TABLE_NAME" Type="varchar2" Nullable="false" MaxLength="50" />
+          <Property Name="TABLE_CD" Type="varchar2" Nullable="false" MaxLength="32" />
+          <Property Name="ENGLISH_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="CHINESE_NAME" Type="nvarchar2" MaxLength="100" />
+          <Property Name="MEMO" Type="varchar2" MaxLength="200" />
+          <Property Name="LAST_UPDATE" Type="timestamp" />
+          <Property Name="ROW_LEVEL" Type="number" />
+          <Property Name="CHART_SOURCE" Type="varchar2" MaxLength="32" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.MENU' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="PARENT_ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="PARENT_ID" Type="number" Nullable="false" />
+          <Property Name="IS_REPORT" Type="number" />
+          <Property Name="ENGLISH_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="CHINESE_NAME" Type="nvarchar2" MaxLength="100" />
+          <Property Name="CHINESE_NAME_TW" Type="nvarchar2" MaxLength="100" />
+          <Property Name="RIC" Type="varchar2" MaxLength="300" />
+          <Property Name="GROUP_TYPE" Type="number" />
+          <Property Name="REPORT_ID" Type="number" />
+          <Property Name="NODEORDER" Type="number" />
+          <Property Name="ACTIONTYPE" Type="number" />
+          <Property Name="ISVISIBLE" Type="number" />
+          <Property Name="ISTREEVISIBLE" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.MENUNODEACTION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="MENUNODEACTION">
+          <Key>
+            <PropertyRef Name="NODEID" />
+            <PropertyRef Name="ACTIONURL" />
+          </Key>
+          <Property Name="NODEID" Type="number" Nullable="false" />
+          <Property Name="ACTIONURL" Type="nvarchar2" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.MENUNODELAYOUT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="MENUNODELAYOUT">
+          <Key>
+            <PropertyRef Name="REPORT_ID" />
+            <PropertyRef Name="NODE_ID" />
+            <PropertyRef Name="DISPLAY_STYLE" />
+          </Key>
+          <Property Name="REPORT_ID" Type="number" Nullable="false" />
+          <Property Name="NODE_ID" Type="number" Nullable="false" />
+          <Property Name="DISPLAY_STYLE" Type="varchar2" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.REPORTCOLUMNDEFINITION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="REPORTCOLUMNDEFINITION">
+          <Key>
+            <PropertyRef Name="REPORT_ID" />
+            <PropertyRef Name="COLUMN_NAME" />
+          </Key>
+          <Property Name="REPORT_ID" Type="number" Nullable="false" />
+          <Property Name="COLUMN_NAME" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="HEADER_TEXT_EN" Type="nvarchar2" MaxLength="50" />
+          <Property Name="HEADER_TEXT_CN" Type="nvarchar2" MaxLength="50" />
+          <Property Name="DISPLAY_FORMAT" Type="nvarchar2" MaxLength="50" />
+          <Property Name="COLUMN_TYPE" Type="nvarchar2" MaxLength="50" />
+          <Property Name="IS_SORTABLE" Type="number" Precision="1" />
+          <Property Name="COLUMN_INDEX" Type="number" />
+          <Property Name="COLUMN_STYLE" Type="nvarchar2" MaxLength="200" />
+          <Property Name="IS_DETAIL_COLUMN" Type="number" Precision="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.REPORTDEFINITION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="REPORTDEFINITION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="VIEW_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="TABLE_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="VIEWMODEL_NAME" Type="varchar2" MaxLength="255" />
+          <Property Name="COLUMN_LIST" Type="varchar2" />
+          <Property Name="ENGLISH_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="CHINESE_NAME" Type="nvarchar2" MaxLength="100" />
+          <Property Name="REPORT_TYPE" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.REPORTEXTRAHEADERDEFINITION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="REPORTEXTRAHEADERDEFINITION">
+          <Key>
+            <PropertyRef Name="REPORT_ID" />
+            <PropertyRef Name="EXTRA_HEADER_TEXT_CN" />
+            <PropertyRef Name="EXTRA_HEADER_TEXT_EN" />
+            <PropertyRef Name="EXTRA_HEADER_COLUMN_SPAN" />
+            <PropertyRef Name="EXTRA_HEADER_LEVEL" />
+          </Key>
+          <Property Name="REPORT_ID" Type="number" Nullable="false" />
+          <Property Name="EXTRA_HEADER_TEXT_CN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="EXTRA_HEADER_TEXT_EN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="EXTRA_HEADER_COLUMN_SPAN" Type="number" Nullable="false" />
+          <Property Name="EXTRA_HEADER_LEVEL" Type="number" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.TYPELIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CMA.TYPEORDER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="USERCOLUMNSETTINGS">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="REPORTID" />
+          </Key>
+          <Property Name="USERID" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="REPORTID" Type="number" Nullable="false" />
+          <Property Name="SETTINGNAME" Type="nvarchar2" MaxLength="50" />
+          <Property Name="COLUMNLIST" Type="nvarchar2" MaxLength="2000" />
+        </EntityType>
+        <Association Name="HOMEITEM_FK1">
+          <End Role="HOMEMODULE" Type="Model1.Store.HOMEMODULE" Multiplicity="0..1" />
+          <End Role="HOMEITEM" Type="Model1.Store.HOMEITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOMEMODULE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOMEITEM">
+              <PropertyRef Name="MODULEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CMAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MENUs" EntityType="Model1.MENU" />
+          <EntitySet Name="MENUNODEACTIONs" EntityType="Model1.MENUNODEACTION" />
+          <EntitySet Name="MENUNODELAYOUTs" EntityType="Model1.MENUNODELAYOUT" />
+          <EntitySet Name="REPORTCOLUMNDEFINITIONs" EntityType="Model1.REPORTCOLUMNDEFINITION" />
+          <EntitySet Name="REPORTDEFINITIONs" EntityType="Model1.REPORTDEFINITION" />
+          <EntitySet Name="REPORTEXTRAHEADERDEFINITIONs" EntityType="Model1.REPORTEXTRAHEADERDEFINITION" />
+          <EntitySet Name="COLUMNDEFINITIONs" EntityType="Model1.COLUMNDEFINITION" />
+          <EntitySet Name="ITEMDEFINITIONs" EntityType="Model1.ITEMDEFINITION" />
+          <EntitySet Name="HOMEANNOUNCEMENTs" EntityType="Model1.HOMEANNOUNCEMENT" />
+          <EntitySet Name="COALCHARTLEGENDs" EntityType="Model1.COALCHARTLEGEND" />
+          <EntitySet Name="COALFILTERs" EntityType="Model1.COALFILTER" />
+          <EntitySet Name="HOMEFILEs" EntityType="Model1.HOMEFILE" />
+          <EntitySet Name="HOMEITEMs" EntityType="Model1.HOMEITEM" />
+          <EntitySet Name="HOMEMODULEs" EntityType="Model1.HOMEMODULE" />
+          <EntitySet Name="USERCOLUMNSETTINGS" EntityType="Model1.USERCOLUMNSETTING" />
+          <AssociationSet Name="HOMEITEM_FK1" Association="Model1.HOMEITEM_FK1">
+            <End Role="HOMEMODULE" EntitySet="HOMEMODULEs" />
+            <End Role="HOMEITEM" EntitySet="HOMEITEMs" />
+          </AssociationSet>
+          <EntitySet Name="LOCALIZATIONs" EntityType="Model1.LOCALIZATION" />
+        </EntityContainer>
+        <EntityType Name="MENU">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="PARENT_ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="PARENT_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="IS_REPORT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ENGLISH_NAME" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CHINESE_NAME" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CHINESE_NAME_TW" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="RIC" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="GROUP_TYPE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="REPORT_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NODEORDER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ACTIONTYPE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ISVISIBLE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ISTREEVISIBLE" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="MENUNODEACTION">
+          <Key>
+            <PropertyRef Name="NODEID" />
+            <PropertyRef Name="ACTIONURL" />
+          </Key>
+          <Property Name="NODEID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="ACTIONURL" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="MENUNODELAYOUT">
+          <Key>
+            <PropertyRef Name="REPORT_ID" />
+            <PropertyRef Name="NODE_ID" />
+            <PropertyRef Name="DISPLAY_STYLE" />
+          </Key>
+          <Property Name="REPORT_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="NODE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DISPLAY_STYLE" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="REPORTCOLUMNDEFINITION">
+          <Key>
+            <PropertyRef Name="REPORT_ID" />
+            <PropertyRef Name="COLUMN_NAME" />
+          </Key>
+          <Property Name="REPORT_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="COLUMN_NAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="HEADER_TEXT_EN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="HEADER_TEXT_CN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DISPLAY_FORMAT" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="COLUMN_TYPE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IS_SORTABLE" Type="Int16" />
+          <Property Name="COLUMN_INDEX" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="COLUMN_STYLE" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="IS_DETAIL_COLUMN" Type="Int16" />
+        </EntityType>
+        <EntityType Name="REPORTDEFINITION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="VIEW_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TABLE_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VIEWMODEL_NAME" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="COLUMN_LIST" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+          <Property Name="ENGLISH_NAME" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CHINESE_NAME" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="REPORT_TYPE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="REPORTEXTRAHEADERDEFINITION">
+          <Key>
+            <PropertyRef Name="REPORT_ID" />
+            <PropertyRef Name="EXTRA_HEADER_TEXT_CN" />
+            <PropertyRef Name="EXTRA_HEADER_TEXT_EN" />
+            <PropertyRef Name="EXTRA_HEADER_COLUMN_SPAN" />
+            <PropertyRef Name="EXTRA_HEADER_LEVEL" />
+          </Key>
+          <Property Name="REPORT_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EXTRA_HEADER_TEXT_CN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EXTRA_HEADER_TEXT_EN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EXTRA_HEADER_COLUMN_SPAN" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="EXTRA_HEADER_LEVEL" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="COLUMNDEFINITION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ITEMID" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="DIRECTION" Precision="38" Scale="0" />
+          <Property Type="String" Name="COLUMNNAME_CN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COLUMNNAME_EN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HEADER_CN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HEADER_EN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DISPLAY_FORMAT" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COLUMN_TYPE" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="IS_SORT" />
+          <Property Type="Decimal" Name="COLUMN_ORDER" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="ITEMDEFINITION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="REPORTID" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ITEMID" Precision="38" Scale="0" />
+          <Property Type="String" Name="VIEWMODELNAME1" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VIEWMODELNAME2" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VIEWNAME1" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VIEWNAME2" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TABLENAME1" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TABLEFILTER1" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TABLENAME2" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TABLEFILTER2" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TABNAME_CN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TABNAME_EN" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CHARTSP1" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CHARTSP2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TABORDER" Precision="38" Scale="0" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="String" Name="LEGEND" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HOMEANNOUNCEMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="CONTENTEN" />
+            <PropertyRef Name="CONTENTCN" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="String" Name="CONTENTEN" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CONTENTCN" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ISVALID" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="COALCHARTLEGEND">
+          <Key>
+            <PropertyRef Name="REPORTID" />
+            <PropertyRef Name="CHARTSQL" />
+            <PropertyRef Name="UNIT" />
+            <PropertyRef Name="LEGEND" />
+          </Key>
+          <Property Type="Decimal" Name="REPORTID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="String" Name="CHARTSQL" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UNIT" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LEGEND" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CHARTYLABEL_CN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CHARTYLABEL_EN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CHARTTITLE_CN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CHARTTITLE_EN" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="COALFILTER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="REPORTID" Precision="38" Scale="0" />
+          <Property Type="String" Name="FILERSQL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ISPRIMARY" Precision="38" Scale="0" />
+          <Property Type="String" Name="DEFAULTARG" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NAME_CN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NAME_EN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FIELDNAME" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FILERSQL_EN" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HOMEFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="String" Name="FILETYPE" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HOMEITEM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="String" Name="NAMECN" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NAMEEN" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="MODULEID" Precision="38" Scale="0" />
+          <Property Type="String" Name="TYPE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TYPEVALUE" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ISVALID" Precision="38" Scale="0" />
+          <Property Type="String" Name="TYPEPARAM" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="DISPLAYORDER" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="MTIME" Precision="6" />
+          <NavigationProperty Name="HOMEMODULE" Relationship="Model1.HOMEITEM_FK1" FromRole="HOMEITEM" ToRole="HOMEMODULE" />
+        </EntityType>
+        <EntityType Name="HOMEMODULE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="String" Name="NAMECN" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NAMEEN" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ISMAIN" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ISVALID" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="DISPLAYORDER" Precision="38" Scale="0" />
+          <NavigationProperty Name="HOMEITEMs" Relationship="Model1.HOMEITEM_FK1" FromRole="HOMEMODULE" ToRole="HOMEITEM" />
+        </EntityType>
+        <EntityType Name="USERCOLUMNSETTING">
+          <Key>
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="REPORTID" />
+          </Key>
+          <Property Type="String" Name="USERID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="REPORTID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="String" Name="SETTINGNAME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COLUMNLIST" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="HOMEITEM_FK1">
+          <End Type="Model1.HOMEMODULE" Role="HOMEMODULE" Multiplicity="0..1" />
+          <End Type="Model1.HOMEITEM" Role="HOMEITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOMEMODULE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOMEITEM">
+              <PropertyRef Name="MODULEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LOCALIZATION">
+          <Key>
+            <PropertyRef Name="TABLE_NAME" />
+            <PropertyRef Name="TABLE_CD" />
+          </Key>
+          <Property Type="String" Name="TABLE_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TABLE_CD" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENGLISH_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CHINESE_NAME" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MEMO" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LAST_UPDATE" Precision="6" />
+          <Property Type="Decimal" Name="ROW_LEVEL" Precision="38" Scale="0" />
+          <Property Type="String" Name="CHART_SOURCE" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="CMAEntities">
+          <EntitySetMapping Name="MENUs">
+            <EntityTypeMapping TypeName="Model1.MENU">
+              <MappingFragment StoreEntitySet="MENU">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+                <ScalarProperty Name="IS_REPORT" ColumnName="IS_REPORT" />
+                <ScalarProperty Name="ENGLISH_NAME" ColumnName="ENGLISH_NAME" />
+                <ScalarProperty Name="CHINESE_NAME" ColumnName="CHINESE_NAME" />
+                <ScalarProperty Name="CHINESE_NAME_TW" ColumnName="CHINESE_NAME_TW" />
+                <ScalarProperty Name="RIC" ColumnName="RIC" />
+                <ScalarProperty Name="GROUP_TYPE" ColumnName="GROUP_TYPE" />
+                <ScalarProperty Name="REPORT_ID" ColumnName="REPORT_ID" />
+                <ScalarProperty Name="NODEORDER" ColumnName="NODEORDER" />
+                <ScalarProperty Name="ACTIONTYPE" ColumnName="ACTIONTYPE" />
+                <ScalarProperty Name="ISVISIBLE" ColumnName="ISVISIBLE" />
+                <ScalarProperty Name="ISTREEVISIBLE" ColumnName="ISTREEVISIBLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENUNODEACTIONs">
+            <EntityTypeMapping TypeName="Model1.MENUNODEACTION">
+              <MappingFragment StoreEntitySet="MENUNODEACTION">
+                <ScalarProperty Name="NODEID" ColumnName="NODEID" />
+                <ScalarProperty Name="ACTIONURL" ColumnName="ACTIONURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MENUNODELAYOUTs">
+            <EntityTypeMapping TypeName="Model1.MENUNODELAYOUT">
+              <MappingFragment StoreEntitySet="MENUNODELAYOUT">
+                <ScalarProperty Name="REPORT_ID" ColumnName="REPORT_ID" />
+                <ScalarProperty Name="NODE_ID" ColumnName="NODE_ID" />
+                <ScalarProperty Name="DISPLAY_STYLE" ColumnName="DISPLAY_STYLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTCOLUMNDEFINITIONs">
+            <EntityTypeMapping TypeName="Model1.REPORTCOLUMNDEFINITION">
+              <MappingFragment StoreEntitySet="REPORTCOLUMNDEFINITION">
+                <ScalarProperty Name="REPORT_ID" ColumnName="REPORT_ID" />
+                <ScalarProperty Name="COLUMN_NAME" ColumnName="COLUMN_NAME" />
+                <ScalarProperty Name="HEADER_TEXT_EN" ColumnName="HEADER_TEXT_EN" />
+                <ScalarProperty Name="HEADER_TEXT_CN" ColumnName="HEADER_TEXT_CN" />
+                <ScalarProperty Name="DISPLAY_FORMAT" ColumnName="DISPLAY_FORMAT" />
+                <ScalarProperty Name="COLUMN_TYPE" ColumnName="COLUMN_TYPE" />
+                <ScalarProperty Name="IS_SORTABLE" ColumnName="IS_SORTABLE" />
+                <ScalarProperty Name="COLUMN_INDEX" ColumnName="COLUMN_INDEX" />
+                <ScalarProperty Name="COLUMN_STYLE" ColumnName="COLUMN_STYLE" />
+                <ScalarProperty Name="IS_DETAIL_COLUMN" ColumnName="IS_DETAIL_COLUMN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTDEFINITIONs">
+            <EntityTypeMapping TypeName="Model1.REPORTDEFINITION">
+              <MappingFragment StoreEntitySet="REPORTDEFINITION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VIEW_NAME" ColumnName="VIEW_NAME" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+                <ScalarProperty Name="VIEWMODEL_NAME" ColumnName="VIEWMODEL_NAME" />
+                <ScalarProperty Name="COLUMN_LIST" ColumnName="COLUMN_LIST" />
+                <ScalarProperty Name="ENGLISH_NAME" ColumnName="ENGLISH_NAME" />
+                <ScalarProperty Name="CHINESE_NAME" ColumnName="CHINESE_NAME" />
+                <ScalarProperty Name="REPORT_TYPE" ColumnName="REPORT_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTEXTRAHEADERDEFINITIONs">
+            <EntityTypeMapping TypeName="Model1.REPORTEXTRAHEADERDEFINITION">
+              <MappingFragment StoreEntitySet="REPORTEXTRAHEADERDEFINITION">
+                <ScalarProperty Name="REPORT_ID" ColumnName="REPORT_ID" />
+                <ScalarProperty Name="EXTRA_HEADER_TEXT_CN" ColumnName="EXTRA_HEADER_TEXT_CN" />
+                <ScalarProperty Name="EXTRA_HEADER_TEXT_EN" ColumnName="EXTRA_HEADER_TEXT_EN" />
+                <ScalarProperty Name="EXTRA_HEADER_COLUMN_SPAN" ColumnName="EXTRA_HEADER_COLUMN_SPAN" />
+                <ScalarProperty Name="EXTRA_HEADER_LEVEL" ColumnName="EXTRA_HEADER_LEVEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COLUMNDEFINITIONs">
+            <EntityTypeMapping TypeName="Model1.COLUMNDEFINITION">
+              <MappingFragment StoreEntitySet="COLUMNDEFINITION">
+                <ScalarProperty Name="COLUMN_ORDER" ColumnName="COLUMN_ORDER" />
+                <ScalarProperty Name="IS_SORT" ColumnName="IS_SORT" />
+                <ScalarProperty Name="COLUMN_TYPE" ColumnName="COLUMN_TYPE" />
+                <ScalarProperty Name="DISPLAY_FORMAT" ColumnName="DISPLAY_FORMAT" />
+                <ScalarProperty Name="HEADER_EN" ColumnName="HEADER_EN" />
+                <ScalarProperty Name="HEADER_CN" ColumnName="HEADER_CN" />
+                <ScalarProperty Name="COLUMNNAME_EN" ColumnName="COLUMNNAME_EN" />
+                <ScalarProperty Name="COLUMNNAME_CN" ColumnName="COLUMNNAME_CN" />
+                <ScalarProperty Name="DIRECTION" ColumnName="DIRECTION" />
+                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITEMDEFINITIONs">
+            <EntityTypeMapping TypeName="Model1.ITEMDEFINITION">
+              <MappingFragment StoreEntitySet="ITEMDEFINITION">
+                <ScalarProperty Name="LEGEND" ColumnName="LEGEND" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="TABORDER" ColumnName="TABORDER" />
+                <ScalarProperty Name="CHARTSP2" ColumnName="CHARTSP2" />
+                <ScalarProperty Name="CHARTSP1" ColumnName="CHARTSP1" />
+                <ScalarProperty Name="TABNAME_EN" ColumnName="TABNAME_EN" />
+                <ScalarProperty Name="TABNAME_CN" ColumnName="TABNAME_CN" />
+                <ScalarProperty Name="TABLEFILTER2" ColumnName="TABLEFILTER2" />
+                <ScalarProperty Name="TABLENAME2" ColumnName="TABLENAME2" />
+                <ScalarProperty Name="TABLEFILTER1" ColumnName="TABLEFILTER1" />
+                <ScalarProperty Name="TABLENAME1" ColumnName="TABLENAME1" />
+                <ScalarProperty Name="VIEWNAME2" ColumnName="VIEWNAME2" />
+                <ScalarProperty Name="VIEWNAME1" ColumnName="VIEWNAME1" />
+                <ScalarProperty Name="VIEWMODELNAME2" ColumnName="VIEWMODELNAME2" />
+                <ScalarProperty Name="VIEWMODELNAME1" ColumnName="VIEWMODELNAME1" />
+                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="REPORTID" ColumnName="REPORTID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOMEANNOUNCEMENTs">
+            <EntityTypeMapping TypeName="Model1.HOMEANNOUNCEMENT">
+              <MappingFragment StoreEntitySet="HOMEANNOUNCEMENT">
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="CONTENTCN" ColumnName="CONTENTCN" />
+                <ScalarProperty Name="CONTENTEN" ColumnName="CONTENTEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COALCHARTLEGENDs">
+            <EntityTypeMapping TypeName="Model1.COALCHARTLEGEND">
+              <MappingFragment StoreEntitySet="COALCHARTLEGEND">
+                <ScalarProperty Name="CHARTTITLE_EN" ColumnName="CHARTTITLE_EN" />
+                <ScalarProperty Name="CHARTTITLE_CN" ColumnName="CHARTTITLE_CN" />
+                <ScalarProperty Name="CHARTYLABEL_EN" ColumnName="CHARTYLABEL_EN" />
+                <ScalarProperty Name="CHARTYLABEL_CN" ColumnName="CHARTYLABEL_CN" />
+                <ScalarProperty Name="LEGEND" ColumnName="LEGEND" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="CHARTSQL" ColumnName="CHARTSQL" />
+                <ScalarProperty Name="REPORTID" ColumnName="REPORTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COALFILTERs">
+            <EntityTypeMapping TypeName="Model1.COALFILTER">
+              <MappingFragment StoreEntitySet="COALFILTER">
+                <ScalarProperty Name="FILERSQL_EN" ColumnName="FILERSQL_EN" />
+                <ScalarProperty Name="FIELDNAME" ColumnName="FIELDNAME" />
+                <ScalarProperty Name="NAME_EN" ColumnName="NAME_EN" />
+                <ScalarProperty Name="NAME_CN" ColumnName="NAME_CN" />
+                <ScalarProperty Name="DEFAULTARG" ColumnName="DEFAULTARG" />
+                <ScalarProperty Name="ISPRIMARY" ColumnName="ISPRIMARY" />
+                <ScalarProperty Name="FILERSQL" ColumnName="FILERSQL" />
+                <ScalarProperty Name="REPORTID" ColumnName="REPORTID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOMEFILEs">
+            <EntityTypeMapping TypeName="Model1.HOMEFILE">
+              <MappingFragment StoreEntitySet="HOMEFILE">
+                <ScalarProperty Name="FILETYPE" ColumnName="FILETYPE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOMEITEMs">
+            <EntityTypeMapping TypeName="Model1.HOMEITEM">
+              <MappingFragment StoreEntitySet="HOMEITEM">
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="DISPLAYORDER" ColumnName="DISPLAYORDER" />
+                <ScalarProperty Name="TYPEPARAM" ColumnName="TYPEPARAM" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="TYPEVALUE" ColumnName="TYPEVALUE" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="MODULEID" ColumnName="MODULEID" />
+                <ScalarProperty Name="NAMEEN" ColumnName="NAMEEN" />
+                <ScalarProperty Name="NAMECN" ColumnName="NAMECN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOMEMODULEs">
+            <EntityTypeMapping TypeName="Model1.HOMEMODULE">
+              <MappingFragment StoreEntitySet="HOMEMODULE">
+                <ScalarProperty Name="DISPLAYORDER" ColumnName="DISPLAYORDER" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="ISMAIN" ColumnName="ISMAIN" />
+                <ScalarProperty Name="NAMEEN" ColumnName="NAMEEN" />
+                <ScalarProperty Name="NAMECN" ColumnName="NAMECN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERCOLUMNSETTINGS">
+            <EntityTypeMapping TypeName="Model1.USERCOLUMNSETTING">
+              <MappingFragment StoreEntitySet="USERCOLUMNSETTINGS">
+                <ScalarProperty Name="COLUMNLIST" ColumnName="COLUMNLIST" />
+                <ScalarProperty Name="SETTINGNAME" ColumnName="SETTINGNAME" />
+                <ScalarProperty Name="REPORTID" ColumnName="REPORTID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCALIZATIONs">
+            <EntityTypeMapping TypeName="Model1.LOCALIZATION">
+              <MappingFragment StoreEntitySet="LOCALIZATION">
+                <ScalarProperty Name="CHART_SOURCE" ColumnName="CHART_SOURCE" />
+                <ScalarProperty Name="ROW_LEVEL" ColumnName="ROW_LEVEL" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="CHINESE_NAME" ColumnName="CHINESE_NAME" />
+                <ScalarProperty Name="ENGLISH_NAME" ColumnName="ENGLISH_NAME" />
+                <ScalarProperty Name="TABLE_CD" ColumnName="TABLE_CD" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="CMA" ZoomLevel="73">
+        <EntityTypeShape EntityType="Model1.MENU" Width="1.5" PointX="0.75" PointY="0.75" Height="3.5186979166666665" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.MENUNODEACTION" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4033821614583335" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.MENUNODELAYOUT" Width="1.5" PointX="2.75" PointY="3.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.REPORTCOLUMNDEFINITION" Width="1.5" PointX="4.75" PointY="0.75" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.REPORTDEFINITION" Width="1.5" PointX="4.75" PointY="4.75" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.REPORTEXTRAHEADERDEFINITION" Width="1.5" PointX="6.75" PointY="0.75" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model1.COLUMNDEFINITION" Width="1.5" PointX="0.75" PointY="6.75" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="Model1.ITEMDEFINITION" Width="1.5" PointX="7.75" PointY="3.75" Height="4.480205078125" />
+        <EntityTypeShape EntityType="Model1.HOMEANNOUNCEMENT" Width="1.5" PointX="3.375" PointY="8.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Model1.COALCHARTLEGEND" Width="1.5" PointX="5.375" PointY="9.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="Model1.COALFILTER" Width="1.5" PointX="7.375" PointY="9.75" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="Model1.HOMEFILE" Width="1.5" PointX="9.75" PointY="0.75" Height="1.4033821614583317" />
+        <EntityTypeShape EntityType="Model1.HOMEITEM" Width="1.5" PointX="9.75" PointY="9.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="Model1.HOMEMODULE" Width="1.5" PointX="0.75" PointY="10.75" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="Model1.USERCOLUMNSETTING" Width="1.5" PointX="10.75" PointY="3.75" Height="1.7879850260416674" />
+        <AssociationConnector Association="Model1.HOMEITEM_FK1" >
+          <ConnectorPoint PointX="2.25" PointY="12.723043619791667" />
+          <ConnectorPoint PointX="9.75" PointY="12.723043619791667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model1.LOCALIZATION" Width="1.5" PointX="12.375" PointY="6.75" Height="2.5571907552083388" />
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

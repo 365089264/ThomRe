@@ -1,0 +1,541 @@
+﻿@model VAV.Web.ViewModels.BondInfo.CityAndLocalBondViewModel
+@using VAV.Web.Common
+@using VAV.Web.Localization
+@{
+    Layout = null;
+    var datePickerId = "datePicker" + @Model.ID;
+    var endDatePickerId = "endDatePicker" + @Model.ID;
+    var startDate = DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var unitSelectId = "uselect" + @Model.ID;
+    var queryButtonId = "query" + @Model.ID;
+    var topTableId = "contentDiv" + @Model.ID;
+    var bottomDivID = "bottomDiv" + Model.ID;
+    var bottomTableId = "contenBottomtDiv" + @Model.ID;
+    var provOrIssId = "provOrIss" + @Model.ID;
+    var refreshDetailUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/GetCityBondDetailData");
+    var exportDetailUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForCityBondBottomData");
+    var exportTotalUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForCityBondTopData");
+    var exportStatisticsUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForCityBondStatisticsChart");
+    var exportGraphUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForCityBondGraph");
+}
+<div id="cityLocalBondInfo" style="min-width:1000px;">
+    <div class="colorBlock">
+        <div style="margin: 5px 0 0 10px;">
+            <div style="height: 27px;">
+                <div style="float: left;">
+                    <label style="margin-left: 10px;">@Resources.Global.Report_Query_From</label>
+                    <input type="text" id="@datePickerId" value="@startDate" class="dateInput" style="margin-left: 10px;" readonly/>
+                    <label style="margin-left: 10px;">@Resources.Global.Report_Query_End</label>
+                    <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput" style="margin-left: 10px;" readonly/>
+                </div>
+                <div style="float: left;">
+                    <label style="margin-left: 10px;">@Resources.Global.Report_Unit</label>
+                    <select id="@unitSelectId" name="unit" class="smallSelect">
+                        @foreach (var o in HtmlUtil.CookOptions("unit"))
+                        {
+                            <option value ="@o.ID">@o.Name</option>    
+                        }
+                    </select>
+                </div>
+                <div style="float: left; margin-left: 10px;">
+                    <input id="cityType@(Model.ID)" name="ciBondFlag" type="radio"  checked="checked" value="Y" onchange="CityLocalBond.ChangeProvOrIss(this);" />
+                    <label for="cityType@(Model.ID)" >@Resources.Global.CityBondInfo_City</label>
+                    <input id="localType@(Model.ID)" name="ciBondFlag" type="radio"  value="MUN" style="margin-left: 10px;" onchange="CityLocalBond.ChangeProvOrIss(this);" />
+                    <label  for="localType@(Model.ID)">@Resources.Global.CityBondInfo_Local</label>
+                    <select id="@provOrIssId"  class="medium2Select" style="display: none;line-height: 18px;" >
+                        <option value ="Y">@Resources.Global.CityBondInfo_ByArea</option>    
+                        <option value ="N">@Resources.Global.CityBondInfo_ByIssuer</option>   
+                    </select>
+                    <input type="button" id="@queryButtonId" value="@Resources.Global.Report_Query" style="margin-left: 10px;" onclick="CityLocalBond.Query();"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="StatisticalContent"style="min-width:1000px;">
+        <div class="Statistical">
+            <div class="StatisticalTop">
+                <div id="cityBondtLeft" class="StatisticalLeft" style="min-width:500px;">
+                    <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                        <div class="colorBlock-header">
+                            <div>
+                                <span class="colorBlock-header-span">@Resources.Global.WMP_The_Results</span> <a
+                                    href="#" class="exportExcel" onclick="CityLocalBond.ExportExcelCityBondTotal(this);">
+                                    <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gridTable">
+                            <table id="@topTableId" class="datatable" style="cursor: pointer;">
+                                <thead>
+                                    <tr class="hr">
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div>@Resources.Global.Source</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="cityBondtRight" class="StatisticalRight" style="min-width:500px;">
+                    <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                        <span class="colorBlock-header-span">@Resources.Global.CityBondInfo_Cmap</span>
+                        <div id="cityBondMapChart" align="center" style="position: relative; ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="cityLocalBondDetail" class="StatisticalBottom vavtab" style="padding: 0;">
+                <ul>
+                    <li><a href="#cityLocalBondDetailDiv">@Resources.Global.CityBondInfo_Detail</a></li>
+                    <li><a href="#cityLocalBondStatisticsDiv">@Resources.Global.CityBondInfo_StatisticsChart</a></li>
+                    <li><a href="#cityLocalBondGraphDiv">@Resources.Global.CityBondInfo_Graphic</a></li>
+                </ul>
+                <div id="cityLocalBondDetailDiv" style="height: 100%; height: -webkit-calc(100% - 40px);">
+                    <div class="colorBlock-header">
+                        <div style="line-height: 30px; padding-left: 10px;">
+                            <input type="radio" id="endIssue" name="issOrMatFlag" onclick="CityLocalBond.UpdateCityBondDetail(@Model.ID)" checked="checked" value="U"  />
+                            <label for="endIssue"  style="font-size: 12px;padding-right: 10px;">@Resources.Global.Bond_UnMaturity</label>
+                            <input type="radio" id="issue" name="issOrMatFlag" onclick="CityLocalBond.UpdateCityBondDetail(@Model.ID)" value="Y"  />
+                            <label for="issue"  style="font-size: 12px;">@Resources.Global.Issue_Bonds</label>
+                            <input type="radio" id="maturity" name="issOrMatFlag" style="margin-left: 10px;"
+                                   onclick="CityLocalBond.UpdateCityBondDetail(@Model.ID)" value="N" />
+                            <label for="maturity" style="font-size: 12px;">@Resources.Global.Maturity_Bonds</label>
+                            <a href="#" class="exportExcel" onclick="CityLocalBond.ExportExcelCityBondDetail(this);">
+                                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" /></a>
+                            <input type="button" value="@Resources.Global.Reset_Columns_Setting" style="float: right; margin: 3px 10px 0 0;" onclick="CityLocalBond.ResetCityBondColumnChosser(@Model.ID)" />
+                            <input type="button" value="@Resources.Global.ColumnChooser" style="float: right; margin-top: 3px;" onclick="CityLocalBond.UpdateCityBondColumnChosser(@Model.ID)" />
+                            <input type="hidden" id="radioCheck" value="issue" />
+                        </div>
+                    </div>
+                    <div id="@bottomDivID" class="gridTable" style="width:100%;">
+                        <table id="@bottomTableId" class="datatable Zebra" style="cursor: pointer;">
+                            <thead>
+                                <tr class="hr">
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div>@Resources.Global.Source</div>
+                    </div>
+                </div>
+                <div id="cityLocalBondStatisticsDiv" style="line-height: 30px;">
+                    <label style="margin-left: 10px;">@Resources.Global.Chart_Type</label>
+                    <select id="topchart_Type_@Model.ID" onchange="CityLocalBond.refreshTopChart();"
+                            style="width: 120px">
+                        <option value="column" selected="selected">@Resources.Global.ChatType_Column</option>
+                        <option value="line">@Resources.Global.ChatType_Line</option>
+                    </select>
+                    <label style="margin-left: 30px">@Resources.Global.Chart_Item</label>
+                    <select id="topchart_Item_@Model.ID" onchange="CityLocalBond.refreshTopChart();"
+                            style="width: 120px">
+                        <option value="IssuesAmount">@Resources.Global.BondIssue_Issue_Amt</option>
+                        <option value="Issues">@Resources.Global.BondIssue_Issues</option>
+                        <option value="EndBalance">@Resources.Global.BondIssue_End_Balance</option>
+                        <option value="InitialBalance">@Resources.Global.BondIssue_Initial_Balance</option>
+                        <option value="MaturityBonds">@Resources.Global.BondIssue_Maturity_Bonds</option>
+                        <option value="MaturityAmount">@Resources.Global.BondIssue_Maturity_Amount</option>
+                        <option value="EndIssues">@Resources.Global.BondIssue_End_Issues</option>
+                    </select>
+                    <a href="#" class="exportExcel" onclick="CityLocalBond.ExportExcelStatisticsChart(this);">
+                                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" /></a>
+                    <div id="chart_container_top_@Model.ID" class="StatisticalChartContainer">
+                    </div>
+                </div>
+                <div id="cityLocalBondGraphDiv" style="line-height: 30px;">
+                    <label style="margin-left: 10px;">@Resources.Global.Chart_Type</label>
+                    <select id="bottomchart_Type_@Model.ID" onchange="CityLocalBond.RefreshCityBondChart()"
+                            style="width: 120px">
+                        <option value="column" selected="selected">@Resources.Global.ChatType_Column</option>
+                        <option value="line">@Resources.Global.ChatType_Line</option>
+                    </select>
+                    <label style="margin-left: 30px">@Resources.Global.WMP_Summary_Frequency</label>
+                    <select id="bottomchart_FrequencyType_@Model.ID" onchange="CityLocalBond.BottomChartChange()"
+                            style="width: 120px">
+                        <option value="y">@Resources.Global.SummarizingFrequency_Year</option>
+                        <option value="h">@Resources.Global.Half_Year</option>
+                        <option value="q">@Resources.Global.SummarizingFrequency_Quarter</option>
+                        <option value="m" selected="selected">@Resources.Global.SummarizingFrequency_Month</option>
+                    </select>
+                    <label style="margin-left: 30px">@Resources.Global.Chart_Item</label>
+                    <select id="bottomchart_Item_@Model.ID" onchange="CityLocalBond.RefreshCityBondChart();"
+                            style="width: 120px">
+                        <option value="IssuesAmount">@Resources.Global.BondIssue_Issue_Amt</option>
+                        <option value="Issues">@Resources.Global.BondIssue_Issues</option>
+                        <option value="EndBalance">@Resources.Global.BondIssue_End_Balance</option>
+                        <option value="InitialBalance">@Resources.Global.BondIssue_Initial_Balance</option>
+                        <option value="MaturityBonds">@Resources.Global.BondIssue_Maturity_Bonds</option>
+                        <option value="MaturityAmount">@Resources.Global.BondIssue_Maturity_Amount</option>
+                        <option value="EndIssues">@Resources.Global.BondIssue_End_Issues</option>
+                    </select>
+                    <a href="#" class="exportExcel" onclick="CityLocalBond.ExportExcelGraphChart(this);">
+                                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" /></a>
+                    <div id="chart_container_bottom_@Model.ID" class="StatisticalChartContainer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var CityLocalBond = (function (my) { 
+        my.Query = function() {
+            AjaxWithBlock($('#cityLocalBondInfo').parent(), '/BondInfo/GetCityAndLocalBondData',
+            {
+                start: $("#@datePickerId").val(),
+                end: $("#@endDatePickerId").val(),
+                unit: $('#@unitSelectId').val(),
+                ciBondFlag: $("input[name='ciBondFlag']:checked").val(),
+                issOrMatFlag: $("input[name='issOrMatFlag']:checked").val(),
+                bottomRate: $('#bottomchart_FrequencyType_@Model.ID').val(),
+                provOrIssValue: $('#@provOrIssId').val(),
+                id:@Model.ID,
+                isHTML: false
+            }, function(data) {
+                CityLocalBond.BuildTopTable(data.topGrid);
+                if ($('#@provOrIssId').val() == 'Y') {
+                    $("#cityBondtLeft").css("width","50%");
+                    $("#cityBondtRight").css("display","block");
+                    my.map.HighlightArea($('#@topTableId .SelectedRow').attr('tag')); 
+                } else {
+                    $("#cityBondtLeft").css("width","100%");
+                    $("#cityBondtRight").css("display","none");
+                }
+                
+                CityLocalBond.BuildTopChart(data.topGrid);
+                CityLocalBond.BuildBottomTable(data.bottomGrid);
+                CityLocalBond.BuildBottomChart(data.bottomDetailChart);
+                CityLocalBond.RefrshCityBondChart();
+            });
+        };
+        my.BuildTopTable = function(tableData) {
+            var header = $('#@topTableId thead').empty();
+            var body = $('#@topTableId tbody').empty();
+            var headerRow = $('<tr class="hr"></tr>');
+            var rowTemplate = '<tr  tag="${ProvinceKey}" onclick="CityLocalBond.RefreshCityBondTable(this, @Model.ID)">';
+            $.each(tableData.ColumTemplate, function (key, value) {
+                headerRow.append('<th>' + value.Name + '</th>');
+                if (key == 0) {
+                   rowTemplate += '<td style="text-align: left;">${' + value.ColumnName + '}</td>'; 
+                } else {
+                   rowTemplate += '<td style="text-align: right;"">${' + value.ColumnName + '}</td>';
+                }
+            });
+            rowTemplate += '</tr>';
+            header.append(headerRow);
+            $.template('cityLocalBondTopTable', rowTemplate);
+            $.tmpl('cityLocalBondTopTable', tableData.RowData).appendTo(body);
+            $("#@topTableId tbody > tr:first").addClass("SelectedRow");
+        };
+        my.BuildTopChart = function(tableData) {
+            my.TopChartData = my.TopChartData || {};
+            my.TopChartData = tableData;
+            var selected = $("#topchart_Item_@Model.ID option:selected").text();
+            var selectedVal = $("#topchart_Item_@Model.ID").val();
+            var chartType = $("#topchart_Type_@Model.ID").val();
+            var xData = [];
+            var yData = [];
+            var xlabels = true;
+            var unit = "";
+            if (selectedVal.indexOf('Amount') > 0 || selectedVal.indexOf('Balance') > 0) {
+                unit = '@Resources.Global.Unit' + "(" + $('#@unitSelectId  option:selected').text() + ")";
+            }
+            $.each(tableData.RowData, function (key, value) {
+                if (value["ProvinceKey"] != "@Resources.Global.Total") {
+                   xData.push(value["ProvinceValue"]);
+                    if (value["ProvinceValue"].length > 25) xlabels = false;
+                   yData.push(parseFloat(value[selectedVal].replace(/,/g,''))); 
+                }
+            });
+            var currentChart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: 'chart_container_top_@Model.ID',
+                        type: chartType
+                    },
+                    title: { text: selected },
+                    xAxis: {
+                        categories: xData,
+                        labels: {
+                            rotation: 60,
+                            enabled: xlabels
+                        }
+                    },
+                    yAxis: { title: { text: unit } },
+                    plotOptions: { column: { borderWidth: 0 } },
+                    series: [{
+                        name: selected,
+                        data: yData
+                    }],
+                    legend: { enabled: false },
+                    tooltip: { formatter: function() { return this.x + '<br><b>' + this.point.series.name + '</b>: ' + this.y; } }
+                });
+            my.TopCharts = my.TopCharts || {};
+            my.TopCharts['CityBondTopChart'] = currentChart;
+        };
+        my.refreshTopChart = function() {
+            my.BuildTopChart(my.TopChartData);
+        };
+
+        my.BuildBottomTable = function(data) {
+            $.template("colTemp", '<th>${Name}</th>');
+            $('#@bottomTableId thead tr').empty();
+            $.tmpl("colTemp", data.ColumTemplate).appendTo("#@bottomTableId thead tr");
+            
+            var markup = BondInfo.BuildRowTemplate(data.ColumTemplate, '@Resources.Global.Bond_IS_Muncipal_Bond');
+            $.template("cityBondBottomrowTemplate", markup);
+            $('#@bottomTableId tbody').empty();
+            $.tmpl("cityBondBottomrowTemplate", data.RowData).appendTo("#@bottomTableId tbody");
+        };
+        my.BuildBottomChart = function(tableData) {
+            my.CityBondBottomChartData= my.CityBondBottomChartData || {};
+            my.CityBondBottomChartData = tableData;
+            var selected = $("#bottomchart_Item_@Model.ID option:selected").text();
+            var selectedVal = $("#bottomchart_Item_@Model.ID").val();
+            var xData = [];
+            var yData = [];
+            var unit = "";
+            if (selectedVal.indexOf('Amount') > 0 || selectedVal.indexOf('Balance') > 0) {
+                unit = '@Resources.Global.Unit' + "(" + $('#@unitSelectId  option:selected').text() + ")";
+            }
+            $.each(tableData, function (key, value) {
+                xData.push(key);
+                yData.push(parseFloat(value[selectedVal].replace(/,/g,''))); 
+            });
+            var provinceValue=$('#@topTableId .SelectedRow').length==0?CityLocalBond.SelectProvince:$('#@topTableId .SelectedRow').attr('tag');
+            var currentChart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: 'chart_container_bottom_@Model.ID',
+                        type: $("#bottomchart_Type_@Model.ID").val()
+                    },
+                    title: { text: selected+'—'+provinceValue },
+                    xAxis: {
+                        categories: xData
+                    },
+                    yAxis: { title: { text: unit } },
+                    plotOptions: { column: { borderWidth: 0 } },
+                    series: [{
+                        name: selected,
+                        data: yData
+                    }],
+                    legend: { enabled: false },
+                    tooltip: { formatter: function() { return this.x + '<br><b>' + this.point.series.name + '</b>: ' + this.y; } }
+                });
+            my.BottomCharts = my.BottomCharts || {};
+            my.BottomCharts['CityBondBottomChart'] = currentChart;
+        };
+        my.BottomChartChange = function() {
+            var provinceValue=$('#@topTableId .SelectedRow').length==0?CityLocalBond.SelectProvince:$('#@topTableId .SelectedRow').attr('tag');
+            AjaxWithBlock($('#chart_container_bottom_@Model.ID'), "/BondInfo/GetCityBondBottomChart",
+                {
+                    start: $('#@datePickerId').val(),
+                    end: $('#@endDatePickerId').val(),
+                    provinceKey: provinceValue,
+                    unit: $('#@unitSelectId').val(),
+                    ciBondFlag: $("input[name='ciBondFlag']:checked").val(),
+                    bottomRate: $('#bottomchart_FrequencyType_@Model.ID').val(),
+                    provOrIssValue:$('#@provOrIssId').val(),
+                    id:@Model.ID
+                }, my.BuildBottomChart);
+        };
+
+        my.RefreshCityBondTable = function(row, id,isFromMap) {
+            $(".SelectedRow").removeClass("SelectedRow");
+            if (row.length != 0) {
+                $(row).addClass("SelectedRow");
+            }
+            if(!isFromMap)my.map.HighlightArea($(row).attr('tag'));
+            my.UpdateCityBondDetail(id);
+            my.BottomChartChange();
+        };
+        my.RefrshCityBondChart = function() {
+           var parentTop = $('#chart_container_top_@Model.ID');
+           var parentBottom = $('#chart_container_bottom_@Model.ID');
+                setTimeout(function() {
+                    CityLocalBond.TopCharts['CityBondTopChart'].setSize(parentTop.width() - 12, parentTop.height() - 10, false);
+                    CityLocalBond.BottomCharts['CityBondBottomChart'].setSize(parentBottom.width() - 12, parentBottom.height() - 10, false);
+                }, 200);
+        };
+        my.RefreshCityBondChart = function() {
+            my.BuildBottomChart(my.CityBondBottomChartData);
+        };
+
+        my.UpdateCityBondColumnChosser = function(id) {
+            ColumnManager.OpenColumnSetting(id, my.UpdateCityBondDetail);
+        };
+        
+        my.UpdateCityBondDetail = function(id) {
+            var provinceValue=$('#@topTableId .SelectedRow').length==0?CityLocalBond.SelectProvince:$('#@topTableId .SelectedRow').attr('tag');
+            AjaxWithBlock($('#@bottomDivID'), "@refreshDetailUrl",
+                {
+                    start: $('#@datePickerId').val(),
+                    end: $('#@endDatePickerId').val(),
+                    provinceValue: provinceValue,
+                    unit: $('#@unitSelectId').val(),
+                    ciBondFlag: $("input[name='ciBondFlag']:checked").val(),
+                    issOrMatFlag: $("input[name='issOrMatFlag']:checked").val(),
+                    provOrIssValue: $('#@provOrIssId').val(),
+                    id: id
+                }, function(data) {
+                    my.BuildBottomTable(data);
+                });
+        };
+        my.ResetCityBondColumnChosser = function(id) {
+            ColumnManager.ResetColumnSetting(id, my.UpdateCityBondDetail);
+        };
+         my.ExportExcelCityBondDetail = function(link) {
+            $(link).attr("href",
+                "@exportDetailUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()
+                        +'&provinceValue='+$('#@topTableId .SelectedRow').attr('tag')
+                            + '&unit=' + $('#@unitSelectId').val() 
+                                + '&ciBondFlag=' + $("input[name='ciBondFlag']:checked").val()
+                                    + '&issOrMatFlag=' + $("input[name='issOrMatFlag']:checked").val()
+                                    + '&provOrIssValue=' +  $('#@provOrIssId').val()
+                                        + '&id=' + @Model.ID
+            );
+        };
+        my.ExportExcelCityBondTotal = function(link) {
+            $(link).attr("href",
+                "@exportTotalUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()
+                        + '&unit=' +  $('#@unitSelectId').val()
+                            + '&ciBondFlag=' +$("input[name='ciBondFlag']:checked").val() 
+                               + '&provOrIssValue=' +  $('#@provOrIssId').val()
+                                + '&id=' + @Model.ID
+            );
+        };
+        my.ExportExcelStatisticsChart = function(link) {
+            $(link).attr("href",
+                "@exportStatisticsUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()
+                        + '&unit=' +  $('#@unitSelectId').val()
+                            + '&ciBondFlag=' +$("input[name='ciBondFlag']:checked").val() 
+                                + '&itemValue=' +  $("#topchart_Item_@Model.ID option:selected").val()
+                                    + '&itemName=' +  $("#topchart_Item_@Model.ID option:selected").text()
+                                        + '&id=' + @Model.ID
+            );
+        };
+        my.ExportExcelGraphChart = function(link) {
+            var provinceValue=$('#@topTableId .SelectedRow').length==0?CityLocalBond.SelectProvince:$('#@topTableId .SelectedRow').attr('tag');
+            $(link).attr("href",
+                "@exportGraphUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()
+                        + '&provinceValue=' +  provinceValue
+                            + '&unit=' +  $('#@unitSelectId').val()
+                                + '&ciBondFlag=' +$("input[name='ciBondFlag']:checked").val() 
+                                    + '&itemValue=' +  $("#bottomchart_Item_@Model.ID option:selected").val()
+                                        + '&itemName=' +  $("#bottomchart_Item_@Model.ID option:selected").text()
+                                         + '&provOrIssValue=' +  $('#@provOrIssId').val()
+                                            + '&bottomRate=' + $('#bottomchart_FrequencyType_@Model.ID').val()
+            );
+        };
+        my.ChangeProvOrIss = function(provOrIss) {
+            var region = $(provOrIss).val();
+            debugger;
+            switch (region) {
+            case "Y":
+                $("#@provOrIssId").hide();
+                $('#@provOrIssId').val('Y');
+                break;
+            default:
+                $("#@provOrIssId").show();
+                break;
+            }
+        };
+        return my;
+    } (CityLocalBond || {}));
+    $(function() {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        $("#cityLocalBondDetail").tabs({activate: CityLocalBond.RefrshCityBondChart});
+        var map = new Datamap({
+                element: document.getElementById('cityBondMapChart'),
+                height:420,
+                width:500,
+                geographyConfig: {
+                    dataUrl:"/BondInfo/GetCityBondMap",
+                    hideAntarctica: true,
+                    borderWidth: 1,
+                    borderColor: 'rgb(152,101,97)',
+                    popupTemplate: function (geography, data) { //this function should just return a string
+                        return '<div class="cityBondMapHover"><div>'+
+                                $('#@topTableId thead tr th').eq(0).text()+"：<strong>"+ geography.properties.name+'</strong></div><div>'+
+                                '@Resources.Global.Report_Query_From'+"："+$('#@datePickerId').val()+'</div><div>'+
+                                '@Resources.Global.Report_Query_End'+"："+$('#@endDatePickerId').val()+'</div><div>'+
+                                $('#@topTableId thead tr th').eq(1).text()+"："+$('#@topTableId tbody tr[tag="'+geography.properties.name+'"] td').eq(1).text()+'</div><div>'+
+                                $('#@topTableId thead tr th').eq(2).text()+"："+$('#@topTableId tbody tr[tag="'+geography.properties.name+'"] td').eq(2).text()+'</div><div>'+
+                                $('#@topTableId thead tr th').eq(3).text()+"："+$('#@topTableId tbody tr[tag="'+geography.properties.name+'"] td').eq(3).text()+'</div><div>'+
+                                $('#@topTableId thead tr th').eq(4).text()+"："+$('#@topTableId tbody tr[tag="'+geography.properties.name+'"] td').eq(4).text()+'</div><div>'+
+                                $('#@topTableId thead tr th').eq(5).text()+"："+$('#@topTableId tbody tr[tag="'+geography.properties.name+'"] td').eq(5).text()+'</div><div>'+
+                                $('#@topTableId thead tr th').eq(6).text()+"："+$('#@topTableId tbody tr[tag="'+geography.properties.name+'"] td').eq(6).text()+'</div><div>'+
+                                $('#@topTableId thead tr th').eq(7).text()+"："+$('#@topTableId tbody tr[tag="'+geography.properties.name+'"] td').eq(7).text()+'</div><div>'+
+                                $('#@topTableId thead tr th').eq(8).text()+"："+$('#@topTableId tbody tr[tag="'+geography.properties.name+'"] td').eq(8).text()+'</div><div>'+
+                                $('#@topTableId thead tr th').eq(9).text()+"："+$('#@topTableId tbody tr[tag="'+geography.properties.name+'"] td').eq(9).text()+'</div></div>';
+                    },
+                    popupOnHover: true, //disable the popup while hovering
+                    highlightOnHover: true,
+                    highlightFillColor: '#ff8000',
+                    highlightBorderColor: 'rgba(250, 15, 160, 0.2)',
+                    highlightBorderWidth: 2,
+                    onClick:function(e) {
+                        CityLocalBond.SelectProvince = $.trim(e);
+                        CityLocalBond.RefreshCityBondTable($('#@topTableId tbody tr[tag="'+$.trim(e)+'"]'),@Model.ID,true);
+                    }
+                },
+                scope: 'china',
+                fills: {
+                    defaultFill: '#2c2c2c',
+                    HuangLiao:'rgb(252, 236,172 )',
+                    ZiXi:'rgb(204, 204, 236)',
+                    ZongXin:'rgb(222,201,182 )',
+                    LvNei:'rgb(180, 220,140 )',
+                    HongQing:'rgb(252, 188,212 )',
+                    LanSi:'rgb(175, 228,221 )',
+                    HuangGuang:'rgb(245, 197,155 )'
+                },
+                data: {
+                     "Liaoning":{ fillKey: 'HuangLiao' },
+                     "Hebei":{ fillKey: 'ZongXin' },
+                     "Beijing":{ fillKey: 'HuangLiao' },
+                     "Shanghai":{ fillKey: 'HongQing' },
+                     "Jiangsu":{ fillKey: 'ZongXin' },
+                     "Jilin":{ fillKey: 'ZongXin' },
+                     "Heilongjiang":{ fillKey: 'HongQing' },
+                     "Inner Mongolia":{ fillKey: 'LvNei' },
+                     "Qinghai":{ fillKey: 'HongQing' },
+                     "Shandong":{ fillKey: 'LvNei' },
+                     "Tianjin":{ fillKey: 'HongQing' },
+                     "Ningxia":{ fillKey: 'HongQing' },
+                     "Shaanxi":{ fillKey: 'ZongXin' },
+                     "Taiwan":{ fillKey: 'ZiXi' },
+                     "Hainan":{ fillKey: 'HongQing' },
+                     "Henan":{ fillKey: 'HongQing' },
+                     "Xinjiang":{ fillKey: 'ZongXin' },
+                     "Gansu":{ fillKey: 'HuangLiao' },
+                     "Hong Kong":{ fillKey: 'HongQing' },
+                     "Tibet":{ fillKey: 'ZiXi' },
+                     "Sichuan":{ fillKey: 'LanSi' },
+                     "Yunnan":{ fillKey: 'LvNei' },
+                     "Guizhou":{ fillKey: 'HuangLiao' },
+                     "Macau":{ fillKey: 'HongQing' },
+                     "Guangxi":{ fillKey: 'HuangGuang' },
+                     "Guangdong":{ fillKey: 'HuangLiao' },
+                     "Chongqing":{ fillKey: 'HongQing' },
+                     "Hubei":{ fillKey: 'HuangLiao' },
+                     "Hunan":{ fillKey: 'LvNei' },
+                     "Jiangxi":{ fillKey: 'LanSi' },
+                     "Anhui":{ fillKey: 'ZiXi' },
+                     "Fujian":{ fillKey: 'HongQing' },
+                     "Zhejiang":{ fillKey: 'HuangLiao' },
+                     "Shanxi":{ fillKey: 'HuangLiao' }
+                }
+            });
+        CityLocalBond.map = map;
+        CityLocalBond.Query();
+    });
+</script>

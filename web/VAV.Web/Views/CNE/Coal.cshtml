@@ -1,0 +1,103 @@
+﻿@using VAV.Model.Data.CnE
+@{
+    var filterObj = ViewBag.Filters as CoalFilterObj;
+    var pFilter = filterObj.PrimaryDropdown;
+    var sFilter = filterObj.SecondDropdown;
+}
+<div id="coalPage@(ViewBag.ID)" class="StatisticalContent" style="min-width:500px;height: 100%;width:-webkit-calc(100% - 5px);">
+    <div class="Statistical">
+        <div class="StatisticalTop">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@ViewBag.Name</span>
+                    <a id="excelcoal@(ViewBag.ID)" href="#" class="exportExcel" onclick="Coal.ExportExcelCoalChartDetails(this,@ViewBag.ID,'@ViewBag.Name');">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                </div>
+                <div id="coalChart@(ViewBag.ID)" style="position: absolute; height:90%; width:100%;height: -webkit-calc(90%+1px );" data-ChartYLabel="@(ViewBag.ChartYLabel)" data-ChartTitle="@(ViewBag.ChartTitle)">
+                </div>
+            </div>
+        </div>
+        <div class="StatisticalBottom">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 14px);">
+                <div class="colorBlock">
+                    <div class="Statisticalfilter">
+                        <div style="height: 25px;">
+                            @if (pFilter != null)
+                            {
+                                @pFilter.DisplayName
+                                @Html.DropDownList("pFilter" + filterObj.ReportId, pFilter.Items,
+                                new
+                                {
+                                    @class = "medium2Select",
+                                    @onchange = string.Format("Coal.HandlePFilterChange({0});", filterObj.ReportId),
+                                    sfilterId = filterObj.SecondDropdown == null ? "" : filterObj.SecondDropdown.FilterId.ToString(),
+                                    pFieldName = pFilter.FieldName
+                                })
+                            }
+                            @if (sFilter != null)
+                            {
+                                @sFilter.DisplayName
+                                @Html.DropDownList("sFilter" + filterObj.ReportId, sFilter.Items, new { @class = "medium2Select", sFieldName = sFilter.FieldName })
+                            }
+                            @if (pFilter != null)
+                            {
+                                <input type="button" value="@Resources.Global.Report_Query" onclick="Coal.UpdateCoalData(@ViewBag.ID) "/>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="coalPagePaginateOfLabel@(ViewBag.ID)" class="paginateOfLable">
+                    </div>
+                    <a href="#" class="exportExcel" onclick="Coal.ExportExcelCoalDetails(this,'@ViewBag.ID','@ViewBag.Name');">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                    <div style="width: 400px; float: right; padding-right: 80px">
+                        <div id="coalPagePaginate@(ViewBag.ID)">
+                        </div>
+                    </div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div style="height: -webkit-calc(100% - 49px); overflow: auto">
+                    <table id="coalPageDetailTable@(ViewBag.ID)" data-legend="@ViewBag.Legend" data-Unit="@ViewBag.Unit" data-report="@ViewBag.ID" class="datatable Zebra" style="white-space: nowrap;cursor: pointer;">
+                        <thead>
+                            <tr class="hr">
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div>@Resources.Global.Source</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () { 
+        var data = @{ Html.RenderAction("GetCoalData", "CNE",
+                                new
+                                {
+                                    reportId = ViewBag.ID,
+                                    isHTML = true,
+                                    currentPage = 1
+                                }
+                                ); 
+            };
+        Coal.UpdateCoalTableData(data.table, @ViewBag.ID, false);
+        Coal.resetCache(@ViewBag.ID);
+        Coal.UpdateCoalChartData(data.chart, @ViewBag.Id);
+        amplify.subscribe('RefreshChart', function () {
+            var parent = $('#coalChart@(ViewBag.ID)');
+            setTimeout(function(){
+                if(parent.parent().width()){
+                    Coal.arrHighCharts['@(ViewBag.ID)'].setSize(parent.parent().width(), parent.parent().height()-25, false);
+                                    }
+            }, 500
+            );
+        });
+    });
+</script>

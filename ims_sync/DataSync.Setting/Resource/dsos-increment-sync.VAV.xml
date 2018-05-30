@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- For more information on using transformations 
+     see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134. -->
+<settings xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <destination-db xdt:Transform="Replace">
+    <type>MYSQL</type>
+    <conn>server=10.34.4.232;port=3306;database=vav;uid=root;pwd=reutadmin;charset=gb2312;</conn>
+  </destination-db>
+  
+  <mappings>
+    <table-mapping source="govcorp..asset" destination="asset" xdt:Transform="SetAttributes(destination)" xdt:Locator="Match(source)">
+      <filter xdt:Transform="Replace">
+        <![CDATA[cntry_of_iss_cd = 'CN' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="govcorp..party_rating_hist" destination="party_rating_hist" xdt:Transform="SetAttributes(destination)" xdt:Locator="Match(source)">
+      <filter xdt:Transform="Replace">
+        <![CDATA[party_id IN (SELECT p.party_id FROM govcorp..party p WHERE (p.party_id IN (SELECT issuer_id FROM govcorp..asset a WHERE a.cntry_of_iss_cd = 'CN')) AND p.party_last_chg_dt >= {LastSyncTime} AND p.party_last_chg_dt <= {CurrentSyncTime})]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="govcorp..rating" destination="rating" xdt:Transform="SetAttributes(destination)" xdt:Locator="Match(source)">
+      <filter xdt:Transform="Replace">
+        <![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE a.cntry_of_iss_cd = 'CN' AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="govcorp..rating_hist" destination="rating_hist" xdt:Transform="SetAttributes(destination)" xdt:Locator="Match(source)">
+      <filter xdt:Transform="Replace">
+        <![CDATA[asset_id IN(SELECT a.asset_id FROM govcorp..asset a WHERE a.cntry_of_iss_cd = 'CN' AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="govcorp..asset2" destination="asset2" xdt:Transform="SetAttributes(destination)" xdt:Locator="Match(source)">
+      <filter xdt:Transform="Replace">
+        <![CDATA[asset_id IN (SELECT asset_id FROM govcorp..asset WHERE cntry_of_iss_cd = 'CN' and asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="govcorp..asset_ident" destination="asset_ident" xdt:Transform="SetAttributes(destination)" xdt:Locator="Match(source)">
+      <filter xdt:Transform="Replace">
+        <![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE a.cntry_of_iss_cd = 'CN' AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+      </filter>
+    </table-mapping>
+    
+    <table-mapping source="govcorp..orig_iss_info" destination="orig_iss_info" xdt:Transform="Insert">
+      <column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="bmk_at_issue_id"/>
+      <column-mapping source="ch_eusd_exempt_fl"/>
+      <column-mapping source="conver_cd"/>
+      <column-mapping source="disc_comm_per_debt"/>
+      <column-mapping source="disc_comm_per_sh"/>
+      <column-mapping source="ecb_cd"/>
+      <column-mapping source="eusd_tap_fl"/>
+      <column-mapping source="eu_jumbo_fl"/>
+      <column-mapping source="extraordinary_redemption_fl"/>
+      <column-mapping source="govt_bond_type_cd"/>
+      <column-mapping source="grade_at_iss_cd"/>
+      <column-mapping source="instrument_type_cd"/>
+      <column-mapping source="mdy_backed_fl"/>
+      <column-mapping source="mgmt_fee_per_sh"/>
+      <column-mapping source="mgmt_uw_fees_comb"/>
+      <column-mapping source="nonfix_iss_fl"/>
+      <column-mapping source="nonunderwritten_sec_incl_fl"/>
+      <column-mapping source="offer_registrant_id"/>
+      <column-mapping source="offer_registrant_name"/>
+      <column-mapping source="orig_avg_life"/>
+      <column-mapping source="orig_iss_amt"/>
+      <column-mapping source="orig_iss_cpn"/>
+      <column-mapping source="orig_iss_curr_cd"/>
+      <column-mapping source="orig_iss_idx"/>
+      <column-mapping source="orig_iss_px"/>
+      <column-mapping source="orig_iss_sprd"/>
+      <column-mapping source="orig_iss_yld"/>
+      <column-mapping source="orig_issue_dt"/>
+      <column-mapping source="orig_proc_per_debt"/>
+      <column-mapping source="orig_proc_per_sh"/>
+      <column-mapping source="orig_yld_maturity"/>
+      <column-mapping source="orig_yld_par_call"/>
+      <column-mapping source="over_allot_amt"/>
+      <column-mapping source="over_allot_days"/>
+      <column-mapping source="overallot_shs"/>
+      <column-mapping source="par_value"/>
+      <column-mapping source="praecipium"/>
+      <column-mapping source="prc_qt_mtd_cd"/>
+      <column-mapping source="price_qt_base_value"/>
+      <column-mapping source="program_type_cd"/>
+      <column-mapping source="prosp_approval_dt"/>
+      <column-mapping source="px_incl_accr_int_fl"/>
+      <column-mapping source="px_quote_convention_cd"/>
+      <column-mapping source="px_quote_rounding_cd"/>
+      <column-mapping source="px_to_public_per_sh"/>
+      <column-mapping source="reallow_per_debt"/>
+      <column-mapping source="reallow_per_sh"/>
+      <column-mapping source="reg_expense"/>
+      <column-mapping source="reg_over_allot_sh"/>
+      <column-mapping source="remarketing_dt"/>
+      <column-mapping source="remarketing_fl"/>
+      <column-mapping source="reoffer_px"/>
+      <column-mapping source="reoffer_sprd"/>
+      <column-mapping source="reoffer_yld"/>
+      <column-mapping source="ric_disp_name"/>
+      <column-mapping source="seasoning_dt"/>
+      <column-mapping source="secoff_char"/>
+      <column-mapping source="security_name"/>
+      <column-mapping source="selling_conc_per_debt"/>
+      <column-mapping source="selling_conc_per_sh"/>
+      <column-mapping source="seniority_type_cd"/>
+      <column-mapping source="sep_transferable_dt"/>
+      <column-mapping source="simple_first_fl"/>
+      <column-mapping source="solvability_ratio"/>
+      <column-mapping source="sp_backed_fl"/>
+      <column-mapping source="term_to_maturity"/>
+      <column-mapping source="total_disc_comm"/>
+      <column-mapping source="total_fee"/>
+      <column-mapping source="total_proc_to_reg"/>
+      <column-mapping source="total_px_public"/>
+      <column-mapping source="total_sh_offered"/>
+      <column-mapping source="undwrt_fee"/>
+      <column-mapping source="use_of_proc_catgry_cd"/>
+      <column-mapping source="use_of_proceeds"/>
+      <column-mapping source="value_date_cd"/>
+      <filter>
+        <![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE a.cntry_of_iss_cd = 'CN' AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="govcorp..party" destination="party" xdt:Transform="SetAttributes(destination)" xdt:Locator="Match(source)">
+      <filter xdt:Transform="Replace">
+        <![CDATA[(party_id in (SELECT issuer_id FROM govcorp..asset a WHERE a.cntry_of_iss_cd = 'CN')) AND party_last_chg_dt >= {LastSyncTime} AND party_last_chg_dt <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="govcorp..asset_exchanges" destination="asset_exchanges" xdt:Transform="Insert">
+      <column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="delisting_dt"/>
+      <column-mapping source="exch_cd" isKey="true"/>
+      <column-mapping source="listing_dt"/>
+      <column-mapping source="min_trading_lot"/>
+      <filter>
+        <![CDATA[asset_id IN (SELECT a.asset_id FROM govcorp..asset a WHERE a.cntry_of_iss_cd = 'CN' AND a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime})]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="gcodes..freq_cds" destination="freq_cds" xdt:Transform="Insert">
+      <column-mapping source="freq_cd" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="short_descr"/>
+      <column-mapping source="freq_descr"/>
+      <column-mapping source="chk_date_comp"/>
+      <column-mapping source="chk_num"/>
+    </table-mapping>
+
+    <table-mapping source="gcodes..asset_status_cds" destination="asset_status_cds" xdt:Transform="Insert">
+      <column-mapping source="asset_status_cd" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="asset_status_descr"/>
+      <column-mapping source="active_fl"/>
+    </table-mapping>
+
+    <table-mapping source="gcodes..cdc_asset_class_cds" destination="cdc_asset_class_cds" xdt:Transform="Insert">
+      <column-mapping source="cdc_asset_class_cd" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="cdc_asset_class_descr"/>
+    </table-mapping>
+
+    <table-mapping source="gcodes..currency_cds" destination="currency_cds" xdt:Transform="Insert">
+      <column-mapping source="currency_cd" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="currency_descr"/>
+      <column-mapping source="iso_cur_cd"/>
+      <column-mapping source="iso_cur_descr"/>
+      <column-mapping source="iso_cur_numeric"/>
+      <column-mapping source="active_fl"/>
+      <column-mapping source="cur_cd"/>
+      <column-mapping source="factor"/>
+      <column-mapping source="permid"/>
+    </table-mapping>
+
+    <table-mapping source="gcodes..day_cnt_cds" destination="day_cnt_cds" xdt:Transform="Insert">
+      <column-mapping source="day_cnt_cd" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="day_cnt_descr"/>
+      <column-mapping source="day_cnt_ldescr"/>
+    </table-mapping>
+
+    <table-mapping source="gcodes..rating_agency_cds" destination="rating_agency_cds" xdt:Transform="SetAttributes(destination)" xdt:Locator="Match(source)">
+      <column-mapping source="active_fl" xdt:Transform="Remove" xdt:Locator="Match(source)"/>
+      <filter xdt:Transform="Replace">
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="gcodes..rating_src_cds" destination="rating_src_cds" xdt:Transform="SetAttributes(destination)" xdt:Locator="Match(source)">
+      <filter xdt:Transform="Replace">
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="gcodes..coupon_class_cds" destination="coupon_class_cds" xdt:Transform="Insert">
+      <column-mapping source="coupon_class_cd" isKey="true"  isImmutableKey="true"/>
+      <column-mapping source="coupon_class_sdescr"/>
+      <column-mapping source="coupon_class_descr"/>
+    </table-mapping>
+
+    <table-mapping source="gcodes..coupon_type_cds" destination="coupon_type_cds" xdt:Transform="Insert">
+      <column-mapping source="coupon_type_cd" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="coupon_type_sdescr"/>
+      <column-mapping source="coupon_type_descr"/>
+      <column-mapping source="float_fl"/>
+    </table-mapping>
+
+    <table-mapping source="gcodes..seniority_cds" destination="seniority_cds" xdt:Transform="Insert">
+      <column-mapping source="seniority_cd" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="seniority_descr"/>
+      <column-mapping source="seniority_rank"/>
+    </table-mapping>
+
+    <table-mapping source="gcodes..rating_cds" destination="rating_cds" xdt:Transform="Insert">
+      <column-mapping source="rating_cd" isKey="true"  isImmutableKey="true"/>
+      <column-mapping source="rating_src_cd" isKey="true"/>
+      <column-mapping source="rank"/>
+      <column-mapping source="sp_equiv_rank"/>
+      <column-mapping source="iso_lcntry_cd" isKey="true"/>
+      <column-mapping source="grade_cd"/>
+      <column-mapping source="base_fl"/>
+      <column-mapping source="preliminary_fl"/>
+    </table-mapping>
+
+    <table-mapping source="gcodes..rating_conversion_cds" destination="rating_conversion_cds" xdt:Transform="Insert">
+      <column-mapping source="rating_src_cd" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="iso_lcntry_cd"/>
+      <column-mapping source="rating_cd" isKey="true"/>
+      <column-mapping source="rank"/>
+      <column-mapping source="equiv_rating_src_cd"/>
+      <column-mapping source="equiv_iso_lcntry_cd"/>
+      <column-mapping source="equiv_rating_cd"/>
+      <column-mapping source="equiv_rank"/>
+    </table-mapping>
+
+    <table-mapping source="govcorp..rate_sched" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="govcorp..party_rating" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="govcorp..idxref_id_obj_xref_quote x inner join govcorp..quote q on q.quote_id = x.quote_id" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="gcodes..price_source" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="govcorp..amt_outsd_hist" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="ejv_common..govcorp_price" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="gcodes..indu_sector_cds" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="gcodes..indu_subsector_cds" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="gcodes..sp_indu_cds" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="gcodes..ds_type_cds" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="gcodes..ds_subtype_cds" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+
+    <table-mapping source="rigs..rt_n_indx_level" xdt:Transform="Remove" xdt:Locator="Match(source)">
+    </table-mapping>
+  </mappings>
+  
+  
+  <post-sync-tasks xdt:Transform="Replace">
+    <task name="Luna.DataSync.Core.ReCreateTablesForVavTask"/>
+  </post-sync-tasks>
+
+  <custom-bonds xdt:Transform="Replace">
+  </custom-bonds>
+</settings>

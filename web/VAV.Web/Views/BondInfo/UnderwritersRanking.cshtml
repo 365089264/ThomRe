@@ -1,0 +1,488 @@
+﻿@model VAV.Web.ViewModels.BondInfo.UnderwritersRankingViewModel
+@using VAV.Web.Common
+@{
+    Layout = null;
+    var datePickerId = "datePicker" + @Model.ID;
+    var endDatePickerId = "endDatePicker" + @Model.ID;
+    var startDate = DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var bondClassSelectId = "bondClass" + @Model.ID;
+    var unitSelectId = "uselect" + @Model.ID;
+    var queryButtonId = "query" + @Model.ID;
+    var topTableId = "contentDiv" + @Model.ID;
+    var bottomDivID = "bottomDiv" + Model.ID;
+    var bottomTableId = "contenBottomtDiv" + @Model.ID;
+    var refreshDetailUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/GetUnderwritersBond");
+    var exportTotalUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForUnderwritersAnalysis");
+    var exportDetailUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForUnderwritersBond");
+    var exportGraphUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForUnderwritersGraph");
+}
+<div id="UnderwritersRankingInfo" style="min-width: 1000px;">
+    <div class="colorBlock">
+        <div style="margin: 5px 0 0 10px;">
+            <div style="height: 27px;">
+                <div style="float: left;">
+                    <label style="margin-left: 10px;">@Resources.Global.Report_Query_From</label>
+                    <input type="text" id="@datePickerId" value="@startDate" class="dateInput" style="margin-left: 10px;" readonly/>
+                    <label style="margin-left: 10px;">@Resources.Global.Report_Query_End</label>
+                    <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput" style="margin-left: 10px;" readonly/>
+                </div>
+                <div style="float: left;">
+                    <label style="margin-left: 10px;">@Resources.Global.Bond_CDC_Classify</label>
+                    <select id="@bondClassSelectId" name="bondClassSelectId" class="largeSelect" multiple= "multiple"  style="width:220px;">
+                        @{
+                            var bondClass = HtmlUtil.CookOptions("bondUnderWrites");
+                            for (int i = 0; i < bondClass.Count; i++)
+                            {
+                                if (i == 0)
+                                {
+                                    <option selected="true" value ="@bondClass[i].ID">@bondClass[i].Name</option>
+                                }
+                                else
+                                {
+                                    <option value ="@bondClass[i].ID">@bondClass[i].Name</option>
+                                }
+                            }
+                        }
+                    </select>
+                    <label style="margin-left: 30px;">@Resources.Global.Report_Unit</label>
+                    <select id="@unitSelectId" name="unit" class="smallSelect">
+                        @foreach (var o in HtmlUtil.CookOptions("unit"))
+                        {
+                            <option value ="@o.ID" >@o.Name</option>    
+                        }
+                    </select>
+                    <label style="margin-left: 30px">@Resources.Global.Underwriters_Ranking</label>
+                    <select id="total_Item_@Model.ID" style="width: 120px">
+                        <option value="UnderWr_Amount">@Resources.Global.Underwriters_Amount</option>
+                        <option value="Issues">@Resources.Global.Underwriters_Issues</option>
+                    </select>
+                </div>
+                <div style="float: left; margin-left: 10px;">
+                    <input type="button" id="@queryButtonId" value="@Resources.Global.Report_Query" style="margin-left: 10px;" onclick="UnderwritersRanking.Query();"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="StatisticalContent" style="min-width: 1000px;">
+        <div class="Statistical">
+            <div class="StatisticalTop">
+                <div class="StatisticalLeft" style="min-width: 500px;">
+                    <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                        <div class="colorBlock-header">
+                            <div>
+                                <span class="colorBlock-header-span">@Resources.Global.WMP_The_Results</span> <a
+                                    href="#" class="exportExcel" onclick="UnderwritersRanking.ExportExcelTotal(this);">
+                                    <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gridTable">
+                            <table id="@topTableId" class="datatable" style="cursor: pointer;">
+                                <thead>
+                                    <tr class="hr">
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div>@Resources.Global.Source</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="StatisticalRight" style="min-width: 500px;">
+                    <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                        <div class="colorBlock-header">
+                            <span class="colorBlock-header-span">@Resources.Global.Underwriters_TopTen</span>
+                        </div>
+                        <form align="left" class="StatisticalChartForm">
+                            <label>@Resources.Global.Chart_Type</label>
+                            <select id="topchart_Type_@Model.ID" onchange="UnderwritersRanking.refreshTopChart();"
+                                    style="width: 120px">
+                                <option value="pie" selected="selected">@Resources.Global.ChatType_Pie</option>
+                                <option value="column">@Resources.Global.ChatType_Column</option>
+                            </select>
+                        </form>
+                        <div id="chart_container_topRight_@Model.ID" class="StatisticalChartContainer" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="UnderwritersRankingDetail" class="StatisticalBottom vavtab" style="padding: 0;">
+                <ul>
+                    <li><a href="#UnderwritersRankingDetailDiv">@Resources.Global.CityBondInfo_Detail</a></li>
+                    <li><a href="#UnderwritersRankingGraphDiv">@Resources.Global.CityBondInfo_Graphic</a></li>
+                </ul>
+                <div id="UnderwritersRankingDetailDiv" style="height: 100%; height: -webkit-calc(100% - 40px);">
+                    <div class="colorBlock-header">
+                        <div style="line-height: 30px; padding-left: 10px;">
+                            <a href="#" class="exportExcel" onclick="UnderwritersRanking.ExportExcelDetail(this);">
+                                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" /></a>
+                        </div>
+                    </div>
+                    <div id="@bottomDivID" class="gridTable" style="width:100%;">
+                        <table id="@bottomTableId" class="datatable Zebra" style="cursor: pointer;">
+                            <thead>
+                                <tr class="hr">
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div>@Resources.Global.Source</div>
+                    </div>
+                </div>
+                <div id="UnderwritersRankingGraphDiv" style="line-height: 30px;">
+                    <label style="margin-left: 10px">@Resources.Global.WMP_Summary_Frequency</label>
+                    <select id="bottomchart_FrequencyType_@Model.ID" onchange="UnderwritersRanking.BottomChartChange()"
+                            style="width: 120px">
+                        <option value="y">@Resources.Global.SummarizingFrequency_Year</option>
+                        <option value="h">@Resources.Global.Half_Year</option>
+                        <option value="q">@Resources.Global.SummarizingFrequency_Quarter</option>
+                        <option value="m" selected="selected">@Resources.Global.SummarizingFrequency_Month</option>
+                    </select>
+                    <label style="margin-left: 30px">@Resources.Global.Chart_Item</label>
+                    <select id="bottomchart_Item_@Model.ID" onchange="UnderwritersRanking.RefreshGraphChart();"
+                            style="width: 120px">
+                        <option value="UnderWr_Amount">@Resources.Global.Underwriters_Amount</option>
+                        <option value="Issues">@Resources.Global.Underwriters_Issues</option>
+                    </select>
+                    <label style="margin-left: 30px;">@Resources.Global.Chart_Type</label>
+                    <select id="bottomchart_Type_@Model.ID" onchange="UnderwritersRanking.RefreshGraphChart()"
+                            style="width: 120px">
+                        <option value="column" selected="selected">@Resources.Global.ChatType_Column</option>
+                        <option value="line">@Resources.Global.ChatType_Line</option>
+                    </select>
+                    <a href="#" class="exportExcel" onclick="UnderwritersRanking.ExportExcelGraphChart(this);">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" /></a>
+                    <div id="chart_container_bottom_@Model.ID" class="StatisticalChartContainer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var UnderwritersRanking = (function (my) { 
+        my.Query = function() {
+            var bondClass = $('#@bondClassSelectId').val();
+            if(bondClass != null) bondClass = bondClass.join();
+            AjaxWithBlock($('#UnderwritersRankingInfo').parent(), '/BondInfo/GetUnderWriterAnalysis',
+            {
+                bondClass: bondClass,
+                start: $("#@datePickerId").val(),
+                end: $("#@endDatePickerId").val(),
+                unit: $('#@unitSelectId').val(),
+                order:$('#total_Item_@Model.ID').val()
+            }, function (data) {
+                UnderwritersRanking.BuildTopTable(data);
+                data.itemName=
+                data.selected = $("#total_Item_@Model.ID option:selected").text();
+                data.selectedVal = $("#total_Item_@Model.ID").val();
+                UnderwritersRanking.BuildTopRightChart(data);
+                UnderwritersRanking.UpdateDetail(@Model.ID);
+                UnderwritersRanking.BottomChartChange();
+            });
+        };
+        my.BuildTopTable = function(tableData) {
+            var header = $('#@topTableId thead').empty();
+            var body = $('#@topTableId tbody').empty();
+            var headerRow = $('<tr class="hr"></tr>');
+            var rowTemplate = '<tr  tag="${Undwrt_Id}" onclick="UnderwritersRanking.RefreshBottomTable(this, @Model.ID)">';
+            $.each(tableData.ColumTemplate, function (key, value) {
+                headerRow.append('<th>' + value.Name + '</th>');
+                if (key == 0) {
+                   rowTemplate += '<td style="text-align: left;">${' + value.ColumnName + '}</td>'; 
+                } else {
+                   rowTemplate += '<td style="text-align: right;"">${' + value.ColumnName + '}</td>';
+                }
+            });
+            rowTemplate += '</tr>';
+            header.append(headerRow);
+            $.template('UnderwritersRankingTopTable', rowTemplate);
+            $.tmpl('UnderwritersRankingTopTable', tableData.RowData).appendTo(body);
+            $("#@topTableId tbody > tr:first").addClass("SelectedRow");
+        };
+        my.BuildTopRightChart = function(tableData) {
+            my.TopRightChartData = my.TopRightChartData || {};
+            my.TopRightChartData = tableData;
+            var selected = tableData.selected;
+            var selectedVal =tableData.selectedVal;
+            var chartType = $("#topchart_Type_@Model.ID").val();
+            var xData = [];
+            var yData = [];
+            var unit = "";
+            if (selectedVal.indexOf('Amount') > 0) {
+                unit = '@Resources.Global.Unit' + "(" + $('#@unitSelectId  option:selected').text() + ")";
+            }
+            var otherAmount = 0;
+            var series = [];
+            var tooltip;
+            var legend = {};
+            var labels = false;
+            switch (chartType) {
+            case 'pie':
+                labels = true;
+                legend = {
+                            align: 'right',
+                            width:200,
+                            verticalAlign: 'top',
+                            layout: 'vertical',
+                            labelFormatter: function() {
+                            var str2;
+                            if (this.name.length < 23) {
+                                str2 = this.name;
+                            } else {
+                                str2 = this.name.substr(0, 23) + '<br>' + this.name.substr(23, this.name.length - 23);
+                            }
+                            return str2;
+                            },
+                            itemStyle: {
+                                fontSize: '9px',
+                                fontWeight:'normal'
+                            },
+                            x: 0,
+                            y: 20
+                     };
+                $.each(tableData.RowData, function(key, value) {
+                    if (value["Undwrt_Id"] != "@Resources.Global.Total") {
+                        if (value["Row_Num"] <= 10) {
+                            yData.push([value["Undwrt_Long_Name"], parseFloat(value[selectedVal].replace(/,/g, ''))]);
+                        } else {
+                            var amount = parseFloat(value[selectedVal].replace(/,/g, ''));
+                            if (!isNaN(amount)) otherAmount += amount;
+                        }
+
+                    }
+                });
+                if (tableData.RowData.length != 0) {
+                    yData.push(['@Resources.Global.Tip_Other', otherAmount]);
+                }
+                series = [{
+                    dataLabels: {color: 'white'},
+                    name: selected,
+                    data: yData,
+                    showInLegend: true
+                }];
+                tooltip = { pointFormat: ': <b>{point.percentage:.1f}%</b>' };
+                break;
+            case 'column':
+                $.each(tableData.RowData, function(key, value) {
+                    if (value["Undwrt_Id"] != "@Resources.Global.Total") {
+                        if (value["Row_Num"] <= 10) {
+                            xData.push(value["Undwrt_Long_Name"]);
+                            yData.push(parseFloat(value[selectedVal].replace(/,/g, '')));
+                        } else {
+                            var amount = parseFloat(value[selectedVal].replace(/,/g, ''));
+                            if (!isNaN(amount)) otherAmount += amount;
+                        }
+
+                    }
+                });
+                if (tableData.RowData.length != 0) {
+                    xData.push('@Resources.Global.Tip_Other');
+                    yData.push(Math.round(otherAmount*100)/100);
+                }
+                series = [{
+                    name: selected,
+                    data: yData
+                }];
+                tooltip={ formatter: function() { return this.x + '<br><b>' + this.point.series.name + '</b>: ' + this.y; } }
+                ;
+                break;
+            }
+            var currentChart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: 'chart_container_topRight_@Model.ID',
+                        type: chartType
+                    },
+                    title: { text: selected },
+                    xAxis: {categories:xData,
+                        labels: {enabled: labels}
+                    },
+                    legend: legend,
+                    yAxis: { title: { text: unit } },
+                    plotOptions: { column: { borderWidth: 0 } , 
+                                      pie: {
+                                                dataLabels: {
+                                                    enabled: true,
+                                                    distance: -20,
+                                                    format: '{point.percentage:.1f}'
+                                                }
+                                            }
+                    },
+                    series: series,
+                    tooltip: tooltip
+                });
+            my.TopRightCharts = my.TopRightCharts || {};
+            my.TopRightCharts['TopRightChart'] = currentChart;
+            my.RefrshTopChart();
+        };
+        my.refreshTopChart = function() {
+            my.BuildTopRightChart(my.TopRightChartData);
+        };
+
+        my.BuildBottomTable = function(data) {
+            $.template("colTemp", '<th>${Name}</th>');
+            $('#@bottomTableId thead tr').empty();
+            $.tmpl("colTemp", data.ColumTemplate).appendTo("#@bottomTableId thead tr");
+            
+            var markup = BondInfo.BuildRowTemplate(data.ColumTemplate, '@Resources.Global.Bond_IS_Muncipal_Bond');
+            $.template("underwritersBottomRowTemplate", markup);
+            $('#@bottomTableId tbody').empty();
+            $.tmpl("underwritersBottomRowTemplate", data.RowData).appendTo("#@bottomTableId tbody");
+        };
+        my.BuildBottomChart = function(tableData) {
+            my.UnderwritersBottomChartData= my.UnderwritersBottomChartData || {};
+            my.UnderwritersBottomChartData = tableData;
+            var selected = $("#bottomchart_Item_@Model.ID option:selected").text();
+            var selectedVal = $("#bottomchart_Item_@Model.ID").val();
+            var xData = [];
+            var yData = [];
+            var unit = "";
+            if (selectedVal.indexOf('Amount') > 0 ) {
+                unit = '@Resources.Global.Unit' + "(" + $('#@unitSelectId  option:selected').text() + ")";
+            }
+            $.each(tableData, function (key, value) {
+                xData.push(key);
+                yData.push(parseFloat(value[selectedVal].replace(/,/g,''))); 
+            });
+            var underWriter=$('#@topTableId .SelectedRow td:first').text();
+            var currentChart = new Highcharts.Chart({
+                    chart: {
+                        renderTo: 'chart_container_bottom_@Model.ID',
+                        type: $("#bottomchart_Type_@Model.ID").val()
+                    },
+                    title: { text: selected+'—'+underWriter },
+                    xAxis: {
+                        categories: xData
+                    },
+                    yAxis: { title: { text: unit } },
+                    plotOptions: { column: { borderWidth: 0 },series: {marker: {enabled: true}}
+                    },
+                    series: [{
+                        name: selected,
+                        data: yData
+                    }],
+                    legend: { enabled: false },
+                    tooltip: { formatter: function() { return this.x + '<br><b>' + this.point.series.name + '</b>: ' + this.y; } }
+                });
+            my.BottomCharts = my.BottomCharts || {};
+            my.BottomCharts['BottomChart'] = currentChart;
+        };
+        my.BottomChartChange = function() {
+            var undwrtId=$('#@topTableId .SelectedRow').attr('tag');
+            var bondClass = $('#@bondClassSelectId').val();
+            if(bondClass != null) bondClass = bondClass.join();
+            AjaxWithBlock($('#chart_container_bottom_@Model.ID'), "/BondInfo/GetUnderwritersBottomChart",
+                {
+                    start: $('#@datePickerId').val(),
+                    end: $('#@endDatePickerId').val(),
+                    undwrtId: undwrtId,
+                    unit: $('#@unitSelectId').val(),
+                    bondClass: bondClass,
+                    bottomRate: $('#bottomchart_FrequencyType_@Model.ID').val(),
+                    id:@Model.ID
+                }, my.BuildBottomChart);
+        };
+
+        my.RefreshBottomTable = function(row, id) {
+            var undwrtId = $(row).attr('tag');
+            if (undwrtId == '@Resources.Global.Total') return;
+            $(".SelectedRow").removeClass("SelectedRow");
+            $(row).addClass("SelectedRow");
+            my.UpdateDetail(id);
+            my.BottomChartChange();
+        };
+        my.RefrshTopChart = function() {
+            var parentTop = $('#chart_container_topRight_@Model.ID');
+            setTimeout(function() {
+                UnderwritersRanking.TopRightCharts['TopRightChart'].setSize(parentTop.width() - 12, parentTop.height() - 10, false);
+            }, 200);
+        };
+        my.RefrshBottomChart = function() {
+            var parentBottom = $('#chart_container_bottom_@Model.ID');
+            setTimeout(function() {
+                UnderwritersRanking.BottomCharts['BottomChart'].setSize(parentBottom.width() - 12, parentBottom.height() - 10, false);
+            }, 200);
+        };
+        my.RefreshGraphChart = function() {
+            my.BuildBottomChart(my.UnderwritersBottomChartData);
+        };
+        my.UpdateDetail = function(id) {
+            var undwrtId = $('#@topTableId .SelectedRow').attr('tag');
+            if (undwrtId == null) {;
+                $('#@bottomTableId tbody').empty();
+                return;
+            }
+            var bondClass = $('#@bondClassSelectId').val();
+            if(bondClass != null) bondClass = bondClass.join();
+            AjaxWithBlock($('#@bottomDivID'), "@refreshDetailUrl",
+                {
+                    undwrtId:undwrtId,
+                    start: $('#@datePickerId').val(),
+                    end: $('#@endDatePickerId').val(),
+                    bondClass: bondClass,
+                    id: id
+                }, function(data) {
+                    my.BuildBottomTable(data);
+                });
+        };
+         my.ExportExcelDetail = function(link) {
+            var bondClass = $('#@bondClassSelectId').val();
+            if(bondClass != null) bondClass = bondClass.join();
+            $(link).attr("href",
+                "@exportDetailUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()
+                        +'&undwrtId='+$('#@topTableId .SelectedRow').attr('tag')
+                            + '&id=' + @Model.ID
+                                + '&bondClass=' + bondClass
+                                       +'&undwrtName='+$('#@topTableId .SelectedRow td:first').text()
+            );
+        };
+        my.ExportExcelTotal = function(link) {
+            var bondClass = $('#@bondClassSelectId').val();
+            if(bondClass != null) bondClass = bondClass.join();
+            $(link).attr("href",
+                "@exportTotalUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()
+                        + '&unit=' +  $('#@unitSelectId').val()
+                            + '&bondClass=' + bondClass
+                            + '&order=' + $('#total_Item_@Model.ID').val()
+            );
+        };
+        my.ExportExcelGraphChart = function(link) {
+            var bondClass = $('#@bondClassSelectId').val();
+            if(bondClass != null) bondClass = bondClass.join();
+            $(link).attr("href",
+                "@exportGraphUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()
+                        + '&undwrtId='+$('#@topTableId .SelectedRow').attr('tag')
+                        +'&undwrtName='+$('#@topTableId .SelectedRow td:first').text()
+                            + '&unit=' +  $('#@unitSelectId').val()
+                                + '&bondClass=' + bondClass
+                                    + '&itemValue=' +  $("#bottomchart_Item_@Model.ID option:selected").val()
+                                        + '&itemName=' +  $("#bottomchart_Item_@Model.ID option:selected").text()
+                                            + '&bottomRate=' + $('#bottomchart_FrequencyType_@Model.ID').val()
+            );
+        };
+        return my;
+    } (UnderwritersRanking || {}));
+    $(function() {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        $("#@bondClassSelectId").multiselect({
+            buttonMinWidth: 115,
+            menuMinWidth: 240,
+            checkAllText: '@Resources.Global.Select_All',
+            uncheckAllText: '@Resources.Global.Unselect_All',
+            noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+            selectedText: '#@Resources.Global.Selected'
+        });
+        $("#UnderwritersRankingDetail").tabs({activate: UnderwritersRanking.RefrshBottomChart});
+        UnderwritersRanking.Query();
+    });
+</script>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- For more information on using transformations 
+     see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134. -->
+<settings xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <source-db>
+    <conn xdt:Transform="Replace">Driver={Adaptive Server Enterprise};server=164.179.108.15;port=4100;uid=reporter;password=reporter;</conn>
+  </source-db>
+  <destination-db>
+    <conn xdt:Transform="Replace">Server=172.16.128.148;Database=Luna;Failover Partner=172.16.128.149;Pooling=true;Uid=sa;Pwd=p@ssw0rd</conn>
+  </destination-db>
+</settings>

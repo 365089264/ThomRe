@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B9D70F9-9990-4AF2-88BF-E3664D01133D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VAV.Model</RootNamespace>
+    <AssemblyName>VAV.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNet.Highcharts">
+      <HintPath>..\packages\HighChartsWrapper\DotNet.Highcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Chart\ChartData.cs" />
+    <Compile Include="Chart\ChartJsonData.cs" />
+    <Compile Include="Chart\IntSeriesData.cs" />
+    <Compile Include="Chart\PieSectionData.cs" />
+    <Compile Include="Chart\SeriesData.cs" />
+    <Compile Include="Chart\StockSeriesData.cs" />
+    <Compile Include="Data\Bond\BondCityAndLocal.cs" />
+    <Compile Include="Data\Bond\BondBasicInfo.cs" />
+    <Compile Include="Data\Bond\BondExchangeCode.cs" />
+    <Compile Include="Data\Bond\BondInfoOption.cs" />
+    <Compile Include="Data\Bond\DimBondInfo.cs" />
+    <Compile Include="Data\Bond\UnderWriterRankingData.cs" />
+    <Compile Include="Data\CnE\CoalFilterObj.cs" />
+    <Compile Include="Data\CnE\CoalTrafficPortChartEntity.cs" />
+    <Compile Include="Data\BaseModel.cs" />
+    <Compile Include="Data\BaseReport.cs" />
+    <Compile Include="Data\Bond\BondDetail.cs" />
+    <Compile Include="Data\Bond\BondDetailParams.cs" />
+    <Compile Include="Data\Bond\BondInfo.cs" />
+    <Compile Include="Data\Bond\BondIssueAmount.cs" />
+    <Compile Include="Data\Bond\BondIssueAmountExport.cs" />
+    <Compile Include="Data\Bond\BondIssueAmountParams.cs" />
+    <Compile Include="Data\Bond\BondIssueRate.cs" />
+    <Compile Include="Data\Bond\BondIssueParams.cs" />
+    <Compile Include="Data\Bond\BondRatingHist.cs" />
+    <Compile Include="Data\Bond\DimSumBondData.cs" />
+    <Compile Include="Data\Bond\DimSumBondSummary.cs" />
+    <Compile Include="Data\ChartModel.cs" />
+    <Compile Include="Data\CnE\CommodityNews.cs" />
+    <Compile Include="Data\CnE\GDT\BallanceFilter.cs" />
+    <Compile Include="Data\CnE\GDT\GDTPriceReport.cs" />
+    <Compile Include="Data\CnE\GDT\GDTQueryCondition.cs" />
+    <Compile Include="Data\CnE\GDT\GDTQueryWithDirection.cs" />
+    <Compile Include="Data\CnE\GDT\PartitionBallanceTableData.cs" />
+    <Compile Include="Data\CnE\GDT\QueryItem.cs" />
+    <Compile Include="Data\CnE\GDT\TabNode.cs" />
+    <Compile Include="Data\Column.cs" />
+    <Compile Include="Data\CmaFile.cs" />
+    <Compile Include="Data\IPP\Submitter.cs" />
+    <Compile Include="Data\IPP\TopicCreate.cs" />
+    <Compile Include="Data\IPP\FileCreate.cs" />
+    <Compile Include="Data\JsonColumn.cs" />
+    <Compile Include="Data\JsonTable.cs" />
+    <Compile Include="Data\Lfex\LufaxDetail.cs" />
+    <Compile Include="Data\MenuNodeLayout.cs" />
+    <Compile Include="Data\OpenMarket\GlobalValueParams.cs" />
+    <Compile Include="Data\MenuNode.cs" />
+    <Compile Include="Data\OpenMarket\OpenMarketRepo.cs" />
+    <Compile Include="Data\OpenMarket\DetailDataReportParams.cs" />
+    <Compile Include="Data\ResearchReport\ReportDetail.cs" />
+    <Compile Include="Data\StandardReport.cs" />
+    <Compile Include="Data\ReportInfo.cs" />
+    <Compile Include="Data\ReportParameter.cs" />
+    <Compile Include="Data\ExtraHeader.cs" />
+    <Compile Include="Data\ValueType.cs" />
+    <Compile Include="Data\WMP\BrokerFee.cs" />
+    <Compile Include="Data\WMP\BrokerFinIdx.cs" />
+    <Compile Include="Data\WMP\IssueTrendData.cs" />
+    <Compile Include="Data\WMP\WMPReport.cs" />
+    <Compile Include="Data\WMP\WMPOption.cs" />
+    <Compile Include="Data\ZCX\IssuerBondInfo.cs" />
+    <Compile Include="Data\ZCX\IssuerDetail.cs" />
+    <Compile Include="Data\ZCX\IssuerFoundamental.cs" />
+    <Compile Include="Data\ZCX\NonlistIssuer.cs" />
+    <Compile Include="Data\ZCX\RATE_ORG_CRED_HIS.cs" />
+    <Compile Include="IPP\HomeHotItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\UserColumn.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

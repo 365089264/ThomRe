@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="TABLE_CONFIG">
+          <Key>
+            <PropertyRef Name="TABLETYPE" />
+          </Key>
+          <Property Name="ID" Type="varchar2" MaxLength="32" />
+          <Property Name="TABLETYPE" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="TABLENAMEEN" Type="varchar2" MaxLength="128" />
+          <Property Name="TABLENAMECN" Type="varchar2" MaxLength="128" />
+          <Property Name="FIELDNAMESARRCN" Type="varchar2" MaxLength="256" />
+          <Property Name="FIELDNAMESARREN" Type="varchar2" MaxLength="256" />
+          <Property Name="FIELDTYPESARR" Type="varchar2" MaxLength="256" />
+          <Property Name="KEYFIELDARRS" Type="varchar2" MaxLength="128" />
+          <Property Name="SPACINGDISTANCE" Type="number" Precision="10" Scale="0" />
+          <Property Name="TABLEENDFLAG" Type="varchar2" MaxLength="64" />
+          <Property Name="KEYFIELDINDEXARRS" Type="varchar2" MaxLength="32" />
+          <Property Name="KEYVALUEARRS" Type="varchar2" MaxLength="1024" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="TABLE_CONFIG" EntityType="Self.TABLE_CONFIG" Schema="SRDB" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SRDBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="TABLE_CONFIG" EntityType="Model.TABLE_CONFIG" />
+        </EntityContainer>
+        <EntityType Name="TABLE_CONFIG">
+          <Key>
+            <PropertyRef Name="TABLETYPE" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TABLETYPE" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TABLENAMEEN" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TABLENAMECN" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FIELDNAMESARRCN" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FIELDNAMESARREN" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FIELDTYPESARR" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="KEYFIELDARRS" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="SPACINGDISTANCE" Type="Int32" />
+          <Property Name="TABLEENDFLAG" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="KEYFIELDINDEXARRS" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="KEYVALUEARRS" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SRDBEntities" >
+          <EntitySetMapping Name="TABLE_CONFIG">
+            <EntityTypeMapping TypeName="Model.TABLE_CONFIG">
+              <MappingFragment StoreEntitySet="TABLE_CONFIG">
+                <ScalarProperty Name="KEYVALUEARRS" ColumnName="KEYVALUEARRS" />
+                <ScalarProperty Name="KEYFIELDINDEXARRS" ColumnName="KEYFIELDINDEXARRS" />
+                <ScalarProperty Name="TABLEENDFLAG" ColumnName="TABLEENDFLAG" />
+                <ScalarProperty Name="SPACINGDISTANCE" ColumnName="SPACINGDISTANCE" />
+                <ScalarProperty Name="KEYFIELDARRS" ColumnName="KEYFIELDARRS" />
+                <ScalarProperty Name="FIELDTYPESARR" ColumnName="FIELDTYPESARR" />
+                <ScalarProperty Name="FIELDNAMESARREN" ColumnName="FIELDNAMESARREN" />
+                <ScalarProperty Name="FIELDNAMESARRCN" ColumnName="FIELDNAMESARRCN" />
+                <ScalarProperty Name="TABLENAMECN" ColumnName="TABLENAMECN" />
+                <ScalarProperty Name="TABLENAMEEN" ColumnName="TABLENAMEEN" />
+                <ScalarProperty Name="TABLETYPE" ColumnName="TABLETYPE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="SRDB" >
+        <EntityTypeShape EntityType="Model.TABLE_CONFIG" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

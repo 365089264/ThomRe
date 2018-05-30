@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.reuters.com/ns/2008/08/15/webservices/AAA-ASUserManagement_1/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsdws="http://www.reuters.com/ns/2008/08/15/webservices/AAA-AccessServices_1" name="AAA-ASUserManagement_1" targetNamespace="http://www.reuters.com/ns/2008/08/15/webservices/AAA-ASUserManagement_1/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.reuters.com/ns/2008/08/15/webservices/AAA-AccessServices_1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:include schemaLocation="http://amers1.am.cp.icp2.mpp.ime.reuters.com:80/aaa/services/AAA-ASUserManagementPort?xsd=1" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUserDetailsInput">
+    <wsdl:part name="GetUserDetails" element="xsdws:GetUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDetailsOutput">
+    <wsdl:part name="GetUserDetailsResponse" element="xsdws:GetUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserDetailsInput">
+    <wsdl:part name="GetAllUserDetails" element="xsdws:GetAllUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUserDetailsOutput">
+    <wsdl:part name="GetAllUserDetailsResponse" element="xsdws:GetAllUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetUserDetailsInput">
+    <wsdl:part name="SetUserDetails" element="xsdws:SetUserDetails" />
+  </wsdl:message>
+  <wsdl:message name="SetUserDetailsOutput">
+    <wsdl:part name="SetUserDetailsResponse" element="xsdws:SetUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AAA-ASUserManagement">
+    <wsdl:operation name="GetUserDetails_1">
+      <wsdl:input message="tns:GetUserDetailsInput" />
+      <wsdl:output message="tns:GetUserDetailsOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserDetails_1">
+      <wsdl:input message="tns:GetAllUserDetailsInput" />
+      <wsdl:output message="tns:GetAllUserDetailsOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserDetails_1">
+      <wsdl:input message="tns:SetUserDetailsInput" />
+      <wsdl:output message="tns:SetUserDetailsOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AAA-ASUserManagementBinding" type="tns:AAA-ASUserManagement">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserDetails_1">
+      <soap:operation soapAction="GetUserDetails_1" />
+      <wsdl:input>
+        <soap:body use="literal" parts="GetUserDetails" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="GetUserDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUserDetails_1">
+      <soap:operation soapAction="GetAllUserDetails_1" />
+      <wsdl:input>
+        <soap:body use="literal" parts="GetAllUserDetails" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="GetAllUserDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserDetails_1">
+      <soap:operation soapAction="SetUserDetails_1" />
+      <wsdl:input>
+        <soap:body use="literal" parts="SetUserDetails" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="SetUserDetailsResponse" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AAA-ASUserManagement_1">
+    <wsdl:port name="AAA-ASUserManagementPort" binding="tns:AAA-ASUserManagementBinding">
+      <soap:address location="http://amers1.am.cp.icp2.mpp.ime.reuters.com:80/aaa/services/AAA-ASUserManagementPort" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

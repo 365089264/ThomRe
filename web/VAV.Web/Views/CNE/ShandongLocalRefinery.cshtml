@@ -1,0 +1,548 @@
+﻿@using VAV.Web.Common
+@{
+    var startDate = DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var datePickerId = "datePicker" + @ViewBag.ID;
+    var endDatePickerId = "endDatePicker" + @ViewBag.ID;
+    var companyDp = "company" + @ViewBag.ID;
+    var exportExcelForOutputTableUrl = VirtualPathUtility.ToAbsolute("~/CNE/ExportExcelForOutput");
+    var exportExcelForDeviceTableUrl = VirtualPathUtility.ToAbsolute("~/CNE/ExportExcelForDevice");
+}
+<div class="StatisticalContent" style="min-width: 500px;height: 100%;">
+    <div class="Statistical">
+        <div class="StatisticalTop">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Resources.CnE.CNE_ShangDonLocalRefinery</span>
+                     <select id="sdlrchartType" class="mediumSelect" style="width: 130px;" >
+                        <option value="p">@Resources.CnE.GDT_ChartOuputName</option>  
+                         <option value="o" selected="selected">@Resources.CnE.Operation</option>
+                         <option value="i">@Resources.CnE.Index</option>
+                         <option value="v">@Resources.CnE.Valuation</option>
+                         <option value="s">@Resources.CnE.Stock</option>
+                    </select> 
+                    <a id="" href="#" class="exportExcel" onclick="SdRefinery.ExportOutputChartData(this);">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                </div>
+                <div id="sdLRChart" style="position: absolute; height: 90%; width: 99%; width: -webkit-calc(99%-2px);
+                    height: -webkit-calc(90%+1px );">
+                </div>
+            </div>
+        </div>
+        <div class="StatisticalBottom" id="SDBottom">
+            <div  class="colorBlock" style="min-width: 880px;">
+                <div class="Statisticalfilter">
+                    @Resources.CnE.CNE_SdR_Refinery 
+                    <select id="@companyDp" name="coption" class="mediumSelect" style="width: 130px;" >
+                    </select> 
+                    <input id="sel_company" type="hidden"/> 
+                    <label style="margin-left: 10px;">@Resources.Global.Report_Query_From</label>
+                    <input type="text" id="@datePickerId" value="@startDate" class="dateInput" readonly="readonly" />
+                    <label style="margin-left: 10px;">@Resources.Global.Report_Query_End</label>
+                    <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput" readonly="readonly" />
+                    <input type="button"  value="@Resources.Global.Report_Query" onclick="SdRefinery.UpdateTableData()"/>
+                </div>
+            </div>
+            <div style="position: absolute;width: 100%;height: -webkit-calc(100% - 49px);">
+                <div class="StatisticalLeft" style="width: 53%;">
+                    <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                        <div class="colorBlock-header">
+                            <div>
+                                <span class="colorBlock-header-span">@Resources.CnE.CNE_SdR_DailyOutputTitle</span>
+                                <a href="#" class="exportExcel" onclick="SdRefinery.ExportOutputTableData(this);" ><img alt="Export" src="~/Content/themes/base/images/excel_icon.png" /></a>
+                            </div>
+                        </div>
+                        <div class="gridTable">
+                            <table id="SdR_DailyOutputTable" class="datatable Zebra">
+                                <thead>
+                                    <tr class="hr">
+                                    @foreach (var col in HtmlUtil.CookOptions("CnESdDailyOutputColumn"))
+                                    {
+                                        <th>@col.Name
+                                        </th> 
+                                    }
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="StatisticalRight" style="width: 47%;" >
+                    <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                        <div class="colorBlock-header">
+                            <div>
+                                <span class="colorBlock-header-span">@Resources.CnE.CNE_SdR_DeviceTitle</span>
+                                <a href="#" class="exportExcel" onclick="SdRefinery.ExportDeviceTableData(this);" ><img alt="Export" src="~/Content/themes/base/images/excel_icon.png" /></a>
+                            </div>
+                        </div>
+                        <div class="gridTable">
+                            <table id="SdR_DeviceInfoTable" class="datatable Zebra">
+                                <thead>
+                                    <tr class="hr">
+                                    @foreach (var col in HtmlUtil.CookOptions("CnESdDeviceInfoColumn"))
+                                    {
+                                        <th>@col.Name
+                                        </th> 
+                                    }
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var SdRefinery = (function(my) {
+        my.BuildTable = function(data) {
+            $.each(data.companyList.RowData,function(i, val) {
+                debugger;
+                 $("<option value='"+val.CODE+"'>"+val.ITEMNAME+"</option>").appendTo($("#@companyDp"));
+            });
+            $("#sel_company").val($("#@companyDp").val());
+            my.BuildDailyOutputTable(data.dailyOutputTable);
+            my.BuildDeviceInfoTable(data.deviceInfoTable);
+        };
+        my.BuildTableForQuery = function(data) {
+            $("#sel_company").val($("#@companyDp").val());
+            my.BuildDailyOutputTable(data.dailyOutputTable);
+            my.BuildDeviceInfoTable(data.deviceInfoTable);
+        };
+        my.BuildDailyOutputTable = function(data) {
+            var markup = my.BuildDailyOutputRowTemplate();
+            $.template("rowTemplate", markup);
+            $('#SdR_DailyOutputTable tbody').empty();
+            $.tmpl("rowTemplate", data).appendTo("#SdR_DailyOutputTable tbody");
+        };
+        my.BuildDailyOutputRowTemplate = function() {
+            var tpl = '<tr>';
+            tpl = tpl + '<td>${ReDate}</td>';
+            tpl = tpl + '<td>${ProcessCapacity}</td>';
+            tpl = tpl + '<td>${Gasoline}</td>';
+            tpl = tpl + '<td>${Diesel}</td>';
+            tpl = tpl + '</tr>';
+        return tpl;
+        };
+        my.BuildDeviceInfoTable = function(data) {
+            var markup = my.BuildDeviceInfoRowTemplate();
+            $.template("rowTemplateDevice", markup);
+            $('#SdR_DeviceInfoTable tbody').empty();
+            $.tmpl("rowTemplateDevice", data).appendTo("#SdR_DeviceInfoTable tbody");
+        };
+        my.BuildDeviceInfoRowTemplate = function() {
+            var tpl = '<tr>';
+            tpl = tpl + '<td>${Device}</td>';
+            tpl = tpl + '<td>${YieldByTon}</td>';
+            tpl = tpl + '<td>${YieldByBarrel}</td>';
+            tpl = tpl + '</tr>';
+        return tpl;
+        };
+        my.UpdateTableData = function() {
+        AjaxWithBlock($('#SDBottom'), '/CNE/GetBoottomTable', {
+                    start: $("#@datePickerId").val(),
+                    end:  $("#@endDatePickerId").val(),
+                    code:$("#@companyDp").val()
+                }, function (mydata) { my.BuildTableForQuery(mydata); });
+        };
+        my.ExportOutputChartData = function(link) {
+             $(link).attr("href", '/CNE/ExportOutputChartData');
+        };
+        my.ExportOutputTableData = function(link) {
+            $(link).attr("href", "@exportExcelForOutputTableUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()+"&code="+$("#sel_company").val()+"&company="+$("#@companyDp option:selected").text());
+        };
+        my.ExportDeviceTableData = function(link) {
+            $(link).attr("href", "@exportExcelForDeviceTableUrl?code="+$("#sel_company").val()+"&company="+$("#@companyDp option:selected").text());
+        };
+        return my;
+    }(SdRefinery||{}));
+    $(function() {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        var data = @{ Html.RenderAction("GetSDLocalRefineryChartData", "CNE", new {start=startDate,
+                end=endDate,isHTML = true}); } ;
+        var chart;
+        chart = buildOperation();
+        $('#sdlrchartType').change(function() {
+            debugger;
+            switch ($('#sdlrchartType').val()) {
+            case 'o':
+                chart = buildOperation();
+                break;
+            case 'p':
+                chart = buildProduction();
+                break;
+            case 'i':
+                buildIndex();
+                break;
+            case 'v':
+                buildValue();
+                break;
+            case 's':
+                buildStock();
+                break;
+            }
+        });
+
+
+        function buildProduction() {
+            return Highcharts.StockChart({
+                chart: {
+                    renderTo: 'sdLRChart',
+                    spacingLeft: 40,
+                    spacingRight: 20
+                },
+                rangeSelector: {
+                    inputEnabled: true,
+                    selected: 1
+                },
+
+                title: {
+                    text: '@Resources.CnE.CNE_ShangDonLocalRefinery' + ' ' + '@Resources.CnE.GDT_ChartOuputName'
+                },
+                yAxis: [
+                    {
+                        labels: {
+                            format: '{value} @Resources.CnE.CNE_SdR_DeviceYieldByTon',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            },
+                        },
+                        title: {
+                            text: '@Resources.CnE.GDT_ChartOuputName',
+                            style: {
+                                color: Highcharts.getOptions().colors[1]
+                            }
+                        },
+                        opposite: false
+                    }
+                ],
+                series: [
+                    {
+                        name: '@Resources.CnE.Gasoline',
+                        data: data.chart.gasoline,
+                        type: 'column',
+                        stacking: 'normal',
+                        tooltip: {
+                            valueDecimals: 2
+                        },
+                        yAxis: 0
+                    },
+                    {
+                        name: '@Resources.CnE.Diesel',
+                        data: data.chart.diesel,
+                        type: 'column',
+                        stacking: 'normal',
+                        tooltip: {
+                            valueDecimals: 2
+                        },
+                        yAxis: 0
+                    }
+                ],
+                legend: {
+                align: 'left',
+                verticalAlign: 'top',
+                x: 20,
+                y: 60,
+                layout: 'vertical',
+                floating: true,
+                enabled: true
+            }
+            });
+        }
+
+        function buildOperation() {
+            return Highcharts.StockChart({
+                chart: {
+                    renderTo: 'sdLRChart',
+                    spacingLeft: 20,
+                    spacingRight: 20
+                },
+                rangeSelector: {
+                    inputEnabled: true,
+                    selected: 1
+                },
+
+                title: {
+                    text: '@Resources.CnE.CNE_ShangDonLocalRefinery' + ' ' + '@Resources.CnE.Operation'
+        },
+                yAxis: [
+                    {
+                        title: {
+                            text: '@Resources.CnE.Operation',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        labels: {
+                            format: '{value}%',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                        opposite: false
+                    }
+                ],
+                series: [
+                    {
+                        name: '@Resources.CnE.Operation',
+                        data: data.chart.operating,
+                        type: 'line',
+                        tooltip: {
+                            valueDecimals: 2
+                        },
+                        yAxis: 0
+                    }
+                ],
+                legend: {
+                align: 'left',
+                verticalAlign: 'top',
+                x: 60,
+                y: 60,
+                layout: 'vertical',
+                floating: true,
+                enabled: true
+            }
+            });
+        }
+
+        function buildIndex() {
+            AjaxWithBlock($('#sdLRChart'), '/CNE/GetSDLocalRefineryIndex', null, function(mydata) {
+                var modData = [
+                    {
+                        name: '@Resources.CnE.Gasoline',
+                        type: 'line',
+                        data:  mydata.gasoline
+                    },
+                    {
+                        name: '@Resources.CnE.Diesel',
+                        type: 'line',
+                        data:  mydata.diesel
+                    }
+                ];
+                 chart = Highcharts.StockChart({
+                    chart: {
+                        renderTo: 'sdLRChart',
+                        spacingLeft: 20,
+                        spacingRight: 20
+                    },
+                    rangeSelector: {
+                        inputEnabled: true,
+                        selected: 1
+                    },
+
+                    title: {
+                        text: '@Resources.CnE.CNE_ShangDonLocalRefinery'+ ' ' + '@Resources.CnE.Index'
+                    },
+                    yAxis: [
+                        {
+                            title: {
+                                text: '@Resources.CnE.Index',
+                                style: {
+                                    color: Highcharts.getOptions().colors[0]
+                                }
+                            },
+                            labels: {
+                                style: {
+                                    color: Highcharts.getOptions().colors[0]
+                                }
+                            },
+                            opposite: false
+                        }
+                    ],
+                    series: modData,
+                legend: {
+                align: 'left',
+                verticalAlign: 'top',
+                x: 25,
+                y: 60,
+                layout: 'vertical',
+                floating: true,
+                enabled: true
+            }
+                });
+            });
+        }
+
+        function buildValue() {
+           AjaxWithBlock($('#sdLRChart'), '/CNE/GetSDLocalRefineryValue', null, function(mydata) {
+                var modData = [
+                    {
+                        name: '@Resources.CnE.Gasoline',
+                        type: 'line',
+                        data:  mydata.gasoline
+                    },
+                    {
+                        name: '@Resources.CnE.Diesel',
+                        type: 'line',
+                        data:  mydata.diesel
+                    }
+                ];
+                 chart = Highcharts.StockChart({
+                    chart: {
+                        renderTo: 'sdLRChart',
+                        spacingLeft: 60,
+                        spacingRight: 20
+                    },
+                    rangeSelector: {
+                        inputEnabled: true,
+                        selected: 1
+                    },
+
+                    title: {
+                        text: '@Resources.CnE.CNE_ShangDonLocalRefinery'+ ' ' + '@Resources.CnE.Valuation'
+                    },
+                    yAxis: [
+                        {
+                            title: {
+                                text: '@Resources.CnE.Valuation',
+                                style: {
+                                    color: Highcharts.getOptions().colors[0]
+                                }
+                            },
+                           labels: {
+                            format: '{value} @Resources.CnE.CNYTonne',
+                            style: {
+                                color: Highcharts.getOptions().colors[0]
+                            }
+                        },
+                            opposite: false
+                        }
+                    ],
+                    series: modData,
+                legend: {
+                align: 'left',
+                verticalAlign: 'top',
+                x: 40,
+                y: 60,
+                layout: 'vertical',
+                floating: true,
+                enabled: true
+            }
+                });
+            });
+        }
+        function buildStock() {
+          AjaxWithBlock($('#sdLRChart'), '/CNE/GetSDLocalRefineryStock', null, function(mydata) {
+            chart = Highcharts.StockChart({
+            chart: {
+                renderTo: 'sdLRChart',
+                spacingLeft: 45,
+                spacingRight: 20
+            },
+            rangeSelector: {
+                inputEnabled: true,
+                selected: 1
+            },
+
+            title: {
+                text: '@Resources.CnE.CNE_ShangDonLocalRefinery'+ ' ' + '@Resources.CnE.Stock'
+            },
+            yAxis: [{
+//Left yAxis
+                    labels: {
+                        format: '{value} @Resources.CnE.CNE_SdR_DeviceYieldByTon',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        }
+                    },
+                    title: {
+                        text: '@Resources.CnE.Stock',
+                        style: {
+                            color: Highcharts.getOptions().colors[1]
+                        },
+                    },
+                    opposite: false
+                }, {
+//Right yAxis
+                    title: {
+                        text: '@Resources.CnE.StockCapacityRate',
+                        style: {
+                            color: Highcharts.getOptions().colors[0]
+                        },
+                        floating: true,
+                        y: -6,
+                        x: 45,
+                    },
+                    labels: {
+                        format: '{value}%',
+                        style: {
+                            color: Highcharts.getOptions().colors[0]
+                        }
+                    },
+                    opposite: true
+                }],
+            series: [
+                {
+                    name: '@Resources.CnE.Gasoline'+' '+'@Resources.CnE.Stock',
+                    data: mydata.gasolineStock,
+                    type: 'column',
+                    stacking: 'normal',
+                    tooltip: {
+                        valueDecimals: 2
+                    },
+                    yAxis: 0
+                },
+                {
+                    name: '@Resources.CnE.Diesel'+' '+'@Resources.CnE.Stock',
+                    data: mydata.dieselStock,
+                    type: 'column',
+                    stacking: 'normal',
+                    tooltip: {
+                        valueDecimals: 2
+                    },
+                    yAxis: 0
+                },
+                {
+                    name: '@Resources.CnE.Gasoline'+' '+'@Resources.CnE.StockCapacityRate',
+                    data: mydata.gasolineRate,
+                    type: 'line',
+                    tooltip: {
+                        valueDecimals: 2,
+                        valueSuffix:'%'
+                    },
+                    yAxis: 1
+                },
+                {
+                    name: '@Resources.CnE.Diesel'+' '+'@Resources.CnE.StockCapacityRate',
+                    data: mydata.dieselRate,
+                    type: 'line',
+                    tooltip: {
+                        valueDecimals: 2,
+                        valueSuffix:'%'
+                    },
+                    yAxis: 1
+                }
+            ],
+            legend: {
+                align: 'left',
+                verticalAlign: 'top',
+                x: 25,
+                y: 60,
+                layout: 'vertical',
+                floating: true,
+                enabled: true
+            }
+        });
+            });  
+        }
+        SdRefinery.BuildTable(data);
+        amplify.subscribe('RefreshChart', function() {
+            var c = $('#sdLRChart');
+            setTimeout(function() {
+                if (c.parent().width()) {
+                    chart.setSize(c.parent().width(), c.parent().height() - 25, false);
+                }
+            }, 500
+            );
+        });
+    });
+</script>

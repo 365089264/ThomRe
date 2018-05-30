@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>sybase</type>
+    <conn>Driver={Adaptive Server Enterprise};server=10.185.132.40;port=4074;uid=reporter;password=reporter;charset=utf8;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=bonddb;Password=bonddb;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+
+    <table-mapping source="govcorp..asset a inner join govcorp..orig_iss_info c on a.asset_id=c.asset_id inner join  govcorp..asset_ident i on a.asset_id=i.asset_id inner join govcorp..asset2 b on a.asset_id=b.asset_id " destination="ejvasset">
+      <column-mapping source="id_number" sourceTableAlias="i" destination="ric" isImmutableKey="true" isKey="true"/>
+      <column-mapping source="orig_iss_dt" sourceTableAlias="a" destination="trade_dt" isKey="true"/>
+      <column-mapping source="asset_last_chg_dt" sourceTableAlias="a" destination="MODIFYDATE" />
+      <column-mapping source="orig_amt_iss" sourceTableAlias="a"  />
+      <column-mapping source="orig_iss_px" sourceTableAlias="c" />
+      <column-mapping source="orig_yld_maturity" sourceTableAlias="c" destination="yield" />
+      <column-mapping source="maturity_dt" sourceTableAlias="a" destination="maturity_dt" />
+      <column-mapping source=""  destination="tradetype" value="0" />
+      <column-mapping source="term_to_maturity" sourceTableAlias="c" />
+      <column-mapping source="asset_id" sourceTableAlias="a" destination="asset_id" />
+      <filter>
+        <![CDATA[(a.cntry_of_iss_cd = 'CN') AND (i.id_cd = 'CHN') AND  b.cdc_asset_class_cd = 'CBB' AND  a.asset_last_chg_dt >= {LastSyncTime} AND a.asset_last_chg_dt <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

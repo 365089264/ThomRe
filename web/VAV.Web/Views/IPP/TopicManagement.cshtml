@@ -1,0 +1,87 @@
+﻿<div class="colorBlock ">
+    <div class="filterBlock">
+        <div style="margin: 0 10px; float: left;">
+            <label>
+                @Resources.IPP.IPP_Module
+            </label>
+            <select style="width: 150px;" data-ng-options="m as m.Name for m in modules" data-ng-model="selectedModule" data-ng-change="ModuleChanged()"></select>
+            <input type="button" value="@Resources.IPP.IPP_Query" ng-click="queryTopic()" />
+        </div>
+        <div class="filterBlock-right">
+            <input type="button" ng-click="createTopic()" value="@Resources.IPP.IPP_Create_Topic" />
+        </div>
+    </div>
+    <div loading-block class="colorBlock">
+        <div ng-hide="topics.length > 0" style="margin: 10px;">@Resources.Global.Empty_Result</div>
+        <div ng-show="topics.length > 0">
+            <div pagination-label class="paginateOfLable"></div>
+            <div style="width: 300px; float: right; padding-right: 80px">
+                <div pagination-pager>
+                </div>
+            </div>
+            <div style="clear: both">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table ng-show="topics.length > 0" class="datatable">
+                <thead>
+                    <tr>
+                        <th>
+                            @Resources.IPP.IPP_Module
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Topic_Name
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Topic_Desc
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Creater
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Create_Date
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_If_Need_Approve
+                        </th>
+                        @*<th>
+                    序号
+                </th>*@
+                        <th>
+                            @Resources.IPP.IPP_Operation
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in topics">
+                        <td title="{{ isEn ? item.ModuleNameEn : item.ModuleNameCn}}" class="width-limited">
+                            {{ isEn ? item.MODULENAMEEN : item.MODULENAMECN}}
+                        </td>
+                        <td title="{{ isEn ? item.NAMEEN : item.NAMECN}}" class="width-limited">
+                            <a class="link" href="javascript:void(0);" ng-click="openTopic(item)">{{ isEn ? item.NAMEEN : item.NAMECN}}</a>
+                        </td>
+                        <td title="{{isEn ? item.DESCRIPTIONEN : item.DESCRIPTIONCN}}" class="width-limited">
+                            {{ isEn ? item.DESCRIPTIONEN : item.DESCRIPTIONCN}}
+                        </td>
+                        <td class="width-limited">
+                            {{item.CREATER}}
+                        </td>
+                        <td>
+                            {{item.CREATEDATE}}
+                        </td>
+                        <td>
+                            {{item.ISAPPROVE=='1'?'@Resources.IPP.IPP_Yes':'@Resources.IPP.IPP_No'}}
+                        </td>
+                        @*<td>
+
+                </td>*@
+                        <td class="button-td">
+                            <input type="button" ng-click="editTopic(item)" value="@Resources.IPP.IPP_Edit" />
+                            <input type="button" ng-click="deleteTopic(item)" value="@Resources.IPP.IPP_Delete" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

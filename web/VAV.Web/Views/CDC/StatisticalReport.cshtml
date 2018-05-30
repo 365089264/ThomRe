@@ -1,0 +1,70 @@
+﻿@using System.Web.Script.Serialization
+@using VAV.Web.ViewModels.Report;
+@using VAV.Web.Common;
+
+
+@model StatisticalReportViewModel
+
+@{
+    Layout = null;
+    var s = new JavaScriptSerializer();
+    var topChart = s.Serialize(Model.TopChart);
+    var bottomChart = s.Serialize(Model.BottomChart);
+    var datePickerId = "datePicker" + @Model.ID;
+    var endDatePickerId = "endDatePicker" + @Model.ID;
+    var contentDivId = "contentDiv" + @Model.ID;
+    var selectId = "select" + @Model.ID;
+    var queryButtonId = "query" + @Model.ID;
+    var fromDate = new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0, 0).ToString("yyyy-MM");
+    var toDate =  new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0, 0).ToString("yyyy-MM");
+}
+
+<div class="colorBlock" style="min-width:880px;">
+    <div id="filterDiv" class="Statisticalfilter">
+        @Resources.Global.Report_Query_From
+        <input type="text" id="@datePickerId" value="@fromDate" class="dateInput" onclick="HideMonthPicker(@endDatePickerId)"/>
+        <label style="margin-left:10px;">@Resources.Global.Report_Query_End</label>
+        <input type="text" id="@endDatePickerId" value="@toDate" class="dateInput" onclick="HideMonthPicker(@datePickerId)"/>
+        <label style="margin-left:10px;">@Resources.Global.Report_Unit</label>
+        <select id="@selectId" name="unit" class="smallSelect">
+            @foreach (var o in HtmlUtil.CookOptions("unit"))
+            {
+                <option value="@o.ID">@o.Name</option>    
+            }
+        </select>
+        <input type="hidden" id="reportId" value="@Model.ID"/>
+        <input type="button" value="@Resources.Global.Report_Query" id="@queryButtonId" onclick="GetStatisticalReportTable(@Model.ID, 'statistical')"/>
+    </div>
+</div>
+
+<div id="@contentDivId" class="StatisticalContent" style="min-width:880px;">
+    @Html.Partial("_StatisticalReportTable", Model)
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").monthpicker({
+            pattern: 'yyyy-mm',
+            startYear: 2001,
+            monthNames: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        });
+        SetMonthPickerStyle("@datePickerId");
+        $("select[class='mtz-monthpicker mtz-monthpicker-year']").css("width", "60px");
+    });
+
+    function updateTopCharts() {
+        refreshTopChart("@Model.ID", "@topChart");
+    }
+
+    function updateBottomCharts() {
+        refreshBottomChart("@Model.ID", "@bottomChart");
+    }
+
+    function triggerTopChartsChange(id) {
+        $("#topchart_ddl2_" + id).change();
+    }
+
+    function triggerBottomChartsChange(id) {
+        $("#bottomchart_ddl2_" + id).change();
+    }
+</script>

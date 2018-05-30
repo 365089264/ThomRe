@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://storage.cma.thomsonreuters.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="StorageServiceImplService" targetNamespace="http://storage.cma.thomsonreuters.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://storage.cma.thomsonreuters.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.w3.org/2005/05/xmlmime" />
+      <xs:element name="AddFileObj" type="tns:AddFileObj" />
+      <xs:element name="AddFileObjResponse" type="tns:AddFileObjResponse" />
+      <xs:element name="RetriveFileObj" type="tns:RetriveFileObj" />
+      <xs:element name="RetriveFileObjResponse" type="tns:RetriveFileObjResponse" />
+      <xs:complexType name="AddFileObj">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:fileEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fileEntity">
+        <xs:sequence>
+          <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="fileData" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="fileName" type="xs:string" />
+          <xs:element minOccurs="0" name="path" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AddFileObjResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RetriveFileObj">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="xs:string" />
+          <xs:element minOccurs="0" name="arg1" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RetriveFileObjResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:fileEntity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="IOException" type="tns:IOException" />
+      <xs:complexType name="IOException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="AddFileObj">
+    <wsdl:part name="parameters" element="tns:AddFileObj" />
+  </wsdl:message>
+  <wsdl:message name="RetriveFileObj">
+    <wsdl:part name="parameters" element="tns:RetriveFileObj" />
+  </wsdl:message>
+  <wsdl:message name="AddFileObjResponse">
+    <wsdl:part name="parameters" element="tns:AddFileObjResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOException">
+    <wsdl:part name="IOException" element="tns:IOException" />
+  </wsdl:message>
+  <wsdl:message name="RetriveFileObjResponse">
+    <wsdl:part name="parameters" element="tns:RetriveFileObjResponse" />
+  </wsdl:message>
+  <wsdl:portType name="StorageService">
+    <wsdl:operation name="AddFileObj">
+      <wsdl:input name="AddFileObj" message="tns:AddFileObj" />
+      <wsdl:output name="AddFileObjResponse" message="tns:AddFileObjResponse" />
+      <wsdl:fault name="IOException" message="tns:IOException" />
+    </wsdl:operation>
+    <wsdl:operation name="RetriveFileObj">
+      <wsdl:input name="RetriveFileObj" message="tns:RetriveFileObj" />
+      <wsdl:output name="RetriveFileObjResponse" message="tns:RetriveFileObjResponse" />
+      <wsdl:fault name="IOException" message="tns:IOException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StorageServiceImplServiceSoapBinding" type="tns:StorageService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddFileObj">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="AddFileObj">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AddFileObjResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IOException">
+        <soap:fault use="literal" name="IOException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RetriveFileObj">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="RetriveFileObj">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RetriveFileObjResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="IOException">
+        <soap:fault use="literal" name="IOException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StorageServiceImplService">
+    <wsdl:port name="StorageServiceImplPort" binding="tns:StorageServiceImplServiceSoapBinding">
+      <soap:address location="http://10.35.63.26:8080/storage/FileStorgeService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

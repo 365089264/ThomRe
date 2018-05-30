@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- For more information on using transformations 
+     see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134. -->
+<settings xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <destination-db>
+    <conn xdt:Transform="Replace">Server=172.16.128.146;Database=VAV;Failover Partner=172.16.128.145;Pooling=true;Uid=sa;Pwd=p@ssw0rd</conn>
+  </destination-db>
+  <lunaRequestUserId xdt:Transform="Replace" >
+    SL1-2W5KZ2Q
+  </lunaRequestUserId>
+</settings>

@@ -1,0 +1,184 @@
+﻿@model VAV.Web.ViewModels.WMP.BrokerWMPFeeViewModel
+
+@{
+    var subscribeCount = Model.SubscribeFee.Count + 1;
+    var purchaseCount = Model.PurchaseFee.Count + 1;
+    var redeemCount = Model.RedeemFee.Count + 1;
+    var manageFeeCount = Model.ManageFee.Count + 1;
+    var custodianFeeCount = Model.CustodianFee.Count + 1;
+    var manageFee = Model.ManageFee.Count == 0 ? "" : Model.ManageFee.FirstOrDefault().Item3;
+    var custodianFee = Model.CustodianFee.Count == 0 ? "" : Model.CustodianFee.FirstOrDefault().Item3;
+    
+    int bottomColSpan = 1;
+    if (manageFeeCount > 2 || custodianFeeCount > 2)
+    {
+        bottomColSpan = 2;
+    }
+
+    int manageFeeColSpan = 3;
+    if (custodianFeeCount > 2)
+    {
+        manageFeeColSpan = 4;
+    }
+
+    int custodianFeeColSpan = 3;
+    if (manageFeeCount > 2)
+    {
+        custodianFeeColSpan = 4;
+    }
+}
+
+<div>
+    <table class="datatable"  style="line-height: 20px">
+            <tbody>
+                @if (manageFeeCount <= 2)
+                {
+                    <tr>
+                        <td class="highlight">@Resources.WMP.Broker_Mag_Rate</td><td colspan="@manageFeeColSpan">@manageFee</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td class="highlight" rowspan="@manageFeeCount">
+                        @Resources.WMP.Broker_Mag_Rate
+                        </td>
+                        <td class="highlight">
+                        @Resources.WMP.Broker_Annual_Yield
+                        </td>
+                        <td class="highlight">
+                        @Resources.WMP.Broker_Accumulated_Net_Value
+                        </td>
+                        <td class="highlight">
+                        @Resources.WMP.Broker_Rate
+                        </td>
+                        <td class="highlight">
+                        @Resources.WMP.Broker_Note
+                        </td>
+                    </tr>
+
+                    foreach (var m in @Model.ManageFee)
+                    {
+                        <tr>
+                            <td>@m.Item1</td>
+                            <td>@m.Item2</td>
+                            <td>@m.Item3</td>
+                            <td>@m.Item4</td>
+                        </tr>
+                    }     
+                }
+
+                @if (custodianFeeCount <= 2)
+                {
+                    <tr>
+                        <td class="highlight">@Resources.WMP.Broker_Trustee_Rate</td><td colspan="@custodianFeeColSpan">@custodianFee</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td class="highlight" rowspan="@custodianFeeCount">
+                        @Resources.WMP.Broker_Trustee_Rate
+                        </td>
+                        <td class="highlight">
+                        @Resources.WMP.Broker_Annual_Yield
+                        </td>
+                        <td class="highlight">
+                        @Resources.WMP.Broker_Accumulated_Net_Value
+                        </td>
+                        <td class="highlight">
+                        @Resources.WMP.Broker_Rate
+                        </td>
+                        <td class="highlight">
+                        @Resources.WMP.Broker_Note
+                        </td>
+                    </tr>
+
+                    foreach (var m in @Model.CustodianFee)
+                    {
+                        <tr>
+                            <td>@m.Item1</td>
+                            <td>@m.Item2</td>
+                            <td>@m.Item3</td>
+                            <td>@m.Item4</td>
+                        </tr>
+                    }     
+                }
+
+                <tr>
+                    <td class="highlight" rowspan="@subscribeCount">
+                    @Resources.WMP.Broker_Subscription_Rate
+                    </td>
+                    <td class="highlight">
+                    @Resources.WMP.Broker_Subscription_Amount
+                    </td>
+                    <td class="highlight">
+                    @Resources.WMP.Broker_Holding_Period
+                    </td>
+                    <td class="highlight" colspan="@bottomColSpan">
+                    @Resources.WMP.Broker_Rate
+                    </td>
+                </tr>
+
+                @foreach (var m in @Model.SubscribeFee)
+                {
+                    <tr>
+                        <td>@m.Item1</td>
+                        <td>@m.Item2</td>
+                        <td colspan="@bottomColSpan">@m.Item3</td>
+                    </tr>
+                }
+
+                <tr>
+                    <td class="highlight" rowspan="@purchaseCount">
+                    @Resources.WMP.Broker_Rate_of_Purchase
+                    </td>
+                    <td class="highlight">
+                    @Resources.WMP.Broker_Amount_of_Purchase
+                    </td>
+                    <td class="highlight">
+                    @Resources.WMP.Broker_Holding_Period
+                    </td>
+                    <td class="highlight" colspan="@bottomColSpan">
+                    @Resources.WMP.Broker_Rate
+                    </td>
+                </tr>
+
+                @foreach (var m in @Model.PurchaseFee)
+                {
+                    <tr>
+                        <td>@m.Item1</td>
+                        <td>@m.Item2</td>
+                        <td colspan="@bottomColSpan">@m.Item3</td>
+                    </tr>
+                }
+
+                <tr>
+                    <td class="highlight" rowspan="@redeemCount">
+                    @Resources.WMP.Broker_Redemption_Rate
+                    </td>
+                    <td class="highlight">
+                    @Resources.WMP.Broker_Redemption_Amount
+                    </td>
+                    <td class="highlight">
+                    @Resources.WMP.Broker_Holding_Period
+                    </td>
+                    <td class="highlight" colspan="@bottomColSpan">
+                    @Resources.WMP.Broker_Rate
+                    </td>
+                </tr>
+
+                @foreach (var m in @Model.RedeemFee)
+                {
+                    <tr>
+                        <td>@m.Item1</td>
+                        <td>@m.Item2</td>
+                        <td colspan="@bottomColSpan">@m.Item3</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>
+
+<script type="text/javascript">
+</script>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CnEModel.Store" Alias="Self" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CnEModelStoreContainer">
+          <EntitySet Name="GETMAILLOG" EntityType="CnEModel.Store.GETMAILLOG" store:Type="Tables" Schema="SCHEDULER" />
+          <EntitySet Name="SCHEDULERLOG" EntityType="CnEModel.Store.SCHEDULERLOG" store:Type="Tables" Schema="SCHEDULER" />
+        </EntityContainer>
+        <EntityType Name="GETMAILLOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="GETMAILDATE" Type="date" Nullable="false" />
+          <Property Name="STATUS" Type="number" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="clob" />
+          <Property Name="JOBTYPE" Type="varchar2" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SCHEDULERLOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="STARTTIME" Type="date" Nullable="false" />
+          <Property Name="ENDTIME" Type="date" Nullable="false" />
+          <Property Name="STATUS" Type="number" Nullable="false" />
+          <Property Name="JOBTYPE" Type="varchar2" Nullable="false" MaxLength="64" />
+          <Property Name="RUNDETAIL" Type="clob" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CnEModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CnEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GETMAILLOGs" EntityType="CnEModel.GETMAILLOG" />
+          <EntitySet Name="SCHEDULERLOGs" EntityType="CnEModel.SCHEDULERLOG" />
+        </EntityContainer>
+        <EntityType Name="GETMAILLOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="GETMAILDATE" Type="DateTime" Nullable="false" />
+          <Property Name="STATUS" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="JOBTYPE" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SCHEDULERLOG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="STARTTIME" Type="DateTime" Nullable="false" />
+          <Property Name="ENDTIME" Type="DateTime" Nullable="false" />
+          <Property Name="STATUS" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="JOBTYPE" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="RUNDETAIL" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CnEModelStoreContainer" CdmEntityContainer="CnEEntities">
+          <EntitySetMapping Name="GETMAILLOGs">
+            <EntityTypeMapping TypeName="CnEModel.GETMAILLOG">
+              <MappingFragment StoreEntitySet="GETMAILLOG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GETMAILDATE" ColumnName="GETMAILDATE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="JOBTYPE" ColumnName="JOBTYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCHEDULERLOGs">
+            <EntityTypeMapping TypeName="CnEModel.SCHEDULERLOG">
+              <MappingFragment StoreEntitySet="SCHEDULERLOG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STARTTIME" ColumnName="STARTTIME" />
+                <ScalarProperty Name="ENDTIME" ColumnName="ENDTIME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="JOBTYPE" ColumnName="JOBTYPE" />
+                <ScalarProperty Name="RUNDETAIL" ColumnName="RUNDETAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="CnEEntities">
+        <EntityTypeShape EntityType="CnEModel.GETMAILLOG" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9700325520833331" IsExpanded="true" />
+        <EntityTypeShape EntityType="CnEModel.SCHEDULERLOG" Width="1.5" PointX="2.75" PointY="0.75" Height="2.1610522460937496" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

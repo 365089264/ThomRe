@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <!--destination the number of each batch execution-->
+  <countPer>18</countPer>
+  <lunaRequestUserId>
+    PAXTRA24184
+  </lunaRequestUserId>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=bonddb;Password=bonddb;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+</settings>
+

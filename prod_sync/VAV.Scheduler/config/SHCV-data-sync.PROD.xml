@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- For more information on using transformations 
+     see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134. -->
+<settings xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <source-db>
+    <conn xdt:Transform="Replace">Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=srdb;Password=srdb;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <conn xdt:Transform="Replace">Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=ggl-scan-pk0001.int.thomsonreuters.com)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb.int.thomsonreuters.com)));User Id=srdb;Password=srdb;</conn>
+  </destination-db>
+</settings>

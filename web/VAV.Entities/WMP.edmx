@@ -1,0 +1,2379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GeniusHistModel.Store" Alias="Self" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="GeniusHistModelStoreContainer">
+          <EntitySet Name="BANK_FIN_DETAIL" EntityType="GeniusHistModel.Store.BANK_FIN_DETAIL" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="BANK_FIN_PRD" EntityType="GeniusHistModel.Store.BANK_FIN_PRD" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="BANK_FIN_PRD_PROSP" EntityType="GeniusHistModel.Store.BANK_FIN_PRD_PROSP" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="CFP_FEE_CHNG" EntityType="GeniusHistModel.Store.CFP_FEE_CHNG" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="CFP_ISS_ORG" EntityType="GeniusHistModel.Store.CFP_ISS_ORG" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="CFP_PROFITSHEET" EntityType="GeniusHistModel.Store.CFP_PROFITSHEET" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="DISC_ACCE_CFP" EntityType="GeniusHistModel.Store.DISC_ACCE_CFP" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="FIN_PRD_RPT" EntityType="GeniusHistModel.Store.FIN_PRD_RPT" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="GEN_REF" EntityType="GeniusHistModel.Store.GEN_REF" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="ORG_PROFILE" EntityType="GeniusHistModel.Store.ORG_PROFILE" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="TRUST_PROFILE" EntityType="GeniusHistModel.Store.TRUST_PROFILE" store:Type="Tables" Schema="PGENIUS" />
+          <EntitySet Name="V_WMP_AREA_DIC" EntityType="GeniusHistModel.Store.V_WMP_AREA_DIC" store:Type="Views" store:Schema="PGENIUS" store:Name="V_WMP_AREA_DIC">
+            <DefiningQuery>SELECT 
+      "V_WMP_AREA_DIC"."ID_C" AS "ID_C", 
+      "V_WMP_AREA_DIC"."ISS_AREA_CODE" AS "ISS_AREA_CODE", 
+      "V_WMP_AREA_DIC"."PROV_NAME" AS "PROV_NAME", 
+      "V_WMP_AREA_DIC"."ISS_AREA" AS "ISS_AREA", 
+      "V_WMP_AREA_DIC"."INNER_CODE" AS "INNER_CODE"
+      FROM "PGENIUS"."V_WMP_AREA_DIC" "V_WMP_AREA_DIC"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_WMP_BANK_PROD" EntityType="GeniusHistModel.Store.V_WMP_BANK_PROD" store:Type="Views" store:Schema="PGENIUS" store:Name="V_WMP_BANK_PROD">
+            <DefiningQuery>SELECT 
+      "V_WMP_BANK_PROD"."INNER_CODE" AS "INNER_CODE", 
+      "V_WMP_BANK_PROD"."PRD_ISVALID" AS "PRD_ISVALID", 
+      "V_WMP_BANK_PROD"."PRD_DETAIL_ISVALID" AS "PRD_DETAIL_ISVALID", 
+      "V_WMP_BANK_PROD"."BANK_TYPE_CD" AS "BANK_TYPE_CD", 
+      "V_WMP_BANK_PROD"."BANK_TYPE" AS "BANK_TYPE", 
+      "V_WMP_BANK_PROD"."BANK_ID" AS "BANK_ID", 
+      "V_WMP_BANK_PROD"."BANK_NAME" AS "BANK_NAME", 
+      "V_WMP_BANK_PROD"."SHORTNAME" AS "SHORTNAME", 
+      "V_WMP_BANK_PROD"."PRD_NAME" AS "PRD_NAME", 
+      "V_WMP_BANK_PROD"."PRD_SYS" AS "PRD_SYS", 
+      "V_WMP_BANK_PROD"."TERM" AS "TERM", 
+      "V_WMP_BANK_PROD"."PRD_TYPE" AS "PRD_TYPE", 
+      "V_WMP_BANK_PROD"."PRD_TYPE_NAME" AS "PRD_TYPE_NAME", 
+      "V_WMP_BANK_PROD"."ENTR_MNG_TERM" AS "ENTR_MNG_TERM", 
+      "V_WMP_BANK_PROD"."ENTR_MNG_UNIT" AS "ENTR_MNG_UNIT", 
+      "V_WMP_BANK_PROD"."PROD_STATE" AS "PROD_STATE", 
+      "V_WMP_BANK_PROD"."PROD_STATE_NAME" AS "PROD_STATE_NAME", 
+      "V_WMP_BANK_PROD"."SELL_ORG_DATE" AS "SELL_ORG_DATE", 
+      "V_WMP_BANK_PROD"."SELL_END_DATE" AS "SELL_END_DATE", 
+      "V_WMP_BANK_PROD"."INC_ORG_DATE" AS "INC_ORG_DATE", 
+      "V_WMP_BANK_PROD"."PAY_CYC" AS "PAY_CYC", 
+      "V_WMP_BANK_PROD"."PAY_CYC_UNIT" AS "PAY_CYC_UNIT", 
+      "V_WMP_BANK_PROD"."PAY_CYC_NAME" AS "PAY_CYC_NAME", 
+      "V_WMP_BANK_PROD"."PRD_MAX_YLD" AS "PRD_MAX_YLD", 
+      "V_WMP_BANK_PROD"."PRD_MAX_YLD_DE" AS "PRD_MAX_YLD_DE", 
+      "V_WMP_BANK_PROD"."RPD_MAX_YLD_TYPE" AS "RPD_MAX_YLD_TYPE", 
+      "V_WMP_BANK_PROD"."ENTR_CURNCY_TYPE" AS "ENTR_CURNCY_TYPE", 
+      "V_WMP_BANK_PROD"."ENTR_CURNCY_NAME" AS "ENTR_CURNCY_NAME", 
+      "V_WMP_BANK_PROD"."INITAMOUNTTYPE" AS "INITAMOUNTTYPE", 
+      "V_WMP_BANK_PROD"."ENTR_MIN_CURNCY" AS "ENTR_MIN_CURNCY", 
+      "V_WMP_BANK_PROD"."CURNCY_INCR_UNIT" AS "CURNCY_INCR_UNIT", 
+      "V_WMP_BANK_PROD"."MNG_COST" AS "MNG_COST", 
+      "V_WMP_BANK_PROD"."IS_RETAIL" AS "IS_RETAIL", 
+      "V_WMP_BANK_PROD"."IS_RETAIL_NAME" AS "IS_RETAIL_NAME", 
+      "V_WMP_BANK_PROD"."IS_BNK_BRG_FRD" AS "IS_BNK_BRG_FRD", 
+      "V_WMP_BANK_PROD"."IS_BNK_BRG_FRD_NAME" AS "IS_BNK_BRG_FRD_NAME", 
+      "V_WMP_BANK_PROD"."IS_CST_BRG_FRD" AS "IS_CST_BRG_FRD", 
+      "V_WMP_BANK_PROD"."IS_CST_BRG_FRD_NAME" AS "IS_CST_BRG_FRD_NAME", 
+      "V_WMP_BANK_PROD"."YLD_DET" AS "YLD_DET", 
+      "V_WMP_BANK_PROD"."AD_TRM_CND" AS "AD_TRM_CND", 
+      "V_WMP_BANK_PROD"."AD_PRC_CND" AS "AD_PRC_CND", 
+      "V_WMP_BANK_PROD"."FEAT" AS "FEAT", 
+      "V_WMP_BANK_PROD"."BNT_ACT" AS "BNT_ACT", 
+      "V_WMP_BANK_PROD"."SELL_ORG_DTL" AS "SELL_ORG_DTL", 
+      "V_WMP_BANK_PROD"."SELL_END_DTL" AS "SELL_END_DTL", 
+      "V_WMP_BANK_PROD"."RIST_WARE" AS "RIST_WARE", 
+      "V_WMP_BANK_PROD"."EXP_VIEW" AS "EXP_VIEW", 
+      "V_WMP_BANK_PROD"."PRD_CODE" AS "PRD_CODE", 
+      "V_WMP_BANK_PROD"."ISS_AREA" AS "ISS_AREA", 
+      "V_WMP_BANK_PROD"."AC_ORG" AS "AC_ORG", 
+      "V_WMP_BANK_PROD"."END_DATE" AS "END_DATE", 
+      "V_WMP_BANK_PROD"."INC_DATE" AS "INC_DATE", 
+      "V_WMP_BANK_PROD"."INC_DATE_NAME" AS "INC_DATE_NAME", 
+      "V_WMP_BANK_PROD"."RETN_TYPE" AS "RETN_TYPE", 
+      "V_WMP_BANK_PROD"."IS_PLEDGE" AS "IS_PLEDGE", 
+      "V_WMP_BANK_PROD"."IS_PLEDGE_NAME" AS "IS_PLEDGE_NAME", 
+      "V_WMP_BANK_PROD"."INC_CLA_BASIS" AS "INC_CLA_BASIS", 
+      "V_WMP_BANK_PROD"."AD_TRM_DATE_DTL" AS "AD_TRM_DATE_DTL", 
+      "V_WMP_BANK_PROD"."CALL_DATE_DTL" AS "CALL_DATE_DTL", 
+      "V_WMP_BANK_PROD"."CURNCY_REC_DATE_DTL" AS "CURNCY_REC_DATE_DTL", 
+      "V_WMP_BANK_PROD"."INV_OBJ" AS "INV_OBJ", 
+      "V_WMP_BANK_PROD"."TAX_REGL" AS "TAX_REGL", 
+      "V_WMP_BANK_PROD"."INV_TYPE" AS "INV_TYPE", 
+      "V_WMP_BANK_PROD"."INV_TYPE_DTL" AS "INV_TYPE_DTL", 
+      "V_WMP_BANK_PROD"."RIST_RTNG" AS "RIST_RTNG", 
+      "V_WMP_BANK_PROD"."RIST_RTNG_DTL" AS "RIST_RTNG_DTL", 
+      "V_WMP_BANK_PROD"."LIQ_RTNG" AS "LIQ_RTNG", 
+      "V_WMP_BANK_PROD"."LIQ_RTNG_DTL" AS "LIQ_RTNG_DTL", 
+      "V_WMP_BANK_PROD"."MAT_ACTU_YLD" AS "MAT_ACTU_YLD", 
+      "V_WMP_BANK_PROD"."IS_QDII" AS "IS_QDII", 
+      "V_WMP_BANK_PROD"."IS_QDII_NAME" AS "IS_QDII_NAME", 
+      "V_WMP_BANK_PROD"."HONOR_CAP_CURNCY_TYPE" AS "HONOR_CAP_CURNCY_TYPE", 
+      "V_WMP_BANK_PROD"."HONOR_CAP_CURNCY_NAME" AS "HONOR_CAP_CURNCY_NAME", 
+      "V_WMP_BANK_PROD"."HONOR_INCM_CURNCY_TYPE" AS "HONOR_INCM_CURNCY_TYPE", 
+      "V_WMP_BANK_PROD"."HONOR_INCM_CURNCY_NAME" AS "HONOR_INCM_CURNCY_NAME", 
+      "V_WMP_BANK_PROD"."INV_UND_TYPE_NAME" AS "INV_UND_TYPE_NAME", 
+      "V_WMP_BANK_PROD"."INV_UND_TYPE" AS "INV_UND_TYPE", 
+      "V_WMP_BANK_PROD"."INC_DATE_UNIT" AS "INC_DATE_UNIT", 
+      "V_WMP_BANK_PROD"."STRU_TYPE" AS "STRU_TYPE", 
+      "V_WMP_BANK_PROD"."STRU_TYPE_NAME" AS "STRU_TYPE_NAME", 
+      "V_WMP_BANK_PROD"."PRD_MIN_YLD" AS "PRD_MIN_YLD", 
+      "V_WMP_BANK_PROD"."TRM_DLY_REMARK" AS "TRM_DLY_REMARK", 
+      "V_WMP_BANK_PROD"."PRD_MAX_YLD_L" AS "PRD_MAX_YLD_L", 
+      "V_WMP_BANK_PROD"."PLAN_SIZE_UP_LIM" AS "PLAN_SIZE_UP_LIM", 
+      "V_WMP_BANK_PROD"."PLAN_SIZE_LOW_LIM" AS "PLAN_SIZE_LOW_LIM", 
+      "V_WMP_BANK_PROD"."IS_ROLL_PRO" AS "IS_ROLL_PRO", 
+      "V_WMP_BANK_PROD"."IS_ROLL_PRO_NAME" AS "IS_ROLL_PRO_NAME", 
+      "V_WMP_BANK_PROD"."PRD_MAX_YLD_L_DE" AS "PRD_MAX_YLD_L_DE", 
+      "V_WMP_BANK_PROD"."SELL_CHNL" AS "SELL_CHNL", 
+      "V_WMP_BANK_PROD"."ACCE_ROUTE" AS "ACCE_ROUTE", 
+      "V_WMP_BANK_PROD"."INC_DATE_DAYS" AS "INC_DATE_DAYS", 
+      "V_WMP_BANK_PROD"."PRD_SYS_DAYS" AS "PRD_SYS_DAYS", 
+      "V_WMP_BANK_PROD"."PAY_CYC_DAYS" AS "PAY_CYC_DAYS", 
+      "V_WMP_BANK_PROD"."MTIME" AS "MTIME"
+      FROM "PGENIUS"."V_WMP_BANK_PROD" "V_WMP_BANK_PROD"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_WMP_CFP" EntityType="GeniusHistModel.Store.V_WMP_CFP" store:Type="Views" store:Schema="PGENIUS" store:Name="V_WMP_CFP">
+            <DefiningQuery>SELECT 
+      "V_WMP_CFP"."ISVALID" AS "ISVALID", 
+      "V_WMP_CFP"."INNER_CODE" AS "INNER_CODE", 
+      "V_WMP_CFP"."DECLAREDATE" AS "DECLAREDATE", 
+      "V_WMP_CFP"."CFPNAME" AS "CFPNAME", 
+      "V_WMP_CFP"."CFPSNAME" AS "CFPSNAME", 
+      "V_WMP_CFP"."CFP_CODE" AS "CFP_CODE", 
+      "V_WMP_CFP"."ISIN" AS "ISIN", 
+      "V_WMP_CFP"."CFP_TYPE" AS "CFP_TYPE", 
+      "V_WMP_CFP"."PROD_TYPE_NAME" AS "PROD_TYPE_NAME", 
+      "V_WMP_CFP"."INVEST_TARGET" AS "INVEST_TARGET", 
+      "V_WMP_CFP"."INVEST_TENET" AS "INVEST_TENET", 
+      "V_WMP_CFP"."INVEST_RANGE" AS "INVEST_RANGE", 
+      "V_WMP_CFP"."INVEST_BENCH" AS "INVEST_BENCH", 
+      "V_WMP_CFP"."INVEST_STRA" AS "INVEST_STRA", 
+      "V_WMP_CFP"."PERFORM_BENCH" AS "PERFORM_BENCH", 
+      "V_WMP_CFP"."PROD_CHAR" AS "PROD_CHAR", 
+      "V_WMP_CFP"."OBJ_VAL1" AS "OBJ_VAL1", 
+      "V_WMP_CFP"."OBJ_VAL2" AS "OBJ_VAL2", 
+      "V_WMP_CFP"."PERIOD" AS "PERIOD", 
+      "V_WMP_CFP"."STARTDATE" AS "STARTDATE", 
+      "V_WMP_CFP"."ENDDATE" AS "ENDDATE", 
+      "V_WMP_CFP"."LOWEST_VAL" AS "LOWEST_VAL", 
+      "V_WMP_CFP"."LOWEST_VAL_CODE" AS "LOWEST_VAL_CODE", 
+      "V_WMP_CFP"."LOWEST_VAL_NAME" AS "LOWEST_VAL_NAME", 
+      "V_WMP_CFP"."INVEST_CLS" AS "INVEST_CLS", 
+      "V_WMP_CFP"."INVEST_NAME" AS "INVEST_NAME", 
+      "V_WMP_CFP"."ESTAB_DATE" AS "ESTAB_DATE", 
+      "V_WMP_CFP"."TOT_VAL" AS "TOT_VAL", 
+      "V_WMP_CFP"."FORE_YIELD" AS "FORE_YIELD", 
+      "V_WMP_CFP"."OPEN_PRD" AS "OPEN_PRD", 
+      "V_WMP_CFP"."INV_MNG" AS "INV_MNG", 
+      "V_WMP_CFP"."FIN_CYC" AS "FIN_CYC", 
+      "V_WMP_CFP"."EXPE_ENDDATE" AS "EXPE_ENDDATE", 
+      "V_WMP_CFP"."ACTU_ENDDATE" AS "ACTU_ENDDATE", 
+      "V_WMP_CFP"."ADD_UNIT_LOW" AS "ADD_UNIT_LOW", 
+      "V_WMP_CFP"."QUIT_UNIT_LOW" AS "QUIT_UNIT_LOW", 
+      "V_WMP_CFP"."DURATION_SIZE_LOW" AS "DURATION_SIZE_LOW", 
+      "V_WMP_CFP"."CLOSED_PERD" AS "CLOSED_PERD", 
+      "V_WMP_CFP"."HUGE_QUIT_TERM" AS "HUGE_QUIT_TERM", 
+      "V_WMP_CFP"."IS_QDII" AS "IS_QDII", 
+      "V_WMP_CFP"."IS_QDII_NAME" AS "IS_QDII_NAME", 
+      "V_WMP_CFP"."ORGCODE" AS "ORGCODE", 
+      "V_WMP_CFP"."ORGNAME" AS "ORGNAME", 
+      "V_WMP_CFP"."MAG_ORGCODE" AS "MAG_ORGCODE", 
+      "V_WMP_CFP"."MAG_ORGNAME" AS "MAG_ORGNAME", 
+      "V_WMP_CFP"."ISS_STATUS" AS "ISS_STATUS", 
+      "V_WMP_CFP"."UNT_NET" AS "UNT_NET", 
+      "V_WMP_CFP"."UNT_ACCUM_NET" AS "UNT_ACCUM_NET", 
+      "V_WMP_CFP"."WEEK_GR" AS "WEEK_GR", 
+      "V_WMP_CFP"."MONTH_GR" AS "MONTH_GR", 
+      "V_WMP_CFP"."ANNU_GR" AS "ANNU_GR", 
+      "V_WMP_CFP"."BUILD_ANNU_GR" AS "BUILD_ANNU_GR", 
+      "V_WMP_CFP"."CHNG_DATE" AS "CHNG_DATE", 
+      "V_WMP_CFP"."PROD_STATE_CODE" AS "PROD_STATE_CODE", 
+      "V_WMP_CFP"."PROD_STATE" AS "PROD_STATE", 
+      "V_WMP_CFP"."MTIME" AS "MTIME"
+      FROM "PGENIUS"."V_WMP_CFP" "V_WMP_CFP"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_WMP_TRUST" EntityType="GeniusHistModel.Store.V_WMP_TRUST" store:Type="Views" store:Schema="PGENIUS" store:Name="V_WMP_TRUST">
+            <DefiningQuery>SELECT 
+      "V_WMP_TRUST"."INNER_CODE" AS "INNER_CODE", 
+      "V_WMP_TRUST"."DECLAREDATE" AS "DECLAREDATE", 
+      "V_WMP_TRUST"."PRD_NAME" AS "PRD_NAME", 
+      "V_WMP_TRUST"."CHI_SPEL" AS "CHI_SPEL", 
+      "V_WMP_TRUST"."TRUST_SNAME" AS "TRUST_SNAME", 
+      "V_WMP_TRUST"."MAIN_SNAME" AS "MAIN_SNAME", 
+      "V_WMP_TRUST"."MAIN_CODE" AS "MAIN_CODE", 
+      "V_WMP_TRUST"."ISS_YEAR" AS "ISS_YEAR", 
+      "V_WMP_TRUST"."PROM_STARTDATE" AS "PROM_STARTDATE", 
+      "V_WMP_TRUST"."PROM_ENDDATE" AS "PROM_ENDDATE", 
+      "V_WMP_TRUST"."SALE_DAYS" AS "SALE_DAYS", 
+      "V_WMP_TRUST"."PERI_TYPE" AS "PERI_TYPE", 
+      "V_WMP_TRUST"."PERI_TYPE_NAME" AS "PERI_TYPE_NAME", 
+      "V_WMP_TRUST"."TRUST_PERI" AS "TRUST_PERI", 
+      "V_WMP_TRUST"."TRUST_PERI_DAYS" AS "TRUST_PERI_DAYS", 
+      "V_WMP_TRUST"."TRUST_TERM" AS "TRUST_TERM", 
+      "V_WMP_TRUST"."OPEN_REMARK" AS "OPEN_REMARK", 
+      "V_WMP_TRUST"."CLOSE_REMARK" AS "CLOSE_REMARK", 
+      "V_WMP_TRUST"."BUILD_DATE" AS "BUILD_DATE", 
+      "V_WMP_TRUST"."ENDDATE" AS "ENDDATE", 
+      "V_WMP_TRUST"."EXPE_ENDDATE" AS "EXPE_ENDDATE", 
+      "V_WMP_TRUST"."IS_BRG_FRD" AS "IS_BRG_FRD", 
+      "V_WMP_TRUST"."IS_BRG_FRD_NAME" AS "IS_BRG_FRD_NAME", 
+      "V_WMP_TRUST"."IS_DLY" AS "IS_DLY", 
+      "V_WMP_TRUST"."IS_DLY_NAME" AS "IS_DLY_NAME", 
+      "V_WMP_TRUST"."IS_STRU" AS "IS_STRU", 
+      "V_WMP_TRUST"."IS_STRU_NAME" AS "IS_STRU_NAME", 
+      "V_WMP_TRUST"."STRU_RATIO" AS "STRU_RATIO", 
+      "V_WMP_TRUST"."IS_PE" AS "IS_PE", 
+      "V_WMP_TRUST"."IS_PE_NAME" AS "IS_PE_NAME", 
+      "V_WMP_TRUST"."IS_CURNCY" AS "IS_CURNCY", 
+      "V_WMP_TRUST"."IS_CURNCY_NAME" AS "IS_CURNCY_NAME", 
+      "V_WMP_TRUST"."IS_TOT" AS "IS_TOT", 
+      "V_WMP_TRUST"."IS_TOT_NAME" AS "IS_TOT_NAME", 
+      "V_WMP_TRUST"."TRUST_TYPE" AS "TRUST_TYPE", 
+      "V_WMP_TRUST"."TRUST_TYPE_NAME" AS "TRUST_TYPE_NAME", 
+      "V_WMP_TRUST"."SEC_INVEST_TYPE" AS "SEC_INVEST_TYPE", 
+      "V_WMP_TRUST"."INV_FLD" AS "INV_FLD", 
+      "V_WMP_TRUST"."INV_FLD_NAME" AS "INV_FLD_NAME", 
+      "V_WMP_TRUST"."TRUST_MNG" AS "TRUST_MNG", 
+      "V_WMP_TRUST"."LIQU_REASON" AS "LIQU_REASON", 
+      "V_WMP_TRUST"."EXP_YLD" AS "EXP_YLD", 
+      "V_WMP_TRUST"."EXP_YLD_TYPE" AS "EXP_YLD_TYPE", 
+      "V_WMP_TRUST"."CURNCY" AS "CURNCY", 
+      "V_WMP_TRUST"."CURNCY_NAME" AS "CURNCY_NAME", 
+      "V_WMP_TRUST"."EXP_YLD_REMARK" AS "EXP_YLD_REMARK", 
+      "V_WMP_TRUST"."ACT_YLD" AS "ACT_YLD", 
+      "V_WMP_TRUST"."INCOME_TYPE" AS "INCOME_TYPE", 
+      "V_WMP_TRUST"."INCOME_TYPE_NAME" AS "INCOME_TYPE_NAME", 
+      "V_WMP_TRUST"."ACT_YLD_REMARK" AS "ACT_YLD_REMARK", 
+      "V_WMP_TRUST"."PLAN_ISS_SIZE_CD" AS "PLAN_ISS_SIZE_CD", 
+      "V_WMP_TRUST"."PLAN_ISS_SIZE" AS "PLAN_ISS_SIZE", 
+      "V_WMP_TRUST"."ACTU_ISS_SIZE" AS "ACTU_ISS_SIZE", 
+      "V_WMP_TRUST"."ORGNAME" AS "ORGNAME", 
+      "V_WMP_TRUST"."ORGCODE" AS "ORGCODE", 
+      "V_WMP_TRUST"."ORG_TYPE_CD" AS "ORG_TYPE_CD", 
+      "V_WMP_TRUST"."ORG_TYPE_NAME" AS "ORG_TYPE_NAME", 
+      "V_WMP_TRUST"."CONTR_SHT" AS "CONTR_SHT", 
+      "V_WMP_TRUST"."BOOK_VAL" AS "BOOK_VAL", 
+      "V_WMP_TRUST"."MIN_CAP" AS "MIN_CAP", 
+      "V_WMP_TRUST"."MIN_INV_AMOUNT_TYPE" AS "MIN_INV_AMOUNT_TYPE", 
+      "V_WMP_TRUST"."MIN_CAP_REMARK" AS "MIN_CAP_REMARK", 
+      "V_WMP_TRUST"."ADD_CAP" AS "ADD_CAP", 
+      "V_WMP_TRUST"."ADD_CAP_REMARK" AS "ADD_CAP_REMARK", 
+      "V_WMP_TRUST"."CRED_ENHA_MODE" AS "CRED_ENHA_MODE", 
+      "V_WMP_TRUST"."NET_FREQ" AS "NET_FREQ", 
+      "V_WMP_TRUST"."NET_STARTDATE" AS "NET_STARTDATE", 
+      "V_WMP_TRUST"."NET_ENDDATE" AS "NET_ENDDATE", 
+      "V_WMP_TRUST"."INVEST_REMARK" AS "INVEST_REMARK", 
+      "V_WMP_TRUST"."PRD_REMARK" AS "PRD_REMARK", 
+      "V_WMP_TRUST"."FEE_REMARK" AS "FEE_REMARK", 
+      "V_WMP_TRUST"."RIST_WARE" AS "RIST_WARE", 
+      "V_WMP_TRUST"."ALERT_LINE" AS "ALERT_LINE", 
+      "V_WMP_TRUST"."ALERT_LINE_REMARK" AS "ALERT_LINE_REMARK", 
+      "V_WMP_TRUST"."STOP_LINE" AS "STOP_LINE", 
+      "V_WMP_TRUST"."STOP_LINE_REMARK" AS "STOP_LINE_REMARK", 
+      "V_WMP_TRUST"."IS_MERGE" AS "IS_MERGE", 
+      "V_WMP_TRUST"."IS_MERGE_NAME" AS "IS_MERGE_NAME", 
+      "V_WMP_TRUST"."REMARK" AS "REMARK", 
+      "V_WMP_TRUST"."PRD_STATUS" AS "PRD_STATUS", 
+      "V_WMP_TRUST"."PRD_STATUS_NAME" AS "PRD_STATUS_NAME", 
+      "V_WMP_TRUST"."TRUST_PERI_UNIT" AS "TRUST_PERI_UNIT", 
+      "V_WMP_TRUST"."FIN_CYC" AS "FIN_CYC", 
+      "V_WMP_TRUST"."FIN_CYC_UNIT" AS "FIN_CYC_UNIT"
+      FROM "PGENIUS"."V_WMP_TRUST" "V_WMP_TRUST"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="BANK_FIN_DETAIL">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Name="SEQ" Type="number" Precision="10" />
+          <Property Name="CTIME" Type="date" />
+          <Property Name="MTIME" Type="date" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="GENIUS_UID" Type="number" Precision="20" />
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="10" />
+          <Property Name="PRD_SYS" Type="varchar2" MaxLength="200" />
+          <Property Name="PRD_TYPE" Type="number" Precision="10" />
+          <Property Name="PRD_TYPE_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="ENTR_MNG_TERM" Type="number" Precision="10" />
+          <Property Name="ENTR_MNG_UNIT" Type="number" Precision="10" />
+          <Property Name="SELL_ORG_DATE" Type="date" />
+          <Property Name="SELL_END_DATE" Type="date" />
+          <Property Name="INC_ORG_DATE" Type="date" />
+          <Property Name="PAY_CYC" Type="number" Precision="10" />
+          <Property Name="PAY_CYC_UNIT" Type="number" Precision="10" />
+          <Property Name="PRD_MAX_YLD" Type="number" Precision="9" Scale="4" />
+          <Property Name="ENTR_CURNCY_TYPE" Type="number" Precision="10" />
+          <Property Name="ENTR_CURNCY_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="ENTR_MIN_CURNCY" Type="number" Precision="10" />
+          <Property Name="CURNCY_INCR_UNIT" Type="number" Precision="10" />
+          <Property Name="MNG_COST" Type="varchar2" MaxLength="800" />
+          <Property Name="IS_RETAIL" Type="varchar2" MaxLength="40" />
+          <Property Name="IS_BNK_BRG_FRD" Type="varchar2" MaxLength="40" />
+          <Property Name="IS_CST_BRG_FRD" Type="varchar2" MaxLength="40" />
+          <Property Name="YLD_DET" Type="clob" />
+          <Property Name="AD_TRM_CND" Type="clob" />
+          <Property Name="AD_PRC_CND" Type="clob" />
+          <Property Name="FEAT" Type="clob" />
+          <Property Name="BNT_ACT" Type="clob" />
+          <Property Name="SELL_ORG_DTL" Type="clob" />
+          <Property Name="SELL_END_DTL" Type="clob" />
+          <Property Name="RIST_WARE" Type="clob" />
+          <Property Name="EXP_VIEW" Type="clob" />
+          <Property Name="PRD_CODE" Type="varchar2" MaxLength="80" />
+          <Property Name="ISS_AREA" Type="varchar2" MaxLength="200" />
+          <Property Name="AC_ORG" Type="varchar2" MaxLength="100" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="INC_DATE" Type="number" Precision="10" />
+          <Property Name="RETN_TYPE" Type="varchar2" MaxLength="400" />
+          <Property Name="IS_PLEDGE" Type="varchar2" MaxLength="20" />
+          <Property Name="INC_CLA_BASIS" Type="varchar2" MaxLength="200" />
+          <Property Name="AD_TRM_DATE_DTL" Type="varchar2" MaxLength="200" />
+          <Property Name="CALL_DATE_DTL" Type="varchar2" MaxLength="200" />
+          <Property Name="CURNCY_REC_DATE_DTL" Type="varchar2" MaxLength="200" />
+          <Property Name="INV_OBJ" Type="varchar2" MaxLength="1000" />
+          <Property Name="TAX_REGL" Type="clob" />
+          <Property Name="INV_TYPE" Type="number" Precision="10" />
+          <Property Name="INV_TYPE_DTL" Type="varchar2" MaxLength="400" />
+          <Property Name="RIST_RTNG" Type="number" Precision="10" />
+          <Property Name="RIST_RTNG_DTL" Type="varchar2" MaxLength="400" />
+          <Property Name="LIQ_RTNG" Type="number" Precision="10" />
+          <Property Name="LIQ_RTNG_DTL" Type="varchar2" MaxLength="400" />
+          <Property Name="ISS_AREA_CODE" Type="number" Precision="10" />
+          <Property Name="MAT_ACTU_YLD" Type="number" Precision="9" Scale="4" />
+          <Property Name="IS_QDII" Type="varchar2" MaxLength="40" />
+          <Property Name="HONOR_CAP_CURNCY_TYPE" Type="number" Precision="10" />
+          <Property Name="HONOR_CAP_CURNCY_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="HONOR_INCM_CURNCY_TYPE" Type="number" Precision="10" />
+          <Property Name="HONOR_INCM_CURNCY_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="INC_DATE_UNIT" Type="number" Precision="10" />
+          <Property Name="INV_UND_TYPE" Type="number" Precision="10" />
+          <Property Name="STRU_TYPE" Type="number" Precision="10" />
+          <Property Name="PRD_MIN_YLD" Type="number" Precision="9" Scale="4" />
+          <Property Name="TRM_DLY_REMARK" Type="clob" />
+          <Property Name="PRD_MAX_YLD_L" Type="number" Precision="9" Scale="4" />
+          <Property Name="PLAN_SIZE_UP_LIM" Type="number" Precision="18" Scale="4" />
+          <Property Name="PLAN_SIZE_LOW_LIM" Type="number" Precision="18" Scale="4" />
+          <Property Name="IS_ROLL_PRO" Type="number" Precision="10" />
+          <Property Name="PRD_MAX_YLD_DE" Type="number" Precision="9" Scale="4" />
+          <Property Name="PRD_MAX_YLD_L_DE" Type="number" Precision="9" Scale="4" />
+          <Property Name="SELL_CHNL" Type="varchar2" MaxLength="400" />
+          <Property Name="IS_PB" Type="number" Precision="12" />
+          <Property Name="ISS_OBJECT" Type="number" Precision="12" />
+          <Property Name="REGI_CODE" Type="varchar2" MaxLength="200" />
+          <Property Name="OPERA_TYPE" Type="number" Precision="10" />
+        </EntityType>
+        <EntityType Name="BANK_FIN_PRD">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Name="SEQ" Type="number" Precision="10" />
+          <Property Name="CTIME" Type="date" />
+          <Property Name="MTIME" Type="date" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="GENIUS_UID" Type="number" Precision="20" />
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="10" />
+          <Property Name="PRD_NAME" Type="varchar2" MaxLength="400" />
+          <Property Name="BANK_ID" Type="number" Precision="10" />
+          <Property Name="BANK_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="PRD_SNAME" Type="varchar2" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="BANK_FIN_PRD_PROSP">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Name="SEQ" Type="number" Nullable="false" Precision="12" />
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="ISVALID" Type="number" Nullable="false" Precision="1" />
+          <Property Name="GENIUS_UID" Type="number" Nullable="false" Precision="20" />
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="12" />
+          <Property Name="BANK_PRD_PROSP" Type="varchar2" MaxLength="510" />
+          <Property Name="PRD_PROSP_MD5" Type="varchar2" MaxLength="64" />
+          <Property Name="ACCE_ROUTE" Type="varchar2" MaxLength="1020" />
+        </EntityType>
+        <EntityType Name="CFP_FEE_CHNG">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="FEE_TYPE" />
+            <PropertyRef Name="STARTDATE" />
+            <PropertyRef Name="SRL_NO" />
+          </Key>
+          <Property Name="SEQ" Type="number" Nullable="false" Precision="12" />
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="ISVALID" Type="number" Nullable="false" Precision="1" />
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="12" />
+          <Property Name="DECLAREDATE" Type="date" />
+          <Property Name="FEE_TYPE" Type="number" Nullable="false" Precision="12" />
+          <Property Name="STARTDATE" Type="date" Nullable="false" />
+          <Property Name="ENDDATE" Type="date" />
+          <Property Name="SRL_NO" Type="number" Nullable="false" Precision="12" />
+          <Property Name="FEE_UNIT" Type="number" Precision="12" />
+          <Property Name="FEE_LOWER_LMT" Type="number" Precision="18" Scale="4" />
+          <Property Name="FEE_RLTN" Type="number" Precision="12" />
+          <Property Name="FEE_UPPER_LMT" Type="number" Precision="18" Scale="4" />
+          <Property Name="MNY_UNIT" Type="varchar2" MaxLength="20" />
+          <Property Name="MNY_LOWER_LMT" Type="number" Precision="9" Scale="4" />
+          <Property Name="MNY_RLTN" Type="number" Precision="12" />
+          <Property Name="MNY_UPPER_LMT" Type="number" Precision="9" Scale="4" />
+          <Property Name="TERM_UNIT" Type="number" Precision="12" />
+          <Property Name="TERM_LOWER_LMT" Type="number" Precision="9" Scale="4" />
+          <Property Name="TERM_RLTN" Type="number" Precision="12" />
+          <Property Name="TERM_UPPER_LMT" Type="number" Precision="9" Scale="4" />
+          <Property Name="ANNU_YLD_LOW_LIM" Type="number" Precision="9" Scale="2" />
+          <Property Name="ANNU_YLD_RLTN" Type="number" Precision="12" />
+          <Property Name="ANNU_YLD_UP_LIM" Type="number" Precision="9" Scale="2" />
+          <Property Name="GENIUS_UID" Type="number" Nullable="false" Precision="20" />
+          <Property Name="UNT_NV_UP" Type="number" Precision="9" Scale="4" />
+          <Property Name="UNT_NV_LOW" Type="number" Precision="9" Scale="4" />
+          <Property Name="UNT_NV_RLTN" Type="number" Precision="12" />
+          <Property Name="REMARK" Type="clob" />
+          <Property Name="FEE_STD" Type="varchar2" MaxLength="800" />
+          <Property Name="FEE_EXER" Type="number" Precision="9" Scale="4" />
+          <Property Name="FEE_EXER_TYPE" Type="varchar2" MaxLength="800" />
+          <Property Name="FEE_EXER_TERM" Type="clob" />
+          <Property Name="FEE_BENMRK" Type="number" Precision="12" />
+        </EntityType>
+        <EntityType Name="CFP_ISS_ORG">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="ORG_CLS" />
+            <PropertyRef Name="ORGCODE" />
+            <PropertyRef Name="STARTDATE" />
+          </Key>
+          <Property Name="SEQ" Type="number" Precision="10" />
+          <Property Name="CTIME" Type="date" />
+          <Property Name="MTIME" Type="date" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="10" />
+          <Property Name="ORG_CLS" Type="number" Nullable="false" Precision="10" />
+          <Property Name="ORGCODE" Type="number" Nullable="false" Precision="10" />
+          <Property Name="STARTDATE" Type="date" Nullable="false" />
+          <Property Name="ENDDATE" Type="date" />
+          <Property Name="GENIUS_UID" Type="number" Precision="20" />
+          <Property Name="ORGNAME" Type="varchar2" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="CFP_PROFITSHEET">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="DECLAREDATE" />
+            <PropertyRef Name="PJT_CLS" />
+            <PropertyRef Name="DIV_CLS" />
+            <PropertyRef Name="TIMES" />
+          </Key>
+          <Property Name="SEQ" Type="number" Nullable="false" Precision="12" />
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="ISVALID" Type="number" Nullable="false" Precision="1" />
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="12" />
+          <Property Name="DECLAREDATE" Type="date" Nullable="false" />
+          <Property Name="PJT_CLS" Type="number" Nullable="false" Precision="12" />
+          <Property Name="DIV_CLS" Type="number" Nullable="false" Precision="12" />
+          <Property Name="TIMES" Type="number" Nullable="false" Precision="12" />
+          <Property Name="DIST_INCM" Type="number" Precision="18" Scale="4" />
+          <Property Name="DIV_UPPER" Type="number" Precision="18" Scale="4" />
+          <Property Name="DIV_LOWER" Type="number" Precision="18" Scale="4" />
+          <Property Name="FINAL_DIV" Type="number" Precision="18" Scale="4" />
+          <Property Name="INCM_DIST_DATE" Type="date" />
+          <Property Name="REGI_DATE" Type="date" />
+          <Property Name="EX_DATE" Type="date" />
+          <Property Name="PROVIDE_DATE" Type="date" />
+          <Property Name="ACC_DATE" Type="date" />
+          <Property Name="RE_INVST_DATE" Type="date" />
+          <Property Name="RE_INVST_ACC_DATE" Type="date" />
+          <Property Name="RE_INVST_QRY_START_DATE" Type="date" />
+          <Property Name="TARGET" Type="clob" />
+          <Property Name="GENIUS_UID" Type="number" Nullable="false" Precision="20" />
+        </EntityType>
+        <EntityType Name="DISC_ACCE_CFP">
+          <Key>
+            <PropertyRef Name="DISC_ID" />
+            <PropertyRef Name="ACCE_ORDER" />
+          </Key>
+          <Property Name="SEQ" Type="number" Nullable="false" Precision="12" />
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="ISVALID" Type="number" Nullable="false" Precision="1" />
+          <Property Name="DISC_ID" Type="varchar2" Nullable="false" MaxLength="36" />
+          <Property Name="ACCE_ORDER" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ACCE_ROUTE" Type="varchar2" MaxLength="510" />
+          <Property Name="ACCE_TYPE" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="ACCE_TITLE" Type="varchar2" MaxLength="160" />
+          <Property Name="GENIUS_UID" Type="number" Nullable="false" Precision="20" />
+          <Property Name="ACCE_ROUTE_MD5" Type="varchar2" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="FIN_PRD_RPT">
+          <Key>
+            <PropertyRef Name="RPT_ID" />
+          </Key>
+          <Property Name="SEQ" Type="number" Nullable="false" Precision="12" />
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="ISVALID" Type="number" Nullable="false" Precision="1" />
+          <Property Name="GENIUS_UID" Type="number" Nullable="false" Precision="20" />
+          <Property Name="RPT_ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="RPT_TITLE" Type="varchar2" MaxLength="400" />
+          <Property Name="RPT_TYPE" Type="number" Precision="12" />
+          <Property Name="WRITEDATE" Type="date" />
+          <Property Name="RPT_SRC" Type="varchar2" MaxLength="200" />
+          <Property Name="ACCE_ROUTE" Type="varchar2" MaxLength="1020" />
+          <Property Name="FIN_PRD_TYPE" Type="number" Precision="12" />
+        </EntityType>
+        <EntityType Name="GEN_REF">
+          <Key>
+            <PropertyRef Name="CLS_CODE" />
+            <PropertyRef Name="REF_CODE" />
+          </Key>
+          <Property Name="SEQ" Type="number" Nullable="false" Precision="12" />
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="ISVALID" Type="number" Nullable="false" Precision="1" />
+          <Property Name="CLS_CODE" Type="number" Nullable="false" Precision="12" />
+          <Property Name="CLS_NAME" Type="varchar2" MaxLength="400" />
+          <Property Name="REF_CODE" Type="varchar2" Nullable="false" MaxLength="80" />
+          <Property Name="REF_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="REF_MEANING" Type="varchar2" MaxLength="800" />
+          <Property Name="GENIUS_UID" Type="number" Nullable="false" Precision="20" />
+        </EntityType>
+        <EntityType Name="ORG_PROFILE">
+          <Key>
+            <PropertyRef Name="ORGCODE" />
+          </Key>
+          <Property Name="SEQ" Type="number" Precision="10" />
+          <Property Name="CTIME" Type="date" />
+          <Property Name="MTIME" Type="date" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="REMARK" Type="varchar2" MaxLength="800" />
+          <Property Name="ORGCODE" Type="number" Nullable="false" Precision="12" />
+          <Property Name="DECLAREDATE" Type="date" />
+          <Property Name="CNAME" Type="varchar2" MaxLength="400" />
+          <Property Name="CSNAME" Type="varchar2" MaxLength="40" />
+          <Property Name="CSPELL" Type="varchar2" MaxLength="40" />
+          <Property Name="ENAME" Type="varchar2" MaxLength="400" />
+          <Property Name="ESNAME" Type="varchar2" MaxLength="100" />
+          <Property Name="REGI_CAP" Type="number" Precision="18" Scale="4" />
+          <Property Name="CURNCY" Type="number" Precision="12" />
+          <Property Name="REGI_ADDR" Type="varchar2" MaxLength="400" />
+          <Property Name="OFFICE_ADDR" Type="varchar2" MaxLength="400" />
+          <Property Name="WEB_SITE" Type="varchar2" MaxLength="200" />
+          <Property Name="POSTCODE" Type="varchar2" MaxLength="40" />
+          <Property Name="LEG_PERSON" Type="varchar2" MaxLength="80" />
+          <Property Name="GEN_MANAGER" Type="varchar2" MaxLength="80" />
+          <Property Name="DISTRICT_NO" Type="varchar2" MaxLength="20" />
+          <Property Name="TEL" Type="varchar2" MaxLength="120" />
+          <Property Name="FAX" Type="varchar2" MaxLength="120" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="CONTACT_PERSON" Type="varchar2" MaxLength="120" />
+          <Property Name="BOARD_SECTRY" Type="varchar2" MaxLength="80" />
+          <Property Name="SECTRY_TEL" Type="varchar2" MaxLength="120" />
+          <Property Name="SECTRY_FAX" Type="varchar2" MaxLength="120" />
+          <Property Name="CONTACT_ADDR" Type="varchar2" MaxLength="400" />
+          <Property Name="SECTRY_EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="REPR" Type="varchar2" MaxLength="120" />
+          <Property Name="REPR_TEL" Type="varchar2" MaxLength="120" />
+          <Property Name="REPR_FAX" Type="varchar2" MaxLength="120" />
+          <Property Name="REPR_ADDR" Type="varchar2" MaxLength="400" />
+          <Property Name="REPR_EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="BRIEF_INTRO" Type="clob" />
+          <Property Name="PRI_BIZ" Type="clob" />
+          <Property Name="NON_PRI_BIZ" Type="clob" />
+          <Property Name="STAFF_NUM" Type="number" Precision="12" />
+          <Property Name="MSTAFF_NUM" Type="number" Precision="12" />
+          <Property Name="TSTAFF_NUM" Type="number" Precision="12" />
+          <Property Name="DISCL_PAPER" Type="varchar2" MaxLength="200" />
+          <Property Name="DISCL_WEBSITE" Type="varchar2" MaxLength="200" />
+          <Property Name="BUILD_DATE" Type="date" />
+          <Property Name="CLOSE_DATE" Type="date" />
+          <Property Name="CLOSE_REASON" Type="varchar2" MaxLength="800" />
+          <Property Name="ORG_STATUS" Type="number" Precision="12" />
+          <Property Name="REGI_NO" Type="varchar2" MaxLength="100" />
+          <Property Name="NTAX_NO" Type="varchar2" MaxLength="100" />
+          <Property Name="LTAX_NO" Type="varchar2" MaxLength="100" />
+          <Property Name="LISTED" Type="varchar2" MaxLength="60" />
+          <Property Name="ISSUE_BOND" Type="varchar2" MaxLength="60" />
+          <Property Name="NATION" Type="varchar2" MaxLength="16" />
+          <Property Name="REGION" Type="varchar2" MaxLength="16" />
+          <Property Name="ORG_TYPE" Type="char" MaxLength="6" />
+          <Property Name="ORG_MTYPE" Type="char" MaxLength="12" />
+          <Property Name="ORG_STYPE" Type="char" MaxLength="18" />
+          <Property Name="ORG_FORM" Type="number" Precision="12" />
+          <Property Name="FORM_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="MOTHER_CODE" Type="number" Precision="12" />
+          <Property Name="TOPCODE" Type="number" Precision="12" />
+          <Property Name="PARENTCODE" Type="number" Precision="12" />
+          <Property Name="LAYERCODE" Type="varchar2" MaxLength="36" />
+          <Property Name="STATUS_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="CURNCY_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="NATION_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="REGION_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="TYPE_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="MTYPE_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="STYPE_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="MOTHER_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="TOP_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="PARENT_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="GENIUS_UID" Type="number" Precision="20" />
+          <Property Name="SERVICE_TEL" Type="varchar2" MaxLength="120" />
+          <Property Name="PROVINCE" Type="varchar2" MaxLength="40" />
+          <Property Name="CITY" Type="varchar2" MaxLength="60" />
+          <Property Name="REGION_CODE" Type="number" Precision="12" />
+        </EntityType>
+        <EntityType Name="TRUST_PROFILE">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Name="SEQ" Type="number" Nullable="false" Precision="12" />
+          <Property Name="CTIME" Type="date" Nullable="false" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+          <Property Name="ISVALID" Type="number" Nullable="false" Precision="1" />
+          <Property Name="GENIUS_UID" Type="number" Nullable="false" Precision="20" />
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="12" />
+          <Property Name="DECLAREDATE" Type="date" />
+          <Property Name="TRUST_NAME" Type="varchar2" MaxLength="400" />
+          <Property Name="CHI_SPEL" Type="varchar2" MaxLength="200" />
+          <Property Name="TRUST_SNAME" Type="varchar2" MaxLength="200" />
+          <Property Name="MAIN_SNAME" Type="varchar2" MaxLength="400" />
+          <Property Name="MAIN_CODE" Type="number" Precision="12" />
+          <Property Name="ISS_YEAR" Type="number" Precision="12" />
+          <Property Name="PROM_STARTDATE" Type="date" />
+          <Property Name="PROM_ENDDATE" Type="date" />
+          <Property Name="SALE_DAYS" Type="number" Precision="12" />
+          <Property Name="PERI_TYPE" Type="number" Precision="12" />
+          <Property Name="TRUST_PERI" Type="number" Precision="10" Scale="2" />
+          <Property Name="OPEN_REMARK" Type="clob" />
+          <Property Name="CLOSE_REMARK" Type="clob" />
+          <Property Name="BUILD_DATE" Type="date" />
+          <Property Name="ENDDATE" Type="date" />
+          <Property Name="EXPE_ENDDATE" Type="date" />
+          <Property Name="IS_BRG_FRD" Type="number" Precision="12" />
+          <Property Name="IS_DLY" Type="number" Precision="12" />
+          <Property Name="IS_STRU" Type="number" Precision="12" />
+          <Property Name="STRU_RATIO" Type="clob" />
+          <Property Name="IS_PE" Type="number" Precision="12" />
+          <Property Name="IS_CURNCY" Type="number" Precision="12" />
+          <Property Name="IS_TOT" Type="number" Precision="12" />
+          <Property Name="TRUST_TYPE" Type="varchar2" MaxLength="40" />
+          <Property Name="SEC_INVEST_TYPE" Type="varchar2" MaxLength="400" />
+          <Property Name="INV_FLD" Type="number" Precision="12" />
+          <Property Name="TRUST_MNG" Type="varchar2" MaxLength="400" />
+          <Property Name="LIQU_REASON" Type="number" Precision="12" />
+          <Property Name="EXP_YLD" Type="number" Precision="10" Scale="4" />
+          <Property Name="CURNCY" Type="number" Precision="12" />
+          <Property Name="EXP_YLD_REMARK" Type="clob" />
+          <Property Name="ACT_YLD" Type="number" Precision="10" Scale="4" />
+          <Property Name="INCOME_TYPE" Type="number" Precision="12" />
+          <Property Name="ACT_YLD_REMARK" Type="clob" />
+          <Property Name="PLAN_ISS_SIZE" Type="number" Precision="18" Scale="4" />
+          <Property Name="ACTU_ISS_SIZE" Type="number" Precision="18" Scale="4" />
+          <Property Name="ORGNAME" Type="varchar2" MaxLength="400" />
+          <Property Name="ORGCODE" Type="number" Precision="12" />
+          <Property Name="CONTR_SHT" Type="number" Precision="12" />
+          <Property Name="BOOK_VAL" Type="number" Precision="10" Scale="2" />
+          <Property Name="MIN_CAP" Type="number" Precision="10" Scale="2" />
+          <Property Name="MIN_CAP_REMARK" Type="clob" />
+          <Property Name="ADD_CAP" Type="number" Precision="18" Scale="4" />
+          <Property Name="ADD_CAP_REMARK" Type="clob" />
+          <Property Name="CRED_ENHA_MODE" Type="clob" />
+          <Property Name="NET_FREQ" Type="number" Precision="12" />
+          <Property Name="NET_STARTDATE" Type="date" />
+          <Property Name="NET_ENDDATE" Type="date" />
+          <Property Name="INVEST_REMARK" Type="clob" />
+          <Property Name="PRD_REMARK" Type="clob" />
+          <Property Name="FEE_REMARK" Type="clob" />
+          <Property Name="RIST_WARE" Type="clob" />
+          <Property Name="ALERT_LINE" Type="number" Precision="18" Scale="4" />
+          <Property Name="ALERT_LINE_REMARK" Type="clob" />
+          <Property Name="STOP_LINE" Type="number" Precision="18" Scale="4" />
+          <Property Name="STOP_LINE_REMARK" Type="clob" />
+          <Property Name="IS_MERGE" Type="number" Precision="12" />
+          <Property Name="REMARK" Type="clob" />
+          <Property Name="PRD_STATUS" Type="number" Precision="12" />
+          <Property Name="TRUST_PERI_UNIT" Type="number" Precision="12" />
+          <Property Name="FIN_CYC" Type="number" Precision="10" Scale="2" />
+          <Property Name="FIN_CYC_UNIT" Type="number" Precision="12" />
+          <Property Name="REGI_CODE" Type="varchar2" MaxLength="400" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'PGENIUS.V_WMP_AREA_DIC' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_WMP_AREA_DIC">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="ID_C" />
+          </Key>
+          <Property Name="ID_C" Type="number" Nullable="false" />
+          <Property Name="ISS_AREA_CODE" Type="number" Precision="12" />
+          <Property Name="PROV_NAME" Type="varchar2" MaxLength="160" />
+          <Property Name="ISS_AREA" Type="varchar2" MaxLength="200" />
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="12" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'PGENIUS.V_WMP_BANK_PROD' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_WMP_BANK_PROD">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="10" />
+          <Property Name="PRD_ISVALID" Type="number" Precision="1" />
+          <Property Name="PRD_DETAIL_ISVALID" Type="number" Precision="1" />
+          <Property Name="BANK_TYPE_CD" Type="varchar2" MaxLength="80" />
+          <Property Name="BANK_TYPE" Type="varchar2" MaxLength="800" />
+          <Property Name="BANK_ID" Type="number" />
+          <Property Name="BANK_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="SHORTNAME" Type="varchar2" MaxLength="200" />
+          <Property Name="PRD_NAME" Type="varchar2" MaxLength="400" />
+          <Property Name="PRD_SYS" Type="nvarchar2" MaxLength="27" />
+          <Property Name="TERM" Type="varchar2" MaxLength="11" />
+          <Property Name="PRD_TYPE" Type="number" />
+          <Property Name="PRD_TYPE_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="ENTR_MNG_TERM" Type="number" Precision="10" />
+          <Property Name="ENTR_MNG_UNIT" Type="number" Precision="10" />
+          <Property Name="PROD_STATE" Type="varchar2" MaxLength="8" />
+          <Property Name="PROD_STATE_NAME" Type="char" MaxLength="6" />
+          <Property Name="SELL_ORG_DATE" Type="date" />
+          <Property Name="SELL_END_DATE" Type="date" />
+          <Property Name="INC_ORG_DATE" Type="date" />
+          <Property Name="PAY_CYC" Type="number" Precision="10" />
+          <Property Name="PAY_CYC_UNIT" Type="number" Precision="10" />
+          <Property Name="PAY_CYC_NAME" Type="varchar2" MaxLength="810" />
+          <Property Name="PRD_MAX_YLD" Type="number" Precision="9" Scale="4" />
+          <Property Name="PRD_MAX_YLD_DE" Type="number" Precision="9" Scale="4" />
+          <Property Name="RPD_MAX_YLD_TYPE" Type="varchar2" MaxLength="11" />
+          <Property Name="ENTR_CURNCY_TYPE" Type="number" />
+          <Property Name="ENTR_CURNCY_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="INITAMOUNTTYPE" Type="varchar2" MaxLength="12" />
+          <Property Name="ENTR_MIN_CURNCY" Type="number" Precision="10" />
+          <Property Name="CURNCY_INCR_UNIT" Type="number" Precision="10" />
+          <Property Name="MNG_COST" Type="varchar2" MaxLength="800" />
+          <Property Name="IS_RETAIL" Type="varchar2" MaxLength="40" />
+          <Property Name="IS_RETAIL_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="IS_BNK_BRG_FRD" Type="varchar2" MaxLength="40" />
+          <Property Name="IS_BNK_BRG_FRD_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="IS_CST_BRG_FRD" Type="varchar2" MaxLength="40" />
+          <Property Name="IS_CST_BRG_FRD_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="YLD_DET" Type="clob" />
+          <Property Name="AD_TRM_CND" Type="clob" />
+          <Property Name="AD_PRC_CND" Type="clob" />
+          <Property Name="FEAT" Type="clob" />
+          <Property Name="BNT_ACT" Type="clob" />
+          <Property Name="SELL_ORG_DTL" Type="clob" />
+          <Property Name="SELL_END_DTL" Type="clob" />
+          <Property Name="RIST_WARE" Type="clob" />
+          <Property Name="EXP_VIEW" Type="clob" />
+          <Property Name="PRD_CODE" Type="varchar2" MaxLength="80" />
+          <Property Name="ISS_AREA" Type="varchar2" MaxLength="200" />
+          <Property Name="AC_ORG" Type="varchar2" MaxLength="100" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="INC_DATE" Type="number" Precision="10" />
+          <Property Name="INC_DATE_NAME" Type="varchar2" MaxLength="810" />
+          <Property Name="RETN_TYPE" Type="varchar2" MaxLength="400" />
+          <Property Name="IS_PLEDGE" Type="varchar2" MaxLength="20" />
+          <Property Name="IS_PLEDGE_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="INC_CLA_BASIS" Type="varchar2" MaxLength="200" />
+          <Property Name="AD_TRM_DATE_DTL" Type="varchar2" MaxLength="200" />
+          <Property Name="CALL_DATE_DTL" Type="varchar2" MaxLength="200" />
+          <Property Name="CURNCY_REC_DATE_DTL" Type="varchar2" MaxLength="200" />
+          <Property Name="INV_OBJ" Type="varchar2" MaxLength="1000" />
+          <Property Name="TAX_REGL" Type="clob" />
+          <Property Name="INV_TYPE" Type="number" Precision="10" />
+          <Property Name="INV_TYPE_DTL" Type="varchar2" MaxLength="400" />
+          <Property Name="RIST_RTNG" Type="number" Precision="10" />
+          <Property Name="RIST_RTNG_DTL" Type="varchar2" MaxLength="400" />
+          <Property Name="LIQ_RTNG" Type="number" Precision="10" />
+          <Property Name="LIQ_RTNG_DTL" Type="varchar2" MaxLength="400" />
+          <Property Name="MAT_ACTU_YLD" Type="number" Precision="9" Scale="4" />
+          <Property Name="IS_QDII" Type="varchar2" MaxLength="40" />
+          <Property Name="IS_QDII_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="HONOR_CAP_CURNCY_TYPE" Type="number" Precision="10" />
+          <Property Name="HONOR_CAP_CURNCY_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="HONOR_INCM_CURNCY_TYPE" Type="number" Precision="10" />
+          <Property Name="HONOR_INCM_CURNCY_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="INV_UND_TYPE_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="INV_UND_TYPE" Type="number" />
+          <Property Name="INC_DATE_UNIT" Type="number" Precision="10" />
+          <Property Name="STRU_TYPE" Type="number" Precision="10" />
+          <Property Name="STRU_TYPE_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="PRD_MIN_YLD" Type="number" Precision="9" Scale="4" />
+          <Property Name="TRM_DLY_REMARK" Type="clob" />
+          <Property Name="PRD_MAX_YLD_L" Type="number" Precision="9" Scale="4" />
+          <Property Name="PLAN_SIZE_UP_LIM" Type="number" Precision="18" Scale="4" />
+          <Property Name="PLAN_SIZE_LOW_LIM" Type="number" Precision="18" Scale="4" />
+          <Property Name="IS_ROLL_PRO" Type="number" Precision="10" />
+          <Property Name="IS_ROLL_PRO_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="PRD_MAX_YLD_L_DE" Type="number" Precision="9" Scale="4" />
+          <Property Name="SELL_CHNL" Type="varchar2" MaxLength="400" />
+          <Property Name="ACCE_ROUTE" Type="varchar2" MaxLength="1020" />
+          <Property Name="INC_DATE_DAYS" Type="number" />
+          <Property Name="PRD_SYS_DAYS" Type="number" />
+          <Property Name="PAY_CYC_DAYS" Type="number" />
+          <Property Name="MTIME" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'PGENIUS.V_WMP_CFP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_WMP_CFP">
+          <Key>
+            <PropertyRef Name="ISVALID" />
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="MTIME" />
+          </Key>
+          <Property Name="ISVALID" Type="number" Nullable="false" Precision="1" />
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="12" />
+          <Property Name="DECLAREDATE" Type="date" />
+          <Property Name="CFPNAME" Type="varchar2" MaxLength="200" />
+          <Property Name="CFPSNAME" Type="varchar2" MaxLength="200" />
+          <Property Name="CFP_CODE" Type="varchar2" MaxLength="24" />
+          <Property Name="ISIN" Type="varchar2" MaxLength="24" />
+          <Property Name="CFP_TYPE" Type="varchar2" MaxLength="40" />
+          <Property Name="PROD_TYPE_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="INVEST_TARGET" Type="clob" />
+          <Property Name="INVEST_TENET" Type="clob" />
+          <Property Name="INVEST_RANGE" Type="clob" />
+          <Property Name="INVEST_BENCH" Type="clob" />
+          <Property Name="INVEST_STRA" Type="clob" />
+          <Property Name="PERFORM_BENCH" Type="clob" />
+          <Property Name="PROD_CHAR" Type="clob" />
+          <Property Name="OBJ_VAL1" Type="number" Precision="9" Scale="2" />
+          <Property Name="OBJ_VAL2" Type="number" Precision="9" Scale="2" />
+          <Property Name="PERIOD" Type="number" Precision="9" Scale="2" />
+          <Property Name="STARTDATE" Type="date" />
+          <Property Name="ENDDATE" Type="date" />
+          <Property Name="LOWEST_VAL" Type="number" Precision="9" Scale="2" />
+          <Property Name="LOWEST_VAL_CODE" Type="varchar2" MaxLength="6" />
+          <Property Name="LOWEST_VAL_NAME" Type="varchar2" MaxLength="11" />
+          <Property Name="INVEST_CLS" Type="varchar2" MaxLength="40" />
+          <Property Name="INVEST_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="ESTAB_DATE" Type="date" />
+          <Property Name="TOT_VAL" Type="number" Precision="18" Scale="2" />
+          <Property Name="FORE_YIELD" Type="clob" />
+          <Property Name="OPEN_PRD" Type="clob" />
+          <Property Name="INV_MNG" Type="varchar2" MaxLength="800" />
+          <Property Name="FIN_CYC" Type="varchar2" MaxLength="100" />
+          <Property Name="EXPE_ENDDATE" Type="date" />
+          <Property Name="ACTU_ENDDATE" Type="date" />
+          <Property Name="ADD_UNIT_LOW" Type="number" Precision="18" Scale="4" />
+          <Property Name="QUIT_UNIT_LOW" Type="number" Precision="18" Scale="4" />
+          <Property Name="DURATION_SIZE_LOW" Type="number" Precision="18" Scale="4" />
+          <Property Name="CLOSED_PERD" Type="varchar2" MaxLength="400" />
+          <Property Name="HUGE_QUIT_TERM" Type="clob" />
+          <Property Name="IS_QDII" Type="number" />
+          <Property Name="IS_QDII_NAME" Type="varchar2" MaxLength="6" />
+          <Property Name="ORGCODE" Type="number" />
+          <Property Name="ORGNAME" Type="varchar2" MaxLength="200" />
+          <Property Name="MAG_ORGCODE" Type="number" />
+          <Property Name="MAG_ORGNAME" Type="varchar2" MaxLength="200" />
+          <Property Name="ISS_STATUS" Type="number" Precision="12" />
+          <Property Name="UNT_NET" Type="number" />
+          <Property Name="UNT_ACCUM_NET" Type="number" />
+          <Property Name="WEEK_GR" Type="number" Precision="9" Scale="2" />
+          <Property Name="MONTH_GR" Type="number" Precision="9" Scale="2" />
+          <Property Name="ANNU_GR" Type="number" Precision="9" Scale="2" />
+          <Property Name="BUILD_ANNU_GR" Type="number" Precision="9" Scale="2" />
+          <Property Name="CHNG_DATE" Type="date" />
+          <Property Name="PROD_STATE_CODE" Type="varchar2" MaxLength="7" />
+          <Property Name="PROD_STATE" Type="varchar2" MaxLength="9" />
+          <Property Name="MTIME" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'PGENIUS.V_WMP_TRUST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_WMP_TRUST">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="ORG_TYPE_CD" />
+          </Key>
+          <Property Name="INNER_CODE" Type="number" Nullable="false" Precision="12" />
+          <Property Name="DECLAREDATE" Type="date" />
+          <Property Name="PRD_NAME" Type="varchar2" MaxLength="400" />
+          <Property Name="CHI_SPEL" Type="varchar2" MaxLength="200" />
+          <Property Name="TRUST_SNAME" Type="varchar2" MaxLength="200" />
+          <Property Name="MAIN_SNAME" Type="varchar2" MaxLength="400" />
+          <Property Name="MAIN_CODE" Type="number" Precision="12" />
+          <Property Name="ISS_YEAR" Type="number" Precision="12" />
+          <Property Name="PROM_STARTDATE" Type="date" />
+          <Property Name="PROM_ENDDATE" Type="date" />
+          <Property Name="SALE_DAYS" Type="number" Precision="12" />
+          <Property Name="PERI_TYPE" Type="number" Precision="12" />
+          <Property Name="PERI_TYPE_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="TRUST_PERI" Type="varchar2" MaxLength="13" />
+          <Property Name="TRUST_PERI_DAYS" Type="number" />
+          <Property Name="TRUST_TERM" Type="varchar2" MaxLength="11" />
+          <Property Name="OPEN_REMARK" Type="clob" />
+          <Property Name="CLOSE_REMARK" Type="clob" />
+          <Property Name="BUILD_DATE" Type="date" />
+          <Property Name="ENDDATE" Type="date" />
+          <Property Name="EXPE_ENDDATE" Type="date" />
+          <Property Name="IS_BRG_FRD" Type="number" Precision="12" />
+          <Property Name="IS_BRG_FRD_NAME" Type="varchar2" MaxLength="6" />
+          <Property Name="IS_DLY" Type="number" Precision="12" />
+          <Property Name="IS_DLY_NAME" Type="varchar2" MaxLength="6" />
+          <Property Name="IS_STRU" Type="number" Precision="12" />
+          <Property Name="IS_STRU_NAME" Type="varchar2" MaxLength="6" />
+          <Property Name="STRU_RATIO" Type="clob" />
+          <Property Name="IS_PE" Type="number" Precision="12" />
+          <Property Name="IS_PE_NAME" Type="varchar2" MaxLength="6" />
+          <Property Name="IS_CURNCY" Type="number" Precision="12" />
+          <Property Name="IS_CURNCY_NAME" Type="varchar2" MaxLength="6" />
+          <Property Name="IS_TOT" Type="number" Precision="12" />
+          <Property Name="IS_TOT_NAME" Type="varchar2" MaxLength="6" />
+          <Property Name="TRUST_TYPE" Type="varchar2" MaxLength="40" />
+          <Property Name="TRUST_TYPE_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="SEC_INVEST_TYPE" Type="varchar2" MaxLength="400" />
+          <Property Name="INV_FLD" Type="number" Precision="12" />
+          <Property Name="INV_FLD_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="TRUST_MNG" Type="varchar2" MaxLength="400" />
+          <Property Name="LIQU_REASON" Type="number" Precision="12" />
+          <Property Name="EXP_YLD" Type="number" Precision="10" Scale="4" />
+          <Property Name="EXP_YLD_TYPE" Type="varchar2" MaxLength="6" />
+          <Property Name="CURNCY" Type="number" Precision="12" />
+          <Property Name="CURNCY_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="EXP_YLD_REMARK" Type="clob" />
+          <Property Name="ACT_YLD" Type="number" Precision="10" Scale="4" />
+          <Property Name="INCOME_TYPE" Type="number" Precision="12" />
+          <Property Name="INCOME_TYPE_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="ACT_YLD_REMARK" Type="clob" />
+          <Property Name="PLAN_ISS_SIZE_CD" Type="varchar2" MaxLength="8" />
+          <Property Name="PLAN_ISS_SIZE" Type="number" Precision="18" Scale="4" />
+          <Property Name="ACTU_ISS_SIZE" Type="number" Precision="18" Scale="4" />
+          <Property Name="ORGNAME" Type="varchar2" MaxLength="400" />
+          <Property Name="ORGCODE" Type="number" Precision="12" />
+          <Property Name="ORG_TYPE_CD" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ORG_TYPE_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="CONTR_SHT" Type="number" Precision="12" />
+          <Property Name="BOOK_VAL" Type="number" Precision="10" Scale="2" />
+          <Property Name="MIN_CAP" Type="number" Precision="10" Scale="2" />
+          <Property Name="MIN_INV_AMOUNT_TYPE" Type="varchar2" MaxLength="7" />
+          <Property Name="MIN_CAP_REMARK" Type="clob" />
+          <Property Name="ADD_CAP" Type="number" Precision="18" Scale="4" />
+          <Property Name="ADD_CAP_REMARK" Type="clob" />
+          <Property Name="CRED_ENHA_MODE" Type="clob" />
+          <Property Name="NET_FREQ" Type="number" Precision="12" />
+          <Property Name="NET_STARTDATE" Type="date" />
+          <Property Name="NET_ENDDATE" Type="date" />
+          <Property Name="INVEST_REMARK" Type="clob" />
+          <Property Name="PRD_REMARK" Type="clob" />
+          <Property Name="FEE_REMARK" Type="clob" />
+          <Property Name="RIST_WARE" Type="clob" />
+          <Property Name="ALERT_LINE" Type="number" Precision="18" Scale="4" />
+          <Property Name="ALERT_LINE_REMARK" Type="clob" />
+          <Property Name="STOP_LINE" Type="number" Precision="18" Scale="4" />
+          <Property Name="STOP_LINE_REMARK" Type="clob" />
+          <Property Name="IS_MERGE" Type="number" Precision="12" />
+          <Property Name="IS_MERGE_NAME" Type="varchar2" MaxLength="6" />
+          <Property Name="REMARK" Type="clob" />
+          <Property Name="PRD_STATUS" Type="number" Precision="12" />
+          <Property Name="PRD_STATUS_NAME" Type="varchar2" MaxLength="800" />
+          <Property Name="TRUST_PERI_UNIT" Type="number" Precision="12" />
+          <Property Name="FIN_CYC" Type="number" Precision="10" Scale="2" />
+          <Property Name="FIN_CYC_UNIT" Type="number" Precision="12" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GeniusHistModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Genius_HistEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BANK_FIN_DETAIL" EntityType="GeniusHistModel.BANK_FIN_DETAIL" />
+          <EntitySet Name="BANK_FIN_PRD" EntityType="GeniusHistModel.BANK_FIN_PRD" />
+          <EntitySet Name="BANK_FIN_PRD_PROSP" EntityType="GeniusHistModel.BANK_FIN_PRD_PROSP" />
+          <EntitySet Name="CFP_FEE_CHNG" EntityType="GeniusHistModel.CFP_FEE_CHNG" />
+          <EntitySet Name="CFP_ISS_ORG" EntityType="GeniusHistModel.CFP_ISS_ORG" />
+          <EntitySet Name="CFP_PROFITSHEET" EntityType="GeniusHistModel.CFP_PROFITSHEET" />
+          <EntitySet Name="DISC_ACCE_CFP" EntityType="GeniusHistModel.DISC_ACCE_CFP" />
+          <EntitySet Name="FIN_PRD_RPT" EntityType="GeniusHistModel.FIN_PRD_RPT" />
+          <EntitySet Name="GEN_REF" EntityType="GeniusHistModel.GEN_REF" />
+          <EntitySet Name="ORG_PROFILE" EntityType="GeniusHistModel.ORG_PROFILE" />
+          <EntitySet Name="TRUST_PROFILE" EntityType="GeniusHistModel.TRUST_PROFILE" />
+          <EntitySet Name="v_WMP_BANK_PROD" EntityType="GeniusHistModel.v_WMP_BANK_PROD" />
+          <EntitySet Name="v_WMP_CFP" EntityType="GeniusHistModel.v_WMP_CFP" />
+          <EntitySet Name="v_WMP_TRUST" EntityType="GeniusHistModel.v_WMP_TRUST" />
+          <EntitySet Name="v_WMP_AREA_DIC" EntityType="GeniusHistModel.v_WMP_AREA_DIC" />
+        </EntityContainer>
+        <EntityType Name="BANK_FIN_DETAIL">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Type="Int32" Name="SEQ" />
+          <Property Type="DateTime" Name="CTIME" />
+          <Property Type="DateTime" Name="MTIME" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="Decimal" Name="GENIUS_UID" Precision="20" Scale="0" />
+          <Property Type="Int32" Name="INNER_CODE" Nullable="false" />
+          <Property Type="String" Name="PRD_SYS" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PRD_TYPE" />
+          <Property Type="String" Name="PRD_TYPE_NAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ENTR_MNG_TERM" />
+          <Property Type="Int32" Name="ENTR_MNG_UNIT" />
+          <Property Type="DateTime" Name="SELL_ORG_DATE" />
+          <Property Type="DateTime" Name="SELL_END_DATE" />
+          <Property Type="DateTime" Name="INC_ORG_DATE" />
+          <Property Type="Int32" Name="PAY_CYC" />
+          <Property Type="Int32" Name="PAY_CYC_UNIT" />
+          <Property Type="Decimal" Name="PRD_MAX_YLD" Precision="9" Scale="4" />
+          <Property Type="Int32" Name="ENTR_CURNCY_TYPE" />
+          <Property Type="String" Name="ENTR_CURNCY_NAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ENTR_MIN_CURNCY" />
+          <Property Type="Int32" Name="CURNCY_INCR_UNIT" />
+          <Property Type="String" Name="MNG_COST" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_RETAIL" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_BNK_BRG_FRD" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_CST_BRG_FRD" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YLD_DET" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AD_TRM_CND" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AD_PRC_CND" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FEAT" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BNT_ACT" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SELL_ORG_DTL" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SELL_END_DTL" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RIST_WARE" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EXP_VIEW" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRD_CODE" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISS_AREA" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AC_ORG" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="END_DATE" />
+          <Property Type="Int32" Name="INC_DATE" />
+          <Property Type="String" Name="RETN_TYPE" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_PLEDGE" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INC_CLA_BASIS" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AD_TRM_DATE_DTL" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CALL_DATE_DTL" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CURNCY_REC_DATE_DTL" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INV_OBJ" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TAX_REGL" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="INV_TYPE" />
+          <Property Type="String" Name="INV_TYPE_DTL" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RIST_RTNG" />
+          <Property Type="String" Name="RIST_RTNG_DTL" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LIQ_RTNG" />
+          <Property Type="String" Name="LIQ_RTNG_DTL" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ISS_AREA_CODE" />
+          <Property Type="Decimal" Name="MAT_ACTU_YLD" Precision="9" Scale="4" />
+          <Property Type="String" Name="IS_QDII" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="HONOR_CAP_CURNCY_TYPE" />
+          <Property Type="String" Name="HONOR_CAP_CURNCY_NAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="HONOR_INCM_CURNCY_TYPE" />
+          <Property Type="String" Name="HONOR_INCM_CURNCY_NAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="INC_DATE_UNIT" />
+          <Property Type="Int32" Name="INV_UND_TYPE" />
+          <Property Type="Int32" Name="STRU_TYPE" />
+          <Property Type="Decimal" Name="PRD_MIN_YLD" Precision="9" Scale="4" />
+          <Property Type="String" Name="TRM_DLY_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PRD_MAX_YLD_L" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="PLAN_SIZE_UP_LIM" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="PLAN_SIZE_LOW_LIM" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="IS_ROLL_PRO" />
+          <Property Type="Decimal" Name="PRD_MAX_YLD_DE" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="PRD_MAX_YLD_L_DE" Precision="9" Scale="4" />
+          <Property Type="String" Name="SELL_CHNL" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IS_PB" />
+          <Property Type="Int64" Name="ISS_OBJECT" />
+          <Property Type="String" Name="REGI_CODE" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OPERA_TYPE" />
+        </EntityType>
+        <EntityType Name="BANK_FIN_PRD">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Type="Int32" Name="SEQ" />
+          <Property Type="DateTime" Name="CTIME" />
+          <Property Type="DateTime" Name="MTIME" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="Decimal" Name="GENIUS_UID" Precision="20" Scale="0" />
+          <Property Type="Int32" Name="INNER_CODE" Nullable="false" />
+          <Property Type="String" Name="PRD_NAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="BANK_ID" />
+          <Property Type="String" Name="BANK_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRD_SNAME" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BANK_FIN_PRD_PROSP">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Type="Int64" Name="SEQ" Nullable="false" />
+          <Property Type="DateTime" Name="CTIME" Nullable="false" />
+          <Property Type="DateTime" Name="MTIME" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" Nullable="false" />
+          <Property Type="Decimal" Name="GENIUS_UID" Nullable="false" Precision="20" Scale="0" />
+          <Property Type="Int64" Name="INNER_CODE" Nullable="false" />
+          <Property Type="String" Name="BANK_PRD_PROSP" MaxLength="510" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRD_PROSP_MD5" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACCE_ROUTE" MaxLength="1020" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CFP_FEE_CHNG">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="FEE_TYPE" />
+            <PropertyRef Name="STARTDATE" />
+            <PropertyRef Name="SRL_NO" />
+          </Key>
+          <Property Type="Int64" Name="SEQ" Nullable="false" />
+          <Property Type="DateTime" Name="CTIME" Nullable="false" />
+          <Property Type="DateTime" Name="MTIME" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" Nullable="false" />
+          <Property Type="Int64" Name="INNER_CODE" Nullable="false" />
+          <Property Type="DateTime" Name="DECLAREDATE" />
+          <Property Type="Int64" Name="FEE_TYPE" Nullable="false" />
+          <Property Type="DateTime" Name="STARTDATE" Nullable="false" />
+          <Property Type="DateTime" Name="ENDDATE" />
+          <Property Type="Int64" Name="SRL_NO" Nullable="false" />
+          <Property Type="Int64" Name="FEE_UNIT" />
+          <Property Type="Decimal" Name="FEE_LOWER_LMT" Precision="18" Scale="4" />
+          <Property Type="Int64" Name="FEE_RLTN" />
+          <Property Type="Decimal" Name="FEE_UPPER_LMT" Precision="18" Scale="4" />
+          <Property Type="String" Name="MNY_UNIT" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="MNY_LOWER_LMT" Precision="9" Scale="4" />
+          <Property Type="Int64" Name="MNY_RLTN" />
+          <Property Type="Decimal" Name="MNY_UPPER_LMT" Precision="9" Scale="4" />
+          <Property Type="Int64" Name="TERM_UNIT" />
+          <Property Type="Decimal" Name="TERM_LOWER_LMT" Precision="9" Scale="4" />
+          <Property Type="Int64" Name="TERM_RLTN" />
+          <Property Type="Decimal" Name="TERM_UPPER_LMT" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="ANNU_YLD_LOW_LIM" Precision="9" Scale="2" />
+          <Property Type="Int64" Name="ANNU_YLD_RLTN" />
+          <Property Type="Decimal" Name="ANNU_YLD_UP_LIM" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="GENIUS_UID" Nullable="false" Precision="20" Scale="0" />
+          <Property Type="Decimal" Name="UNT_NV_UP" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="UNT_NV_LOW" Precision="9" Scale="4" />
+          <Property Type="Int64" Name="UNT_NV_RLTN" />
+          <Property Type="String" Name="REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FEE_STD" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="FEE_EXER" Precision="9" Scale="4" />
+          <Property Type="String" Name="FEE_EXER_TYPE" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FEE_EXER_TERM" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="FEE_BENMRK" />
+        </EntityType>
+        <EntityType Name="CFP_ISS_ORG">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="ORG_CLS" />
+            <PropertyRef Name="ORGCODE" />
+            <PropertyRef Name="STARTDATE" />
+          </Key>
+          <Property Type="Int32" Name="SEQ" />
+          <Property Type="DateTime" Name="CTIME" />
+          <Property Type="DateTime" Name="MTIME" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="Int32" Name="INNER_CODE" Nullable="false" />
+          <Property Type="Int32" Name="ORG_CLS" Nullable="false" />
+          <Property Type="Int32" Name="ORGCODE" Nullable="false" />
+          <Property Type="DateTime" Name="STARTDATE" Nullable="false" />
+          <Property Type="DateTime" Name="ENDDATE" />
+          <Property Type="Decimal" Name="GENIUS_UID" Precision="20" Scale="0" />
+          <Property Type="String" Name="ORGNAME" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CFP_PROFITSHEET">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="DECLAREDATE" />
+            <PropertyRef Name="PJT_CLS" />
+            <PropertyRef Name="DIV_CLS" />
+            <PropertyRef Name="TIMES" />
+          </Key>
+          <Property Type="Int64" Name="SEQ" Nullable="false" />
+          <Property Type="DateTime" Name="CTIME" Nullable="false" />
+          <Property Type="DateTime" Name="MTIME" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" Nullable="false" />
+          <Property Type="Int64" Name="INNER_CODE" Nullable="false" />
+          <Property Type="DateTime" Name="DECLAREDATE" Nullable="false" />
+          <Property Type="Int64" Name="PJT_CLS" Nullable="false" />
+          <Property Type="Int64" Name="DIV_CLS" Nullable="false" />
+          <Property Type="Int64" Name="TIMES" Nullable="false" />
+          <Property Type="Decimal" Name="DIST_INCM" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="DIV_UPPER" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="DIV_LOWER" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="FINAL_DIV" Precision="18" Scale="4" />
+          <Property Type="DateTime" Name="INCM_DIST_DATE" />
+          <Property Type="DateTime" Name="REGI_DATE" />
+          <Property Type="DateTime" Name="EX_DATE" />
+          <Property Type="DateTime" Name="PROVIDE_DATE" />
+          <Property Type="DateTime" Name="ACC_DATE" />
+          <Property Type="DateTime" Name="RE_INVST_DATE" />
+          <Property Type="DateTime" Name="RE_INVST_ACC_DATE" />
+          <Property Type="DateTime" Name="RE_INVST_QRY_START_DATE" />
+          <Property Type="String" Name="TARGET" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="GENIUS_UID" Nullable="false" Precision="20" Scale="0" />
+        </EntityType>
+        <EntityType Name="DISC_ACCE_CFP">
+          <Key>
+            <PropertyRef Name="DISC_ID" />
+            <PropertyRef Name="ACCE_ORDER" />
+          </Key>
+          <Property Type="Int64" Name="SEQ" Nullable="false" />
+          <Property Type="DateTime" Name="CTIME" Nullable="false" />
+          <Property Type="DateTime" Name="MTIME" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" Nullable="false" />
+          <Property Type="String" Name="DISC_ID" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="ACCE_ORDER" Nullable="false" />
+          <Property Type="String" Name="ACCE_ROUTE" MaxLength="510" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACCE_TYPE" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACCE_TITLE" MaxLength="160" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="GENIUS_UID" Nullable="false" Precision="20" Scale="0" />
+          <Property Type="String" Name="ACCE_ROUTE_MD5" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FIN_PRD_RPT">
+          <Key>
+            <PropertyRef Name="RPT_ID" />
+          </Key>
+          <Property Type="Int64" Name="SEQ" Nullable="false" />
+          <Property Type="DateTime" Name="CTIME" Nullable="false" />
+          <Property Type="DateTime" Name="MTIME" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" Nullable="false" />
+          <Property Type="Decimal" Name="GENIUS_UID" Nullable="false" Precision="20" Scale="0" />
+          <Property Type="Int64" Name="RPT_ID" Nullable="false" />
+          <Property Type="String" Name="RPT_TITLE" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="RPT_TYPE" />
+          <Property Type="DateTime" Name="WRITEDATE" />
+          <Property Type="String" Name="RPT_SRC" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACCE_ROUTE" MaxLength="1020" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="FIN_PRD_TYPE" />
+        </EntityType>
+        <EntityType Name="GEN_REF">
+          <Key>
+            <PropertyRef Name="CLS_CODE" />
+            <PropertyRef Name="REF_CODE" />
+          </Key>
+          <Property Type="Int64" Name="SEQ" Nullable="false" />
+          <Property Type="DateTime" Name="CTIME" Nullable="false" />
+          <Property Type="DateTime" Name="MTIME" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" Nullable="false" />
+          <Property Type="Int64" Name="CLS_CODE" Nullable="false" />
+          <Property Type="String" Name="CLS_NAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REF_CODE" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REF_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REF_MEANING" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="GENIUS_UID" Nullable="false" Precision="20" Scale="0" />
+        </EntityType>
+        <EntityType Name="ORG_PROFILE">
+          <Key>
+            <PropertyRef Name="ORGCODE" />
+          </Key>
+          <Property Type="Int32" Name="SEQ" />
+          <Property Type="DateTime" Name="CTIME" />
+          <Property Type="DateTime" Name="MTIME" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="String" Name="REMARK" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ORGCODE" Nullable="false" />
+          <Property Type="DateTime" Name="DECLAREDATE" />
+          <Property Type="String" Name="CNAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CSNAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CSPELL" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ESNAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="REGI_CAP" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="CURNCY" />
+          <Property Type="String" Name="REGI_ADDR" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OFFICE_ADDR" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WEB_SITE" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="POSTCODE" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LEG_PERSON" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GEN_MANAGER" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DISTRICT_NO" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TEL" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FAX" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMAIL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTACT_PERSON" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BOARD_SECTRY" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SECTRY_TEL" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SECTRY_FAX" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTACT_ADDR" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SECTRY_EMAIL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REPR" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REPR_TEL" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REPR_FAX" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REPR_ADDR" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REPR_EMAIL" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BRIEF_INTRO" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRI_BIZ" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NON_PRI_BIZ" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="STAFF_NUM" />
+          <Property Type="Int32" Name="MSTAFF_NUM" />
+          <Property Type="Int32" Name="TSTAFF_NUM" />
+          <Property Type="String" Name="DISCL_PAPER" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DISCL_WEBSITE" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="BUILD_DATE" />
+          <Property Type="DateTime" Name="CLOSE_DATE" />
+          <Property Type="String" Name="CLOSE_REASON" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ORG_STATUS" />
+          <Property Type="String" Name="REGI_NO" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NTAX_NO" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LTAX_NO" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LISTED" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUE_BOND" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NATION" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REGION" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ORG_TYPE" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ORG_MTYPE" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ORG_STYPE" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="ORG_FORM" />
+          <Property Type="String" Name="FORM_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="MOTHER_CODE" />
+          <Property Type="Int32" Name="TOPCODE" />
+          <Property Type="Int32" Name="PARENTCODE" />
+          <Property Type="String" Name="LAYERCODE" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="STATUS_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CURNCY_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NATION_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REGION_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TYPE_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MTYPE_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="STYPE_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MOTHER_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TOP_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PARENT_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="GENIUS_UID" Precision="20" Scale="0" />
+          <Property Type="String" Name="SERVICE_TEL" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROVINCE" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CITY" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="REGION_CODE" />
+        </EntityType>
+        <EntityType Name="TRUST_PROFILE">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Type="Int64" Name="SEQ" Nullable="false" />
+          <Property Type="DateTime" Name="CTIME" Nullable="false" />
+          <Property Type="DateTime" Name="MTIME" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" Nullable="false" />
+          <Property Type="Decimal" Name="GENIUS_UID" Nullable="false" Precision="20" Scale="0" />
+          <Property Type="Int64" Name="INNER_CODE" Nullable="false" />
+          <Property Type="DateTime" Name="DECLAREDATE" />
+          <Property Type="String" Name="TRUST_NAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CHI_SPEL" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUST_SNAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MAIN_SNAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="MAIN_CODE" />
+          <Property Type="Int64" Name="ISS_YEAR" />
+          <Property Type="DateTime" Name="PROM_STARTDATE" />
+          <Property Type="DateTime" Name="PROM_ENDDATE" />
+          <Property Type="Int64" Name="SALE_DAYS" />
+          <Property Type="Int64" Name="PERI_TYPE" />
+          <Property Type="Decimal" Name="TRUST_PERI" Precision="10" Scale="2" />
+          <Property Type="String" Name="OPEN_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CLOSE_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="BUILD_DATE" />
+          <Property Type="DateTime" Name="ENDDATE" />
+          <Property Type="DateTime" Name="EXPE_ENDDATE" />
+          <Property Type="Int64" Name="IS_BRG_FRD" />
+          <Property Type="Int64" Name="IS_DLY" />
+          <Property Type="Int64" Name="IS_STRU" />
+          <Property Type="String" Name="STRU_RATIO" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IS_PE" />
+          <Property Type="Int64" Name="IS_CURNCY" />
+          <Property Type="Int64" Name="IS_TOT" />
+          <Property Type="String" Name="TRUST_TYPE" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SEC_INVEST_TYPE" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="INV_FLD" />
+          <Property Type="String" Name="TRUST_MNG" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="LIQU_REASON" />
+          <Property Type="Decimal" Name="EXP_YLD" Precision="10" Scale="4" />
+          <Property Type="Int64" Name="CURNCY" />
+          <Property Type="String" Name="EXP_YLD_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ACT_YLD" Precision="10" Scale="4" />
+          <Property Type="Int64" Name="INCOME_TYPE" />
+          <Property Type="String" Name="ACT_YLD_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PLAN_ISS_SIZE" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="ACTU_ISS_SIZE" Precision="18" Scale="4" />
+          <Property Type="String" Name="ORGNAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="ORGCODE" />
+          <Property Type="Int64" Name="CONTR_SHT" />
+          <Property Type="Decimal" Name="BOOK_VAL" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="MIN_CAP" Precision="10" Scale="2" />
+          <Property Type="String" Name="MIN_CAP_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ADD_CAP" Precision="18" Scale="4" />
+          <Property Type="String" Name="ADD_CAP_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CRED_ENHA_MODE" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="NET_FREQ" />
+          <Property Type="DateTime" Name="NET_STARTDATE" />
+          <Property Type="DateTime" Name="NET_ENDDATE" />
+          <Property Type="String" Name="INVEST_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRD_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FEE_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RIST_WARE" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ALERT_LINE" Precision="18" Scale="4" />
+          <Property Type="String" Name="ALERT_LINE_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="STOP_LINE" Precision="18" Scale="4" />
+          <Property Type="String" Name="STOP_LINE_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IS_MERGE" />
+          <Property Type="String" Name="REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="PRD_STATUS" />
+          <Property Type="Int64" Name="TRUST_PERI_UNIT" />
+          <Property Type="Decimal" Name="FIN_CYC" Precision="10" Scale="2" />
+          <Property Type="Int64" Name="FIN_CYC_UNIT" />
+          <Property Type="String" Name="REGI_CODE" MaxLength="400" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_WMP_BANK_PROD">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Type="Int32" Name="INNER_CODE" Nullable="false" />
+          <Property Type="Int16" Name="PRD_ISVALID" />
+          <Property Type="Int16" Name="PRD_DETAIL_ISVALID" />
+          <Property Type="String" Name="BANK_TYPE_CD" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BANK_TYPE" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="BANK_ID" Precision="38" Scale="0" />
+          <Property Type="String" Name="BANK_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SHORTNAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRD_NAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRD_SYS" MaxLength="27" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TERM" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PRD_TYPE" Precision="38" Scale="0" />
+          <Property Type="String" Name="PRD_TYPE_NAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ENTR_MNG_TERM" />
+          <Property Type="Int32" Name="ENTR_MNG_UNIT" />
+          <Property Type="String" Name="PROD_STATE" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROD_STATE_NAME" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="SELL_ORG_DATE" />
+          <Property Type="DateTime" Name="SELL_END_DATE" />
+          <Property Type="DateTime" Name="INC_ORG_DATE" />
+          <Property Type="Int32" Name="PAY_CYC" />
+          <Property Type="Int32" Name="PAY_CYC_UNIT" />
+          <Property Type="String" Name="PAY_CYC_NAME" MaxLength="810" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PRD_MAX_YLD" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="PRD_MAX_YLD_DE" Precision="9" Scale="4" />
+          <Property Type="String" Name="RPD_MAX_YLD_TYPE" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ENTR_CURNCY_TYPE" Precision="38" Scale="0" />
+          <Property Type="String" Name="ENTR_CURNCY_NAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INITAMOUNTTYPE" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ENTR_MIN_CURNCY" />
+          <Property Type="Int32" Name="CURNCY_INCR_UNIT" />
+          <Property Type="String" Name="MNG_COST" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_RETAIL" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_RETAIL_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_BNK_BRG_FRD" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_BNK_BRG_FRD_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_CST_BRG_FRD" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_CST_BRG_FRD_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YLD_DET" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AD_TRM_CND" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AD_PRC_CND" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FEAT" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BNT_ACT" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SELL_ORG_DTL" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SELL_END_DTL" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RIST_WARE" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EXP_VIEW" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRD_CODE" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISS_AREA" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AC_ORG" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="END_DATE" />
+          <Property Type="Int32" Name="INC_DATE" />
+          <Property Type="String" Name="INC_DATE_NAME" MaxLength="810" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RETN_TYPE" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_PLEDGE" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_PLEDGE_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INC_CLA_BASIS" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AD_TRM_DATE_DTL" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CALL_DATE_DTL" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CURNCY_REC_DATE_DTL" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INV_OBJ" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TAX_REGL" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="INV_TYPE" />
+          <Property Type="String" Name="INV_TYPE_DTL" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="RIST_RTNG" />
+          <Property Type="String" Name="RIST_RTNG_DTL" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LIQ_RTNG" />
+          <Property Type="String" Name="LIQ_RTNG_DTL" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="MAT_ACTU_YLD" Precision="9" Scale="4" />
+          <Property Type="String" Name="IS_QDII" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IS_QDII_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="HONOR_CAP_CURNCY_TYPE" />
+          <Property Type="String" Name="HONOR_CAP_CURNCY_NAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="HONOR_INCM_CURNCY_TYPE" />
+          <Property Type="String" Name="HONOR_INCM_CURNCY_NAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INV_UND_TYPE_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="INV_UND_TYPE" Precision="38" Scale="0" />
+          <Property Type="Int32" Name="INC_DATE_UNIT" />
+          <Property Type="Int32" Name="STRU_TYPE" />
+          <Property Type="String" Name="STRU_TYPE_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PRD_MIN_YLD" Precision="9" Scale="4" />
+          <Property Type="String" Name="TRM_DLY_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PRD_MAX_YLD_L" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="PLAN_SIZE_UP_LIM" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="PLAN_SIZE_LOW_LIM" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="IS_ROLL_PRO" />
+          <Property Type="String" Name="IS_ROLL_PRO_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PRD_MAX_YLD_L_DE" Precision="9" Scale="4" />
+          <Property Type="String" Name="SELL_CHNL" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACCE_ROUTE" MaxLength="1020" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="INC_DATE_DAYS" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="PRD_SYS_DAYS" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="PAY_CYC_DAYS" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="MTIME" />
+        </EntityType>
+        <EntityType Name="v_WMP_CFP">
+          <Key>
+            <PropertyRef Name="ISVALID" />
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="MTIME" />
+          </Key>
+          <Property Type="Int16" Name="ISVALID" Nullable="false" />
+          <Property Type="Int64" Name="INNER_CODE" Nullable="false" />
+          <Property Type="DateTime" Name="DECLAREDATE" />
+          <Property Type="String" Name="CFPNAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CFPSNAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CFP_CODE" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISIN" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CFP_TYPE" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROD_TYPE_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INVEST_TARGET" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INVEST_TENET" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INVEST_RANGE" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INVEST_BENCH" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INVEST_STRA" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PERFORM_BENCH" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROD_CHAR" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="OBJ_VAL1" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="OBJ_VAL2" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="PERIOD" Precision="9" Scale="2" />
+          <Property Type="DateTime" Name="STARTDATE" />
+          <Property Type="DateTime" Name="ENDDATE" />
+          <Property Type="Decimal" Name="LOWEST_VAL" Precision="9" Scale="2" />
+          <Property Type="String" Name="LOWEST_VAL_CODE" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LOWEST_VAL_NAME" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INVEST_CLS" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INVEST_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ESTAB_DATE" />
+          <Property Type="Decimal" Name="TOT_VAL" Precision="18" Scale="2" />
+          <Property Type="String" Name="FORE_YIELD" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OPEN_PRD" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="INV_MNG" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FIN_CYC" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="EXPE_ENDDATE" />
+          <Property Type="DateTime" Name="ACTU_ENDDATE" />
+          <Property Type="Decimal" Name="ADD_UNIT_LOW" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="QUIT_UNIT_LOW" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="DURATION_SIZE_LOW" Precision="18" Scale="4" />
+          <Property Type="String" Name="CLOSED_PERD" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HUGE_QUIT_TERM" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="IS_QDII" Precision="38" Scale="0" />
+          <Property Type="String" Name="IS_QDII_NAME" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ORGCODE" Precision="38" Scale="0" />
+          <Property Type="String" Name="ORGNAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="MAG_ORGCODE" Precision="38" Scale="0" />
+          <Property Type="String" Name="MAG_ORGNAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="ISS_STATUS" />
+          <Property Type="Decimal" Name="UNT_NET" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="UNT_ACCUM_NET" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="WEEK_GR" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="MONTH_GR" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="ANNU_GR" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="BUILD_ANNU_GR" Precision="9" Scale="2" />
+          <Property Type="DateTime" Name="CHNG_DATE" />
+          <Property Type="String" Name="PROD_STATE_CODE" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROD_STATE" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="MTIME" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_WMP_TRUST">
+          <Key>
+            <PropertyRef Name="INNER_CODE" />
+            <PropertyRef Name="ORG_TYPE_CD" />
+          </Key>
+          <Property Type="Int64" Name="INNER_CODE" Nullable="false" />
+          <Property Type="DateTime" Name="DECLAREDATE" />
+          <Property Type="String" Name="PRD_NAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CHI_SPEL" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUST_SNAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MAIN_SNAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="MAIN_CODE" />
+          <Property Type="Int64" Name="ISS_YEAR" />
+          <Property Type="DateTime" Name="PROM_STARTDATE" />
+          <Property Type="DateTime" Name="PROM_ENDDATE" />
+          <Property Type="Int64" Name="SALE_DAYS" />
+          <Property Type="Int64" Name="PERI_TYPE" />
+          <Property Type="String" Name="PERI_TYPE_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUST_PERI" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="TRUST_PERI_DAYS" Precision="38" Scale="0" />
+          <Property Type="String" Name="TRUST_TERM" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OPEN_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CLOSE_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="BUILD_DATE" />
+          <Property Type="DateTime" Name="ENDDATE" />
+          <Property Type="DateTime" Name="EXPE_ENDDATE" />
+          <Property Type="Int64" Name="IS_BRG_FRD" />
+          <Property Type="String" Name="IS_BRG_FRD_NAME" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IS_DLY" />
+          <Property Type="String" Name="IS_DLY_NAME" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IS_STRU" />
+          <Property Type="String" Name="IS_STRU_NAME" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="STRU_RATIO" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IS_PE" />
+          <Property Type="String" Name="IS_PE_NAME" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IS_CURNCY" />
+          <Property Type="String" Name="IS_CURNCY_NAME" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IS_TOT" />
+          <Property Type="String" Name="IS_TOT_NAME" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUST_TYPE" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUST_TYPE_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SEC_INVEST_TYPE" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="INV_FLD" />
+          <Property Type="String" Name="INV_FLD_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUST_MNG" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="LIQU_REASON" />
+          <Property Type="Decimal" Name="EXP_YLD" Precision="10" Scale="4" />
+          <Property Type="String" Name="EXP_YLD_TYPE" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="CURNCY" />
+          <Property Type="String" Name="CURNCY_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EXP_YLD_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ACT_YLD" Precision="10" Scale="4" />
+          <Property Type="Int64" Name="INCOME_TYPE" />
+          <Property Type="String" Name="INCOME_TYPE_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ACT_YLD_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PLAN_ISS_SIZE_CD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PLAN_ISS_SIZE" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="ACTU_ISS_SIZE" Precision="18" Scale="4" />
+          <Property Type="String" Name="ORGNAME" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="ORGCODE" />
+          <Property Type="Int64" Name="ORG_TYPE_CD" Nullable="false" />
+          <Property Type="String" Name="ORG_TYPE_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="CONTR_SHT" />
+          <Property Type="Decimal" Name="BOOK_VAL" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="MIN_CAP" Precision="10" Scale="2" />
+          <Property Type="String" Name="MIN_INV_AMOUNT_TYPE" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MIN_CAP_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ADD_CAP" Precision="18" Scale="4" />
+          <Property Type="String" Name="ADD_CAP_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CRED_ENHA_MODE" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="NET_FREQ" />
+          <Property Type="DateTime" Name="NET_STARTDATE" />
+          <Property Type="DateTime" Name="NET_ENDDATE" />
+          <Property Type="String" Name="INVEST_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRD_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FEE_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RIST_WARE" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ALERT_LINE" Precision="18" Scale="4" />
+          <Property Type="String" Name="ALERT_LINE_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="STOP_LINE" Precision="18" Scale="4" />
+          <Property Type="String" Name="STOP_LINE_REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="IS_MERGE" />
+          <Property Type="String" Name="IS_MERGE_NAME" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="REMARK" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="PRD_STATUS" />
+          <Property Type="String" Name="PRD_STATUS_NAME" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="TRUST_PERI_UNIT" />
+          <Property Type="Decimal" Name="FIN_CYC" Precision="10" Scale="2" />
+          <Property Type="Int64" Name="FIN_CYC_UNIT" />
+        </EntityType>
+        <EntityType Name="v_WMP_AREA_DIC">
+          <Key>
+            <PropertyRef Name="ID_C" />
+            <PropertyRef Name="INNER_CODE" />
+          </Key>
+          <Property Type="Int64" Name="ID_C" Nullable="false" />
+          <Property Type="Int32" Name="ISS_AREA_CODE" />
+          <Property Type="String" Name="PROV_NAME" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISS_AREA" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="INNER_CODE" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GeniusHistModelStoreContainer" CdmEntityContainer="Genius_HistEntities">
+          <EntitySetMapping Name="BANK_FIN_DETAIL">
+            <EntityTypeMapping TypeName="GeniusHistModel.BANK_FIN_DETAIL">
+              <MappingFragment StoreEntitySet="BANK_FIN_DETAIL">
+                <ScalarProperty Name="OPERA_TYPE" ColumnName="OPERA_TYPE" />
+                <ScalarProperty Name="REGI_CODE" ColumnName="REGI_CODE" />
+                <ScalarProperty Name="ISS_OBJECT" ColumnName="ISS_OBJECT" />
+                <ScalarProperty Name="IS_PB" ColumnName="IS_PB" />
+                <ScalarProperty Name="SELL_CHNL" ColumnName="SELL_CHNL" />
+                <ScalarProperty Name="PRD_MAX_YLD_L_DE" ColumnName="PRD_MAX_YLD_L_DE" />
+                <ScalarProperty Name="PRD_MAX_YLD_DE" ColumnName="PRD_MAX_YLD_DE" />
+                <ScalarProperty Name="IS_ROLL_PRO" ColumnName="IS_ROLL_PRO" />
+                <ScalarProperty Name="PLAN_SIZE_LOW_LIM" ColumnName="PLAN_SIZE_LOW_LIM" />
+                <ScalarProperty Name="PLAN_SIZE_UP_LIM" ColumnName="PLAN_SIZE_UP_LIM" />
+                <ScalarProperty Name="PRD_MAX_YLD_L" ColumnName="PRD_MAX_YLD_L" />
+                <ScalarProperty Name="TRM_DLY_REMARK" ColumnName="TRM_DLY_REMARK" />
+                <ScalarProperty Name="PRD_MIN_YLD" ColumnName="PRD_MIN_YLD" />
+                <ScalarProperty Name="STRU_TYPE" ColumnName="STRU_TYPE" />
+                <ScalarProperty Name="INV_UND_TYPE" ColumnName="INV_UND_TYPE" />
+                <ScalarProperty Name="INC_DATE_UNIT" ColumnName="INC_DATE_UNIT" />
+                <ScalarProperty Name="HONOR_INCM_CURNCY_NAME" ColumnName="HONOR_INCM_CURNCY_NAME" />
+                <ScalarProperty Name="HONOR_INCM_CURNCY_TYPE" ColumnName="HONOR_INCM_CURNCY_TYPE" />
+                <ScalarProperty Name="HONOR_CAP_CURNCY_NAME" ColumnName="HONOR_CAP_CURNCY_NAME" />
+                <ScalarProperty Name="HONOR_CAP_CURNCY_TYPE" ColumnName="HONOR_CAP_CURNCY_TYPE" />
+                <ScalarProperty Name="IS_QDII" ColumnName="IS_QDII" />
+                <ScalarProperty Name="MAT_ACTU_YLD" ColumnName="MAT_ACTU_YLD" />
+                <ScalarProperty Name="ISS_AREA_CODE" ColumnName="ISS_AREA_CODE" />
+                <ScalarProperty Name="LIQ_RTNG_DTL" ColumnName="LIQ_RTNG_DTL" />
+                <ScalarProperty Name="LIQ_RTNG" ColumnName="LIQ_RTNG" />
+                <ScalarProperty Name="RIST_RTNG_DTL" ColumnName="RIST_RTNG_DTL" />
+                <ScalarProperty Name="RIST_RTNG" ColumnName="RIST_RTNG" />
+                <ScalarProperty Name="INV_TYPE_DTL" ColumnName="INV_TYPE_DTL" />
+                <ScalarProperty Name="INV_TYPE" ColumnName="INV_TYPE" />
+                <ScalarProperty Name="TAX_REGL" ColumnName="TAX_REGL" />
+                <ScalarProperty Name="INV_OBJ" ColumnName="INV_OBJ" />
+                <ScalarProperty Name="CURNCY_REC_DATE_DTL" ColumnName="CURNCY_REC_DATE_DTL" />
+                <ScalarProperty Name="CALL_DATE_DTL" ColumnName="CALL_DATE_DTL" />
+                <ScalarProperty Name="AD_TRM_DATE_DTL" ColumnName="AD_TRM_DATE_DTL" />
+                <ScalarProperty Name="INC_CLA_BASIS" ColumnName="INC_CLA_BASIS" />
+                <ScalarProperty Name="IS_PLEDGE" ColumnName="IS_PLEDGE" />
+                <ScalarProperty Name="RETN_TYPE" ColumnName="RETN_TYPE" />
+                <ScalarProperty Name="INC_DATE" ColumnName="INC_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="AC_ORG" ColumnName="AC_ORG" />
+                <ScalarProperty Name="ISS_AREA" ColumnName="ISS_AREA" />
+                <ScalarProperty Name="PRD_CODE" ColumnName="PRD_CODE" />
+                <ScalarProperty Name="EXP_VIEW" ColumnName="EXP_VIEW" />
+                <ScalarProperty Name="RIST_WARE" ColumnName="RIST_WARE" />
+                <ScalarProperty Name="SELL_END_DTL" ColumnName="SELL_END_DTL" />
+                <ScalarProperty Name="SELL_ORG_DTL" ColumnName="SELL_ORG_DTL" />
+                <ScalarProperty Name="BNT_ACT" ColumnName="BNT_ACT" />
+                <ScalarProperty Name="FEAT" ColumnName="FEAT" />
+                <ScalarProperty Name="AD_PRC_CND" ColumnName="AD_PRC_CND" />
+                <ScalarProperty Name="AD_TRM_CND" ColumnName="AD_TRM_CND" />
+                <ScalarProperty Name="YLD_DET" ColumnName="YLD_DET" />
+                <ScalarProperty Name="IS_CST_BRG_FRD" ColumnName="IS_CST_BRG_FRD" />
+                <ScalarProperty Name="IS_BNK_BRG_FRD" ColumnName="IS_BNK_BRG_FRD" />
+                <ScalarProperty Name="IS_RETAIL" ColumnName="IS_RETAIL" />
+                <ScalarProperty Name="MNG_COST" ColumnName="MNG_COST" />
+                <ScalarProperty Name="CURNCY_INCR_UNIT" ColumnName="CURNCY_INCR_UNIT" />
+                <ScalarProperty Name="ENTR_MIN_CURNCY" ColumnName="ENTR_MIN_CURNCY" />
+                <ScalarProperty Name="ENTR_CURNCY_NAME" ColumnName="ENTR_CURNCY_NAME" />
+                <ScalarProperty Name="ENTR_CURNCY_TYPE" ColumnName="ENTR_CURNCY_TYPE" />
+                <ScalarProperty Name="PRD_MAX_YLD" ColumnName="PRD_MAX_YLD" />
+                <ScalarProperty Name="PAY_CYC_UNIT" ColumnName="PAY_CYC_UNIT" />
+                <ScalarProperty Name="PAY_CYC" ColumnName="PAY_CYC" />
+                <ScalarProperty Name="INC_ORG_DATE" ColumnName="INC_ORG_DATE" />
+                <ScalarProperty Name="SELL_END_DATE" ColumnName="SELL_END_DATE" />
+                <ScalarProperty Name="SELL_ORG_DATE" ColumnName="SELL_ORG_DATE" />
+                <ScalarProperty Name="ENTR_MNG_UNIT" ColumnName="ENTR_MNG_UNIT" />
+                <ScalarProperty Name="ENTR_MNG_TERM" ColumnName="ENTR_MNG_TERM" />
+                <ScalarProperty Name="PRD_TYPE_NAME" ColumnName="PRD_TYPE_NAME" />
+                <ScalarProperty Name="PRD_TYPE" ColumnName="PRD_TYPE" />
+                <ScalarProperty Name="PRD_SYS" ColumnName="PRD_SYS" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BANK_FIN_PRD">
+            <EntityTypeMapping TypeName="GeniusHistModel.BANK_FIN_PRD">
+              <MappingFragment StoreEntitySet="BANK_FIN_PRD">
+                <ScalarProperty Name="PRD_SNAME" ColumnName="PRD_SNAME" />
+                <ScalarProperty Name="BANK_NAME" ColumnName="BANK_NAME" />
+                <ScalarProperty Name="BANK_ID" ColumnName="BANK_ID" />
+                <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BANK_FIN_PRD_PROSP">
+            <EntityTypeMapping TypeName="GeniusHistModel.BANK_FIN_PRD_PROSP">
+              <MappingFragment StoreEntitySet="BANK_FIN_PRD_PROSP">
+                <ScalarProperty Name="ACCE_ROUTE" ColumnName="ACCE_ROUTE" />
+                <ScalarProperty Name="PRD_PROSP_MD5" ColumnName="PRD_PROSP_MD5" />
+                <ScalarProperty Name="BANK_PRD_PROSP" ColumnName="BANK_PRD_PROSP" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CFP_FEE_CHNG">
+            <EntityTypeMapping TypeName="GeniusHistModel.CFP_FEE_CHNG">
+              <MappingFragment StoreEntitySet="CFP_FEE_CHNG">
+                <ScalarProperty Name="FEE_BENMRK" ColumnName="FEE_BENMRK" />
+                <ScalarProperty Name="FEE_EXER_TERM" ColumnName="FEE_EXER_TERM" />
+                <ScalarProperty Name="FEE_EXER_TYPE" ColumnName="FEE_EXER_TYPE" />
+                <ScalarProperty Name="FEE_EXER" ColumnName="FEE_EXER" />
+                <ScalarProperty Name="FEE_STD" ColumnName="FEE_STD" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="UNT_NV_RLTN" ColumnName="UNT_NV_RLTN" />
+                <ScalarProperty Name="UNT_NV_LOW" ColumnName="UNT_NV_LOW" />
+                <ScalarProperty Name="UNT_NV_UP" ColumnName="UNT_NV_UP" />
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="ANNU_YLD_UP_LIM" ColumnName="ANNU_YLD_UP_LIM" />
+                <ScalarProperty Name="ANNU_YLD_RLTN" ColumnName="ANNU_YLD_RLTN" />
+                <ScalarProperty Name="ANNU_YLD_LOW_LIM" ColumnName="ANNU_YLD_LOW_LIM" />
+                <ScalarProperty Name="TERM_UPPER_LMT" ColumnName="TERM_UPPER_LMT" />
+                <ScalarProperty Name="TERM_RLTN" ColumnName="TERM_RLTN" />
+                <ScalarProperty Name="TERM_LOWER_LMT" ColumnName="TERM_LOWER_LMT" />
+                <ScalarProperty Name="TERM_UNIT" ColumnName="TERM_UNIT" />
+                <ScalarProperty Name="MNY_UPPER_LMT" ColumnName="MNY_UPPER_LMT" />
+                <ScalarProperty Name="MNY_RLTN" ColumnName="MNY_RLTN" />
+                <ScalarProperty Name="MNY_LOWER_LMT" ColumnName="MNY_LOWER_LMT" />
+                <ScalarProperty Name="MNY_UNIT" ColumnName="MNY_UNIT" />
+                <ScalarProperty Name="FEE_UPPER_LMT" ColumnName="FEE_UPPER_LMT" />
+                <ScalarProperty Name="FEE_RLTN" ColumnName="FEE_RLTN" />
+                <ScalarProperty Name="FEE_LOWER_LMT" ColumnName="FEE_LOWER_LMT" />
+                <ScalarProperty Name="FEE_UNIT" ColumnName="FEE_UNIT" />
+                <ScalarProperty Name="SRL_NO" ColumnName="SRL_NO" />
+                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+                <ScalarProperty Name="FEE_TYPE" ColumnName="FEE_TYPE" />
+                <ScalarProperty Name="DECLAREDATE" ColumnName="DECLAREDATE" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CFP_ISS_ORG">
+            <EntityTypeMapping TypeName="GeniusHistModel.CFP_ISS_ORG">
+              <MappingFragment StoreEntitySet="CFP_ISS_ORG">
+                <ScalarProperty Name="ORGNAME" ColumnName="ORGNAME" />
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+                <ScalarProperty Name="ORGCODE" ColumnName="ORGCODE" />
+                <ScalarProperty Name="ORG_CLS" ColumnName="ORG_CLS" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CFP_PROFITSHEET">
+            <EntityTypeMapping TypeName="GeniusHistModel.CFP_PROFITSHEET">
+              <MappingFragment StoreEntitySet="CFP_PROFITSHEET">
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="TARGET" ColumnName="TARGET" />
+                <ScalarProperty Name="RE_INVST_QRY_START_DATE" ColumnName="RE_INVST_QRY_START_DATE" />
+                <ScalarProperty Name="RE_INVST_ACC_DATE" ColumnName="RE_INVST_ACC_DATE" />
+                <ScalarProperty Name="RE_INVST_DATE" ColumnName="RE_INVST_DATE" />
+                <ScalarProperty Name="ACC_DATE" ColumnName="ACC_DATE" />
+                <ScalarProperty Name="PROVIDE_DATE" ColumnName="PROVIDE_DATE" />
+                <ScalarProperty Name="EX_DATE" ColumnName="EX_DATE" />
+                <ScalarProperty Name="REGI_DATE" ColumnName="REGI_DATE" />
+                <ScalarProperty Name="INCM_DIST_DATE" ColumnName="INCM_DIST_DATE" />
+                <ScalarProperty Name="FINAL_DIV" ColumnName="FINAL_DIV" />
+                <ScalarProperty Name="DIV_LOWER" ColumnName="DIV_LOWER" />
+                <ScalarProperty Name="DIV_UPPER" ColumnName="DIV_UPPER" />
+                <ScalarProperty Name="DIST_INCM" ColumnName="DIST_INCM" />
+                <ScalarProperty Name="TIMES" ColumnName="TIMES" />
+                <ScalarProperty Name="DIV_CLS" ColumnName="DIV_CLS" />
+                <ScalarProperty Name="PJT_CLS" ColumnName="PJT_CLS" />
+                <ScalarProperty Name="DECLAREDATE" ColumnName="DECLAREDATE" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DISC_ACCE_CFP">
+            <EntityTypeMapping TypeName="GeniusHistModel.DISC_ACCE_CFP">
+              <MappingFragment StoreEntitySet="DISC_ACCE_CFP">
+                <ScalarProperty Name="ACCE_ROUTE_MD5" ColumnName="ACCE_ROUTE_MD5" />
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="ACCE_TITLE" ColumnName="ACCE_TITLE" />
+                <ScalarProperty Name="ACCE_TYPE" ColumnName="ACCE_TYPE" />
+                <ScalarProperty Name="ACCE_ROUTE" ColumnName="ACCE_ROUTE" />
+                <ScalarProperty Name="ACCE_ORDER" ColumnName="ACCE_ORDER" />
+                <ScalarProperty Name="DISC_ID" ColumnName="DISC_ID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FIN_PRD_RPT">
+            <EntityTypeMapping TypeName="GeniusHistModel.FIN_PRD_RPT">
+              <MappingFragment StoreEntitySet="FIN_PRD_RPT">
+                <ScalarProperty Name="FIN_PRD_TYPE" ColumnName="FIN_PRD_TYPE" />
+                <ScalarProperty Name="ACCE_ROUTE" ColumnName="ACCE_ROUTE" />
+                <ScalarProperty Name="RPT_SRC" ColumnName="RPT_SRC" />
+                <ScalarProperty Name="WRITEDATE" ColumnName="WRITEDATE" />
+                <ScalarProperty Name="RPT_TYPE" ColumnName="RPT_TYPE" />
+                <ScalarProperty Name="RPT_TITLE" ColumnName="RPT_TITLE" />
+                <ScalarProperty Name="RPT_ID" ColumnName="RPT_ID" />
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_REF">
+            <EntityTypeMapping TypeName="GeniusHistModel.GEN_REF">
+              <MappingFragment StoreEntitySet="GEN_REF">
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="REF_MEANING" ColumnName="REF_MEANING" />
+                <ScalarProperty Name="REF_NAME" ColumnName="REF_NAME" />
+                <ScalarProperty Name="REF_CODE" ColumnName="REF_CODE" />
+                <ScalarProperty Name="CLS_NAME" ColumnName="CLS_NAME" />
+                <ScalarProperty Name="CLS_CODE" ColumnName="CLS_CODE" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORG_PROFILE">
+            <EntityTypeMapping TypeName="GeniusHistModel.ORG_PROFILE">
+              <MappingFragment StoreEntitySet="ORG_PROFILE">
+                <ScalarProperty Name="REGION_CODE" ColumnName="REGION_CODE" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="SERVICE_TEL" ColumnName="SERVICE_TEL" />
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="PARENT_NAME" ColumnName="PARENT_NAME" />
+                <ScalarProperty Name="TOP_NAME" ColumnName="TOP_NAME" />
+                <ScalarProperty Name="MOTHER_NAME" ColumnName="MOTHER_NAME" />
+                <ScalarProperty Name="STYPE_NAME" ColumnName="STYPE_NAME" />
+                <ScalarProperty Name="MTYPE_NAME" ColumnName="MTYPE_NAME" />
+                <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+                <ScalarProperty Name="REGION_NAME" ColumnName="REGION_NAME" />
+                <ScalarProperty Name="NATION_NAME" ColumnName="NATION_NAME" />
+                <ScalarProperty Name="CURNCY_NAME" ColumnName="CURNCY_NAME" />
+                <ScalarProperty Name="STATUS_NAME" ColumnName="STATUS_NAME" />
+                <ScalarProperty Name="LAYERCODE" ColumnName="LAYERCODE" />
+                <ScalarProperty Name="PARENTCODE" ColumnName="PARENTCODE" />
+                <ScalarProperty Name="TOPCODE" ColumnName="TOPCODE" />
+                <ScalarProperty Name="MOTHER_CODE" ColumnName="MOTHER_CODE" />
+                <ScalarProperty Name="FORM_NAME" ColumnName="FORM_NAME" />
+                <ScalarProperty Name="ORG_FORM" ColumnName="ORG_FORM" />
+                <ScalarProperty Name="ORG_STYPE" ColumnName="ORG_STYPE" />
+                <ScalarProperty Name="ORG_MTYPE" ColumnName="ORG_MTYPE" />
+                <ScalarProperty Name="ORG_TYPE" ColumnName="ORG_TYPE" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="NATION" ColumnName="NATION" />
+                <ScalarProperty Name="ISSUE_BOND" ColumnName="ISSUE_BOND" />
+                <ScalarProperty Name="LISTED" ColumnName="LISTED" />
+                <ScalarProperty Name="LTAX_NO" ColumnName="LTAX_NO" />
+                <ScalarProperty Name="NTAX_NO" ColumnName="NTAX_NO" />
+                <ScalarProperty Name="REGI_NO" ColumnName="REGI_NO" />
+                <ScalarProperty Name="ORG_STATUS" ColumnName="ORG_STATUS" />
+                <ScalarProperty Name="CLOSE_REASON" ColumnName="CLOSE_REASON" />
+                <ScalarProperty Name="CLOSE_DATE" ColumnName="CLOSE_DATE" />
+                <ScalarProperty Name="BUILD_DATE" ColumnName="BUILD_DATE" />
+                <ScalarProperty Name="DISCL_WEBSITE" ColumnName="DISCL_WEBSITE" />
+                <ScalarProperty Name="DISCL_PAPER" ColumnName="DISCL_PAPER" />
+                <ScalarProperty Name="TSTAFF_NUM" ColumnName="TSTAFF_NUM" />
+                <ScalarProperty Name="MSTAFF_NUM" ColumnName="MSTAFF_NUM" />
+                <ScalarProperty Name="STAFF_NUM" ColumnName="STAFF_NUM" />
+                <ScalarProperty Name="NON_PRI_BIZ" ColumnName="NON_PRI_BIZ" />
+                <ScalarProperty Name="PRI_BIZ" ColumnName="PRI_BIZ" />
+                <ScalarProperty Name="BRIEF_INTRO" ColumnName="BRIEF_INTRO" />
+                <ScalarProperty Name="REPR_EMAIL" ColumnName="REPR_EMAIL" />
+                <ScalarProperty Name="REPR_ADDR" ColumnName="REPR_ADDR" />
+                <ScalarProperty Name="REPR_FAX" ColumnName="REPR_FAX" />
+                <ScalarProperty Name="REPR_TEL" ColumnName="REPR_TEL" />
+                <ScalarProperty Name="REPR" ColumnName="REPR" />
+                <ScalarProperty Name="SECTRY_EMAIL" ColumnName="SECTRY_EMAIL" />
+                <ScalarProperty Name="CONTACT_ADDR" ColumnName="CONTACT_ADDR" />
+                <ScalarProperty Name="SECTRY_FAX" ColumnName="SECTRY_FAX" />
+                <ScalarProperty Name="SECTRY_TEL" ColumnName="SECTRY_TEL" />
+                <ScalarProperty Name="BOARD_SECTRY" ColumnName="BOARD_SECTRY" />
+                <ScalarProperty Name="CONTACT_PERSON" ColumnName="CONTACT_PERSON" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
+                <ScalarProperty Name="DISTRICT_NO" ColumnName="DISTRICT_NO" />
+                <ScalarProperty Name="GEN_MANAGER" ColumnName="GEN_MANAGER" />
+                <ScalarProperty Name="LEG_PERSON" ColumnName="LEG_PERSON" />
+                <ScalarProperty Name="POSTCODE" ColumnName="POSTCODE" />
+                <ScalarProperty Name="WEB_SITE" ColumnName="WEB_SITE" />
+                <ScalarProperty Name="OFFICE_ADDR" ColumnName="OFFICE_ADDR" />
+                <ScalarProperty Name="REGI_ADDR" ColumnName="REGI_ADDR" />
+                <ScalarProperty Name="CURNCY" ColumnName="CURNCY" />
+                <ScalarProperty Name="REGI_CAP" ColumnName="REGI_CAP" />
+                <ScalarProperty Name="ESNAME" ColumnName="ESNAME" />
+                <ScalarProperty Name="ENAME" ColumnName="ENAME" />
+                <ScalarProperty Name="CSPELL" ColumnName="CSPELL" />
+                <ScalarProperty Name="CSNAME" ColumnName="CSNAME" />
+                <ScalarProperty Name="CNAME" ColumnName="CNAME" />
+                <ScalarProperty Name="DECLAREDATE" ColumnName="DECLAREDATE" />
+                <ScalarProperty Name="ORGCODE" ColumnName="ORGCODE" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRUST_PROFILE">
+            <EntityTypeMapping TypeName="GeniusHistModel.TRUST_PROFILE">
+              <MappingFragment StoreEntitySet="TRUST_PROFILE">
+                <ScalarProperty Name="REGI_CODE" ColumnName="REGI_CODE" />
+                <ScalarProperty Name="FIN_CYC_UNIT" ColumnName="FIN_CYC_UNIT" />
+                <ScalarProperty Name="FIN_CYC" ColumnName="FIN_CYC" />
+                <ScalarProperty Name="TRUST_PERI_UNIT" ColumnName="TRUST_PERI_UNIT" />
+                <ScalarProperty Name="PRD_STATUS" ColumnName="PRD_STATUS" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="IS_MERGE" ColumnName="IS_MERGE" />
+                <ScalarProperty Name="STOP_LINE_REMARK" ColumnName="STOP_LINE_REMARK" />
+                <ScalarProperty Name="STOP_LINE" ColumnName="STOP_LINE" />
+                <ScalarProperty Name="ALERT_LINE_REMARK" ColumnName="ALERT_LINE_REMARK" />
+                <ScalarProperty Name="ALERT_LINE" ColumnName="ALERT_LINE" />
+                <ScalarProperty Name="RIST_WARE" ColumnName="RIST_WARE" />
+                <ScalarProperty Name="FEE_REMARK" ColumnName="FEE_REMARK" />
+                <ScalarProperty Name="PRD_REMARK" ColumnName="PRD_REMARK" />
+                <ScalarProperty Name="INVEST_REMARK" ColumnName="INVEST_REMARK" />
+                <ScalarProperty Name="NET_ENDDATE" ColumnName="NET_ENDDATE" />
+                <ScalarProperty Name="NET_STARTDATE" ColumnName="NET_STARTDATE" />
+                <ScalarProperty Name="NET_FREQ" ColumnName="NET_FREQ" />
+                <ScalarProperty Name="CRED_ENHA_MODE" ColumnName="CRED_ENHA_MODE" />
+                <ScalarProperty Name="ADD_CAP_REMARK" ColumnName="ADD_CAP_REMARK" />
+                <ScalarProperty Name="ADD_CAP" ColumnName="ADD_CAP" />
+                <ScalarProperty Name="MIN_CAP_REMARK" ColumnName="MIN_CAP_REMARK" />
+                <ScalarProperty Name="MIN_CAP" ColumnName="MIN_CAP" />
+                <ScalarProperty Name="BOOK_VAL" ColumnName="BOOK_VAL" />
+                <ScalarProperty Name="CONTR_SHT" ColumnName="CONTR_SHT" />
+                <ScalarProperty Name="ORGCODE" ColumnName="ORGCODE" />
+                <ScalarProperty Name="ORGNAME" ColumnName="ORGNAME" />
+                <ScalarProperty Name="ACTU_ISS_SIZE" ColumnName="ACTU_ISS_SIZE" />
+                <ScalarProperty Name="PLAN_ISS_SIZE" ColumnName="PLAN_ISS_SIZE" />
+                <ScalarProperty Name="ACT_YLD_REMARK" ColumnName="ACT_YLD_REMARK" />
+                <ScalarProperty Name="INCOME_TYPE" ColumnName="INCOME_TYPE" />
+                <ScalarProperty Name="ACT_YLD" ColumnName="ACT_YLD" />
+                <ScalarProperty Name="EXP_YLD_REMARK" ColumnName="EXP_YLD_REMARK" />
+                <ScalarProperty Name="CURNCY" ColumnName="CURNCY" />
+                <ScalarProperty Name="EXP_YLD" ColumnName="EXP_YLD" />
+                <ScalarProperty Name="LIQU_REASON" ColumnName="LIQU_REASON" />
+                <ScalarProperty Name="TRUST_MNG" ColumnName="TRUST_MNG" />
+                <ScalarProperty Name="INV_FLD" ColumnName="INV_FLD" />
+                <ScalarProperty Name="SEC_INVEST_TYPE" ColumnName="SEC_INVEST_TYPE" />
+                <ScalarProperty Name="TRUST_TYPE" ColumnName="TRUST_TYPE" />
+                <ScalarProperty Name="IS_TOT" ColumnName="IS_TOT" />
+                <ScalarProperty Name="IS_CURNCY" ColumnName="IS_CURNCY" />
+                <ScalarProperty Name="IS_PE" ColumnName="IS_PE" />
+                <ScalarProperty Name="STRU_RATIO" ColumnName="STRU_RATIO" />
+                <ScalarProperty Name="IS_STRU" ColumnName="IS_STRU" />
+                <ScalarProperty Name="IS_DLY" ColumnName="IS_DLY" />
+                <ScalarProperty Name="IS_BRG_FRD" ColumnName="IS_BRG_FRD" />
+                <ScalarProperty Name="EXPE_ENDDATE" ColumnName="EXPE_ENDDATE" />
+                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+                <ScalarProperty Name="BUILD_DATE" ColumnName="BUILD_DATE" />
+                <ScalarProperty Name="CLOSE_REMARK" ColumnName="CLOSE_REMARK" />
+                <ScalarProperty Name="OPEN_REMARK" ColumnName="OPEN_REMARK" />
+                <ScalarProperty Name="TRUST_PERI" ColumnName="TRUST_PERI" />
+                <ScalarProperty Name="PERI_TYPE" ColumnName="PERI_TYPE" />
+                <ScalarProperty Name="SALE_DAYS" ColumnName="SALE_DAYS" />
+                <ScalarProperty Name="PROM_ENDDATE" ColumnName="PROM_ENDDATE" />
+                <ScalarProperty Name="PROM_STARTDATE" ColumnName="PROM_STARTDATE" />
+                <ScalarProperty Name="ISS_YEAR" ColumnName="ISS_YEAR" />
+                <ScalarProperty Name="MAIN_CODE" ColumnName="MAIN_CODE" />
+                <ScalarProperty Name="MAIN_SNAME" ColumnName="MAIN_SNAME" />
+                <ScalarProperty Name="TRUST_SNAME" ColumnName="TRUST_SNAME" />
+                <ScalarProperty Name="CHI_SPEL" ColumnName="CHI_SPEL" />
+                <ScalarProperty Name="TRUST_NAME" ColumnName="TRUST_NAME" />
+                <ScalarProperty Name="DECLAREDATE" ColumnName="DECLAREDATE" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="GENIUS_UID" ColumnName="GENIUS_UID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="CTIME" ColumnName="CTIME" />
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WMP_BANK_PROD">
+            <EntityTypeMapping TypeName="GeniusHistModel.v_WMP_BANK_PROD">
+              <MappingFragment StoreEntitySet="V_WMP_BANK_PROD">
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="PAY_CYC_DAYS" ColumnName="PAY_CYC_DAYS" />
+                <ScalarProperty Name="PRD_SYS_DAYS" ColumnName="PRD_SYS_DAYS" />
+                <ScalarProperty Name="INC_DATE_DAYS" ColumnName="INC_DATE_DAYS" />
+                <ScalarProperty Name="ACCE_ROUTE" ColumnName="ACCE_ROUTE" />
+                <ScalarProperty Name="SELL_CHNL" ColumnName="SELL_CHNL" />
+                <ScalarProperty Name="PRD_MAX_YLD_L_DE" ColumnName="PRD_MAX_YLD_L_DE" />
+                <ScalarProperty Name="IS_ROLL_PRO_NAME" ColumnName="IS_ROLL_PRO_NAME" />
+                <ScalarProperty Name="IS_ROLL_PRO" ColumnName="IS_ROLL_PRO" />
+                <ScalarProperty Name="PLAN_SIZE_LOW_LIM" ColumnName="PLAN_SIZE_LOW_LIM" />
+                <ScalarProperty Name="PLAN_SIZE_UP_LIM" ColumnName="PLAN_SIZE_UP_LIM" />
+                <ScalarProperty Name="PRD_MAX_YLD_L" ColumnName="PRD_MAX_YLD_L" />
+                <ScalarProperty Name="TRM_DLY_REMARK" ColumnName="TRM_DLY_REMARK" />
+                <ScalarProperty Name="PRD_MIN_YLD" ColumnName="PRD_MIN_YLD" />
+                <ScalarProperty Name="STRU_TYPE_NAME" ColumnName="STRU_TYPE_NAME" />
+                <ScalarProperty Name="STRU_TYPE" ColumnName="STRU_TYPE" />
+                <ScalarProperty Name="INC_DATE_UNIT" ColumnName="INC_DATE_UNIT" />
+                <ScalarProperty Name="INV_UND_TYPE" ColumnName="INV_UND_TYPE" />
+                <ScalarProperty Name="INV_UND_TYPE_NAME" ColumnName="INV_UND_TYPE_NAME" />
+                <ScalarProperty Name="HONOR_INCM_CURNCY_NAME" ColumnName="HONOR_INCM_CURNCY_NAME" />
+                <ScalarProperty Name="HONOR_INCM_CURNCY_TYPE" ColumnName="HONOR_INCM_CURNCY_TYPE" />
+                <ScalarProperty Name="HONOR_CAP_CURNCY_NAME" ColumnName="HONOR_CAP_CURNCY_NAME" />
+                <ScalarProperty Name="HONOR_CAP_CURNCY_TYPE" ColumnName="HONOR_CAP_CURNCY_TYPE" />
+                <ScalarProperty Name="IS_QDII_NAME" ColumnName="IS_QDII_NAME" />
+                <ScalarProperty Name="IS_QDII" ColumnName="IS_QDII" />
+                <ScalarProperty Name="MAT_ACTU_YLD" ColumnName="MAT_ACTU_YLD" />
+                <ScalarProperty Name="LIQ_RTNG_DTL" ColumnName="LIQ_RTNG_DTL" />
+                <ScalarProperty Name="LIQ_RTNG" ColumnName="LIQ_RTNG" />
+                <ScalarProperty Name="RIST_RTNG_DTL" ColumnName="RIST_RTNG_DTL" />
+                <ScalarProperty Name="RIST_RTNG" ColumnName="RIST_RTNG" />
+                <ScalarProperty Name="INV_TYPE_DTL" ColumnName="INV_TYPE_DTL" />
+                <ScalarProperty Name="INV_TYPE" ColumnName="INV_TYPE" />
+                <ScalarProperty Name="TAX_REGL" ColumnName="TAX_REGL" />
+                <ScalarProperty Name="INV_OBJ" ColumnName="INV_OBJ" />
+                <ScalarProperty Name="CURNCY_REC_DATE_DTL" ColumnName="CURNCY_REC_DATE_DTL" />
+                <ScalarProperty Name="CALL_DATE_DTL" ColumnName="CALL_DATE_DTL" />
+                <ScalarProperty Name="AD_TRM_DATE_DTL" ColumnName="AD_TRM_DATE_DTL" />
+                <ScalarProperty Name="INC_CLA_BASIS" ColumnName="INC_CLA_BASIS" />
+                <ScalarProperty Name="IS_PLEDGE_NAME" ColumnName="IS_PLEDGE_NAME" />
+                <ScalarProperty Name="IS_PLEDGE" ColumnName="IS_PLEDGE" />
+                <ScalarProperty Name="RETN_TYPE" ColumnName="RETN_TYPE" />
+                <ScalarProperty Name="INC_DATE_NAME" ColumnName="INC_DATE_NAME" />
+                <ScalarProperty Name="INC_DATE" ColumnName="INC_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="AC_ORG" ColumnName="AC_ORG" />
+                <ScalarProperty Name="ISS_AREA" ColumnName="ISS_AREA" />
+                <ScalarProperty Name="PRD_CODE" ColumnName="PRD_CODE" />
+                <ScalarProperty Name="EXP_VIEW" ColumnName="EXP_VIEW" />
+                <ScalarProperty Name="RIST_WARE" ColumnName="RIST_WARE" />
+                <ScalarProperty Name="SELL_END_DTL" ColumnName="SELL_END_DTL" />
+                <ScalarProperty Name="SELL_ORG_DTL" ColumnName="SELL_ORG_DTL" />
+                <ScalarProperty Name="BNT_ACT" ColumnName="BNT_ACT" />
+                <ScalarProperty Name="FEAT" ColumnName="FEAT" />
+                <ScalarProperty Name="AD_PRC_CND" ColumnName="AD_PRC_CND" />
+                <ScalarProperty Name="AD_TRM_CND" ColumnName="AD_TRM_CND" />
+                <ScalarProperty Name="YLD_DET" ColumnName="YLD_DET" />
+                <ScalarProperty Name="IS_CST_BRG_FRD_NAME" ColumnName="IS_CST_BRG_FRD_NAME" />
+                <ScalarProperty Name="IS_CST_BRG_FRD" ColumnName="IS_CST_BRG_FRD" />
+                <ScalarProperty Name="IS_BNK_BRG_FRD_NAME" ColumnName="IS_BNK_BRG_FRD_NAME" />
+                <ScalarProperty Name="IS_BNK_BRG_FRD" ColumnName="IS_BNK_BRG_FRD" />
+                <ScalarProperty Name="IS_RETAIL_NAME" ColumnName="IS_RETAIL_NAME" />
+                <ScalarProperty Name="IS_RETAIL" ColumnName="IS_RETAIL" />
+                <ScalarProperty Name="MNG_COST" ColumnName="MNG_COST" />
+                <ScalarProperty Name="CURNCY_INCR_UNIT" ColumnName="CURNCY_INCR_UNIT" />
+                <ScalarProperty Name="ENTR_MIN_CURNCY" ColumnName="ENTR_MIN_CURNCY" />
+                <ScalarProperty Name="INITAMOUNTTYPE" ColumnName="INITAMOUNTTYPE" />
+                <ScalarProperty Name="ENTR_CURNCY_NAME" ColumnName="ENTR_CURNCY_NAME" />
+                <ScalarProperty Name="ENTR_CURNCY_TYPE" ColumnName="ENTR_CURNCY_TYPE" />
+                <ScalarProperty Name="RPD_MAX_YLD_TYPE" ColumnName="RPD_MAX_YLD_TYPE" />
+                <ScalarProperty Name="PRD_MAX_YLD_DE" ColumnName="PRD_MAX_YLD_DE" />
+                <ScalarProperty Name="PRD_MAX_YLD" ColumnName="PRD_MAX_YLD" />
+                <ScalarProperty Name="PAY_CYC_NAME" ColumnName="PAY_CYC_NAME" />
+                <ScalarProperty Name="PAY_CYC_UNIT" ColumnName="PAY_CYC_UNIT" />
+                <ScalarProperty Name="PAY_CYC" ColumnName="PAY_CYC" />
+                <ScalarProperty Name="INC_ORG_DATE" ColumnName="INC_ORG_DATE" />
+                <ScalarProperty Name="SELL_END_DATE" ColumnName="SELL_END_DATE" />
+                <ScalarProperty Name="SELL_ORG_DATE" ColumnName="SELL_ORG_DATE" />
+                <ScalarProperty Name="PROD_STATE_NAME" ColumnName="PROD_STATE_NAME" />
+                <ScalarProperty Name="PROD_STATE" ColumnName="PROD_STATE" />
+                <ScalarProperty Name="ENTR_MNG_UNIT" ColumnName="ENTR_MNG_UNIT" />
+                <ScalarProperty Name="ENTR_MNG_TERM" ColumnName="ENTR_MNG_TERM" />
+                <ScalarProperty Name="PRD_TYPE_NAME" ColumnName="PRD_TYPE_NAME" />
+                <ScalarProperty Name="PRD_TYPE" ColumnName="PRD_TYPE" />
+                <ScalarProperty Name="TERM" ColumnName="TERM" />
+                <ScalarProperty Name="PRD_SYS" ColumnName="PRD_SYS" />
+                <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
+                <ScalarProperty Name="BANK_NAME" ColumnName="BANK_NAME" />
+                <ScalarProperty Name="BANK_ID" ColumnName="BANK_ID" />
+                <ScalarProperty Name="BANK_TYPE" ColumnName="BANK_TYPE" />
+                <ScalarProperty Name="BANK_TYPE_CD" ColumnName="BANK_TYPE_CD" />
+                <ScalarProperty Name="PRD_DETAIL_ISVALID" ColumnName="PRD_DETAIL_ISVALID" />
+                <ScalarProperty Name="PRD_ISVALID" ColumnName="PRD_ISVALID" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WMP_CFP">
+            <EntityTypeMapping TypeName="GeniusHistModel.v_WMP_CFP">
+              <MappingFragment StoreEntitySet="V_WMP_CFP">
+                <ScalarProperty Name="MTIME" ColumnName="MTIME" />
+                <ScalarProperty Name="PROD_STATE" ColumnName="PROD_STATE" />
+                <ScalarProperty Name="PROD_STATE_CODE" ColumnName="PROD_STATE_CODE" />
+                <ScalarProperty Name="CHNG_DATE" ColumnName="CHNG_DATE" />
+                <ScalarProperty Name="BUILD_ANNU_GR" ColumnName="BUILD_ANNU_GR" />
+                <ScalarProperty Name="ANNU_GR" ColumnName="ANNU_GR" />
+                <ScalarProperty Name="MONTH_GR" ColumnName="MONTH_GR" />
+                <ScalarProperty Name="WEEK_GR" ColumnName="WEEK_GR" />
+                <ScalarProperty Name="UNT_ACCUM_NET" ColumnName="UNT_ACCUM_NET" />
+                <ScalarProperty Name="UNT_NET" ColumnName="UNT_NET" />
+                <ScalarProperty Name="ISS_STATUS" ColumnName="ISS_STATUS" />
+                <ScalarProperty Name="MAG_ORGNAME" ColumnName="MAG_ORGNAME" />
+                <ScalarProperty Name="MAG_ORGCODE" ColumnName="MAG_ORGCODE" />
+                <ScalarProperty Name="ORGNAME" ColumnName="ORGNAME" />
+                <ScalarProperty Name="ORGCODE" ColumnName="ORGCODE" />
+                <ScalarProperty Name="IS_QDII_NAME" ColumnName="IS_QDII_NAME" />
+                <ScalarProperty Name="IS_QDII" ColumnName="IS_QDII" />
+                <ScalarProperty Name="HUGE_QUIT_TERM" ColumnName="HUGE_QUIT_TERM" />
+                <ScalarProperty Name="CLOSED_PERD" ColumnName="CLOSED_PERD" />
+                <ScalarProperty Name="DURATION_SIZE_LOW" ColumnName="DURATION_SIZE_LOW" />
+                <ScalarProperty Name="QUIT_UNIT_LOW" ColumnName="QUIT_UNIT_LOW" />
+                <ScalarProperty Name="ADD_UNIT_LOW" ColumnName="ADD_UNIT_LOW" />
+                <ScalarProperty Name="ACTU_ENDDATE" ColumnName="ACTU_ENDDATE" />
+                <ScalarProperty Name="EXPE_ENDDATE" ColumnName="EXPE_ENDDATE" />
+                <ScalarProperty Name="FIN_CYC" ColumnName="FIN_CYC" />
+                <ScalarProperty Name="INV_MNG" ColumnName="INV_MNG" />
+                <ScalarProperty Name="OPEN_PRD" ColumnName="OPEN_PRD" />
+                <ScalarProperty Name="FORE_YIELD" ColumnName="FORE_YIELD" />
+                <ScalarProperty Name="TOT_VAL" ColumnName="TOT_VAL" />
+                <ScalarProperty Name="ESTAB_DATE" ColumnName="ESTAB_DATE" />
+                <ScalarProperty Name="INVEST_NAME" ColumnName="INVEST_NAME" />
+                <ScalarProperty Name="INVEST_CLS" ColumnName="INVEST_CLS" />
+                <ScalarProperty Name="LOWEST_VAL_NAME" ColumnName="LOWEST_VAL_NAME" />
+                <ScalarProperty Name="LOWEST_VAL_CODE" ColumnName="LOWEST_VAL_CODE" />
+                <ScalarProperty Name="LOWEST_VAL" ColumnName="LOWEST_VAL" />
+                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+                <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
+                <ScalarProperty Name="PERIOD" ColumnName="PERIOD" />
+                <ScalarProperty Name="OBJ_VAL2" ColumnName="OBJ_VAL2" />
+                <ScalarProperty Name="OBJ_VAL1" ColumnName="OBJ_VAL1" />
+                <ScalarProperty Name="PROD_CHAR" ColumnName="PROD_CHAR" />
+                <ScalarProperty Name="PERFORM_BENCH" ColumnName="PERFORM_BENCH" />
+                <ScalarProperty Name="INVEST_STRA" ColumnName="INVEST_STRA" />
+                <ScalarProperty Name="INVEST_BENCH" ColumnName="INVEST_BENCH" />
+                <ScalarProperty Name="INVEST_RANGE" ColumnName="INVEST_RANGE" />
+                <ScalarProperty Name="INVEST_TENET" ColumnName="INVEST_TENET" />
+                <ScalarProperty Name="INVEST_TARGET" ColumnName="INVEST_TARGET" />
+                <ScalarProperty Name="PROD_TYPE_NAME" ColumnName="PROD_TYPE_NAME" />
+                <ScalarProperty Name="CFP_TYPE" ColumnName="CFP_TYPE" />
+                <ScalarProperty Name="ISIN" ColumnName="ISIN" />
+                <ScalarProperty Name="CFP_CODE" ColumnName="CFP_CODE" />
+                <ScalarProperty Name="CFPSNAME" ColumnName="CFPSNAME" />
+                <ScalarProperty Name="CFPNAME" ColumnName="CFPNAME" />
+                <ScalarProperty Name="DECLAREDATE" ColumnName="DECLAREDATE" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WMP_TRUST">
+            <EntityTypeMapping TypeName="GeniusHistModel.v_WMP_TRUST">
+              <MappingFragment StoreEntitySet="V_WMP_TRUST">
+                <ScalarProperty Name="FIN_CYC_UNIT" ColumnName="FIN_CYC_UNIT" />
+                <ScalarProperty Name="FIN_CYC" ColumnName="FIN_CYC" />
+                <ScalarProperty Name="TRUST_PERI_UNIT" ColumnName="TRUST_PERI_UNIT" />
+                <ScalarProperty Name="PRD_STATUS_NAME" ColumnName="PRD_STATUS_NAME" />
+                <ScalarProperty Name="PRD_STATUS" ColumnName="PRD_STATUS" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="IS_MERGE_NAME" ColumnName="IS_MERGE_NAME" />
+                <ScalarProperty Name="IS_MERGE" ColumnName="IS_MERGE" />
+                <ScalarProperty Name="STOP_LINE_REMARK" ColumnName="STOP_LINE_REMARK" />
+                <ScalarProperty Name="STOP_LINE" ColumnName="STOP_LINE" />
+                <ScalarProperty Name="ALERT_LINE_REMARK" ColumnName="ALERT_LINE_REMARK" />
+                <ScalarProperty Name="ALERT_LINE" ColumnName="ALERT_LINE" />
+                <ScalarProperty Name="RIST_WARE" ColumnName="RIST_WARE" />
+                <ScalarProperty Name="FEE_REMARK" ColumnName="FEE_REMARK" />
+                <ScalarProperty Name="PRD_REMARK" ColumnName="PRD_REMARK" />
+                <ScalarProperty Name="INVEST_REMARK" ColumnName="INVEST_REMARK" />
+                <ScalarProperty Name="NET_ENDDATE" ColumnName="NET_ENDDATE" />
+                <ScalarProperty Name="NET_STARTDATE" ColumnName="NET_STARTDATE" />
+                <ScalarProperty Name="NET_FREQ" ColumnName="NET_FREQ" />
+                <ScalarProperty Name="CRED_ENHA_MODE" ColumnName="CRED_ENHA_MODE" />
+                <ScalarProperty Name="ADD_CAP_REMARK" ColumnName="ADD_CAP_REMARK" />
+                <ScalarProperty Name="ADD_CAP" ColumnName="ADD_CAP" />
+                <ScalarProperty Name="MIN_CAP_REMARK" ColumnName="MIN_CAP_REMARK" />
+                <ScalarProperty Name="MIN_INV_AMOUNT_TYPE" ColumnName="MIN_INV_AMOUNT_TYPE" />
+                <ScalarProperty Name="MIN_CAP" ColumnName="MIN_CAP" />
+                <ScalarProperty Name="BOOK_VAL" ColumnName="BOOK_VAL" />
+                <ScalarProperty Name="CONTR_SHT" ColumnName="CONTR_SHT" />
+                <ScalarProperty Name="ORG_TYPE_NAME" ColumnName="ORG_TYPE_NAME" />
+                <ScalarProperty Name="ORG_TYPE_CD" ColumnName="ORG_TYPE_CD" />
+                <ScalarProperty Name="ORGCODE" ColumnName="ORGCODE" />
+                <ScalarProperty Name="ORGNAME" ColumnName="ORGNAME" />
+                <ScalarProperty Name="ACTU_ISS_SIZE" ColumnName="ACTU_ISS_SIZE" />
+                <ScalarProperty Name="PLAN_ISS_SIZE" ColumnName="PLAN_ISS_SIZE" />
+                <ScalarProperty Name="PLAN_ISS_SIZE_CD" ColumnName="PLAN_ISS_SIZE_CD" />
+                <ScalarProperty Name="ACT_YLD_REMARK" ColumnName="ACT_YLD_REMARK" />
+                <ScalarProperty Name="INCOME_TYPE_NAME" ColumnName="INCOME_TYPE_NAME" />
+                <ScalarProperty Name="INCOME_TYPE" ColumnName="INCOME_TYPE" />
+                <ScalarProperty Name="ACT_YLD" ColumnName="ACT_YLD" />
+                <ScalarProperty Name="EXP_YLD_REMARK" ColumnName="EXP_YLD_REMARK" />
+                <ScalarProperty Name="CURNCY_NAME" ColumnName="CURNCY_NAME" />
+                <ScalarProperty Name="CURNCY" ColumnName="CURNCY" />
+                <ScalarProperty Name="EXP_YLD_TYPE" ColumnName="EXP_YLD_TYPE" />
+                <ScalarProperty Name="EXP_YLD" ColumnName="EXP_YLD" />
+                <ScalarProperty Name="LIQU_REASON" ColumnName="LIQU_REASON" />
+                <ScalarProperty Name="TRUST_MNG" ColumnName="TRUST_MNG" />
+                <ScalarProperty Name="INV_FLD_NAME" ColumnName="INV_FLD_NAME" />
+                <ScalarProperty Name="INV_FLD" ColumnName="INV_FLD" />
+                <ScalarProperty Name="SEC_INVEST_TYPE" ColumnName="SEC_INVEST_TYPE" />
+                <ScalarProperty Name="TRUST_TYPE_NAME" ColumnName="TRUST_TYPE_NAME" />
+                <ScalarProperty Name="TRUST_TYPE" ColumnName="TRUST_TYPE" />
+                <ScalarProperty Name="IS_TOT_NAME" ColumnName="IS_TOT_NAME" />
+                <ScalarProperty Name="IS_TOT" ColumnName="IS_TOT" />
+                <ScalarProperty Name="IS_CURNCY_NAME" ColumnName="IS_CURNCY_NAME" />
+                <ScalarProperty Name="IS_CURNCY" ColumnName="IS_CURNCY" />
+                <ScalarProperty Name="IS_PE_NAME" ColumnName="IS_PE_NAME" />
+                <ScalarProperty Name="IS_PE" ColumnName="IS_PE" />
+                <ScalarProperty Name="STRU_RATIO" ColumnName="STRU_RATIO" />
+                <ScalarProperty Name="IS_STRU_NAME" ColumnName="IS_STRU_NAME" />
+                <ScalarProperty Name="IS_STRU" ColumnName="IS_STRU" />
+                <ScalarProperty Name="IS_DLY_NAME" ColumnName="IS_DLY_NAME" />
+                <ScalarProperty Name="IS_DLY" ColumnName="IS_DLY" />
+                <ScalarProperty Name="IS_BRG_FRD_NAME" ColumnName="IS_BRG_FRD_NAME" />
+                <ScalarProperty Name="IS_BRG_FRD" ColumnName="IS_BRG_FRD" />
+                <ScalarProperty Name="EXPE_ENDDATE" ColumnName="EXPE_ENDDATE" />
+                <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+                <ScalarProperty Name="BUILD_DATE" ColumnName="BUILD_DATE" />
+                <ScalarProperty Name="CLOSE_REMARK" ColumnName="CLOSE_REMARK" />
+                <ScalarProperty Name="OPEN_REMARK" ColumnName="OPEN_REMARK" />
+                <ScalarProperty Name="TRUST_TERM" ColumnName="TRUST_TERM" />
+                <ScalarProperty Name="TRUST_PERI_DAYS" ColumnName="TRUST_PERI_DAYS" />
+                <ScalarProperty Name="TRUST_PERI" ColumnName="TRUST_PERI" />
+                <ScalarProperty Name="PERI_TYPE_NAME" ColumnName="PERI_TYPE_NAME" />
+                <ScalarProperty Name="PERI_TYPE" ColumnName="PERI_TYPE" />
+                <ScalarProperty Name="SALE_DAYS" ColumnName="SALE_DAYS" />
+                <ScalarProperty Name="PROM_ENDDATE" ColumnName="PROM_ENDDATE" />
+                <ScalarProperty Name="PROM_STARTDATE" ColumnName="PROM_STARTDATE" />
+                <ScalarProperty Name="ISS_YEAR" ColumnName="ISS_YEAR" />
+                <ScalarProperty Name="MAIN_CODE" ColumnName="MAIN_CODE" />
+                <ScalarProperty Name="MAIN_SNAME" ColumnName="MAIN_SNAME" />
+                <ScalarProperty Name="TRUST_SNAME" ColumnName="TRUST_SNAME" />
+                <ScalarProperty Name="CHI_SPEL" ColumnName="CHI_SPEL" />
+                <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+                <ScalarProperty Name="DECLAREDATE" ColumnName="DECLAREDATE" />
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WMP_AREA_DIC">
+            <EntityTypeMapping TypeName="GeniusHistModel.v_WMP_AREA_DIC">
+              <MappingFragment StoreEntitySet="V_WMP_AREA_DIC">
+                <ScalarProperty Name="INNER_CODE" ColumnName="INNER_CODE" />
+                <ScalarProperty Name="ISS_AREA" ColumnName="ISS_AREA" />
+                <ScalarProperty Name="PROV_NAME" ColumnName="PROV_NAME" />
+                <ScalarProperty Name="ISS_AREA_CODE" ColumnName="ISS_AREA_CODE" />
+                <ScalarProperty Name="ID_C" ColumnName="ID_C" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="WMP" ZoomLevel="28">
+        <EntityTypeShape EntityType="GeniusHistModel.BANK_FIN_DETAIL" Width="1.5" PointX="0.75" PointY="0.75" Height="16.209000447591144" />
+        <EntityTypeShape EntityType="GeniusHistModel.BANK_FIN_PRD" Width="1.5" PointX="2.75" PointY="0.75" Height="3.10385721842448" />
+        <EntityTypeShape EntityType="GeniusHistModel.BANK_FIN_PRD_PROSP" Width="1.5" PointX="4.75" PointY="0.75" Height="2.8990893554687531" />
+        <EntityTypeShape EntityType="GeniusHistModel.CFP_FEE_CHNG" Width="1.5" PointX="2.75" PointY="4.75" Height="8.2230537923177067" />
+        <EntityTypeShape EntityType="GeniusHistModel.CFP_ISS_ORG" Width="1.5" PointX="4.75" PointY="4.75" Height="3.3086250813802138" />
+        <EntityTypeShape EntityType="GeniusHistModel.CFP_PROFITSHEET" Width="1.5" PointX="6.75" PointY="0.75" Height="5.7658394368489532" />
+        <EntityTypeShape EntityType="GeniusHistModel.DISC_ACCE_CFP" Width="1.5" PointX="6.75" PointY="7.75" Height="3.3086250813802032" />
+        <EntityTypeShape EntityType="GeniusHistModel.FIN_PRD_RPT" Width="1.5" PointX="8.75" PointY="0.75" Height="3.5133929443359477" />
+        <EntityTypeShape EntityType="GeniusHistModel.GEN_REF" Width="1.5" PointX="8.75" PointY="5.75" Height="3.10385721842448" />
+        <EntityTypeShape EntityType="GeniusHistModel.ORG_PROFILE" Width="1.5" PointX="8.75" PointY="9.75" Height="17.028071899414073" />
+        <EntityTypeShape EntityType="GeniusHistModel.TRUST_PROFILE" Width="1.5" PointX="10.75" PointY="0.75" Height="15.18516113281251" />
+        <EntityTypeShape EntityType="GeniusHistModel.v_WMP_BANK_PROD" Width="1.5" PointX="5.375" PointY="12.75" Height="20.09958984375001" />
+        <EntityTypeShape EntityType="GeniusHistModel.v_WMP_CFP" Width="1.5" PointX="13.375" PointY="0.75" Height="12.318411051432292" />
+        <EntityTypeShape EntityType="GeniusHistModel.v_WMP_TRUST" Width="1.5" PointX="13.375" PointY="14.75" Height="18.256679077148448" />
+        <EntityTypeShape EntityType="GeniusHistModel.v_WMP_AREA_DIC" Width="1.5" PointX="15.375" PointY="0.75" Height="1.8752500406901049" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

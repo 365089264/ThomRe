@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>sqlserver</type>
+    <!--before run this job, create bondmisc to store bond misc data!!-->
+    <conn>Server=10.35.63.144;Database=EJVInput;Pooling=true;Uid=sa;Pwd=p@ssw0rd</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=bonddb;Password=bonddb;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+
+    <table-mapping source="[dbo].[bond]" destination="EJVBOND" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="asset_id" destination="asset_id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="SHORTNAME" destination="SHORTNAME"/>
+      <column-mapping source="LONGNAME" destination="LONGNAME"/>
+      <column-mapping source="ENDDATE_ISSUE" destination="ENDDATE_ISSUE"/>
+      <column-mapping source="PAYDATE" destination="PAYDATE"/>
+      <column-mapping source="FLOAT_INDEX" destination="FLOAT_INDEX"/>
+      <column-mapping source="SPREAD" destination="SPREAD"/>
+      <column-mapping source="ISSUER_SHORTNAME" destination="ISSUER_SHORTNAME"/>
+      <column-mapping source="ISSUER_LONGNAME" destination="ISSUER_LONGNAME"/>
+      <column-mapping source="PROVINCE_ISSUER" destination="PROVINCE_ISSUER"/>
+      <column-mapping source="GUARANTOR" destination="GUARANTOR"/>
+      <column-mapping source="GUARANTOR_RATING" destination="GUARANTOR_RATING"/>
+      <column-mapping source="GUARANTOR_ITEM" destination="GUARANTOR_ITEM"/>
+      <column-mapping source="LEAD_UNDWRT" destination="LEAD_UNDWRT"/>
+      <column-mapping source="CO_UNDWRT" destination="CO_UNDWRT"/>
+      <column-mapping source="UNDWRT_MEMBER" destination="UNDWRT_MEMBER"/>
+      <column-mapping source="UNDWRT_TYPE" destination="UNDWRT_TYPE"/>
+      <column-mapping source="TERM_EX" destination="TERM_EX"/>
+      <column-mapping source="ITEM_EX" destination="ITEM_EX"/>
+      <column-mapping source="USE_CAPITAL" destination="USE_CAPITAL"/>
+      <column-mapping source="BID_OBJECT" destination="BID_OBJECT"/>
+      <column-mapping source="BID_TYPE" destination="BID_TYPE"/>
+      <column-mapping source="BOOKMANAGER" destination="BOOKMANAGER"/>
+      <column-mapping source="BID_PRICE" destination="BID_PRICE"/>
+      <column-mapping source="BID_REGION" destination="BID_REGION"/>
+      <column-mapping source="MULTIPLE_PURCHASE" destination="MULTIPLE_PURCHASE"/>
+      <column-mapping source="FEE_RATE" destination="FEE_RATE"/>
+      <column-mapping source="ONLINE_POSITION" destination="ONLINE_POSITION"/>
+      <column-mapping source="ONLINE_CODE" destination="ONLINE_CODE"/>
+      <column-mapping source="DOMICILE" destination="DOMICILE"/>
+      <column-mapping source="LOCAL_RATING" destination="LOCAL_RATING"/>
+      <column-mapping source="STATUS" destination="STATUS"/>
+      <column-mapping source="LASTUPDATE" destination="LASTUPDATE"/>
+      <column-mapping source="CITY" destination="CITY"/>
+      <column-mapping source="LASTUPDATEDBY" destination="LASTUPDATEDBY"/>
+      <filter>
+        <![CDATA[lastupdate > {FromTime} AND lastupdate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

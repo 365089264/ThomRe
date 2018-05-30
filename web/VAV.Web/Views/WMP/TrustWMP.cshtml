@@ -1,0 +1,353 @@
+﻿@using VAV.Web.Common
+@{
+    var exportUrl = VirtualPathUtility.ToAbsolute("~/WMP/ExportExcelWMPTrustData");
+    var updateWmpCompanyUrl = VirtualPathUtility.ToAbsolute("~/WMP/UpdateWmpTrustCompany");
+    string datePickerId = "datePicker" + ViewBag.ID;
+    string endDatePickerId = "endDatePicker" + ViewBag.ID;
+    var sYear = DateTime.Now.Month == 1 ? DateTime.Now.Year - 1 : DateTime.Now.Year;
+    var sMonth = DateTime.Now.Month == 1 ? 12 : DateTime.Now.Month;
+    var startDate = new DateTime(sYear, sMonth, 1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var advancedButton = "advanced" + ViewBag.ID;
+
+    var selectedProducts = Html.Raw(Request.QueryString["products"] ?? "[]");
+}
+<div class="colorBlock trustminwidth">
+    <div class="Statisticalfilter">
+        <div style="height: 25px;">
+            <div class="wmpDiv">
+                @Resources.Global.WMP_InstitutionType</div>
+            <div style="float: left;">@Html.DropDownList("wmptrustOrgType", HtmlUtil.GetWmpTrustOrgType(), new { @class = "largeSelect", @onchange = "WMP.UpdateWmpTrustCompany();" })</div>
+            <div class="wmpDivSec">
+                 @Resources.Global.WMP_TrustCompany</div>
+            <div style="float: left;">@Html.DropDownList("wmpTrustCompany", HtmlUtil.GetWmpTrustCompany("all"), new { @class = "largeSelect", multiple = "multiple" })</div>
+            <div style="float: left;">
+                <input type="button" value="@Resources.Global.Report_Query" onclick="WMP.QueryWMPTrustData(1,true)"/>
+                <input type="button" value="@Resources.Global.AdvancedSearch" onclick="AdvanceQuery(this,@advancedButton,'#wmpTrustData','@Resources.Global.AdvancedSearch','@Resources.Global.HideAdvancedSearch','-webkit-calc(100% - 59px)','-webkit-calc(100% - 135px)')"/>
+                <input type="button" value="@Resources.Global.ColumnChooser" onclick="ColumnManager.OpenColumnSetting(@ViewBag.ID, function(){WMP.QueryWMPTrustData(1,true)})" />
+                <input type="button" value="@Resources.Global.Reset_Columns_Setting" onclick="ColumnManager.ResetColumnSetting(@ViewBag.ID,function(){WMP.QueryWMPTrustData(1,true)})" />
+            </div>
+        </div>
+        <div id="@advancedButton" style="display: none;clear:both;font-size: 11px;">
+            <div style="height: 25px;">
+                <div class="wmpDiv">@Resources.Global.WMP_TrustType</div>
+                <div style="float: left;">@Html.DropDownList("wmpTrustType", HtmlUtil.GetWMPGenRefByCode(8040), new { @class = "largeSelect" })</div>
+                <div class="wmpDivSec">@Resources.Global.WMP_InvestmentField</div>
+                <div style="float: left;">@Html.DropDownList("wmpTrustInvestDomain", HtmlUtil.GetWMPGenRefByCode(8041), new { @class = "largeSelect" })</div>
+                <div class="wmpDiv" style="width: 100px">@Resources.Global.WMP_ProductState</div>
+                <div style="float: left;">@Html.DropDownList("wmpTrustProductStatus", HtmlUtil.GetWMPGenRefByCode(8059), new { @class = "largeSelect" })</div>
+                <div class="wmpDivSec">@Resources.Global.Category_Term</div>
+                <div style="float: left;">
+                    <select id="wmpTrustTerm" class="largeSelect">
+                        <option value="all" selected="selected">@Resources.Global.Type_All</option>
+                        <option value="LT6M">@Resources.Global.Term_LT6M</option>
+                        <option value="6MTO1Y">@Resources.Global.Term_6MTO1Y</option>
+                        <option value="1YTO2Y">@Resources.Global.Term_1YTO2Y</option>
+                        <option value="GT2Y">@Resources.Global.Term_GT2Y</option>
+                    </select>
+                </div>
+            </div>
+            <div style="height: 25px;">
+                <div class="wmpDiv">@Resources.Global.WMP_InvestmentThreshold</div>
+                <div style="float: left;">
+                    <select id="wmpTrustMinimumAmount" class="largeSelect">
+                        <option value="all" selected="selected">@Resources.Global.Type_All</option>
+                        <option value="LT50">&lt;=50@(Resources.Global.Local10KSuffix)</option>
+                        <option value="50TO100">50@(Resources.Global.Local10KSuffix) -100@(Resources.Global.Local10KSuffix)</option>
+                        <option value="GT100">&gt;100@(Resources.Global.Local10KSuffix)</option>
+                    </select>
+                </div>
+                <div class="wmpDivSec">@Resources.Global.WMP_ExpectedYield</div>
+                <div style="float: left;">
+                    <select id="wmpTrustExpectedYield" class="largeSelect">
+                        <option value="all" selected="selected">@Resources.Global.Type_All</option>
+                        <option value="LT4P">&lt;=4%</option>
+                        <option value="4PTO8P">4%-8%</option>
+                        <option value="GT8P">&gt;8%</option>
+                    </select>
+                </div>
+                <div class="wmpDiv" style="width: 100px">@Resources.Global.WMP_ExpectedIssueSize</div>
+                <div style="float: left;">
+                    <select id="wmpTrustIssueAmount" class="largeSelect">
+                        <option value="all" selected="selected">@Resources.Global.Type_All</option>
+                        <option value="LT2K">&lt;=2000@(Resources.Global.Local10KSuffix)</option>
+                        <option value="2KTO5K">2000@(Resources.Global.Local10KSuffix)-5000@(Resources.Global.Local10KSuffix)</option>
+                        <option value="5KTO10K">5000@(Resources.Global.Local10KSuffix)-10000@(Resources.Global.Local10KSuffix)</option>
+                        <option value="10KTO20K">50000@(Resources.Global.Local10KSuffix)-20000@(Resources.Global.Local10KSuffix)</option>
+                        <option value="20KTO50K">20000@(Resources.Global.Local10KSuffix)-50000@(Resources.Global.Local10KSuffix)</option>
+                        <option value="GT50K">&gt;50000@(Resources.Global.Local10KSuffix)</option>
+                    </select>
+                </div>
+                <div class="wmpDivSec">
+                    TOT</div>
+                <div style="float: left;">
+                    <select id="wmpTrustIsTOT" class="largeSelect">
+                        <option value="all" selected="selected">@Resources.Global.Type_All</option>
+                        <option value="Y">@Resources.Global.WMP_QDII_Yes</option>
+                        <option value="N">@Resources.Global.WMP_QDII_No</option>
+                    </select>
+                </div>
+            </div>
+            <div style="height: 25px;">
+                <div class="wmpDiv" style="line-height: 19px;">
+                    <input id="wmpTrustStartDateChk" type="checkbox" checked="checked" />
+                    <select id="wmpTrustStartDateType" style="width: 100px">
+                        <option value="BUILD_DATE">@Resources.Global.WMP_StartingDate</option>
+                        <option value="DECLAREDATE">@Resources.Global.WMP_AnnouncementDate</option>
+                        <option value="PROM_STARTDATE" selected="selected">@Resources.Global.WMP_RecommendationStartingDate</option>
+                        <option value="PROM_ENDDATE">@Resources.Global.WMP_RecommendationClosingDate</option>
+                        <option value="ENDDATE">@Resources.Global.WMP_MaturityDate</option>
+                    </select>
+                 </div>
+                <span style="float: left;width: 27px;margin-top:3px">@Resources.Global.WMP_Sale_Date_From</span>
+                @Html.TextBox(@datePickerId, @startDate, new { @class = "dateInput", @readonly = "readonly", @style = "width:92px;float:left" })
+                <span class="wmpDivSec">@Resources.Global.WMP_Sale_Date_To</span>
+                @Html.TextBox(@endDatePickerId, @endDate, new { @class = "dateInput", @readonly = "readonly", @style = "width:118px;float:left" })
+                <span style="float: left;width: 100px;margin:3px 0px 0px 8px">@Resources.Global.WMP_PrivateFund</span>
+                <select id="wmpTrustIsPE" style="float: left;margin-top:3px;width: 130px">
+                    <option value="all" selected="selected">@Resources.Global.Type_All</option>
+                    <option value="Y">@Resources.Global.WMP_QDII_Yes</option>
+                    <option value="N">@Resources.Global.WMP_QDII_No</option>
+                </select>
+                <span style="float: left;width: 80px;margin:3px 0px 0px 8px">@Resources.Global.WMP_TrustProductName</span>
+                @Html.TextBox("wmpTrustProductName", "", new { @class = "text", @style = "float: left;width:118px;" })
+            </div>
+        </div>
+    </div>
+</div>
+<div id="wmpTrustblock" class="colorBlock" style="height: 91%; height: -webkit-calc(100% - 43px);
+    min-width: 1000px;">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@ViewBag.Name</span> <a href="#" class="exportExcel" onclick="WMP.ExportExcelWMPTrustData(this, @ViewBag.ID);">
+            <img alt="Export" title="@Resources.Global.Export_Max" src="~/Content/themes/base/images/excel_icon.png" />
+        </a>
+    </div>
+    <div id="emptyTrustMessage" style="display: none; margin-left: 10px;">@Resources.Global.Empty_Result</div>
+    <div id="wmpTrustPager">
+        <div id="wmpTrustPaginateOfLabel" class="paginateOfLable">
+        </div>
+        <div style="width: 300px; float: right; padding-right: 80px">
+            <div id="wmpTrustPaginate">
+            </div>
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+    <div id="wmpTrustData" style="height: 95%; height: -webkit-calc(100% - 60px); min-width: 328px;
+        overflow: auto">
+        <table id="wmpTrustDataTable" class="datatable Zebra" style="cursor: pointer;">
+            <thead>
+                <tr class="hr">
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div>@Resources.Global.Source</div>
+    </div>
+</div>
+<script type="text/javascript">
+    var WMP = (function (my) {
+        function updateTrustPaginate(data) {
+            if (data.Total == 0) return;
+            var start = (data.CurrentPage - 1) * data.PageSize + 1;
+            var end = data.CurrentPage * data.PageSize;
+            if(end > data.Total) end = data.Total;
+            $('#wmpTrustPaginateOfLabel').html(start + '-' + end + '@Resources.Global.WMP_of' + data.Total);
+            $('#wmpTrustPaginate').paginate({
+                count: Math.ceil(data.Total/data.PageSize),
+                start: data.CurrentPage,
+                display: 10,
+                border: false,
+                text_color: '#00B3E3',
+                background_color: 'none',
+                text_hover_color: '#28D2FF',
+                background_hover_color: 'none',
+                images: false,
+                mouse: 'press',
+                onChange: function (page) {
+                    my.QueryWMPTrustData(page,false);
+                },
+                firstText:'@Resources.Global.Paginate_First',
+                lastText:'@Resources.Global.Paginate_Last'
+            });
+        }
+        my.UpdateWMPTrustData = function (data,rh,updatePage) {
+            if(rh) {
+                $.template("colTemp", '<th class="sortColumn" tag="${Sort}" onclick="WMP.SortWMPTrustData(this, \'${ColumnName}\')">${Name}<span></span></th>');
+                $('#wmpTrustDataTable thead tr').empty();
+                $("#wmpTrustDataTable thead tr").append('<th>' + WMP.wmpcomparelanguage.compareButtonText + '</th>');
+                $.tmpl("colTemp", data.ColumTemplate).appendTo("#wmpTrustDataTable thead tr");
+            }
+            var markup = WMP.BuildRowTemplate(data.ColumTemplate,'/WMP/TrustWMPDetail/');
+            markup = markup.replace('<tr>','<tr ><td><input type="checkbox"  data-inner-code="${INNER_CODE}" data-prd-name="${PRD_NAME}" /></td>');
+            $.template("rowTemplate", markup);
+            $('#wmpTrustDataTable tbody').empty();
+            $.tmpl("rowTemplate", data.RowData).appendTo("#wmpTrustDataTable tbody");
+
+            updatePage = typeof updatePage !== 'undefined' ? updatePage : true;
+            if(updatePage){
+                if(typeof my.tcmp != "undefined"){
+                    my.tcmp.updatePage();
+                }
+            }
+
+            updateTrustPaginate(data);
+        };
+        my.SortWMPTrustData = function(th, orderColumn) {
+            my.AddSortWMPBankTag(th, orderColumn);
+            $("#wmpTrustDataTable").data('orderby',orderColumn + " " + $(th).attr('tag'));
+            my.QueryWMPTrustData(1,false);
+        };
+        my.QueryWMPTrustData = function(page,rh) {
+            var companys='all';
+            if($("#wmpTrustCompany option").length==0)
+            {
+               return;
+            }
+            if($("#wmpTrustCompany option").length!=$("#wmpTrustCompany option:selected").length)
+            {
+                companys=$("#wmpTrustCompany").val().join();
+            }
+            AjaxWithBlock($('#wmpTrustblock').parent(), "/WMP/GetWMPTrustData",
+                {
+                    includeTimeSpan: $("#wmpTrustStartDateChk").is(':checked'),
+                    queryDateType:$('#wmpTrustStartDateType').val(),
+                    orgType:$('#wmptrustOrgType').val(),
+                    org:companys,
+                    trustType:$('#wmpTrustType').val(),
+                    InvField:$('#wmpTrustInvestDomain').val(),
+                    yield:$('#wmpTrustExpectedYield').val(),
+                    prodState:$('#wmpTrustProductStatus').val(),
+                    term:$('#wmpTrustTerm').val(),
+                    minCap:$('#wmpTrustMinimumAmount').val(),
+                    startDate:$("#@datePickerId").val(),
+                    endDate: $('#@endDatePickerId').val(),
+                    prodName:$('#wmpTrustProductName').val(),
+                    is_pe:$('#wmpTrustIsPE').val(),
+                    is_tot:$('#wmpTrustIsTOT').val(),
+                    order:$("#wmpTrustDataTable").data('orderby'),
+                    issueAmount:$('#wmpTrustIssueAmount').val(),
+                    startPage:page,
+                    id: @ViewBag.ID
+                }, function (data) {
+                    if (data.Total == 0) {
+                        $("#emptyTrustMessage").show();
+                        $("#wmpTrustPager").hide();
+                        $("#wmpTrustDataTable").hide();
+                    }
+                    else {
+                        $("#emptyTrustMessage").hide();
+                        $("#wmpTrustPager").show();
+                        $("#wmpTrustDataTable").show();
+                        WMP.UpdateWMPTrustData(data,rh);
+                    }
+                });
+        };
+        my.ExportExcelWMPTrustData = function(link, id) {
+            var companys='all';
+            if($("#wmpTrustCompany option").length==0)
+            {
+               return;
+            }
+            if($("#wmpTrustCompany option").length!=$("#wmpTrustCompany option:selected").length)
+            {
+                companys=$("#wmpTrustCompany").val().join();
+            }
+            $(link).attr("href",
+                "@exportUrl?includeTimeSpan=" + $("#wmpTrustStartDateChk").is(':checked')
+                            +"&queryDateType=" + $('#wmpTrustStartDateType').val()
+                                + '&orgType=' + $('#wmptrustOrgType').val()
+                                    + '&org=' + companys
+                                        + '&trustType=' + $('#wmpTrustType').val()
+                                            + '&InvField=' +$('#wmpTrustInvestDomain').val()
+                                               + '&yield=' + $('#wmpTrustExpectedYield').val()
+                                                   +'&prodState=' + $('#wmpTrustProductStatus').val()
+                                                      +'&term=' + $('#wmpTrustTerm').val()
+                                                          +'&minCap=' + $('#wmpTrustMinimumAmount').val()
+                                                              +'&startDate=' + $("#@datePickerId").val()
+                                                                  + '&endDate=' + $('#@endDatePickerId').val()
+                                                                     + '&prodName=' + $('#wmpTrustProductName').val()
+                                                                        +'&is_pe='+$('#wmpTrustIsPE').val()
+                                                                            +'&is_tot=' + $('#wmpTrustIsTOT').val()
+                                                                                + '&order=' + $("#wmpTrustDataTable").data('orderby')
+                                                                                    +'&startPage=' + $('#wmpTrustPaginate .jPag-current').text()
+                                                                                        +'&issueAmount=' + $('#wmpTrustIssueAmount').val()
+                                                                                            + '&id=' + id
+            );
+        };
+        my.UpdateWmpTrustCompany = function() {
+            var type = $('#wmptrustOrgType option:selected').val();
+            $.ajax({
+                type: 'POST',
+                url: window.updateWmpCompanyUrl,
+                data: {
+                    type: type
+                },
+                success: function (data) {
+                    $("#wmpTrustCompany").html(data);
+                    $("#wmpTrustCompany").multiselect('refresh');
+                    $("#wmpTrustCompany").multiselect('checkAll');
+                },
+                async: true
+            });
+        };
+        return my;
+    } (WMP || {}));
+    $(function () {
+
+        window.updateWmpCompanyUrl = '@updateWmpCompanyUrl';
+        
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        $("#wmpTrustCompany").multiselect({
+            buttonMinWidth: 115,
+            menuMinWidth: 240,
+            checkAllText: '@Resources.Global.Select_All',
+            uncheckAllText: '@Resources.Global.Unselect_All',
+            noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+            selectedText: '#@Resources.Global.Selected'
+        });
+
+        var wmpTrustData = @{ Html.RenderAction("GetWMPTrustData", "WMP", new
+                        {
+                            includeTimeSpan = true,
+                            queryDateType = "PROM_STARTDATE",
+                            org = "all",
+                            orgType = "all",
+                            trustType = "all",
+                            InvField = "all",
+                            yield = "all",
+                            prodState = "all",
+                            term = "all",
+                            minCap = "all",
+                            startDate = startDate,
+                            endDate = endDate,
+                            prodName = "",
+                            is_pe = "all",
+                            is_tot = "all",
+                            order = "",
+                            issueAmount ="all",
+                            startPage = 1,
+                            id = ViewBag.ID,
+                            isHTML = true
+                        }); };
+        $("#wmpTrustDataTable").data('orderby', '');
+        WMP.UpdateWMPTrustData(wmpTrustData,true,false);
+        var cmp = $("#wmpTrustData").wmpcompare({
+            defaultItems: @selectedProducts ,
+            reportId:65,
+            tabName:"@Resources.Global.WMP_Trust_Compare_Title",
+            trace:'@Resources.Global.WMP_Trust_Compare_Title',
+            title:'@Resources.Global.WMP_Trust_Compare_Title',
+            itemClickHandler:function(code,name) {
+                WMP.OpenBankWMPDetail(code, name, '/WMP/TrustWMPDetail/');
+            }
+        });
+
+        WMP.tcmp = cmp;
+    });
+</script>

@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=srdb;Password=srdb;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.25)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=srdb;Password=srdb;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="CFETS_BONDFORWARD_BONDTYPE" destination="CFETS_BONDFORWARD_BONDTYPE" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_BONDFORWARD_INSTICATBAL" destination="CFETS_BONDFORWARD_INSTICATBAL" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+	    <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_BONDFORWARD_INSTITUTION" destination="CFETS_BONDFORWARD_INSTITUTION" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_BONDFORWARD_TRADECATALOG" destination="CFETS_BONDFORWARD_TRADECATALOG" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_BUYOUTREPO_BONDTYPE" destination="CFETS_BUYOUTREPO_BONDTYPE" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_BUYOUTREPO_INSTICATBAL" destination="CFETS_BUYOUTREPO_INSTICATBAL" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_BUYOUTREPO_INSTITUTION" destination="CFETS_BUYOUTREPO_INSTITUTION" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_BUYOUTREPO_TRADECATALOG" destination="CFETS_BUYOUTREPO_TRADECATALOG" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_CNYFXFDREP_CNYFXFORWARDS" destination="CFETS_CNYFXFDREP_CNYFXFORWARDS" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_CNYFXSPOTREP_CNYFXSPOT" destination="CFETS_CNYFXSPOTREP_CNYFXSPOT" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_CNYFXSWAPREP_CNYFXSWAP" destination="CFETS_CNYFXSWAPREP_CNYFXSWAP" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_FOGCUYSPREP_FORGCURYSPOT" destination="CFETS_FOGCUYSPREP_FORGCURYSPOT" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_INTBAKLON_INSTICATBAL" destination="CFETS_INTBAKLON_INSTICATBAL" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_INTBAKLON_INSTITUTION" destination="CFETS_INTBAKLON_INSTITUTION" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_INTBAKLON_TRADECATALOG" destination="CFETS_INTBAKLON_TRADECATALOG" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_INTRATSWP_MONTHREPORT" destination="CFETS_INTRATSWP_MONTHREPORT" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_PLDGSTLRPO_INSTICATBAL" destination="CFETS_PLDGSTLRPO_INSTICATBAL" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_PLDGSTLRPO_INSTITUTION" destination="CFETS_PLDGSTLRPO_INSTITUTION" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_PLDGSTLRPO_TRADECATALOG" destination="CFETS_PLDGSTLRPO_TRADECATALOG" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_TRANINCSHREP_BONDCATY" destination="CFETS_TRANINCSHREP_BONDCATY" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_TRANINCSHREP_INSTITUTION" destination="CFETS_TRANINCSHREP_INSTITUTION" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_TRANINCSHREP_INTRECKON" destination="CFETS_TRANINCSHREP_INTRECKON" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFETS_TRANINCSHREP_PERDFORCOMP" destination="CFETS_TRANINCSHREP_PERDFORCOMP" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

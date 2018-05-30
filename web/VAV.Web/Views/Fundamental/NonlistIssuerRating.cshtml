@@ -1,0 +1,46 @@
+﻿@using VAV.Web.Common
+@model List<VAV.Model.Data.ZCX.RATE_ORG_CRED_HIS>
+           
+@if (Model.Count > 0)
+{
+    <table class="datatable Zebra">
+        <thead>
+            <tr class="hr">
+                <th>@Resources.Global.Bond_Rating_Date</th>
+                <th>@Resources.Global.Bond_Rating_Type</th>
+                <th>@Resources.Global.Bond_Rating_Class</th>
+                <th>@Resources.Global.Bond_Rating_Orgnization</th>
+                <th>@Resources.Global.Issuer_Rate</th>
+                <th>@Resources.Global.RATE_POINT</th>
+                <th>@Resources.Global.Bond_Rating_Prospect</th>
+                <th>@Resources.Global.Bond_Rating_Report</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.RATE_WRIT_DATE.ToString("yyyy-MM-dd")</td>
+                    <td>@item.RATE_TYPE</td>
+                    <td>@item.RATE_CLS</td>
+                    <td>@item.Org</td>
+                    <td>@item.ISS_CRED_LEVEL</td>
+                    <td title="@item.RATE_POINT"><a class="width-limited link" href="javascript:ShowDialog('@Resources.Global.RATE_POINT', @Json.Encode(@item.RATE_POINT))">@item.RATE_POINT</a></td>
+                    <td>@item.RATE_PROS</td>
+                    <td title="@item.RATE_TITLE">
+                        @if (@item.ContainFile)
+                        {
+                            <a class="width-limited link" style="max-width: 250px;" href="@Url.Action("DownloadRatingFile", "Fundamental", new { id = item.RATE_ID })">@item.RATE_TITLE</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    @Resources.Global.Empty_Result
+}
+<div>@Resources.Global.Source</div>
+

@@ -1,0 +1,1776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="BONDFUTURECONTRACT" EntityType="Model.Store.BONDFUTURECONTRACT" store:Type="Tables" Schema="BONDDB" />
+          <EntitySet Name="GCODES_CDC_ASSET_CLASS_CDS" EntityType="Model.Store.GCODES_CDC_ASSET_CLASS_CDS" store:Type="Tables" store:Schema="BONDDB" store:Name="GCODES_CDC_ASSET_CLASS_CDS">
+            <DefiningQuery>SELECT 
+      "GCODES_CDC_ASSET_CLASS_CDS"."CDC_ASSET_CLASS_CD" AS "CDC_ASSET_CLASS_CD", 
+      "GCODES_CDC_ASSET_CLASS_CDS"."CDC_ASSET_CLASS_DESCR" AS "CDC_ASSET_CLASS_DESCR", 
+      "GCODES_CDC_ASSET_CLASS_CDS"."ASSET_LAST_CHG_DT" AS "ASSET_LAST_CHG_DT"
+      FROM "BONDDB"."GCODES_CDC_ASSET_CLASS_CDS" "GCODES_CDC_ASSET_CLASS_CDS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GCODES_COUPON_CLASS_CDS" EntityType="Model.Store.GCODES_COUPON_CLASS_CDS" store:Type="Tables" store:Schema="BONDDB" store:Name="GCODES_COUPON_CLASS_CDS">
+            <DefiningQuery>SELECT 
+      "GCODES_COUPON_CLASS_CDS"."COUPON_CLASS_CD" AS "COUPON_CLASS_CD", 
+      "GCODES_COUPON_CLASS_CDS"."COUPON_CLASS_SDESCR" AS "COUPON_CLASS_SDESCR", 
+      "GCODES_COUPON_CLASS_CDS"."COUPON_CLASS_DESCR" AS "COUPON_CLASS_DESCR", 
+      "GCODES_COUPON_CLASS_CDS"."ASSET_LAST_CHG_DT" AS "ASSET_LAST_CHG_DT"
+      FROM "BONDDB"."GCODES_COUPON_CLASS_CDS" "GCODES_COUPON_CLASS_CDS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GCODES_SECOFF_CDS" EntityType="Model.Store.GCODES_SECOFF_CDS" store:Type="Tables" store:Schema="BONDDB" store:Name="GCODES_SECOFF_CDS">
+            <DefiningQuery>SELECT 
+      "GCODES_SECOFF_CDS"."SECOFF_CD" AS "SECOFF_CD", 
+      "GCODES_SECOFF_CDS"."SECOFF_DESCR" AS "SECOFF_DESCR", 
+      "GCODES_SECOFF_CDS"."AUCTION_FL" AS "AUCTION_FL", 
+      "GCODES_SECOFF_CDS"."PRIVATE_PLACE_FL" AS "PRIVATE_PLACE_FL", 
+      "GCODES_SECOFF_CDS"."RULE_144A_FL" AS "RULE_144A_FL", 
+      "GCODES_SECOFF_CDS"."ASSET_LAST_CHG_DT" AS "ASSET_LAST_CHG_DT"
+      FROM "BONDDB"."GCODES_SECOFF_CDS" "GCODES_SECOFF_CDS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GOVCORP_ASSET_IDENT" EntityType="Model.Store.GOVCORP_ASSET_IDENT" store:Type="Tables" store:Schema="BONDDB" store:Name="GOVCORP_ASSET_IDENT">
+            <DefiningQuery>SELECT 
+      "GOVCORP_ASSET_IDENT"."ASSETID" AS "ASSETID", 
+      "GOVCORP_ASSET_IDENT"."ID_CD" AS "ID_CD", 
+      "GOVCORP_ASSET_IDENT"."ID_EFF_DT" AS "ID_EFF_DT", 
+      "GOVCORP_ASSET_IDENT"."ID_NUMBER" AS "ID_NUMBER", 
+      "GOVCORP_ASSET_IDENT"."ISS_TYPE_CD" AS "ISS_TYPE_CD", 
+      "GOVCORP_ASSET_IDENT"."ID_TYPE" AS "ID_TYPE", 
+      "GOVCORP_ASSET_IDENT"."ASSET_LAST_CHG_DT" AS "ASSET_LAST_CHG_DT"
+      FROM "BONDDB"."GOVCORP_ASSET_IDENT" "GOVCORP_ASSET_IDENT"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TYPELIST" EntityType="Model.Store.TYPELIST" store:Type="Tables" store:Schema="BONDDB" store:Name="TYPELIST">
+            <DefiningQuery>SELECT 
+      "TYPELIST"."ID" AS "ID", 
+      "TYPELIST"."TABLE_CD" AS "TABLE_CD", 
+      "TYPELIST"."ENGLISH_NAME" AS "ENGLISH_NAME", 
+      "TYPELIST"."CHINESE_NAME" AS "CHINESE_NAME", 
+      "TYPELIST"."TYPEVALUE" AS "TYPEVALUE"
+      FROM "BONDDB"."TYPELIST" "TYPELIST"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TYPEORDER" EntityType="Model.Store.TYPEORDER" store:Type="Tables" store:Schema="BONDDB" store:Name="TYPEORDER">
+            <DefiningQuery>SELECT 
+      "TYPEORDER"."TABLE_CD" AS "TABLE_CD", 
+      "TYPEORDER"."ENGLISH_NAME" AS "ENGLISH_NAME", 
+      "TYPEORDER"."CHINESE_NAME" AS "CHINESE_NAME", 
+      "TYPEORDER"."TYPE" AS "TYPE"
+      FROM "BONDDB"."TYPEORDER" "TYPEORDER"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_ASSET" EntityType="Model.Store.V_ASSET" store:Type="Views" store:Schema="BONDDB" store:Name="V_ASSET">
+            <DefiningQuery>SELECT 
+      "V_ASSET"."ASSET_ID" AS "ASSET_ID", 
+      "V_ASSET"."ID_NUMBER" AS "ID_NUMBER", 
+      "V_ASSET"."AMT_ISS_TOT" AS "AMT_ISS_TOT", 
+      "V_ASSET"."ASSET_DUPLICATE_CD" AS "ASSET_DUPLICATE_CD", 
+      "V_ASSET"."CALL_TERMS_FL" AS "CALL_TERMS_FL", 
+      "V_ASSET"."CPN_CLASS_CD" AS "CPN_CLASS_CD", 
+      "V_ASSET"."CPN_TYPE_CD" AS "CPN_TYPE_CD", 
+      "V_ASSET"."CURRENCY_CD" AS "CURRENCY_CD", 
+      "V_ASSET"."DAY_COUNT_CD" AS "DAY_COUNT_CD", 
+      "V_ASSET"."FLOAT_FORMULA" AS "FLOAT_FORMULA", 
+      "V_ASSET"."FLOAT_INDEX" AS "FLOAT_INDEX", 
+      "V_ASSET"."FLOAT_OFFSET" AS "FLOAT_OFFSET", 
+      "V_ASSET"."GUARANTEE_FL" AS "GUARANTEE_FL", 
+      "V_ASSET"."ISIN_NM" AS "ISIN_NM", 
+      "V_ASSET"."ISSUERID" AS "ISSUERID", 
+      "V_ASSET"."MATURITY_DT" AS "MATURITY_DT", 
+      "V_ASSET"."ORIG_AMT_ISS" AS "ORIG_AMT_ISS", 
+      "V_ASSET"."ORIG_DATED_DT" AS "ORIG_DATED_DT", 
+      "V_ASSET"."ORIG_ISS_DT" AS "ORIG_ISS_DT", 
+      "V_ASSET"."PAY_FREQ_CD" AS "PAY_FREQ_CD", 
+      "V_ASSET"."PUT_TERMS_FL" AS "PUT_TERMS_FL", 
+      "V_ASSET"."SECURED_FL" AS "SECURED_FL", 
+      "V_ASSET"."SECONDARY_INSU_FL" AS "SECONDARY_INSU_FL", 
+      "V_ASSET"."SETTLE_BUS_CTR_CD" AS "SETTLE_BUS_CTR_CD", 
+      "V_ASSET"."CDC_ASSET_CLASS_CD" AS "CDC_ASSET_CLASS_CD", 
+      "V_ASSET"."SENIORITY_CD" AS "SENIORITY_CD", 
+      "V_ASSET"."OFFER_REGISTRANT_NAME" AS "OFFER_REGISTRANT_NAME", 
+      "V_ASSET"."ORIG_AVG_LIFE" AS "ORIG_AVG_LIFE", 
+      "V_ASSET"."ORIG_ISS_AMT" AS "ORIG_ISS_AMT", 
+      "V_ASSET"."ORIG_ISS_CPN" AS "ORIG_ISS_CPN", 
+      "V_ASSET"."ORIG_ISS_CURR_CD" AS "ORIG_ISS_CURR_CD", 
+      "V_ASSET"."ORIG_ISS_PX" AS "ORIG_ISS_PX", 
+      "V_ASSET"."ORIG_ISS_YLD" AS "ORIG_ISS_YLD", 
+      "V_ASSET"."ORIG_ISSUE_DT" AS "ORIG_ISSUE_DT", 
+      "V_ASSET"."ORIG_YLD_MATURITY" AS "ORIG_YLD_MATURITY", 
+      "V_ASSET"."SENIORITY_TYPE_CD" AS "SENIORITY_TYPE_CD", 
+      "V_ASSET"."TERM_TO_MATURITY" AS "TERM_TO_MATURITY", 
+      "V_ASSET"."ID_CD" AS "ID_CD"
+      FROM "BONDDB"."V_ASSET" "V_ASSET"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_BOND_CN" EntityType="Model.Store.V_BOND_CN" store:Type="Views" store:Schema="BONDDB" store:Name="V_BOND_CN">
+            <DefiningQuery>SELECT 
+      "V_BOND_CN"."ASSETID" AS "ASSETID", 
+      "V_BOND_CN"."CODE" AS "CODE", 
+      "V_BOND_CN"."PYC" AS "PYC", 
+      "V_BOND_CN"."RIC" AS "RIC", 
+      "V_BOND_CN"."SHORTNAME" AS "SHORTNAME", 
+      "V_BOND_CN"."ISSUEDATE" AS "ISSUEDATE", 
+      "V_BOND_CN"."ISSUEAMOUNT" AS "ISSUEAMOUNT", 
+      "V_BOND_CN"."INTERESTRATE" AS "INTERESTRATE", 
+      "V_BOND_CN"."ISSUEPRICE" AS "ISSUEPRICE", 
+      "V_BOND_CN"."ISSUECOUNTRYCD" AS "ISSUECOUNTRYCD", 
+      "V_BOND_CN"."ISSUECOUNTRY" AS "ISSUECOUNTRY", 
+      "V_BOND_CN"."TERM" AS "TERM", 
+      "V_BOND_CN"."BONDTERMCD" AS "BONDTERMCD", 
+      "V_BOND_CN"."BONDTERM" AS "BONDTERM", 
+      "V_BOND_CN"."ORIGTERM" AS "ORIGTERM", 
+      "V_BOND_CN"."ORIGAVGLIFE" AS "ORIGAVGLIFE", 
+      "V_BOND_CN"."BONDTERMNUMBER" AS "BONDTERMNUMBER", 
+      "V_BOND_CN"."YIELD" AS "YIELD", 
+      "V_BOND_CN"."ISINNUM" AS "ISINNUM", 
+      "V_BOND_CN"."DAYCOUNTCD" AS "DAYCOUNTCD", 
+      "V_BOND_CN"."ORIGISSCURRCD" AS "ORIGISSCURRCD", 
+      "V_BOND_CN"."ISFLOAT" AS "ISFLOAT", 
+      "V_BOND_CN"."BONDCLASSCD" AS "BONDCLASSCD", 
+      "V_BOND_CN"."BONDCLASSDESCR" AS "BONDCLASSDESCR", 
+      "V_BOND_CN"."OPTIONC" AS "OPTIONC", 
+      "V_BOND_CN"."OPTIONDESCR" AS "OPTIONDESCR", 
+      "V_BOND_CN"."COUPONCLASSCD" AS "COUPONCLASSCD", 
+      "V_BOND_CN"."COUPONCLASSDESCR" AS "COUPONCLASSDESCR", 
+      "V_BOND_CN"."PAYFREQUENCYCD" AS "PAYFREQUENCYCD", 
+      "V_BOND_CN"."PAYFREQUENCY" AS "PAYFREQUENCY", 
+      "V_BOND_CN"."ANNOUCEMENTDATE" AS "ANNOUCEMENTDATE", 
+      "V_BOND_CN"."ORIGDATEDDATE" AS "ORIGDATEDDATE", 
+      "V_BOND_CN"."MATURITYDATE" AS "MATURITYDATE", 
+      "V_BOND_CN"."LISTINGDATE" AS "LISTINGDATE", 
+      "V_BOND_CN"."FLOATINDEX" AS "FLOATINDEX", 
+      "V_BOND_CN"."FLOATINDEXDESCR" AS "FLOATINDEXDESCR", 
+      "V_BOND_CN"."FLOATOFFSET" AS "FLOATOFFSET", 
+      "V_BOND_CN"."RATINGCD" AS "RATINGCD", 
+      "V_BOND_CN"."RATINGSRCCD" AS "RATINGSRCCD", 
+      "V_BOND_CN"."RATINGSRCDESCR" AS "RATINGSRCDESCR", 
+      "V_BOND_CN"."FIRSTDAYCLOSINGPRICE" AS "FIRSTDAYCLOSINGPRICE", 
+      "V_BOND_CN"."FIRSTDAYCHANGE" AS "FIRSTDAYCHANGE", 
+      "V_BOND_CN"."FIRSTDAYVOLUME" AS "FIRSTDAYVOLUME", 
+      "V_BOND_CN"."FIRSTDAYTURNOVERRATE" AS "FIRSTDAYTURNOVERRATE", 
+      "V_BOND_CN"."PARTYRATINGCD" AS "PARTYRATINGCD", 
+      "V_BOND_CN"."PARTYRATINGSRCCD" AS "PARTYRATINGSRCCD", 
+      "V_BOND_CN"."PARTYRATINGSRCDESCR" AS "PARTYRATINGSRCDESCR", 
+      "V_BOND_CN"."ISSUER" AS "ISSUER", 
+      "V_BOND_CN"."BOOKMANAGER" AS "BOOKMANAGER", 
+      "V_BOND_CN"."LEADUNDERWRITER" AS "LEADUNDERWRITER", 
+      "V_BOND_CN"."COUNDERWRITER" AS "COUNDERWRITER", 
+      "V_BOND_CN"."UNDERWRITERMEMBER" AS "UNDERWRITERMEMBER", 
+      "V_BOND_CN"."PAYDATE" AS "PAYDATE", 
+      "V_BOND_CN"."BONDNAME" AS "BONDNAME", 
+      "V_BOND_CN"."STATUSONLIQCD" AS "STATUSONLIQCD", 
+      "V_BOND_CN"."STATUSONLIQDESCR" AS "STATUSONLIQDESCR", 
+      "V_BOND_CN"."CODELIST" AS "CODELIST", 
+      "V_BOND_CN"."ISSUERORGID" AS "ISSUERORGID", 
+      "V_BOND_CN"."ISSUERINDUSECTORCD" AS "ISSUERINDUSECTORCD", 
+      "V_BOND_CN"."ISSUERINDUSECTORDESCR" AS "ISSUERINDUSECTORDESCR", 
+      "V_BOND_CN"."ISSUERINDUSUBSECTORCD" AS "ISSUERINDUSUBSECTORCD", 
+      "V_BOND_CN"."ISSUERINDUSUBSECTORDESCR" AS "ISSUERINDUSUBSECTORDESCR", 
+      "V_BOND_CN"."GUARANTORNAME" AS "GUARANTORNAME", 
+      "V_BOND_CN"."GUARANTORINDUSECTORCD" AS "GUARANTORINDUSECTORCD", 
+      "V_BOND_CN"."GUARANTORINDUSECTORDESCR" AS "GUARANTORINDUSECTORDESCR", 
+      "V_BOND_CN"."ENDDATEOFISSUE" AS "ENDDATEOFISSUE", 
+      "V_BOND_CN"."ISSUETYPECD" AS "ISSUETYPECD", 
+      "V_BOND_CN"."ISSUETYPEDESCR" AS "ISSUETYPEDESCR", 
+      "V_BOND_CN"."AUCTIONTYPE" AS "AUCTIONTYPE", 
+      "V_BOND_CN"."AUCTIONDATE" AS "AUCTIONDATE", 
+      "V_BOND_CN"."TOTALAPPLIEDFOR" AS "TOTALAPPLIEDFOR", 
+      "V_BOND_CN"."SENIORITYCD" AS "SENIORITYCD", 
+      "V_BOND_CN"."SENIORITYDESCR" AS "SENIORITYDESCR", 
+      "V_BOND_CN"."CIBONDFLAG" AS "CIBONDFLAG", 
+      "V_BOND_CN"."CIBONDFLAGDESCR" AS "CIBONDFLAGDESCR", 
+      "V_BOND_CN"."OTHBONDTYPECD" AS "OTHBONDTYPECD", 
+      "V_BOND_CN"."OTHBONDTYPEDESCR" AS "OTHBONDTYPEDESCR", 
+      "V_BOND_CN"."TAPISSUEFLAG" AS "TAPISSUEFLAG", 
+      "V_BOND_CN"."TERMEX" AS "TERMEX", 
+      "V_BOND_CN"."ITERMEX" AS "ITERMEX", 
+      "V_BOND_CN"."PROVINCEOFISSUER" AS "PROVINCEOFISSUER", 
+      "V_BOND_CN"."GUARANTORRATING" AS "GUARANTORRATING", 
+      "V_BOND_CN"."AUCTIONOJECT" AS "AUCTIONOJECT", 
+      "V_BOND_CN"."GUARANTORITEM" AS "GUARANTORITEM", 
+      "V_BOND_CN"."UNDERWRITERTYPE" AS "UNDERWRITERTYPE", 
+      "V_BOND_CN"."BIDPRICE" AS "BIDPRICE", 
+      "V_BOND_CN"."BIDREGION" AS "BIDREGION", 
+      "V_BOND_CN"."MULTIPURCHASE" AS "MULTIPURCHASE", 
+      "V_BOND_CN"."FEERATE" AS "FEERATE", 
+      "V_BOND_CN"."ONLINEPOSITION" AS "ONLINEPOSITION", 
+      "V_BOND_CN"."ONLINECODE" AS "ONLINECODE", 
+      "V_BOND_CN"."DOMICILE" AS "DOMICILE", 
+      "V_BOND_CN"."DEBTTYPECD" AS "DEBTTYPECD", 
+      "V_BOND_CN"."DEBTTYPEDESCR" AS "DEBTTYPEDESCR", 
+      "V_BOND_CN"."ASSETTYPECD" AS "ASSETTYPECD", 
+      "V_BOND_CN"."ASSETTYPEDESCR" AS "ASSETTYPEDESCR", 
+      "V_BOND_CN"."PARTYCNTRYINCORPCD" AS "PARTYCNTRYINCORPCD", 
+      "V_BOND_CN"."PARTYCNTRYINCORPDESCR" AS "PARTYCNTRYINCORPDESCR", 
+      "V_BOND_CN"."ISSUERDOMICILE" AS "ISSUERDOMICILE", 
+      "V_BOND_CN"."RATINGINFOCD" AS "RATINGINFOCD", 
+      "V_BOND_CN"."RATINGINFO" AS "RATINGINFO", 
+      "V_BOND_CN"."SECCLASSCD" AS "SECCLASSCD", 
+      "V_BOND_CN"."LASTCHANGEDATE" AS "LASTCHANGEDATE", 
+      "V_BOND_CN"."BONDRATINGHIST" AS "BONDRATINGHIST", 
+      "V_BOND_CN"."BONDISSUERRATING" AS "BONDISSUERRATING", 
+      "V_BOND_CN"."AMTISSTOT" AS "AMTISSTOT", 
+      "V_BOND_CN"."PROVINCEORDER" AS "PROVINCEORDER", 
+      "V_BOND_CN"."EXCHANGECODE" AS "EXCHANGECODE", 
+      "V_BOND_CN"."EXCHANGENAME" AS "EXCHANGENAME", 
+      "V_BOND_CN"."TRUSTEECODE" AS "TRUSTEECODE", 
+      "V_BOND_CN"."TRUSTEENAME" AS "TRUSTEENAME", 
+      "V_BOND_CN"."LEADUNDERWRITERNUM" AS "LEADUNDERWRITERNUM"
+      FROM "BONDDB"."V_BOND_CN" "V_BOND_CN"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_BOND_EN" EntityType="Model.Store.V_BOND_EN" store:Type="Views" store:Schema="BONDDB" store:Name="V_BOND_EN">
+            <DefiningQuery>SELECT 
+      "V_BOND_EN"."ASSETID" AS "ASSETID", 
+      "V_BOND_EN"."CODE" AS "CODE", 
+      "V_BOND_EN"."PYC" AS "PYC", 
+      "V_BOND_EN"."RIC" AS "RIC", 
+      "V_BOND_EN"."SHORTNAME" AS "SHORTNAME", 
+      "V_BOND_EN"."ISSUEDATE" AS "ISSUEDATE", 
+      "V_BOND_EN"."ISSUEAMOUNT" AS "ISSUEAMOUNT", 
+      "V_BOND_EN"."INTERESTRATE" AS "INTERESTRATE", 
+      "V_BOND_EN"."ISSUEPRICE" AS "ISSUEPRICE", 
+      "V_BOND_EN"."ISSUECOUNTRYCD" AS "ISSUECOUNTRYCD", 
+      "V_BOND_EN"."ISSUECOUNTRY" AS "ISSUECOUNTRY", 
+      "V_BOND_EN"."TERM" AS "TERM", 
+      "V_BOND_EN"."BONDTERMCD" AS "BONDTERMCD", 
+      "V_BOND_EN"."BONDTERM" AS "BONDTERM", 
+      "V_BOND_EN"."ORIGTERM" AS "ORIGTERM", 
+      "V_BOND_EN"."ORIGAVGLIFE" AS "ORIGAVGLIFE", 
+      "V_BOND_EN"."BONDTERMNUMBER" AS "BONDTERMNUMBER", 
+      "V_BOND_EN"."YIELD" AS "YIELD", 
+      "V_BOND_EN"."ISINNUM" AS "ISINNUM", 
+      "V_BOND_EN"."DAYCOUNTCD" AS "DAYCOUNTCD", 
+      "V_BOND_EN"."ORIGISSCURRCD" AS "ORIGISSCURRCD", 
+      "V_BOND_EN"."ISFLOAT" AS "ISFLOAT", 
+      "V_BOND_EN"."BONDCLASSCD" AS "BONDCLASSCD", 
+      "V_BOND_EN"."BONDCLASSDESCR" AS "BONDCLASSDESCR", 
+      "V_BOND_EN"."OPTIONC" AS "OPTIONC", 
+      "V_BOND_EN"."OPTIONDESCR" AS "OPTIONDESCR", 
+      "V_BOND_EN"."COUPONCLASSCD" AS "COUPONCLASSCD", 
+      "V_BOND_EN"."COUPONCLASSDESCR" AS "COUPONCLASSDESCR", 
+      "V_BOND_EN"."PAYFREQUENCYCD" AS "PAYFREQUENCYCD", 
+      "V_BOND_EN"."PAYFREQUENCY" AS "PAYFREQUENCY", 
+      "V_BOND_EN"."ANNOUCEMENTDATE" AS "ANNOUCEMENTDATE", 
+      "V_BOND_EN"."ORIGDATEDDATE" AS "ORIGDATEDDATE", 
+      "V_BOND_EN"."MATURITYDATE" AS "MATURITYDATE", 
+      "V_BOND_EN"."LISTINGDATE" AS "LISTINGDATE", 
+      "V_BOND_EN"."FLOATINDEX" AS "FLOATINDEX", 
+      "V_BOND_EN"."FLOATINDEXDESCR" AS "FLOATINDEXDESCR", 
+      "V_BOND_EN"."FLOATOFFSET" AS "FLOATOFFSET", 
+      "V_BOND_EN"."RATINGCD" AS "RATINGCD", 
+      "V_BOND_EN"."RATINGSRCCD" AS "RATINGSRCCD", 
+      "V_BOND_EN"."RATINGSRCDESCR" AS "RATINGSRCDESCR", 
+      "V_BOND_EN"."PARTYRATINGCD" AS "PARTYRATINGCD", 
+      "V_BOND_EN"."PARTYRATINGSRCCD" AS "PARTYRATINGSRCCD", 
+      "V_BOND_EN"."PARTYRATINGSRCDESCR" AS "PARTYRATINGSRCDESCR", 
+      "V_BOND_EN"."ISSUER" AS "ISSUER", 
+      "V_BOND_EN"."FIRSTDAYCLOSINGPRICE" AS "FIRSTDAYCLOSINGPRICE", 
+      "V_BOND_EN"."FIRSTDAYCHANGE" AS "FIRSTDAYCHANGE", 
+      "V_BOND_EN"."FIRSTDAYVOLUME" AS "FIRSTDAYVOLUME", 
+      "V_BOND_EN"."FIRSTDAYTURNOVERRATE" AS "FIRSTDAYTURNOVERRATE", 
+      "V_BOND_EN"."BOOKMANAGER" AS "BOOKMANAGER", 
+      "V_BOND_EN"."LEADUNDERWRITER" AS "LEADUNDERWRITER", 
+      "V_BOND_EN"."COUNDERWRITER" AS "COUNDERWRITER", 
+      "V_BOND_EN"."UNDERWRITERMEMBER" AS "UNDERWRITERMEMBER", 
+      "V_BOND_EN"."PAYDATE" AS "PAYDATE", 
+      "V_BOND_EN"."BONDNAME" AS "BONDNAME", 
+      "V_BOND_EN"."STATUSONLIQCD" AS "STATUSONLIQCD", 
+      "V_BOND_EN"."STATUSONLIQDESCR" AS "STATUSONLIQDESCR", 
+      "V_BOND_EN"."CODELIST" AS "CODELIST", 
+      "V_BOND_EN"."ISSUERORGID" AS "ISSUERORGID", 
+      "V_BOND_EN"."ISSUERINDUSECTORCD" AS "ISSUERINDUSECTORCD", 
+      "V_BOND_EN"."ISSUERINDUSECTORDESCR" AS "ISSUERINDUSECTORDESCR", 
+      "V_BOND_EN"."ISSUERINDUSUBSECTORCD" AS "ISSUERINDUSUBSECTORCD", 
+      "V_BOND_EN"."ISSUERINDUSUBSECTORDESCR" AS "ISSUERINDUSUBSECTORDESCR", 
+      "V_BOND_EN"."GUARANTORNAME" AS "GUARANTORNAME", 
+      "V_BOND_EN"."GUARANTORINDUSECTORCD" AS "GUARANTORINDUSECTORCD", 
+      "V_BOND_EN"."GUARANTORINDUSECTORDESCR" AS "GUARANTORINDUSECTORDESCR", 
+      "V_BOND_EN"."ENDDATEOFISSUE" AS "ENDDATEOFISSUE", 
+      "V_BOND_EN"."ISSUETYPECD" AS "ISSUETYPECD", 
+      "V_BOND_EN"."ISSUETYPEDESCR" AS "ISSUETYPEDESCR", 
+      "V_BOND_EN"."AUCTIONTYPE" AS "AUCTIONTYPE", 
+      "V_BOND_EN"."AUCTIONDATE" AS "AUCTIONDATE", 
+      "V_BOND_EN"."TOTALAPPLIEDFOR" AS "TOTALAPPLIEDFOR", 
+      "V_BOND_EN"."SENIORITYCD" AS "SENIORITYCD", 
+      "V_BOND_EN"."SENIORITYDESCR" AS "SENIORITYDESCR", 
+      "V_BOND_EN"."CIBONDFLAG" AS "CIBONDFLAG", 
+      "V_BOND_EN"."CIBONDFLAGDESCR" AS "CIBONDFLAGDESCR", 
+      "V_BOND_EN"."OTHBONDTYPECD" AS "OTHBONDTYPECD", 
+      "V_BOND_EN"."OTHBONDTYPEDESCR" AS "OTHBONDTYPEDESCR", 
+      "V_BOND_EN"."TAPISSUEFLAG" AS "TAPISSUEFLAG", 
+      "V_BOND_EN"."TERMEX" AS "TERMEX", 
+      "V_BOND_EN"."ITERMEX" AS "ITERMEX", 
+      "V_BOND_EN"."HISTPARTYREGION" AS "HISTPARTYREGION", 
+      "V_BOND_EN"."PROVINCEOFISSUER" AS "PROVINCEOFISSUER", 
+      "V_BOND_EN"."GUARANTORRATING" AS "GUARANTORRATING", 
+      "V_BOND_EN"."AUCTIONOJECT" AS "AUCTIONOJECT", 
+      "V_BOND_EN"."GUARANTORITEM" AS "GUARANTORITEM", 
+      "V_BOND_EN"."UNDERWRITERTYPE" AS "UNDERWRITERTYPE", 
+      "V_BOND_EN"."BIDPRICE" AS "BIDPRICE", 
+      "V_BOND_EN"."BIDREGION" AS "BIDREGION", 
+      "V_BOND_EN"."MULTIPURCHASE" AS "MULTIPURCHASE", 
+      "V_BOND_EN"."FEERATE" AS "FEERATE", 
+      "V_BOND_EN"."ONLINEPOSITION" AS "ONLINEPOSITION", 
+      "V_BOND_EN"."ONLINECODE" AS "ONLINECODE", 
+      "V_BOND_EN"."DOMICILE" AS "DOMICILE", 
+      "V_BOND_EN"."DEBTTYPECD" AS "DEBTTYPECD", 
+      "V_BOND_EN"."DEBTTYPEDESCR" AS "DEBTTYPEDESCR", 
+      "V_BOND_EN"."ASSETTYPECD" AS "ASSETTYPECD", 
+      "V_BOND_EN"."ASSETTYPEDESCR" AS "ASSETTYPEDESCR", 
+      "V_BOND_EN"."PARTYCNTRYINCORPCD" AS "PARTYCNTRYINCORPCD", 
+      "V_BOND_EN"."PARTYCNTRYINCORPDESCR" AS "PARTYCNTRYINCORPDESCR", 
+      "V_BOND_EN"."ISSUERDOMICILE" AS "ISSUERDOMICILE", 
+      "V_BOND_EN"."RATINGINFOCD" AS "RATINGINFOCD", 
+      "V_BOND_EN"."RATINGINFO" AS "RATINGINFO", 
+      "V_BOND_EN"."SECCLASSCD" AS "SECCLASSCD", 
+      "V_BOND_EN"."LASTCHANGEDATE" AS "LASTCHANGEDATE", 
+      "V_BOND_EN"."BONDRATINGHIST" AS "BONDRATINGHIST", 
+      "V_BOND_EN"."BONDISSUERRATING" AS "BONDISSUERRATING", 
+      "V_BOND_EN"."AMTISSTOT" AS "AMTISSTOT", 
+      "V_BOND_EN"."PROVINCEORDER" AS "PROVINCEORDER", 
+      "V_BOND_EN"."EXCHANGECODE" AS "EXCHANGECODE", 
+      "V_BOND_EN"."EXCHANGENAME" AS "EXCHANGENAME", 
+      "V_BOND_EN"."TRUSTEECODE" AS "TRUSTEECODE", 
+      "V_BOND_EN"."TRUSTEENAME" AS "TRUSTEENAME", 
+      "V_BOND_EN"."LEADUNDERWRITERNUM" AS "LEADUNDERWRITERNUM"
+      FROM "BONDDB"."V_BOND_EN" "V_BOND_EN"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_BONDVIEW_FULL" EntityType="Model.Store.V_BONDVIEW_FULL" store:Type="Views" store:Schema="BONDDB" store:Name="V_BONDVIEW_FULL">
+            <DefiningQuery>SELECT 
+      "V_BONDVIEW_FULL"."ASSETID" AS "ASSETID", 
+      "V_BONDVIEW_FULL"."BOND_NAME_CN" AS "BOND_NAME_CN", 
+      "V_BONDVIEW_FULL"."BOND_NAME_EN" AS "BOND_NAME_EN", 
+      "V_BONDVIEW_FULL"."CODE" AS "CODE", 
+      "V_BONDVIEW_FULL"."AMT_ISS_TOT" AS "AMT_ISS_TOT", 
+      "V_BONDVIEW_FULL"."COUPON_CLASS_CN" AS "COUPON_CLASS_CN", 
+      "V_BONDVIEW_FULL"."COUPON_CLASS_EN" AS "COUPON_CLASS_EN", 
+      "V_BONDVIEW_FULL"."ISFLOAT" AS "ISFLOAT", 
+      "V_BONDVIEW_FULL"."FREQ_CN" AS "FREQ_CN", 
+      "V_BONDVIEW_FULL"."FREQ_EN" AS "FREQ_EN", 
+      "V_BONDVIEW_FULL"."ORIG_ISS_CPN" AS "ORIG_ISS_CPN", 
+      "V_BONDVIEW_FULL"."ORIG_DATED_DT" AS "ORIG_DATED_DT", 
+      "V_BONDVIEW_FULL"."MATURITY_DT" AS "MATURITY_DT", 
+      "V_BONDVIEW_FULL"."TERM" AS "TERM", 
+      "V_BONDVIEW_FULL"."BONDTERM_CN" AS "BONDTERM_CN", 
+      "V_BONDVIEW_FULL"."BONDTERM_EN" AS "BONDTERM_EN", 
+      "V_BONDVIEW_FULL"."ORIG_AVG_LIFE" AS "ORIG_AVG_LIFE", 
+      "V_BONDVIEW_FULL"."BONDTERM_NUMBER" AS "BONDTERM_NUMBER", 
+      "V_BONDVIEW_FULL"."FLOAT_INDEX" AS "FLOAT_INDEX", 
+      "V_BONDVIEW_FULL"."FLOAT_OFFSET" AS "FLOAT_OFFSET", 
+      "V_BONDVIEW_FULL"."CALLORPUT_CN" AS "CALLORPUT_CN", 
+      "V_BONDVIEW_FULL"."CALLORPUT_EN" AS "CALLORPUT_EN", 
+      "V_BONDVIEW_FULL"."ISIN_NM" AS "ISIN_NM", 
+      "V_BONDVIEW_FULL"."LATEST_RATING_CD" AS "LATEST_RATING_CD", 
+      "V_BONDVIEW_FULL"."PARTYCNTRYINCORPCD" AS "PARTYCNTRYINCORPCD", 
+      "V_BONDVIEW_FULL"."PARTYCNTRYINCORPDESCR_CN" AS "PARTYCNTRYINCORPDESCR_CN", 
+      "V_BONDVIEW_FULL"."PARTYCNTRYINCORPDESCR_EN" AS "PARTYCNTRYINCORPDESCR_EN", 
+      "V_BONDVIEW_FULL"."ISSUECOUNTRYCD" AS "ISSUECOUNTRYCD", 
+      "V_BONDVIEW_FULL"."ISSUECOUNTRY_CN" AS "ISSUECOUNTRY_CN", 
+      "V_BONDVIEW_FULL"."ISSUECOUNTRY_EN" AS "ISSUECOUNTRY_EN", 
+      "V_BONDVIEW_FULL"."ORIG_ISSUE_DT" AS "ORIG_ISSUE_DT", 
+      "V_BONDVIEW_FULL"."ORIG_ISS_AMT" AS "ORIG_ISS_AMT", 
+      "V_BONDVIEW_FULL"."YIELD" AS "YIELD", 
+      "V_BONDVIEW_FULL"."ORIG_ISS_PX" AS "ORIG_ISS_PX", 
+      "V_BONDVIEW_FULL"."LISTING_DT" AS "LISTING_DT", 
+      "V_BONDVIEW_FULL"."RE_ISSUE" AS "RE_ISSUE", 
+      "V_BONDVIEW_FULL"."RATING_NUMBER" AS "RATING_NUMBER", 
+      "V_BONDVIEW_FULL"."RATING_SRC_CN" AS "RATING_SRC_CN", 
+      "V_BONDVIEW_FULL"."RATING_SRC_EN" AS "RATING_SRC_EN", 
+      "V_BONDVIEW_FULL"."PARTY_RATING_CD" AS "PARTY_RATING_CD", 
+      "V_BONDVIEW_FULL"."PARTY_RATING_NUMBER" AS "PARTY_RATING_NUMBER", 
+      "V_BONDVIEW_FULL"."PARTY_RATING_SRC_CN" AS "PARTY_RATING_SRC_CN", 
+      "V_BONDVIEW_FULL"."PARTY_RATING_SRC_EN" AS "PARTY_RATING_SRC_EN", 
+      "V_BONDVIEW_FULL"."CDC_ASSET_CLASS_CN" AS "CDC_ASSET_CLASS_CN", 
+      "V_BONDVIEW_FULL"."CDC_ASSET_CLASS_EN" AS "CDC_ASSET_CLASS_EN", 
+      "V_BONDVIEW_FULL"."CDC_ASSET_CLASS_CD" AS "CDC_ASSET_CLASS_CD", 
+      "V_BONDVIEW_FULL"."CI_BOND_FLAG" AS "CI_BOND_FLAG", 
+      "V_BONDVIEW_FULL"."PROVICE_OF_ISSUER_CN" AS "PROVICE_OF_ISSUER_CN", 
+      "V_BONDVIEW_FULL"."PROVICE_OF_ISSUER_EN" AS "PROVICE_OF_ISSUER_EN", 
+      "V_BONDVIEW_FULL"."PROVICE_OF_ISSUER" AS "PROVICE_OF_ISSUER", 
+      "V_BONDVIEW_FULL"."CDC_ASSET_CLASS_NUMBER" AS "CDC_ASSET_CLASS_NUMBER", 
+      "V_BONDVIEW_FULL"."OFFER_REGISTRANT_NAME" AS "OFFER_REGISTRANT_NAME", 
+      "V_BONDVIEW_FULL"."DAYCOUNTCD" AS "DAYCOUNTCD", 
+      "V_BONDVIEW_FULL"."DAY_COUNT_CN" AS "DAY_COUNT_CN", 
+      "V_BONDVIEW_FULL"."DAY_COUNT_EN" AS "DAY_COUNT_EN", 
+      "V_BONDVIEW_FULL"."SENIORITY" AS "SENIORITY", 
+      "V_BONDVIEW_FULL"."ORIG_ISS_CURR_CD" AS "ORIG_ISS_CURR_CD", 
+      "V_BONDVIEW_FULL"."EXCHANGE_NAME_CN" AS "EXCHANGE_NAME_CN", 
+      "V_BONDVIEW_FULL"."EXCHANGE_NAME_EN" AS "EXCHANGE_NAME_EN", 
+      "V_BONDVIEW_FULL"."TRUSTEE_NAME_CN" AS "TRUSTEE_NAME_CN", 
+      "V_BONDVIEW_FULL"."TRUSTEE_NAME_EN" AS "TRUSTEE_NAME_EN", 
+      "V_BONDVIEW_FULL"."ISSUERINDUSECTORCD" AS "ISSUERINDUSECTORCD", 
+      "V_BONDVIEW_FULL"."ISSUERINDUSECTORCN" AS "ISSUERINDUSECTORCN", 
+      "V_BONDVIEW_FULL"."ISSUERINDUSECTOREN" AS "ISSUERINDUSECTOREN"
+      FROM "BONDDB"."V_BONDVIEW_FULL" "V_BONDVIEW_FULL"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="BONDFUTURECONTRACT">
+          <Key>
+            <PropertyRef Name="NAME" />
+          </Key>
+          <Property Name="NAME" Type="varchar2" Nullable="false" MaxLength="20" />
+          <Property Name="MATURITY_DT" Type="timestamp" />
+          <Property Name="SETTLE_ST" Type="timestamp" />
+          <Property Name="SETTLE_ED" Type="timestamp" />
+          <Property Name="ISVALID" Type="number" />
+          <Property Name="LASTUPDATE" Type="timestamp" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.GCODES_CDC_ASSET_CLASS_CDS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="GCODES_CDC_ASSET_CLASS_CDS">
+          <Key>
+            <PropertyRef Name="CDC_ASSET_CLASS_CD" />
+          </Key>
+          <Property Name="CDC_ASSET_CLASS_CD" Type="varchar2" Nullable="false" MaxLength="3" />
+          <Property Name="CDC_ASSET_CLASS_DESCR" Type="varchar2" MaxLength="40" />
+          <Property Name="ASSET_LAST_CHG_DT" Type="timestamp" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.GCODES_COUPON_CLASS_CDS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="GCODES_COUPON_CLASS_CDS">
+          <Key>
+            <PropertyRef Name="COUPON_CLASS_CD" />
+          </Key>
+          <Property Name="COUPON_CLASS_CD" Type="char" Nullable="false" MaxLength="4" />
+          <Property Name="COUPON_CLASS_SDESCR" Type="varchar2" MaxLength="20" />
+          <Property Name="COUPON_CLASS_DESCR" Type="varchar2" MaxLength="40" />
+          <Property Name="ASSET_LAST_CHG_DT" Type="timestamp" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.GCODES_SECOFF_CDS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="GCODES_SECOFF_CDS">
+          <Key>
+            <PropertyRef Name="SECOFF_CD" />
+            <PropertyRef Name="SECOFF_DESCR" />
+            <PropertyRef Name="AUCTION_FL" />
+            <PropertyRef Name="PRIVATE_PLACE_FL" />
+            <PropertyRef Name="RULE_144A_FL" />
+          </Key>
+          <Property Name="SECOFF_CD" Type="number" Nullable="false" Precision="10" />
+          <Property Name="SECOFF_DESCR" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="AUCTION_FL" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="PRIVATE_PLACE_FL" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="RULE_144A_FL" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="ASSET_LAST_CHG_DT" Type="timestamp" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.GOVCORP_ASSET_IDENT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="GOVCORP_ASSET_IDENT">
+          <Key>
+            <PropertyRef Name="ASSETID" />
+            <PropertyRef Name="ID_CD" />
+            <PropertyRef Name="ID_EFF_DT" />
+          </Key>
+          <Property Name="ASSETID" Type="char" Nullable="false" MaxLength="16" />
+          <Property Name="ID_CD" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="ID_EFF_DT" Type="timestamp" Nullable="false" />
+          <Property Name="ID_NUMBER" Type="varchar2" MaxLength="20" />
+          <Property Name="ISS_TYPE_CD" Type="char" MaxLength="3" />
+          <Property Name="ID_TYPE" Type="char" MaxLength="1" />
+          <Property Name="ASSET_LAST_CHG_DT" Type="timestamp" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.TYPELIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="TYPELIST">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TABLE_CD" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="TABLE_CD" Type="number" Nullable="false" />
+          <Property Name="ENGLISH_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="CHINESE_NAME" Type="nvarchar2" MaxLength="100" />
+          <Property Name="TYPEVALUE" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.TYPEORDER' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="TYPEORDER">
+          <Key>
+            <PropertyRef Name="TABLE_CD" />
+            <PropertyRef Name="TYPE" />
+          </Key>
+          <Property Name="TABLE_CD" Type="number" Nullable="false" />
+          <Property Name="ENGLISH_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="CHINESE_NAME" Type="nvarchar2" MaxLength="100" />
+          <Property Name="TYPE" Type="number" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.V_ASSET' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_ASSET">
+          <Key>
+            <PropertyRef Name="ASSET_ID" />
+            <PropertyRef Name="ID_CD" />
+          </Key>
+          <Property Name="ASSET_ID" Type="char" Nullable="false" MaxLength="16" />
+          <Property Name="ID_NUMBER" Type="varchar2" MaxLength="20" />
+          <Property Name="AMT_ISS_TOT" Type="float" Precision="126" />
+          <Property Name="ASSET_DUPLICATE_CD" Type="varchar2" MaxLength="5" />
+          <Property Name="CALL_TERMS_FL" Type="char" MaxLength="1" />
+          <Property Name="CPN_CLASS_CD" Type="char" MaxLength="4" />
+          <Property Name="CPN_TYPE_CD" Type="char" MaxLength="4" />
+          <Property Name="CURRENCY_CD" Type="char" MaxLength="3" />
+          <Property Name="DAY_COUNT_CD" Type="number" Precision="10" />
+          <Property Name="FLOAT_FORMULA" Type="varchar2" MaxLength="255" />
+          <Property Name="FLOAT_INDEX" Type="varchar2" MaxLength="20" />
+          <Property Name="FLOAT_OFFSET" Type="float" Precision="126" />
+          <Property Name="GUARANTEE_FL" Type="char" MaxLength="1" />
+          <Property Name="ISIN_NM" Type="varchar2" MaxLength="20" />
+          <Property Name="ISSUERID" Type="char" MaxLength="16" />
+          <Property Name="MATURITY_DT" Type="timestamp" />
+          <Property Name="ORIG_AMT_ISS" Type="float" Precision="126" />
+          <Property Name="ORIG_DATED_DT" Type="timestamp" />
+          <Property Name="ORIG_ISS_DT" Type="timestamp" />
+          <Property Name="PAY_FREQ_CD" Type="number" Precision="10" />
+          <Property Name="PUT_TERMS_FL" Type="char" MaxLength="1" />
+          <Property Name="SECURED_FL" Type="char" MaxLength="1" />
+          <Property Name="SECONDARY_INSU_FL" Type="char" MaxLength="1" />
+          <Property Name="SETTLE_BUS_CTR_CD" Type="char" MaxLength="4" />
+          <Property Name="CDC_ASSET_CLASS_CD" Type="varchar2" MaxLength="3" />
+          <Property Name="SENIORITY_CD" Type="varchar2" MaxLength="8" />
+          <Property Name="OFFER_REGISTRANT_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="ORIG_AVG_LIFE" Type="float" Precision="126" />
+          <Property Name="ORIG_ISS_AMT" Type="float" Precision="126" />
+          <Property Name="ORIG_ISS_CPN" Type="float" Precision="126" />
+          <Property Name="ORIG_ISS_CURR_CD" Type="char" MaxLength="3" />
+          <Property Name="ORIG_ISS_PX" Type="float" Precision="126" />
+          <Property Name="ORIG_ISS_YLD" Type="float" Precision="126" />
+          <Property Name="ORIG_ISSUE_DT" Type="timestamp" />
+          <Property Name="ORIG_YLD_MATURITY" Type="float" Precision="126" />
+          <Property Name="SENIORITY_TYPE_CD" Type="char" MaxLength="8" />
+          <Property Name="TERM_TO_MATURITY" Type="number" Precision="10" />
+          <Property Name="ID_CD" Type="char" Nullable="false" MaxLength="3" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.V_BOND_CN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_BOND_CN">
+          <Key>
+            <PropertyRef Name="ASSETID" />
+          </Key>
+          <Property Name="ASSETID" Type="char" Nullable="false" MaxLength="16" />
+          <Property Name="CODE" Type="varchar2" MaxLength="20" />
+          <Property Name="PYC" Type="varchar2" MaxLength="20" />
+          <Property Name="RIC" Type="varchar2" MaxLength="40" />
+          <Property Name="SHORTNAME" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ISSUEDATE" Type="timestamp" />
+          <Property Name="ISSUEAMOUNT" Type="number" />
+          <Property Name="INTERESTRATE" Type="float" Precision="126" />
+          <Property Name="ISSUEPRICE" Type="float" Precision="126" />
+          <Property Name="ISSUECOUNTRYCD" Type="char" MaxLength="2" />
+          <Property Name="ISSUECOUNTRY" Type="nvarchar2" MaxLength="100" />
+          <Property Name="TERM" Type="nvarchar2" MaxLength="41" />
+          <Property Name="BONDTERMCD" Type="nvarchar2" MaxLength="100" />
+          <Property Name="BONDTERM" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ORIGTERM" Type="number" />
+          <Property Name="ORIGAVGLIFE" Type="float" Precision="126" />
+          <Property Name="BONDTERMNUMBER" Type="number" />
+          <Property Name="YIELD" Type="number" />
+          <Property Name="ISINNUM" Type="varchar2" MaxLength="20" />
+          <Property Name="DAYCOUNTCD" Type="number" Precision="10" />
+          <Property Name="ORIGISSCURRCD" Type="char" MaxLength="3" />
+          <Property Name="ISFLOAT" Type="char" MaxLength="1" />
+          <Property Name="BONDCLASSCD" Type="varchar2" MaxLength="3" />
+          <Property Name="BONDCLASSDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="OPTIONC" Type="varchar2" MaxLength="8" />
+          <Property Name="OPTIONDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="COUPONCLASSCD" Type="char" MaxLength="4" />
+          <Property Name="COUPONCLASSDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="PAYFREQUENCYCD" Type="number" />
+          <Property Name="PAYFREQUENCY" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ANNOUCEMENTDATE" Type="timestamp" />
+          <Property Name="ORIGDATEDDATE" Type="timestamp" />
+          <Property Name="MATURITYDATE" Type="timestamp" />
+          <Property Name="LISTINGDATE" Type="timestamp" />
+          <Property Name="FLOATINDEX" Type="varchar2" MaxLength="20" />
+          <Property Name="FLOATINDEXDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="FLOATOFFSET" Type="float" Precision="126" />
+          <Property Name="RATINGCD" Type="varchar2" MaxLength="30" />
+          <Property Name="RATINGSRCCD" Type="char" MaxLength="3" />
+          <Property Name="RATINGSRCDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="FIRSTDAYCLOSINGPRICE" Type="float" Precision="126" />
+          <Property Name="FIRSTDAYCHANGE" Type="number" />
+          <Property Name="FIRSTDAYVOLUME" Type="number" />
+          <Property Name="FIRSTDAYTURNOVERRATE" Type="number" />
+          <Property Name="PARTYRATINGCD" Type="varchar2" MaxLength="30" />
+          <Property Name="PARTYRATINGSRCCD" Type="char" MaxLength="3" />
+          <Property Name="PARTYRATINGSRCDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ISSUER" Type="nvarchar2" MaxLength="275" />
+          <Property Name="BOOKMANAGER" Type="nvarchar2" MaxLength="40" />
+          <Property Name="LEADUNDERWRITER" Type="nclob" />
+          <Property Name="COUNDERWRITER" Type="nclob" />
+          <Property Name="UNDERWRITERMEMBER" Type="nclob" />
+          <Property Name="PAYDATE" Type="timestamp" />
+          <Property Name="BONDNAME" Type="nvarchar2" MaxLength="200" />
+          <Property Name="STATUSONLIQCD" Type="char" MaxLength="3" />
+          <Property Name="STATUSONLIQDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="CODELIST" Type="varchar2" />
+          <Property Name="ISSUERORGID" Type="varchar2" MaxLength="10" />
+          <Property Name="ISSUERINDUSECTORCD" Type="varchar2" MaxLength="8" />
+          <Property Name="ISSUERINDUSECTORDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ISSUERINDUSUBSECTORCD" Type="char" MaxLength="4" />
+          <Property Name="ISSUERINDUSUBSECTORDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="GUARANTORNAME" Type="varchar2" MaxLength="40" />
+          <Property Name="GUARANTORINDUSECTORCD" Type="varchar2" MaxLength="8" />
+          <Property Name="GUARANTORINDUSECTORDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ENDDATEOFISSUE" Type="timestamp" />
+          <Property Name="ISSUETYPECD" Type="number" Precision="10" />
+          <Property Name="ISSUETYPEDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="AUCTIONTYPE" Type="nvarchar2" MaxLength="100" />
+          <Property Name="AUCTIONDATE" Type="timestamp" />
+          <Property Name="TOTALAPPLIEDFOR" Type="float" Precision="126" />
+          <Property Name="SENIORITYCD" Type="varchar2" MaxLength="8" />
+          <Property Name="SENIORITYDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="CIBONDFLAG" Type="char" MaxLength="1" />
+          <Property Name="CIBONDFLAGDESCR" Type="nvarchar2" MaxLength="1" />
+          <Property Name="OTHBONDTYPECD" Type="varchar2" MaxLength="8" />
+          <Property Name="OTHBONDTYPEDESCR" Type="nvarchar2" MaxLength="4" />
+          <Property Name="TAPISSUEFLAG" Type="nvarchar2" MaxLength="1" />
+          <Property Name="TERMEX" Type="nvarchar2" MaxLength="10" />
+          <Property Name="ITERMEX" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="PROVINCEOFISSUER" Type="nvarchar2" MaxLength="20" />
+          <Property Name="GUARANTORRATING" Type="nvarchar2" MaxLength="10" />
+          <Property Name="AUCTIONOJECT" Type="nvarchar2" MaxLength="100" />
+          <Property Name="GUARANTORITEM" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="UNDERWRITERTYPE" Type="nvarchar2" MaxLength="100" />
+          <Property Name="BIDPRICE" Type="float" Precision="126" />
+          <Property Name="BIDREGION" Type="nvarchar2" MaxLength="20" />
+          <Property Name="MULTIPURCHASE" Type="number" />
+          <Property Name="FEERATE" Type="float" Precision="126" />
+          <Property Name="ONLINEPOSITION" Type="float" Precision="126" />
+          <Property Name="ONLINECODE" Type="nvarchar2" MaxLength="15" />
+          <Property Name="DOMICILE" Type="nvarchar2" MaxLength="60" />
+          <Property Name="DEBTTYPECD" Type="varchar2" MaxLength="7" />
+          <Property Name="DEBTTYPEDESCR" Type="nvarchar2" MaxLength="3" />
+          <Property Name="ASSETTYPECD" Type="nvarchar2" MaxLength="11" />
+          <Property Name="ASSETTYPEDESCR" Type="nvarchar2" MaxLength="3" />
+          <Property Name="PARTYCNTRYINCORPCD" Type="nvarchar2" MaxLength="255" />
+          <Property Name="PARTYCNTRYINCORPDESCR" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ISSUERDOMICILE" Type="nvarchar2" MaxLength="255" />
+          <Property Name="RATINGINFOCD" Type="char" MaxLength="1" />
+          <Property Name="RATINGINFO" Type="nvarchar2" MaxLength="3" />
+          <Property Name="SECCLASSCD" Type="char" MaxLength="4" />
+          <Property Name="LASTCHANGEDATE" Type="timestamp" />
+          <Property Name="BONDRATINGHIST" Type="varchar2" MaxLength="20" />
+          <Property Name="BONDISSUERRATING" Type="varchar2" MaxLength="20" />
+          <Property Name="AMTISSTOT" Type="float" Precision="126" />
+          <Property Name="PROVINCEORDER" Type="number" />
+          <Property Name="EXCHANGECODE" Type="varchar2" />
+          <Property Name="EXCHANGENAME" Type="varchar2" />
+          <Property Name="TRUSTEECODE" Type="varchar2" />
+          <Property Name="TRUSTEENAME" Type="varchar2" />
+          <Property Name="LEADUNDERWRITERNUM" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.V_BOND_EN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_BOND_EN">
+          <Key>
+            <PropertyRef Name="ASSETID" />
+          </Key>
+          <Property Name="ASSETID" Type="char" Nullable="false" MaxLength="16" />
+          <Property Name="CODE" Type="varchar2" MaxLength="20" />
+          <Property Name="PYC" Type="varchar2" MaxLength="20" />
+          <Property Name="RIC" Type="varchar2" MaxLength="40" />
+          <Property Name="SHORTNAME" Type="nvarchar2" MaxLength="30" />
+          <Property Name="ISSUEDATE" Type="timestamp" />
+          <Property Name="ISSUEAMOUNT" Type="number" />
+          <Property Name="INTERESTRATE" Type="float" Precision="126" />
+          <Property Name="ISSUEPRICE" Type="float" Precision="126" />
+          <Property Name="ISSUECOUNTRYCD" Type="char" MaxLength="2" />
+          <Property Name="ISSUECOUNTRY" Type="varchar2" MaxLength="100" />
+          <Property Name="TERM" Type="nvarchar2" MaxLength="41" />
+          <Property Name="BONDTERMCD" Type="varchar2" MaxLength="100" />
+          <Property Name="BONDTERM" Type="varchar2" MaxLength="100" />
+          <Property Name="ORIGTERM" Type="number" />
+          <Property Name="ORIGAVGLIFE" Type="float" Precision="126" />
+          <Property Name="BONDTERMNUMBER" Type="number" />
+          <Property Name="YIELD" Type="number" />
+          <Property Name="ISINNUM" Type="varchar2" MaxLength="20" />
+          <Property Name="DAYCOUNTCD" Type="number" Precision="10" />
+          <Property Name="ORIGISSCURRCD" Type="char" MaxLength="3" />
+          <Property Name="ISFLOAT" Type="char" MaxLength="1" />
+          <Property Name="BONDCLASSCD" Type="varchar2" MaxLength="3" />
+          <Property Name="BONDCLASSDESCR" Type="varchar2" MaxLength="40" />
+          <Property Name="OPTIONC" Type="varchar2" MaxLength="8" />
+          <Property Name="OPTIONDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="COUPONCLASSCD" Type="char" MaxLength="4" />
+          <Property Name="COUPONCLASSDESCR" Type="varchar2" MaxLength="40" />
+          <Property Name="PAYFREQUENCYCD" Type="number" />
+          <Property Name="PAYFREQUENCY" Type="varchar2" MaxLength="20" />
+          <Property Name="ANNOUCEMENTDATE" Type="timestamp" />
+          <Property Name="ORIGDATEDDATE" Type="timestamp" />
+          <Property Name="MATURITYDATE" Type="timestamp" />
+          <Property Name="LISTINGDATE" Type="timestamp" />
+          <Property Name="FLOATINDEX" Type="varchar2" MaxLength="20" />
+          <Property Name="FLOATINDEXDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="FLOATOFFSET" Type="float" Precision="126" />
+          <Property Name="RATINGCD" Type="varchar2" MaxLength="30" />
+          <Property Name="RATINGSRCCD" Type="char" MaxLength="3" />
+          <Property Name="RATINGSRCDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="PARTYRATINGCD" Type="varchar2" MaxLength="30" />
+          <Property Name="PARTYRATINGSRCCD" Type="char" MaxLength="3" />
+          <Property Name="PARTYRATINGSRCDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="ISSUER" Type="nvarchar2" MaxLength="275" />
+          <Property Name="FIRSTDAYCLOSINGPRICE" Type="float" Precision="126" />
+          <Property Name="FIRSTDAYCHANGE" Type="number" />
+          <Property Name="FIRSTDAYVOLUME" Type="number" />
+          <Property Name="FIRSTDAYTURNOVERRATE" Type="number" />
+          <Property Name="BOOKMANAGER" Type="nvarchar2" MaxLength="40" />
+          <Property Name="LEADUNDERWRITER" Type="nclob" />
+          <Property Name="COUNDERWRITER" Type="nclob" />
+          <Property Name="UNDERWRITERMEMBER" Type="nclob" />
+          <Property Name="PAYDATE" Type="timestamp" />
+          <Property Name="BONDNAME" Type="varchar2" MaxLength="30" />
+          <Property Name="STATUSONLIQCD" Type="char" MaxLength="3" />
+          <Property Name="STATUSONLIQDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="CODELIST" Type="varchar2" />
+          <Property Name="ISSUERORGID" Type="varchar2" MaxLength="10" />
+          <Property Name="ISSUERINDUSECTORCD" Type="varchar2" MaxLength="8" />
+          <Property Name="ISSUERINDUSECTORDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="ISSUERINDUSUBSECTORCD" Type="char" MaxLength="4" />
+          <Property Name="ISSUERINDUSUBSECTORDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="GUARANTORNAME" Type="varchar2" MaxLength="40" />
+          <Property Name="GUARANTORINDUSECTORCD" Type="varchar2" MaxLength="8" />
+          <Property Name="GUARANTORINDUSECTORDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="ENDDATEOFISSUE" Type="timestamp" />
+          <Property Name="ISSUETYPECD" Type="number" Precision="10" />
+          <Property Name="ISSUETYPEDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="AUCTIONTYPE" Type="varchar2" MaxLength="100" />
+          <Property Name="AUCTIONDATE" Type="timestamp" />
+          <Property Name="TOTALAPPLIEDFOR" Type="float" Precision="126" />
+          <Property Name="SENIORITYCD" Type="varchar2" MaxLength="8" />
+          <Property Name="SENIORITYDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="CIBONDFLAG" Type="char" MaxLength="1" />
+          <Property Name="CIBONDFLAGDESCR" Type="nvarchar2" MaxLength="1" />
+          <Property Name="OTHBONDTYPECD" Type="varchar2" MaxLength="8" />
+          <Property Name="OTHBONDTYPEDESCR" Type="varchar2" MaxLength="45" />
+          <Property Name="TAPISSUEFLAG" Type="char" MaxLength="1" />
+          <Property Name="TERMEX" Type="varchar2" MaxLength="255" />
+          <Property Name="ITERMEX" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="HISTPARTYREGION" Type="varchar2" MaxLength="80" />
+          <Property Name="PROVINCEOFISSUER" Type="nvarchar2" MaxLength="50" />
+          <Property Name="GUARANTORRATING" Type="nvarchar2" MaxLength="10" />
+          <Property Name="AUCTIONOJECT" Type="varchar2" MaxLength="100" />
+          <Property Name="GUARANTORITEM" Type="varchar2" MaxLength="255" />
+          <Property Name="UNDERWRITERTYPE" Type="varchar2" MaxLength="100" />
+          <Property Name="BIDPRICE" Type="float" Precision="126" />
+          <Property Name="BIDREGION" Type="nvarchar2" MaxLength="20" />
+          <Property Name="MULTIPURCHASE" Type="number" />
+          <Property Name="FEERATE" Type="float" Precision="126" />
+          <Property Name="ONLINEPOSITION" Type="float" Precision="126" />
+          <Property Name="ONLINECODE" Type="nvarchar2" MaxLength="15" />
+          <Property Name="DOMICILE" Type="nvarchar2" MaxLength="60" />
+          <Property Name="DEBTTYPECD" Type="varchar2" MaxLength="7" />
+          <Property Name="DEBTTYPEDESCR" Type="varchar2" MaxLength="5" />
+          <Property Name="ASSETTYPECD" Type="nvarchar2" MaxLength="11" />
+          <Property Name="ASSETTYPEDESCR" Type="varchar2" MaxLength="16" />
+          <Property Name="PARTYCNTRYINCORPCD" Type="nvarchar2" MaxLength="255" />
+          <Property Name="PARTYCNTRYINCORPDESCR" Type="varchar2" MaxLength="100" />
+          <Property Name="ISSUERDOMICILE" Type="varchar2" MaxLength="1020" />
+          <Property Name="RATINGINFOCD" Type="char" MaxLength="1" />
+          <Property Name="RATINGINFO" Type="char" MaxLength="1" />
+          <Property Name="SECCLASSCD" Type="char" MaxLength="4" />
+          <Property Name="LASTCHANGEDATE" Type="timestamp" />
+          <Property Name="BONDRATINGHIST" Type="varchar2" MaxLength="20" />
+          <Property Name="BONDISSUERRATING" Type="varchar2" MaxLength="20" />
+          <Property Name="AMTISSTOT" Type="float" Precision="126" />
+          <Property Name="PROVINCEORDER" Type="number" />
+          <Property Name="EXCHANGECODE" Type="varchar2" />
+          <Property Name="EXCHANGENAME" Type="varchar2" />
+          <Property Name="TRUSTEECODE" Type="varchar2" />
+          <Property Name="TRUSTEENAME" Type="varchar2" />
+          <Property Name="LEADUNDERWRITERNUM" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BONDDB.V_BONDVIEW_FULL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_BONDVIEW_FULL">
+          <Key>
+            <PropertyRef Name="ASSETID" />
+          </Key>
+          <Property Name="ASSETID" Type="char" Nullable="false" MaxLength="16" />
+          <Property Name="BOND_NAME_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="BOND_NAME_EN" Type="nvarchar2" MaxLength="30" />
+          <Property Name="CODE" Type="varchar2" MaxLength="20" />
+          <Property Name="AMT_ISS_TOT" Type="number" />
+          <Property Name="COUPON_CLASS_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="COUPON_CLASS_EN" Type="varchar2" MaxLength="40" />
+          <Property Name="ISFLOAT" Type="char" MaxLength="1" />
+          <Property Name="FREQ_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="FREQ_EN" Type="varchar2" MaxLength="20" />
+          <Property Name="ORIG_ISS_CPN" Type="float" Precision="126" />
+          <Property Name="ORIG_DATED_DT" Type="timestamp" />
+          <Property Name="MATURITY_DT" Type="timestamp" />
+          <Property Name="TERM" Type="number" />
+          <Property Name="BONDTERM_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="BONDTERM_EN" Type="varchar2" MaxLength="100" />
+          <Property Name="ORIG_AVG_LIFE" Type="float" Precision="126" />
+          <Property Name="BONDTERM_NUMBER" Type="number" />
+          <Property Name="FLOAT_INDEX" Type="nvarchar2" MaxLength="100" />
+          <Property Name="FLOAT_OFFSET" Type="float" Precision="126" />
+          <Property Name="CALLORPUT_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="CALLORPUT_EN" Type="varchar2" MaxLength="100" />
+          <Property Name="ISIN_NM" Type="varchar2" MaxLength="20" />
+          <Property Name="LATEST_RATING_CD" Type="varchar2" MaxLength="30" />
+          <Property Name="PARTYCNTRYINCORPCD" Type="number" />
+          <Property Name="PARTYCNTRYINCORPDESCR_CN" Type="nvarchar2" MaxLength="50" />
+          <Property Name="PARTYCNTRYINCORPDESCR_EN" Type="nvarchar2" MaxLength="50" />
+          <Property Name="ISSUECOUNTRYCD" Type="char" MaxLength="2" />
+          <Property Name="ISSUECOUNTRY_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ISSUECOUNTRY_EN" Type="varchar2" MaxLength="100" />
+          <Property Name="ORIG_ISSUE_DT" Type="timestamp" />
+          <Property Name="ORIG_ISS_AMT" Type="number" />
+          <Property Name="YIELD" Type="number" />
+          <Property Name="ORIG_ISS_PX" Type="number" />
+          <Property Name="LISTING_DT" Type="timestamp" />
+          <Property Name="RE_ISSUE" Type="char" MaxLength="1" />
+          <Property Name="RATING_NUMBER" Type="varchar2" MaxLength="32" />
+          <Property Name="RATING_SRC_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="RATING_SRC_EN" Type="varchar2" MaxLength="100" />
+          <Property Name="PARTY_RATING_CD" Type="varchar2" MaxLength="30" />
+          <Property Name="PARTY_RATING_NUMBER" Type="varchar2" MaxLength="32" />
+          <Property Name="PARTY_RATING_SRC_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="PARTY_RATING_SRC_EN" Type="varchar2" MaxLength="100" />
+          <Property Name="CDC_ASSET_CLASS_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="CDC_ASSET_CLASS_EN" Type="varchar2" MaxLength="40" />
+          <Property Name="CDC_ASSET_CLASS_CD" Type="varchar2" MaxLength="3" />
+          <Property Name="CI_BOND_FLAG" Type="char" MaxLength="1" />
+          <Property Name="PROVICE_OF_ISSUER_CN" Type="nvarchar2" MaxLength="20" />
+          <Property Name="PROVICE_OF_ISSUER_EN" Type="nvarchar2" MaxLength="50" />
+          <Property Name="PROVICE_OF_ISSUER" Type="nvarchar2" MaxLength="50" />
+          <Property Name="CDC_ASSET_CLASS_NUMBER" Type="number" />
+          <Property Name="OFFER_REGISTRANT_NAME" Type="nvarchar2" MaxLength="275" />
+          <Property Name="DAYCOUNTCD" Type="number" Precision="10" />
+          <Property Name="DAY_COUNT_CN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="DAY_COUNT_EN" Type="varchar2" MaxLength="100" />
+          <Property Name="SENIORITY" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ORIG_ISS_CURR_CD" Type="char" MaxLength="3" />
+          <Property Name="EXCHANGE_NAME_CN" Type="varchar2" />
+          <Property Name="EXCHANGE_NAME_EN" Type="varchar2" />
+          <Property Name="TRUSTEE_NAME_CN" Type="varchar2" />
+          <Property Name="TRUSTEE_NAME_EN" Type="varchar2" />
+          <Property Name="ISSUERINDUSECTORCD" Type="varchar2" MaxLength="8" />
+          <Property Name="ISSUERINDUSECTORCN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="ISSUERINDUSECTOREN" Type="varchar2" MaxLength="100" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BondDBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="GCODES_CDC_ASSET_CLASS_CDS" EntityType="Model.GCODES_CDC_ASSET_CLASS_CDS" />
+          <EntitySet Name="GCODES_COUPON_CLASS_CDS" EntityType="Model.GCODES_COUPON_CLASS_CDS" />
+          <EntitySet Name="GCODES_SECOFF_CDS" EntityType="Model.GCODES_SECOFF_CDS" />
+          <EntitySet Name="GOVCORP_ASSET_IDENT" EntityType="Model.GOVCORP_ASSET_IDENT" />
+          <EntitySet Name="V_BOND_CN" EntityType="Model.V_BOND_CN" />
+          <EntitySet Name="V_BOND_EN" EntityType="Model.V_BOND_EN" />
+          <EntitySet Name="V_ASSET" EntityType="Model.V_ASSET" />
+          <EntitySet Name="BONDFUTURECONTRACT" EntityType="Model.BONDFUTURECONTRACT" />
+          <EntitySet Name="BOND" EntityType="Model.BOND" />
+          <EntitySet Name="TYPELIST" EntityType="Model.TYPELIST" />
+          <EntitySet Name="TYPEORDER" EntityType="Model.TYPEORDER" />
+        </EntityContainer>
+        <EntityType Name="GCODES_CDC_ASSET_CLASS_CDS">
+          <Key>
+            <PropertyRef Name="CDC_ASSET_CLASS_CD" />
+          </Key>
+          <Property Type="String" Name="CDC_ASSET_CLASS_CD" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CDC_ASSET_CLASS_DESCR" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ASSET_LAST_CHG_DT" Precision="6" />
+        </EntityType>
+        <EntityType Name="GCODES_COUPON_CLASS_CDS">
+          <Key>
+            <PropertyRef Name="COUPON_CLASS_CD" />
+          </Key>
+          <Property Type="String" Name="COUPON_CLASS_CD" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COUPON_CLASS_SDESCR" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COUPON_CLASS_DESCR" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ASSET_LAST_CHG_DT" Precision="6" />
+        </EntityType>
+        <EntityType Name="GCODES_SECOFF_CDS">
+          <Key>
+            <PropertyRef Name="SECOFF_CD" />
+            <PropertyRef Name="SECOFF_DESCR" />
+            <PropertyRef Name="AUCTION_FL" />
+            <PropertyRef Name="PRIVATE_PLACE_FL" />
+            <PropertyRef Name="RULE_144A_FL" />
+          </Key>
+          <Property Type="Int32" Name="SECOFF_CD" Nullable="false" />
+          <Property Type="String" Name="SECOFF_DESCR" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AUCTION_FL" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="PRIVATE_PLACE_FL" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RULE_144A_FL" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="ASSET_LAST_CHG_DT" Precision="6" />
+        </EntityType>
+        <EntityType Name="GOVCORP_ASSET_IDENT">
+          <Key>
+            <PropertyRef Name="ASSETID" />
+            <PropertyRef Name="ID_CD" />
+            <PropertyRef Name="ID_EFF_DT" />
+          </Key>
+          <Property Type="String" Name="ASSETID" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ID_CD" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="ID_EFF_DT" Nullable="false" Precision="6" />
+          <Property Type="String" Name="ID_NUMBER" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISS_TYPE_CD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ID_TYPE" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="ASSET_LAST_CHG_DT" Precision="6" />
+        </EntityType>
+        <EntityType Name="V_BOND_CN">
+          <Key>
+            <PropertyRef Name="ASSETID" />
+          </Key>
+          <Property Type="String" Name="ASSETID" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CODE" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PYC" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RIC" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SHORTNAME" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ISSUEDATE" Precision="6" />
+          <Property Type="Decimal" Name="ISSUEAMOUNT" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="INTERESTRATE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ISSUEPRICE" Precision="38" Scale="0" />
+          <Property Type="String" Name="ISSUECOUNTRYCD" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ISSUECOUNTRY" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TERM" MaxLength="41" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BONDTERMCD" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BONDTERM" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ORIGTERM" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ORIGAVGLIFE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="BONDTERMNUMBER" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="YIELD" Precision="38" Scale="0" />
+          <Property Type="String" Name="ISINNUM" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="DAYCOUNTCD" />
+          <Property Type="String" Name="ORIGISSCURRCD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ISFLOAT" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="BONDCLASSCD" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BONDCLASSDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OPTIONC" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OPTIONDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COUPONCLASSCD" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COUPONCLASSDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="PAYFREQUENCYCD" Precision="38" Scale="0" />
+          <Property Type="String" Name="PAYFREQUENCY" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ANNOUCEMENTDATE" Precision="6" />
+          <Property Type="DateTime" Name="ORIGDATEDDATE" Precision="6" />
+          <Property Type="DateTime" Name="MATURITYDATE" Precision="6" />
+          <Property Type="DateTime" Name="LISTINGDATE" Precision="6" />
+          <Property Type="String" Name="FLOATINDEX" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FLOATINDEXDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="FLOATOFFSET" Precision="38" Scale="0" />
+          <Property Type="String" Name="RATINGCD" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RATINGSRCCD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RATINGSRCDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="FIRSTDAYCLOSINGPRICE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="FIRSTDAYCHANGE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="FIRSTDAYVOLUME" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="FIRSTDAYTURNOVERRATE" Precision="38" Scale="0" />
+          <Property Type="String" Name="PARTYRATINGCD" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PARTYRATINGSRCCD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="PARTYRATINGSRCDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ISSUER" MaxLength="275" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BOOKMANAGER" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LEADUNDERWRITER" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COUNDERWRITER" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UNDERWRITERMEMBER" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PAYDATE" Precision="6" />
+          <Property Type="String" Name="BONDNAME" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="STATUSONLIQCD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="STATUSONLIQDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CODELIST" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUERORGID" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUERINDUSECTORCD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUERINDUSECTORDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ISSUERINDUSUBSECTORCD" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ISSUERINDUSUBSECTORDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GUARANTORNAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GUARANTORINDUSECTORCD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GUARANTORINDUSECTORDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ENDDATEOFISSUE" Precision="6" />
+          <Property Type="Int32" Name="ISSUETYPECD" />
+          <Property Type="String" Name="ISSUETYPEDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AUCTIONTYPE" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AUCTIONDATE" Precision="6" />
+          <Property Type="Decimal" Name="TOTALAPPLIEDFOR" Precision="38" Scale="0" />
+          <Property Type="String" Name="SENIORITYCD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SENIORITYDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CIBONDFLAG" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CIBONDFLAGDESCR" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OTHBONDTYPECD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OTHBONDTYPEDESCR" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TAPISSUEFLAG" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TERMEX" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ITERMEX" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PROVINCEOFISSUER" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GUARANTORRATING" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AUCTIONOJECT" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GUARANTORITEM" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UNDERWRITERTYPE" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="BIDPRICE" Precision="38" Scale="0" />
+          <Property Type="String" Name="BIDREGION" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="MULTIPURCHASE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="FEERATE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ONLINEPOSITION" Precision="38" Scale="0" />
+          <Property Type="String" Name="ONLINECODE" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DOMICILE" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DEBTTYPECD" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DEBTTYPEDESCR" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ASSETTYPECD" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ASSETTYPEDESCR" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PARTYCNTRYINCORPCD" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PARTYCNTRYINCORPDESCR" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ISSUERDOMICILE" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RATINGINFOCD" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RATINGINFO" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SECCLASSCD" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="LASTCHANGEDATE" Precision="6" />
+          <Property Type="String" Name="BONDRATINGHIST" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BONDISSUERRATING" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="AMTISSTOT" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="PROVINCEORDER" Precision="38" Scale="0" />
+          <Property Type="String" Name="EXCHANGECODE" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EXCHANGENAME" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUSTEECODE" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUSTEENAME" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="LEADUNDERWRITERNUM" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="V_BOND_EN">
+          <Key>
+            <PropertyRef Name="ASSETID" />
+          </Key>
+          <Property Type="String" Name="ASSETID" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CODE" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PYC" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RIC" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SHORTNAME" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ISSUEDATE" Precision="6" />
+          <Property Type="Decimal" Name="ISSUEAMOUNT" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="INTERESTRATE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ISSUEPRICE" Precision="38" Scale="0" />
+          <Property Type="String" Name="ISSUECOUNTRYCD" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ISSUECOUNTRY" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TERM" MaxLength="41" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BONDTERMCD" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BONDTERM" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ORIGTERM" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ORIGAVGLIFE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="BONDTERMNUMBER" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="YIELD" Precision="38" Scale="0" />
+          <Property Type="String" Name="ISINNUM" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="DAYCOUNTCD" />
+          <Property Type="String" Name="ORIGISSCURRCD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ISFLOAT" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="BONDCLASSCD" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BONDCLASSDESCR" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OPTIONC" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OPTIONDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COUPONCLASSCD" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="COUPONCLASSDESCR" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PAYFREQUENCYCD" Precision="38" Scale="0" />
+          <Property Type="String" Name="PAYFREQUENCY" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ANNOUCEMENTDATE" Precision="6" />
+          <Property Type="DateTime" Name="ORIGDATEDDATE" Precision="6" />
+          <Property Type="DateTime" Name="MATURITYDATE" Precision="6" />
+          <Property Type="DateTime" Name="LISTINGDATE" Precision="6" />
+          <Property Type="String" Name="FLOATINDEX" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FLOATINDEXDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="FLOATOFFSET" Precision="38" Scale="0" />
+          <Property Type="String" Name="RATINGCD" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RATINGSRCCD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RATINGSRCDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PARTYRATINGCD" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PARTYRATINGSRCCD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="PARTYRATINGSRCDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUER" MaxLength="275" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="FIRSTDAYCLOSINGPRICE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="FIRSTDAYCHANGE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="FIRSTDAYVOLUME" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="FIRSTDAYTURNOVERRATE" Precision="38" Scale="0" />
+          <Property Type="String" Name="BOOKMANAGER" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LEADUNDERWRITER" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COUNDERWRITER" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UNDERWRITERMEMBER" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PAYDATE" Precision="6" />
+          <Property Type="String" Name="BONDNAME" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="STATUSONLIQCD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="STATUSONLIQDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CODELIST" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUERORGID" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUERINDUSECTORCD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUERINDUSECTORDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUERINDUSUBSECTORCD" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ISSUERINDUSUBSECTORDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GUARANTORNAME" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GUARANTORINDUSECTORCD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GUARANTORINDUSECTORDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ENDDATEOFISSUE" Precision="6" />
+          <Property Type="Int32" Name="ISSUETYPECD" />
+          <Property Type="String" Name="ISSUETYPEDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AUCTIONTYPE" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="AUCTIONDATE" Precision="6" />
+          <Property Type="Decimal" Name="TOTALAPPLIEDFOR" Precision="38" Scale="0" />
+          <Property Type="String" Name="SENIORITYCD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SENIORITYDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CIBONDFLAG" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CIBONDFLAGDESCR" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OTHBONDTYPECD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OTHBONDTYPEDESCR" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TAPISSUEFLAG" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="TERMEX" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ITERMEX" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HISTPARTYREGION" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROVINCEOFISSUER" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GUARANTORRATING" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AUCTIONOJECT" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GUARANTORITEM" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UNDERWRITERTYPE" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="BIDPRICE" Precision="38" Scale="0" />
+          <Property Type="String" Name="BIDREGION" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="MULTIPURCHASE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="FEERATE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ONLINEPOSITION" Precision="38" Scale="0" />
+          <Property Type="String" Name="ONLINECODE" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DOMICILE" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DEBTTYPECD" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DEBTTYPEDESCR" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ASSETTYPECD" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ASSETTYPEDESCR" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PARTYCNTRYINCORPCD" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PARTYCNTRYINCORPDESCR" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUERDOMICILE" MaxLength="1020" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RATINGINFOCD" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RATINGINFO" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="SECCLASSCD" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="LASTCHANGEDATE" Precision="6" />
+          <Property Type="String" Name="BONDRATINGHIST" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BONDISSUERRATING" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="AMTISSTOT" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="PROVINCEORDER" Precision="38" Scale="0" />
+          <Property Type="String" Name="EXCHANGECODE" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EXCHANGENAME" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUSTEECODE" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TRUSTEENAME" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="LEADUNDERWRITERNUM" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="V_ASSET">
+          <Key>
+            <PropertyRef Name="ASSET_ID" />
+            <PropertyRef Name="ID_CD" />
+          </Key>
+          <Property Type="String" Name="ASSET_ID" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ID_NUMBER" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="AMT_ISS_TOT" Precision="38" Scale="0" />
+          <Property Type="String" Name="ASSET_DUPLICATE_CD" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CALL_TERMS_FL" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CPN_CLASS_CD" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CPN_TYPE_CD" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CURRENCY_CD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="DAY_COUNT_CD" />
+          <Property Type="String" Name="FLOAT_FORMULA" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FLOAT_INDEX" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="FLOAT_OFFSET" Precision="38" Scale="0" />
+          <Property Type="String" Name="GUARANTEE_FL" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ISIN_NM" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUERID" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="MATURITY_DT" Precision="6" />
+          <Property Type="Decimal" Name="ORIG_AMT_ISS" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="ORIG_DATED_DT" Precision="6" />
+          <Property Type="DateTime" Name="ORIG_ISS_DT" Precision="6" />
+          <Property Type="Int32" Name="PAY_FREQ_CD" />
+          <Property Type="String" Name="PUT_TERMS_FL" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="SECURED_FL" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="SECONDARY_INSU_FL" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="SETTLE_BUS_CTR_CD" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CDC_ASSET_CLASS_CD" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SENIORITY_CD" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OFFER_REGISTRANT_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ORIG_AVG_LIFE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ORIG_ISS_AMT" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ORIG_ISS_CPN" Precision="38" Scale="0" />
+          <Property Type="String" Name="ORIG_ISS_CURR_CD" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="Decimal" Name="ORIG_ISS_PX" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ORIG_ISS_YLD" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="ORIG_ISSUE_DT" Precision="6" />
+          <Property Type="Decimal" Name="ORIG_YLD_MATURITY" Precision="38" Scale="0" />
+          <Property Type="String" Name="SENIORITY_TYPE_CD" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="TERM_TO_MATURITY" />
+          <Property Type="String" Name="ID_CD" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BONDFUTURECONTRACT">
+          <Key>
+            <PropertyRef Name="NAME" />
+          </Key>
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="MATURITY_DT" Precision="6" />
+          <Property Type="DateTime" Name="SETTLE_ST" Precision="6" />
+          <Property Type="DateTime" Name="SETTLE_ED" Precision="6" />
+          <Property Type="Decimal" Name="ISVALID" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="LASTUPDATE" Precision="6" />
+        </EntityType>
+        <EntityType Name="BOND">
+          <Key>
+            <PropertyRef Name="assetId" />
+          </Key>
+          <Property Type="String" Name="assetId" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="bond_name_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="bond_name_en" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="code" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="amt_iss_tot" Precision="38" Scale="0" />
+          <Property Type="String" Name="coupon_class_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="coupon_class_en" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="isfloat" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="freq_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="freq_en" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="orig_iss_cpn" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="orig_dated_dt" Precision="6" />
+          <Property Type="DateTime" Name="maturity_dt" Precision="6" />
+          <Property Type="Decimal" Name="term" Precision="38" Scale="0" />
+          <Property Type="String" Name="BondTerm_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BondTerm_en" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="orig_avg_life" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="bondterm_number" Precision="38" Scale="0" />
+          <Property Type="String" Name="float_index" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="float_offset" Precision="38" Scale="0" />
+          <Property Type="String" Name="callorput_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="callorput_en" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="isin_nm" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="latest_rating_cd" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="orig_issue_dt" Precision="6" />
+          <Property Type="Decimal" Name="orig_iss_amt" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="yield" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="orig_iss_px" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="listing_dt" Precision="6" />
+          <Property Type="String" Name="re_issue" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="rating_number" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="rating_src_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="rating_src_en" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="party_rating_cd" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="party_rating_number" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="party_rating_src_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="party_rating_src_en" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cdc_asset_class_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cdc_asset_class_en" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="cdc_asset_class_cd" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ci_bond_flag" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="provice_of_issuer_cn" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="provice_of_issuer_en" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="provice_of_issuer" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="cdc_asset_class_number" Precision="38" Scale="0" />
+          <Property Type="String" Name="offer_registrant_name" MaxLength="275" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DayCountCd" />
+          <Property Type="String" Name="day_count_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="day_count_en" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="seniority" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="orig_iss_curr_cd" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="exchange_name_cn" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="exchange_name_en" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="trustee_name_cn" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="trustee_name_en" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PartyCntryIncorpCd" Precision="38" Scale="0" />
+          <Property Type="String" Name="PartyCntryIncorpDescr_cn" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PartyCntryIncorpDescr_en" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssueCountryCd" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IssueCountry_cn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssueCountry_en" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IssuerInduSectorCd" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IssuerInduSectorCn" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IssuerInduSectorEn" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TYPELIST">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="TABLE_CD" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TABLE_CD" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="String" Name="ENGLISH_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CHINESE_NAME" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TYPEVALUE" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="TYPEORDER">
+          <Key>
+            <PropertyRef Name="TABLE_CD" />
+            <PropertyRef Name="TYPE" />
+          </Key>
+          <Property Type="Decimal" Name="TABLE_CD" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="String" Name="ENGLISH_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CHINESE_NAME" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="TYPE" Nullable="false" Precision="38" Scale="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="BondDBEntities" >
+          <EntitySetMapping Name="GCODES_CDC_ASSET_CLASS_CDS">
+            <EntityTypeMapping TypeName="Model.GCODES_CDC_ASSET_CLASS_CDS">
+              <MappingFragment StoreEntitySet="GCODES_CDC_ASSET_CLASS_CDS">
+                <ScalarProperty Name="ASSET_LAST_CHG_DT" ColumnName="ASSET_LAST_CHG_DT" />
+                <ScalarProperty Name="CDC_ASSET_CLASS_DESCR" ColumnName="CDC_ASSET_CLASS_DESCR" />
+                <ScalarProperty Name="CDC_ASSET_CLASS_CD" ColumnName="CDC_ASSET_CLASS_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GCODES_COUPON_CLASS_CDS">
+            <EntityTypeMapping TypeName="Model.GCODES_COUPON_CLASS_CDS">
+              <MappingFragment StoreEntitySet="GCODES_COUPON_CLASS_CDS">
+                <ScalarProperty Name="ASSET_LAST_CHG_DT" ColumnName="ASSET_LAST_CHG_DT" />
+                <ScalarProperty Name="COUPON_CLASS_DESCR" ColumnName="COUPON_CLASS_DESCR" />
+                <ScalarProperty Name="COUPON_CLASS_SDESCR" ColumnName="COUPON_CLASS_SDESCR" />
+                <ScalarProperty Name="COUPON_CLASS_CD" ColumnName="COUPON_CLASS_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GCODES_SECOFF_CDS">
+            <EntityTypeMapping TypeName="Model.GCODES_SECOFF_CDS">
+              <MappingFragment StoreEntitySet="GCODES_SECOFF_CDS">
+                <ScalarProperty Name="ASSET_LAST_CHG_DT" ColumnName="ASSET_LAST_CHG_DT" />
+                <ScalarProperty Name="RULE_144A_FL" ColumnName="RULE_144A_FL" />
+                <ScalarProperty Name="PRIVATE_PLACE_FL" ColumnName="PRIVATE_PLACE_FL" />
+                <ScalarProperty Name="AUCTION_FL" ColumnName="AUCTION_FL" />
+                <ScalarProperty Name="SECOFF_DESCR" ColumnName="SECOFF_DESCR" />
+                <ScalarProperty Name="SECOFF_CD" ColumnName="SECOFF_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GOVCORP_ASSET_IDENT">
+            <EntityTypeMapping TypeName="Model.GOVCORP_ASSET_IDENT">
+              <MappingFragment StoreEntitySet="GOVCORP_ASSET_IDENT">
+                <ScalarProperty Name="ASSET_LAST_CHG_DT" ColumnName="ASSET_LAST_CHG_DT" />
+                <ScalarProperty Name="ID_TYPE" ColumnName="ID_TYPE" />
+                <ScalarProperty Name="ISS_TYPE_CD" ColumnName="ISS_TYPE_CD" />
+                <ScalarProperty Name="ID_NUMBER" ColumnName="ID_NUMBER" />
+                <ScalarProperty Name="ID_EFF_DT" ColumnName="ID_EFF_DT" />
+                <ScalarProperty Name="ID_CD" ColumnName="ID_CD" />
+                <ScalarProperty Name="ASSETID" ColumnName="ASSETID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_BOND_CN">
+            <EntityTypeMapping TypeName="Model.V_BOND_CN">
+              <MappingFragment StoreEntitySet="V_BOND_CN">
+                <ScalarProperty Name="LEADUNDERWRITERNUM" ColumnName="LEADUNDERWRITERNUM" />
+                <ScalarProperty Name="TRUSTEENAME" ColumnName="TRUSTEENAME" />
+                <ScalarProperty Name="TRUSTEECODE" ColumnName="TRUSTEECODE" />
+                <ScalarProperty Name="EXCHANGENAME" ColumnName="EXCHANGENAME" />
+                <ScalarProperty Name="EXCHANGECODE" ColumnName="EXCHANGECODE" />
+                <ScalarProperty Name="PROVINCEORDER" ColumnName="PROVINCEORDER" />
+                <ScalarProperty Name="AMTISSTOT" ColumnName="AMTISSTOT" />
+                <ScalarProperty Name="BONDISSUERRATING" ColumnName="BONDISSUERRATING" />
+                <ScalarProperty Name="BONDRATINGHIST" ColumnName="BONDRATINGHIST" />
+                <ScalarProperty Name="LASTCHANGEDATE" ColumnName="LASTCHANGEDATE" />
+                <ScalarProperty Name="SECCLASSCD" ColumnName="SECCLASSCD" />
+                <ScalarProperty Name="RATINGINFO" ColumnName="RATINGINFO" />
+                <ScalarProperty Name="RATINGINFOCD" ColumnName="RATINGINFOCD" />
+                <ScalarProperty Name="ISSUERDOMICILE" ColumnName="ISSUERDOMICILE" />
+                <ScalarProperty Name="PARTYCNTRYINCORPDESCR" ColumnName="PARTYCNTRYINCORPDESCR" />
+                <ScalarProperty Name="PARTYCNTRYINCORPCD" ColumnName="PARTYCNTRYINCORPCD" />
+                <ScalarProperty Name="ASSETTYPEDESCR" ColumnName="ASSETTYPEDESCR" />
+                <ScalarProperty Name="ASSETTYPECD" ColumnName="ASSETTYPECD" />
+                <ScalarProperty Name="DEBTTYPEDESCR" ColumnName="DEBTTYPEDESCR" />
+                <ScalarProperty Name="DEBTTYPECD" ColumnName="DEBTTYPECD" />
+                <ScalarProperty Name="DOMICILE" ColumnName="DOMICILE" />
+                <ScalarProperty Name="ONLINECODE" ColumnName="ONLINECODE" />
+                <ScalarProperty Name="ONLINEPOSITION" ColumnName="ONLINEPOSITION" />
+                <ScalarProperty Name="FEERATE" ColumnName="FEERATE" />
+                <ScalarProperty Name="MULTIPURCHASE" ColumnName="MULTIPURCHASE" />
+                <ScalarProperty Name="BIDREGION" ColumnName="BIDREGION" />
+                <ScalarProperty Name="BIDPRICE" ColumnName="BIDPRICE" />
+                <ScalarProperty Name="UNDERWRITERTYPE" ColumnName="UNDERWRITERTYPE" />
+                <ScalarProperty Name="GUARANTORITEM" ColumnName="GUARANTORITEM" />
+                <ScalarProperty Name="AUCTIONOJECT" ColumnName="AUCTIONOJECT" />
+                <ScalarProperty Name="GUARANTORRATING" ColumnName="GUARANTORRATING" />
+                <ScalarProperty Name="PROVINCEOFISSUER" ColumnName="PROVINCEOFISSUER" />
+                <ScalarProperty Name="ITERMEX" ColumnName="ITERMEX" />
+                <ScalarProperty Name="TERMEX" ColumnName="TERMEX" />
+                <ScalarProperty Name="TAPISSUEFLAG" ColumnName="TAPISSUEFLAG" />
+                <ScalarProperty Name="OTHBONDTYPEDESCR" ColumnName="OTHBONDTYPEDESCR" />
+                <ScalarProperty Name="OTHBONDTYPECD" ColumnName="OTHBONDTYPECD" />
+                <ScalarProperty Name="CIBONDFLAGDESCR" ColumnName="CIBONDFLAGDESCR" />
+                <ScalarProperty Name="CIBONDFLAG" ColumnName="CIBONDFLAG" />
+                <ScalarProperty Name="SENIORITYDESCR" ColumnName="SENIORITYDESCR" />
+                <ScalarProperty Name="SENIORITYCD" ColumnName="SENIORITYCD" />
+                <ScalarProperty Name="TOTALAPPLIEDFOR" ColumnName="TOTALAPPLIEDFOR" />
+                <ScalarProperty Name="AUCTIONDATE" ColumnName="AUCTIONDATE" />
+                <ScalarProperty Name="AUCTIONTYPE" ColumnName="AUCTIONTYPE" />
+                <ScalarProperty Name="ISSUETYPEDESCR" ColumnName="ISSUETYPEDESCR" />
+                <ScalarProperty Name="ISSUETYPECD" ColumnName="ISSUETYPECD" />
+                <ScalarProperty Name="ENDDATEOFISSUE" ColumnName="ENDDATEOFISSUE" />
+                <ScalarProperty Name="GUARANTORINDUSECTORDESCR" ColumnName="GUARANTORINDUSECTORDESCR" />
+                <ScalarProperty Name="GUARANTORINDUSECTORCD" ColumnName="GUARANTORINDUSECTORCD" />
+                <ScalarProperty Name="GUARANTORNAME" ColumnName="GUARANTORNAME" />
+                <ScalarProperty Name="ISSUERINDUSUBSECTORDESCR" ColumnName="ISSUERINDUSUBSECTORDESCR" />
+                <ScalarProperty Name="ISSUERINDUSUBSECTORCD" ColumnName="ISSUERINDUSUBSECTORCD" />
+                <ScalarProperty Name="ISSUERINDUSECTORDESCR" ColumnName="ISSUERINDUSECTORDESCR" />
+                <ScalarProperty Name="ISSUERINDUSECTORCD" ColumnName="ISSUERINDUSECTORCD" />
+                <ScalarProperty Name="ISSUERORGID" ColumnName="ISSUERORGID" />
+                <ScalarProperty Name="CODELIST" ColumnName="CODELIST" />
+                <ScalarProperty Name="STATUSONLIQDESCR" ColumnName="STATUSONLIQDESCR" />
+                <ScalarProperty Name="STATUSONLIQCD" ColumnName="STATUSONLIQCD" />
+                <ScalarProperty Name="BONDNAME" ColumnName="BONDNAME" />
+                <ScalarProperty Name="PAYDATE" ColumnName="PAYDATE" />
+                <ScalarProperty Name="UNDERWRITERMEMBER" ColumnName="UNDERWRITERMEMBER" />
+                <ScalarProperty Name="COUNDERWRITER" ColumnName="COUNDERWRITER" />
+                <ScalarProperty Name="LEADUNDERWRITER" ColumnName="LEADUNDERWRITER" />
+                <ScalarProperty Name="BOOKMANAGER" ColumnName="BOOKMANAGER" />
+                <ScalarProperty Name="ISSUER" ColumnName="ISSUER" />
+                <ScalarProperty Name="PARTYRATINGSRCDESCR" ColumnName="PARTYRATINGSRCDESCR" />
+                <ScalarProperty Name="PARTYRATINGSRCCD" ColumnName="PARTYRATINGSRCCD" />
+                <ScalarProperty Name="PARTYRATINGCD" ColumnName="PARTYRATINGCD" />
+                <ScalarProperty Name="FIRSTDAYTURNOVERRATE" ColumnName="FIRSTDAYTURNOVERRATE" />
+                <ScalarProperty Name="FIRSTDAYVOLUME" ColumnName="FIRSTDAYVOLUME" />
+                <ScalarProperty Name="FIRSTDAYCHANGE" ColumnName="FIRSTDAYCHANGE" />
+                <ScalarProperty Name="FIRSTDAYCLOSINGPRICE" ColumnName="FIRSTDAYCLOSINGPRICE" />
+                <ScalarProperty Name="RATINGSRCDESCR" ColumnName="RATINGSRCDESCR" />
+                <ScalarProperty Name="RATINGSRCCD" ColumnName="RATINGSRCCD" />
+                <ScalarProperty Name="RATINGCD" ColumnName="RATINGCD" />
+                <ScalarProperty Name="FLOATOFFSET" ColumnName="FLOATOFFSET" />
+                <ScalarProperty Name="FLOATINDEXDESCR" ColumnName="FLOATINDEXDESCR" />
+                <ScalarProperty Name="FLOATINDEX" ColumnName="FLOATINDEX" />
+                <ScalarProperty Name="LISTINGDATE" ColumnName="LISTINGDATE" />
+                <ScalarProperty Name="MATURITYDATE" ColumnName="MATURITYDATE" />
+                <ScalarProperty Name="ORIGDATEDDATE" ColumnName="ORIGDATEDDATE" />
+                <ScalarProperty Name="ANNOUCEMENTDATE" ColumnName="ANNOUCEMENTDATE" />
+                <ScalarProperty Name="PAYFREQUENCY" ColumnName="PAYFREQUENCY" />
+                <ScalarProperty Name="PAYFREQUENCYCD" ColumnName="PAYFREQUENCYCD" />
+                <ScalarProperty Name="COUPONCLASSDESCR" ColumnName="COUPONCLASSDESCR" />
+                <ScalarProperty Name="COUPONCLASSCD" ColumnName="COUPONCLASSCD" />
+                <ScalarProperty Name="OPTIONDESCR" ColumnName="OPTIONDESCR" />
+                <ScalarProperty Name="OPTIONC" ColumnName="OPTIONC" />
+                <ScalarProperty Name="BONDCLASSDESCR" ColumnName="BONDCLASSDESCR" />
+                <ScalarProperty Name="BONDCLASSCD" ColumnName="BONDCLASSCD" />
+                <ScalarProperty Name="ISFLOAT" ColumnName="ISFLOAT" />
+                <ScalarProperty Name="ORIGISSCURRCD" ColumnName="ORIGISSCURRCD" />
+                <ScalarProperty Name="DAYCOUNTCD" ColumnName="DAYCOUNTCD" />
+                <ScalarProperty Name="ISINNUM" ColumnName="ISINNUM" />
+                <ScalarProperty Name="YIELD" ColumnName="YIELD" />
+                <ScalarProperty Name="BONDTERMNUMBER" ColumnName="BONDTERMNUMBER" />
+                <ScalarProperty Name="ORIGAVGLIFE" ColumnName="ORIGAVGLIFE" />
+                <ScalarProperty Name="ORIGTERM" ColumnName="ORIGTERM" />
+                <ScalarProperty Name="BONDTERM" ColumnName="BONDTERM" />
+                <ScalarProperty Name="BONDTERMCD" ColumnName="BONDTERMCD" />
+                <ScalarProperty Name="TERM" ColumnName="TERM" />
+                <ScalarProperty Name="ISSUECOUNTRY" ColumnName="ISSUECOUNTRY" />
+                <ScalarProperty Name="ISSUECOUNTRYCD" ColumnName="ISSUECOUNTRYCD" />
+                <ScalarProperty Name="ISSUEPRICE" ColumnName="ISSUEPRICE" />
+                <ScalarProperty Name="INTERESTRATE" ColumnName="INTERESTRATE" />
+                <ScalarProperty Name="ISSUEAMOUNT" ColumnName="ISSUEAMOUNT" />
+                <ScalarProperty Name="ISSUEDATE" ColumnName="ISSUEDATE" />
+                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
+                <ScalarProperty Name="RIC" ColumnName="RIC" />
+                <ScalarProperty Name="PYC" ColumnName="PYC" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ASSETID" ColumnName="ASSETID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_BOND_EN">
+            <EntityTypeMapping TypeName="Model.V_BOND_EN">
+              <MappingFragment StoreEntitySet="V_BOND_EN">
+                <ScalarProperty Name="LEADUNDERWRITERNUM" ColumnName="LEADUNDERWRITERNUM" />
+                <ScalarProperty Name="TRUSTEENAME" ColumnName="TRUSTEENAME" />
+                <ScalarProperty Name="TRUSTEECODE" ColumnName="TRUSTEECODE" />
+                <ScalarProperty Name="EXCHANGENAME" ColumnName="EXCHANGENAME" />
+                <ScalarProperty Name="EXCHANGECODE" ColumnName="EXCHANGECODE" />
+                <ScalarProperty Name="PROVINCEORDER" ColumnName="PROVINCEORDER" />
+                <ScalarProperty Name="AMTISSTOT" ColumnName="AMTISSTOT" />
+                <ScalarProperty Name="BONDISSUERRATING" ColumnName="BONDISSUERRATING" />
+                <ScalarProperty Name="BONDRATINGHIST" ColumnName="BONDRATINGHIST" />
+                <ScalarProperty Name="LASTCHANGEDATE" ColumnName="LASTCHANGEDATE" />
+                <ScalarProperty Name="SECCLASSCD" ColumnName="SECCLASSCD" />
+                <ScalarProperty Name="RATINGINFO" ColumnName="RATINGINFO" />
+                <ScalarProperty Name="RATINGINFOCD" ColumnName="RATINGINFOCD" />
+                <ScalarProperty Name="ISSUERDOMICILE" ColumnName="ISSUERDOMICILE" />
+                <ScalarProperty Name="PARTYCNTRYINCORPDESCR" ColumnName="PARTYCNTRYINCORPDESCR" />
+                <ScalarProperty Name="PARTYCNTRYINCORPCD" ColumnName="PARTYCNTRYINCORPCD" />
+                <ScalarProperty Name="ASSETTYPEDESCR" ColumnName="ASSETTYPEDESCR" />
+                <ScalarProperty Name="ASSETTYPECD" ColumnName="ASSETTYPECD" />
+                <ScalarProperty Name="DEBTTYPEDESCR" ColumnName="DEBTTYPEDESCR" />
+                <ScalarProperty Name="DEBTTYPECD" ColumnName="DEBTTYPECD" />
+                <ScalarProperty Name="DOMICILE" ColumnName="DOMICILE" />
+                <ScalarProperty Name="ONLINECODE" ColumnName="ONLINECODE" />
+                <ScalarProperty Name="ONLINEPOSITION" ColumnName="ONLINEPOSITION" />
+                <ScalarProperty Name="FEERATE" ColumnName="FEERATE" />
+                <ScalarProperty Name="MULTIPURCHASE" ColumnName="MULTIPURCHASE" />
+                <ScalarProperty Name="BIDREGION" ColumnName="BIDREGION" />
+                <ScalarProperty Name="BIDPRICE" ColumnName="BIDPRICE" />
+                <ScalarProperty Name="UNDERWRITERTYPE" ColumnName="UNDERWRITERTYPE" />
+                <ScalarProperty Name="GUARANTORITEM" ColumnName="GUARANTORITEM" />
+                <ScalarProperty Name="AUCTIONOJECT" ColumnName="AUCTIONOJECT" />
+                <ScalarProperty Name="GUARANTORRATING" ColumnName="GUARANTORRATING" />
+                <ScalarProperty Name="PROVINCEOFISSUER" ColumnName="PROVINCEOFISSUER" />
+                <ScalarProperty Name="HISTPARTYREGION" ColumnName="HISTPARTYREGION" />
+                <ScalarProperty Name="ITERMEX" ColumnName="ITERMEX" />
+                <ScalarProperty Name="TERMEX" ColumnName="TERMEX" />
+                <ScalarProperty Name="TAPISSUEFLAG" ColumnName="TAPISSUEFLAG" />
+                <ScalarProperty Name="OTHBONDTYPEDESCR" ColumnName="OTHBONDTYPEDESCR" />
+                <ScalarProperty Name="OTHBONDTYPECD" ColumnName="OTHBONDTYPECD" />
+                <ScalarProperty Name="CIBONDFLAGDESCR" ColumnName="CIBONDFLAGDESCR" />
+                <ScalarProperty Name="CIBONDFLAG" ColumnName="CIBONDFLAG" />
+                <ScalarProperty Name="SENIORITYDESCR" ColumnName="SENIORITYDESCR" />
+                <ScalarProperty Name="SENIORITYCD" ColumnName="SENIORITYCD" />
+                <ScalarProperty Name="TOTALAPPLIEDFOR" ColumnName="TOTALAPPLIEDFOR" />
+                <ScalarProperty Name="AUCTIONDATE" ColumnName="AUCTIONDATE" />
+                <ScalarProperty Name="AUCTIONTYPE" ColumnName="AUCTIONTYPE" />
+                <ScalarProperty Name="ISSUETYPEDESCR" ColumnName="ISSUETYPEDESCR" />
+                <ScalarProperty Name="ISSUETYPECD" ColumnName="ISSUETYPECD" />
+                <ScalarProperty Name="ENDDATEOFISSUE" ColumnName="ENDDATEOFISSUE" />
+                <ScalarProperty Name="GUARANTORINDUSECTORDESCR" ColumnName="GUARANTORINDUSECTORDESCR" />
+                <ScalarProperty Name="GUARANTORINDUSECTORCD" ColumnName="GUARANTORINDUSECTORCD" />
+                <ScalarProperty Name="GUARANTORNAME" ColumnName="GUARANTORNAME" />
+                <ScalarProperty Name="ISSUERINDUSUBSECTORDESCR" ColumnName="ISSUERINDUSUBSECTORDESCR" />
+                <ScalarProperty Name="ISSUERINDUSUBSECTORCD" ColumnName="ISSUERINDUSUBSECTORCD" />
+                <ScalarProperty Name="ISSUERINDUSECTORDESCR" ColumnName="ISSUERINDUSECTORDESCR" />
+                <ScalarProperty Name="ISSUERINDUSECTORCD" ColumnName="ISSUERINDUSECTORCD" />
+                <ScalarProperty Name="ISSUERORGID" ColumnName="ISSUERORGID" />
+                <ScalarProperty Name="CODELIST" ColumnName="CODELIST" />
+                <ScalarProperty Name="STATUSONLIQDESCR" ColumnName="STATUSONLIQDESCR" />
+                <ScalarProperty Name="STATUSONLIQCD" ColumnName="STATUSONLIQCD" />
+                <ScalarProperty Name="BONDNAME" ColumnName="BONDNAME" />
+                <ScalarProperty Name="PAYDATE" ColumnName="PAYDATE" />
+                <ScalarProperty Name="UNDERWRITERMEMBER" ColumnName="UNDERWRITERMEMBER" />
+                <ScalarProperty Name="COUNDERWRITER" ColumnName="COUNDERWRITER" />
+                <ScalarProperty Name="LEADUNDERWRITER" ColumnName="LEADUNDERWRITER" />
+                <ScalarProperty Name="BOOKMANAGER" ColumnName="BOOKMANAGER" />
+                <ScalarProperty Name="FIRSTDAYTURNOVERRATE" ColumnName="FIRSTDAYTURNOVERRATE" />
+                <ScalarProperty Name="FIRSTDAYVOLUME" ColumnName="FIRSTDAYVOLUME" />
+                <ScalarProperty Name="FIRSTDAYCHANGE" ColumnName="FIRSTDAYCHANGE" />
+                <ScalarProperty Name="FIRSTDAYCLOSINGPRICE" ColumnName="FIRSTDAYCLOSINGPRICE" />
+                <ScalarProperty Name="ISSUER" ColumnName="ISSUER" />
+                <ScalarProperty Name="PARTYRATINGSRCDESCR" ColumnName="PARTYRATINGSRCDESCR" />
+                <ScalarProperty Name="PARTYRATINGSRCCD" ColumnName="PARTYRATINGSRCCD" />
+                <ScalarProperty Name="PARTYRATINGCD" ColumnName="PARTYRATINGCD" />
+                <ScalarProperty Name="RATINGSRCDESCR" ColumnName="RATINGSRCDESCR" />
+                <ScalarProperty Name="RATINGSRCCD" ColumnName="RATINGSRCCD" />
+                <ScalarProperty Name="RATINGCD" ColumnName="RATINGCD" />
+                <ScalarProperty Name="FLOATOFFSET" ColumnName="FLOATOFFSET" />
+                <ScalarProperty Name="FLOATINDEXDESCR" ColumnName="FLOATINDEXDESCR" />
+                <ScalarProperty Name="FLOATINDEX" ColumnName="FLOATINDEX" />
+                <ScalarProperty Name="LISTINGDATE" ColumnName="LISTINGDATE" />
+                <ScalarProperty Name="MATURITYDATE" ColumnName="MATURITYDATE" />
+                <ScalarProperty Name="ORIGDATEDDATE" ColumnName="ORIGDATEDDATE" />
+                <ScalarProperty Name="ANNOUCEMENTDATE" ColumnName="ANNOUCEMENTDATE" />
+                <ScalarProperty Name="PAYFREQUENCY" ColumnName="PAYFREQUENCY" />
+                <ScalarProperty Name="PAYFREQUENCYCD" ColumnName="PAYFREQUENCYCD" />
+                <ScalarProperty Name="COUPONCLASSDESCR" ColumnName="COUPONCLASSDESCR" />
+                <ScalarProperty Name="COUPONCLASSCD" ColumnName="COUPONCLASSCD" />
+                <ScalarProperty Name="OPTIONDESCR" ColumnName="OPTIONDESCR" />
+                <ScalarProperty Name="OPTIONC" ColumnName="OPTIONC" />
+                <ScalarProperty Name="BONDCLASSDESCR" ColumnName="BONDCLASSDESCR" />
+                <ScalarProperty Name="BONDCLASSCD" ColumnName="BONDCLASSCD" />
+                <ScalarProperty Name="ISFLOAT" ColumnName="ISFLOAT" />
+                <ScalarProperty Name="ORIGISSCURRCD" ColumnName="ORIGISSCURRCD" />
+                <ScalarProperty Name="DAYCOUNTCD" ColumnName="DAYCOUNTCD" />
+                <ScalarProperty Name="ISINNUM" ColumnName="ISINNUM" />
+                <ScalarProperty Name="YIELD" ColumnName="YIELD" />
+                <ScalarProperty Name="BONDTERMNUMBER" ColumnName="BONDTERMNUMBER" />
+                <ScalarProperty Name="ORIGAVGLIFE" ColumnName="ORIGAVGLIFE" />
+                <ScalarProperty Name="ORIGTERM" ColumnName="ORIGTERM" />
+                <ScalarProperty Name="BONDTERM" ColumnName="BONDTERM" />
+                <ScalarProperty Name="BONDTERMCD" ColumnName="BONDTERMCD" />
+                <ScalarProperty Name="TERM" ColumnName="TERM" />
+                <ScalarProperty Name="ISSUECOUNTRY" ColumnName="ISSUECOUNTRY" />
+                <ScalarProperty Name="ISSUECOUNTRYCD" ColumnName="ISSUECOUNTRYCD" />
+                <ScalarProperty Name="ISSUEPRICE" ColumnName="ISSUEPRICE" />
+                <ScalarProperty Name="INTERESTRATE" ColumnName="INTERESTRATE" />
+                <ScalarProperty Name="ISSUEAMOUNT" ColumnName="ISSUEAMOUNT" />
+                <ScalarProperty Name="ISSUEDATE" ColumnName="ISSUEDATE" />
+                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
+                <ScalarProperty Name="RIC" ColumnName="RIC" />
+                <ScalarProperty Name="PYC" ColumnName="PYC" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="ASSETID" ColumnName="ASSETID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_ASSET">
+            <EntityTypeMapping TypeName="Model.V_ASSET">
+              <MappingFragment StoreEntitySet="V_ASSET">
+                <ScalarProperty Name="ID_CD" ColumnName="ID_CD" />
+                <ScalarProperty Name="TERM_TO_MATURITY" ColumnName="TERM_TO_MATURITY" />
+                <ScalarProperty Name="SENIORITY_TYPE_CD" ColumnName="SENIORITY_TYPE_CD" />
+                <ScalarProperty Name="ORIG_YLD_MATURITY" ColumnName="ORIG_YLD_MATURITY" />
+                <ScalarProperty Name="ORIG_ISSUE_DT" ColumnName="ORIG_ISSUE_DT" />
+                <ScalarProperty Name="ORIG_ISS_YLD" ColumnName="ORIG_ISS_YLD" />
+                <ScalarProperty Name="ORIG_ISS_PX" ColumnName="ORIG_ISS_PX" />
+                <ScalarProperty Name="ORIG_ISS_CURR_CD" ColumnName="ORIG_ISS_CURR_CD" />
+                <ScalarProperty Name="ORIG_ISS_CPN" ColumnName="ORIG_ISS_CPN" />
+                <ScalarProperty Name="ORIG_ISS_AMT" ColumnName="ORIG_ISS_AMT" />
+                <ScalarProperty Name="ORIG_AVG_LIFE" ColumnName="ORIG_AVG_LIFE" />
+                <ScalarProperty Name="OFFER_REGISTRANT_NAME" ColumnName="OFFER_REGISTRANT_NAME" />
+                <ScalarProperty Name="SENIORITY_CD" ColumnName="SENIORITY_CD" />
+                <ScalarProperty Name="CDC_ASSET_CLASS_CD" ColumnName="CDC_ASSET_CLASS_CD" />
+                <ScalarProperty Name="SETTLE_BUS_CTR_CD" ColumnName="SETTLE_BUS_CTR_CD" />
+                <ScalarProperty Name="SECONDARY_INSU_FL" ColumnName="SECONDARY_INSU_FL" />
+                <ScalarProperty Name="SECURED_FL" ColumnName="SECURED_FL" />
+                <ScalarProperty Name="PUT_TERMS_FL" ColumnName="PUT_TERMS_FL" />
+                <ScalarProperty Name="PAY_FREQ_CD" ColumnName="PAY_FREQ_CD" />
+                <ScalarProperty Name="ORIG_ISS_DT" ColumnName="ORIG_ISS_DT" />
+                <ScalarProperty Name="ORIG_DATED_DT" ColumnName="ORIG_DATED_DT" />
+                <ScalarProperty Name="ORIG_AMT_ISS" ColumnName="ORIG_AMT_ISS" />
+                <ScalarProperty Name="MATURITY_DT" ColumnName="MATURITY_DT" />
+                <ScalarProperty Name="ISSUERID" ColumnName="ISSUERID" />
+                <ScalarProperty Name="ISIN_NM" ColumnName="ISIN_NM" />
+                <ScalarProperty Name="GUARANTEE_FL" ColumnName="GUARANTEE_FL" />
+                <ScalarProperty Name="FLOAT_OFFSET" ColumnName="FLOAT_OFFSET" />
+                <ScalarProperty Name="FLOAT_INDEX" ColumnName="FLOAT_INDEX" />
+                <ScalarProperty Name="FLOAT_FORMULA" ColumnName="FLOAT_FORMULA" />
+                <ScalarProperty Name="DAY_COUNT_CD" ColumnName="DAY_COUNT_CD" />
+                <ScalarProperty Name="CURRENCY_CD" ColumnName="CURRENCY_CD" />
+                <ScalarProperty Name="CPN_TYPE_CD" ColumnName="CPN_TYPE_CD" />
+                <ScalarProperty Name="CPN_CLASS_CD" ColumnName="CPN_CLASS_CD" />
+                <ScalarProperty Name="CALL_TERMS_FL" ColumnName="CALL_TERMS_FL" />
+                <ScalarProperty Name="ASSET_DUPLICATE_CD" ColumnName="ASSET_DUPLICATE_CD" />
+                <ScalarProperty Name="AMT_ISS_TOT" ColumnName="AMT_ISS_TOT" />
+                <ScalarProperty Name="ID_NUMBER" ColumnName="ID_NUMBER" />
+                <ScalarProperty Name="ASSET_ID" ColumnName="ASSET_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BONDFUTURECONTRACT">
+            <EntityTypeMapping TypeName="Model.BONDFUTURECONTRACT">
+              <MappingFragment StoreEntitySet="BONDFUTURECONTRACT">
+                <ScalarProperty Name="LASTUPDATE" ColumnName="LASTUPDATE" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="SETTLE_ED" ColumnName="SETTLE_ED" />
+                <ScalarProperty Name="SETTLE_ST" ColumnName="SETTLE_ST" />
+                <ScalarProperty Name="MATURITY_DT" ColumnName="MATURITY_DT" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOND">
+            <EntityTypeMapping TypeName="Model.BOND">
+              <MappingFragment StoreEntitySet="V_BONDVIEW_FULL">
+                <ScalarProperty Name="IssuerInduSectorEn" ColumnName="ISSUERINDUSECTOREN" />
+                <ScalarProperty Name="IssuerInduSectorCn" ColumnName="ISSUERINDUSECTORCN" />
+                <ScalarProperty Name="IssuerInduSectorCd" ColumnName="ISSUERINDUSECTORCD" />
+                <ScalarProperty Name="IssueCountry_en" ColumnName="ISSUECOUNTRY_EN" />
+                <ScalarProperty Name="IssueCountry_cn" ColumnName="ISSUECOUNTRY_CN" />
+                <ScalarProperty Name="IssueCountryCd" ColumnName="ISSUECOUNTRYCD" />
+                <ScalarProperty Name="PartyCntryIncorpDescr_en" ColumnName="PARTYCNTRYINCORPDESCR_EN" />
+                <ScalarProperty Name="PartyCntryIncorpDescr_cn" ColumnName="PARTYCNTRYINCORPDESCR_CN" />
+                <ScalarProperty Name="PartyCntryIncorpCd" ColumnName="PARTYCNTRYINCORPCD" />
+                <ScalarProperty Name="trustee_name_en" ColumnName="TRUSTEE_NAME_EN" />
+                <ScalarProperty Name="trustee_name_cn" ColumnName="TRUSTEE_NAME_CN" />
+                <ScalarProperty Name="exchange_name_en" ColumnName="EXCHANGE_NAME_EN" />
+                <ScalarProperty Name="exchange_name_cn" ColumnName="EXCHANGE_NAME_CN" />
+                <ScalarProperty Name="orig_iss_curr_cd" ColumnName="ORIG_ISS_CURR_CD" />
+                <ScalarProperty Name="seniority" ColumnName="SENIORITY" />
+                <ScalarProperty Name="day_count_en" ColumnName="DAY_COUNT_EN" />
+                <ScalarProperty Name="day_count_cn" ColumnName="DAY_COUNT_CN" />
+                <ScalarProperty Name="DayCountCd" ColumnName="DAYCOUNTCD" />
+                <ScalarProperty Name="offer_registrant_name" ColumnName="OFFER_REGISTRANT_NAME" />
+                <ScalarProperty Name="cdc_asset_class_number" ColumnName="CDC_ASSET_CLASS_NUMBER" />
+                <ScalarProperty Name="provice_of_issuer" ColumnName="PROVICE_OF_ISSUER" />
+                <ScalarProperty Name="provice_of_issuer_en" ColumnName="PROVICE_OF_ISSUER_EN" />
+                <ScalarProperty Name="provice_of_issuer_cn" ColumnName="PROVICE_OF_ISSUER_CN" />
+                <ScalarProperty Name="ci_bond_flag" ColumnName="CI_BOND_FLAG" />
+                <ScalarProperty Name="cdc_asset_class_cd" ColumnName="CDC_ASSET_CLASS_CD" />
+                <ScalarProperty Name="cdc_asset_class_en" ColumnName="CDC_ASSET_CLASS_EN" />
+                <ScalarProperty Name="cdc_asset_class_cn" ColumnName="CDC_ASSET_CLASS_CN" />
+                <ScalarProperty Name="party_rating_src_en" ColumnName="PARTY_RATING_SRC_EN" />
+                <ScalarProperty Name="party_rating_src_cn" ColumnName="PARTY_RATING_SRC_CN" />
+                <ScalarProperty Name="party_rating_number" ColumnName="PARTY_RATING_NUMBER" />
+                <ScalarProperty Name="party_rating_cd" ColumnName="PARTY_RATING_CD" />
+                <ScalarProperty Name="rating_src_en" ColumnName="RATING_SRC_EN" />
+                <ScalarProperty Name="rating_src_cn" ColumnName="RATING_SRC_CN" />
+                <ScalarProperty Name="rating_number" ColumnName="RATING_NUMBER" />
+                <ScalarProperty Name="re_issue" ColumnName="RE_ISSUE" />
+                <ScalarProperty Name="listing_dt" ColumnName="LISTING_DT" />
+                <ScalarProperty Name="orig_iss_px" ColumnName="ORIG_ISS_PX" />
+                <ScalarProperty Name="yield" ColumnName="YIELD" />
+                <ScalarProperty Name="orig_iss_amt" ColumnName="ORIG_ISS_AMT" />
+                <ScalarProperty Name="orig_issue_dt" ColumnName="ORIG_ISSUE_DT" />
+                <ScalarProperty Name="latest_rating_cd" ColumnName="LATEST_RATING_CD" />
+                <ScalarProperty Name="isin_nm" ColumnName="ISIN_NM" />
+                <ScalarProperty Name="callorput_en" ColumnName="CALLORPUT_EN" />
+                <ScalarProperty Name="callorput_cn" ColumnName="CALLORPUT_CN" />
+                <ScalarProperty Name="float_offset" ColumnName="FLOAT_OFFSET" />
+                <ScalarProperty Name="float_index" ColumnName="FLOAT_INDEX" />
+                <ScalarProperty Name="bondterm_number" ColumnName="BONDTERM_NUMBER" />
+                <ScalarProperty Name="orig_avg_life" ColumnName="ORIG_AVG_LIFE" />
+                <ScalarProperty Name="BondTerm_en" ColumnName="BONDTERM_EN" />
+                <ScalarProperty Name="BondTerm_cn" ColumnName="BONDTERM_CN" />
+                <ScalarProperty Name="term" ColumnName="TERM" />
+                <ScalarProperty Name="maturity_dt" ColumnName="MATURITY_DT" />
+                <ScalarProperty Name="orig_dated_dt" ColumnName="ORIG_DATED_DT" />
+                <ScalarProperty Name="orig_iss_cpn" ColumnName="ORIG_ISS_CPN" />
+                <ScalarProperty Name="freq_en" ColumnName="FREQ_EN" />
+                <ScalarProperty Name="freq_cn" ColumnName="FREQ_CN" />
+                <ScalarProperty Name="isfloat" ColumnName="ISFLOAT" />
+                <ScalarProperty Name="coupon_class_en" ColumnName="COUPON_CLASS_EN" />
+                <ScalarProperty Name="coupon_class_cn" ColumnName="COUPON_CLASS_CN" />
+                <ScalarProperty Name="amt_iss_tot" ColumnName="AMT_ISS_TOT" />
+                <ScalarProperty Name="code" ColumnName="CODE" />
+                <ScalarProperty Name="bond_name_en" ColumnName="BOND_NAME_EN" />
+                <ScalarProperty Name="bond_name_cn" ColumnName="BOND_NAME_CN" />
+                <ScalarProperty Name="assetId" ColumnName="ASSETID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPELIST">
+            <EntityTypeMapping TypeName="Model.TYPELIST">
+              <MappingFragment StoreEntitySet="TYPELIST">
+                <ScalarProperty Name="TYPEVALUE" ColumnName="TYPEVALUE" />
+                <ScalarProperty Name="CHINESE_NAME" ColumnName="CHINESE_NAME" />
+                <ScalarProperty Name="ENGLISH_NAME" ColumnName="ENGLISH_NAME" />
+                <ScalarProperty Name="TABLE_CD" ColumnName="TABLE_CD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPEORDER">
+            <EntityTypeMapping TypeName="Model.TYPEORDER">
+              <MappingFragment StoreEntitySet="TYPEORDER">
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="CHINESE_NAME" ColumnName="CHINESE_NAME" />
+                <ScalarProperty Name="ENGLISH_NAME" ColumnName="ENGLISH_NAME" />
+                <ScalarProperty Name="TABLE_CD" ColumnName="TABLE_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="BondDB" >
+        <EntityTypeShape EntityType="Model.GCODES_CDC_ASSET_CLASS_CDS" Width="1.5" PointX="0.75" PointY="0.75" Height="1.59568359375" />
+        <EntityTypeShape EntityType="Model.GCODES_COUPON_CLASS_CDS" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Model.GCODES_SECOFF_CDS" Width="1.5" PointX="0.75" PointY="3.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Model.GOVCORP_ASSET_IDENT" Width="1.5" PointX="2.75" PointY="3.75" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="Model.V_BOND_CN" Width="1.5" PointX="5.375" PointY="0.75" Height="22.556539713541667" />
+        <EntityTypeShape EntityType="Model.V_BOND_EN" Width="1.5" PointX="7.375" PointY="0.75" Height="22.748841145833339" />
+        <EntityTypeShape EntityType="Model.V_ASSET" Width="1.5" PointX="0.75" PointY="7.75" Height="8.3262337239583353" />
+        <EntityTypeShape EntityType="Model.BONDFUTURECONTRACT" Width="1.5" PointX="9.375" PointY="0.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Model.BOND" Width="1.5" PointX="9.375" PointY="3.75" Height="11.595358072916667" />
+        <EntityTypeShape EntityType="Model.TYPELIST" Width="1.5" PointX="11.375" PointY="0.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="Model.TYPEORDER" Width="1.5" PointX="11.375" PointY="3.75" Height="1.7879850260416674" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

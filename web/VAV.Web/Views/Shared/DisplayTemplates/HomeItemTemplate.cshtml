@@ -1,0 +1,11 @@
+﻿@model VAV.Entities.HOMEITEM
+@{
+    var isNew = (DateTime.Now - Convert.ToDateTime(Model.MTIME)).Days <= 30 ? true : false;
+}
+<div class="home-cell">
+    <a href="javascript:void(0)" onclick="Homepage.OpenHomeItem('@Model.TYPE','@Model.TYPEVALUE','@Model.TYPEPARAM');">@Model.DisplayName</a>
+    @if (isNew)
+    {   
+        <span class="worldcup" style="font-size:10px;">NEW</span>
+    }
+</div>

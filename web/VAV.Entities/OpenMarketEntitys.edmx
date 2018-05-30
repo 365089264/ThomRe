@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="EJVASSET" EntityType="Model.Store.EJVASSET" store:Type="Tables" Schema="OPENMARKET" />
+          <EntitySet Name="OPENMARKETOPERATION" EntityType="Model.Store.OPENMARKETOPERATION" store:Type="Tables" Schema="OPENMARKET" />
+          <EntitySet Name="V_OPENMARKET" EntityType="Model.Store.V_OPENMARKET" store:Type="Views" store:Schema="OPENMARKET" store:Name="V_OPENMARKET">
+            <DefiningQuery>SELECT 
+      "V_OPENMARKET"."RIC" AS "RIC", 
+      "V_OPENMARKET"."ISSUEDATE" AS "ISSUEDATE", 
+      "V_OPENMARKET"."VOLUME" AS "VOLUME", 
+      "V_OPENMARKET"."ISSUERATE" AS "ISSUERATE", 
+      "V_OPENMARKET"."YIELD" AS "YIELD", 
+      "V_OPENMARKET"."MATURITY_DT" AS "MATURITY_DT", 
+      "V_OPENMARKET"."TRADETYPE" AS "TRADETYPE", 
+      "V_OPENMARKET"."TERM" AS "TERM", 
+      "V_OPENMARKET"."ASSET_ID" AS "ASSET_ID", 
+      "V_OPENMARKET"."TERM_EN" AS "TERM_EN", 
+      "V_OPENMARKET"."TERM_CN" AS "TERM_CN", 
+      "V_OPENMARKET"."TERM_ORDER" AS "TERM_ORDER"
+      FROM "OPENMARKET"."V_OPENMARKET" "V_OPENMARKET"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_OPENMARKET_SEARCH" EntityType="Model.Store.V_OPENMARKET_SEARCH" store:Type="Views" store:Schema="OPENMARKET" store:Name="V_OPENMARKET_SEARCH">
+            <DefiningQuery>SELECT 
+      "V_OPENMARKET_SEARCH"."CODE" AS "CODE", 
+      "V_OPENMARKET_SEARCH"."ISSUEDATE" AS "ISSUEDATE", 
+      "V_OPENMARKET_SEARCH"."VOLUME" AS "VOLUME", 
+      "V_OPENMARKET_SEARCH"."PIRCERATE" AS "PIRCERATE", 
+      "V_OPENMARKET_SEARCH"."REFRATE" AS "REFRATE", 
+      "V_OPENMARKET_SEARCH"."MATURITYDATE" AS "MATURITYDATE", 
+      "V_OPENMARKET_SEARCH"."TRADETYPE" AS "TRADETYPE", 
+      "V_OPENMARKET_SEARCH"."TERM" AS "TERM", 
+      "V_OPENMARKET_SEARCH"."ASSETID" AS "ASSETID", 
+      "V_OPENMARKET_SEARCH"."TERMEN" AS "TERMEN", 
+      "V_OPENMARKET_SEARCH"."TERMCN" AS "TERMCN", 
+      "V_OPENMARKET_SEARCH"."CATEGORYTYPE" AS "CATEGORYTYPE"
+      FROM "OPENMARKET"."V_OPENMARKET_SEARCH" "V_OPENMARKET_SEARCH"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="EJVASSET">
+          <Key>
+            <PropertyRef Name="RIC" />
+            <PropertyRef Name="TRADE_DT" />
+          </Key>
+          <Property Name="ASSET_ID" Type="char" Nullable="false" MaxLength="16" />
+          <Property Name="RIC" Type="varchar2" Nullable="false" MaxLength="20" />
+          <Property Name="TRADE_DT" Type="timestamp" Nullable="false" />
+          <Property Name="MODIFYDATE" Type="timestamp" />
+          <Property Name="ORIG_ISS_PX" Type="float" Precision="126" />
+          <Property Name="YIELD" Type="float" Precision="126" />
+          <Property Name="MATURITY_DT" Type="timestamp" />
+          <Property Name="TRADETYPE" Type="varchar2" MaxLength="5" />
+          <Property Name="TERM_TO_MATURITY" Type="number" />
+          <Property Name="ORIG_AMT_ISS" Type="float" Precision="126" />
+        </EntityType>
+        <EntityType Name="OPENMARKETOPERATION">
+          <Key>
+            <PropertyRef Name="RIC" />
+            <PropertyRef Name="ISSUEDATE" />
+          </Key>
+          <Property Name="RIC" Type="varchar2" Nullable="false" MaxLength="30" />
+          <Property Name="SHORTNAME" Type="varchar2" MaxLength="30" />
+          <Property Name="ISSUEDATE" Type="timestamp" Nullable="false" />
+          <Property Name="MATDATE" Type="timestamp" />
+          <Property Name="ISSUERATE" Type="float" Precision="126" />
+          <Property Name="ISSUEVOLUME" Type="float" Precision="126" />
+          <Property Name="ISSUEYIELD" Type="float" Precision="126" />
+          <Property Name="TUENOVERVOLUME" Type="float" Precision="126" />
+          <Property Name="CREATEDATE" Type="timestamp" />
+          <Property Name="MODIFYDATE" Type="timestamp" />
+          <Property Name="PRODPERMISSION" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'OPENMARKET.V_OPENMARKET' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_OPENMARKET">
+          <Key>
+            <PropertyRef Name="RIC" />
+            <PropertyRef Name="ISSUEDATE" />
+            <PropertyRef Name="ASSET_ID" />
+          </Key>
+          <Property Name="RIC" Type="varchar2" Nullable="false" MaxLength="30" />
+          <Property Name="ISSUEDATE" Type="timestamp" Nullable="false" />
+          <Property Name="VOLUME" Type="float" Precision="126" />
+          <Property Name="ISSUERATE" Type="float" Precision="126" />
+          <Property Name="YIELD" Type="float" Precision="126" />
+          <Property Name="MATURITY_DT" Type="timestamp" />
+          <Property Name="TRADETYPE" Type="char" MaxLength="1" />
+          <Property Name="TERM" Type="number" />
+          <Property Name="ASSET_ID" Type="varchar2" Nullable="false" MaxLength="30" />
+          <Property Name="TERM_EN" Type="varchar2" MaxLength="100" />
+          <Property Name="TERM_CN" Type="varchar2" MaxLength="100" />
+          <Property Name="TERM_ORDER" Type="number" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'OPENMARKET.V_OPENMARKET_SEARCH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_OPENMARKET_SEARCH">
+          <Key>
+            <PropertyRef Name="CODE" />
+            <PropertyRef Name="ISSUEDATE" />
+            <PropertyRef Name="ASSETID" />
+          </Key>
+          <Property Name="CODE" Type="varchar2" Nullable="false" MaxLength="30" />
+          <Property Name="ISSUEDATE" Type="timestamp" Nullable="false" />
+          <Property Name="VOLUME" Type="float" Precision="126" />
+          <Property Name="PIRCERATE" Type="float" Precision="126" />
+          <Property Name="REFRATE" Type="float" Precision="126" />
+          <Property Name="MATURITYDATE" Type="timestamp" />
+          <Property Name="TRADETYPE" Type="char" MaxLength="1" />
+          <Property Name="TERM" Type="number" />
+          <Property Name="ASSETID" Type="varchar2" Nullable="false" MaxLength="30" />
+          <Property Name="TERMEN" Type="varchar2" MaxLength="100" />
+          <Property Name="TERMCN" Type="varchar2" MaxLength="100" />
+          <Property Name="CATEGORYTYPE" Type="varchar2" MaxLength="3" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="OpenMarketEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EJVASSETs" EntityType="Model.EJVASSET" />
+          <EntitySet Name="OPENMARKETOPERATIONs" EntityType="Model.OPENMARKETOPERATION" />
+          <EntitySet Name="V_OPENMARKET" EntityType="Model.V_OPENMARKET" />
+          <EntitySet Name="V_OPENMARKET_SEARCH" EntityType="Model.V_OPENMARKET_SEARCH" />
+        </EntityContainer>
+        <EntityType Name="EJVASSET">
+          <Key>
+            <PropertyRef Name="RIC" />
+            <PropertyRef Name="TRADE_DT" />
+          </Key>
+          <Property Type="String" Name="ASSET_ID" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RIC" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="TRADE_DT" Nullable="false" Precision="6" />
+          <Property Type="DateTime" Name="MODIFYDATE" Precision="6" />
+          <Property Type="Decimal" Name="ORIG_ISS_PX" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="YIELD" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="MATURITY_DT" Precision="6" />
+          <Property Type="String" Name="TRADETYPE" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="TERM_TO_MATURITY" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ORIG_AMT_ISS" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="OPENMARKETOPERATION">
+          <Key>
+            <PropertyRef Name="RIC" />
+            <PropertyRef Name="ISSUEDATE" />
+          </Key>
+          <Property Type="String" Name="RIC" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SHORTNAME" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ISSUEDATE" Nullable="false" Precision="6" />
+          <Property Type="DateTime" Name="MATDATE" Precision="6" />
+          <Property Type="Decimal" Name="ISSUERATE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ISSUEVOLUME" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ISSUEYIELD" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="TUENOVERVOLUME" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="CREATEDATE" Precision="6" />
+          <Property Type="DateTime" Name="MODIFYDATE" Precision="6" />
+          <Property Type="Decimal" Name="PRODPERMISSION" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="V_OPENMARKET">
+          <Key>
+            <PropertyRef Name="RIC" />
+            <PropertyRef Name="ISSUEDATE" />
+            <PropertyRef Name="ASSET_ID" />
+          </Key>
+          <Property Type="String" Name="RIC" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ISSUEDATE" Nullable="false" Precision="6" />
+          <Property Type="Decimal" Name="VOLUME" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ISSUERATE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="YIELD" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="MATURITY_DT" Precision="6" />
+          <Property Type="String" Name="TRADETYPE" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Decimal" Name="TERM" Precision="38" Scale="0" />
+          <Property Type="String" Name="ASSET_ID" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TERM_EN" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TERM_CN" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="TERM_ORDER" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="V_OPENMARKET_SEARCH">
+          <Key>
+            <PropertyRef Name="CODE" />
+            <PropertyRef Name="ISSUEDATE" />
+            <PropertyRef Name="ASSETID" />
+          </Key>
+          <Property Type="String" Name="CODE" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ISSUEDATE" Nullable="false" Precision="6" />
+          <Property Type="Decimal" Name="VOLUME" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="PIRCERATE" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="REFRATE" Precision="38" Scale="0" />
+          <Property Type="DateTime" Name="MATURITYDATE" Precision="6" />
+          <Property Type="String" Name="TRADETYPE" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Decimal" Name="TERM" Precision="38" Scale="0" />
+          <Property Type="String" Name="ASSETID" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TERMEN" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TERMCN" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CATEGORYTYPE" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="OpenMarketEntities">
+          <EntitySetMapping Name="EJVASSETs">
+            <EntityTypeMapping TypeName="Model.EJVASSET">
+              <MappingFragment StoreEntitySet="EJVASSET">
+                <ScalarProperty Name="ORIG_AMT_ISS" ColumnName="ORIG_AMT_ISS" />
+                <ScalarProperty Name="TERM_TO_MATURITY" ColumnName="TERM_TO_MATURITY" />
+                <ScalarProperty Name="TRADETYPE" ColumnName="TRADETYPE" />
+                <ScalarProperty Name="MATURITY_DT" ColumnName="MATURITY_DT" />
+                <ScalarProperty Name="YIELD" ColumnName="YIELD" />
+                <ScalarProperty Name="ORIG_ISS_PX" ColumnName="ORIG_ISS_PX" />
+                <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+                <ScalarProperty Name="TRADE_DT" ColumnName="TRADE_DT" />
+                <ScalarProperty Name="RIC" ColumnName="RIC" />
+                <ScalarProperty Name="ASSET_ID" ColumnName="ASSET_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPENMARKETOPERATIONs">
+            <EntityTypeMapping TypeName="Model.OPENMARKETOPERATION">
+              <MappingFragment StoreEntitySet="OPENMARKETOPERATION">
+                <ScalarProperty Name="PRODPERMISSION" ColumnName="PRODPERMISSION" />
+                <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="TUENOVERVOLUME" ColumnName="TUENOVERVOLUME" />
+                <ScalarProperty Name="ISSUEYIELD" ColumnName="ISSUEYIELD" />
+                <ScalarProperty Name="ISSUEVOLUME" ColumnName="ISSUEVOLUME" />
+                <ScalarProperty Name="ISSUERATE" ColumnName="ISSUERATE" />
+                <ScalarProperty Name="MATDATE" ColumnName="MATDATE" />
+                <ScalarProperty Name="ISSUEDATE" ColumnName="ISSUEDATE" />
+                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
+                <ScalarProperty Name="RIC" ColumnName="RIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_OPENMARKET">
+            <EntityTypeMapping TypeName="Model.V_OPENMARKET">
+              <MappingFragment StoreEntitySet="V_OPENMARKET">
+                <ScalarProperty Name="TERM_ORDER" ColumnName="TERM_ORDER" />
+                <ScalarProperty Name="TERM_CN" ColumnName="TERM_CN" />
+                <ScalarProperty Name="TERM_EN" ColumnName="TERM_EN" />
+                <ScalarProperty Name="ASSET_ID" ColumnName="ASSET_ID" />
+                <ScalarProperty Name="TERM" ColumnName="TERM" />
+                <ScalarProperty Name="TRADETYPE" ColumnName="TRADETYPE" />
+                <ScalarProperty Name="MATURITY_DT" ColumnName="MATURITY_DT" />
+                <ScalarProperty Name="YIELD" ColumnName="YIELD" />
+                <ScalarProperty Name="ISSUERATE" ColumnName="ISSUERATE" />
+                <ScalarProperty Name="VOLUME" ColumnName="VOLUME" />
+                <ScalarProperty Name="ISSUEDATE" ColumnName="ISSUEDATE" />
+                <ScalarProperty Name="RIC" ColumnName="RIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_OPENMARKET_SEARCH">
+            <EntityTypeMapping TypeName="Model.V_OPENMARKET_SEARCH">
+              <MappingFragment StoreEntitySet="V_OPENMARKET_SEARCH">
+                <ScalarProperty Name="CATEGORYTYPE" ColumnName="CATEGORYTYPE" />
+                <ScalarProperty Name="TERMCN" ColumnName="TERMCN" />
+                <ScalarProperty Name="TERMEN" ColumnName="TERMEN" />
+                <ScalarProperty Name="ASSETID" ColumnName="ASSETID" />
+                <ScalarProperty Name="TERM" ColumnName="TERM" />
+                <ScalarProperty Name="TRADETYPE" ColumnName="TRADETYPE" />
+                <ScalarProperty Name="MATURITYDATE" ColumnName="MATURITYDATE" />
+                <ScalarProperty Name="REFRATE" ColumnName="REFRATE" />
+                <ScalarProperty Name="PIRCERATE" ColumnName="PIRCERATE" />
+                <ScalarProperty Name="VOLUME" ColumnName="VOLUME" />
+                <ScalarProperty Name="ISSUEDATE" ColumnName="ISSUEDATE" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="OpenMarketEntitys">
+        <EntityTypeShape EntityType="Model.EJVASSET" Width="1.5" PointX="0.75" PointY="0.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="Model.OPENMARKETOPERATION" Width="1.5" PointX="2.75" PointY="0.75" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="Model.V_OPENMARKET" Width="1.5" PointX="0.75" PointY="4.75" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="Model.V_OPENMARKET_SEARCH" Width="1.5" PointX="3.375" PointY="4.75" Height="3.3263964843749996" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

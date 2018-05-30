@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://TRACS.ThomsonReuters.com/" elementFormDefault="qualified" targetNamespace="http://TRACS.ThomsonReuters.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/SysMon.AppTrace" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/BondDealMonitor/Common" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/Common" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ServiceRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SysMon.AppTrace" minOccurs="0" name="Trace" type="q1:AppTraceType" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SysMon.AppTrace" minOccurs="0" name="TraceLevel" nillable="true" type="q2:AppTraceLevel" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceRequest" nillable="true" type="tns:ServiceRequest" />
+  <xs:complexType name="ServiceItemResponse">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://TRACS.ThomsonReuters.com/BondDealMonitor/Common" minOccurs="0" name="ItemStatus" nillable="true" type="q3:Status" />
+      <xs:element xmlns:q4="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ItemWarnings" nillable="true" type="q4:ArrayOfWarning" />
+      <xs:element minOccurs="0" name="Metrics" nillable="true" type="tns:ResponseItemMetrics" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceItemResponse" nillable="true" type="tns:ServiceItemResponse" />
+  <xs:complexType name="ResponseItemMetrics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CalcMs" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseItemMetrics" nillable="true" type="tns:ResponseItemMetrics" />
+  <xs:complexType name="ServiceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Metrics" nillable="true" type="tns:ResponseMetrics" />
+      <xs:element xmlns:q5="http://TRACS.ThomsonReuters.com/BondDealMonitor/Common" minOccurs="0" name="Status" nillable="true" type="q5:Status" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Trace" nillable="true" type="q6:ArrayOfstring" />
+      <xs:element minOccurs="0" name="TracsHost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TracsVersion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceResponse" nillable="true" type="tns:ServiceResponse" />
+  <xs:complexType name="ResponseMetrics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuildTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="CalcMs" type="xs:double" />
+      <xs:element minOccurs="0" name="CalcThreadMs" nillable="true" type="tns:MetricSet" />
+      <xs:element minOccurs="0" name="CalcThreads" type="xs:int" />
+      <xs:element minOccurs="0" name="CalculateTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="CalculateWaitTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="CommitMs" type="xs:double" />
+      <xs:element minOccurs="0" name="ElapsedMs" type="xs:double" />
+      <xs:element minOccurs="0" name="ErrorTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="FinalTimeTicks" type="xs:long" />
+      <xs:element minOccurs="0" name="FinishingTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="InitialTimeTicks" type="xs:long" />
+      <xs:element minOccurs="0" name="LocalBatchMs" nillable="true" type="tns:MetricSet" />
+      <xs:element minOccurs="0" name="OffloadBatchMs" nillable="true" type="tns:MetricSet" />
+      <xs:element minOccurs="0" name="PreCommitTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="PrecalcMs" type="xs:double" />
+      <xs:element minOccurs="0" name="PrecalcTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="PrecalcWaitTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="PrefetchMs" type="xs:double" />
+      <xs:element minOccurs="0" name="PrefetchTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="PrevalidateTicks" type="xs:int" />
+      <xs:element minOccurs="0" name="RepoCalcMs" type="xs:double" />
+      <xs:element minOccurs="0" name="RepoPrecalcMs" type="xs:double" />
+      <xs:element minOccurs="0" name="ResponseMs" type="xs:double" />
+      <xs:element minOccurs="0" name="StartupTicks" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResponseMetrics" nillable="true" type="tns:ResponseMetrics" />
+  <xs:complexType name="MetricSet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Avg" type="xs:double" />
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Max" type="xs:double" />
+      <xs:element minOccurs="0" name="Min" type="xs:double" />
+      <xs:element minOccurs="0" name="Total" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MetricSet" nillable="true" type="tns:MetricSet" />
+</xs:schema>

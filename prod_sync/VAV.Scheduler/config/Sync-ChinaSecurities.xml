@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cma;Password=cma;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cma;Password=cma;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="CHINASECURITIESNOTICE" destination="CHINASECURITIESNOTICE" isSync="true"  isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="TITLE" destination="TITLE"/>
+      <column-mapping source="URL" destination="URL"/>
+      <column-mapping source="PUBLISHED" destination="PUBLISHED"/>
+      <column-mapping source="ORGCODE" destination="ORGCODE"/>
+      <column-mapping source="CREATEDATE" destination="CREATEDATE"/>
+      <filter>
+        <![CDATA[ CREATEDATE > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CREATEDATE <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CHINASECURITIESTEN" destination="CHINASECURITIESTEN" isSync="true"  isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="TITLE" destination="TITLE"/>
+      <column-mapping source="URL" destination="URL"/>
+      <column-mapping source="PUBLISHED" destination="PUBLISHED"/>
+      <column-mapping source="ORGCODE" destination="ORGCODE"/>
+      <column-mapping source="CREATEDATE" destination="CREATEDATE"/>
+      <filter>
+        <![CDATA[ CREATEDATE > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CREATEDATE <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

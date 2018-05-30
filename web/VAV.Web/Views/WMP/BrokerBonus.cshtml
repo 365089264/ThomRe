@@ -1,0 +1,38 @@
+﻿@using VAV.Web.Common
+@model List<VAV.Entities.CFP_PROFITSHEET>
+
+@if (Model.Count > 0)
+{
+    <table class="datatable Zebra">
+        <thead>
+            <tr class="hr">
+                <th>@Resources.WMP.Broker_DECLAREDATE</th>
+                <th>@Resources.WMP.Broker_Dividend_Unit</th>
+                <th>@Resources.WMP.Broker_Registration_Date</th>
+                <th>@Resources.WMP.Broker_Dividend_Date</th>
+                <th>@Resources.WMP.Broker_Dividend_Accounting_Date</th>
+                <th>@Resources.WMP.Broker_Ex_dividend_Date</th>
+                <th>@Resources.WMP.Broker_Distribution_Target</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(x=>x.FINAL_DIV.HasValue))
+            {
+            <tr>
+                <td>@item.DECLAREDATE.ToString("yyyy-MM-dd")</td>
+                <td style="text-align: right;">@item.FINAL_DIV</td>
+                <td>@UIGenerator.FormatDateTime(item.REGI_DATE)</td>
+                <td>@UIGenerator.FormatDateTime(item.PROVIDE_DATE)</td>
+                <td>@UIGenerator.FormatDateTime(item.ACC_DATE)</td>
+                <td>@UIGenerator.FormatDateTime(item.EX_DATE)</td>
+                <td>@item.TARGET</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    @Resources.Global.Empty_Result
+}
+<div>@Resources.Global.Source</div>

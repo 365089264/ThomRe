@@ -1,0 +1,43 @@
+﻿@{
+    string datePickerId = "datePicker" + ViewBag.ID;
+    string endDatePickerId = "endDatePicker" + ViewBag.ID;
+
+    string startDate = DateTime.Parse(Request["chndate"]).AddYears(-1).ToString("yyyy-MM-dd");
+    string endDate = DateTime.Parse(Request["chndate"]).ToString("yyyy-MM-dd");
+
+    var parentTab = "cfpWMPDetailTabs" + ViewBag.ID;
+}
+
+<div style="margin: 5px 0px 5px 10px;">
+    <span>@Resources.Global.Report_Query@Resources.Global.Report_Query_From</span>
+    <input id="@datePickerId" type="text" class="dateInput" readonly="readonly" value="@startDate"/>
+    <span>@Resources.Global.Report_Query@Resources.Global.Report_Query_End</span>
+    <input id="@endDatePickerId" type="text" class="dateInput" readonly="readonly" value="@endDate"/>
+    <input type="button" value="@Resources.Global.Report_Query" onclick="WMP.UpdateBrokerNetWorthData(@ViewBag.ID,'@Url.Action("GetBrokerNetWorthData","WMP")')">
+</div>
+<div style="height: 90%; height: -webkit-calc(100% - 35px);overflow: auto;">
+    <div id="chart@(ViewBag.ID)" style="height: 50%;"></div>
+    <div style="height: 50%;">
+        <div class="colorBlock-header">
+            <span class="colorBlock-header-span">@ViewBag.Name</span>
+            <a href="#" class="exportExcel" onclick="WMP.ExportExcelForNetWorthDetail(this,'@ViewBag.ID','@Url.Action("ExportBrokerNetWorthData", "WMP")')">
+                <img alt="Export" src="/Content/themes/base/images/excel_icon.png">
+            </a>
+        </div>
+        <div style="height: 95%; height: -webkit-calc(100% - 32px); min-width: 328px; overflow: auto">
+            <table id="table@(ViewBag.ID)" class="datatable Zebra" style="cursor: pointer;white-space:nowrap;">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+            <div>@Resources.Global.Source</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").datepicker();
+        var data = @{ Html.RenderAction("GetBrokerNetWorthData", "WMP", new { id = ViewBag.ID, startDate = startDate, endDate = endDate });} ;
+        WMP.BuildBrokerNetWorth(data, "@ViewBag.ID");
+    });
+</script>

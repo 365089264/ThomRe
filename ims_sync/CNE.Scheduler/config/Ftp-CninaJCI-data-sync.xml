@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;</conn>
+  </source-db>
+  <fileSavePath>C:\DataFeedFtp\chinajci\</fileSavePath>
+  <hostname>10.35.63.144</hostname>
+  <username>ftpupload</username>
+  <password>ftpupload</password>
+  <targetDir>chinajci</targetDir>
+  <fileName>chinajci_{fileDateFormat}.xls</fileName>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <mappings>
+
+    <table-mapping source="CHINAJCICORNCOSTESTIMATEDAIL" destination="CornCostEstimateDaily" >
+      <column-mapping source="COUNTRY" destination="Country"/>
+      <column-mapping source="MONTH" destination="Month"/>
+      <column-mapping source="BASIS" destination="Port Basis cent/BU"/>
+      <column-mapping source="LME" destination="C/B"/>
+      <column-mapping source="CBOT" destination="CBOT cent/BU"/>
+      <column-mapping source="CNF" destination="CNF USD/MT"/>
+      <column-mapping source="DUTY" destination="With TAX RMB/MT"/>
+      <column-mapping source="LASTDUTY" destination="US Corn Change"/>
+      <column-mapping source="FREIGHT" destination="Freight USD/MT"/>
+      <column-mapping source="RATE" destination="Rate"/>
+      <column-mapping source="RE_DATE" destination="Date"/>
+      <column-mapping source="FREEIMPORT" destination="TAX Free Import Cost RMB/MT"/>
+      <column-mapping source="MYKEY" destination="key"/>
+      <column-mapping source="CreateDate" destination="CreateArea"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+
+
+    <table-mapping source="ChinaJciImportPrice" destination="Import Price" >
+      <column-mapping source="country" destination="Country"/>
+      <column-mapping source="pro_name" destination="Product"/>
+      <column-mapping source="price" destination="Future Price"/>
+      <column-mapping source="cnf" destination="CNF(USD/MT)"/>
+      <column-mapping source="grade" destination="Grade"/>
+      <column-mapping source="rmb" destination="RMB Cost"/>
+      <column-mapping source="most" destination="Indicator"/>
+      <column-mapping source="pack" destination="Package"/>
+      <column-mapping source="ship" destination="Ship"/>
+      <column-mapping source="re_date" destination="Date"/>
+      <column-mapping source="fare" destination="Freight"/>
+      <column-mapping source="lme" destination="C/B"/>
+      <column-mapping source="rate" destination="Rate"/>
+      <column-mapping source="duty" destination="Duty"/>
+      <column-mapping source="tax" destination="TAX"/>
+      <column-mapping source="port" destination="OtherFee"/>
+      <column-mapping source="jrate" destination="CAD/USD Rate"/>
+      <column-mapping source="mykey" destination="key"/>
+      <column-mapping source="CreateDate" destination="CreateArea"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+
+
+    <table-mapping source="ChinaJciInternalPrice" destination="Local Price" >
+      <column-mapping source="pro_name" destination="Product"/>
+      <column-mapping source="price" destination="Price"/>
+      <column-mapping source="grade" destination="Grade"/>
+      <column-mapping source="mope" destination="Quality Indicator"/>
+      <column-mapping source="cdarea" destination="Location"/>
+      <column-mapping source="sbarea" destination="Price Area"/>
+      <column-mapping source="remark" destination="Memo"/>
+      <column-mapping source="re_date" destination="Date"/>
+      <column-mapping source="mykey" destination="KEY"/>
+      <column-mapping source="CreateDate" destination="CreateArea"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+
+
+    <table-mapping source="ChinaJciPalmOilStocksDaily" destination="PalmOilInventoryDaily" >
+      <column-mapping source="area" destination="Area"/>
+      <column-mapping source="stock" destination="Inventory"/>
+      <column-mapping source="re_date" destination="Date"/>
+      <column-mapping source="mykey" destination="key"/>
+      <column-mapping source="CreateDate" destination="CreateArea"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+
+
+    <table-mapping source="CHINAJCISOYBEANCRUSHMARGINSD" destination="SoybeanCrushMarginDaily" >
+      <column-mapping source="area" destination="Location"/>
+      <column-mapping source="sb" destination="Soybean"/>
+      <column-mapping source="sm" destination="Soybean Meal"/>
+      <column-mapping source="so" destination="SoybeanOil"/>
+      <column-mapping source="profit" destination="Profit"/>
+      <column-mapping source="smp" destination="Soybean Meal Cost when no crush margin"/>
+      <column-mapping source="re_date" destination="Date"/>
+      <column-mapping source="mykey" destination="key"/>
+      <column-mapping source="CreateDate" destination="CreateArea"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+
+
+    <table-mapping source="ChinaJciSoybeanStocksDaily" destination="SoybeanInventoryDailyReport" >
+      <column-mapping source="area" destination="Area"/>
+      <column-mapping source="stock" destination="Inventory"/>
+      <column-mapping source="re_date" destination="Date"/>
+      <column-mapping source="mykey" destination="key"/>
+      <column-mapping source="CreateDate" destination="CreateArea"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+
+
+    <table-mapping source="CHINAJCIWHEATCOSTESTIMATEDAI" destination="WheatCostEstimateDaily" >
+      <column-mapping source="COUNTRY" destination="Country"/>
+      <column-mapping source="PRO_NAME" destination="Product"/>
+      <column-mapping source="BASIS" destination="Port Basis (cent/BU)"/>
+      <column-mapping source="LME" destination="C/B(cent/BU)"/>
+      <column-mapping source="CBOT" destination="CBOT Corn(cent/BU)"/>
+      <column-mapping source="CNF" destination="CNF(USD/MT)"/>
+      <column-mapping source="TAX" destination="With TAX(RMB/MT)"/>
+      <column-mapping source="CHTAX" destination="Import Cost Change(RMB/MT)"/>
+      <column-mapping source="FREIGHT" destination="Freight(USD/MT)"/>
+      <column-mapping source="RATE" destination="Rate"/>
+      <column-mapping source="RE_DATE" destination="Date"/>
+      <column-mapping source="LASTCHOOSE" destination="Last Day CBOT"/>
+      <column-mapping source="MYKEY" destination="key"/>
+      <column-mapping source="CreateDate" destination="CreateArea"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+</settings>

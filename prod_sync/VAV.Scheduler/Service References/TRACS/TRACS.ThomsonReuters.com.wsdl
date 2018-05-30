@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="TRACS.ThomsonReuters.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="TRACS.ThomsonReuters.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="TRACS.ThomsonReuters.com/Imports">
+      <xsd:import namespace="TRACS.ThomsonReuters.com" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://TRACS.ThomsonReuters.com/BondDealMonitor" />
+      <xsd:import namespace="http://TRACS.ThomsonReuters.com/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/SysMon.AppTrace" />
+      <xsd:import namespace="http://TRACS.ThomsonReuters.com/Common" />
+      <xsd:import namespace="http://TRACS.ThomsonReuters.com/BondDealMonitor/Common" />
+      <xsd:import namespace="Data_Contracts.Common" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://TRACS.ThomsonReuters.com/CDSMonitor" />
+      <xsd:import namespace="http://TRACS.ThomsonReuters.com/Luna" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Common" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFixedIncomeAnalytics_TestService_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestService" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_TestService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_BondDealMonitor_InputMessage">
+    <wsdl:part name="parameters" element="tns:BondDealMonitor" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_BondDealMonitor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BondDealMonitorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_CDSMonitor_InputMessage">
+    <wsdl:part name="parameters" element="tns:CDSMonitor" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_CDSMonitor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CDSMonitorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_CDSMonitor2_InputMessage">
+    <wsdl:part name="parameters" element="tns:CDSMonitor2" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_CDSMonitor2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CDSMonitor2Response" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_GetCDSIConstituents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCDSIConstituents" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_GetCDSIConstituents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCDSIConstituentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_UpdateCDSIConstituentsCache_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCDSIConstituentsCache" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_UpdateCDSIConstituentsCache_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCDSIConstituentsCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_LunaPricer_InputMessage">
+    <wsdl:part name="parameters" element="tns:LunaPricer" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_LunaPricer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LunaPricerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_GeneralLunaPricer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GeneralLunaPricer" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_GeneralLunaPricer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GeneralLunaPricerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_GetZeroCurves_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetZeroCurves" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_GetZeroCurves_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetZeroCurvesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_Version_InputMessage">
+    <wsdl:part name="parameters" element="tns:Version" />
+  </wsdl:message>
+  <wsdl:message name="IFixedIncomeAnalytics_Version_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VersionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFixedIncomeAnalytics">
+    <wsdl:operation name="TestService">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/TestService" message="tns:IFixedIncomeAnalytics_TestService_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/TestServiceResponse" message="tns:IFixedIncomeAnalytics_TestService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BondDealMonitor">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/BondDealMonitor" message="tns:IFixedIncomeAnalytics_BondDealMonitor_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/BondDealMonitorResponse" message="tns:IFixedIncomeAnalytics_BondDealMonitor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CDSMonitor">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/CDSMonitor" message="tns:IFixedIncomeAnalytics_CDSMonitor_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/CDSMonitorResponse" message="tns:IFixedIncomeAnalytics_CDSMonitor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CDSMonitor2">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/CDSMonitor2" message="tns:IFixedIncomeAnalytics_CDSMonitor2_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/CDSMonitor2Response" message="tns:IFixedIncomeAnalytics_CDSMonitor2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCDSIConstituents">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/GetCDSIConstituents" message="tns:IFixedIncomeAnalytics_GetCDSIConstituents_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/GetCDSIConstituentsResponse" message="tns:IFixedIncomeAnalytics_GetCDSIConstituents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCDSIConstituentsCache">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/UpdateCDSIConstituentsCache" message="tns:IFixedIncomeAnalytics_UpdateCDSIConstituentsCache_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/UpdateCDSIConstituentsCacheResponse" message="tns:IFixedIncomeAnalytics_UpdateCDSIConstituentsCache_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LunaPricer">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/LunaPricer" message="tns:IFixedIncomeAnalytics_LunaPricer_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/LunaPricerResponse" message="tns:IFixedIncomeAnalytics_LunaPricer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneralLunaPricer">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/GeneralLunaPricer" message="tns:IFixedIncomeAnalytics_GeneralLunaPricer_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/GeneralLunaPricerResponse" message="tns:IFixedIncomeAnalytics_GeneralLunaPricer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZeroCurves">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/GetZeroCurves" message="tns:IFixedIncomeAnalytics_GetZeroCurves_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/GetZeroCurvesResponse" message="tns:IFixedIncomeAnalytics_GetZeroCurves_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Version">
+      <wsdl:input wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/Version" message="tns:IFixedIncomeAnalytics_Version_InputMessage" />
+      <wsdl:output wsaw:Action="TRACS.ThomsonReuters.com/IFixedIncomeAnalytics/VersionResponse" message="tns:IFixedIncomeAnalytics_Version_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

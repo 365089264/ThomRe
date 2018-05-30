@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Broker_ACTU_ENDDATE" xml:space="preserve">
+    <value>Maturity Date</value>
+  </data>
+  <data name="Broker_ADMN_VAL" xml:space="preserve">
+    <value>Management's Participation Size</value>
+  </data>
+  <data name="Broker_BOOK_VAL" xml:space="preserve">
+    <value>Face Value</value>
+  </data>
+  <data name="Broker_CFPNAME" xml:space="preserve">
+    <value>Product Full Name</value>
+  </data>
+  <data name="Broker_CFPSNAME" xml:space="preserve">
+    <value>Product Abbreviation</value>
+  </data>
+  <data name="Broker_CFP_CODE" xml:space="preserve">
+    <value>Plan ID</value>
+  </data>
+  <data name="Broker_CFP_ID" xml:space="preserve">
+    <value>Product Identification</value>
+  </data>
+  <data name="Broker_CFP_TYPE" xml:space="preserve">
+    <value>Product Type</value>
+  </data>
+  <data name="Broker_CF_MODE" xml:space="preserve">
+    <value>Method of Share Settlement or Assignment</value>
+  </data>
+  <data name="Broker_CLOSED_PERD" xml:space="preserve">
+    <value>Lock-up Period</value>
+  </data>
+  <data name="Broker_DECLAREDATE" xml:space="preserve">
+    <value>Announcement Date</value>
+  </data>
+  <data name="Broker_ESTAB_DATE" xml:space="preserve">
+    <value>Starting Date</value>
+  </data>
+  <data name="Broker_EXPE_ENDDATE" xml:space="preserve">
+    <value>Expected Maturity Date</value>
+  </data>
+  <data name="Broker_FIN_CYC" xml:space="preserve">
+    <value>Financial Cycle</value>
+  </data>
+  <data name="Broker_FORE_YIELD" xml:space="preserve">
+    <value>Expected Yield Description</value>
+  </data>
+  <data name="Broker_HUGE_QUIT_TERM" xml:space="preserve">
+    <value>Large Redemption Identification</value>
+  </data>
+  <data name="Broker_INVEST_CLS" xml:space="preserve">
+    <value>Investment Type</value>
+  </data>
+  <data name="Broker_IS_QDII" xml:space="preserve">
+    <value>QDII</value>
+  </data>
+  <data name="Broker_MAG_ORG" xml:space="preserve">
+    <value>Custodian Bank</value>
+  </data>
+  <data name="Broker_Orgname" xml:space="preserve">
+    <value>Regulatory Agency</value>
+  </data>
+  <data name="Broker_PROD_STATE" xml:space="preserve">
+    <value>Product State</value>
+  </data>
+  <data name="Broker_PROD_Manager" xml:space="preserve">
+    <value>Investment Manager</value>
+  </data>
+  <data name="Broker_TOT_VAL" xml:space="preserve">
+    <value>Product Total Scale</value>
+  </data>
+  <data name="Broker_LOWEST_VAL" xml:space="preserve">
+    <value>Minimum Initial Investment(10k)</value>
+  </data>
+  <data name="Broker_ADD_UNIT_LOW" xml:space="preserve">
+    <value>Minimum Additional Amount(10k)</value>
+  </data>
+  <data name="Broker_DURATION_SIZE_LOW" xml:space="preserve">
+    <value>Subsequent Minimum</value>
+  </data>
+  <data name="Broker_QUIT_UNIT_LOW" xml:space="preserve">
+    <value>Minimum Redemption</value>
+  </data>
+  <data name="Broker_STARTDATE" xml:space="preserve">
+    <value>Recommendation Starting Date</value>
+  </data>
+  <data name="Broker_ENDDATE" xml:space="preserve">
+    <value>Recommendation Closing Date</value>
+  </data>
+  <data name="Broker_OPEN_PRD" xml:space="preserve">
+    <value>Open Period</value>
+  </data>
+  <data name="Broker_INVEST_TARGET" xml:space="preserve">
+    <value>Investment Traget</value>
+  </data>
+  <data name="Broker_INVEST_RANGE" xml:space="preserve">
+    <value>Investment Scope</value>
+  </data>
+  <data name="Broker_INVEST_STRA" xml:space="preserve">
+    <value>Investment Strategy</value>
+  </data>
+  <data name="Broker_INVEST_BENCH" xml:space="preserve">
+    <value>Investment Benchmark</value>
+  </data>
+  <data name="Broker_INVEST_TENET" xml:space="preserve">
+    <value>Investment Philosophy</value>
+  </data>
+  <data name="Broker_PROD_CHAR" xml:space="preserve">
+    <value>Product Feature</value>
+  </data>
+  <data name="Broker_PERFORM_BENCH" xml:space="preserve">
+    <value>Performance Benchmark</value>
+  </data>
+  <data name="Broker_LOWEST_Amount" xml:space="preserve">
+    <value>Starting Amount</value>
+  </data>
+  <data name="Broker_Net_Worth" xml:space="preserve">
+    <value>Net Value</value>
+  </data>
+  <data name="Broker_Daily_Growth" xml:space="preserve">
+    <value>Daily Growth</value>
+  </data>
+  <data name="Broker_UNT_ACCUM_NET" xml:space="preserve">
+    <value>Accumulated Net Value</value>
+  </data>
+  <data name="Broker_UNT_NET" xml:space="preserve">
+    <value>Latest Net Value</value>
+  </data>
+  <data name="Broker_Net_Worth_History" xml:space="preserve">
+    <value>History detail</value>
+  </data>
+  <data name="Seven_day_annualized_yield" xml:space="preserve">
+    <value>7 days annualized rate</value>
+  </data>
+  <data name="thousands_of_income" xml:space="preserve">
+    <value>Per ten thousands income</value>
+  </data>
+  <data name="Broker_Mag_Rate" xml:space="preserve">
+    <value>Management Rate</value>
+  </data>
+  <data name="Broker_Annual_Yield" xml:space="preserve">
+    <value>Annualized Yield</value>
+  </data>
+  <data name="Broker_Accumulated_Net_Value" xml:space="preserve">
+    <value>Accumulated Net Value</value>
+  </data>
+  <data name="Broker_Rate" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="Broker_Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="Broker_Trustee_Rate" xml:space="preserve">
+    <value>Trustee Rate</value>
+  </data>
+  <data name="Broker_Subscription_Rate" xml:space="preserve">
+    <value>Subscription Rate</value>
+  </data>
+  <data name="Broker_Subscription_Amount" xml:space="preserve">
+    <value>Subscription Amount</value>
+  </data>
+  <data name="Broker_Holding_Period" xml:space="preserve">
+    <value>Holding Period</value>
+  </data>
+  <data name="Broker_Rate_of_Purchase" xml:space="preserve">
+    <value>Rate of Purchase</value>
+  </data>
+  <data name="Broker_Amount_of_Purchase" xml:space="preserve">
+    <value>Amount of Purchase</value>
+  </data>
+  <data name="Broker_Redemption_Rate" xml:space="preserve">
+    <value>Redemption Rate</value>
+  </data>
+  <data name="Broker_Redemption_Amount" xml:space="preserve">
+    <value>Redemption Amount</value>
+  </data>
+  <data name="Broker_Financial_Indicator" xml:space="preserve">
+    <value>Financial Indicator</value>
+  </data>
+  <data name="Broker_End_Date" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Broker_Report_Source" xml:space="preserve">
+    <value>Report Source</value>
+  </data>
+  <data name="Broker_Profit_of_Period" xml:space="preserve">
+    <value>Profit of the Period(10K)</value>
+  </data>
+  <data name="Broker_Ending_Net_Asset_Value" xml:space="preserve">
+    <value>Ending Net Asset Value(10K)</value>
+  </data>
+  <data name="Broker_Net_Growth_Rate" xml:space="preserve">
+    <value>Net Growth Rate(%)</value>
+  </data>
+  <data name="Broker_Accumulated_Net_Growth_Rate" xml:space="preserve">
+    <value>Accumulated Net Growth Rate(%)</value>
+  </data>
+  <data name="Broker_Product_Rate" xml:space="preserve">
+    <value>Product Rate</value>
+  </data>
+  <data name="Broker_Announcement_Name" xml:space="preserve">
+    <value>Announcement Name</value>
+  </data>
+  <data name="Broker_Distribution_Target" xml:space="preserve">
+    <value>Distribution Target</value>
+  </data>
+  <data name="Broker_Dividend" xml:space="preserve">
+    <value>Dividend</value>
+  </data>
+  <data name="Broker_Dividend_Accounting_Date" xml:space="preserve">
+    <value>Dividend Accounting Date</value>
+  </data>
+  <data name="Broker_Dividend_Date" xml:space="preserve">
+    <value>Dividend Date</value>
+  </data>
+  <data name="Broker_Dividend_Unit" xml:space="preserve">
+    <value>Dividend(Yuan/Unit)</value>
+  </data>
+  <data name="Broker_Ex_dividend_Date" xml:space="preserve">
+    <value>Ex-dividend Date</value>
+  </data>
+  <data name="Broker_Issue_Announcement" xml:space="preserve">
+    <value>Issue Announcement</value>
+  </data>
+  <data name="Broker_Registration_Date" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+</root>

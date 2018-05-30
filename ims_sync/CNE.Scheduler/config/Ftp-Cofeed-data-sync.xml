@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;</conn>
+  </source-db>
+  <fileSavePath>C:\DataFeedFtp\cofeed\</fileSavePath>
+  <hostname>10.35.63.144</hostname>
+  <username>ftpupload</username>
+  <password>ftpupload</password>
+  <targetDir>cofeed</targetDir>
+  <fileName>Cofeed_{fileDateFormat}.xls</fileName>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <mappings>
+    <table-mapping source="Cofeed" destination="Cofeed" >
+      <column-mapping source="datec" />
+      <column-mapping source="typec" />
+      <column-mapping source="EnglishType" />
+      <column-mapping source="area" />
+      <column-mapping source="city" />
+      <column-mapping source="price" />
+      <column-mapping source="qastand" />
+      <column-mapping source="unit" />
+      <column-mapping source="code" />
+      <column-mapping source="CreateDate" />
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+  </mappings>
+</settings>

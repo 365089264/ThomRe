@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+  <dataSource type="JdbcDataSource"
+		name='VAV'
+        driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        url="jdbc:sqlserver://10.35.63.10;databaseName=VAV"
+        user="sa"
+        password="p@ssw0rd"/>
+
+  <document name="Cmaviews">
+    <entity name="bondview" dataSource="VAV" query="select bc.AssetId, bc.Code, bc.CodeList, isnull(bc.Pyc,'')as Pyc,rtrim(isnull(bc.ShortName,'')) as nameCn,rtrim(isnull(be.ShortName,'')) as nameEn,bc.Ric,bc.ExchangeCode as exchange_code,'BOND' as dispType,'OpenRic' as openType from [vav].[BondInfoCn] bc join [vav].[BondInfoEn] be on bc.AssetId = be.AssetId where bc.Code is not null and bc.ExchangeCode like '%CFS%'">
+      <field column="AssetId" name="id"/>
+      <field column="CodeList" name="code_list"/>
+      <field column="Code" name="code"/>
+      <field column="nameCn" name="name_cn"/>
+      <field column="nameEn" name="name_en"/>
+      <field column="Pyc" name="pyc"/>
+      <field column="Ric" name="ric"/>
+      <field column="dispType" name="display_type"/>
+      <field column="openType" name="open_type"/>
+    </entity>
+  </document>
+</dataConfig>

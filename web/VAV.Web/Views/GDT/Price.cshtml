@@ -1,0 +1,103 @@
+﻿@using VAV.Web.ViewModels.GDT
+@model GdtPriceViewModel
+@{
+    var pricecategoryId = "pricecategory" + @Model.ContentId;
+    var pricePageId = "pricePage" + @Model.ContentId;
+    var priceChartContainerId = "priceChartContainer" + @Model.ContentId;
+    var pricePagePaginateOfLabelId = "pricePagePaginateOfLabel" + @Model.ContentId;
+    var pricePagePaginateId = "pricePagePaginate" + @Model.ContentId;
+    var pricePageDetailTableId = "pricePageDetailTable" + @Model.ContentId;
+    
+}
+<div id="@pricePageId" class="StatisticalContent" style="min-width:500px;width:-webkit-calc(100% - 3px);padding:0px 0px;margin:-2px 0px 0px -2px;">
+    <div class="Statistical">
+        <div class="StatisticalTop">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Resources.CnE.GDT_PriceTitle</span>
+                    <a id="excel@(@Model.ContentId)" href="#" class="exportExcel" onclick="Price.ExportExcelPriceChartDetails(this,@Model.ReportId,@Model.ItemId,'@Model.ContentId');">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                </div>
+                <div id="@priceChartContainerId" style="position: absolute; height: 90%; width:99%;  width: -webkit-calc(99%-2px); height: -webkit-calc(90%+1px ); margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;padding-top:1px">
+                </div>
+            </div>
+        </div>
+        <div class="StatisticalBottom">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 10px);">
+                <div class="colorBlock">
+                    <div class="Statisticalfilter">
+                        <div style="height: 25px;">
+                            @{foreach (var o in Model.FilterList)
+                              { @o.DisplayName
+                                <select id="@pricecategoryId@o.ID" name="coption" class="mediumSelect" columnName="@o.RelationColumn">
+                                    @for (int i = 0; i < o.ListItem.Count; i++)
+                                    {
+
+                                   
+                                        <option value="@o.ListItem[i].Value" >@o.ListItem[i].Text </option>    
+
+                                    }
+                                </select>  
+                              }
+                            }
+                            @if (Model.FilterList.Count >= 1)
+                            {
+                                <input type="button" value="@Resources.Global.Report_Query" onclick="Price.UpdatePriceData('@pricePageId','@Model.ReportId','@Model.ContentId')"/> 
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="@pricePagePaginateOfLabelId" class="paginateOfLable">
+                    </div>
+                    <a href="#" class="exportExcel" onclick="Price.ExportExcelPriceDetails(this,'@Model.ContentId','@Model.ReportId','@Model.ItemId');">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                    <div style="width: 300px; float: right; padding-right: 80px">
+                        <div id="@pricePagePaginateId">
+                        </div>
+                    </div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div style="height: -webkit-calc(100% - 49px); overflow: auto">
+                    <table id="@pricePageDetailTableId" data-report="@Model.ReportId" data-item="@Model.ItemId" data-legend="@Model.Legend" class="datatable Zebra" style="white-space: nowrap;cursor: pointer;">
+                        <thead>
+                            <tr class="hr">
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div>@Resources.Global.Source</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () { 
+        var data = @{ Html.RenderAction("GetPriceData", "GDT", 
+                                        new{
+                                            isHTML = true,
+                                            id = Model.ReportId,
+                                            itemId = Model.ItemId,
+                                            category = ""
+                                            }
+                                        ); 
+                    };
+        Price.UpdatePriceTableData(data.table,'@Model.ContentId');
+        Price.resetCache('@Model.ContentId');
+        Price.UpdatePriceChartData(data.chart.series,'@Model.ContentId');
+        amplify.subscribe('RefreshChart', function () {
+            var parent = $('#@priceChartContainerId');
+            setTimeout(function(){
+                                    if(parent.parent().width()){
+                                        Price.arrHighCharts['@Model.ContentId'].setSize(parent.parent().width(), parent.parent().height()-25, false);
+                                    }
+                }, 500
+            );
+        });
+    });
+</script>

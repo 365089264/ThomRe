@@ -1,0 +1,57 @@
+﻿@model VAV.Web.ViewModels.Report.StatisticalReportViewModel
+@using System.Web.Script.Serialization
+@{
+    var s = new JavaScriptSerializer();
+    Layout = null;
+    var bottomDivID = "Bottom" + Model.ID;
+}
+<div id="@bottomDivID" class="StatisticalBottomInnerDiv">
+    <div class="StatisticalLeft">
+        <div class="colorBlock colorBlockMaxHeight">
+            <div class="colorBlock-header">
+                <span class="colorBlock-header-span">@Model.Name.Replace(Resources.Global.Title_Statistics, Resources.Global.Title_Detail)</span>
+                <a href="#" class="exportExcel" onclick="ExportReport(this, @Model.ID, false, true);">
+                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                </a>
+            </div>
+            <div id="detailedGridDiv_@Model.ID" style="height: 100%">
+                @Html.Partial("_ReportTable", Model.DetailGrid)
+            </div>
+        </div>
+    </div>
+    <div class="StatisticalRight" id="chart_container_bottom_parent_@Model.ID">
+        <div class="colorBlock colorBlockMaxHeight">
+            <div class="colorBlock-header">
+                <span class="colorBlock-header-span">@Model.Name.Replace(Resources.Global.Title_Statistics, Resources.Global.Title_DetailChart)</span>
+            </div>
+            <form class="StatisticalChartForm">
+            <label>
+                @Resources.Global.Chart_Item</label>
+            @Html.DropDownListFor(m => m.BottomChart.ColumnName,
+                                    new SelectList(Model.StatisticalAspects, ""),
+                                    new
+                                        {
+                                            onChange = "refreshBottomChart('" + Model.ID + "','" + s.Serialize(Model.BottomChart) + "')",
+                                            id = "bottomchart_ddl1_" + Model.ID,
+                                            @class = "largeSelect",
+                                        })
+            <label style="margin-left:10px;">@Resources.Global.Chart_Type</label>
+            @Html.DropDownList("topchart_ddl2_" + Model.ID,
+                                new SelectList(Model.BottomChart.ChartTypeOptions, Model.BottomChart.ChartTypeOptions.FirstOrDefault()),
+                                new
+                                {
+                                    onChange = "refreshBottomChart('" + Model.ID + "','" + s.Serialize(Model.BottomChart) + "')",
+                                    id = "bottomchart_ddl2_" + Model.ID,
+                                    @class = "mediumSelect"
+                                })
+            <input type="button" value="@Resources.Global.View_LargeChart" onclick="showLargeChart('@Model.ID',false)" style="margin-left:25px;"/>
+            </form>
+            <div id="chart_container_bottom_@Model.ID" class="StatisticalChartContainer">
+                @Html.Raw(Model.ChartService.GetChart(null, Model.BottomChartModel).ToHtmlString())
+            </div>
+        <div id="chart_container_bottom_large_@Model.ID" style="margin-left:25px;margin-top:15px;display:none;">
+            @Html.Raw(Model.ChartService.GetLargeChart(null, Model.BottomChartModel).ToHtmlString())
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,413 @@
+﻿@using System.Threading
+@using VAV.Web.Common
+@using VAV.Web.Localization
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        window.Common = {};
+        window.Common.ChartSource = '@Resources.Global.Source';
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@Resources.Global.Home_Index_Message</title>
+    @{
+        var themeName = ThemeHelper.GetTheme(Request);        
+    } 
+    <!--Theme Trace: @Html.Raw(ThemeHelper.Trace(Request, themeName))-->
+    @Styles.Render("~/Content/themes/" + themeName + "/bundle")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/amplify")
+    @Scripts.Render("~/bundles/common")
+    @Scripts.Render("~/bundles/highcharts")
+    @Scripts.Render("~/bundles/d3")
+    @if (themeName == "Pearl")
+    {
+        @Scripts.Render("~/bundles/pearltheme")
+    }
+    else
+    {
+        @Scripts.Render("~/bundles/novatheme") 
+    }
+    @if (CultureHelper.IsEnglishCulture())
+    {
+        @Scripts.Render("~/bundles/jslangen")
+    }
+    else
+    {
+        @Scripts.Render("~/bundles/jslangzh")
+    }
+    @Scripts.Render("~/bundles/JET")
+</head>
+<body>
+    <div class="top_block">
+        <div class="viewOwnerInfo">
+            <i id="ownerInfoIcon" class="ui-iconBg iconInfo" title="Authored By :  Fiona.Bao@thomsonreuters.com , Jun.jin@thomsonreuters.com">
+            </i>
+            <div id="viewOwnerInfo-detailedInfo" style="left: -335px; top: 25px;">
+                <a href="javascript:void(0);" class="viewOwnerInfo-closeIcon" onclick="OwnerInfo.HideOwnerInfo();">
+                    x</a>
+                <div id="viewOwnerInfoContainerDiv">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: bold;">@Resources.Global.Product_Manager
+                                </td>
+                                <td style="font-weight: normal;">
+                                    Fiona.Bao@thomsonreuters.com
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">@Resources.Global.Content_Manager
+                                </td>
+                                <td style="font-weight: normal;">
+                                    Andy.xie@thomsonreuters.com
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="languageBar">
+            <a href="/cn" @if (!CultureHelper.IsEnglishCulture())
+                          {@Html.Raw("style='color:#ff8800'")}>
+                简体中文</a>&nbsp;|&nbsp;<a id="lanEn" href="/en" @if (CultureHelper.IsEnglishCulture())
+                                                              {@Html.Raw("style='color:#ff8800'")}>English</a>
+        </div>
+        
+        <div class="search-div">
+            <input id="searchContent" type="text" placeholder="@Resources.Global.SearchPlaceholder"/>
+        </div>
+        <a href="javascript:OpenReport(0,'@Resources.Global.Homepage','Homepage')">
+            @if (CultureHelper.IsEnglishCulture())
+            {
+                <span class="logo_en"></span>
+
+            }
+            else
+            {
+                <span class="logo_cn"></span>
+            }
+        </a>
+    </div>
+    @RenderBody()
+    @RenderSection("scripts", false)
+    <div id="busyLoadingDiv" style="display: none;">
+        @if (themeName == "Pearl")
+        {
+            <div class="loadingBackground">
+            </div>
+            <div class="loadingIcon">
+            </div>
+            <div style="position: absolute; text-align: center; margin-top: 25px; width: 100%;
+                top: 50%; left: 0">
+                @Resources.Global.LoadingData
+            </div>
+        }
+        else
+        {
+            <div class="rts_loading_underlay" style="height: 100%; width: 100%; display: none">
+            </div>
+            <div class="frameBackground" style="position: absolute; top: 50%; left: 50%; width: 300px;
+                margin-top: -54px; margin-left: -150px;">
+            </div>
+            <div class="rts_loading_image" style="position: absolute; top: 50%; left: 50%; height: 20px;
+                width: 20px; margin-top: -10px; margin-left: -10px;">
+            </div>
+            <div id="resultsLoadingSplash_message" style="position: absolute; top: 50%; left: 0;
+                width: 100%; text-align: center; margin-top: 25px; color: #ccc;">
+                @Resources.Global.LoadingData
+            </div>
+        }
+    </div>
+</body>
+@Html.Partial("ColumnChooser")
+<script type="text/javascript">
+        $(function() {
+        $(document).click(function () {
+	        OwnerInfo.HideOwnerInfo();
+	    });
+	    $('#ownerInfoIcon').unbind('click');
+	    $('#ownerInfoIcon').click(function (e) {
+	        e.stopPropagation();
+	        OwnerInfo.ShowOwnerInfo();
+	        return false;
+	    });
+        
+        $.datepicker.setDefaults($.datepicker.regional["@Thread.CurrentThread.CurrentUICulture.Name"]);
+            @if (!CultureHelper.IsEnglishCulture())
+            {
+                @Html.Raw("Highcharts.setOptions({ lang: { months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']," +
+                          " shortMonths: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'], " +
+                          "weekdays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六']," +
+                          " downloadPNG: '下载PNG', downloadJPEG: '下载JPEG', downloadSVG: '下载SVG', exportButtonTitle: '保存图片', loading: '加载中...'," +
+                          " printButtonTitle: '打印', resetZoom: '重置', resetZoomTitle: '重置为1：1'," +
+                          "contextButtonTitle:'图表菜单',downloadPDF:'下载PDF',printChart:'打印'" +
+                          ",rangeSelectorFrom: '从', rangeSelectorTo: '到', rangeSelectorZoom:'区域' }});")
+            }
+        });
+
+        $('#columnChooser').dialog(
+        {
+            autoOpen: false,
+            width: 780,
+            modal: true
+
+        });
+
+
+        var OwnerInfo = (function(my) {
+
+            my.ShowOwnerInfo = function() {
+                $('#viewOwnerInfo-detailedInfo').show();
+            };
+            my.HideOwnerInfo = function() {
+                $('#viewOwnerInfo-detailedInfo').hide();
+            };
+            return my;
+
+        }(OwnerInfo || {}));
+
+
+        /**
+         *   @@author Sheng Qing [qing.sheng@thomsonreuters.com]
+         *   @@description Search function on home page
+         */
+        var CommonSearch = (function(my) {
+
+            var cache = {};
+            var key = "";
+            var storedData = {};
+            $('#searchContent').autocomplete({
+                delay: 250,
+                //minLength: 1,
+                source: function(request, response) {
+                    var term = request.term;
+                    key = term;
+                    if (term in cache) {
+                        response(cache[term]);
+                        return;
+                    }
+                    $.ajax({
+                        type: 'GET',
+                        url: "/Home/AutoSuggest",
+                        data: {
+                            key: term
+                        },
+                        beforeSend:function() {
+                            storedData = null;  
+                        },
+                        success: function(data) {
+                            cache[term] = data;
+                            storedData = data;
+                            response(data);
+                        },
+                        async: true
+                    });
+                },
+                focus: function(event, ui) {
+                    //$("#searchContent").val(ui.item.NameCn);
+                    //prevent clear input
+                    event.preventDefault(); // without this: keyboard movements reset the input to ''
+                },
+                select: function(event, ui) {
+                    my.OpenItem(ui.item);
+                    return false;
+                },
+                create: function() {
+                    $(this).data('ui-autocomplete')._renderItem = function(ul, item) {
+                        my.prependClass(ul, "home_search_wraper");
+                        if ('@themeName' !== 'Pearl')
+                            ul.css({ 'border': 'solid 1px black' });
+                        var innerHtml = buildHtml(item);
+                        return $("<li>")
+                            .append(innerHtml)
+                            .appendTo(ul);
+                    };
+                }
+
+            }).focus(function() {// show search result when focus in the input
+                $(this).autocomplete("search");
+            }).keyup(function(e){
+              if (e.keyCode === $.ui.keyCode.ENTER && storedData) {
+                  if (storedData[0]) {
+                      my.OpenItem(storedData[0]);
+                  }
+              }
+            });
+
+            function buildHtml(item) {
+                var reg = new RegExp(key, 'ig');
+                var displayType = item.DisplayType;
+                var mainText = '';
+                var subText = '';
+                var mainSub = '';
+                switch(item.DisplayType) {
+                    case 'BOND':
+                        mainText = item.Code.replace(reg, my.AddHighlighForKeyword) + '&nbsp;&nbsp;&nbsp;' + item.NameCn.replace(reg, my.AddHighlighForKeyword);
+                        mainSub = item.Pyc.replace(reg, my.AddHighlighForKeyword);
+                        break;
+                    case 'ISSUER':
+                        mainText = item.NameCn.replace(reg, my.AddHighlighForKeyword) + '&nbsp;&nbsp;&nbsp;' + item.ShortNameCn.replace(reg, my.AddHighlighForKeyword);
+                        if (item.NameCn != item.NameEn)
+                            subText = item.NameEn.replace(reg, my.AddHighlighForKeyword) + '&nbsp;&nbsp;&nbsp;' + item.ShortNameEn.replace(reg, my.AddHighlighForKeyword);
+                        mainSub = item.Pyc.replace(reg, my.AddHighlighForKeyword);
+                        break;
+                    case 'FIRR':
+                        mainText = item.NameCn.replace(reg, my.AddHighlighForKeyword);
+                        if (item.NameCn != item.NameEn)
+                            subText = item.NameEn.replace(reg, my.AddHighlighForKeyword);
+                        break;
+                    case 'FXRR':
+                        mainText = item.NameCn.replace(reg, my.AddHighlighForKeyword);
+                        if (item.NameCn != item.NameEn)
+                            subText = item.NameEn.replace(reg, my.AddHighlighForKeyword);
+                        break;
+                    case 'CERR':
+                        mainText = item.NameCn.replace(reg, my.AddHighlighForKeyword);
+                        if (item.NameCn != item.NameEn)
+                            subText = item.NameEn.replace(reg, my.AddHighlighForKeyword);
+                        break;
+                    case 'MACRO':
+                        mainText = item.NameCn.replace(reg, my.AddHighlighForKeyword);
+                        if (item.NameCn != item.NameEn)
+                            subText = item.NameEn.replace(reg, my.AddHighlighForKeyword);
+                        mainSub = item.Ric.replace(reg, my.AddHighlighForKeyword);
+                        break;
+                    case 'VIEW':
+                        mainText = item.NameCn.replace(reg, my.AddHighlighForKeyword);
+                        subText = item.NameEn.replace(reg, my.AddHighlighForKeyword);
+                        break;
+                    case 'OTHER':
+                        mainText = item.NameCn.replace(reg, my.AddHighlighForKeyword) + '   ' + item.Ric.replace(reg, my.AddHighlighForKeyword);
+                        if (item.NameCn != item.NameEn)
+                            subText = item.NameEn.replace(reg, my.AddHighlighForKeyword);
+                        break;
+                }
+                //mainText = mainText.replace(reg, my.AddHighlighForKeyword);
+                //subText = subText.replace(reg, my.AddHighlighForKeyword);
+                //mainSub = mainSub.replace(reg, my.AddHighlighForKeyword);
+                return $.tmpl(htmlTmpl, {displayType:displayType,mainText:mainText,subText:subText,mainSub:mainSub});
+            }
+
+            var htmlTmpl = '<a><table class="home_search">' +
+                            '<tr><td class="type" rowspan="2">${displayType}</td>' +
+                            '<td class="title">{{html mainText}}</td>' +
+                            '<td align="right">{{html mainSub}}</td>' +
+                            '</tr>' +
+                            '<tr><td class="subtitle">{{html subText}}</td></tr></table></a>';
+
+            my.OpenItem = function (item) {
+                LogUsage('Full text search');
+                switch(item.DisplayType) {
+                    case 'BOND':
+                        if (item.Ric != null)
+                            my.OpenRic(item);
+                        else 
+                            my.OpenBondView(item.Id);
+                        break;
+                    case 'ISSUER':
+                        my.OpenIssuer(item);
+                        break;
+                    case 'FIRR':
+                        my.OpenResearchReport(item.Ric);
+                        break;
+                    case 'FXRR':
+                        my.OpenResearchReport(item.Ric);
+                        break;
+                    case 'CERR':
+                        my.OpenResearchReport(item.Ric);
+                        break;
+                    case 'MACRO':
+                        IPPCommon.DownloadFile(item.Id);
+                        break;
+                    case 'VIEW':
+                        my.OpenReport(item)
+                        break;
+                    case 'OTHER':
+                        IPPCommon.DownloadFile(item.Id);
+                        break;
+                }
+            };
+
+             function openProd(prodric) {
+                var data = {
+                    target: "popup",
+                    // open a popup window
+                    location: {
+                        x: 200,
+                        y: 100,
+                        width: 600,
+                        height: 400
+                    },
+                    name: "Quote Object",
+                    // open a Quote Object
+                    entities: [
+                        {
+                            type: "COMP",
+                            "RIC": "0#" + prodric
+                        }
+                    ]
+                };
+                JET.navigate(data);
+            }
+
+            my.OpenRic = function (item) {
+                //window.open('cpurl://views.cp./Explorer/Default.aspx?s=' + ric + '&st=RIC');
+                if (item.ExchangeCode.indexOf('CFS') > -1) {
+                    window.open('cpurl://apps.cp./Apps/SingleBondView?id=' + item.Code);
+                }else{
+                    openProd(item.Ric);
+                }
+            };
+
+             my.OpenBondView = function (assetId) {
+                var url = 'cpurl://views.cp./Explorer/Default.aspx?s=0x' + assetId + '&st=EJVAssetID';
+                window.open(url);
+            };
+
+            //open report
+            my.OpenReport = function (item) {
+                //OpenReport(item.Id, item.Name, item.NameEn, '', '', '');
+                MessageRouter({
+	                nodeid: item.Id,
+	                reportid: item.ReportId,
+	                action: item.ActionType,
+	                nodetext: item.Name,
+	                source: 'menu',
+	                trace: item.NameEn,
+	                ric: item.Ric
+	            });
+            };
+
+            my.OpenResearchReport = function(url) {
+                window.location.href = url;
+            };
+
+            my.OpenIssuer = function(item) {
+                Fundamental.OpenFundamentalDetail(item.Id, item.NameCn);
+            };
+
+            // add highlight class on keyword
+            my.AddHighlighForKeyword = function(match) {
+                return '<span class="highlight">' + match + '</span>';
+            };
+
+            // add class in the first position of class list
+            my.prependClass = function(sel, strClass) {
+                var $el = jQuery(sel);
+                if ($el.hasClass(strClass)) {
+                    return;
+                }
+
+                var classes = $el.attr('class');
+                classes = strClass + ' ' + classes;
+                $el.attr('class', classes);
+            };
+
+            return my;
+        }(CommonSearch || {}));
+</script>
+</html>

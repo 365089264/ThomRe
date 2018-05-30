@@ -1,0 +1,114 @@
+﻿<div class="colorBlock"  style="min-width: 1200px">
+    <div class="container">
+        <div class="colorBlock filterBlock">
+            <div style="float: left; margin: 0 10px;">
+                <label>
+                    @Resources.IPP.IPP_Module</label>
+                <select style="width: 150px;" data-ng-options="m as m.Name for m in modules" data-ng-model="selectedModule"
+                    data-ng-change="UpdateTopic()">
+                </select>
+                <label>
+                    @Resources.IPP.IPP_Topic</label>
+                <select style="width: 150px;" data-ng-options="t as t.Name for t in topics" data-ng-model="selectedTopic"
+                    data-ng-change="TopicChanged()">
+                </select>
+                <label>
+                    @Resources.IPP.IPP_Title</label>
+                <input type="text" ng-model="key" />
+                <input type="button" value="@Resources.IPP.IPP_Query" ng-click="queryFile()" />
+            </div>
+            <div style="clear: both">
+            </div>
+        </div>
+        <div loading-block class="colorBlock">
+            <div ng-show="files.length == 0 && showEmptyResultText" style="margin: 10px;">@Resources.Global.Empty_Result</div>
+            <div ng-show="files.length > 0">
+                <div pagination-label class="paginateOfLable"></div>
+                <div style="width: 300px; float: right; padding-right: 80px">
+                    <div pagination-pager>
+                    </div>
+                </div>
+                <div style="clear: both">
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table ng-show="files.length > 0" class="datatable">
+                    <thead>
+                    <tr>
+                        <th>
+                            @Resources.IPP.IPP_Title
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Module
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Topic
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Author
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Submit_Date
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Descr
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Approver
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Hit
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Rating
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Operation
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in files">
+                        <td class="width-limited"  title="{{isEn ? item.TITLEEN : item.TITLECN}}">
+                            <span ng-class='{top : item.DISPLAYORDER == 1}'>&nbsp;</span><a class="link" href="javascript:void(0);" ng-click="donwload(item.ID)">{{ isEn ? item.TITLEEN : item.TITLECN}}</a>
+                        </td>
+                        <td class="width-limited" title="{{isEn ? item.MODULENAMEEN : item.MODULENAMECN}}">
+                            {{(isEn ? item.MODULENAMEEN : item.MODULENAMECN)}}
+                        </td>
+                        <td class="width-limited" title="{{isEn ? item.TOPICNAMEEN : item.TOPICNAMECN}}">
+                            {{(isEn ? item.TOPICNAMEEN : item.TOPICNAMECN)}}
+                        </td>
+                        <td ng-switch on="item.AUTHORRM != ''" title="RM:      {{item.AUTHORRM}}
+Email:  {{item.AuthorEmail}}">
+                            <a ng-switch-when="true" class="link" ng-href="rm://{{item.AUTHORRM}}/?message=Hi">{{item.AUTHOR}}</a>
+                            <span ng-switch-when="false">{{item.AUTHOR}}</span>
+                            <span ng-switch-default>{{item.AUTHOR}}</span>
+                        </td>
+                         <td>
+                            {{item.SUBMITDATE}}
+                        </td>
+                        <td class="width-limited" title="{{isEn ? item.DESCREN : item.DESCRCN}}">
+                            {{isEn ? item.DESCREN : item.DESCRCN}}
+                        </td>
+                        <td>
+                            {{item.APPROVER}}
+                        </td>
+                        <td>
+                            {{item.HITS}}
+                        </td>
+                        <td>
+                            <div ipp-rating rating-value="item.RATING" max="5" on-rating-selected="saveRatingToServer(item.ID)"></div>
+                        </td>
+                        <td style="width:130px;">
+                            <div ng-hide="item.ISDIRECTDELETE == '0'" style="text-align:center;">
+                                <input type="button" ng-click="editFile(item.ID)" value="@Resources.IPP.IPP_Edit" />
+                                <input style="margin-left:3px;" type="button" ng-click="deleteFile(item.ID, 'delete')" value="@Resources.IPP.IPP_Delete" />
+                            </div>
+                        </td>
+                    </tr>
+                   </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

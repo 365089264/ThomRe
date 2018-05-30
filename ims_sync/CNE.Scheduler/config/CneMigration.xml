@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>sqlserver</type>
+    <conn>Server=10.35.63.144;Database=cne;Pooling=true;Uid=sa;Pwd=p@ssw0rd</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    
+    <table-mapping source="SdLocalRefinery.TotalStock" destination="TotalStock" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="TotalStock" destination="TotalStock"/>
+      <column-mapping source="GasolineStock" destination="GasolineStock"/>
+      <column-mapping source="DieselStock" destination="DieselStock"/>
+      <column-mapping source="GasolineCapacityRate" destination="GasolineCapacityRate"/>
+      <column-mapping source="DieselCapacityRate" destination="DieselCapacityRate"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[ CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="SdLocalRefinery.TotalOperatingRate" destination="TotalOperatingRate" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="OperatingRate" destination="OperatingRate"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[ CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    
+    <table-mapping source="SdLocalRefinery.DayProduction" destination="DayProduction" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="Code" destination="Code" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Company" destination="Company"/>
+      <column-mapping source="ProcessCapacity" destination="ProcessCapacity"/>
+      <column-mapping source="Gasoline" destination="Gasoline"/>
+      <column-mapping source="Diesel" destination="Diesel"/>
+      <column-mapping source="ReDate" destination="ReDate" isKey="true"/>
+      <filter>
+        <![CDATA[ ReDate >= {LastSyncTime} AND ReDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="dbo.GDT_OilInventoryMax" destination="GDT_OilInventoryMax" isOmitColumns="true" isSync="true" >
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LatestDate" destination="LatestDate"/>
+      <column-mapping source="Inventory" destination="Inventory"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <column-mapping source="ProductName_CN" destination="ProductName_CN"/>
+      <column-mapping source="ProductName_EN" destination="ProductName_EN"/>
+      <column-mapping source="Unit_CN" destination="Unit_CN"/>
+      <column-mapping source="Unit_EN" destination="Unit_EN"/>
+      <column-mapping source="UpdateFrequency_CN" destination="UpdateFrequency_CN"/>
+      <column-mapping source="UpdateFrequency_EN" destination="UpdateFrequency_EN"/>
+      <column-mapping source="CreateTime" destination="CreateTime"/>
+      <column-mapping source="LastMonthInventory" destination="LastMonthInventory"/>
+      <column-mapping source="MoM" destination="MoM"/>
+      <filter>
+        <![CDATA[ CreateTime >= {LastSyncTime} AND CreateTime <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="dbo.GDT_MetalSalesMax" destination="GDT_MetalSalesMax" isOmitColumns="true" isSync="true" >
+      <column-mapping source="KeyWord" destination="KeyWord" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LatestDate" destination="LatestDate"/>
+      <column-mapping source="ThisMonthProduction" destination="ThisMonthProduction"/>
+      <column-mapping source="ProductName_CN" destination="ProductName_CN"/>
+      <column-mapping source="ProductName_EN" destination="ProductName_EN"/>
+      <column-mapping source="Unit_CN" destination="Unit_CN"/>
+      <column-mapping source="Unit_EN" destination="Unit_EN"/>
+      <column-mapping source="AreaOrSale_CN" destination="AreaOrSale_CN"/>
+      <column-mapping source="AreaOrSale_EN" destination="AreaOrSale_EN"/>
+      <column-mapping source="Category_CN" destination="Category_CN"/>
+      <column-mapping source="Category_EN" destination="Category_EN"/>
+      <column-mapping source="Menu_CN" destination="Menu_CN"/>
+      <column-mapping source="Menu_EN" destination="Menu_EN"/>
+      <column-mapping source="DataSource_CN" destination="DataSource_CN"/>
+      <column-mapping source="DataSource_EN" destination="DataSource_EN"/>
+      <column-mapping source="UpdateTime" destination="UpdateTime"/>
+      <column-mapping source="LastMonthProduction" destination="LastMonthProduction"/>
+      <column-mapping source="MoM" destination="MoM"/>
+      <column-mapping source="SamePeriodOfLastYear" destination="SamePeriodOfLastYear"/>
+      <column-mapping source="YoY" destination="YoY"/>
+      <column-mapping source="YTDProduction" destination="YTDProduction"/>
+      <column-mapping source="YTDOfLastYear" destination="YTDOfLastYear"/>
+      <column-mapping source="YTDoYTD" destination="YTDoYTD"/>
+    </table-mapping>
+   
+    <table-mapping source="dbo.GDT_AgricultrueInventoryMax" destination="GDT_AgricultrueInventoryMax" isOmitColumns="true" isSync="true" >
+      <column-mapping source="id" destination="id"/>
+      <column-mapping source="KeyWord" destination="KeyWord" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LatestDate" destination="LatestDate"/>
+      <column-mapping source="Inventory" destination="Inventory"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <column-mapping source="ProductName_CN" destination="ProductName_CN"/>
+      <column-mapping source="ProductName_EN" destination="ProductName_EN"/>
+      <column-mapping source="Unit_CN" destination="Unit_CN"/>
+      <column-mapping source="Unit_EN" destination="Unit_EN"/>
+      <column-mapping source="Area_CN" destination="Area_CN"/>
+      <column-mapping source="Area_EN" destination="Area_EN"/>
+      <column-mapping source="DataSrc_CN" destination="DataSrc_CN"/>
+      <column-mapping source="DataSrc_EN" destination="DataSrc_EN"/>
+      <column-mapping source="Province_CN" destination="Province_CN"/>
+      <column-mapping source="Province_EN" destination="Province_EN"/>
+      <column-mapping source="UpdateFrequency_CN" destination="UpdateFrequency_CN"/>
+      <column-mapping source="UpdateFrequency_EN" destination="UpdateFrequency_EN"/>
+      <column-mapping source="SYMBOL" destination="SYMBOL"/>
+      <column-mapping source="DSPLY_NAME" destination="DSPLY_NAME"/>
+      <column-mapping source="RIC" destination="RIC"/>
+      <column-mapping source="hisdata" destination="hisdata"/>
+      <column-mapping source="Remark_CN" destination="Remark_CN"/>
+      <column-mapping source="Remark_EN" destination="Remark_EN"/>
+      <column-mapping source="CreateTime" destination="CreateTime"/>
+      <column-mapping source="LastMonthInventory" destination="LastMonthInventory"/>
+      <column-mapping source="MoM" destination="MoM"/>
+    </table-mapping>
+    <table-mapping source="dbo.GDT_MetalInventoryMax" destination="GDT_MetalInventoryMax" isOmitColumns="true" isSync="true" >
+      <column-mapping source="id" destination="id"/>
+      <column-mapping source="KeyWord" destination="KeyWord" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LatestDate" destination="LatestDate"/>
+      <column-mapping source="Inventory" destination="Inventory"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <column-mapping source="ProductName_CN" destination="ProductName_CN"/>
+      <column-mapping source="ProductName_EN" destination="ProductName_EN"/>
+      <column-mapping source="Unit_CN" destination="Unit_CN"/>
+      <column-mapping source="Unit_EN" destination="Unit_EN"/>
+      <column-mapping source="StatiRange_CN" destination="StatiRange_CN"/>
+      <column-mapping source="StatiRange_EN" destination="StatiRange_EN"/>
+      <column-mapping source="DataSrc_CN" destination="DataSrc_CN"/>
+      <column-mapping source="DataSrc_EN" destination="DataSrc_EN"/>
+      <column-mapping source="ItemName_CN" destination="ItemName_CN"/>
+      <column-mapping source="ItemName_EN" destination="ItemName_EN"/>
+      <column-mapping source="UpdateFrequency_CN" destination="UpdateFrequency_CN"/>
+      <column-mapping source="UpdateFrequency_EN" destination="UpdateFrequency_EN"/>
+      <column-mapping source="LastMonthInventory" destination="LastMonthInventory"/>
+      <column-mapping source="MoM" destination="MoM"/>
+      <column-mapping source="DataTab" destination="DataTab"/>
+    </table-mapping>
+    <table-mapping source="SdLocalRefinery.DieselIndex" destination="DieselIndex" isOmitColumns="true" isSync="true" >
+      <column-mapping source="DieselIndex" destination="DieselIndex"/>
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[ CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CUSteel.HeavyAndMediumPlate" destination="HeavyAndMediumPlate" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true" >
+      <column-mapping source="MonthDate" destination="MonthDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ItemValue" destination="ItemValue" />
+      <column-mapping source="ItemName" destination="ItemName" isKey="true"/>
+      <column-mapping source="SyncTime" destination="SyncTime" />
+      <filter>
+        <![CDATA[[SyncTime] >= {LastSyncTime} AND [SyncTime] <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="SdLocalRefinery.DieselValuation" destination="DieselValuation" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="PriceDate" destination="PriceDate"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ProductName" destination="ProductName"/>
+      <column-mapping source="ModelName" destination="ModelName"/>
+      <column-mapping source="AreaName" destination="AreaName"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="Price" destination="Price"/>
+      <column-mapping source="ChangeRate" destination="ChangeRate"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[ CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="SdLocalRefinery.GasolineIndex" destination="GasolineIndex" isOmitColumns="true" isSync="true" >
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Gasoline" destination="Gasoline"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[ CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="SdLocalRefinery.GasolineValuation" destination="GasolineValuation" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="ProductName" destination="ProductName" />
+      <column-mapping source="ModelName" destination="ModelName"/>
+      <column-mapping source="AreaName" destination="AreaName"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="PriceDate" destination="PriceDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Price" destination="Price"/>
+      <column-mapping source="ChangeRate" destination="ChangeRate"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[ CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="SdLocalRefinery.MonthProduction" destination="MonthProduction" isOmitColumns="true" isSync="true" >
+      <column-mapping source="Month" destination="Month" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Gasoline" destination="Gasoline"/>
+      <column-mapping source="Diesel" destination="Diesel"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[ CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="SdLocalRefinery.Profit" destination="Profit" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ReDate" destination="ReDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ComprehensiveOfShengliCrude" destination="ComprehensiveOfShengliCrude"/>
+      <column-mapping source="ComprehensiveOfFuel" destination="ComprehensiveOfFuel"/>
+      <column-mapping source="VacuumOfShengliCrude" destination="VacuumOfShengliCrude"/>
+      <column-mapping source="VacuumOfFuel" destination="VacuumOfFuel"/>
+      <column-mapping source="Catalysis" destination="Catalysis"/>
+      <column-mapping source="Coking" destination="Coking"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <filter>
+        <![CDATA[ CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

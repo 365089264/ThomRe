@@ -1,0 +1,2160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne_zcx;Password=cne_zcx;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=CNE_ZCX;Password=cne_zcx;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="INDU_AREA_CHE_VALUE" destination="INDU_AREA_CHE_VALUE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_1" destination="INDU_AREA_CHE_VOL_1" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <column-mapping source="A013" destination="A013"/>
+      <column-mapping source="A014" destination="A014"/>
+      <column-mapping source="A015" destination="A015"/>
+      <column-mapping source="A016" destination="A016"/>
+      <column-mapping source="A017" destination="A017"/>
+      <column-mapping source="A018" destination="A018"/>
+      <column-mapping source="A019" destination="A019"/>
+      <column-mapping source="A020" destination="A020"/>
+      <column-mapping source="A021" destination="A021"/>
+      <column-mapping source="A022" destination="A022"/>
+      <column-mapping source="A023" destination="A023"/>
+      <column-mapping source="A024" destination="A024"/>
+      <column-mapping source="A025" destination="A025"/>
+      <column-mapping source="A026" destination="A026"/>
+      <column-mapping source="A027" destination="A027"/>
+      <column-mapping source="A028" destination="A028"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_10" destination="INDU_AREA_CHE_VOL_10" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_11" destination="INDU_AREA_CHE_VOL_11" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_12" destination="INDU_AREA_CHE_VOL_12" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <column-mapping source="A013" destination="A013"/>
+      <column-mapping source="A014" destination="A014"/>
+      <column-mapping source="A015" destination="A015"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_13" destination="INDU_AREA_CHE_VOL_13" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_2" destination="INDU_AREA_CHE_VOL_2" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <column-mapping source="A013" destination="A013"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_3" destination="INDU_AREA_CHE_VOL_3" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_4" destination="INDU_AREA_CHE_VOL_4" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_5" destination="INDU_AREA_CHE_VOL_5" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_6" destination="INDU_AREA_CHE_VOL_6" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_7" destination="INDU_AREA_CHE_VOL_7" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <column-mapping source="A013" destination="A013"/>
+      <column-mapping source="A014" destination="A014"/>
+      <column-mapping source="A015" destination="A015"/>
+      <column-mapping source="A016" destination="A016"/>
+      <column-mapping source="A017" destination="A017"/>
+      <column-mapping source="A018" destination="A018"/>
+      <column-mapping source="A019" destination="A019"/>
+      <column-mapping source="A020" destination="A020"/>
+      <column-mapping source="A021" destination="A021"/>
+      <column-mapping source="A022" destination="A022"/>
+      <column-mapping source="A023" destination="A023"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_8" destination="INDU_AREA_CHE_VOL_8" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <column-mapping source="A013" destination="A013"/>
+      <column-mapping source="A014" destination="A014"/>
+      <column-mapping source="A015" destination="A015"/>
+      <column-mapping source="A016" destination="A016"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CHE_VOL_9" destination="INDU_AREA_CHE_VOL_9" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <column-mapping source="A013" destination="A013"/>
+      <column-mapping source="A014" destination="A014"/>
+      <column-mapping source="A015" destination="A015"/>
+      <column-mapping source="A016" destination="A016"/>
+      <column-mapping source="A017" destination="A017"/>
+      <column-mapping source="A018" destination="A018"/>
+      <column-mapping source="A019" destination="A019"/>
+      <column-mapping source="A020" destination="A020"/>
+      <column-mapping source="A021" destination="A021"/>
+      <column-mapping source="A022" destination="A022"/>
+      <column-mapping source="A023" destination="A023"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_COAL_PRI" destination="INDU_AREA_COAL_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_COAL_SELL" destination="INDU_AREA_COAL_SELL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_COAL_STOCK" destination="INDU_AREA_COAL_STOCK" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_COAL_TRAN" destination="INDU_AREA_COAL_TRAN" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_COAL_VOL" destination="INDU_AREA_COAL_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_COKE_PRI" destination="INDU_AREA_COKE_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_CROP_BAL" destination="INDU_AREA_CROP_BAL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="MARKET_YEAR" destination="MARKET_YEAR"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="MAC_IDX_PAR_2" destination="MAC_IDX_PAR_2"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="DATA_ATTR" destination="DATA_ATTR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="FORECAST_ORG" destination="FORECAST_ORG"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_INVEST_PROJ" destination="INDU_AREA_INVEST_PROJ" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_INVEST_SUM" destination="INDU_AREA_INVEST_SUM" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_OIL_PROD_PRI" destination="INDU_AREA_OIL_PROD_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="STAT_GOODS_PAR" destination="STAT_GOODS_PAR"/>
+      <column-mapping source="TAB_NUM" destination="TAB_NUM"/>
+      <column-mapping source="PROD_PAR" destination="PROD_PAR"/>
+      <column-mapping source="VARIETY_NAME" destination="VARIETY_NAME"/>
+      <column-mapping source="PROD_REMARK" destination="PROD_REMARK"/>
+      <column-mapping source="AREA_DES_PAR" destination="AREA_DES_PAR"/>
+      <column-mapping source="PRICE_PAR" destination="PRICE_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_RAIL_COAL" destination="INDU_AREA_RAIL_COAL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_ROAD_COAL" destination="INDU_AREA_ROAD_COAL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_AREA_SOYBEAN_CRUSH" destination="INDU_AREA_SOYBEAN_CRUSH" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="MARKET_YEAR" destination="MARKET_YEAR"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="DATA_ATTR" destination="DATA_ATTR"/>
+      <column-mapping source="FORECAST_ORG" destination="FORECAST_ORG"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_BRA_PRI_AVG" destination="INDU_BRA_PRI_AVG" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="PRICE_PAR" destination="PRICE_PAR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_CALOR_PRI" destination="INDU_CALOR_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_CHE_INVEST_PROJ" destination="INDU_CHE_INVEST_PROJ" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_CHE_INVEST_SUM" destination="INDU_CHE_INVEST_SUM" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_CHE_PRI_POTD" destination="INDU_CHE_PRI_POTD" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <column-mapping source="A013" destination="A013"/>
+      <column-mapping source="A014" destination="A014"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_COAL_CONSUM_ELE" destination="INDU_COAL_CONSUM_ELE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_COAL_CONSUM_MONTH" destination="INDU_COAL_CONSUM_MONTH" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_COAL_PORT" destination="INDU_COAL_PORT" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <column-mapping source="A013" destination="A013"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_COAL_STOCK_MONTH" destination="INDU_COAL_STOCK_MONTH" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_COAL_TRAN" destination="INDU_COAL_TRAN" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_COAL_TYPE_PRI" destination="INDU_COAL_TYPE_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_COKE_TYPE_PRI" destination="INDU_COKE_TYPE_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_COMM_QUOT_PRI" destination="INDU_COMM_QUOT_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="COMM_NAME" destination="COMM_NAME"/>
+      <column-mapping source="QUOT_ORG" destination="QUOT_ORG"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_CORN_INPUT_VOL" destination="INDU_CORN_INPUT_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_CORN_MARKET_STAT" destination="INDU_CORN_MARKET_STAT" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="DATA_ITEMS_PAR" destination="DATA_ITEMS_PAR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="DATA_VALUE" destination="DATA_VALUE"/>
+      <column-mapping source="DATA_REMARK" destination="DATA_REMARK"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_CROIL_DAILY_SPTPRI" destination="INDU_CROIL_DAILY_SPTPRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_CROP_IMP_EXP" destination="INDU_CROP_IMP_EXP" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MARKET_YEAR" destination="MARKET_YEAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="IMP_EXP_PAR" destination="IMP_EXP_PAR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_CROP_TER" destination="INDU_CROP_TER" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="MAC_IDX_PAR_2" destination="MAC_IDX_PAR_2"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="DATA_ATTR" destination="DATA_ATTR"/>
+      <column-mapping source="FORECAST_ORG" destination="FORECAST_ORG"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_DDGS_INPUT_PRI" destination="INDU_DDGS_INPUT_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="INPUT_AREA" destination="INPUT_AREA"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_DDGS_INPUT_VOL" destination="INDU_DDGS_INPUT_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_ECON_CHE_VALUE" destination="INDU_ECON_CHE_VALUE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="INDU_UNI_CODE" destination="INDU_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_ECO_INVEST_PROJ" destination="INDU_ECO_INVEST_PROJ" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_ECO_INVEST_SUM" destination="INDU_ECO_INVEST_SUM" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_ENER_FUT_INPRI" destination="INDU_ENER_FUT_INPRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_ENER_SPOT_INPRI" destination="INDU_ENER_SPOT_INPRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_ENE_PRI_MONTH" destination="INDU_ENE_PRI_MONTH" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_ENE_PRI_POTD" destination="INDU_ENE_PRI_POTD" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_ENT_CHE_VALUE" destination="INDU_ENT_CHE_VALUE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="INDU_UNI_CODE" destination="INDU_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_FRA_BARLEY_FORECAST" destination="INDU_FRA_BARLEY_FORECAST" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="MARKET_YEAR" destination="MARKET_YEAR"/>
+      <column-mapping source="FORECAST_TIME" destination="FORECAST_TIME"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="FORECAST_ORG" destination="FORECAST_ORG"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="DATA_ATTR" destination="DATA_ATTR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="STAT_DEADLINE" destination="STAT_DEADLINE"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_FRA_CORN_FORECAST" destination="INDU_FRA_CORN_FORECAST" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="MARKET_YEAR" destination="MARKET_YEAR"/>
+      <column-mapping source="FORECAST_TIME" destination="FORECAST_TIME"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="FORECAST_ORG" destination="FORECAST_ORG"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="DATA_ATTR" destination="DATA_ATTR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="STAT_DEADLINE" destination="STAT_DEADLINE"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_FRA_WHEAT_FORECAST" destination="INDU_FRA_WHEAT_FORECAST" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="MARKET_YEAR" destination="MARKET_YEAR"/>
+      <column-mapping source="FORECAST_TIME" destination="FORECAST_TIME"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="FORECAST_ORG" destination="FORECAST_ORG"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="DATA_ATTR" destination="DATA_ATTR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="STAT_DEADLINE" destination="STAT_DEADLINE"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_GOOD_PLAS_PRI" destination="INDU_GOOD_PLAS_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_GZG_COAL_STOCK" destination="INDU_GZG_COAL_STOCK" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_INDUS_CHE_VALUE" destination="INDU_INDUS_CHE_VALUE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_JTG_COAL_STOCK" destination="INDU_JTG_COAL_STOCK" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_LLDPE_INTL_PRI" destination="INDU_LLDPE_INTL_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_MAS_CHN_PALM_OIL" destination="INDU_MAS_CHN_PALM_OIL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_MAS_PALM_OIL_VOL" destination="INDU_MAS_PALM_OIL_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR_2" destination="MAC_IDX_PAR_2"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_MEL_PROD_PRI" destination="INDU_MEL_PROD_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_NAT_IMP_EXP_VALUE" destination="INDU_NAT_IMP_EXP_VALUE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="IMP_EXP_PAR" destination="IMP_EXP_PAR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_OIL_FUTURE_PRICE" destination="INDU_OIL_FUTURE_PRICE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_OIL_PLAT_PRI" destination="INDU_OIL_PLAT_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_OIL_PUP_POTD" destination="INDU_OIL_PUP_POTD" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_OIL_RP_POTD" destination="INDU_OIL_RP_POTD" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_OPEC_CROIL_BPRI_DAILY" destination="INDU_OPEC_CROIL_BPRI_DAILY" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PLAS_GOOD_IND" destination="INDU_PLAS_GOOD_IND" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PLAS_OUT_PRI" destination="INDU_PLAS_OUT_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PLAS_PRI_IND" destination="INDU_PLAS_PRI_IND" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PLAS_WARE_IND" destination="INDU_PLAS_WARE_IND" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PORT_BOHAI_IND" destination="INDU_PORT_BOHAI_IND" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PORT_COAL_PRI" destination="INDU_PORT_COAL_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PORT_COAL_STOCK" destination="INDU_PORT_COAL_STOCK" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PORT_COKE_PRI" destination="INDU_PORT_COKE_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PORT_STOCK_DAY" destination="INDU_PORT_STOCK_DAY" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_POWER_COAL" destination="INDU_POWER_COAL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PRODU_CITY_COAPRI_1" destination="INDU_PRODU_CITY_COAPRI_1" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PRODU_CITY_COAPRI_2" destination="INDU_PRODU_CITY_COAPRI_2" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PRODU_CITY_COAPRI_3" destination="INDU_PRODU_CITY_COAPRI_3" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PRODU_CITY_COAPRI_4" destination="INDU_PRODU_CITY_COAPRI_4" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PRODU_CITY_COAPRI_5" destination="INDU_PRODU_CITY_COAPRI_5" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PRODU_COAL_CITPRI" destination="INDU_PRODU_COAL_CITPRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PRODU_COAL_IND" destination="INDU_PRODU_COAL_IND" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_PRODU_COKE_IND" destination="INDU_PRODU_COKE_IND" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_QHDG_COAL_STOCK" destination="INDU_QHDG_COAL_STOCK" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_STEEL_COKE_PRI" destination="INDU_STEEL_COKE_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_STEEL_WORLD_PRI" destination="INDU_STEEL_WORLD_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_SX_AREA_COAL" destination="INDU_SX_AREA_COAL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="MAC_IDX_PAR2" destination="MAC_IDX_PAR2"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_SX_COAL_DAY" destination="INDU_SX_COAL_DAY" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_SX_COAL_SALE" destination="INDU_SX_COAL_SALE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_SX_COAL_SELL" destination="INDU_SX_COAL_SELL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_SX_COAL_STOCK" destination="INDU_SX_COAL_STOCK" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_SX_COAL_TRAN" destination="INDU_SX_COAL_TRAN" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_SX_COAL_VOL" destination="INDU_SX_COAL_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="MAC_IDX_PAR2" destination="MAC_IDX_PAR2"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_TSLT_REPORT_INFO" destination="INDU_TSLT_REPORT_INFO" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="PUBL_DATE" destination="PUBL_DATE"/>
+      <column-mapping source="REPORT_TITLE" destination="REPORT_TITLE"/>
+      <column-mapping source="REPORT_NUM" destination="REPORT_NUM"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_UNIT_RAIL_COAL" destination="INDU_UNIT_RAIL_COAL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_USA_CORN_EXP_VOL" destination="INDU_USA_CORN_EXP_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_USA_CORN_INPUT_VOL" destination="INDU_USA_CORN_INPUT_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_USA_CROP_EXP_VOL" destination="INDU_USA_CROP_EXP_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="MARKET_YEAR" destination="MARKET_YEAR"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="DATA_REMARK" destination="DATA_REMARK"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_USA_FUEL_VOL" destination="INDU_USA_FUEL_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="MAC_IDX_PAR_2" destination="MAC_IDX_PAR_2"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_USA_MEAT_VOL" destination="INDU_USA_MEAT_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_USA_SOYBEAN_VOL" destination="INDU_USA_SOYBEAN_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_US_COAL_VOL" destination="INDU_US_COAL_VOL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_US_CONSUM_STOCK" destination="INDU_US_CONSUM_STOCK" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <column-mapping source="A011" destination="A011"/>
+      <column-mapping source="A012" destination="A012"/>
+      <column-mapping source="A013" destination="A013"/>
+      <column-mapping source="A014" destination="A014"/>
+      <column-mapping source="A015" destination="A015"/>
+      <column-mapping source="A016" destination="A016"/>
+      <column-mapping source="A017" destination="A017"/>
+      <column-mapping source="A018" destination="A018"/>
+      <column-mapping source="A019" destination="A019"/>
+      <column-mapping source="A020" destination="A020"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_US_NG_SPOT_HENRY" destination="INDU_US_NG_SPOT_HENRY" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_US_OIL_DATA" destination="INDU_US_OIL_DATA" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_US_OIL_SPOT_PRI" destination="INDU_US_OIL_SPOT_PRI" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_WORLD_CROP_BAL" destination="INDU_WORLD_CROP_BAL" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="MARKET_YEAR" destination="MARKET_YEAR"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="MAC_IDX_PAR_2" destination="MAC_IDX_PAR_2"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="DATA_ATTR" destination="DATA_ATTR"/>
+      <column-mapping source="UNIT_PAR" destination="UNIT_PAR"/>
+      <column-mapping source="FORECAST_TIME" destination="FORECAST_TIME"/>
+      <column-mapping source="FORECAST_ORG" destination="FORECAST_ORG"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_WORLD_CROP_PRICE" destination="INDU_WORLD_CROP_PRICE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_WORLD_FOOD_STORE" destination="INDU_WORLD_FOOD_STORE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="REPORT_ID" destination="REPORT_ID"/>
+      <column-mapping source="MARKET_YEAR" destination="MARKET_YEAR"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="INDU_ZDDC_COAL_STOCK" destination="INDU_ZDDC_COAL_STOCK" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="MAC_AREA_MANGDS_PPIMNH" destination="MAC_AREA_MANGDS_PPIMNH" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="BASE_PERD_PAR" destination="BASE_PERD_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="MAC_ENRG_PRDC_SUM" destination="MAC_ENRG_PRDC_SUM" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE" isKey="true"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR" isKey="true"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="MAC_INDU_IDX_PAR" destination="MAC_INDU_IDX_PAR" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="PAR_SYS_CODE" destination="PAR_SYS_CODE"/>
+      <column-mapping source="PAR_SYS_NAME" destination="PAR_SYS_NAME"/>
+      <column-mapping source="PAR_CODE" destination="PAR_CODE"/>
+      <column-mapping source="PAR_NAME" destination="PAR_NAME"/>
+      <column-mapping source="PAR_ENG_NAME" destination="PAR_ENG_NAME"/>
+      <column-mapping source="PAR_UNIT" destination="PAR_UNIT"/>
+      <column-mapping source="PAR_DES" destination="PAR_DES"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="MAC_INPRD_PPI_MONTHH" destination="MAC_INPRD_PPI_MONTHH" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="BASE_PERD_PAR" destination="BASE_PERD_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="A001" destination="A001"/>
+      <column-mapping source="A002" destination="A002"/>
+      <column-mapping source="A003" destination="A003"/>
+      <column-mapping source="A004" destination="A004"/>
+      <column-mapping source="A005" destination="A005"/>
+      <column-mapping source="A006" destination="A006"/>
+      <column-mapping source="A007" destination="A007"/>
+      <column-mapping source="A008" destination="A008"/>
+      <column-mapping source="A009" destination="A009"/>
+      <column-mapping source="A010" destination="A010"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="PUB_AREA_CODE" destination="PUB_AREA_CODE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="AREA_TYPE_PAR" destination="AREA_TYPE_PAR"/>
+      <column-mapping source="ADMI_LEVE_PAR" destination="ADMI_LEVE_PAR"/>
+      <column-mapping source="NAT_CODE" destination="NAT_CODE"/>
+      <column-mapping source="ISO_CODE_TWO" destination="ISO_CODE_TWO"/>
+      <column-mapping source="ISO_CODE_THR" destination="ISO_CODE_THR"/>
+      <column-mapping source="AREA_CHI_NAME" destination="AREA_CHI_NAME"/>
+      <column-mapping source="AREA_CHI_SHORT_NAME" destination="AREA_CHI_SHORT_NAME"/>
+      <column-mapping source="AREA_ENG_NAME" destination="AREA_ENG_NAME"/>
+      <column-mapping source="AREA_ENG_SHORT_NAME" destination="AREA_ENG_SHORT_NAME"/>
+      <column-mapping source="TIME_DIFF" destination="TIME_DIFF"/>
+      <column-mapping source="POST_CODE" destination="POST_CODE"/>
+      <column-mapping source="AREA_CODE" destination="AREA_CODE"/>
+      <column-mapping source="START_DATE" destination="START_DATE"/>
+      <column-mapping source="IS_VALID" destination="IS_VALID"/>
+      <column-mapping source="DIS_DATE" destination="DIS_DATE"/>
+      <column-mapping source="SUB_UNI_CODE" destination="SUB_UNI_CODE"/>
+      <column-mapping source="AREA_UNI_CODE1" destination="AREA_UNI_CODE1"/>
+      <column-mapping source="AREA_NAME1" destination="AREA_NAME1"/>
+      <column-mapping source="AREA_UNI_CODE2" destination="AREA_UNI_CODE2"/>
+      <column-mapping source="AREA_NAME2" destination="AREA_NAME2"/>
+      <column-mapping source="AREA_UNI_CODE3" destination="AREA_UNI_CODE3"/>
+      <column-mapping source="AREA_NAME3" destination="AREA_NAME3"/>
+      <column-mapping source="AREA_UNI_CODE4" destination="AREA_UNI_CODE4"/>
+      <column-mapping source="AREA_NAME4" destination="AREA_NAME4"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="PUB_INDU_CODE" destination="PUB_INDU_CODE" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="INDU_UNI_CODE" destination="INDU_UNI_CODE"/>
+      <column-mapping source="INDU_SYS_PAR" destination="INDU_SYS_PAR"/>
+      <column-mapping source="INDU_CLASS_NAME" destination="INDU_CLASS_NAME"/>
+      <column-mapping source="INDU_CLASS_CODE" destination="INDU_CLASS_CODE"/>
+      <column-mapping source="INDU_LEVEL" destination="INDU_LEVEL"/>
+      <column-mapping source="FAT_UNI_CODE" destination="FAT_UNI_CODE"/>
+      <column-mapping source="INDU_CLASS_DES" destination="INDU_CLASS_DES"/>
+      <column-mapping source="START_DATE" destination="START_DATE"/>
+      <column-mapping source="IS_VALID" destination="IS_VALID"/>
+      <column-mapping source="DIS_DATE" destination="DIS_DATE"/>
+      <column-mapping source="INDU_UNI_CODE1" destination="INDU_UNI_CODE1"/>
+      <column-mapping source="INDU_CODE1" destination="INDU_CODE1"/>
+      <column-mapping source="INDU_NAME1" destination="INDU_NAME1"/>
+      <column-mapping source="INDU_UNI_CODE2" destination="INDU_UNI_CODE2"/>
+      <column-mapping source="INDU_CODE2" destination="INDU_CODE2"/>
+      <column-mapping source="INDU_NAME2" destination="INDU_NAME2"/>
+      <column-mapping source="INDU_UNI_CODE3" destination="INDU_UNI_CODE3"/>
+      <column-mapping source="INDU_CODE3" destination="INDU_CODE3"/>
+      <column-mapping source="INDU_NAME3" destination="INDU_NAME3"/>
+      <column-mapping source="INDU_UNI_CODE4" destination="INDU_UNI_CODE4"/>
+      <column-mapping source="INDU_CODE4" destination="INDU_CODE4"/>
+      <column-mapping source="INDU_NAME4" destination="INDU_NAME4"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="PUB_PAR" destination="PUB_PAR" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>"
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="PAR_SYS_CODE" destination="PAR_SYS_CODE"/>
+      <column-mapping source="PAR_SYS_NAME" destination="PAR_SYS_NAME"/>
+      <column-mapping source="PAR_CODE" destination="PAR_CODE"/>
+      <column-mapping source="PAR_NAME" destination="PAR_NAME"/>
+      <column-mapping source="PAR_ENG_NAME" destination="PAR_ENG_NAME"/>
+      <column-mapping source="PAR_UNIT" destination="PAR_UNIT"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="ZCX_EnergyYieldData" destination="ZCX_EnergyYieldData"  isSync="true"  isKeepObsoleteDestinationData="true" >
+      <column-mapping source="CODE" destination="CODE" isKey="true"/>
+      <column-mapping source="END_DATE" destination="END_DATE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="YIELD" destination="YIELD"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="SYNCTIME" destination="SYNCTIME"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="ZCX_ChemistryOutputData" destination="ZCX_ChemistryOutputData"  isSync="true"  isKeepObsoleteDestinationData="true"  >
+      <column-mapping source="CODE" destination="CODE" isKey="true"/>
+      <column-mapping source="END_DATE" destination="END_DATE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="OUTPUT" destination="OUTPUT"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="STAT_METH_PAR" destination="STAT_METH_PAR"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="SRCTABLE" destination="SRCTABLE"/>
+      <column-mapping source="SRCID" destination="SRCID"/>
+      <column-mapping source="SYNCTIME" destination="SYNCTIME"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

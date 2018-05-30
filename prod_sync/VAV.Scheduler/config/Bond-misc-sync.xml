@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>sqlserver</type><!--before run this job, create bondmisc to store bond misc data!!-->
+    <conn>Server=10.35.63.144;Database=Bondmisc;Pooling=true;Uid=sa;Pwd=p@ssw0rd</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=bonddb;Password=bonddb;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    
+    <table-mapping source="[dbo].[bond]" destination="EJVBOND" isOmitColumns="true" isSync="true">
+      <column-mapping source="asset_id" destination="asset_id" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[lastupdate >= {LastSyncTime} AND lastupdate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+    <!--delete column id of table bondfuturecontract in sql server before you run this job!!-->
+    <table-mapping source="[dbo].[BondFutureContract]" destination="BONDFUTURECONTRACT" isOmitColumns="true" isSync="true">
+      <column-mapping source="name" destination="name" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[lastupdate >= {LastSyncTime} AND lastupdate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

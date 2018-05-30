@@ -1,0 +1,180 @@
+﻿@using VAV.Model.Data.OpenMarket;
+@using VAV.Web.Extensions;
+@model VAV.Web.ViewModels.OpenMarket.DetailDataReportViewModel
+@{
+    Layout = null;
+    var exportType = @ViewData["Type" + Model.ID] == null ? "" : @ViewData["Type" + Model.ID].ToString();
+    var exportCategory = @ViewData["Category" + Model.ID] == null ? "" : @ViewData["Category" + Model.ID].ToString();
+    var exportStartDate = @ViewData["StartDate" + Model.ID] == null ? "" : @ViewData["StartDate" + Model.ID].ToString();
+    var exportEndDate = @ViewData["EndDate" + Model.ID] == null ? "" : @ViewData["EndDate" + Model.ID].ToString();
+    var exportUnit = @ViewData["Unit" + Model.ID] == null ? "" : @ViewData["Unit" + Model.ID].ToString();
+    var exportIncludeExpired = @ViewData["IncludeExpired" + Model.ID] == null ? "" : @ViewData["IncludeExpired" + Model.ID].ToString();
+}
+<div>
+    <input type="hidden" id="exportType_@Model.ID" value="@exportType"/>
+    <input type="hidden" id="exportCategory_@Model.ID" value="@exportCategory"/>
+    <input type="hidden" id="exportStartDate_@Model.ID"  value="@exportStartDate"/>
+    <input type="hidden" id="exportEndDate_@Model.ID"  value="@exportEndDate"/>
+    <input type="hidden" id="exportUnit_@Model.ID" value="@exportUnit"/>
+    <input type="hidden" id="exportIncludeExpired_@Model.ID" value="@exportIncludeExpired"/>
+</div>
+<table id="tableOpenMarket" class="datatable">
+    <thead>
+        <tr class="hr">
+            <th align="center">
+                @Resources.Global.Issue_Date
+            </th>
+            <th align="center">
+                @Resources.Global.Operation_Direction
+            </th>
+            <th align="center">
+                @Resources.Global.Operation_Type
+            </th>
+            <th align="center">
+                @Resources.Global.Code
+            </th>
+            <th align="center">
+                @Resources.Global.Option_Term
+            </th>
+            <th align="center">
+                @Resources.Global.Volume
+            </th>
+            <th align="center">
+                @Resources.Global.Amount
+            </th>
+            <th align="center">
+                @Resources.Global.Price_Rate
+            </th>
+            <th align="center">
+                @Resources.Global.Maturity_Date
+            </th>
+            <th align="center">
+                @Resources.Global.Ref_Rate
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Content.Count() > 0)
+        {
+            string categoryType = ViewData["Category" + @Model.ID] == null ? string.Empty : ViewData["Category" + @Model.ID].ToString();
+            int flag = 0;
+            List<OpenMarketRepo> selectedGroupRepo = OpenMarketExtension.GetCategorys(Model.Content, categoryType, ref flag);
+            OpenMarketRepo sumItem = new OpenMarketRepo();
+            string trName = "";
+            int category = 0;
+            foreach (var r in selectedGroupRepo)
+            {
+                if (r.IsSumItem)
+                {
+                    category++;
+                    sumItem = r;
+                    trName = "OpenMarketCategory" + category.ToString();
+                    <tr id="@trName">
+                        @if (sumItem.Category == Resources.Global.Total)
+                        {
+                            <td style="text-align: left">@sumItem.Category
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <div  class="expand" onclick="ShowOrHide('@trName',this)" style ="float:left">
+                                </div>
+                                <div style="text-align: left">
+                                    @sumItem.Category
+                                </div>
+                            </td>
+                        }
+                        <td align="left" style="text-align: left">
+                        </td>
+                        <td style="text-align: left">
+                        </td>
+                        <td style="text-align: left">
+                        </td>
+                        <td style="text-align: left">
+                        </td>
+                        <td align="right">@string.Format("{0:N2}", sumItem.Volume)
+                        </td>
+                        <td align="right">@string.Format("{0:N2}", sumItem.Amount)
+                        </td>
+                        <td align="right">
+                        </td>
+                        <td style="text-align: left">
+                        </td>
+                        <td align="right">
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr class="@trName">
+                        <td style="text-align: left">@Convert.ToDateTime(r.IssueDate.ToString()).ToString("yyyy-MM-dd")
+                        </td>
+                        <td style="text-align: left">@r.Direction
+                        </td>
+                        <td style="text-align: left">@r.OperationType
+                        </td>
+                        <td  style="text-align:left" class="readTimeTD" onclick="TurnToLink('@r.Category','@r.AssetId','@Model.ID')">
+                            <a href="javascript:void(0)" class="realTime" title="View real-time"></a>@r.Code
+                        </td>
+                        <td style="text-align: left">@r.OperationTerm
+                        </td>
+                        <td align="right">@string.Format("{0:N2}", r.Volume)
+                        </td>
+                        <td align="right">@string.Format("{0:N2}", r.Amount)
+                        </td>
+                        <td align="right">@r.PirceRate
+                        </td>
+                        <td style="text-align: left">@Convert.ToDateTime(r.MaturityDate.ToString()).ToString("yyyy-MM-dd")
+                        </td>
+                        <td align="right">@r.RefRate
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+<div>@Resources.Global.Source</div>
+<script type="text/javascript">
+    function ShowOrHide(className, img) {
+        if ($(img).attr("class") == "expand")
+            $(img).toggleClass('expand close');
+        else
+            $(img).toggleClass('close expand');
+
+        $("." + className).toggle();
+    }
+    $(function () {
+        DrawBackgroundColor();
+    });
+    function DrawBackgroundColor() {
+        $("#tableOpenMarket tbody tr:even").addClass('row-e');
+        $("#tableOpenMarket tbody tr:odd").addClass('row-o');
+    }
+    function TurnToLink(category, asset_id, repoId) {
+        if (asset_id.indexOf('=') == -1){
+            assetid = "cpurl://views.cp./Explorer/Default.aspx?s=0x";
+            assetid = assetid + asset_id + "&st=EJVAssetID";
+            window.open(assetid);
+        }
+        else {
+            var data = {
+                target: "popup",
+                location: {
+                    x: 200,
+                    y: 100,
+                    width: 600,
+                    height: 400
+                },
+                name: "Quote Object",
+                entities: [{
+                    type: "COMP",
+                    "RIC": asset_id
+                }]
+            };
+            JET.navigate(data);
+        }
+    }
+    
+</script>

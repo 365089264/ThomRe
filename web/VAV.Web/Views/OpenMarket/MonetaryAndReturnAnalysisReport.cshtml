@@ -1,0 +1,119 @@
+﻿@using VAV.Web.Common;
+@using VAV.Web.ViewModels.OpenMarket;
+
+@model MaRAnalysisReportViewModel
+@{
+    Layout = null;
+    var datePickerId = "datePicker" + @Model.ID;
+    var endDatePickerId = "endDatePicker" + @Model.ID;
+    var queryButtonId = "query" + @Model.ID;
+    var contentDivId = "contentDiv" + @Model.ID;
+    var frequencySelectId = "tselect" + @Model.ID;
+    var unitSelectId = "uselect" + @Model.ID; 
+    var startDate = new DateTime(DateTime.Now.Year - 1, DateTime.Now.Month, 1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+
+    var news_asset = VAV.Web.Localization.CultureHelper.IsEnglishCulture() ? "CN/MMT" : "CN/MMTCN";
+    var news_text = VAV.Web.Localization.CultureHelper.IsEnglishCulture() ? "News" : "新闻";
+}
+<div class="colorBlock" style="min-width:1000px;">
+    <div id="filterDiv" style="margin: 5px 0px 0px 10px; height:27px;">
+        <div style="float: left;">
+            @Resources.Global.Report_Query_From
+            <input type="text" id="@datePickerId" value="@startDate" class="dateInput" readonly/>
+            @Resources.Global.Report_Query_End
+            <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput" readonly/>
+        </div>
+        <div style="float: left;">
+            @Resources.Global.Frequency
+            <select id="@frequencySelectId" name="type" class="medium2Select">
+                @foreach (var o in HtmlUtil.CookOptions("summarizing_frequency"))
+                {
+                    <option value="@o.ID">@o.Name</option>
+                }
+            </select>
+            @Resources.Global.Report_Type
+            <select id="tselect_@Model.ID" name="tselect_@ViewBag.ID"  multiple="multiple">
+                @foreach (var o in HtmlUtil.SelectOptions())
+                {
+                    <option selected="@o.Selected" value ="@o.Value">@o.Text</option>    
+                }
+            </select>
+            @Resources.Global.Report_Unit
+            <select id="@unitSelectId" name="unit" class="smallSelect">
+                @foreach (var o in HtmlUtil.CookOptions("unit"))
+                {
+                    <option value ="@o.ID">@o.Name</option>    
+                }
+            </select>
+        </div>
+        <div style="float: left;">
+            <input type="button" id="@queryButtonId" value="@Resources.Global.Report_Query" onclick="updateMonetaryAndReturnReport()"/>
+            
+            <input type="hidden" id="reportId" />
+        </div>
+        <a href="#">
+            <img onclick="OpenNews()" title="@news_text" src="~/Content/themes/base/images/multimedianews.ico"
+                    style="float: right; margin-right: 10px; margin-top: 7px" />
+        </a>
+    </div>
+</div>
+<div id="@contentDivId" style="position: absolute;height: 90%;width: 100%;height: -webkit-calc(100% - 42px);min-width:850px;">
+    @Html.Partial("_MonetaryAndReturnAnalysisReportContent", Model)
+</div>
+<script type="text/javascript">
+
+    function updateMonetaryAndReturnReport() {
+        var operationType = $('#tselect_@Model.ID').val();
+        if(operationType != null) operationType = operationType.join();
+        AjaxWithBlock(
+                    $('#@contentDivId'), 
+                    "@Url.Action("GetMonetaryAndReturnReportContent", "OpenMarket")",
+                    {
+                        startDate: $("#@datePickerId").val(),
+                        endDate: $("#@endDatePickerId").val(),
+                        type: $("#@frequencySelectId").val(),
+                        unit: $('#@unitSelectId').val(),
+                        operationType : operationType,
+                        reportId: @Model.ID
+                    }, 
+                    function (data) {
+                        $("#@contentDivId").html(data);
+                    }
+            );
+    }
+
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        $("#ui-datepicker-div").css("border", "solid 1px black");
+        $("#tselect_@Model.ID").multiselect({
+                buttonMinWidth: 115,
+                menuMinWidth: 240,
+                checkAllText: '@Resources.Global.Select_All',
+                uncheckAllText: '@Resources.Global.Unselect_All',
+                noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+                selectedText: '# @Resources.Global.Selected'
+            });
+    });
+    function OpenNews(){
+        var data = {
+            target: "popup",
+            location: {
+                x: 200,
+                y: 100,
+                width: 600,
+                height: 400
+            },
+            name: "News",
+            entities: [{
+                "NewsQuery": "@news_asset"
+            }]
+        };
+        JET.navigate(data);
+
+    }
+</script>

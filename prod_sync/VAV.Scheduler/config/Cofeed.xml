@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="Cofeed" destination="Cofeed" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="DATEC" destination="DATEC" isKey="true" />
+      <column-mapping source="TYPEC" destination="TYPEC" isKey="true" />
+      <column-mapping source="ENGLISHTYPE" destination="ENGLISHTYPE" isKey="true" />
+      <column-mapping source="AREA" destination="AREA" isKey="true" />
+      <column-mapping source="CITY" destination="CITY" isKey="true" />
+      <column-mapping source="PRICE" destination="PRICE"/>
+      <column-mapping source="QASTAND" destination="QASTAND"/>
+      <column-mapping source="UNIT" destination="UNIT"/>
+      <column-mapping source="CODE" destination="CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CREATEDATE" destination="CREATEDATE"/>
+      <column-mapping source="ISHISTORY" destination="ISHISTORY"/>
+      <filter>
+        <![CDATA[CreateDate >= TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateDate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CofeedProduct" destination="CofeedProduct" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="startTime" destination="startTime"/>
+      <column-mapping source="endTime" destination="endTime" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="weekNo" destination="weekNo" isKey="true"/>
+      <column-mapping source="typeName" destination="typeName" isKey="true"/>
+      <column-mapping source="typeCount" destination="typeCount"/>
+      <column-mapping source="createdate" destination="createdate"/>
+      <filter>
+        <![CDATA[ createdate >= TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND createdate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CofeedWeek" destination="CofeedWeek" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="productName_cn" destination="productName_cn"/>
+      <column-mapping source="productName_en" destination="productName_en" isKey="true" />
+      <column-mapping source="weekNo" destination="weekNo" isKey="true" />
+      <column-mapping source="endTime" destination="endTime" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="areaName" destination="areaName" isKey="true"/>
+      <column-mapping source="areaNo" destination="areaNo"/>
+      <column-mapping source="isTotal" destination="isTotal"/>
+      <column-mapping source="memo" destination="memo"/>
+      <column-mapping source="createdate" destination="createdate"/>
+      <filter>
+        <![CDATA[ createdate >= TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND createdate <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

@@ -1,0 +1,101 @@
+﻿<div class="colorBlock" style="min-width:765px;">
+    <div class="Statisticalfilter">
+        <label >@Resources.Global.WMP_Name</label>
+        <select id="twmpcFiles" class="largeSelect">
+        </select>
+        <input id="twmpQuery" type="button" value="@Resources.Global.Report_Query" />
+        <input id="twmpAdd" type="button" value="@Resources.Global.Save" />
+        <input id="twmpDelete" type="button" value="@Resources.Global.Delete" />
+        <input type="radio" style="margin-left:30px" name="TWMPC" checked="checked" value="show" />@Resources.Global.WMP_ShowAll
+        <input type="radio" style="margin-left:10px" name="TWMPC" value="fadeout" />@Resources.Global.WMP_FadeOutTheSame
+        <input type="radio" style="margin-left:10px" name="TWMPC" value="hide" />@Resources.Global.WMP_HideTheSame
+        <input type="button" style="float: right" value="@Resources.Global.WMP_Select" id="twmpAddMore" />
+    </div>
+</div>
+<div id="twmpTableDiv" class="colorBlock" style="height: 91%; height: -webkit-calc(100% - 52px);min-width:765px;">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Resources.Global.WMP_CompareResult</span> 
+        <a href="#" class="exportExcel" onclick='WMP.ExportExelForTrustWMPCompare(this,"@ViewBag.Name")'>
+                                                             <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                                                         </a>
+    </div>
+    <div class="ui-layout-pane" style="height: 90%; height: -webkit-calc(100% - 28px);min-width: 328px; overflow: auto">
+        <table id="twmpcTable" class="datatable Zebra compareColumnWidth" style="cursor: pointer;">
+            <thead><tr style="white-space: normal"></tr></thead>
+            <tbody></tbody>
+        </table>
+        <div>@Resources.Global.Source</div>
+    </div>
+</div>
+<div id='twmpNewName' style="display: none" title="@Resources.Global.Save">
+    <table style="width:250px;margin-top: 10px">
+        <tbody>
+            <tr>
+                <td style="width:100px;font-size:12px">@Resources.Global.WMP_NewName</td>
+                <td><input id="twmpNewNameInput" style="width:150px" type="text" /></td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input style="float: right" type="button" value="@Resources.Global.Cancel" onclick="$('#twmpNewName').dialog('close')"/>
+                    <input style="float: right" type="button" value="@Resources.Global.OK" onclick="WMP.AddNewTrustCompareItem()"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id='twmpDeleteNameDialog' style="display: none" title="@Resources.Global.WMP_DeleteBoxTitle">
+    <div id="twmpWarnningText"></div>
+</div>
+﻿
+<script type="text/javascript">
+    
+    $(function () {
+        var products = @{ Html.RenderAction("GetTrustWMPCompareData", "WMP", new { ids = Request.QueryString["products"], isHTML = true }); };
+        WMP.BuildTrustWMPCompareTable(products);
+        $('input[name=TWMPC]:radio').change(function() {
+            WMP.FilterBankWMPCompareTable($(this).val(),$('#twmpcTable tbody tr')   );
+        });
+        $('#twmpAddMore').click(WMP.AddMoreTrustWMPItems);
+        $('#twmpAdd').click(function() {
+            $('#twmpNewNameInput').val('');
+            $('#twmpNewName').dialog('open');
+        } );
+        $('#twmpDelete').click(function() {
+            var removedKey = $('#twmpcFiles').val();
+            if (removedKey) {
+                var localW = '@Resources.Global.WMP_DeleteConfirm'.replace('{0}', removedKey);
+                $('#twmpWarnningText').html(localW);
+                $('#twmpDeleteNameDialog').dialog('open');
+            }
+        });
+        $('#twmpQuery').click(WMP.QuerySelectedTrustCompareItem);
+        WMP.updateUserTrustCompare();
+        $('#twmpNewName').dialog(
+            {
+                autoOpen: false,
+                width: 270,
+                height:150,
+                modal: true
+            });
+         $('#twmpDeleteNameDialog').dialog(
+            {
+                autoOpen: false,
+                width: 320,
+                height:120,
+                modal: true,
+                buttons: {
+                "@Resources.Global.OK": function() {
+                    WMP.DeleteTrustCompareItem($('#twmpcFiles').val());
+                    $( this ).dialog( "close" );
+                },
+                "@Resources.Global.Cancel": function() {
+                    $( this ).dialog( "close" );
+                }
+      }
+            });
+    });
+
+    
+</script>

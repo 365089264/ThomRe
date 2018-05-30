@@ -1,0 +1,244 @@
+﻿@model VAV.Web.ViewModels.Fundamental.NonlistIssuerViewModel
+@using VAV.Web.Common
+@{
+    var ctypeId = "ctype" + Model.ID;
+    var cnameInputId = "cname" + Model.ID;
+    var bondInputId = "bond" + Model.ID;
+    var queryButtonId = "query" + Model.ID;
+    var contentDivId = "contentDiv" + Model.ID;
+    var tableId = "table" + Model.ID;
+
+    var isEnglish = VAV.Web.Localization.CultureHelper.IsEnglishCulture();
+
+    var pageSize = 50;
+
+    var exportDetailUrl = Url.Action("ExportExcelForNonlistIssuer", "Fundamental");
+    var filterDivId = "filterDiv" + Model.ID;
+    var chkInputId = "check" + Model.ID;
+}
+<div class="colorBlock" style="min-width:1010px;">
+    <div id="@filterDivId" class="Statisticalfilter">
+        <div style="float: left;">
+            <label for="@ctypeId">@Resources.Global.UnlistIsser_Industry</label>
+            @Html.DropDownList(@ctypeId, UIStaticDataCache.Instance.ZCXCompanyType, new { @class = "largeSelect", style="width: auto;" })
+            <label for="@cnameInputId">@Resources.Global.UnlistIsser_Company_Name</label>
+            <input id="@cnameInputId" type="text"/>
+            <label for="@bondInputId">@Resources.Global.UnlistIsser_Bond_Code</label>
+            <input id="@bondInputId" type="text" />
+        </div>
+        <div>
+            <input id="@chkInputId" type="checkbox" />
+            <label for="@chkInputId" style="cursor: pointer;">@Resources.Global.UnlistIsser_Hide_No_Data_Issuer</label>
+            <input id="@queryButtonId" onclick="Fundamental.UpdateData('',1);" type="button" value="@Resources.Global.Report_Query" />
+        </div>
+    </div>
+</div>
+<div id="@contentDivId" class="colorBlock" style="height: 91%; height: -webkit-calc(100% - 49px); ">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Resources.Global.UnlistIsser_Page_Title</span>
+        <a href="#" class="exportExcel" onclick="Fundamental.ExportExcel(this, @Model.ID);">
+            <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+        </a>
+    </div>
+    <div id="emptyMessage@(Model.ID)" style="display:none; margin-left:10px;">@Resources.Global.Empty_Result</div>
+    <div id="pager@(Model.ID)">
+        <div id="wmpPaginateOfLabel@(Model.ID)" class="paginateOfLable">1 of 100</div>
+        <div style="width: 300px; float: right; padding-right: 80px">
+            <div id="wmpPaginate@(Model.ID)"></div>
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+    <div class="ui-layout-pane" style="height: 90%; height: -webkit-calc(100% - 57px);
+        min-width: 328px; overflow: auto">
+        <table id="@tableId" class="datatable Zebra" style="cursor: pointer;">
+            <thead>
+                <tr class="hr">
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, @( isEnglish ? "'COM_ENG_NAME'" : "'COM_CHI_NAME'"))">
+                        @Resources.Global.UnlistIsser_Company_Name<span></span>
+                    </th>
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, @( isEnglish ? "'COM_ENG_SHORT_NAME'" : "'COM_CHI_SHORT_NAME'"))">
+                        @Resources.Global.UnlistIsser_Abbreviation<span></span>
+                    </th>
+                    @*<th class="sortColumn" tag="">
+                        @Resources.Global.UnlistIsser_Bond_List<span></span>
+                    </th>*@
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, 'TYPE_BIG')">
+                        @Resources.Global.UnlistIsser_Com_Type<span></span>
+                    </th>
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, 'COM_CON_PER')">
+                        @Resources.Global.UnlistIsser_COM_CON_PER<span></span>
+                    </th>
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, 'COM_TEL')">
+                        @Resources.Global.UnlistIsser_COM_TEL<span></span>
+                    </th>
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, 'COM_FAX')">
+                        @Resources.Global.UnlistIsser_COM_FAX<span></span>
+                    </th>
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, 'OFFI_ADDR')">
+                        @Resources.Global.UnlistIsser_OFFI_ADDR<span></span>
+                    </th>
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, 'OFFI_ADDR_POST')">
+                        @Resources.Global.UnlistIsser_OFFI_ADDR_POST<span></span>
+                    </th>
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, 'REG_ADDR')">
+                        @Resources.Global.UnlistIsser_REG_ADDR<span></span>
+                    </th>
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, 'COM_WEB')">
+                        @Resources.Global.UnlistIsser_Company_Website<span></span>
+                    </th>
+                    <th class="sortColumn" tag="" onclick="Fundamental.SortColumn(this, 'MAIL_ADDR')">
+                        @Resources.Global.UnlistIsser_MAIL_ADDR<span></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        <div>@Resources.Global.Source</div>
+    </div>
+</div>﻿
+<script type="text/javascript">
+    var Fundamental = (function (my) {
+        
+        var lastOrder;
+
+        my.BuildTable = function (data) {
+            var tpl = '<tr>'
+                    + '<td class="readTimeTD" onclick=\'Fundamental.OpenFundamentalDetail("${COM_UNI_CODE}", "${COM_NAME}");\'>${COM_NAME}</td>'
+                    + '<td class="textLeft">${COM_SHORT_NAME}</td><td class="textLeft">${TYPE_BIG}</td>' //<td class="textLeft">${BOND_LIST_STRING}</td>
+                    + '<td class="textLeft">${COM_CON_PER}</td><td class="textLeft">${COM_TEL}</td><td class="textLeft">${COM_FAX}</td>'
+                    + '<td class="textLeft">${OFFI_ADDR}</td><td class="textLeft">${OFFI_ADDR_POST}</td><td class="textLeft">${REG_ADDR}</td>'
+                    + '<td class="textLeft"><a href="${COM_WEB}" class="link" target="_blank">${COM_WEB}</a></td>'
+                    + '<td class="textLeft">${MAIL_ADDR}</td>'
+                    + '</tr>';
+            $.template("rowTemplate", tpl);
+            $('#@tableId tbody').empty();
+            $.tmpl("rowTemplate", data).appendTo("#@tableId tbody");
+        };
+
+        my.UpdateData = function(order,currentPage){
+            AjaxWithBlock(
+                    $('#@contentDivId'), 
+                    "@Url.Action("GetNonlistIssuer", "Fundamental")",
+                    {
+                        parCode : $("#@ctypeId").val(),
+                        name : $("#@cnameInputId").val(),
+                        bond : $("#@bondInputId").val(),
+                        order : order,
+                        currentPage: currentPage,
+                        pageSize: @pageSize,
+                        hideNodata: $("#@chkInputId").is(":checked")
+                    }, 
+                    function (data) {
+                    if (data.Total == 0) {
+                        $("#emptyMessage@(Model.ID)").show();
+                        $("#pager@(Model.ID)").hide();
+                        $("#@tableId").hide();
+                    }
+                    else {
+                        $("#emptyMessage@(Model.ID)").hide();
+                        $("#pager@(Model.ID)").show();
+                        $("#@tableId").show();
+                        if(order == "")
+                            $(".sortColumn").attr('tag', '');
+                        my.UpdatePagination(data);
+                        my.BuildTable(data.Data);
+                    }
+                }
+            );
+        };
+
+        my.SortColumn = function(th, order){
+
+            var direction = $(th).attr('tag');
+            $(".sortColumn").attr('tag', '');
+            
+            switch (direction) {
+                case "ASC":
+                    $(th).attr('tag', 'DESC');
+                    order = order + " " + $(th).attr('tag');
+                    break;
+                case "DESC":
+                    $(th).attr('tag', '');
+                    order = "";
+                    break;
+                case "":
+                    $(th).attr('tag', 'ASC');
+                    order = order + " " + $(th).attr('tag');
+                    break;
+                default:
+                    break;
+            }
+            lastOrder = order;
+            my.UpdateData(order,1);
+
+        };
+
+        my.UpdatePaginationOfLabel = function(current,pageSize,total) {
+            var start = (current - 1) * pageSize + 1;
+            var end = current * pageSize;
+            if(end > total) end = total;
+             $('#wmpPaginateOfLabel@(Model.ID)').html(start + '-' + end + '@Resources.Global.WMP_of' + total);
+        };
+
+        my.UpdatePagination = function(data) {
+         my.UpdatePaginationOfLabel(data.CurrentPage, data.PageSize, data.Total);
+         $('#wmpPaginate@(Model.ID)').paginate({
+                count: Math.ceil(data.Total/data.PageSize),
+                start: data.CurrentPage,
+                display: 10,
+                border: false,
+                text_color: '#00B3E3',
+                background_color: 'none',
+                text_hover_color: '#28D2FF',
+                background_hover_color: 'none',
+                images: false,
+                mouse: 'press',
+                onChange: function (page) {
+                    Fundamental.UpdateData(lastOrder,page);
+                },
+                firstText: '@Resources.Global.Paginate_First',
+                lastText: '@Resources.Global.Paginate_Last'
+            });
+        };
+
+        my.ExportExcel = function (link, id) {
+            $(link).attr("href",
+                "@exportDetailUrl?parCode=" + $("#@ctypeId").val()
+                    + '&name=' + $("#@cnameInputId").val()
+                        + '&bond=' +  $("#@bondInputId").val()
+                            + '&reportName=@Model.Name'
+                                + '&hideNodata=' + $("#@chkInputId").is(":checked")
+            );
+        };
+
+        return my;
+    } (Fundamental || {}));
+
+    $(function () {
+        $("#@filterDivId input").keyup(function (e) {
+            if (e.keyCode == 13) {
+                Fundamental.UpdateData("",1);
+            }
+        });
+        var data = @{ Html.RenderAction(
+                                        "GetNonlistIssuer",
+                                        "Fundamental",
+                                        new
+                                        {
+
+                                            parCode = UIStaticDataCache.Instance.ZCXCompanyType[0].Value,
+                                            currentPage = 1,
+                                            pageSize = @pageSize,
+                                            hideNodata = false,
+                                            isHTML = true
+                                        }
+                                        );
+                        };
+        Fundamental.UpdatePagination(data);
+        Fundamental.BuildTable(data.Data);
+    });
+
+</script>

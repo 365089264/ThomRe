@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="data" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="data" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="data">
+      <s:element name="GetData_LutouDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetData_LutouDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetData_LutouDetailResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetData_LutouDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetData_LutouDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetData_LutouDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetData_LutouDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetData_LutouDetailHttpGetIn">
+    <wsdl:part name="updateDate" type="s:string" />
+    <wsdl:part name="pass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetData_LutouDetailHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetData_LutouDetailHttpPostIn">
+    <wsdl:part name="updateDate" type="s:string" />
+    <wsdl:part name="pass" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetData_LutouDetailHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:portType name="web_dataSoap">
+    <wsdl:operation name="GetData_LutouDetail">
+      <wsdl:input message="tns:GetData_LutouDetailSoapIn" />
+      <wsdl:output message="tns:GetData_LutouDetailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="web_dataHttpGet">
+    <wsdl:operation name="GetData_LutouDetail">
+      <wsdl:input message="tns:GetData_LutouDetailHttpGetIn" />
+      <wsdl:output message="tns:GetData_LutouDetailHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="web_dataHttpPost">
+    <wsdl:operation name="GetData_LutouDetail">
+      <wsdl:input message="tns:GetData_LutouDetailHttpPostIn" />
+      <wsdl:output message="tns:GetData_LutouDetailHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="web_dataSoap" type="tns:web_dataSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData_LutouDetail">
+      <soap:operation soapAction="data/GetData_LutouDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="web_dataSoap12" type="tns:web_dataSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData_LutouDetail">
+      <soap12:operation soapAction="data/GetData_LutouDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="web_dataHttpGet" type="tns:web_dataHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetData_LutouDetail">
+      <http:operation location="/GetData_LutouDetail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="web_dataHttpPost" type="tns:web_dataHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetData_LutouDetail">
+      <http:operation location="/GetData_LutouDetail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="web_data">
+    <wsdl:port name="web_dataSoap" binding="tns:web_dataSoap">
+      <soap:address location="http://www.sxcoal.com/database/WebService_Data.asmx" />
+    </wsdl:port>
+    <wsdl:port name="web_dataSoap12" binding="tns:web_dataSoap12">
+      <soap12:address location="http://www.sxcoal.com/database/WebService_Data.asmx" />
+    </wsdl:port>
+    <wsdl:port name="web_dataHttpGet" binding="tns:web_dataHttpGet">
+      <http:address location="http://www.sxcoal.com/database/WebService_Data.asmx" />
+    </wsdl:port>
+    <wsdl:port name="web_dataHttpPost" binding="tns:web_dataHttpPost">
+      <http:address location="http://www.sxcoal.com/database/WebService_Data.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

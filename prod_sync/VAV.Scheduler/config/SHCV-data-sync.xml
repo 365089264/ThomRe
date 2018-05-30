@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=srdb;Password=srdb;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=srdb;Password=srdb;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="SHCV_FI_PRODUCT_CIRCULATION" destination="SHCV_FI_PRODUCT_CIRCULATION" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="SHCV_FI_PRODUCT_MANGQUTY" destination="SHCV_FI_PRODUCT_MANGQUTY" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="SHCV_FI_PRODUCT_OVERVIEW" destination="SHCV_FI_PRODUCT_OVERVIEW" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="SHCV_FI_PRODUCT_PAYAMT" destination="SHCV_FI_PRODUCT_PAYAMT" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INCREASEINDEX" destination="INCREASEINDEX" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="REPORTDATE" destination="REPORTDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+   
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

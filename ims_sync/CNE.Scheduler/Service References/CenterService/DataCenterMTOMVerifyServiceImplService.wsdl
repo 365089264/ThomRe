@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://server.service.data.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="DataCenterMTOMVerifyServiceImplService" targetNamespace="http://server.service.data.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://server.service.data.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="dataSetFail" type="tns:dataSetFail" />
+      <xs:element name="dataSetFailResponse" type="tns:dataSetFailResponse" />
+      <xs:element name="getDataSet" type="tns:getDataSet" />
+      <xs:element name="getDataSetResponse" type="tns:getDataSetResponse" />
+      <xs:element name="getTargets" type="tns:getTargets" />
+      <xs:element name="getTargetsResponse" type="tns:getTargetsResponse" />
+      <xs:element name="register" type="tns:register" />
+      <xs:element name="registerResponse" type="tns:registerResponse" />
+      <xs:complexType name="dataSetFail">
+        <xs:sequence>
+          <xs:element name="userOptionID" type="xs:long" />
+          <xs:element minOccurs="0" name="authorization" type="tns:authorization" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="authorization">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="key" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="username" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="dataSetFailResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getTargets">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="authorization" type="tns:authorization" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getTargetsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDataSet">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="resourceID" type="xs:string" />
+          <xs:element minOccurs="0" name="authorization" type="tns:authorization" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDataSetResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="register">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="authorization" type="tns:authorization" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registerResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Exception" type="tns:Exception" />
+      <xs:complexType name="Exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FileNotFoundException" type="tns:FileNotFoundException" />
+      <xs:complexType name="FileNotFoundException">
+        <xs:sequence />
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getTargets">
+    <wsdl:part name="parameters" element="tns:getTargets" />
+  </wsdl:message>
+  <wsdl:message name="getTargetsResponse">
+    <wsdl:part name="parameters" element="tns:getTargetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="dataSetFailResponse">
+    <wsdl:part name="parameters" element="tns:dataSetFailResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDataSet">
+    <wsdl:part name="parameters" element="tns:getDataSet" />
+  </wsdl:message>
+  <wsdl:message name="register">
+    <wsdl:part name="parameters" element="tns:register" />
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part name="Exception" element="tns:Exception" />
+  </wsdl:message>
+  <wsdl:message name="registerResponse">
+    <wsdl:part name="parameters" element="tns:registerResponse" />
+  </wsdl:message>
+  <wsdl:message name="dataSetFail">
+    <wsdl:part name="parameters" element="tns:dataSetFail" />
+  </wsdl:message>
+  <wsdl:message name="getDataSetResponse">
+    <wsdl:part name="parameters" element="tns:getDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="FileNotFoundException">
+    <wsdl:part name="FileNotFoundException" element="tns:FileNotFoundException" />
+  </wsdl:message>
+  <wsdl:portType name="DataCenterMTOMVerifyService">
+    <wsdl:operation name="dataSetFail">
+      <wsdl:input name="dataSetFail" message="tns:dataSetFail" />
+      <wsdl:output name="dataSetFailResponse" message="tns:dataSetFailResponse" />
+      <wsdl:fault name="Exception" message="tns:Exception" />
+    </wsdl:operation>
+    <wsdl:operation name="getTargets">
+      <wsdl:input name="getTargets" message="tns:getTargets" />
+      <wsdl:output name="getTargetsResponse" message="tns:getTargetsResponse" />
+      <wsdl:fault name="Exception" message="tns:Exception" />
+      <wsdl:fault name="FileNotFoundException" message="tns:FileNotFoundException" />
+    </wsdl:operation>
+    <wsdl:operation name="getDataSet">
+      <wsdl:input name="getDataSet" message="tns:getDataSet" />
+      <wsdl:output name="getDataSetResponse" message="tns:getDataSetResponse" />
+      <wsdl:fault name="Exception" message="tns:Exception" />
+      <wsdl:fault name="FileNotFoundException" message="tns:FileNotFoundException" />
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <wsdl:input name="register" message="tns:register" />
+      <wsdl:output name="registerResponse" message="tns:registerResponse" />
+      <wsdl:fault name="Exception" message="tns:Exception" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DataCenterMTOMVerifyServiceImplServiceSoapBinding" type="tns:DataCenterMTOMVerifyService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="dataSetFail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="dataSetFail">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="dataSetFailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getTargets">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getTargets">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTargetsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="FileNotFoundException">
+        <soap:fault use="literal" name="FileNotFoundException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDataSet">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getDataSet">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDataSetResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="FileNotFoundException">
+        <soap:fault use="literal" name="FileNotFoundException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="register">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="registerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DataCenterMTOMVerifyServiceImplService">
+    <wsdl:port name="DataCenterMTOMVerifyServiceImplPort" binding="tns:DataCenterMTOMVerifyServiceImplServiceSoapBinding">
+      <soap:address location="http://db.custeel.com/services/dataCenterMTOMVerifyService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

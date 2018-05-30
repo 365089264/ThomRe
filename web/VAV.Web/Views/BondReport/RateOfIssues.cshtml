@@ -1,0 +1,223 @@
+﻿@model VAV.Web.ViewModels.Bond.BondIssueRateReport
+@using VAV.Web.Common;
+@{
+	Layout = null;
+	var datePickerId = "datePicker" + @Model.ID;
+	var endDatePickerId = "endDatePicker" + @Model.ID;
+	var addButtonId = "add" + @Model.ID;
+	var typeSelectId = "tselect" + @Model.ID;
+	var termSelectId = "termSelect" + @Model.ID;
+	var couponTypeSelectId = "couponTypeSelect" + @Model.ID;
+	var ratingSelectId = "ratingSelect" + @Model.ID;
+	var startDate = new DateTime(DateTime.Now.Year - 1, DateTime.Now.Month, 1).ToString("yyyy-MM-dd");
+
+}
+@using (Html.BeginForm("AddBond", "BondReport", FormMethod.Post, new { id = "add_bond" }))
+{
+	<div id="filterDiv" style="height:20px;min-width:1000px;" class="colorBlock">
+		<input name="reportId" value="@Model.ID" style="display:none" />
+		<input name="displayName" value="@Model.Name" style="display:none" />
+		<div style="float: left;margin-left: 5px;">
+			@Resources.Global.Report_Query_From
+			<input type="text" name="date" id="@datePickerId" value="@startDate" class="dateInput" readonly="readonly"/>
+		</div>
+		<div style="float: left;margin-left: 5px;">
+			<label style="margin-left: 3px;">@Resources.Global.Bond_CDC_Classify</label>
+			<select id="@typeSelectId" name="bondType" class="largeSelect" style="width:220px;">
+				@foreach (var o in HtmlUtil.CookOptions("bond_class"))
+				{
+					<option value="@o.ID">@o.Name</option>       
+				}
+			</select>
+			<label style="margin-left: 3px;">@Resources.Global.Bond_Term</label>
+			<select id="@termSelectId" name="term" class="mediumSelect">
+				@foreach (var o in HtmlUtil.CookOptions("bond_term"))
+				{
+					<option value="@o.ID">@o.Name</option>   
+				}
+			</select>
+			<label style="margin-left: 3px;">@Resources.Global.Bond_Coupon_class</label>
+			<select id="@couponTypeSelectId" name="couponType" class="mediumSelect">
+				<option value="n">@Resources.Global.Coupon_Type_Fixed</option>
+				<option value="y">@Resources.Global.Coupon_Type_Float</option>
+			</select>
+			<label style="margin-left: 3px;">@Resources.Global.Bond_Rating</label>
+			<select id="@ratingSelectId" name="rating" class="mediumSelect">
+				<option value="All">@Resources.Global.Select_All</option>
+				<option value="0">NR</option>
+				<option value="1">AAA</option>
+				<option value="2">AAA-</option>
+				<option value="3">AA+</option>
+				<option value="4">AA</option>
+				<option value="5">AA-</option>
+				<option value="6">A+</option>
+				<option value="7">A</option>
+				<option value="8">A-</option>
+				<option value="9">A-1</option>
+				<option value="10">A-2</option>
+				<option value="11">BBB+</option>
+				<option value="12">BBB</option>
+				<option value="13">BBB-</option>
+				<option value="14">BB+</option>
+				<option value="15">BB</option>
+				<option value="16">BB-</option>
+				<option value="17">B+</option>
+				<option value="18">B</option>
+				<option value="19">B-</option>
+				<option value="20">CCC+</option>
+				<option value="21">CCC</option>
+				<option value="22">CCC-</option>
+				<option value="23">CC</option>
+				<option value="24">C</option>
+				<option value="25">D</option>
+			</select>
+			<input type="hidden" name="grid" />
+		</div>
+		<div style="float: left; margin-left: 5px;">
+			<input type="button" id="@addButtonId" value="@Resources.Global.Bond_Add" onclick="submitForm()" style="width: 50px;" />
+			<input type="hidden" id="reportId" />
+		</div>
+	</div>
+}
+<div id="issue_rates_statistical" style="height: 80%;min-width:932px;height:-webkit-calc(100% - 40px);">
+	@Html.Partial("_IssueRatesStatistical", Model)
+</div>
+
+<script type="text/javascript">
+	$(function () {
+		$("#@datePickerId, #@endDatePickerId").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: 'yy-mm-dd'
+		});
+		var bondtabs = $("#bond_rate_tabs").tabs({
+			create: function (event, ui) {
+				var selectedTabTitle = $(ui.tab).find("a").text();
+				$("#issue_rate_selected_grid").html(selectedTabTitle);
+			},
+			activate: function (event, ui) {
+				var active = $("#bond_rate_tabs").tabs("option", "active");
+				var selectedTabTitle = $("#bond_rate_tabs ul>li a").eq(active).text();
+				$("#issue_rate_selected_grid").html(selectedTabTitle);
+			}
+		});
+		bondtabs.delegate("span", "click", deleteProc);
+	});
+
+	function submitForm() {
+		var frm = $('#add_bond').serialize();
+		var value = $('#rate_grid').html();
+		frm = frm + value;
+
+		$("#issue_rates_statistical").block(
+			{
+				message: $('<img src="' + window.busyImageUrl + '" style="display: none;" />'),
+				css: {
+					top: ($("#issue_rates_statistical").height() - 54) / 2 + 'px',
+					left: ($("#issue_rates_statistical").width() - 54) / 2 + 'px',
+					width: '54px',
+					height: '54px',
+					border: '0px'
+				},
+				overlayCSS: { backgroundColor: '#272727', opacity: 1 }
+			});
+		setTimeout(
+			$.ajax({
+				url: '/BondReport/AddBond',
+				type: 'POST',
+				data: frm,
+				beforeSend: function () {
+
+				},
+				onsuccess: function () {
+
+				},
+				success: function (result) {
+					$("#issue_rates_statistical").html(result);
+					var bondtabs = $("#bond_rate_tabs").tabs({
+						create: function (event, ui) {
+							var selectedTabTitle = $(ui.tab).find("a").text();
+							$("#issue_rate_selected_grid").html(selectedTabTitle);
+						},
+						activate: function (event, ui) {
+							var active = $("#bond_rate_tabs").tabs("option", "active");
+							var selectedTabTitle = $("#bond_rate_tabs ul>li a").eq(active).text();
+							$("#issue_rate_selected_grid").html(selectedTabTitle);
+						}
+					});
+					bondtabs.delegate("span", "click", deleteProc);
+					$("#issue_rates_statistical").unblock();
+
+					if ($("#issue_rate_result").html() != "")
+						showIssueRateResult();
+				},
+				error: function () { }
+			}), 20);
+	}
+
+	function deleteProc() {
+		var liId = $(this).closest("li").attr("id");
+		var frm1 = $('#add_bond').serialize();
+		var value1 = $('#rate_grid').html();
+		frm1 = frm1 + value1;
+		frm1 = "itemName=" + liId + "&" + frm1;
+		$("#issue_rates_statistical").block(
+			{
+				message: $('<img src="' + window.busyImageUrl + '" style="display: none;" />'),
+				css: {
+					top: ($("#issue_rates_statistical").height() - 54) / 2 + 'px',
+					left: ($("#issue_rates_statistical").width() - 54) / 2 + 'px',
+					width: '54px',
+					height: '54px',
+					border: '0px'
+				},
+				overlayCSS: { backgroundColor: '#272727', opacity: 1 }
+			});
+		setTimeout(
+			$.ajax({
+				url: '/BondReport/DeleteBond',
+				type: 'POST',
+				data: frm1,
+				beforeSend: function () {
+
+				},
+				onsuccess: function () {
+
+				},
+				success: function (result) {
+					$("#issue_rates_statistical").html(result);
+					var bondtabs = $("#bond_rate_tabs").tabs({
+						create: function (event, ui) {
+							var selectedTabTitle = $(ui.tab).find("a").text();
+							$("#issue_rate_selected_grid").html(selectedTabTitle);
+						},
+						activate: function (event, ui) {
+							var active = $("#bond_rate_tabs").tabs("option", "active");
+							var selectedTabTitle = $("#bond_rate_tabs ul>li a").eq(active).text();
+							$("#issue_rate_selected_grid").html(selectedTabTitle);
+						}
+					});
+
+					bondtabs.delegate("span", "click", deleteProc);
+					$("#issue_rates_statistical").unblock();
+				},
+				error: function () {
+				}
+			}), 0);
+	}
+	function showIssueRateResult() {
+	    var h = 100, w = 200;
+	    $("#issue_rate_result").dialog({
+	        resizable: false,
+	        height: h,
+	        width: w,
+	        modal: true,
+	        close: function () {
+	            $("#issue_rate_result").dialog("destroy");
+	        }
+	    });
+
+	    $("#issue_rate_result").dialog("open");
+	}
+
+</script>

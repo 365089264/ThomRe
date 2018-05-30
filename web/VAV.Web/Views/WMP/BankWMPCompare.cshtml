@@ -1,0 +1,100 @@
+﻿<div class="colorBlock" style="min-width:765px;">
+    <div class="Statisticalfilter">
+        <label >@Resources.Global.WMP_Name</label>
+        <select id="bwmpcFiles" class="largeSelect">
+        </select>
+        <input id="wmbpQuery" type="button" value="@Resources.Global.Report_Query" />
+        <input id="wmbpAdd" type="button" value="@Resources.Global.Save" />
+        <input id="wmbpDelete" type="button" value="@Resources.Global.Delete" />
+        <input type="radio" style="margin-left:30px" name="BWMPC" checked="checked" value="show" />@Resources.Global.WMP_ShowAll
+        <input type="radio" style="margin-left:10px" name="BWMPC" value="fadeout" />@Resources.Global.WMP_FadeOutTheSame
+        <input type="radio" style="margin-left:10px" name="BWMPC" value="hide" />@Resources.Global.WMP_HideTheSame
+        <input type="button" style="float: right" value="@Resources.Global.WMP_Select" id="bwmpAddMore" />
+    </div>
+</div>
+<div id="wmbpTableDiv" class="colorBlock" style="height: 91%; height: -webkit-calc(100% - 52px);min-width:765px;">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Resources.Global.WMP_CompareResult</span> <a href="#" class="exportExcel" onclick='WMP.ExportExelForWMPCompare(this,"@ViewBag.Name")'>
+                                                             <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                                                         </a>
+    </div>
+    <div class="ui-layout-pane" style="height: 90%; height: -webkit-calc(100% - 28px);min-width: 328px; overflow: auto">
+        <table id="bwmpcTable" class="datatable Zebra compareColumnWidth" style="cursor: pointer;">
+            <thead><tr style="white-space: normal"></tr></thead>
+            <tbody></tbody>
+        </table>
+        <div>@Resources.Global.Source</div>
+    </div>
+</div>
+<div id='wmbpNewName' style="display: none" title="@Resources.Global.Save">
+    <table style="width:250px;margin-top: 10px">
+        <tbody>
+            <tr>
+                <td style="width:100px;font-size:12px">@Resources.Global.WMP_NewName</td>
+                <td><input id="wmbpNewNameInput" style="width:150px" type="text" /></td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input style="float: right" type="button" value="@Resources.Global.Cancel" onclick="$('#wmbpNewName').dialog('close')"/>
+                    <input style="float: right" type="button" value="@Resources.Global.OK" onclick="WMP.AddNewCompareItem()"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id='wmbpDeleteNameDialog' style="display: none" title="@Resources.Global.WMP_DeleteBoxTitle">
+    <div id="wmbpWarnningText"></div>
+</div>
+﻿
+<script type="text/javascript">
+    
+    $(function () {
+        var products = @{ Html.RenderAction("GetBankWMPCompareData", "WMP", new { ids = Request.QueryString["products"], isHTML = true }); };
+        WMP.BuildBankWMPCompareTable(products);
+        $('input[name=BWMPC]:radio').change(function() {
+            WMP.FilterBankWMPCompareTable($(this).val(),$('#bwmpcTable tbody tr')   );
+        });
+        $('#bwmpAddMore').click(WMP.AddMoreBWMPItems);
+        $('#wmbpAdd').click(function() {
+            $('#wmbpNewNameInput').val('');
+            $('#wmbpNewName').dialog('open');
+        } );
+        $('#wmbpDelete').click(function() {
+            var removedKey = $('#bwmpcFiles').val();
+            if (removedKey) {
+                var localW = '@Resources.Global.WMP_DeleteConfirm'.replace('{0}', removedKey);
+                $('#wmbpWarnningText').html(localW);
+                $('#wmbpDeleteNameDialog').dialog('open');
+            }
+        });
+        $('#wmbpQuery').click(WMP.QuerySelectedCompareItem);
+        WMP.updateUserCompare();
+        $('#wmbpNewName').dialog(
+            {
+                autoOpen: false,
+                width: 270,
+                height:150,
+                modal: true
+            });
+         $('#wmbpDeleteNameDialog').dialog(
+            {
+                autoOpen: false,
+                width: 320,
+                height:120,
+                modal: true,
+                buttons: {
+                "@Resources.Global.OK": function() {
+                    WMP.DeleteCompareItem($('#bwmpcFiles').val());
+                    $( this ).dialog( "close" );
+                },
+                "@Resources.Global.Cancel": function() {
+                    $( this ).dialog( "close" );
+                }
+      }
+            });
+    });
+
+    
+</script>

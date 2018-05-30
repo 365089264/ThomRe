@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <map>Ftp-CninaJCI-data-sync.xml</map>
+  <map>Ftp-SMM-data-sync.xml</map>
+  <map>Ftp-Cofeed-Inventory-sync.xml</map>
+
+  <map>CusteelFtp\Ftp-Custeel-daily.xml</map>
+  <map>CusteelFtp\Ftp-Custeel-weekly.xml</map>
+  <map>CusteelFtp\Ftp-Custeel-10days.xml</map>
+  <map>CusteelFtp\Ftp-Custeel-monthly.xml</map>
+
+  <map>Ftp-Longzhong-output-sync.xml</map>
+  <map>Ftp-Longzhong-shandong-sync.xml</map>
+  <map>Ftp-Longzhong-price-sync.xml</map>
+  
+</settings>

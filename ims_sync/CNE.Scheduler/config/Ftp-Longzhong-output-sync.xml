@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;</conn>
+  </source-db>
+  <fileSavePath>C:\DataFeedFtp\longzhong\</fileSavePath>
+  <hostname>10.35.63.144</hostname>
+  <username>ftpupload</username>
+  <password>ftpupload</password>
+  <targetDir>longzhong</targetDir>
+  <fileName>longzhong_output_{fileDateFormat}.xls</fileName>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <mappings>
+ 
+    <table-mapping source="View_LongzhongOutput_Ftp" destination="longzhong-output" >
+ 
+      <column-mapping source="code" />
+      <column-mapping source="cnname" />
+      <column-mapping source="period" />
+      <column-mapping source="end_date"      />      
+      <column-mapping source="yield" />
+      <column-mapping source="output" />
+      <column-mapping source="CreateDate" />
+      <column-mapping source="ProductName_CN" />
+      <column-mapping source="ProductName_EN" />
+      <column-mapping source="Unit_CN" />
+      <column-mapping source="Unit_EN" />
+      <column-mapping source="UpdateFrequency" />
+
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+  </mappings>
+</settings>

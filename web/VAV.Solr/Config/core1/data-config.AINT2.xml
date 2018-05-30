@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!-- For more information on using transformations 
+     see the web.config examples at http://go.microsoft.com/fwlink/?LinkId=214134. -->
+<dataConfig xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <dataSource type="JdbcDataSource"
+    name='VAV'
+    driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    url="jdbc:sqlserver://10.35.63.7;databaseName=VAV"
+    user="sa"
+    password="p@ssw0rd" xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
+</dataConfig>

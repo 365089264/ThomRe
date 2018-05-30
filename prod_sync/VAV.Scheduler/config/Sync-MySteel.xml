@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="RTMS_DataTABLE" destination="RTMS_DATATABLE"  isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="id" destination="id" isImmutableKey="true" isKey="true" />
+      <column-mapping source="dataTableId" destination="dataTableId" isKey="true" />
+      <column-mapping source="code" destination="code" isKey="true" />
+      <column-mapping source="name" destination="name"/>
+      <column-mapping source="description" destination="description"/>
+      <column-mapping source="keyUnit" destination="keyUnit"/>
+      <column-mapping source="valueUnit" destination="valueUnit"/>
+      <column-mapping source="status" destination="status"/>
+      <column-mapping source="lastAccess" destination="lastAccess"/>
+      <column-mapping source="dLastAccess" destination="dLastAccess"/>
+      <filter>
+        <![CDATA[ dLastAccess >TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND dLastAccess <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RTMS_TABLEDATA" destination="RTMS_TABLEDATA"  isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="code" destination="code"/>
+      <column-mapping source="times" destination="times"/>
+      <column-mapping source="value" destination="value"/>
+      <column-mapping source="status" destination="status"/>
+      <column-mapping source="lastAccess" destination="lastAccess"/>
+      <column-mapping source="dLastAccess" destination="dLastAccess"/>
+      <filter>
+        <![CDATA[ dLastAccess >TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND dLastAccess <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

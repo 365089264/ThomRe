@@ -1,0 +1,118 @@
+﻿@using VAV.Web.Common
+@model VAV.Web.ViewModels.WMP.BrokerWMPDetailViewModel
+@{
+    var tabName ="cfpWMPDetailTabs" + @Model.InnerCode;
+}
+<h2 class="dailogH2">@Model.ViewProd.CFPNAME</h2>
+<div id="@tabName" class="bankWMPDetailTabs">
+    <ul>
+        <li><a href="#tabs-@Model.InnerCode-1">@Resources.Global.WMP_BasicInformation</a></li>
+        <li><a href="@Url.Action("BrokerNetWorth", "WMP", new { id = Model.InnerCode, 
+                    chndate = Model.ViewProd.CHNG_DATE.HasValue ? 
+                    Model.ViewProd.CHNG_DATE.Value.ToString("yyyy-MM-dd") : 
+                    DateTime.Now.ToString("yyyy-MM-dd") })">@Resources.WMP.Broker_Net_Worth</a></li>
+        <li><a href="@Url.Action("BrokerBonus", "WMP", new { id = Model.InnerCode })">@Resources.WMP.Broker_Dividend</a></li>
+        <li><a href="@Url.Action("BrokerFinIdx", "WMP", new { id = Model.InnerCode })">@Resources.WMP.Broker_Financial_Indicator</a></li>
+        <li><a href="@Url.Action("BrokerContent", "WMP", new { id = Model.InnerCode })">@Resources.WMP.Broker_Issue_Announcement</a></li>
+        <li><a href="@Url.Action("BrokerFee", "WMP", new { id = Model.InnerCode })">@Resources.WMP.Broker_Product_Rate</a></li>
+    </ul>
+    <div id="tabs-@Model.InnerCode-1">
+        <table class="datatable"  style="line-height: 20px">
+            <tbody>
+                <tr>
+                    <td class="highlight">@Resources.WMP.Broker_CFPSNAME</td><td style="width:32%;">@Model.ViewProd.CFPSNAME</td>
+                    <td class="highlight">@Resources.WMP.Broker_CFPNAME</td><td>@Model.ViewProd.CFPNAME</td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.WMP.Broker_INVEST_CLS</td><td>@Model.ViewProd.INVEST_NAME</td>
+                    <td class="highlight">@Resources.WMP.Broker_CFP_TYPE</td><td>@Model.ViewProd.PROD_TYPE_NAME</td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.WMP.Broker_Orgname</td><td>@Model.ViewProd.ORGNAME</td>
+                    <td class="highlight">@Resources.WMP.Broker_PROD_Manager</td><td>@Model.ViewProd.INV_MNG</td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.WMP.Broker_ESTAB_DATE</td><td>@UIGenerator.FormatDateTime(@Model.ViewProd.ESTAB_DATE)</td>
+                    <td class="highlight">@Resources.WMP.Broker_TOT_VAL</td><td>@UIGenerator.FormatCellValue(@Model.ViewProd.TOT_VAL, "decimal")</td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.WMP.Broker_LOWEST_VAL</td><td>@UIGenerator.FormatCellValue(@Model.ViewProd.LOWEST_VAL, "decimal")</td>
+                    <td class="highlight">@Resources.WMP.Broker_ADD_UNIT_LOW</td><td>@UIGenerator.FormatCellValue(@Model.ViewProd.ADD_UNIT_LOW, "decimal")</td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.WMP.Broker_DURATION_SIZE_LOW</td><td>@UIGenerator.FormatCellValue(@Model.ViewProd.DURATION_SIZE_LOW, "")</td>
+                    <td class="highlight">@Resources.WMP.Broker_QUIT_UNIT_LOW</td><td>@UIGenerator.FormatCellValue(@Model.ViewProd.QUIT_UNIT_LOW, "")</td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.WMP.Broker_IS_QDII</td><td>@Model.ViewProd.IS_QDII_NAME</td>
+                    <td class="highlight">@Resources.WMP.Broker_DECLAREDATE</td><td>@UIGenerator.FormatDateTime(Model.ViewProd.DECLAREDATE)</td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.WMP.Broker_PROD_STATE</td><td>@Model.ViewProd.PROD_STATE</td>
+                    <td class="highlight">@Resources.WMP.Broker_FIN_CYC</td><td>@Model.ViewProd.FIN_CYC</td>
+                </tr>
+                 <tr>
+                    <td class="highlight">@Resources.WMP.Broker_STARTDATE</td><td>@UIGenerator.FormatDateTime(Model.ViewProd.STARTDATE)</td>
+                    <td class="highlight">@Resources.WMP.Broker_ENDDATE</td><td>@UIGenerator.FormatDateTime(Model.ViewProd.ENDDATE)</td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.WMP.Broker_EXPE_ENDDATE</td><td>@UIGenerator.FormatDateTime(Model.ViewProd.EXPE_ENDDATE)</td>
+                    <td class="highlight">@Resources.WMP.Broker_ACTU_ENDDATE</td><td>@UIGenerator.FormatDateTime(Model.ViewProd.ACTU_ENDDATE)</td>
+                </tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_OPEN_PRD</td><td colspan="3">@Model.ViewProd.OPEN_PRD</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_CLOSED_PERD</td><td colspan="3">@Model.ViewProd.CLOSED_PERD</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_INVEST_TARGET</td><td colspan="3">@Model.ViewProd.INVEST_TARGET</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_INVEST_RANGE</td><td colspan="3">@Model.ViewProd.INVEST_RANGE</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_INVEST_STRA</td><td colspan="3">@Model.ViewProd.INVEST_STRA</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_INVEST_BENCH</td><td colspan="3">@Model.ViewProd.INVEST_BENCH</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_INVEST_TENET</td><td colspan="3">@Model.ViewProd.INVEST_TENET</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_PROD_CHAR</td><td colspan="3">@Model.ViewProd.PROD_CHAR</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_FORE_YIELD</td><td colspan="3">@Model.ViewProd.FORE_YIELD</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_PERFORM_BENCH</td><td colspan="3">@Model.ViewProd.PERFORM_BENCH</td></tr>
+                <tr><td class="highlight">@Resources.WMP.Broker_HUGE_QUIT_TERM</td><td colspan="3">@Model.ViewProd.HUGE_QUIT_TERM</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function() {
+        $("#@tabName").tabs({
+            beforeLoad: function(event, ui) {
+                ui.ajaxSettings.dataTypes = ['html'];
+                ui.jqXHR.error(function() {
+                    debugger;
+                });
+                if (ui.tab.data("loaded")) {
+                    event.preventDefault();
+                    return;
+                }
+
+                ui.jqXHR.success(function() {
+                    ui.tab.data("loaded", true);
+                });
+
+                $("#@tabName").block(
+                {
+                    message: $('<img src="' + window.busyImageUrl + '" style="display: none;" />'),
+                    css: {
+                        top: ($("#@tabName").height() - 54) / 2 + 'px',
+                        left: ($("#@tabName").width() - 54) / 2 + 'px',
+                        width: '54px',
+                        height: '54px',
+                        border: '0px',
+                        overflow: 'visible'
+                    },
+                    overlayCSS: { backgroundColor: '#131313' }
+                });
+            },
+            activate: function() {
+                amplify.publish('RefreshBrokerChart', { source: 'brokerDetailTab' });
+                //unblock tab moved to after build chart and table
+                //to avoid show blank page
+                $("#@tabName").unblock();
+            }
+        });
+    });
+</script>

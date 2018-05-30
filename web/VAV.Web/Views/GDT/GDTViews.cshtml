@@ -1,0 +1,27 @@
+﻿@using VAV.Model.Data.CnE.GDT
+@model List<TabNode>
+<div id="Cne_GDT_@Model.First().ReportId" class="bankWMPDetailTabs" style="height: -webkit-calc(100%);" >
+    @{if (Model != null && Model.Count >= 1)
+      {
+        <ul>
+            @{
+                <li><a href="#Cne_tab_@Model.First().ItemID">@Model.First().DisplayName</a> </li>
+          foreach (var item in Model.Skip(1).Take(Model.Count - 1))
+          {
+                <li><a href="/GDT/GetTabItem?itemId=@item.ItemID&reportId=@item.ReportId">@item.DisplayName</a>
+                </li>
+          }
+            }
+        </ul>
+          <div id="Cne_tab_@Model.First().ItemID"    >
+              @Html.Action("GetTabItem", "GDT", new { reportId = Model.First().ReportId, itemId = Model.First().ItemID })
+          </div>  
+      }
+    }
+</div>
+<script type="text/javascript">
+    $(function () {
+        GDT.initial("Cne_GDT_@Model.First().ReportId");
+    });
+    
+</script>

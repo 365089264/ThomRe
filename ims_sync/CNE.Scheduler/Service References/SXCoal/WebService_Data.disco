@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://www.sxcoal.com/database/WebService_Data.asmx?wsdl" docRef="http://www.sxcoal.com/database/WebService_Data.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://www.sxcoal.com/database/WebService_Data.asmx" xmlns:q1="data" binding="q1:web_dataSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://www.sxcoal.com/database/WebService_Data.asmx" xmlns:q2="data" binding="q2:web_dataSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=pgenius;Password=pgenius;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=genius;Password=genius;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+
+    <table-mapping source="BANK_FIN_DETAIL" destination="BANK_FIN_DETAIL" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BANK_FIN_DIV" destination="BANK_FIN_DIV" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="DECLAREDATE" destination="DECLAREDATE" isKey="true"/>
+      <column-mapping source="DIV_CLS" destination="DIV_CLS" isKey="true"/>
+      <column-mapping source="PJT_CLS" destination="PJT_CLS" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BANK_FIN_FEE" destination="BANK_FIN_FEE" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BANK_FIN_INVEST_PROP" destination="BANK_FIN_INVEST_PROP" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ITEM" destination="ITEM" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BANK_FIN_PRD" destination="BANK_FIN_PRD" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BANK_FIN_PRD_PROSP" destination="BANK_FIN_PRD_PROSP" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BANK_INV_TYPE_REL" destination="BANK_INV_TYPE_REL" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="INV_TYPE" destination="INV_TYPE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BANK_RELA_ORG" destination="BANK_RELA_ORG" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ITEM_NUM" destination="ITEM_NUM" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="FIN_PRD_RPT" destination="FIN_PRD_RPT" isOmitColumns="true" isSync="true">
+      <column-mapping source="RPT_ID" destination="RPT_ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="GEN_REF" destination="GEN_REF" isOmitColumns="true" isSync="true">
+      <column-mapping source="SEQ" destination="SEQ" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="ISS_AREA_REL" destination="ISS_AREA_REL" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ITEM_NUM" destination="ITEM_NUM" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="ORG_PROFILE" destination="ORG_PROFILE" isOmitColumns="true" isSync="true">
+      <column-mapping source="ORGCODE" destination="ORGCODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="TRUST_CHAG_RATE" destination="TRUST_CHAG_RATE" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="TRUST_INCM_GR" destination="TRUST_INCM_GR" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="TRUST_PROFILE" destination="TRUST_PROFILE" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="TRUST_PROFIT" destination="TRUST_PROFIT" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="DIV_CLS" destination="DIV_CLS" isKey="true" />
+      <column-mapping source="RPT_YEAR" destination="RPT_YEAR" isKey="true" />
+      <column-mapping source="TIMES" destination="TIMES" isKey="true" />
+      <column-mapping source="PJT_CLS" destination="PJT_CLS" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="TRUST_REL_ORG" destination="TRUST_REL_ORG" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ORG_TYPE" destination="ORG_TYPE" isKey="true" />
+      <column-mapping source="ORGCODE" destination="ORGCODE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_ASSET_CONF" destination="CFP_ASSET_CONF" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_AVG_MAT_PROP" destination="CFP_AVG_MAT_PROP" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <column-mapping source="AVG_MAT" destination="AVG_MAT" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_AVG_REMAIN_MAT" destination="CFP_AVG_REMAIN_MAT" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_BND_CONF" destination="CFP_BND_CONF" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <column-mapping source="BND_INNER_CODE" destination="BND_INNER_CODE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_BND_TYPE_CONF" destination="CFP_BND_TYPE_CONF" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <column-mapping source="BND_TYPE" destination="BND_TYPE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_FEE_CHNG" destination="CFP_FEE_CHNG" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="FEE_TYPE" destination="FEE_TYPE" isKey="true" />
+      <column-mapping source="STARTDATE" destination="STARTDATE" isKey="true" />
+      <column-mapping source="SRL_NO" destination="SRL_NO" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_FIN_IDX" destination="CFP_FIN_IDX" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_FND_CONF" destination="CFP_FND_CONF" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <column-mapping source="FND_INNER_CODE" destination="FND_INNER_CODE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_FUT_CONF" destination="CFP_FUT_CONF" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <column-mapping source="FUT_INNER_CODE" destination="FUT_INNER_CODE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_IDNU_CONF" destination="CFP_IDNU_CONF" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <column-mapping source="INDU_INNER_CODE" destination="INDU_INNER_CODE" isKey="true" />
+      <column-mapping source="INV_CONF_TYPE" destination="INV_CONF_TYPE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+
+    <!--对于时间序列的数据，使用isKeepObsoleteDestinationData="true"来保留历史数据-->
+    <table-mapping source="CFP_INCM" destination="CFP_INCM" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CHNG_DATE" destination="CHNG_DATE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CFP_INDI" destination="CFP_INDI" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="INDI_ID" destination="INDI_ID" isKey="true" />
+      <column-mapping source="ITEM_NUM" destination="ITEM_NUM" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_INDI_INFO" destination="CFP_INDI_INFO" isOmitColumns="true" isSync="true">
+      <column-mapping source="INDI_ID" destination="INDI_ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_INVEST_PROP" destination="CFP_INVEST_PROP" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="DECLAREDATE" destination="DECLAREDATE" isKey="true" />
+      <column-mapping source="ITEM" destination="ITEM" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_ISS_ORG" destination="CFP_ISS_ORG" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ORG_CLS" destination="ORG_CLS" isKey="true" />
+      <column-mapping source="ORGCODE" destination="ORGCODE" isKey="true" />
+      <column-mapping source="STARTDATE" destination="STARTDATE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_MNY_INCM" destination="CFP_MNY_INCM" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_NAV_PERFM" destination="CFP_NAV_PERFM" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <column-mapping source="COMP_RANGE" destination="COMP_RANGE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_NETVAL" destination="CFP_NETVAL" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CHNG_DATE" destination="CHNG_DATE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_PROFILE" destination="CFP_PROFILE" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_PROFITSHEET" destination="CFP_PROFITSHEET" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="DECLAREDATE" destination="DECLAREDATE" isKey="true" />
+      <column-mapping source="PJT_CLS" destination="PJT_CLS" isKey="true" />
+      <column-mapping source="DIV_CLS" destination="DIV_CLS" isKey="true" />
+      <column-mapping source="TIMES" destination="TIMES" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_RELA_INFO" destination="CFP_RELA_INFO" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="RELA_INNER_CODE" destination="RELA_INNER_CODE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_STK_CONF" destination="CFP_STK_CONF" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <column-mapping source="STK_INNER_CODE" destination="STK_INNER_CODE" isKey="true" />
+      <column-mapping source="INV_CONF_TYPE" destination="INV_CONF_TYPE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_VAL_CHNG" destination="CFP_VAL_CHNG" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CHANGEDATE" destination="CHANGEDATE" isKey="true" />
+      <column-mapping source="CHNG_REAS" destination="CHNG_REAS" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CFP_VAL_DEVI" destination="CFP_VAL_DEVI" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ENDDATE" destination="ENDDATE" isKey="true" />
+      <column-mapping source="RPT_SRC" destination="RPT_SRC" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="DISC_ACCE_CFP" destination="DISC_ACCE_CFP" isOmitColumns="true" isSync="true">
+      <column-mapping source="DISC_ID" destination="DISC_ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ACCE_ORDER" destination="ACCE_ORDER" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="DISC_CFP" destination="DISC_CFP" isOmitColumns="true" isSync="true">
+      <column-mapping source="DISC_ID" destination="DISC_ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="DISC_CLS_CFP" destination="DISC_CLS_CFP" isOmitColumns="true" isSync="true">
+      <column-mapping source="DISC_ID" destination="DISC_ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CLS_CODE" destination="CLS_CODE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="DISC_CONTENT_CFP" destination="DISC_CONTENT_CFP" isOmitColumns="true" isSync="true">
+      <column-mapping source="DISC_ID" destination="DISC_ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="DISC_MAIN_CFP" destination="DISC_MAIN_CFP" isOmitColumns="true" isSync="true">
+      <column-mapping source="DISC_ID" destination="DISC_ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CUST_CFP_NEWS_MAIN" destination="CUST_CFP_NEWS_MAIN" isOmitColumns="true" isSync="true">
+      <column-mapping source="GUID" destination="GUID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="CUST_CFP_NEWS_CLS" destination="CUST_CFP_NEWS_CLS" isOmitColumns="true" isSync="true">
+      <column-mapping source="GUID" destination="GUID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CLS_NAME" destination="CLS_NAME" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="INSR_PRD_INFO" destination="INSR_PRD_INFO" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="INSR_PRD_RELA" destination="INSR_PRD_RELA" isOmitColumns="true" isSync="true">
+      <column-mapping source="MASTER_INNER_CODE" destination="MASTER_INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="SLAVE_INNER_CODE" destination="SLAVE_INNER_CODE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="INSR_REL_TYPE" destination="INSR_REL_TYPE" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="TYPE_ID" destination="TYPE_ID" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="NEWS_CLS" destination="NEWS_CLS" isOmitColumns="true" isSync="true">
+      <column-mapping source="GUID" destination="GUID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CLS_CODE" destination="CLS_CODE" isKey="true" />
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="NEWS_CLS_REF" destination="NEWS_CLS_REF" isOmitColumns="true" isSync="true">
+      <column-mapping source="CLS_CODE" destination="CLS_CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+<!--
+    <table-mapping source="NEWS_MAIN" destination="NEWS_MAIN" isOmitColumns="true" isSync="true">
+      <column-mapping source="GUID" destination="GUID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+-->
+    <table-mapping source="PUB_DIST_REF" destination="PUB_DIST_REF" isOmitColumns="true" isSync="true">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND MTIME <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

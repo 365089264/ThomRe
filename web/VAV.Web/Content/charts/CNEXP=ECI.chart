@@ -1,0 +1,231 @@
+<Object>
+	<public>
+	</public>
+	<container>
+		<ModuleName>chartobj</ModuleName><FileExtension>.chart</FileExtension><ServiceVersion></ServiceVersion><Property Name="Key" Visibility="none">184549568</Property><Property Name="Type" Visibility="none">1</Property><Property Name="StoreInExternalFile" Visibility="none">1</Property><Property Name="ExternalFileName" Visibility="none">C:\Documents and Settings\qingwei.li\Desktop\Vav\100chart_adjust\CNEXP=ECI.chart</Property><Property Name="Persistent" Visibility="build"><AllSelected>0</AllSelected><Keys/></Property><Property Name="Auto" Visibility="build">0</Property><Property Name="TitleBarCustomCaption" Visibility="run">My title</Property><Property Name="TitleBarAutomaticCaption" Visibility="run">True</Property><Property Name="CommandLineType" Visibility="none"></Property><Property Name="ServiceName" Visibility="none">Graph</Property><Property Name="Name" Visibility="build">Chart 192</Property><Property Name="Left" Visibility="build">235</Property><Property Name="Top" Visibility="build">57</Property><Property Name="Width" Visibility="build">113</Property><Property Name="Height" Visibility="build">79</Property></container>
+	<private>
+		<properties>
+			<Property Name="ForegroundColor" Visibility="run">0x00000000</Property><Property Name="BackgroundColor" Visibility="run">0x00fefefe</Property><Property Name="Font" Visibility="run"><Font><Face>Tahoma</Face><Size>8.25</Size></Font></Property><Property Name="SavingofTemplatesAllowed" Visibility="run"><Variant VarType="11">-1</Variant></Property><Property Name="LoadingofTemplatesAllowed" Visibility="run"><Variant VarType="11">-1</Variant></Property><Property Name="SavingofChartsAllowed" Visibility="run"><Variant VarType="11">-1</Variant></Property><Property Name="LoadingofChartsAllowed" Visibility="run"><Variant VarType="11">-1</Variant></Property><Property Name="SavingOfSchemesAllowed" Visibility="build"><Variant VarType="11">-1</Variant></Property><Property Name="LoadingofSchemesAllowed" Visibility="run"><Variant VarType="11">-1</Variant></Property><Property Name="DragandDropDisabled" Visibility="run"><Variant VarType="11">0</Variant></Property><Property Name="DeletionofItemsDisabled" Visibility="run"><Variant VarType="11">0</Variant></Property><Property Name="ChartPropertyEditingDisabled" Visibility="build"><Variant VarType="11">0</Variant></Property><Property Name="InsertionofItemsDisabled" Visibility="run"><Variant VarType="11">0</Variant></Property><Property Name="LinkChangesSaved" Visibility="run"><Variant VarType="11">-1</Variant></Property><Property Name="InsertionofAnalysisDisabled" Visibility="run"><Variant VarType="11">0</Variant></Property><Property Name="IntervalEditingDisabled" Visibility="run"><Variant VarType="11">0</Variant></Property><Property Name="LegendHiddenWhenAnalysisIsHidden" Visibility="run"><Variant VarType="11">0</Variant></Property><Property Name="AutomaticallyLoadTemplate" Visibility="run"><Variant VarType="11">0</Variant></Property><Property Name="ShowAnalysisPropertiesOnDoubleclick" Visibility="run"><Variant VarType="11">-1</Variant></Property><Property Name="PersistData" Visibility="none"></Property><Property Name="RTWConverterChangeallItemAddressesonthechart" Visibility="none"><Variant VarType="11">-1</Variant></Property><Property Name="RTWConverterInterval" Visibility="none"><Variant VarType="11">-1</Variant></Property><Property Name="RTWConverterIntervalMultiplier" Visibility="none"><Variant VarType="11">-1</Variant></Property><Property Name="RTWConverterFontSize" Visibility="none"><Variant VarType="11">-1</Variant></Property><Property Name="RTWConverterDefaultAnalysisType" Visibility="none"><Variant VarType="11">-1</Variant></Property><Property Name="RTWConverterUserDefinedSourceField" Visibility="none"><Variant VarType="11">-1</Variant></Property><Property Name="DefaultAnalysisType" Visibility="run"><Variant VarType="8">BarOHLC</Variant></Property><Property Name="DefaultAnalysisType2Instruments" Visibility="run"><Variant VarType="8">Spread</Variant></Property><Property Name="DefaultAnalysisType3Instruments" Visibility="run"><Variant VarType="8">Line</Variant></Property><Property Name="DefaultAnalysisType4Instruments" Visibility="run"><Variant VarType="8">BtfySp</Variant></Property><Property Name="DefaultTableDataName" Visibility="run"><Variant VarType="8">TableRic</Variant></Property><Property Name="DefaultDatafeedUsed" Visibility="run">1</Property><Property Name="DefaultDatafeed" Visibility="run">Q</Property></properties>
+		<specific Version="">
+			<Property Name="PrivateData"><Constant Type="xml"><PrivateData ProgID="Kobra.ChartMs"><Chart ID="{13D1D06E-373B-40AF-8C95-30B180C5E75B}" Version="2.6.1213.0029" Width="21034" Height="14182" LongNames="true" LegendVisible="true" LegendType="Vertical" LegendFormat="Short" LegendNetChangeVisible="false" LegendPercentChangeVisible="false" LegendBorder="false" LegendStrikethrough="true" LegendHiddenWhenAnalysisHidden="false" CursorVisible="true" CursorType="Target" TrackingCursor="false" ToolTip="true" InPlaceEdit="true" SnapToXAxis="false" CursorSnapToPoint="true" YAxisMarkersVisible="true" YAxisMarkersAsLabels="true" YAxisMarkersAlwaysVisible="false" DataStatusVisible="true" ZoomCancel="true" DataWindowEnabled="false" DataWindowVisible="true" DataWindowAlwaysOnTop="true" DataWindowShowAllMode="false" DataLengthMode="Maximum" Enabled="true" ReadOnly="false" DisplayUserErrors="true" Use24HrsTradingSession="false" RemoveNonTradedPeriods="true" RemoveHolidays="true" RemoveInactivityGaps="false" GridVisible="true" GridType="Both" XScrollBarVisible="true" XScrollType="AlwaysOn" BrandVisible="false" ActiveBorderVisible="false" ChartPanMode="false" SmallChartAdjustmentsEnabled="true" FractionDisplayEnabled="false" IsUseDefaultInterval="true" identity="{AEC45821-0264-428B-8414-52DBB0D6D8F9}" Writer="ChartMs" WriterVersion="6.0" ChartModePremium="true"><LoadEnvironment></LoadEnvironment><LoadExtensions><MetaStock.StandardDisplayTypes.2/><MetaStock.DefaultInstPickerPlugin.2/><MetaStock.StandardDisplayTypes.2/><MetaStock.DefaultInstPickerPlugin.2/><MetaStock.StandardDisplayTypes.2/><MetaStock.DefaultInstPickerPlugin.2/><MetaStock.StandardDisplayTypes.2/><MetaStock.DefaultInstPickerPlugin.2/><MetaStock.StandardDisplayTypes.2/><MetaStock.DefaultInstPickerPlugin.2/><MetaStock.StandardDisplayTypes.2/><MetaStock.DefaultInstPickerPlugin.2/><MetaStock.StandardDisplayTypes.2/><MetaStock.DefaultInstPickerPlugin.2/><MetaStock.StandardDisplayTypes.2/><MetaStock.DefaultInstPickerPlugin.2/></LoadExtensions>
+							<Interval Type="Months" Multiplier="1"/>
+							<TimeZone Name="Default"/>
+							<RequestRange Points="50000" Days="-1"/>
+							<Scheme Default="false">
+								<Chart>
+									<Color value="#000000"/>
+									<BackColor value="#FEFEFE"/>
+									<Font faceName="Tahoma" size="8.25" bold="false" italic="false" underline="false" strike="false" charset="0"/>
+									<BackgroundStyle value="horizontal"/>
+									<GradientBackground>
+										<BackColor value="#F6F6F6"/>
+									</GradientBackground>
+									<Title>
+										<Color value="#000000"/>
+										<Font faceName="Tahoma" size="8.25" bold="true" italic="false" underline="false" strike="false" charset="0"/>
+									</Title>
+									<Range>
+										<Color value="#000000"/>
+										<Font faceName="Tahoma" size="8.25" bold="false" italic="false" underline="false" strike="false" charset="0"/>
+									</Range>
+									<Border lineStyle="solid">
+										<Color value="#CCCCCC"/>
+									</Border>
+									<GridLines lineStyle="solid" lineWidth="1">
+										<Color value="#EBEBEB"/>
+									</GridLines>
+									<Legend>
+										<Font faceName="Tahoma" size="8.25" bold="false" italic="false" underline="false" strike="false" charset="0"/>
+									</Legend>
+									<Axes>
+										<MajorLabel>
+											<XAxis>
+												<Color value="#555555"/>
+												<Font faceName="Tahoma" size="8.25" bold="true" italic="false" underline="false" strike="false" charset="0"/>
+											</XAxis>
+											<YAxis>
+												<Color value="#555555"/>
+												<Font faceName="Tahoma" size="8.25" bold="true" italic="false" underline="false" strike="false" charset="0"/>
+											</YAxis>
+										</MajorLabel>
+										<MinorLabel>
+											<XAxis>
+												<Color value="#555555"/>
+												<Font faceName="Tahoma" size="8.25" bold="false" italic="false" underline="false" strike="false" charset="0"/>
+											</XAxis>
+											<YAxis>
+												<Color value="#555555"/>
+												<Font faceName="Tahoma" size="8.25" bold="false" italic="false" underline="false" strike="false" charset="0"/>
+											</YAxis>
+										</MinorLabel>
+										<Title>
+											<YAxis>
+												<Color value="#555555"/>
+												<Font faceName="Tahoma" size="8.25" bold="true" italic="false" underline="false" strike="false" charset="0"/>
+											</YAxis>
+										</Title>
+										<CursorValues>
+											<XAxis>
+												<Color value="#FFFFFF"/>
+												<BackColor value="#414141"/>
+												<Font faceName="Tahoma" size="8.25" bold="false" italic="false" underline="false" strike="false" charset="0"/>
+											</XAxis>
+											<YAxis>
+												<Color value="#FFFFFF"/>
+												<BackColor value="#323232"/>
+												<Font faceName="Tahoma" size="8.25" bold="false" italic="false" underline="false" strike="false" charset="0"/>
+											</YAxis>
+										</CursorValues>
+										<SelectionMarkers>
+											<XAxis>
+												<Color value="#000000"/>
+												<BackColor value="#FFFFFF"/>
+											</XAxis>
+											<YAxis>
+												<Color value="#000000"/>
+												<BackColor value="#FF9600"/>
+											</YAxis>
+										</SelectionMarkers>
+									</Axes>
+									<AnalysisLines lineStyle="solid" lineWidth="1">
+										<Line1 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#000000"/>
+										</Line1>
+										<Line2 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#006897"/>
+										</Line2>
+										<Line3 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#A14800"/>
+										</Line3>
+										<Line4 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#556A00"/>
+										</Line4>
+										<Line5 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#636363"/>
+										</Line5>
+										<Line6 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#A6008C"/>
+										</Line6>
+										<Line7 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#0C4D00"/>
+										</Line7>
+										<Line8 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#924C5D"/>
+										</Line8>
+										<Line9 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#7732DB"/>
+										</Line9>
+										<Line10 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#5B3722"/>
+										</Line10>
+										<Line11 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#2D686F"/>
+										</Line11>
+										<Line12 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#C40000"/>
+										</Line12>
+										<Line13 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#5E5776"/>
+										</Line13>
+										<Line14 FillPattern="solid" lineStyle="solid" lineWidth="1">
+											<Color value="#0058DB"/>
+										</Line14>
+									</AnalysisLines>
+									<TrendLines lineStyle="solid" lineWidth="1">
+										<Line1 lineStyle="solid" lineWidth="1">
+											<Color value="#0000FF"/>
+										</Line1>
+										<Line2 lineStyle="solid" lineWidth="1">
+											<Color value="#787878"/>
+										</Line2>
+									</TrendLines>
+									<InsertMarker>
+										<Color value="#C0C0C0"/>
+										<BackColor value="#FFFFE1"/>
+									</InsertMarker>
+									<Focus lineStyle="solid" lineWidth="1">
+										<Color value="#FF8000"/>
+									</Focus>
+								</Chart>
+							</Scheme>
+							<SubChart ID="{A1638FD7-33BC-45E6-AA92-ED5D1D86F1F3}" Weighting="1" GridVisible="true" PosXPercent="2" PosYPercent="2">
+								<RightYAxis ID="{690B0AF4-5258-4A69-B49D-A99B45B5BAEA}" LogarithmicScale="false" Visible="true" Inverted="false" TypeVisible="true" CurrencyVisible="true" UnitVisible="true" DisplayUnitVisible="true" Mode="Default">
+									<Analysis ID="{847A12CA-AC1A-42E2-83BE-EE0836803C5C}" LineDisplayType="Default" Original="" Displacement="0" LineSymbol="None" Visible="true" ShowDividends="false" ShowEarnings="false" ShowCapitalChanges="false">
+										<AnalysisViewNode AnalysisInfo="{134AE740-33A6-11D7-912A-0008740FF073}">
+											<Input Type="Instrument" Symbol="CNEXP=ECI" FeedID="" Field="Default" Expression="" YieldType="Realtime" YieldDate="40896.3889467593" YieldRollingDays="0" YieldRollingWeeks="0" YieldRollingMonths="0" YieldRollingTimeOfDay="0" Linked="false" Contracts="-1" Action="Default">
+												<YieldRollingTimeZone Name=""/>
+												<Dataset Value=""/>
+											</Input>
+										</AnalysisViewNode>
+										<LevelLine ID="{49CDF4E7-B3C4-4E72-9073-918E9719FAFB}" Y_VALUE="0"/>
+										<LevelLineFill ShowFill="0" FillType="0">
+											<TopMost value="#00FF00"/>
+											<BottomMost value="#FF0000"/>
+										</LevelLineFill>
+										<DisplaySetting Name="DisplayType" Index="0" SchemeEntry="Chart.AnalysisLines.Line4" lineWidth="4">
+											<Color value="#800040"/>
+										</DisplaySetting>
+									</Analysis>
+									<Currency Name="Default"/>
+									<Unit Name="Default"/>
+									<DisplayUnit Type="Auto" Precision="0"/>
+									<DisplaySetting Name="LabelForeColor" Index="0">
+										<Color value="#000000"/>
+									</DisplaySetting>
+								</RightYAxis>
+								<LeftYAxis ID="{91DE8D9E-7ACC-47CA-AF75-C99D2D9E8C2A}" LogarithmicScale="false" Visible="true" Inverted="false" TypeVisible="true" CurrencyVisible="true" UnitVisible="true" DisplayUnitVisible="true" Mode="Default">
+									<Currency Name="Default"/>
+									<Unit Name="Default"/>
+									<DisplayUnit Type="Auto" Precision="0"/>
+									<DisplaySetting Name="LabelForeColor" Index="0">
+										<Color value="#000000"/>
+									</DisplaySetting>
+								</LeftYAxis>
+							</SubChart>
+							<SubChart ID="{48997335-91C4-47B4-B27B-7C98CE4C725E}" Weighting="1" GridVisible="true" PosXPercent="2" PosYPercent="2">
+								<RightYAxis ID="{3ABC7DAF-4542-408E-BA10-06150EE413A0}" LogarithmicScale="false" Visible="true" Inverted="false" TypeVisible="true" CurrencyVisible="true" UnitVisible="true" DisplayUnitVisible="true" Mode="Default">
+									<Analysis ID="{BB23E229-1990-4974-9F50-1AB7EBFEF6C7}" LineDisplayType="Histogram" Original="" Displacement="0" LineSymbol="None" Visible="true" ShowDividends="false" ShowEarnings="false" ShowCapitalChanges="false">
+										<AnalysisViewNode AnalysisInfo="{134AE740-33A6-11D7-912A-0008740FF073}">
+											<Input Type="Instrument" Symbol="aCNEXP" FeedID="" Field="Default" Expression="" YieldType="Realtime" YieldDate="40896.3280092593" YieldRollingDays="0" YieldRollingWeeks="0" YieldRollingMonths="0" YieldRollingTimeOfDay="0" Linked="false" Contracts="-1" Action="Default">
+												<YieldRollingTimeZone Name=""/>
+												<Dataset Value=""/>
+											</Input>
+										</AnalysisViewNode>
+										<LevelLine ID="{C2AD9C2C-4505-492C-B212-4255B448AC20}" Y_VALUE="0"/>
+										<LevelLineFill ShowFill="0" FillType="0">
+											<TopMost value="#00FF00"/>
+											<BottomMost value="#FF0000"/>
+										</LevelLineFill>
+										<DisplaySetting Name="DisplayType" Index="0" SchemeEntry="Chart.AnalysisLines.Line1">
+											<Color value="#0080FF"/>
+											<FillColor value="#0080FF"/>
+										</DisplaySetting>
+									</Analysis>
+									<Currency Name="Default"/>
+									<Unit Name="Default"/>
+									<DisplayUnit Type="Auto" Precision="0"/>
+									<DisplaySetting Name="LabelForeColor" Index="0">
+										<Color value="#000000"/>
+									</DisplaySetting>
+								</RightYAxis>
+								<LeftYAxis ID="{6DC457E3-5A08-4280-A998-4CDEC24BD563}" LogarithmicScale="false" Visible="true" Inverted="false" TypeVisible="true" CurrencyVisible="true" UnitVisible="true" DisplayUnitVisible="true" Mode="Default">
+									<Currency Name="Default"/>
+									<Unit Name="Default"/>
+									<DisplayUnit Type="Auto" Precision="0"/>
+									<DisplaySetting Name="LabelForeColor" Index="0">
+										<Color value="#000000"/>
+									</DisplaySetting>
+								</LeftYAxis>
+							</SubChart>
+							<XAxis ID="{342ADB16-21D0-4F08-ACB4-D6D66AF0CAB0}" Mode="Fixed" FixedSubMode="LowFixed" FixedRangeType="Custom" XAxisYieldMode="Compressed" PercentYAxisMargin="5">
+								<RangeMin Date="38868.9677419355" Param="0"/>
+								<RangeMax Date="0" Param="0"/>
+							</XAxis>
+							<Title ID="{61E8BA7B-10AC-4F44-B58E-5A9A6D626BEE}" IntervalVisible="true" CaptionCustomized="true" CustomizedCaptionText="" AnalysisVisible="false" CaptionVisible="false" RangeVisible="true" TitleAlignment="1"/>
+							<DisplaySetting Name="Trademark" Index="0">
+								<Font faceName="Arial" size="8.25" bold="true" italic="false" underline="false" strike="false" charset="0"/>
+							</DisplaySetting>
+							<KOBRA DefaultAnalysis="BarOHLC" DefaultAnalysis2="Spread" DefaultAnalysis3="Line" DefaultAnalysis4="BtfySp" NoInsertAnalysis="false" NoInsertItems="false" NoEditInterval="false" NoEditProperties="false" NoPropertiesDialog="false" NoDelete="false" NoDragDrop="false" DropAccepted="true" SaveLinkChanges="true" AllowChartLoading="true" AllowSchemeLoading="true" AllowTemplateLoading="true" AllowChartSaving="true" AllowSchemeSaving="true" AllowTemplateSaving="true" AutoLoadTemplate="false" ChartMs.DefaultShowAnalysisPropertiesOnDoubleClick="true" TableDataName="TableRic" DefaultKobraFeed="Q" DefaultKobraFeedUsed="1" PortfolioId="" PortfolioRIC="" Feed="Q" Time="28-Jun-13/10:00:12/(GMT)"/></Chart>
+					</PrivateData></Constant></Property><Property Name="PoolElementList"><Constant Type="xml"><Property Name="PoolElement" ElementID="1000001"><Name>P_Rtw2Flex_CAA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000002"><Name>CAT_ANALY</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000003"><Name>P_Rtw2Flex_I</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000004"><Name>P_Rtw2Flex_IM</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000005"><Name>P_Rtw2Flex_FS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000006"><Name>P_Rtw2Flex_DAT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000007"><Name>P_Rtw2Flex_UDSF</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000008"><Name>CAT_CHART</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000009"><Name>CAT_CHART_EVT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000010"><Name>CAT_ACTIONS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000011"><Name>CAT_MISC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000012"><Name>CAT_TITLE</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000013"><Name>CAT_MODIFS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000014"><Name>CAT_ADDS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000015"><Name>CAT_DELS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000016"><Name>CAT_PANES</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000017"><Name>CAT_PANES_EVT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000018"><Name>TUDTT</Name><Reference>T</Reference></Property><Property Name="PoolElement" ElementID="1000019"><Name>TFC</Name><Reference>T</Reference></Property><Property Name="PoolElement" ElementID="1000020"><Name>TBC</Name><Reference>T</Reference></Property><Property Name="PoolElement" ElementID="1000021"><Name>TV</Name><Reference>T</Reference></Property><Property Name="PoolElement" ElementID="1000022"><Name>TD</Name><Reference>T</Reference></Property><Property Name="PoolElement" ElementID="1000023"><Name>CAAOC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000024"><Name>CACOC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000025"><Name>CAALYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000026"><Name>CCALYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000027"><Name>CAARYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000028"><Name>CCARYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000029"><Name>CAAOYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000030"><Name>CCAOYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000031"><Name>CAOCYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000032"><Name>CCOCYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000033"><Name>CAOSA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000034"><Name>CCOSA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000035"><Name>CAATD</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000036"><Name>CZOC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000037"><Name>CZALYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000038"><Name>CZARYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000039"><Name>CZAOYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000040"><Name>CZOCYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000041"><Name>CUOC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000042"><Name>CUALYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000043"><Name>CUARYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000044"><Name>CUAOYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000045"><Name>CUOCYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000046"><Name>ADAABF</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000047"><Name>ADACBF</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000048"><Name>AAACYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000049"><Name>AACCYA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000050"><Name>AAALYS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000051"><Name>AACLYS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000052"><Name>AAARYS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000053"><Name>AACRYS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000054"><Name>AAAOYS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000055"><Name>AACOYS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000056"><Name>AAALYN</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000057"><Name>AACLYN</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000058"><Name>AAARYN</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000059"><Name>AACRYN</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000060"><Name>AAAOYN</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000061"><Name>AACOYN</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000062"><Name>AYCFTD</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000063"><Name>DSA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000064"><Name>DAAFCY</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000065"><Name>DAAFLY</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000066"><Name>DAAFRY</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000067"><Name>DAAFOY</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000068"><Name>DSAN</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000069"><Name>DAAN</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000070"><Name>DSTL</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000071"><Name>SDATL</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000072"><Name>DSS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000073"><Name>DAI</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000074"><Name>MI</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000075"><Name>MIM</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000076"><Name>MLSF</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000077"><Name>MLCSF</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000078"><Name>MLTF</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000079"><Name>MTZ</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000080"><Name>MDAT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000081"><Name>MCB</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000082"><Name>MSTD</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000083"><Name>MDTD</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000084"><Name>MRCP</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000085"><Name>MFNOIO</Name><Reference>X</Reference></Property><Property Name="PoolElement" ElementID="1000086"><Name>MFTSDO</Name><Reference>X</Reference></Property><Property Name="PoolElement" ElementID="1000087"><Name>MFEDOX</Name><Reference>X</Reference></Property><Property Name="PoolElement" ElementID="1000088"><Name>MBFOSA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000089"><Name>MFSSD</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000090"><Name>MFESD</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000091"><Name>MSMNYD</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000092"><Name>SICEVT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000093"><Name>GICEVT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000094"><Name>XDEVT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000095"><Name>DBLCLKEVT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000096"><Name>OUT01</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000097"><Name>OUT02</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000098"><Name>OUT03</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000099"><Name>OUT04</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000100"><Name>OUT05</Name><Reference>X</Reference></Property><Property Name="PoolElement" ElementID="1000101"><Name>OUT06</Name><Reference>X</Reference></Property><Property Name="PoolElement" ElementID="1000102"><Name>OUT07</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000103"><Name>OUT08</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000104"><Name>OUT09</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000105"><Name>OUT10</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000106"><Name>OUT11</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000107"><Name>OUT12</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000108"><Name>P_FC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000109"><Name>P_BC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000110"><Name>P_F</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000111"><Name>P_ODDF</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000112"><Name>P_DDF</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000113"><Name>P_DF</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000114"><Name>P_DF2</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000115"><Name>P_DF3</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000116"><Name>P_DF4</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000117"><Name>MDTDN</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000118"><Name>P_ST</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000119"><Name>CAT_ANALY_EVT</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000120"><Name>P_LT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000121"><Name>CAT_PANE</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000122"><Name>P_SC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000123"><Name>CAT_PANE_EVT</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000124"><Name>P_LC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000125"><Name>CAT_ACTIONS</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000126"><Name>P_SS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000127"><Name>P_LS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000128"><Name>CAT_STATS</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000129"><Name>P_DDD</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000130"><Name>CAT_MODIFS</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000131"><Name>P_DDEL</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000132"><Name>CAT_ADDS</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000133"><Name>P_DEDIT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000134"><Name>P_DADDI</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000135"><Name>CAT_MISC</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000136"><Name>P_CCS</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000137"><Name>P_DADDA</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000138"><Name>AEVT</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000139"><Name>P_DI</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000140"><Name>P_HLWAH</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000141"><Name>P_ACT</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000142"><Name>P_SAODC</Name><Reference>C</Reference></Property><Property Name="PoolElement" ElementID="1000143"><Name>CAT_PANE</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000144"><Name>CAT_PANE_EVT</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000145"><Name>CAT_ACTIONS</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000146"><Name>CAT_STATS</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000147"><Name>CAT_MODIFS</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000148"><Name>CAT_ADDS</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000149"><Name>CAT_DELS</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000150"><Name>SCIAOT</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000151"><Name>SCICOT</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000152"><Name>SCIAOL</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000153"><Name>SCICOL</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000154"><Name>SCIAOR</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000155"><Name>SCICOR</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000156"><Name>SCIAOO</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000157"><Name>SCICOO</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000158"><Name>SAAALA</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000159"><Name>SAACLA</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000160"><Name>SAAARA</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000161"><Name>SAACRA</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000162"><Name>SAAAOA</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000163"><Name>SAACOA</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000164"><Name>SDAAFL</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000165"><Name>SDAAFR</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000166"><Name>SDAAFO</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000167"><Name>SDAAN</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000168"><Name>SDATL</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000169"><Name>SAV</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000170"><Name>SAF</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000171"><Name>SANOD</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000172"><Name>CAT_ANALYSES</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000173"><Name>CAT_ANALYSES_EVT</Name><Reference>1</Reference></Property><Property Name="PoolElement" ElementID="1000174"><Name>CAT_LEFT</Name><Reference>1/L</Reference></Property><Property Name="PoolElement" ElementID="1000175"><Name>SACZC</Name><Reference>1/L</Reference></Property><Property Name="PoolElement" ElementID="1000176"><Name>SACU</Name><Reference>1/L</Reference></Property><Property Name="PoolElement" ElementID="1000177"><Name>SAFLV</Name><Reference>1/L</Reference></Property><Property Name="PoolElement" ElementID="1000178"><Name>SAFHV</Name><Reference>1/L</Reference></Property><Property Name="PoolElement" ElementID="1000179"><Name>CAT_RIGHT</Name><Reference>1/R</Reference></Property><Property Name="PoolElement" ElementID="1000180"><Name>SACZC</Name><Reference>1/R</Reference></Property><Property Name="PoolElement" ElementID="1000181"><Name>SACU</Name><Reference>1/R</Reference></Property><Property Name="PoolElement" ElementID="1000182"><Name>SAFLV</Name><Reference>1/R</Reference></Property><Property Name="PoolElement" ElementID="1000183"><Name>SAFHV</Name><Reference>1/R</Reference></Property><Property Name="PoolElement" ElementID="1000184"><Name>AAF</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000185"><Name>ADS</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000186"><Name>AHSA</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000187"><Name>AD</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000188"><Name>AUDDSF</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000189"><Name>ADDSF</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000190"><Name>AFC</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000191"><Name>AT</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000192"><Name>ANSE</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000193"><Name>AC</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000194"><Name>AA</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000195"><Name>AEVT</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000196"><Name>CAT_MISC</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000197"><Name>CAT_ANALY_EVT</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000198"><Name>CAT_ANALY</Name><Reference>2/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000199"><Name>SCIAOL</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000200"><Name>SCICOT</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000201"><Name>SCIAOT</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000202"><Name>CAT_DELS</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000203"><Name>AAF</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000204"><Name>ADS</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000205"><Name>AHSA</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000206"><Name>AD</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000207"><Name>AUDDSF</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000208"><Name>ADDSF</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000209"><Name>AFC</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000210"><Name>AT</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000211"><Name>ANSE</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000212"><Name>AC</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000213"><Name>AA</Name><Reference>1/R/1</Reference></Property><Property Name="PoolElement" ElementID="1000214"><Name>SCICOL</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000215"><Name>SCIAOR</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000216"><Name>SCICOR</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000217"><Name>SCIAOO</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000218"><Name>SCICOO</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000219"><Name>SAAALA</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000220"><Name>SAACLA</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000221"><Name>SAAARA</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000222"><Name>SAACRA</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000223"><Name>SAAAOA</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000224"><Name>SAACOA</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000225"><Name>SDAAFL</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000226"><Name>SDAAFR</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000227"><Name>SDAAFO</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000228"><Name>SDAAN</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000229"><Name>SDATL</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000230"><Name>SAV</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000231"><Name>SAF</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000232"><Name>SANOD</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000233"><Name>CAT_ANALYSES</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000234"><Name>CAT_ANALYSES_EVT</Name><Reference>2</Reference></Property><Property Name="PoolElement" ElementID="1000235"><Name>CAT_RIGHT</Name><Reference>2/R</Reference></Property><Property Name="PoolElement" ElementID="1000236"><Name>SACZC</Name><Reference>2/R</Reference></Property><Property Name="PoolElement" ElementID="1000237"><Name>SACU</Name><Reference>2/R</Reference></Property><Property Name="PoolElement" ElementID="1000238"><Name>SAFLV</Name><Reference>2/R</Reference></Property><Property Name="PoolElement" ElementID="1000239"><Name>SAFHV</Name><Reference>2/R</Reference></Property><Property Name="PoolElement" ElementID="1000240"><Name>CAT_LEFT</Name><Reference>2/L</Reference></Property><Property Name="PoolElement" ElementID="1000241"><Name>SACZC</Name><Reference>2/L</Reference></Property><Property Name="PoolElement" ElementID="1000242"><Name>SACU</Name><Reference>2/L</Reference></Property><Property Name="PoolElement" ElementID="1000243"><Name>SAFLV</Name><Reference>2/L</Reference></Property><Property Name="PoolElement" ElementID="1000244"><Name>SAFHV</Name><Reference>2/L</Reference></Property></Constant></Property></specific>
+	</private>
+</Object>

@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IppModel.Store" Alias="Self" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="IppModelStoreContainer">
+          <EntitySet Name="FILEINFO" EntityType="IppModel.Store.FILEINFO" store:Type="Tables" store:Schema="IPP" store:Name="FILEINFO">
+            <DefiningQuery>SELECT 
+      "FILEINFO"."ID" AS "ID", 
+      "FILEINFO"."TITLECN" AS "TITLECN", 
+      "FILEINFO"."TITLEEN" AS "TITLEEN", 
+      "FILEINFO"."TOPICID" AS "TOPICID", 
+      "FILEINFO"."STATUS" AS "STATUS", 
+      "FILEINFO"."SUBMITTERID" AS "SUBMITTERID", 
+      "FILEINFO"."SUBMITDATE" AS "SUBMITDATE", 
+      "FILEINFO"."APPROVER" AS "APPROVER", 
+      "FILEINFO"."APPROVEDATE" AS "APPROVEDATE", 
+      "FILEINFO"."FILETYPE" AS "FILETYPE", 
+      "FILEINFO"."RIC" AS "RIC", 
+      "FILEINFO"."HITS" AS "HITS", 
+      "FILEINFO"."RATING" AS "RATING", 
+      "FILEINFO"."DESCRCN" AS "DESCRCN", 
+      "FILEINFO"."DESCREN" AS "DESCREN", 
+      "FILEINFO"."AUTHORRM" AS "AUTHORRM", 
+      "FILEINFO"."AUTHOREMAIL" AS "AUTHOREMAIL", 
+      "FILEINFO"."AUTHOR" AS "AUTHOR", 
+      "FILEINFO"."TAG" AS "TAG", 
+      "FILEINFO"."UPLOADTYPE" AS "UPLOADTYPE", 
+      "FILEINFO"."SOURCE" AS "SOURCE", 
+      "FILEINFO"."REPORTDATE" AS "REPORTDATE", 
+      "FILEINFO"."ISCOMMUNICATABLE" AS "ISCOMMUNICATABLE", 
+      "FILEINFO"."FILENAME" AS "FILENAME", 
+      "FILEINFO"."SYNCID" AS "SYNCID", 
+      "FILEINFO"."LASTCHANGEDATE" AS "LASTCHANGEDATE", 
+      "FILEINFO"."SYNCTOPICCODE" AS "SYNCTOPICCODE", 
+      "FILEINFO"."SYNCMODULEID" AS "SYNCMODULEID", 
+      "FILEINFO"."DISPLAYORDER" AS "DISPLAYORDER"
+      FROM "IPP"."FILEINFO" "FILEINFO"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MODULEINFO" EntityType="IppModel.Store.MODULEINFO" store:Type="Tables" store:Schema="IPP" store:Name="MODULEINFO">
+            <DefiningQuery>SELECT 
+      "MODULEINFO"."ID" AS "ID", 
+      "MODULEINFO"."NAMECN" AS "NAMECN", 
+      "MODULEINFO"."NAMEEN" AS "NAMEEN", 
+      "MODULEINFO"."LAYOUTINDEX" AS "LAYOUTINDEX"
+      FROM "IPP"."MODULEINFO" "MODULEINFO"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SUBMITTER" EntityType="IppModel.Store.SUBMITTER" store:Type="Tables" Schema="IPP" />
+          <EntitySet Name="TOPIC" EntityType="IppModel.Store.TOPIC" store:Type="Tables" Schema="IPP" />
+          <EntitySet Name="TOPICAPPROVER" EntityType="IppModel.Store.TOPICAPPROVER" store:Type="Tables" Schema="IPP" />
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'IPP.FILEINFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="FILEINFO">
+          <Key>
+            <PropertyRef Name="SUBMITDATE" />
+          </Key>
+          <Property Name="ID" Type="number" />
+          <Property Name="TITLECN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="TITLEEN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="TOPICID" Type="number" Precision="10" />
+          <Property Name="STATUS" Type="number" Precision="10" />
+          <Property Name="SUBMITTERID" Type="nvarchar2" MaxLength="50" />
+          <Property Name="SUBMITDATE" Type="date" Nullable="false" />
+          <Property Name="APPROVER" Type="nvarchar2" MaxLength="50" />
+          <Property Name="APPROVEDATE" Type="date" />
+          <Property Name="FILETYPE" Type="nvarchar2" MaxLength="50" />
+          <Property Name="RIC" Type="nvarchar2" MaxLength="200" />
+          <Property Name="HITS" Type="number" />
+          <Property Name="RATING" Type="float" Precision="38" />
+          <Property Name="DESCRCN" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="DESCREN" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="AUTHORRM" Type="nvarchar2" MaxLength="50" />
+          <Property Name="AUTHOREMAIL" Type="nvarchar2" MaxLength="50" />
+          <Property Name="AUTHOR" Type="nvarchar2" MaxLength="50" />
+          <Property Name="TAG" Type="nvarchar2" MaxLength="500" />
+          <Property Name="UPLOADTYPE" Type="nvarchar2" MaxLength="50" />
+          <Property Name="SOURCE" Type="nvarchar2" MaxLength="200" />
+          <Property Name="REPORTDATE" Type="date" />
+          <Property Name="ISCOMMUNICATABLE" Type="number" Precision="1" />
+          <Property Name="FILENAME" Type="nvarchar2" MaxLength="200" />
+          <Property Name="SYNCID" Type="number" Precision="10" />
+          <Property Name="LASTCHANGEDATE" Type="date" />
+          <Property Name="SYNCTOPICCODE" Type="nvarchar2" MaxLength="50" />
+          <Property Name="SYNCMODULEID" Type="number" Precision="10" />
+          <Property Name="DISPLAYORDER" Type="number" Precision="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'IPP.MODULEINFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="MODULEINFO">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="NAMECN" />
+            <PropertyRef Name="NAMEEN" />
+            <PropertyRef Name="LAYOUTINDEX" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="10" />
+          <Property Name="NAMECN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="NAMEEN" Type="nvarchar2" Nullable="false" MaxLength="50" />
+          <Property Name="LAYOUTINDEX" Type="number" Nullable="false" Precision="10" />
+        </EntityType>
+        <EntityType Name="SUBMITTER">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="NAME" Type="nvarchar2" MaxLength="200" />
+          <Property Name="EMAIL" Type="nvarchar2" MaxLength="50" />
+          <Property Name="RM" Type="nvarchar2" MaxLength="50" />
+          <Property Name="INSTITUTION" Type="nvarchar2" MaxLength="100" />
+          <Property Name="INTERNALUSER" Type="number" Precision="10" />
+          <Property Name="PID" Type="number" Nullable="false" Precision="10" />
+        </EntityType>
+        <EntityType Name="TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="10" />
+          <Property Name="NAMECN" Type="nvarchar2" MaxLength="50" />
+          <Property Name="NAMEEN" Type="nvarchar2" MaxLength="50" />
+          <Property Name="MODULEID" Type="number" Precision="10" />
+          <Property Name="DESCRIPTIONCN" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="DESCRIPTIONEN" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="CREATER" Type="nvarchar2" MaxLength="50" />
+          <Property Name="ISAPPROVE" Type="number" Precision="1" />
+          <Property Name="ISINTERNALAPPROVE" Type="number" Precision="1" />
+          <Property Name="ISDIRECTDELETE" Type="number" Precision="1" />
+          <Property Name="HITS" Type="number" />
+          <Property Name="RMLINK" Type="nvarchar2" MaxLength="100" />
+          <Property Name="TAG" Type="nvarchar2" MaxLength="50" />
+          <Property Name="CREATEDATE" Type="date" />
+          <Property Name="IMAGENAME" Type="nvarchar2" MaxLength="200" />
+          <Property Name="SYNCCODE" Type="nvarchar2" MaxLength="50" />
+          <Property Name="LASTCHANGEDATE" Type="date" />
+          <Property Name="TOPICORDER" Type="number" Precision="10" />
+        </EntityType>
+        <EntityType Name="TOPICAPPROVER">
+          <Key>
+            <PropertyRef Name="TOPICID" />
+            <PropertyRef Name="APPROVER" />
+          </Key>
+          <Property Name="TOPICID" Type="number" Nullable="false" Precision="10" />
+          <Property Name="APPROVER" Type="nvarchar2" Nullable="false" MaxLength="400" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IppModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="IPPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FILEINFOs" EntityType="IppModel.FILEINFO" />
+          <EntitySet Name="MODULEINFOs" EntityType="IppModel.MODULEINFO" />
+          <EntitySet Name="TOPICAPPROVERs" EntityType="IppModel.TOPICAPPROVER" />
+          <EntitySet Name="TOPICs" EntityType="IppModel.TOPIC" />
+          <EntitySet Name="SUBMITTERs" EntityType="IppModel.SUBMITTER" />
+        </EntityContainer>
+        <EntityType Name="FILEINFO">
+          <Key>
+            <PropertyRef Name="SUBMITDATE" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TITLECN" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="TITLEEN" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="TOPICID" Type="Int32" />
+          <Property Name="STATUS" Type="Int32" />
+          <Property Name="SUBMITTERID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SUBMITDATE" Type="DateTime" Nullable="false" />
+          <Property Name="APPROVER" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="APPROVEDATE" Type="DateTime" />
+          <Property Name="FILETYPE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RIC" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="HITS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="RATING" Type="Decimal" Precision="12" Scale="0" />
+          <Property Name="DESCRCN" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="DESCREN" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="AUTHORRM" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AUTHOREMAIL" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AUTHOR" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="TAG" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="UPLOADTYPE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SOURCE" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="REPORTDATE" Type="DateTime" />
+          <Property Name="ISCOMMUNICATABLE" Type="Int16" />
+          <Property Name="FILENAME" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SYNCID" Type="Int32" />
+          <Property Name="LASTCHANGEDATE" Type="DateTime" />
+          <Property Name="SYNCTOPICCODE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SYNCMODULEID" Type="Int32" />
+          <Property Name="DISPLAYORDER" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MODULEINFO">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="NAMECN" />
+            <PropertyRef Name="NAMEEN" />
+            <PropertyRef Name="LAYOUTINDEX" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="NAMECN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="NAMEEN" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LAYOUTINDEX" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TOPICAPPROVER">
+          <Key>
+            <PropertyRef Name="TOPICID" />
+            <PropertyRef Name="APPROVER" />
+          </Key>
+          <Property Name="TOPICID" Type="Int32" Nullable="false" />
+          <Property Name="APPROVER" Type="String" Nullable="false" MaxLength="400" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAMECN" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NAMEEN" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MODULEID" />
+          <Property Type="String" Name="DESCRIPTIONCN" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTIONEN" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CREATER" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="ISAPPROVE" />
+          <Property Type="Int16" Name="ISINTERNALAPPROVE" />
+          <Property Type="Int16" Name="ISDIRECTDELETE" />
+          <Property Type="Decimal" Name="HITS" Precision="38" Scale="0" />
+          <Property Type="String" Name="RMLINK" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TAG" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CREATEDATE" />
+          <Property Type="String" Name="IMAGENAME" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SYNCCODE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LASTCHANGEDATE" />
+          <Property Type="Int32" Name="TOPICORDER" />
+        </EntityType>
+        <EntityType Name="SUBMITTER">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMAIL" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RM" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="INSTITUTION" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="INTERNALUSER" />
+          <Property Type="Int32" Name="PID" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IppModelStoreContainer" CdmEntityContainer="IPPEntities">
+          <EntitySetMapping Name="FILEINFOs">
+            <EntityTypeMapping TypeName="IppModel.FILEINFO">
+              <MappingFragment StoreEntitySet="FILEINFO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLECN" ColumnName="TITLECN" />
+                <ScalarProperty Name="TITLEEN" ColumnName="TITLEEN" />
+                <ScalarProperty Name="TOPICID" ColumnName="TOPICID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="SUBMITTERID" ColumnName="SUBMITTERID" />
+                <ScalarProperty Name="SUBMITDATE" ColumnName="SUBMITDATE" />
+                <ScalarProperty Name="APPROVER" ColumnName="APPROVER" />
+                <ScalarProperty Name="APPROVEDATE" ColumnName="APPROVEDATE" />
+                <ScalarProperty Name="FILETYPE" ColumnName="FILETYPE" />
+                <ScalarProperty Name="RIC" ColumnName="RIC" />
+                <ScalarProperty Name="HITS" ColumnName="HITS" />
+                <ScalarProperty Name="RATING" ColumnName="RATING" />
+                <ScalarProperty Name="DESCRCN" ColumnName="DESCRCN" />
+                <ScalarProperty Name="DESCREN" ColumnName="DESCREN" />
+                <ScalarProperty Name="AUTHORRM" ColumnName="AUTHORRM" />
+                <ScalarProperty Name="AUTHOREMAIL" ColumnName="AUTHOREMAIL" />
+                <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+                <ScalarProperty Name="TAG" ColumnName="TAG" />
+                <ScalarProperty Name="UPLOADTYPE" ColumnName="UPLOADTYPE" />
+                <ScalarProperty Name="SOURCE" ColumnName="SOURCE" />
+                <ScalarProperty Name="REPORTDATE" ColumnName="REPORTDATE" />
+                <ScalarProperty Name="ISCOMMUNICATABLE" ColumnName="ISCOMMUNICATABLE" />
+                <ScalarProperty Name="FILENAME" ColumnName="FILENAME" />
+                <ScalarProperty Name="SYNCID" ColumnName="SYNCID" />
+                <ScalarProperty Name="LASTCHANGEDATE" ColumnName="LASTCHANGEDATE" />
+                <ScalarProperty Name="SYNCTOPICCODE" ColumnName="SYNCTOPICCODE" />
+                <ScalarProperty Name="SYNCMODULEID" ColumnName="SYNCMODULEID" />
+                <ScalarProperty Name="DISPLAYORDER" ColumnName="DISPLAYORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MODULEINFOs">
+            <EntityTypeMapping TypeName="IppModel.MODULEINFO">
+              <MappingFragment StoreEntitySet="MODULEINFO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAMECN" ColumnName="NAMECN" />
+                <ScalarProperty Name="NAMEEN" ColumnName="NAMEEN" />
+                <ScalarProperty Name="LAYOUTINDEX" ColumnName="LAYOUTINDEX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOPICAPPROVERs">
+            <EntityTypeMapping TypeName="IppModel.TOPICAPPROVER">
+              <MappingFragment StoreEntitySet="TOPICAPPROVER">
+                <ScalarProperty Name="TOPICID" ColumnName="TOPICID" />
+                <ScalarProperty Name="APPROVER" ColumnName="APPROVER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOPICs">
+            <EntityTypeMapping TypeName="IppModel.TOPIC">
+              <MappingFragment StoreEntitySet="TOPIC">
+                <ScalarProperty Name="TOPICORDER" ColumnName="TOPICORDER" />
+                <ScalarProperty Name="LASTCHANGEDATE" ColumnName="LASTCHANGEDATE" />
+                <ScalarProperty Name="SYNCCODE" ColumnName="SYNCCODE" />
+                <ScalarProperty Name="IMAGENAME" ColumnName="IMAGENAME" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="TAG" ColumnName="TAG" />
+                <ScalarProperty Name="RMLINK" ColumnName="RMLINK" />
+                <ScalarProperty Name="HITS" ColumnName="HITS" />
+                <ScalarProperty Name="ISDIRECTDELETE" ColumnName="ISDIRECTDELETE" />
+                <ScalarProperty Name="ISINTERNALAPPROVE" ColumnName="ISINTERNALAPPROVE" />
+                <ScalarProperty Name="ISAPPROVE" ColumnName="ISAPPROVE" />
+                <ScalarProperty Name="CREATER" ColumnName="CREATER" />
+                <ScalarProperty Name="DESCRIPTIONEN" ColumnName="DESCRIPTIONEN" />
+                <ScalarProperty Name="DESCRIPTIONCN" ColumnName="DESCRIPTIONCN" />
+                <ScalarProperty Name="MODULEID" ColumnName="MODULEID" />
+                <ScalarProperty Name="NAMEEN" ColumnName="NAMEEN" />
+                <ScalarProperty Name="NAMECN" ColumnName="NAMECN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUBMITTERs">
+            <EntityTypeMapping TypeName="IppModel.SUBMITTER">
+              <MappingFragment StoreEntitySet="SUBMITTER">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="INTERNALUSER" ColumnName="INTERNALUSER" />
+                <ScalarProperty Name="INSTITUTION" ColumnName="INSTITUTION" />
+                <ScalarProperty Name="RM" ColumnName="RM" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="IPP">
+        <EntityTypeShape EntityType="IppModel.FILEINFO" Width="1.5" PointX="0.75" PointY="0.75" Height="6.5955208333333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="IppModel.MODULEINFO" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="IppModel.TOPICAPPROVER" Width="1.5" PointX="2.75" PointY="3.75" Height="1.4033821614583322" IsExpanded="true" />
+        <EntityTypeShape EntityType="IppModel.TOPIC" Width="1.5" PointX="5.375" PointY="0.75" Height="4.480205078125" />
+        <EntityTypeShape EntityType="IppModel.SUBMITTER" Width="1.5" PointX="3.375" PointY="6.75" Height="2.3648893229166656" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

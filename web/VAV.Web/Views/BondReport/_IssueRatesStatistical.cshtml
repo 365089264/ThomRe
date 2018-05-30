@@ -1,0 +1,156 @@
+﻿@model VAV.Web.ViewModels.Bond.BondIssueRateReport
+@using System.Web.Script.Serialization
+@{
+    Layout = null;
+    var s = new JavaScriptSerializer();
+    var gridItems = Model.Grid.GroupBy(i => i.ItemName).ToList();
+}
+<div class="colorBlock colorBlockMaxHeight" style="height: 41%">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Resources.Global.Bond_Issue_Rate_Grid</span>
+        <a href="#">
+            <img style="float: right; margin-right: 10px; margin-top: 7px" onclick="IssueRate.ExportBondReport(this, @Model.ID);"
+            src="/Content/themes/base/images/excel_icon.png" id="imgExport" alt="Export"/>
+        </a>
+    </div>
+    <div id="bond_rate_grid" class="bond_rate_grid" style="height: 400px; overflow: auto;
+        height: -webkit-calc(100% - 50px); margin: 0 auto">
+        <div id="bond_rate_tabs">
+            <ul style="height: 30px;">
+                @for (int i = 1; i <= gridItems.Count; i++)
+                {
+                    var item = gridItems[i - 1];
+
+                    <li id="@item.Key"><a href="#bond_rate_tabs_@i">@item.Key</a> <span class="ui-icon ui-icon-close"
+                        role="presentation">Remove Tab</span> </li>
+                }
+            </ul>
+            @for (int i = 1; i <= gridItems.Count; i++)
+            {
+                var item = gridItems[i - 1];
+                <div id="bond_rate_tabs_@i">
+                    <table class="datatable" style="cursor: pointer;">
+                        <thead>
+                            <tr class="hr">
+                                <th align="center">
+                                    @Resources.Global.Bond_Code
+                                </th>
+                                <th align="center">
+                                    @Resources.Global.Bond_Name
+                                </th>
+                                <th align="center">
+                                    @Resources.Global.Issue_Date
+                                </th>
+                                <th align="center">
+                                    @Resources.Global.Maturity_Date
+                                </th>
+                                <th align="center">
+                                    @Resources.Global.Bond_Term
+                                </th>
+                                <th align="center">
+                                    @Resources.Global.Bond_Issue_Rate
+                                </th>
+                                <th align="center">
+                                    @Resources.Global.Bond_Issue_Amt
+                                </th>
+                                <th align="center">
+                                    @Resources.Global.Bond_Coupon_class
+                                </th>
+                                <th align="center">
+                                    @Resources.Global.Bond_Rating
+                                </th>
+                                <th>
+                                    @Resources.Global.Bond_IssueComment
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var r in item)
+                            {
+                                var iDate = r.orig_issue_dt == null ? String.Empty : ((DateTime)r.orig_issue_dt).ToString("yyyy-MM-dd");
+                                var mDate = r.maturity_dt == null ? String.Empty : ((DateTime)r.maturity_dt).ToString("yyyy-MM-dd");
+                                var amount = r.orig_iss_amt == null ? String.Empty : ((double)r.orig_iss_amt).ToString("#,#");
+                                <tr onContextMenu="BondInfo.ChangeContextMenu(event,'@r.assetId')">
+                                    <td style="text-align: left;">@r.code
+                                    </td>
+                                    <td style="text-align: left;">@r.bond_name
+                                    </td>
+                                    <td style="text-align: left;">@iDate
+                                    </td>
+                                    <td style="text-align: left;">@mDate
+                                    </td>
+                                    <td>@r.term
+                                    </td>
+                                    <td>@r.yield
+                                    </td>
+                                    <td>@amount
+                                    </td>
+                                    <td style="text-align: left;">@r.coupon_type
+                                    </td>
+                                    <td style="text-align: left;">@r.latest_rating_cd
+                                    </td>
+                                    <td>@r.issueComment</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div>@Resources.Global.Source</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="colorBlock colorBlockMaxHeight" style="height: 59%">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Resources.Global.Bond_Issue_Rate_Chart</span>
+        <input type="button" value="@Resources.Global.Save_Pic" onclick="showLargeBondChart('bond_issue_rate_large_chart_container')" style="margin-top: 7px;float: right;margin-right: 10px;"/>
+    </div>
+    <div id="bond_issue_rate_chart_container" style="height: 70%; overflow: auto; height: -webkit-calc(100% - 30px);
+        margin: 0 auto; margin-top:3px">
+        @Html.Raw(Model.ChartService.GetBondChart(null, Model.Chart).ToHtmlString())
+    </div>
+    <div id="bond_issue_rate_large_chart_container" style="margin-left: 25px; margin-top: 5px;
+        display: none;">
+        @Html.Raw(Model.ChartService.GetLargeBondChart(null, Model.Chart).ToHtmlString())
+    </div>
+</div>
+<div id="rate_grid" style="display: none">@s.Serialize(Model.Grid)</div>
+<div id="rate_grid_titles" style="display: none">@s.Serialize(Model.ColumnTitles)</div>
+<div id="rate_grid_fieldNames" style="display: none">@s.Serialize(Model.FieldNames)</div>
+<div style="display: none">
+    <p id="issue_rate_result" style="margin-left: 35px;">@Model.Result</p>
+</div>
+<div style="display:none"><p id="issue_rate_selected_grid"></p></div>
+<script  type="text/javascript">
+    var IssueRate = (function (my) {
+        my.ExportBondReport = function (link, reportId) {
+            var columnNames, fieldNames, selectedGrid, grid;
+            columnNames = $("#rate_grid_titles").html();
+            fieldNames = $("#rate_grid_fieldNames").html();
+            selectedGrid = $("#issue_rate_selected_grid").html();
+            grid = $('#rate_grid').html();
+            doPost("/CDC/ExportBondIssueRateReport", {
+                reportId: reportId,
+                columnNames: columnNames,
+                fieldNames: fieldNames,
+                selectedGrid: selectedGrid,
+                grid: grid
+            });
+        };
+        function doPost(url, params) {
+            var $form = $("<form>")
+                .attr("method", "post")
+                .attr("action", url);
+            $.each(params, function (name, value) {
+                $("<input type='hidden'>")
+                    .attr("name", name)
+                    .attr("value", value)
+                    .appendTo($form);
+            });
+            $form.appendTo("body");
+            $form.submit();
+        }
+        ;
+        return my;
+    } (IssueRate||{}));
+</script>

@@ -1,0 +1,50 @@
+﻿@using VAV.Web.Common
+@using VAV.Web.Localization
+@{
+    var busyImageUrl = VirtualPathUtility.ToAbsolute("~/Content/images/loading.gif");
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+            window.Common = {};
+            window.Common.ChartSource = '@Resources.Global.Source';
+        </script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title></title>
+        @{
+            var bundleCSSPath = string.Format("~/Content/themes/{0}/IPPbundle", ThemeHelper.GetTheme(Request));     
+        }
+        @Styles.Render(bundleCSSPath)
+        <script type="text/javascript">
+            window.busyImageUrl = '@busyImageUrl';
+            window.isEn = @CultureHelper.IsEnglishCulture().ToString().ToLower();
+        </script>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui/IPP")
+        @Scripts.Render("~/bundles/JET")
+        @Scripts.Render("/bundles/highcharts")
+        @if (CultureHelper.IsEnglishCulture())
+        {
+            @Scripts.Render("~/bundles/ippjslangen")
+        }
+        else
+        {
+            @Scripts.Render("~/bundles/ippjslangzh")
+        }
+        @{
+            var themeName = ThemeHelper.GetTheme(Request);        
+        }
+
+        @(themeName == "Pearl" ? Scripts.Render("~/bundles/pearltheme") : Scripts.Render("~/bundles/novatheme"))
+        <script>
+            $(function () {
+                JET.init({ ID: "VAVWeb"});
+            });
+        </script>
+    </head>
+<body>
+    @RenderBody()
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c251fdb2093549f99d278c7b46281a69" Name="Diagram1">
+        <EntityTypeShape EntityType="VAV.Entities.BANK_FIN_PRD_PROSP_DATA" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.BUSINESSTYPEINFO" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.DISC_ACCE_CFP_DATA" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.FILEDETAIL" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.FILETYPEINFO" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.FILEVISITLOG" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.FIN_PRD_RPT_DATA" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.INSTITUTIONINFO" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.OPERATORINFO" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.RATE_REP_DATA" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.RES_INFO_DATA" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.ROLEPERMISSION" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.ALLFILESINFO" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.GETNEWFILE" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.GETNEWINSTITUTION" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VAV.Entities.GETRESEACHREPORTBYTYPE" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="VAV.Entities.FK_BZTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="VAV.Entities.SYS_C0014264" ManuallyRouted="false" />
+        <AssociationConnector Association="VAV.Entities.SYS_C0014262" ManuallyRouted="false" />
+        <AssociationConnector Association="VAV.Entities.SYS_C0014263" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="GDT_AgricultureMax" destination="GDT_AgricultureMax"  isSync="true" >
+      <column-mapping source="Product_EN" destination="Product_EN"/>
+      <column-mapping source="Product_CN" destination="Product_CN"/>
+      <column-mapping source="KeyWord" destination="KeyWord" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="GN_TXT16_2" destination="GN_TXT16_2"/>
+      <column-mapping source="SYMBOL" destination="SYMBOL"/>
+      <column-mapping source="DSPLY_NAME" destination="DSPLY_NAME"/>
+      <column-mapping source="RIC" destination="RIC"/>
+      <column-mapping source="Province_CN" destination="Province_CN"/>
+      <column-mapping source="City_CN" destination="City_CN"/>
+      <column-mapping source="Province_EN" destination="Province_EN"/>
+      <column-mapping source="City_EN" destination="City_EN"/>
+      <column-mapping source="Grade_CN" destination="Grade_CN"/>
+      <column-mapping source="Grade_EN" destination="Grade_EN"/>
+      <column-mapping source="re_date" destination="re_date"/>
+      <column-mapping source="price" destination="price"/>
+      <column-mapping source="DataSource_en" destination="DataSource_en"/>
+      <column-mapping source="DataSource_cn" destination="DataSource_cn"/>
+      <column-mapping source="DataSource" destination="DataSource"/>
+      <column-mapping source="unit_cn" destination="unit_cn"/>
+      <column-mapping source="unit_en" destination="unit_en"/>
+      <column-mapping source="orderKey" destination="orderKey"/>
+    </table-mapping>
+    <table-mapping source="GDT_AGRICULTRUEINVENTORYMAX" destination="GDT_AGRICULTRUEINVENTORYMAX"  isSync="true" >
+      <column-mapping source="ID" destination="ID"/>
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LATESTDATE" destination="LATESTDATE"/>
+      <column-mapping source="INVENTORY" destination="INVENTORY"/>
+      <column-mapping source="SYNCTIME" destination="SYNCTIME"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="AREA_CN" destination="AREA_CN"/>
+      <column-mapping source="AREA_EN" destination="AREA_EN"/>
+      <column-mapping source="DATASRC_CN" destination="DATASRC_CN"/>
+      <column-mapping source="DATASRC_EN" destination="DATASRC_EN"/>
+      <column-mapping source="PROVINCE_CN" destination="PROVINCE_CN"/>
+      <column-mapping source="PROVINCE_EN" destination="PROVINCE_EN"/>
+      <column-mapping source="UPDATEFREQUENCY_CN" destination="UPDATEFREQUENCY_CN"/>
+      <column-mapping source="UPDATEFREQUENCY_EN" destination="UPDATEFREQUENCY_EN"/>
+      <column-mapping source="SYMBOL" destination="SYMBOL"/>
+      <column-mapping source="DSPLY_NAME" destination="DSPLY_NAME"/>
+      <column-mapping source="RIC" destination="RIC"/>
+      <column-mapping source="HISDATA" destination="HISDATA"/>
+      <column-mapping source="REMARK_CN" destination="REMARK_CN"/>
+      <column-mapping source="REMARK_EN" destination="REMARK_EN"/>
+      <column-mapping source="CREATETIME" destination="CREATETIME"/>
+      <column-mapping source="LASTMONTHINVENTORY" destination="LASTMONTHINVENTORY"/>
+      <column-mapping source="MOM" destination="MOM"/>
+    </table-mapping>
+    <table-mapping source="GDT_AGRICULTRUEOUTPUTMAX" destination="GDT_AGRICULTRUEOUTPUTMAX"  isSync="true" >
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="STARTTIME" destination="STARTTIME"/>
+      <column-mapping source="LATESTDATE" destination="LATESTDATE"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="WEEKNO" destination="WEEKNO"/>
+      <column-mapping source="THISMONTHPRODUCTION" destination="THISMONTHPRODUCTION"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="CREATETIME" destination="CREATETIME"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+      <column-mapping source="LASTMONTHPRODUCTION" destination="LASTMONTHPRODUCTION"/>
+      <column-mapping source="MOM" destination="MOM"/>
+      <column-mapping source="SAMEPERIODOFLASTYEAR" destination="SAMEPERIODOFLASTYEAR"/>
+      <column-mapping source="YOY" destination="YOY"/>
+      <column-mapping source="YTDPRODUCT" destination="YTDPRODUCT"/>
+      <column-mapping source="YTDOFLASTYEAR" destination="YTDOFLASTYEAR"/>
+      <column-mapping source="YTDOYTD" destination="YTDOYTD"/>
+    </table-mapping>
+    <table-mapping source="GDT_CHEMICALINDUSTRYMAX" destination="GDT_CHEMICALINDUSTRYMAX"  isSync="true" >
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true"  isImmutableKey="true"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="MODELNAME_CN" destination="MODELNAME_CN"/>
+      <column-mapping source="AREA_CN" destination="AREA_CN"/>
+      <column-mapping source="PRODUCER_CN" destination="PRODUCER_CN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="MEMO_CN" destination="MEMO_CN"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="MODELNAME_EN" destination="MODELNAME_EN"/>
+      <column-mapping source="AREA_EN" destination="AREA_EN"/>
+      <column-mapping source="PRODUCER_EN" destination="PRODUCER_EN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="MEMO_EN" destination="MEMO_EN"/>
+      <column-mapping source="MARCKETNAME_CN" destination="MARCKETNAME_CN"/>
+      <column-mapping source="MACKETNAME_EN" destination="MACKETNAME_EN"/>
+      <column-mapping source="PRICE" destination="PRICE"/>
+      <column-mapping source="HIGHPRICE" destination="HIGHPRICE"/>
+      <column-mapping source="LOWPRICE" destination="LOWPRICE"/>
+      <column-mapping source="RE_DATE" destination="RE_DATE"/>
+      <column-mapping source="PRICETYPE_CN" destination="PRICETYPE_CN"/>
+      <column-mapping source="PRICETYPE_EN" destination="PRICETYPE_EN"/>
+      <column-mapping source="ORDERKEY" destination="ORDERKEY"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+    </table-mapping>
+    <table-mapping source="GDT_CHEMISTRYOUTPUTMAX" destination="GDT_CHEMISTRYOUTPUTMAX"  isSync="true" >
+      <column-mapping source="ID" destination="ID"/>
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LATESTDATE" destination="LATESTDATE"/>
+      <column-mapping source="THISMONTHPRODUCTION" destination="THISMONTHPRODUCTION"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="VARIETY_CN" destination="VARIETY_CN"/>
+      <column-mapping source="VARIETY_EN" destination="VARIETY_EN"/>
+      <column-mapping source="REMARK_CN" destination="REMARK_CN"/>
+      <column-mapping source="REMARK_EN" destination="REMARK_EN"/>
+      <column-mapping source="UPDATETIME" destination="UPDATETIME"/>
+      <column-mapping source="LASTMONTHPRODUCTION" destination="LASTMONTHPRODUCTION"/>
+      <column-mapping source="MOM" destination="MOM"/>
+      <column-mapping source="SAMEPERIODOFLASTYEAR" destination="SAMEPERIODOFLASTYEAR"/>
+      <column-mapping source="YOY" destination="YOY"/>
+      <column-mapping source="YTDPRODUCTION" destination="YTDPRODUCTION"/>
+      <column-mapping source="YTDOFLASTYEAR" destination="YTDOFLASTYEAR"/>
+      <column-mapping source="YTDOYTD" destination="YTDOYTD"/>
+    </table-mapping>
+    <table-mapping source="GDT_ENERGYGASMAX" destination="GDT_ENERGYGASMAX"  isSync="true" >
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="RE_DATE" destination="RE_DATE"/>
+      <column-mapping source="PRICE" destination="PRICE"/>
+      <column-mapping source="PRODUCT_EN" destination="PRODUCT_EN"/>
+      <column-mapping source="PRODUCT_CN" destination="PRODUCT_CN"/>
+      <column-mapping source="MODEL_EN" destination="MODEL_EN"/>
+      <column-mapping source="MODEL_CN" destination="MODEL_CN"/>
+      <column-mapping source="AREA_EN" destination="AREA_EN"/>
+      <column-mapping source="AREA_CN" destination="AREA_CN"/>
+      <column-mapping source="COMPANY_EN" destination="COMPANY_EN"/>
+      <column-mapping source="COMPANY_CN" destination="COMPANY_CN"/>
+      <column-mapping source="CITY_CN" destination="CITY_CN"/>
+      <column-mapping source="CITY_EN" destination="CITY_EN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="MEMO_EN" destination="MEMO_EN"/>
+      <column-mapping source="MEMO_CN" destination="MEMO_CN"/>
+      <column-mapping source="ORDERKEY" destination="ORDERKEY"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+    </table-mapping>
+    <table-mapping source="GDT_ENERGYMAX" destination="GDT_ENERGYMAX"  isSync="true" >
+      <column-mapping source="KEYWORD" destination="KEYWORD"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="RE_DATE" destination="RE_DATE"/>
+      <column-mapping source="PRICE" destination="PRICE"/>
+      <column-mapping source="PRODUCT_EN" destination="PRODUCT_EN"/>
+      <column-mapping source="PRODUCT_CN" destination="PRODUCT_CN"/>
+      <column-mapping source="MODEL_EN" destination="MODEL_EN"/>
+      <column-mapping source="MODEL_CN" destination="MODEL_CN"/>
+      <column-mapping source="AREA_EN" destination="AREA_EN"/>
+      <column-mapping source="AREA_CN" destination="AREA_CN"/>
+      <column-mapping source="MARKET_EN" destination="MARKET_EN"/>
+      <column-mapping source="MARKET_CN" destination="MARKET_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="MEMO_EN" destination="MEMO_EN"/>
+      <column-mapping source="MEMO_CN" destination="MEMO_CN"/>
+      <column-mapping source="CATEGORY" destination="CATEGORY"/>
+      <column-mapping source="ORDERKEY" destination="ORDERKEY"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+    </table-mapping>
+    <table-mapping source="GDT_ENERGYOILMAX" destination="GDT_ENERGYOILMAX"  isSync="true" >
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="RE_DATE" destination="RE_DATE"/>
+      <column-mapping source="PRICE" destination="PRICE"/>
+      <column-mapping source="PRODUCT_EN" destination="PRODUCT_EN"/>
+      <column-mapping source="PRODUCT_CN" destination="PRODUCT_CN"/>
+      <column-mapping source="MODEL_EN" destination="MODEL_EN"/>
+      <column-mapping source="MODEL_CN" destination="MODEL_CN"/>
+      <column-mapping source="AREA_EN" destination="AREA_EN"/>
+      <column-mapping source="AREA_CN" destination="AREA_CN"/>
+      <column-mapping source="MARKET_EN" destination="MARKET_EN"/>
+      <column-mapping source="MARKET_CN" destination="MARKET_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="MEMO_EN" destination="MEMO_EN"/>
+      <column-mapping source="MEMO_CN" destination="MEMO_CN"/>
+      <column-mapping source="CATEGORY" destination="CATEGORY"/>
+      <column-mapping source="ORDERKEY" destination="ORDERKEY"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+    </table-mapping>
+    <table-mapping source="GDT_ENERGYYIELDMAX" destination="GDT_ENERGYYIELDMAX"  isSync="true" >
+      <column-mapping source="ID" destination="ID"/>
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="LATESTDATE" destination="LATESTDATE"/>
+      <column-mapping source="THISMONTHPRODUCTION" destination="THISMONTHPRODUCTION"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="UPDATETIME" destination="UPDATETIME"/>
+      <column-mapping source="LASTMONTHPRODUCTION" destination="LASTMONTHPRODUCTION"/>
+      <column-mapping source="MOM" destination="MOM"/>
+      <column-mapping source="SAMEPERIODOFLASTYEAR" destination="SAMEPERIODOFLASTYEAR"/>
+      <column-mapping source="YOY" destination="YOY"/>
+      <column-mapping source="YTDPRODUCTION" destination="YTDPRODUCTION"/>
+      <column-mapping source="YTDOFLASTYEAR" destination="YTDOFLASTYEAR"/>
+      <column-mapping source="YTDOYTD" destination="YTDOYTD"/>
+    </table-mapping>
+    <table-mapping source="GDT_METALINVENTORYMAX" destination="GDT_METALINVENTORYMAX"  isSync="true" >
+      <column-mapping source="ID" destination="ID"/>
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LATESTDATE" destination="LATESTDATE"/>
+      <column-mapping source="INVENTORY" destination="INVENTORY"/>
+      <column-mapping source="SYNCTIME" destination="SYNCTIME"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="STATIRANGE_CN" destination="STATIRANGE_CN"/>
+      <column-mapping source="STATIRANGE_EN" destination="STATIRANGE_EN"/>
+      <column-mapping source="DATASRC_CN" destination="DATASRC_CN"/>
+      <column-mapping source="DATASRC_EN" destination="DATASRC_EN"/>
+      <column-mapping source="ITEMNAME_CN" destination="ITEMNAME_CN"/>
+      <column-mapping source="ITEMNAME_EN" destination="ITEMNAME_EN"/>
+      <column-mapping source="UPDATEFREQUENCY_CN" destination="UPDATEFREQUENCY_CN"/>
+      <column-mapping source="UPDATEFREQUENCY_EN" destination="UPDATEFREQUENCY_EN"/>
+      <column-mapping source="LASTMONTHINVENTORY" destination="LASTMONTHINVENTORY"/>
+      <column-mapping source="MOM" destination="MOM"/>
+      <column-mapping source="DATATAB" destination="DATATAB"/>
+    </table-mapping>
+    <table-mapping source="GDT_METALMAX" destination="GDT_METALMAX"  isSync="true" >
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LOWESTPRICE" destination="LOWESTPRICE"/>
+      <column-mapping source="PRICE" destination="PRICE"/>
+      <column-mapping source="UPDATETIME" destination="UPDATETIME"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="BRAND_CN" destination="BRAND_CN"/>
+      <column-mapping source="BRAND_EN" destination="BRAND_EN"/>
+      <column-mapping source="GRADE_CN" destination="GRADE_CN"/>
+      <column-mapping source="GRADE_EN" destination="GRADE_EN"/>
+      <column-mapping source="PRODUCER_CN" destination="PRODUCER_CN"/>
+      <column-mapping source="PRODUCER_EN" destination="PRODUCER_EN"/>
+      <column-mapping source="INDEXNAME_CN" destination="INDEXNAME_CN"/>
+      <column-mapping source="INDEXNAME_EN" destination="INDEXNAME_EN"/>
+      <column-mapping source="PRICETYPE_CN" destination="PRICETYPE_CN"/>
+      <column-mapping source="PRICETYPE_EN" destination="PRICETYPE_EN"/>
+      <column-mapping source="INDEXVALUE_CN" destination="INDEXVALUE_CN"/>
+      <column-mapping source="INDEXVALUE_EN" destination="INDEXVALUE_EN"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+      <column-mapping source="DESCRIPTION_CN" destination="DESCRIPTION_CN"/>
+      <column-mapping source="DESCRIPTION_EN" destination="DESCRIPTION_EN"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="SPECIFICATION_CN" destination="SPECIFICATION_CN"/>
+      <column-mapping source="SPECIFICATION_EN" destination="SPECIFICATION_EN"/>
+      <column-mapping source="LOCATIONOFSALE_CN" destination="LOCATIONOFSALE_CN"/>
+      <column-mapping source="LOCATIONOFSALE_EN" destination="LOCATIONOFSALE_EN"/>
+      <column-mapping source="UPDATEFREQUENCY_CN" destination="UPDATEFREQUENCY_CN"/>
+      <column-mapping source="UPDATEFREQUENCY_EN" destination="UPDATEFREQUENCY_EN"/>
+      <column-mapping source="LOCATIONOFPRODUCTION_CN" destination="LOCATIONOFPRODUCTION_CN"/>
+      <column-mapping source="LOCATIONOFPRODUCTION_EN" destination="LOCATIONOFPRODUCTION_EN"/>
+      <column-mapping source="SRCSHEET" destination="SRCSHEET"  isKey="true"/>
+      <column-mapping source="RE_DATE" destination="RE_DATE"/>
+      <column-mapping source="ORDERKEY" destination="ORDERKEY"/>
+    </table-mapping>
+    <table-mapping source="GDT_METALOUTPUTMAX" destination="GDT_METALOUTPUTMAX"  isSync="true" >
+      <column-mapping source="ID" destination="ID"/>
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LATESTDATE" destination="LATESTDATE"/>
+      <column-mapping source="THISMONTHPRODUCTION" destination="THISMONTHPRODUCTION"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+      <column-mapping source="CATEGORY_CN" destination="CATEGORY_CN"/>
+      <column-mapping source="CATEGORY_EN" destination="CATEGORY_EN"/>
+      <column-mapping source="REMARK_CN" destination="REMARK_CN"/>
+      <column-mapping source="REMARK_EN" destination="REMARK_EN"/>
+      <column-mapping source="UPDATETIME" destination="UPDATETIME"/>
+      <column-mapping source="LASTMONTHPRODUCTION" destination="LASTMONTHPRODUCTION"/>
+      <column-mapping source="MOM" destination="MOM"/>
+      <column-mapping source="SAMEPERIODOFLASTYEAR" destination="SAMEPERIODOFLASTYEAR"/>
+      <column-mapping source="YOY" destination="YOY"/>
+      <column-mapping source="YTDPRODUCTION" destination="YTDPRODUCTION"/>
+      <column-mapping source="YTDOFLASTYEAR" destination="YTDOFLASTYEAR"/>
+      <column-mapping source="YTDOYTD" destination="YTDOYTD"/>
+    </table-mapping>
+    <table-mapping source="GDT_METALSALESMAX" destination="GDT_METALSALESMAX"  isSync="true" >
+      <column-mapping source="KEYWORD" destination="KEYWORD" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LATESTDATE" destination="LATESTDATE"/>
+      <column-mapping source="THISMONTHPRODUCTION" destination="THISMONTHPRODUCTION"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="AREAORSALE_CN" destination="AREAORSALE_CN"/>
+      <column-mapping source="AREAORSALE_EN" destination="AREAORSALE_EN"/>
+      <column-mapping source="CATEGORY_CN" destination="CATEGORY_CN"/>
+      <column-mapping source="CATEGORY_EN" destination="CATEGORY_EN"/>
+      <column-mapping source="MENU_CN" destination="MENU_CN"/>
+      <column-mapping source="MENU_EN" destination="MENU_EN"/>
+      <column-mapping source="DATASOURCE_CN" destination="DATASOURCE_CN"/>
+      <column-mapping source="DATASOURCE_EN" destination="DATASOURCE_EN"/>
+      <column-mapping source="UPDATETIME" destination="UPDATETIME"/>
+      <column-mapping source="LASTMONTHPRODUCTION" destination="LASTMONTHPRODUCTION"/>
+      <column-mapping source="MOM" destination="MOM"/>
+      <column-mapping source="SAMEPERIODOFLASTYEAR" destination="SAMEPERIODOFLASTYEAR"/>
+      <column-mapping source="YOY" destination="YOY"/>
+      <column-mapping source="YTDPRODUCTION" destination="YTDPRODUCTION"/>
+      <column-mapping source="YTDOFLASTYEAR" destination="YTDOFLASTYEAR"/>
+      <column-mapping source="YTDOYTD" destination="YTDOYTD"/>
+    </table-mapping>
+    <table-mapping source="GDT_OILINVENTORYMAX" destination="GDT_OILINVENTORYMAX"  isSync="true" >
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="LATESTDATE" destination="LATESTDATE"/>
+      <column-mapping source="INVENTORY" destination="INVENTORY"/>
+      <column-mapping source="SYNCTIME" destination="SYNCTIME"/>
+      <column-mapping source="PRODUCTNAME_CN" destination="PRODUCTNAME_CN"/>
+      <column-mapping source="PRODUCTNAME_EN" destination="PRODUCTNAME_EN"/>
+      <column-mapping source="UNIT_CN" destination="UNIT_CN"/>
+      <column-mapping source="UNIT_EN" destination="UNIT_EN"/>
+      <column-mapping source="UPDATEFREQUENCY_CN" destination="UPDATEFREQUENCY_CN"/>
+      <column-mapping source="UPDATEFREQUENCY_EN" destination="UPDATEFREQUENCY_EN"/>
+      <column-mapping source="CREATETIME" destination="CREATETIME"/>
+      <column-mapping source="LASTMONTHINVENTORY" destination="LASTMONTHINVENTORY"/>
+      <column-mapping source="MOM" destination="MOM"/>
+      <filter>
+        <![CDATA[CreateTime >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CreateTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

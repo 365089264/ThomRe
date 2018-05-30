@@ -1,0 +1,389 @@
+﻿@using VAV.Web.Common
+@{
+    Layout = null;
+    var datePickerId = "datePicker" + @ViewBag.ID;
+    var endDatePickerId = "endDatePicker" + @ViewBag.ID;
+    var queryButtonId = "query" + @ViewBag.ID;
+    var contentDivId = "contentDiv" + @ViewBag.ID;
+    var categoryId = "category" + @ViewBag.ID;
+    var categorySelectId = "cselect" + @ViewBag.ID;
+    var unitSelectId = "uselect" + @ViewBag.ID;
+    var expireId = "expire" + @ViewBag.ID;
+    var startDate = new DateTime(DateTime.Now.Year - 2, DateTime.Now.Month, 1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var operationDataReportUrl = VirtualPathUtility.ToAbsolute("~/OpenMarket/ExportExcelForOperation");
+    var SLODataReportUrl = VirtualPathUtility.ToAbsolute("~/OpenMarket/ExportExcelForSLO");
+    var SLFDataReportUrl= VirtualPathUtility.ToAbsolute("~/OpenMarket/ExportExcelForSLF");
+
+    var news_asset = VAV.Web.Localization.CultureHelper.IsEnglishCulture() ? "CN/MMT" : "CN/MMTCN";
+    var news_text = Resources.Global.NewsTitle;
+
+    var ric1 = VAV.Web.Localization.CultureHelper.IsEnglishCulture() ? "CNPBOCSLO" : "CNPBOCSLOC";
+    var txt1 = Resources.Global.SLOTitle;
+
+    var ric2 = VAV.Web.Localization.CultureHelper.IsEnglishCulture() ? "CNPBOCSLFC" : "CNPBOCSLF";
+    var txt2 = Resources.Global.SLFTitle;
+}
+<div class="colorBlock" style="min-width: 950px;">
+    <div id="filterDiv" style="margin: 5px 0px 0px 10px; height: 27px;">
+        <div style="float: left;">
+            @Resources.Global.Report_Query_From
+            <input type="text" id="@datePickerId" value="@startDate" class="dateInput" readonly/>
+            @Resources.Global.Report_Query_End
+            <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput" readonly/>
+            @Resources.Global.Report_Unit
+            <select id="@unitSelectId" name="unit" class="smallSelect">
+                @foreach (var o in HtmlUtil.CookOptions("unit"))
+                {
+                    <option value ="@o.ID">@o.Name</option>    
+                }
+            </select>
+        </div>
+        <div id="openmarketTabHidden" style="float: left;">
+            <div style="float: left;">
+                @Resources.Global.Report_Type
+                <select id="tselect_@ViewBag.ID" name="tselect_@ViewBag.ID"  multiple="multiple">
+                    @foreach (var o in HtmlUtil.SelectOptions())
+                    {
+                        <option selected="@o.Selected" value ="@o.Value">@o.Text</option>    
+                    }
+                </select>
+            </div>
+            <div style="float: left;">
+                <input type="checkbox" id="@categoryId" style="vertical-align:middle;"/>@Resources.Global.Report_Category
+                <select id="@categorySelectId" name="coption" class="mediumSelect">
+                    @foreach (var o in HtmlUtil.CookOptions("category"))
+                    {
+                        <option value="@o.ID">@o.Name</option>    
+                    }
+                </select>
+            </div>
+            <div style="float: left;line-height: 18px;">
+                <input type="checkbox" id="@expireId" style="vertical-align: middle;" />@Resources.Global.Report_Expire
+            </div>
+        </div>
+        <div style="float: left;">
+            <input type="button" id="@queryButtonId" value="@Resources.Global.Report_Query" onclick="OpenMarketSearch.QueryNewDetail()"/>
+        </div><a href="#" onclick="OpenMarketSearch.excelExportTabs(this,'@ViewBag.ID');"> <img alt="Export" id="imgExport" src="~/Content/themes/base/images/excel_icon.png"
+                    style="float: right; margin-right: 10px; margin-top: 7px" />
+        </a>
+        <a href="#">
+            <img onclick="OpenMarketSearch.OpenNews()" title="@news_text" src="~/Content/themes/base/images/multimedianews.ico"
+                 style="float: right; margin-right: 10px; margin-top: 7px" />
+        </a><a href="#">
+            <img onclick="OpenMarketSearch.OpenRic('','@ric2')" title="@txt2" src="~/Content/images/monitor32.png"
+                     style="float: right; margin-right: 10px; margin-top: 7px;width: 16px;" />
+        </a><a href="#">
+            <img onclick="OpenMarketSearch.OpenRic('','@ric1')" title="@txt1" src="~/Content/images/monitor32.png"
+                         style="float: right; margin-right: 10px; margin-top: 7px;width: 16px;" />
+        </a>
+    </div>
+</div>
+<div class="colorBlock" id="basic" style="height: 91%; height: -webkit-calc(100% - 30px); min-width: 805px;">
+    <div id="@contentDivId" style="height: 100%;">
+        <div id="OpenMarketSearch_@ViewBag.ID" class="bankWMPDetailTabs" style="height: -webkit-calc(100%);" >
+            <ul>
+                <li><a href="#openMarketOpterationTab@(ViewBag.ID)">@Resources.Global.OpenMarketOperation</a></li>
+                <li><a href="#openMarketSLOTab@(ViewBag.ID)">@Resources.Global.OpenMarketSLO</a></li>
+                <li><a href="#openMarketSLFTab@(ViewBag.ID)">@Resources.Global.OpenMarketSLF</a></li>
+            </ul>
+            <div id="openMarketOpterationTab@(ViewBag.ID)" class="ui-layout-pane" style="height: 91%; height: -webkit-calc(100% - 48px); overflow: auto;">
+                <table id="tableOpenMarket"  class="datatable Zebra">
+                    <thead>
+                        <tr class="hr"></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div>@Resources.Global.Source</div>
+            </div>
+            <div id="openMarketSLOTab@(ViewBag.ID)">
+                <table class="datatable Zebra">
+                    <thead>
+                        <tr class="hr"></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="openMarketSLFTab@(ViewBag.ID)">
+                <table class="datatable Zebra">
+                    <thead>
+                        <tr class="hr"></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var OpenMarketSearch = (function (my) {
+        my.initialLayout = function() {
+            $("#@datePickerId, #@endDatePickerId").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'yy-mm-dd'
+            });
+            $("#ui-datepicker-div").css("border", "solid 1px black");
+            $("#tselect_@ViewBag.ID").multiselect({
+                buttonMinWidth: 115,
+                menuMinWidth: 240,
+                checkAllText: '@Resources.Global.Select_All',
+                uncheckAllText: '@Resources.Global.Unselect_All',
+                noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+                selectedText: '# @Resources.Global.Selected'
+            });
+            $("#OpenMarketSearch_@ViewBag.ID").tabs({
+                create:function() {
+                    refreshOperation();
+                },
+                activate:function() {
+                    refreshTabs();
+                    var active = $("#OpenMarketSearch_@ViewBag.ID").tabs("option", "active");
+                    switch (active) {
+                        case 0:
+                            $('#openmarketTabHidden').show();
+                            break;
+                        default:
+                            $('#openmarketTabHidden').hide();
+                            break;
+                    }
+                }
+            });
+        };
+        my.BuildRowTemplate = function (rawData) {
+            var tpl = '<tr>';
+            $.each(rawData, function (key, value) {
+                if (value.ColumnName != 'Code' ) {
+                    tpl = tpl + '<td style="text-align:left">${' + value.ColumnName + '}</td>';
+                } else {
+                    tpl = tpl + '<td  style="text-align:left" class="readTimeTD" onclick="TurnToLink(\'${Category}\',\'${AssetId}\')"><a href="javascript:void(0)" class="realTime" title="View real-time"></a>${'+value.ColumnName+'}</td>';
+                }
+            });
+            tpl = tpl + '</tr>';
+            return tpl;
+        };
+        my.BuildRowTemplateByType = function (rawData,categoryType) {
+            if (!categoryType) return my.BuildRowTemplate(rawData);
+            var tpl = '{{if isSumItem}}<tr id="OpenMarketCategory${'+categoryType+'}">';
+             $.each(rawData, function (key, value) {
+               if (key == 0) {
+                   tpl = tpl + '<td style="text-align:left">{{if '+categoryType+'!=\''+hierarchy.total+'\'}}<div  class="expand" onclick="OpenMarketSearch.ShowOrHide(\'OpenMarketCategory${'+categoryType+'}\',this)" style ="float:left"></div><div style="text-align: left">${'+categoryType+'}</div>{{else}}${'+categoryType+'}{{/if}}</td>';
+               } else if (value.ColumnName == 'Amount' || value.ColumnName == 'Volume' || value.ColumnName == 'IssueAmount') {
+                   tpl = tpl + '<td style="text-align:left">${' + value.ColumnName + '}</td>';
+               } else {
+                   tpl = tpl + "<td></td>";
+               }
+            });
+            tpl = tpl + '{{else}}<tr class="OpenMarketCategory${'+categoryType+'}">';
+            $.each(rawData, function (key, value) {
+                if (value.ColumnName != 'Code' ) {
+                    tpl = tpl + '<td style="text-align:left">${' + value.ColumnName + '}</td>';
+                } else {
+                    tpl = tpl + '<td  style="text-align:left" class="readTimeTD" onclick="TurnToLink(\'${Category}\',\'${AssetId}\')"><a href="javascript:void(0)" class="realTime" title="View real-time"></a>${'+value.ColumnName+'}</td>';
+                }
+            });
+            tpl = tpl + '{{/if}}</tr>';
+            return tpl;
+        };
+        function refreshOperation() {
+            var type = $('#tselect_@ViewBag.ID').val();
+            if(type != null) type = type.join();
+            var category = $('#@categorySelectId option:selected').val();
+            var categoryIsUsed = $('#@categoryId').is(':checked');
+            if (categoryIsUsed == false) {
+                category = "";
+            }
+            AjaxWithBlock($('#openMarketOpterationTab@(ViewBag.ID)'), "/OpenMarket/GetOpenMarketOperation",
+                {
+                    startDate: $('#@datePickerId').val(),
+                    endDate: $('#@endDatePickerId').val(),
+                    type: type,
+                    unit: $('#@unitSelectId option:selected').val(),
+                    includeExpired:$('#@expireId').is(':checked'),
+                    reportId:@ViewBag.ID,
+                    categoryType:category
+                    }, function (data) {
+                    debugger;
+                        data.RowData=hierarchy.initItemGroup(category, data.RowData, 1, ["Amount", "Volume"]);
+                        $.template("colTemp", '<th>${Name}</th>');
+                        $('#openMarketOpterationTab@(ViewBag.ID) table thead tr').empty();
+                        $.tmpl("colTemp", data.ColumTemplate).appendTo("#openMarketOpterationTab@(ViewBag.ID) table thead tr");
+
+                        var markup = my.BuildRowTemplateByType(data.ColumTemplate,category);
+                        $.template("openMarketOpteration", markup);
+                        $('#openMarketOpterationTab@(ViewBag.ID) table tbody').empty();
+                        $.tmpl("openMarketOpteration", data.RowData).appendTo("#openMarketOpterationTab@(ViewBag.ID) table tbody");
+                        }); 
+        }       
+        function refreshSLF() {
+            AjaxWithBlock($('#openMarketSLFTab@(ViewBag.ID)'), "/OpenMarket/GetOpenMarketSLF",
+                {
+                    startDate: $('#@datePickerId').val(),
+                    endDate: $('#@endDatePickerId').val(),
+                    unit: $('#@unitSelectId option:selected').val(),
+                    reportId:@ViewBag.ID
+                    }, function (data) {
+                        $.template("colTemp", '<th>${Name}</th>');
+                        $('#openMarketSLFTab@(ViewBag.ID) table thead tr').empty();
+                        $.tmpl("colTemp", data.ColumTemplate).appendTo("#openMarketSLFTab@(ViewBag.ID) table thead tr");
+
+                        var markup = my.BuildRowTemplate(data.ColumTemplate);
+                        $.template("openMarketRowTmpl", markup);
+                        $('#openMarketSLFTab@(ViewBag.ID) table tbody').empty();
+                        $.tmpl("openMarketRowTmpl", data.RowData).appendTo("#openMarketSLFTab@(ViewBag.ID) table tbody");
+                    }); 
+        }
+        function refreshSLO() {            
+            AjaxWithBlock($('#openMarketSLOTab@(ViewBag.ID)'), "/OpenMarket/GetOpenMarketSLO",
+                {
+                    startDate: $('#@datePickerId').val(),
+                    endDate: $('#@endDatePickerId').val(),
+                    unit: $('#@unitSelectId option:selected').val(),
+                    includeExpired:$('#@expireId').is(':checked'),
+                    reportId:@ViewBag.ID
+                    }, function (data) {
+                        debugger;
+                        var category = "Direction";
+                        data.RowData=hierarchy.initItemGroup(category, data.RowData, 1, ["IssueAmount"]);
+                        $.template("colTemp", '<th>${Name}</th>');
+                        $('#openMarketSLOTab@(ViewBag.ID) table thead tr').empty();
+                        $.tmpl("colTemp", data.ColumTemplate).appendTo("#openMarketSLOTab@(ViewBag.ID) table thead tr");
+
+                        var markup = my.BuildRowTemplateByType(data.ColumTemplate,category);
+                        $.template("openMarketRowTmpl", markup);
+                        $('#openMarketSLOTab@(ViewBag.ID) table tbody').empty();
+                        $.tmpl("openMarketRowTmpl", data.RowData).appendTo("#openMarketSLOTab@(ViewBag.ID) table tbody");
+                    }); 
+        }
+        function refreshTabs()
+        {
+            switch ($("#OpenMarketSearch_@ViewBag.ID").tabs("option", "active")) {
+                case 1:
+                    refreshSLO();
+                    break;
+                case 2:
+                    refreshSLF();
+                    break;
+                default:
+                    refreshOperation();
+                    break;
+            }
+        }
+        my.ShowOrHide = function(className, img) {
+            if ($(img).attr("class") == "expand")
+                $(img).toggleClass('expand close');
+            else
+                $(img).toggleClass('close expand');
+
+            $("." + className).toggle();
+        };
+        my.QueryNewDetail = function() {
+            refreshTabs();
+        };
+        my.OpenNews = function() {
+            var data = {
+                target: "popup",
+                location: {
+                    x: 200,
+                    y: 100,
+                    width: 600,
+                    height: 400
+                },
+                name: "News",
+                entities: [{
+                    "NewsQuery": "@news_asset"
+                }]
+            };
+            JET.navigate(data);
+
+        };
+
+        my.OpenRic = function(ricType, ricVal) {
+            var data = {
+                target: "popup",
+                // open a popup window
+                location: {
+                    x: 200,
+                    y: 100,
+                    width: 600,
+                    height: 400
+                },
+                name: "Quote Object",
+                // open a Quote Object
+                entities: [
+                    {
+                        "RIC": ricVal
+                    }
+                ]
+            };
+            JET.navigate(data);
+        };
+        my.excelExportTabs = function(link, reportId) {
+            switch ($("#OpenMarketSearch_@ViewBag.ID").tabs("option", "active")) {
+            case 1:
+                excelExportSLO(link, reportId);
+                break;
+            case 2:
+                excelExportSLF(link, reportId);
+                break;
+            default:
+                excelExportOperation(link, reportId);
+                break;
+            }
+        };
+        function excelExportOperation(link, reportId) {
+            var category = $('#@categorySelectId option:selected').val();
+                        var categoryIsUsed = $('#@categoryId').is(':checked');
+                        if (categoryIsUsed == false) {
+                            category = "";
+                        }
+            var type = $('#tselect_@ViewBag.ID').val();
+            if(type != null) type = type.join();
+            $(link).attr("href", "@operationDataReportUrl?reportId=" +reportId+'&type='+type+'&startDate=' +$('#@datePickerId').val()
+            +'&endDate='+$('#@endDatePickerId').val()+'&unit='+$('#@unitSelectId option:selected').val()+'&includeExpired='+$('#@expireId').is(':checked')
+            +'&category='+category
+            );
+        }
+        function excelExportSLO(link, reportId) {
+            $(link).attr("href", "@SLODataReportUrl?reportId=" +reportId+'&startDate=' +$('#@datePickerId').val()
+                    +'&endDate='+$('#@endDatePickerId').val()+'&unit='+$('#@unitSelectId option:selected').val()+'&includeExpired='+$('#@expireId').is(':checked')
+            );
+        }
+        function excelExportSLF(link, reportId) {
+            $(link).attr("href", "@SLFDataReportUrl?reportId=" +reportId+'&startDate=' +$('#@datePickerId').val()
+            +'&endDate='+$('#@endDatePickerId').val()+'&unit='+$('#@unitSelectId option:selected').val()
+            );
+        }
+        return my;
+    } (OpenMarketSearch || {}));
+    $(function () {
+        OpenMarketSearch.initialLayout();
+    });
+    function TurnToLink(category, asset_id) {
+        debugger;
+        var typeCBB = '@Resources.Global.Type_CBankBill';
+        if (category == typeCBB) {
+            assetid = "cpurl://views.cp./Explorer/Default.aspx?s=0x";
+            assetid = assetid + asset_id + "&st=EJVAssetID";
+            window.open(assetid);
+        }
+        else {
+            var data = {
+                target: "popup",
+                location: {
+                    x: 200,
+                    y: 100,
+                    width: 600,
+                    height: 400
+                },
+                name: "Quote Object",
+                entities: [{
+                    type: "COMP",
+                    "RIC": asset_id
+                }]
+            };
+            JET.navigate(data);
+        }
+    };
+   
+</script>

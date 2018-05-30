@@ -1,0 +1,61 @@
+﻿@model VAV.Web.ViewModels.Report.StatisticalReportViewModel
+@using System.Web.Script.Serialization
+@{
+    var s = new JavaScriptSerializer();
+    Layout = null;
+    var reportDivID = "report" + Model.ID;
+    var topDivID = "top" + Model.ID;
+}
+<div id="@reportDivID" class="Statistical ">
+    <div id="@topDivID" class="StatisticalTop">
+        <div class="StatisticalLeft">
+            <div class="colorBlock colorBlockMaxHeight">
+                <div class="colorBlock-header" style="height: 100%">
+                    <span class="colorBlock-header-span">@Model.Name</span>
+                    <a href="#" class="exportExcel" onclick="ExportReport(this, @Model.ID, false, false);">
+                    <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                    @Html.Partial("_ReportTable", Model.SumGrid)
+                </div>
+            </div>
+        </div>
+        <div class="StatisticalRight" id="chart_container_top_parent_@Model.ID">
+            <div class="colorBlock colorBlockMaxHeight">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Model.Name.Replace(Resources.Global.Title_Statistics, Resources.Global.Title_StatisticsChart)</span>
+                </div>
+                <form align="left" class="StatisticalChartForm">
+                <label>@Resources.Global.Chart_Item</label>
+                @Html.DropDownListFor(m => m.TopChart.ColumnName,
+                                    new SelectList(Model.StatisticalAspects, ""),
+                                    new
+                                        {
+                                            onChange = "refreshTopChart('" + Model.ID + "','" + s.Serialize(Model.TopChart) + "')",
+                                            id = "topchart_ddl1_" + Model.ID,
+                                            @class = "largeSelect"
+                                        })
+                <label style="margin-left:10px;">
+                    @Resources.Global.Chart_Type</label>
+                @Html.DropDownListFor(m => m.TopChart.ChartType,
+                                    new SelectList(Model.TopChart.ChartTypeOptions, Model.TopChart.ChartTypeOptions.FirstOrDefault()),
+                                    new
+                                    {
+                                        onChange = "refreshTopChart('" + Model.ID + "','" + s.Serialize(Model.TopChart) + "')",
+                                        id = "topchart_ddl2_" + Model.ID,
+                                        @class = "mediumSelect"
+                                    })
+                <input type="button" value="@Resources.Global.View_LargeChart" onclick="showLargeChart('@Model.ID',true)" style="margin-left:25px;"/>
+                </form>
+                <div id="chart_container_top_@Model.ID" class="StatisticalChartContainer">
+                    @Html.Raw(Model.ChartService.GetChart(null, Model.TopChartModel).ToHtmlString())
+                </div>
+            </div>
+            <div id="chart_container_top_large_@Model.ID" style="margin-left:25px;margin-top:5px;display:none;">
+                @Html.Raw(Model.ChartService.GetLargeChart(null, Model.TopChartModel).ToHtmlString())
+            </div>
+        </div>
+    </div>
+    <div id="statistical_report_detail_@Model.ID" class="StatisticalBottom">
+        @Html.Partial("_StatisticalReportDetailTable", Model)
+    </div>
+</div>

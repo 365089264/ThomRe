@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IPP_Allow_Edit_Delete" xml:space="preserve">
+    <value>Allow Edit/Delete</value>
+  </data>
+  <data name="IPP_Already_Approve" xml:space="preserve">
+    <value>Already approved by other approver.</value>
+  </data>
+  <data name="IPP_Announcement" xml:space="preserve">
+    <value>Announcement</value>
+  </data>
+  <data name="IPP_Approved" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="IPP_Approveds" xml:space="preserve">
+    <value>Approved</value>
+  </data>
+  <data name="IPP_Approver" xml:space="preserve">
+    <value>Approver</value>
+  </data>
+  <data name="IPP_Approvers" xml:space="preserve">
+    <value>Approvers</value>
+  </data>
+  <data name="IPP_Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="IPP_Author_Email" xml:space="preserve">
+    <value>Auhtor Email</value>
+  </data>
+  <data name="IPP_Author_Rm" xml:space="preserve">
+    <value>Author RM</value>
+  </data>
+  <data name="IPP_Available" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="IPP_BillBoard" xml:space="preserve">
+    <value>Ranking List</value>
+  </data>
+  <data name="IPP_Cancle" xml:space="preserve">
+    <value>Cancle</value>
+  </data>
+  <data name="IPP_Chatroom" xml:space="preserve">
+    <value>Topic chat room</value>
+  </data>
+  <data name="IPP_Creater" xml:space="preserve">
+    <value>Creater</value>
+  </data>
+  <data name="IPP_Create_Date" xml:space="preserve">
+    <value>Report Date</value>
+  </data>
+  <data name="IPP_Create_Topic" xml:space="preserve">
+    <value>Create topic</value>
+  </data>
+  <data name="IPP_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="IPP_Descr" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="IPP_Desc_Cn" xml:space="preserve">
+    <value>Chinese Description</value>
+  </data>
+  <data name="IPP_Desc_En" xml:space="preserve">
+    <value>English Description</value>
+  </data>
+  <data name="IPP_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="IPP_File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="IPP_FileExist" xml:space="preserve">
+    <value>Cannot delete, file exists in the current topic.</value>
+  </data>
+  <data name="IPP_File_Not_Null" xml:space="preserve">
+    <value>The file upload is required.</value>
+  </data>
+  <data name="IPP_File_Size_Alert" xml:space="preserve">
+    <value>File should be less that 5M.</value>
+  </data>
+  <data name="IPP_Follow" xml:space="preserve">
+    <value>Follow</value>
+  </data>
+  <data name="IPP_Goto_Topic" xml:space="preserve">
+    <value>Goto topic</value>
+  </data>
+  <data name="IPP_Hit" xml:space="preserve">
+    <value>Hits</value>
+  </data>
+  <data name="IPP_HotTopic" xml:space="preserve">
+    <value>Hot Topic</value>
+  </data>
+  <data name="IPP_If_Need_Approve" xml:space="preserve">
+    <value>Need approve</value>
+  </data>
+  <data name="IPP_Internal_Need_Approve" xml:space="preserve">
+    <value>Need Approve(Internal)</value>
+  </data>
+  <data name="IPP_IsFollowing" xml:space="preserve">
+    <value>Is following</value>
+  </data>
+  <data name="IPP_Latest" xml:space="preserve">
+    <value>The Latest</value>
+  </data>
+  <data name="IPP_Latest1M" xml:space="preserve">
+    <value>Latest 1 Month</value>
+  </data>
+  <data name="IPP_Latest1W" xml:space="preserve">
+    <value>Latest 1 Week</value>
+  </data>
+  <data name="IPP_Latest2W" xml:space="preserve">
+    <value>Latest 2 Week</value>
+  </data>
+  <data name="IPP_Latest3M" xml:space="preserve">
+    <value>Latest 3 Month</value>
+  </data>
+  <data name="IPP_Module" xml:space="preserve">
+    <value>Module</value>
+  </data>
+  <data name="IPP_MyDocument" xml:space="preserve">
+    <value>My Document</value>
+  </data>
+  <data name="IPP_MyFavorite" xml:space="preserve">
+    <value>My Favorite</value>
+  </data>
+  <data name="IPP_Need_Approve" xml:space="preserve">
+    <value>Need Approve</value>
+  </data>
+  <data name="IPP_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="IPP_Operation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="IPP_PendingApprove" xml:space="preserve">
+    <value>Pending Approve</value>
+  </data>
+  <data name="IPP_Persons" xml:space="preserve">
+    <value>Persons</value>
+  </data>
+  <data name="IPP_PrePublished" xml:space="preserve">
+    <value>Pending Published</value>
+  </data>
+  <data name="IPP_Publish" xml:space="preserve">
+    <value>Publish</value>
+  </data>
+  <data name="IPP_Published" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="IPP_Publish_File" xml:space="preserve">
+    <value>Publish File</value>
+  </data>
+  <data name="IPP_Query" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="IPP_QueryTopic" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="IPP_Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="IPP_RatingStats" xml:space="preserve">
+    <value>Rating Stats</value>
+  </data>
+  <data name="IPP_Rejected" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="IPP_Ric" xml:space="preserve">
+    <value>EIKON RIC</value>
+  </data>
+  <data name="IPP_RIC_Not_Null" xml:space="preserve">
+    <value>RIC is required.</value>
+  </data>
+  <data name="IPP_Ric_Type" xml:space="preserve">
+    <value>RIC Type</value>
+  </data>
+  <data name="IPP_RM_Link" xml:space="preserve">
+    <value>Chat Room</value>
+  </data>
+  <data name="IPP_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="IPP_Site" xml:space="preserve">
+    <value>Web Site</value>
+  </data>
+  <data name="IPP_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="IPP_Sperator" xml:space="preserve">
+    <value>Use semicolon if input muliptle tags</value>
+  </data>
+  <data name="IPP_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="IPP_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="IPP_Submiter" xml:space="preserve">
+    <value>Submitter</value>
+  </data>
+  <data name="IPP_Submit_Date" xml:space="preserve">
+    <value>Submit Date</value>
+  </data>
+  <data name="IPP_Tag" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="IPP_thumbnail" xml:space="preserve">
+    <value>Thumbnail</value>
+  </data>
+  <data name="IPP_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="IPP_Title_Cn" xml:space="preserve">
+    <value>Chinese Title</value>
+  </data>
+  <data name="IPP_Title_Cn_Val" xml:space="preserve">
+    <value>The Chinese Title Is Required.</value>
+  </data>
+  <data name="IPP_Title_En" xml:space="preserve">
+    <value>English Title</value>
+  </data>
+  <data name="IPP_Title_En_Val" xml:space="preserve">
+    <value>The English Title Is Required.</value>
+  </data>
+  <data name="IPP_To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="IPP_TopHits" xml:space="preserve">
+    <value>Top hits</value>
+  </data>
+  <data name="IPP_Topic" xml:space="preserve">
+    <value>Topic</value>
+  </data>
+  <data name="IPP_TopicManagement" xml:space="preserve">
+    <value>Topic Management</value>
+  </data>
+  <data name="IPP_Topic_Desc" xml:space="preserve">
+    <value>Topic description</value>
+  </data>
+  <data name="IPP_Topic_Name" xml:space="preserve">
+    <value>Topic name</value>
+  </data>
+  <data name="IPP_UnFollow" xml:space="preserve">
+    <value>Unfollow</value>
+  </data>
+  <data name="IPP_Uplaod_Header" xml:space="preserve">
+    <value>File Create/Edit</value>
+  </data>
+  <data name="IPP_Uplaod_Topic_Header" xml:space="preserve">
+    <value>Topic Create/Edit</value>
+  </data>
+  <data name="IPP_Upload_Type" xml:space="preserve">
+    <value>Upload Type</value>
+  </data>
+  <data name="IPP_Website" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="IPP_WebSite_Not_Null" xml:space="preserve">
+    <value>Web site is required.</value>
+  </data>
+  <data name="IPP_Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="ApproverLengthMessage" xml:space="preserve">
+    <value>Approver list should be less than {1} charactors.</value>
+  </data>
+  <data name="AuthorLengthMessage" xml:space="preserve">
+    <value>Author should be less than {1} charactors.</value>
+  </data>
+  <data name="AuthorRMLengthMessage" xml:space="preserve">
+    <value>Author RM should be less than {1} charactors.</value>
+  </data>
+  <data name="EmailAddressValidation" xml:space="preserve">
+    <value>Incorrect Email Address.</value>
+  </data>
+  <data name="RMLinkLengthMessage" xml:space="preserve">
+    <value>RM link should be less than {1} charactors.</value>
+  </data>
+  <data name="SubmiterLengthMessage" xml:space="preserve">
+    <value>Submitter should be less than {1} charactors.</value>
+  </data>
+  <data name="TagLengthMessage" xml:space="preserve">
+    <value>Tag should be less than {1} charactors.</value>
+  </data>
+  <data name="TitleCnLengthMessage" xml:space="preserve">
+    <value>Chinese Title should be less than {1} charactors.</value>
+  </data>
+  <data name="TitleEnLengthMessage" xml:space="preserve">
+    <value>English Title should be less than {1} charactors.</value>
+  </data>
+  <data name="IPP_Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="IPP_Star" xml:space="preserve">
+    <value>Star</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>Placed at the top</value>
+  </data>
+  <data name="IPP_Ric_Chart" xml:space="preserve">
+    <value>EIKON RIC-Chart</value>
+  </data>
+  <data name="IPP_Ric_Quote" xml:space="preserve">
+    <value>EIKON RIC-Quote</value>
+  </data>
+  <data name="IPP_Ric_QuoteList" xml:space="preserve">
+    <value>EIKON RIC-QuoteList</value>
+  </data>
+  <data name="IPP_Ric_News" xml:space="preserve">
+    <value>EIKON RIC-News</value>
+  </data>
+  <data name="IPP_RMLink" xml:space="preserve">
+    <value>RM Link</value>
+  </data>
+  <data name="IPP_PublishContent" xml:space="preserve">
+    <value>Publish Content</value>
+  </data>
+</root>

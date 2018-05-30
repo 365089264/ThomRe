@@ -1,0 +1,140 @@
+﻿@using VAV.Model.Data
+@using VAV.Web.Extensions
+@model VAV.Web.ViewModels.Home.IndexViewModel
+@helper BuildMenu(MenuNode node)
+{
+	//Action Type: 1,add report;2,refresh tree;3,redirect page;0,none
+	if(node.IsTreeVisible)
+	{
+		<li><a href="#@node.Id" reportid='@node.ReportId' action='@node.ActionType' trace='@node.TraceName' data-ric='@node.Ric'>
+				<div title="@node.DisplayName">
+					@node.DisplayName
+				</div>
+			</a>
+			@if (@node.Children.Any(x=>x.IsTreeVisible))
+			{
+				<ul>
+					@foreach (var subNode in node.Children)
+					{
+						@BuildMenu(subNode)
+					}
+				</ul>
+			}
+		</li>
+	}
+}
+@{
+	var reportPath = VirtualPathUtility.ToAbsolute("~/PageManager/GetReport/");
+	var busyImageUrl = VirtualPathUtility.ToAbsolute("~/Content/images/loading.gif");
+	var getReportTableUrl = VirtualPathUtility.ToAbsolute("~/CDC/GetReportTable");
+	var refreshChartUrl = VirtualPathUtility.ToAbsolute("~/CDC/RefreshChart");
+	var treeRefreshURL = VirtualPathUtility.ToAbsolute("~/Home/RefreshTreeView");
+}
+<div id="menuwrapper" class="wrapBack" style="display:none;">
+    <div style="float:left;">
+        <ul id="menubar" style="border: solid 0px;">
+            @{
+                foreach (var menuNode in Model.MenuTree.Children)
+                {
+                    @BuildMenu(menuNode)
+                }
+            }
+        </ul>
+    </div>
+
+</div>
+<div id="main" class="ui-layout-container content" style="min-height: 800px;">
+	<div id="treeView" class="ui-layout-west ui-layout-pane">
+		@{ Html.RenderPartial("_Tree", Model.CurrentTreeViewModel); }
+	</div>
+	<div class="ui-layout-center ui-layout-pane">
+		<div id="tabs">
+			<ul>
+				<li><a href="#@Model.DefaultReport.ReportId">@Model.DefaultReport.DisplayName</a>
+				</li>
+			</ul>
+			<div id="@Model.DefaultReport.ReportId" class="tabMaxHeight">
+				@{ Html.RenderAction("Homepage", "Home", new { id = Model.DefaultReport.ReportId }); }
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	window.reportUrl = '@reportPath';
+	window.busyImageUrl = '@busyImageUrl';
+	window.getReportTableUrl = '@getReportTableUrl';
+	window.refreshChartUrl = '@refreshChartUrl';
+	window.treeRefreshURL = '@treeRefreshURL';
+
+	$(function () {
+	    $("#menubar").menubar({
+	        autoExpand: true,
+	        menuIcon: true,
+	        buttons: true,
+	        select: function (event, ui) {
+	            var a = ui.item.find('a');
+	            MessageRouter({
+	                nodeid: a.attr('href').replace('#', ''),
+	                reportid: a.attr('reportid'),
+	                action: a.attr('action'),
+	                nodetext: ui.item.text(),
+	                source: 'menu',
+	                trace: a.attr('trace'),
+	                ric: a.data('ric')
+	            });
+	        }
+	    });
+	    $('#menubar >li >a').click(function (e) {
+	        var a = $(e.currentTarget);
+	        MessageRouter({
+	            nodeid: a.attr('href').replace('#', ''),
+	            reportid: a.attr('reportid'),
+	            action: a.attr('action'),
+	            nodetext: a.find('div').attr('title'),
+	            source: 'menu',
+	            trace: a.attr('trace'),
+	            ric: a.data('ric')
+	        });
+	    });
+	    $('#menuwrapper').show();
+	    $('#main').layout({
+	        west__size: .20,
+	        onresize_end: function () {
+	            if (window.tabs) {
+	                window.tabs[0].refreshNavBar();
+	            }
+	        },
+	        togglerLength_open: 30,
+	        togglerLength_closed: 30,
+	        spacing_closed: 7,
+	        spacing_open: 7
+	    });
+	    var menumargintop = $("#menubar").height() + 55;
+	    $('#main').css("margin-top", menumargintop);
+	    JET.onLoad(function () {
+	        LogUsage('');
+	        LogUsage('Home Page');
+	    });
+
+	    JET.init({ ID: "VAVWeb"});
+
+	    $.ajaxSetup({ cache: false });
+	    window.tabs = $("#tabs").tabs().scrollabletabs({
+	        onTabActive:
+	            function (e) {
+	                amplify.publish('TabActive', { reportid: e.tabid.replace('#', ''), source: "tab" });
+	                amplify.publish('RefreshChart', { source: "tab" });
+
+	            }
+	    });
+	    $(window).resize(function () { amplify.publish('RefreshChart', { source: "window" }); });
+
+	    
+	});
+
+	
+
+</script>
+<!-- Debug for IP settings
+@(DebugHelper.GetServerInfo())
+ -->

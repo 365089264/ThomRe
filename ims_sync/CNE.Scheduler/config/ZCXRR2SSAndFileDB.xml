@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=zcx;Password=zcx;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=filedb;Password=filedb;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="RES_INFO" destination="RES_INFO" isContainFilePath="true" pathColumn="RES_FILE_PATH"
+                   filePath="C:/DataFeedApp/ZCXClient/ZCX/ADD_DATA" destinationFilePath="/RR/FI/zcx/RR">
+      <column-mapping source="RES_ID" destination="RES_ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RES_TITLE" destination="RES_TITLE"/>
+      <column-mapping source="RESER_NAME" destination="RESER_NAME"/>
+      <column-mapping source="RES_FILE_PATH" destination="RES_FILE_PATH"/>
+      <column-mapping source="RES_FILE_SIZE" destination="RES_FILE_SIZE"/>
+      <column-mapping source="RES_PUBL_DATE" destination="RES_PUBL_DATE"/>
+
+      <filter>
+        <![CDATA[ CCXEID >= {LastSyncTime} AND CCXEID <= {CurrentSyncTime} AND ISVALID = 1 AND RES_TYPE_PAR=1 and res_writ_date >'2014-01-01']]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

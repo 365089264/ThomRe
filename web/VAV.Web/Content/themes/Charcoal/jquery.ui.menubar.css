@@ -1,0 +1,74 @@
+/*
+ * jQuery UI Menubar @VERSION
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ */
+.ui-menubar
+{
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.ui-menubar-item
+{
+    float: left;
+    border: 0px !important;
+    display: inline-block !important;
+}
+
+.ui-menubar-item .ui-state-default {
+    border: 0px !important;
+}
+
+.ui-menubar-item:after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    height: 14px;
+    border-right: solid 1px #444;
+    border-left: solid 1px #1E1E1E;
+    right: 0px;
+    top: 4px;
+}
+
+.ui-menubar .ui-button
+{
+    float: left;
+    font-weight: normal;
+    border-top-width: 0 !important;
+    border-bottom-width: 0 !important;
+    margin: 0;
+    outline: none;
+}
+.ui-menubar .ui-menubar-link
+{
+    border-right: 1px dashed transparent;
+    border-left: 1px dashed transparent;
+}
+
+.ui-menubar .ui-menu
+{
+    width: 200px;
+    position: absolute;
+    z-index: 9999;
+    font-weight: normal;
+    border: solid 1px black;
+    border-radius: 3px;
+    background-color: #2E2E2E;
+    -webkit-box-shadow: inset 0 0 0 1px #454545, 1px 1px 8px 1px black;
+}
+
+.ui-menubar .ui-widget-content {
+    background: #2e2e2e;
+}
+
+.ui-menu-item >a >div
+{
+    text-overflow: ellipsis;
+    list-style-position: inside;
+    white-space: nowrap;
+    overflow: hidden;
+}

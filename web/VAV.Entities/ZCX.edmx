@@ -1,0 +1,2762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="BOND_BASIC_INFO" EntityType="Model.Store.BOND_BASIC_INFO" store:Type="Tables" Schema="ZCX" />
+          <EntitySet Name="BOND_FIN_BALA_TABB" EntityType="Model.Store.BOND_FIN_BALA_TABB" store:Type="Tables" store:Schema="ZCX" store:Name="BOND_FIN_BALA_TABB">
+            <DefiningQuery>SELECT 
+      "BOND_FIN_BALA_TABB"."ID" AS "ID", 
+      "BOND_FIN_BALA_TABB"."ISVALID" AS "ISVALID", 
+      "BOND_FIN_BALA_TABB"."CCXEID" AS "CCXEID", 
+      "BOND_FIN_BALA_TABB"."COM_UNI_CODE" AS "COM_UNI_CODE", 
+      "BOND_FIN_BALA_TABB"."END_DATE" AS "END_DATE", 
+      "BOND_FIN_BALA_TABB"."SHEET_MARK_PAR" AS "SHEET_MARK_PAR", 
+      "BOND_FIN_BALA_TABB"."SHEET_ATTR_PAR" AS "SHEET_ATTR_PAR", 
+      "BOND_FIN_BALA_TABB"."BS_01" AS "BS_01", 
+      "BOND_FIN_BALA_TABB"."BS_0101" AS "BS_0101", 
+      "BOND_FIN_BALA_TABB"."BS_02" AS "BS_02", 
+      "BOND_FIN_BALA_TABB"."BS_03" AS "BS_03", 
+      "BOND_FIN_BALA_TABB"."BS_04" AS "BS_04", 
+      "BOND_FIN_BALA_TABB"."BS_05" AS "BS_05", 
+      "BOND_FIN_BALA_TABB"."BS_06" AS "BS_06", 
+      "BOND_FIN_BALA_TABB"."BS_07" AS "BS_07", 
+      "BOND_FIN_BALA_TABB"."BS_08" AS "BS_08", 
+      "BOND_FIN_BALA_TABB"."BS_09" AS "BS_09", 
+      "BOND_FIN_BALA_TABB"."BS_0901" AS "BS_0901", 
+      "BOND_FIN_BALA_TABB"."BS_10" AS "BS_10", 
+      "BOND_FIN_BALA_TABB"."BS_11" AS "BS_11", 
+      "BOND_FIN_BALA_TABB"."BS_12" AS "BS_12", 
+      "BOND_FIN_BALA_TABB"."BS_13" AS "BS_13", 
+      "BOND_FIN_BALA_TABB"."BS_14" AS "BS_14", 
+      "BOND_FIN_BALA_TABB"."BS_15" AS "BS_15", 
+      "BOND_FIN_BALA_TABB"."BS_16" AS "BS_16", 
+      "BOND_FIN_BALA_TABB"."BS_17" AS "BS_17", 
+      "BOND_FIN_BALA_TABB"."BS_18" AS "BS_18", 
+      "BOND_FIN_BALA_TABB"."BS_19" AS "BS_19", 
+      "BOND_FIN_BALA_TABB"."BS_20" AS "BS_20", 
+      "BOND_FIN_BALA_TABB"."BS_21" AS "BS_21", 
+      "BOND_FIN_BALA_TABB"."BS_22" AS "BS_22", 
+      "BOND_FIN_BALA_TABB"."BS_23" AS "BS_23", 
+      "BOND_FIN_BALA_TABB"."BS_24" AS "BS_24", 
+      "BOND_FIN_BALA_TABB"."BS_25" AS "BS_25", 
+      "BOND_FIN_BALA_TABB"."BS_26" AS "BS_26", 
+      "BOND_FIN_BALA_TABB"."BS_27" AS "BS_27", 
+      "BOND_FIN_BALA_TABB"."BS_28" AS "BS_28", 
+      "BOND_FIN_BALA_TABB"."BS_29" AS "BS_29", 
+      "BOND_FIN_BALA_TABB"."BS_30" AS "BS_30", 
+      "BOND_FIN_BALA_TABB"."BS_31" AS "BS_31", 
+      "BOND_FIN_BALA_TABB"."BS_3101" AS "BS_3101", 
+      "BOND_FIN_BALA_TABB"."BS_32" AS "BS_32", 
+      "BOND_FIN_BALA_TABB"."BS_33" AS "BS_33", 
+      "BOND_FIN_BALA_TABB"."BS_34" AS "BS_34", 
+      "BOND_FIN_BALA_TABB"."BS_35" AS "BS_35", 
+      "BOND_FIN_BALA_TABB"."BS_36" AS "BS_36", 
+      "BOND_FIN_BALA_TABB"."BS_37" AS "BS_37", 
+      "BOND_FIN_BALA_TABB"."BS_38" AS "BS_38", 
+      "BOND_FIN_BALA_TABB"."BS_39" AS "BS_39", 
+      "BOND_FIN_BALA_TABB"."BS_40" AS "BS_40", 
+      "BOND_FIN_BALA_TABB"."BS_4001" AS "BS_4001", 
+      "BOND_FIN_BALA_TABB"."BS_41" AS "BS_41", 
+      "BOND_FIN_BALA_TABB"."BS_42" AS "BS_42", 
+      "BOND_FIN_BALA_TABB"."BS_43" AS "BS_43", 
+      "BOND_FIN_BALA_TABB"."BS_44" AS "BS_44", 
+      "BOND_FIN_BALA_TABB"."BS_45" AS "BS_45", 
+      "BOND_FIN_BALA_TABB"."BS_46" AS "BS_46", 
+      "BOND_FIN_BALA_TABB"."BS_47" AS "BS_47", 
+      "BOND_FIN_BALA_TABB"."BS_48" AS "BS_48", 
+      "BOND_FIN_BALA_TABB"."BS_49" AS "BS_49", 
+      "BOND_FIN_BALA_TABB"."BS_50" AS "BS_50", 
+      "BOND_FIN_BALA_TABB"."BS_51" AS "BS_51", 
+      "BOND_FIN_BALA_TABB"."BS_52" AS "BS_52", 
+      "BOND_FIN_BALA_TABB"."BS_53" AS "BS_53", 
+      "BOND_FIN_BALA_TABB"."BS_54" AS "BS_54", 
+      "BOND_FIN_BALA_TABB"."BS_55" AS "BS_55", 
+      "BOND_FIN_BALA_TABB"."BS_56" AS "BS_56", 
+      "BOND_FIN_BALA_TABB"."BS_57" AS "BS_57", 
+      "BOND_FIN_BALA_TABB"."BS_5701" AS "BS_5701", 
+      "BOND_FIN_BALA_TABB"."BS_58" AS "BS_58", 
+      "BOND_FIN_BALA_TABB"."BS_59" AS "BS_59", 
+      "BOND_FIN_BALA_TABB"."BS_60" AS "BS_60", 
+      "BOND_FIN_BALA_TABB"."BS_61" AS "BS_61", 
+      "BOND_FIN_BALA_TABB"."BS_62" AS "BS_62", 
+      "BOND_FIN_BALA_TABB"."BS_63" AS "BS_63", 
+      "BOND_FIN_BALA_TABB"."BS_64" AS "BS_64", 
+      "BOND_FIN_BALA_TABB"."BS_65" AS "BS_65", 
+      "BOND_FIN_BALA_TABB"."BS_66" AS "BS_66", 
+      "BOND_FIN_BALA_TABB"."BS_67" AS "BS_67", 
+      "BOND_FIN_BALA_TABB"."BS_68" AS "BS_68", 
+      "BOND_FIN_BALA_TABB"."BS_69" AS "BS_69", 
+      "BOND_FIN_BALA_TABB"."BS_70" AS "BS_70", 
+      "BOND_FIN_BALA_TABB"."BS_71" AS "BS_71", 
+      "BOND_FIN_BALA_TABB"."BS_72" AS "BS_72", 
+      "BOND_FIN_BALA_TABB"."BS_73" AS "BS_73", 
+      "BOND_FIN_BALA_TABB"."BS_74" AS "BS_74", 
+      "BOND_FIN_BALA_TABB"."BS_75" AS "BS_75", 
+      "BOND_FIN_BALA_TABB"."BS_76" AS "BS_76", 
+      "BOND_FIN_BALA_TABB"."BS_77" AS "BS_77", 
+      "BOND_FIN_BALA_TABB"."BS_78" AS "BS_78", 
+      "BOND_FIN_BALA_TABB"."BS_79" AS "BS_79", 
+      "BOND_FIN_BALA_TABB"."BS_80" AS "BS_80", 
+      "BOND_FIN_BALA_TABB"."BS_81" AS "BS_81", 
+      "BOND_FIN_BALA_TABB"."BS_82" AS "BS_82", 
+      "BOND_FIN_BALA_TABB"."BS_83" AS "BS_83", 
+      "BOND_FIN_BALA_TABB"."BS_84" AS "BS_84", 
+      "BOND_FIN_BALA_TABB"."BS_85" AS "BS_85", 
+      "BOND_FIN_BALA_TABB"."BS_86" AS "BS_86", 
+      "BOND_FIN_BALA_TABB"."BS_87" AS "BS_87", 
+      "BOND_FIN_BALA_TABB"."BS_88" AS "BS_88", 
+      "BOND_FIN_BALA_TABB"."BS_89" AS "BS_89", 
+      "BOND_FIN_BALA_TABB"."BS_90" AS "BS_90", 
+      "BOND_FIN_BALA_TABB"."BS_91" AS "BS_91", 
+      "BOND_FIN_BALA_TABB"."BS_92" AS "BS_92", 
+      "BOND_FIN_BALA_TABB"."BS_93" AS "BS_93", 
+      "BOND_FIN_BALA_TABB"."BS_94" AS "BS_94", 
+      "BOND_FIN_BALA_TABB"."BS_95" AS "BS_95", 
+      "BOND_FIN_BALA_TABB"."BS_96" AS "BS_96", 
+      "BOND_FIN_BALA_TABB"."BS_97" AS "BS_97", 
+      "BOND_FIN_BALA_TABB"."BS_98" AS "BS_98", 
+      "BOND_FIN_BALA_TABB"."BS_99" AS "BS_99", 
+      "BOND_FIN_BALA_TABB"."BS_100" AS "BS_100", 
+      "BOND_FIN_BALA_TABB"."BS_101" AS "BS_101", 
+      "BOND_FIN_BALA_TABB"."BS_102" AS "BS_102", 
+      "BOND_FIN_BALA_TABB"."BS_103" AS "BS_103", 
+      "BOND_FIN_BALA_TABB"."BS_104" AS "BS_104", 
+      "BOND_FIN_BALA_TABB"."BS_105" AS "BS_105", 
+      "BOND_FIN_BALA_TABB"."BS_106" AS "BS_106", 
+      "BOND_FIN_BALA_TABB"."BS_107" AS "BS_107", 
+      "BOND_FIN_BALA_TABB"."BS_108" AS "BS_108", 
+      "BOND_FIN_BALA_TABB"."BS_109" AS "BS_109", 
+      "BOND_FIN_BALA_TABB"."BS_110" AS "BS_110", 
+      "BOND_FIN_BALA_TABB"."BS_111" AS "BS_111", 
+      "BOND_FIN_BALA_TABB"."BS_112" AS "BS_112", 
+      "BOND_FIN_BALA_TABB"."BS_113" AS "BS_113", 
+      "BOND_FIN_BALA_TABB"."BS_114" AS "BS_114", 
+      "BOND_FIN_BALA_TABB"."BS_115" AS "BS_115", 
+      "BOND_FIN_BALA_TABB"."BS_116" AS "BS_116", 
+      "BOND_FIN_BALA_TABB"."BS_117" AS "BS_117", 
+      "BOND_FIN_BALA_TABB"."BS_118" AS "BS_118", 
+      "BOND_FIN_BALA_TABB"."BS_119" AS "BS_119", 
+      "BOND_FIN_BALA_TABB"."BS_120" AS "BS_120"
+      FROM "ZCX"."BOND_FIN_BALA_TABB" "BOND_FIN_BALA_TABB"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BOND_FIN_CASH_TACB" EntityType="Model.Store.BOND_FIN_CASH_TACB" store:Type="Tables" store:Schema="ZCX" store:Name="BOND_FIN_CASH_TACB">
+            <DefiningQuery>SELECT 
+      "BOND_FIN_CASH_TACB"."ID" AS "ID", 
+      "BOND_FIN_CASH_TACB"."ISVALID" AS "ISVALID", 
+      "BOND_FIN_CASH_TACB"."CCXEID" AS "CCXEID", 
+      "BOND_FIN_CASH_TACB"."COM_UNI_CODE" AS "COM_UNI_CODE", 
+      "BOND_FIN_CASH_TACB"."START_DATE" AS "START_DATE", 
+      "BOND_FIN_CASH_TACB"."END_DATE" AS "END_DATE", 
+      "BOND_FIN_CASH_TACB"."SHEET_MARK_PAR" AS "SHEET_MARK_PAR", 
+      "BOND_FIN_CASH_TACB"."SHEET_ATTR_PAR" AS "SHEET_ATTR_PAR", 
+      "BOND_FIN_CASH_TACB"."CF_01" AS "CF_01", 
+      "BOND_FIN_CASH_TACB"."CF_02" AS "CF_02", 
+      "BOND_FIN_CASH_TACB"."CF_03" AS "CF_03", 
+      "BOND_FIN_CASH_TACB"."CF_04" AS "CF_04", 
+      "BOND_FIN_CASH_TACB"."CF_05" AS "CF_05", 
+      "BOND_FIN_CASH_TACB"."CF_06" AS "CF_06", 
+      "BOND_FIN_CASH_TACB"."CF_07" AS "CF_07", 
+      "BOND_FIN_CASH_TACB"."CF_08" AS "CF_08", 
+      "BOND_FIN_CASH_TACB"."CF_09" AS "CF_09", 
+      "BOND_FIN_CASH_TACB"."CF_10" AS "CF_10", 
+      "BOND_FIN_CASH_TACB"."CF_11" AS "CF_11", 
+      "BOND_FIN_CASH_TACB"."CF_12" AS "CF_12", 
+      "BOND_FIN_CASH_TACB"."CF_13" AS "CF_13", 
+      "BOND_FIN_CASH_TACB"."CF_14" AS "CF_14", 
+      "BOND_FIN_CASH_TACB"."CF_15" AS "CF_15", 
+      "BOND_FIN_CASH_TACB"."CF_16" AS "CF_16", 
+      "BOND_FIN_CASH_TACB"."CF_17" AS "CF_17", 
+      "BOND_FIN_CASH_TACB"."CF_18" AS "CF_18", 
+      "BOND_FIN_CASH_TACB"."CF_19" AS "CF_19", 
+      "BOND_FIN_CASH_TACB"."CF_20" AS "CF_20", 
+      "BOND_FIN_CASH_TACB"."CF_21" AS "CF_21", 
+      "BOND_FIN_CASH_TACB"."CF_22" AS "CF_22", 
+      "BOND_FIN_CASH_TACB"."CF_23" AS "CF_23", 
+      "BOND_FIN_CASH_TACB"."CF_24" AS "CF_24", 
+      "BOND_FIN_CASH_TACB"."CF_25" AS "CF_25", 
+      "BOND_FIN_CASH_TACB"."CF_26" AS "CF_26", 
+      "BOND_FIN_CASH_TACB"."CF_27" AS "CF_27", 
+      "BOND_FIN_CASH_TACB"."CF_28" AS "CF_28", 
+      "BOND_FIN_CASH_TACB"."CF_29" AS "CF_29", 
+      "BOND_FIN_CASH_TACB"."CF_30" AS "CF_30", 
+      "BOND_FIN_CASH_TACB"."CF_31" AS "CF_31", 
+      "BOND_FIN_CASH_TACB"."CF_32" AS "CF_32", 
+      "BOND_FIN_CASH_TACB"."CF_33" AS "CF_33", 
+      "BOND_FIN_CASH_TACB"."CF_34" AS "CF_34", 
+      "BOND_FIN_CASH_TACB"."CF_35" AS "CF_35", 
+      "BOND_FIN_CASH_TACB"."CF_36" AS "CF_36", 
+      "BOND_FIN_CASH_TACB"."CF_37" AS "CF_37", 
+      "BOND_FIN_CASH_TACB"."CF_38" AS "CF_38", 
+      "BOND_FIN_CASH_TACB"."CF_39" AS "CF_39", 
+      "BOND_FIN_CASH_TACB"."CF_40" AS "CF_40", 
+      "BOND_FIN_CASH_TACB"."CF_41" AS "CF_41", 
+      "BOND_FIN_CASH_TACB"."CF_42" AS "CF_42", 
+      "BOND_FIN_CASH_TACB"."CF_4201" AS "CF_4201", 
+      "BOND_FIN_CASH_TACB"."CF_43" AS "CF_43", 
+      "BOND_FIN_CASH_TACB"."CF_44" AS "CF_44", 
+      "BOND_FIN_CASH_TACB"."CF_45" AS "CF_45", 
+      "BOND_FIN_CASH_TACB"."CF_46" AS "CF_46", 
+      "BOND_FIN_CASH_TACB"."CF_47" AS "CF_47", 
+      "BOND_FIN_CASH_TACB"."CF_48" AS "CF_48", 
+      "BOND_FIN_CASH_TACB"."CF_49" AS "CF_49", 
+      "BOND_FIN_CASH_TACB"."CF_4901" AS "CF_4901", 
+      "BOND_FIN_CASH_TACB"."CF_50" AS "CF_50", 
+      "BOND_FIN_CASH_TACB"."CF_51" AS "CF_51", 
+      "BOND_FIN_CASH_TACB"."CF_52" AS "CF_52", 
+      "BOND_FIN_CASH_TACB"."CF_53" AS "CF_53", 
+      "BOND_FIN_CASH_TACB"."CF_54" AS "CF_54", 
+      "BOND_FIN_CASH_TACB"."CF_55" AS "CF_55", 
+      "BOND_FIN_CASH_TACB"."CF_56" AS "CF_56", 
+      "BOND_FIN_CASH_TACB"."CF_57" AS "CF_57", 
+      "BOND_FIN_CASH_TACB"."CF_58" AS "CF_58", 
+      "BOND_FIN_CASH_TACB"."CF_59" AS "CF_59", 
+      "BOND_FIN_CASH_TACB"."CF_60" AS "CF_60", 
+      "BOND_FIN_CASH_TACB"."CF_61" AS "CF_61", 
+      "BOND_FIN_CASH_TACB"."CF_62" AS "CF_62", 
+      "BOND_FIN_CASH_TACB"."CF_63" AS "CF_63", 
+      "BOND_FIN_CASH_TACB"."CF_64" AS "CF_64", 
+      "BOND_FIN_CASH_TACB"."CF_65" AS "CF_65", 
+      "BOND_FIN_CASH_TACB"."CF_66" AS "CF_66", 
+      "BOND_FIN_CASH_TACB"."CF_67" AS "CF_67", 
+      "BOND_FIN_CASH_TACB"."CF_68" AS "CF_68", 
+      "BOND_FIN_CASH_TACB"."CF_69" AS "CF_69", 
+      "BOND_FIN_CASH_TACB"."CF_70" AS "CF_70", 
+      "BOND_FIN_CASH_TACB"."CF_71" AS "CF_71", 
+      "BOND_FIN_CASH_TACB"."CF_72" AS "CF_72", 
+      "BOND_FIN_CASH_TACB"."CF_73" AS "CF_73", 
+      "BOND_FIN_CASH_TACB"."CF_74" AS "CF_74", 
+      "BOND_FIN_CASH_TACB"."CF_75" AS "CF_75", 
+      "BOND_FIN_CASH_TACB"."CF_76" AS "CF_76", 
+      "BOND_FIN_CASH_TACB"."CF_77" AS "CF_77", 
+      "BOND_FIN_CASH_TACB"."CF_78" AS "CF_78", 
+      "BOND_FIN_CASH_TACB"."CF_79" AS "CF_79", 
+      "BOND_FIN_CASH_TACB"."CF_80" AS "CF_80", 
+      "BOND_FIN_CASH_TACB"."CF_81" AS "CF_81", 
+      "BOND_FIN_CASH_TACB"."CF_82" AS "CF_82", 
+      "BOND_FIN_CASH_TACB"."CF_83" AS "CF_83", 
+      "BOND_FIN_CASH_TACB"."CF_84" AS "CF_84", 
+      "BOND_FIN_CASH_TACB"."CF_85" AS "CF_85", 
+      "BOND_FIN_CASH_TACB"."CF_86" AS "CF_86"
+      FROM "ZCX"."BOND_FIN_CASH_TACB" "BOND_FIN_CASH_TACB"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BOND_FIN_PROF_TAPB" EntityType="Model.Store.BOND_FIN_PROF_TAPB" store:Type="Tables" store:Schema="ZCX" store:Name="BOND_FIN_PROF_TAPB">
+            <DefiningQuery>SELECT 
+      "BOND_FIN_PROF_TAPB"."ID" AS "ID", 
+      "BOND_FIN_PROF_TAPB"."ISVALID" AS "ISVALID", 
+      "BOND_FIN_PROF_TAPB"."CCXEID" AS "CCXEID", 
+      "BOND_FIN_PROF_TAPB"."COM_UNI_CODE" AS "COM_UNI_CODE", 
+      "BOND_FIN_PROF_TAPB"."START_DATE" AS "START_DATE", 
+      "BOND_FIN_PROF_TAPB"."END_DATE" AS "END_DATE", 
+      "BOND_FIN_PROF_TAPB"."SHEET_MARK_PAR" AS "SHEET_MARK_PAR", 
+      "BOND_FIN_PROF_TAPB"."SHEET_ATTR_PAR" AS "SHEET_ATTR_PAR", 
+      "BOND_FIN_PROF_TAPB"."PF_01" AS "PF_01", 
+      "BOND_FIN_PROF_TAPB"."PF_02" AS "PF_02", 
+      "BOND_FIN_PROF_TAPB"."PF_03" AS "PF_03", 
+      "BOND_FIN_PROF_TAPB"."PF_0301" AS "PF_0301", 
+      "BOND_FIN_PROF_TAPB"."PF_0302" AS "PF_0302", 
+      "BOND_FIN_PROF_TAPB"."PF_04" AS "PF_04", 
+      "BOND_FIN_PROF_TAPB"."PF_0401" AS "PF_0401", 
+      "BOND_FIN_PROF_TAPB"."PF_0402" AS "PF_0402", 
+      "BOND_FIN_PROF_TAPB"."PF_0403" AS "PF_0403", 
+      "BOND_FIN_PROF_TAPB"."PF_0404" AS "PF_0404", 
+      "BOND_FIN_PROF_TAPB"."PF_0405" AS "PF_0405", 
+      "BOND_FIN_PROF_TAPB"."PF_05" AS "PF_05", 
+      "BOND_FIN_PROF_TAPB"."PF_06" AS "PF_06", 
+      "BOND_FIN_PROF_TAPB"."PF_0601" AS "PF_0601", 
+      "BOND_FIN_PROF_TAPB"."PF_07" AS "PF_07", 
+      "BOND_FIN_PROF_TAPB"."PF_08" AS "PF_08", 
+      "BOND_FIN_PROF_TAPB"."PF_09" AS "PF_09", 
+      "BOND_FIN_PROF_TAPB"."PF_10" AS "PF_10", 
+      "BOND_FIN_PROF_TAPB"."PF_11" AS "PF_11", 
+      "BOND_FIN_PROF_TAPB"."PF_12" AS "PF_12", 
+      "BOND_FIN_PROF_TAPB"."PF_13" AS "PF_13", 
+      "BOND_FIN_PROF_TAPB"."PF_14" AS "PF_14", 
+      "BOND_FIN_PROF_TAPB"."PF_15" AS "PF_15", 
+      "BOND_FIN_PROF_TAPB"."PF_16" AS "PF_16", 
+      "BOND_FIN_PROF_TAPB"."PF_17" AS "PF_17", 
+      "BOND_FIN_PROF_TAPB"."PF_18" AS "PF_18", 
+      "BOND_FIN_PROF_TAPB"."PF_19" AS "PF_19", 
+      "BOND_FIN_PROF_TAPB"."PF_20" AS "PF_20", 
+      "BOND_FIN_PROF_TAPB"."PF_21" AS "PF_21", 
+      "BOND_FIN_PROF_TAPB"."PF_22" AS "PF_22", 
+      "BOND_FIN_PROF_TAPB"."PF_23" AS "PF_23", 
+      "BOND_FIN_PROF_TAPB"."PF_24" AS "PF_24", 
+      "BOND_FIN_PROF_TAPB"."PF_25" AS "PF_25", 
+      "BOND_FIN_PROF_TAPB"."PF_26" AS "PF_26", 
+      "BOND_FIN_PROF_TAPB"."PF_27" AS "PF_27", 
+      "BOND_FIN_PROF_TAPB"."PF_28" AS "PF_28", 
+      "BOND_FIN_PROF_TAPB"."PF_29" AS "PF_29", 
+      "BOND_FIN_PROF_TAPB"."PF_30" AS "PF_30", 
+      "BOND_FIN_PROF_TAPB"."PF_31" AS "PF_31", 
+      "BOND_FIN_PROF_TAPB"."PF_3101" AS "PF_3101", 
+      "BOND_FIN_PROF_TAPB"."PF_32" AS "PF_32", 
+      "BOND_FIN_PROF_TAPB"."PF_33" AS "PF_33", 
+      "BOND_FIN_PROF_TAPB"."PF_34" AS "PF_34", 
+      "BOND_FIN_PROF_TAPB"."PF_35" AS "PF_35", 
+      "BOND_FIN_PROF_TAPB"."PF_3501" AS "PF_3501", 
+      "BOND_FIN_PROF_TAPB"."PF_36" AS "PF_36", 
+      "BOND_FIN_PROF_TAPB"."PF_37" AS "PF_37", 
+      "BOND_FIN_PROF_TAPB"."PF_38" AS "PF_38", 
+      "BOND_FIN_PROF_TAPB"."PF_39" AS "PF_39", 
+      "BOND_FIN_PROF_TAPB"."PF_40" AS "PF_40", 
+      "BOND_FIN_PROF_TAPB"."PF_41" AS "PF_41", 
+      "BOND_FIN_PROF_TAPB"."PF_42" AS "PF_42", 
+      "BOND_FIN_PROF_TAPB"."PF_43" AS "PF_43", 
+      "BOND_FIN_PROF_TAPB"."PF_44" AS "PF_44", 
+      "BOND_FIN_PROF_TAPB"."PF_45" AS "PF_45", 
+      "BOND_FIN_PROF_TAPB"."PF_46" AS "PF_46", 
+      "BOND_FIN_PROF_TAPB"."PF_47" AS "PF_47"
+      FROM "ZCX"."BOND_FIN_PROF_TAPB" "BOND_FIN_PROF_TAPB"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BOND_ISS_INFO" EntityType="Model.Store.BOND_ISS_INFO" store:Type="Tables" Schema="ZCX" />
+          <EntitySet Name="BOND_ISSER_INFO" EntityType="Model.Store.BOND_ISSER_INFO" store:Type="Tables" store:Schema="ZCX" store:Name="BOND_ISSER_INFO">
+            <DefiningQuery>SELECT 
+      "BOND_ISSER_INFO"."ID" AS "ID", 
+      "BOND_ISSER_INFO"."ISVALID" AS "ISVALID", 
+      "BOND_ISSER_INFO"."CCXEID" AS "CCXEID", 
+      "BOND_ISSER_INFO"."BOND_UNI_CODE" AS "BOND_UNI_CODE", 
+      "BOND_ISSER_INFO"."ORG_UNI_CODE" AS "ORG_UNI_CODE", 
+      "BOND_ISSER_INFO"."ISSER_TYPE_PAR" AS "ISSER_TYPE_PAR", 
+      "BOND_ISSER_INFO"."ISSER_CHAN_DATE" AS "ISSER_CHAN_DATE", 
+      "BOND_ISSER_INFO"."IS_NEW_ISSER" AS "IS_NEW_ISSER"
+      FROM "ZCX"."BOND_ISSER_INFO" "BOND_ISSER_INFO"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BOND_RATE_INFO" EntityType="Model.Store.BOND_RATE_INFO" store:Type="Tables" Schema="ZCX" />
+          <EntitySet Name="BOND_SIZE_CHAN" EntityType="Model.Store.BOND_SIZE_CHAN" store:Type="Tables" store:Schema="ZCX" store:Name="BOND_SIZE_CHAN">
+            <DefiningQuery>SELECT 
+      "BOND_SIZE_CHAN"."ID" AS "ID", 
+      "BOND_SIZE_CHAN"."ISVALID" AS "ISVALID", 
+      "BOND_SIZE_CHAN"."CCXEID" AS "CCXEID", 
+      "BOND_SIZE_CHAN"."BOND_ID" AS "BOND_ID", 
+      "BOND_SIZE_CHAN"."DECL_DATE" AS "DECL_DATE", 
+      "BOND_SIZE_CHAN"."END_DATE" AS "END_DATE", 
+      "BOND_SIZE_CHAN"."TOTAL_SIZE" AS "TOTAL_SIZE", 
+      "BOND_SIZE_CHAN"."EXCHANGE_IB_SIZE" AS "EXCHANGE_IB_SIZE", 
+      "BOND_SIZE_CHAN"."EXCHANGE_SIZE" AS "EXCHANGE_SIZE", 
+      "BOND_SIZE_CHAN"."SH_SIZE" AS "SH_SIZE", 
+      "BOND_SIZE_CHAN"."SZ_SIZE" AS "SZ_SIZE", 
+      "BOND_SIZE_CHAN"."IB_SIZE" AS "IB_SIZE", 
+      "BOND_SIZE_CHAN"."OTC_SIZE" AS "OTC_SIZE", 
+      "BOND_SIZE_CHAN"."OTHER_SIZE" AS "OTHER_SIZE", 
+      "BOND_SIZE_CHAN"."SIZE_CHAN" AS "SIZE_CHAN", 
+      "BOND_SIZE_CHAN"."CHAN_TYPE_PAR" AS "CHAN_TYPE_PAR"
+      FROM "ZCX"."BOND_SIZE_CHAN" "BOND_SIZE_CHAN"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FUNDAMENTALFIELDMAPPING" EntityType="Model.Store.FUNDAMENTALFIELDMAPPING" store:Type="Tables" store:Schema="ZCX" store:Name="FUNDAMENTALFIELDMAPPING">
+            <DefiningQuery>SELECT 
+      "FUNDAMENTALFIELDMAPPING"."ID" AS "ID", 
+      "FUNDAMENTALFIELDMAPPING"."FIELD_NAME" AS "FIELD_NAME", 
+      "FUNDAMENTALFIELDMAPPING"."FUNDAMENATAL_TYPE" AS "FUNDAMENATAL_TYPE", 
+      "FUNDAMENTALFIELDMAPPING"."MAPPING_NAME" AS "MAPPING_NAME", 
+      "FUNDAMENTALFIELDMAPPING"."ENGLISH_NAME" AS "ENGLISH_NAME", 
+      "FUNDAMENTALFIELDMAPPING"."CHINESE_NAME" AS "CHINESE_NAME", 
+      "FUNDAMENTALFIELDMAPPING"."FIELD_INDEX" AS "FIELD_INDEX", 
+      "FUNDAMENTALFIELDMAPPING"."PARENT_ID" AS "PARENT_ID", 
+      "FUNDAMENTALFIELDMAPPING"."IS_PARENT" AS "IS_PARENT", 
+      "FUNDAMENTALFIELDMAPPING"."INDENT_LEVEL" AS "INDENT_LEVEL"
+      FROM "ZCX"."FUNDAMENTALFIELDMAPPING" "FUNDAMENTALFIELDMAPPING"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PUB_AREA_CODE" EntityType="Model.Store.PUB_AREA_CODE" store:Type="Tables" Schema="ZCX" />
+          <EntitySet Name="PUB_CURY_TYPE" EntityType="Model.Store.PUB_CURY_TYPE" store:Type="Tables" Schema="ZCX" />
+          <EntitySet Name="PUB_ORG_INFO" EntityType="Model.Store.PUB_ORG_INFO" store:Type="Tables" Schema="ZCX" />
+          <EntitySet Name="PUB_PAR" EntityType="Model.Store.PUB_PAR" store:Type="Tables" Schema="ZCX" />
+          <EntitySet Name="RATE_ORG_INFO_F" EntityType="Model.Store.RATE_ORG_INFO_F" store:Type="Tables" Schema="ZCX" />
+          <EntitySet Name="RATE_REP" EntityType="Model.Store.RATE_REP" store:Type="Tables" Schema="ZCX" />
+          <EntitySet Name="V_BOND_ABS" EntityType="Model.Store.V_BOND_ABS" store:Type="Views" store:Schema="ZCX" store:Name="V_BOND_ABS">
+            <DefiningQuery>SELECT 
+      "V_BOND_ABS"."ID" AS "ID", 
+      "V_BOND_ABS"."BOND_ID" AS "BOND_ID", 
+      "V_BOND_ABS"."BOND_UNI_CODE" AS "BOND_UNI_CODE", 
+      "V_BOND_ABS"."BOND_FULL_NAME" AS "BOND_FULL_NAME", 
+      "V_BOND_ABS"."ENG_FULL_NAME" AS "ENG_FULL_NAME", 
+      "V_BOND_ABS"."BOND_CODE" AS "BOND_CODE", 
+      "V_BOND_ABS"."BOND_SHORT_NAME" AS "BOND_SHORT_NAME", 
+      "V_BOND_ABS"."ENG_SHORT_NAME" AS "ENG_SHORT_NAME", 
+      "V_BOND_ABS"."ISIN_CODE" AS "ISIN_CODE", 
+      "V_BOND_ABS"."BOND_MATU" AS "BOND_MATU", 
+      "V_BOND_ABS"."MATU_UNIT_PAR" AS "MATU_UNIT_PAR", 
+      "V_BOND_ABS"."UNIT" AS "UNIT", 
+      "V_BOND_ABS"."LIST_DATE" AS "LIST_DATE", 
+      "V_BOND_ABS"."BOND_TYPE_PAR" AS "BOND_TYPE_PAR", 
+      "V_BOND_ABS"."BONDCLASSCN" AS "BONDCLASSCN", 
+      "V_BOND_ABS"."BONDCLASSEN" AS "BONDCLASSEN", 
+      "V_BOND_ABS"."SEC_MAR_PAR" AS "SEC_MAR_PAR", 
+      "V_BOND_ABS"."ISSUEMARKET" AS "ISSUEMARKET", 
+      "V_BOND_ABS"."ISS_DECL_DATE" AS "ISS_DECL_DATE", 
+      "V_BOND_ABS"."ISS_START_DATE" AS "ISS_START_DATE", 
+      "V_BOND_ABS"."ISS_END_DATE" AS "ISS_END_DATE", 
+      "V_BOND_ABS"."ACTU_ISS_AMUT" AS "ACTU_ISS_AMUT", 
+      "V_BOND_ABS"."ISS_PRI" AS "ISS_PRI", 
+      "V_BOND_ABS"."IS_REDEM_PAR" AS "IS_REDEM_PAR", 
+      "V_BOND_ABS"."IS_RESA_PAR" AS "IS_RESA_PAR", 
+      "V_BOND_ABS"."IS_GUAR_PAR" AS "IS_GUAR_PAR", 
+      "V_BOND_ABS"."TOTAL_SIZE" AS "TOTAL_SIZE", 
+      "V_BOND_ABS"."ISSUER_ORG_UNI_CODE" AS "ISSUER_ORG_UNI_CODE", 
+      "V_BOND_ABS"."ISSUERCN" AS "ISSUERCN", 
+      "V_BOND_ABS"."ISSUEREN" AS "ISSUEREN", 
+      "V_BOND_ABS"."SPONSOR" AS "SPONSOR", 
+      "V_BOND_ABS"."LEADUNDERWRITER" AS "LEADUNDERWRITER", 
+      "V_BOND_ABS"."VICEUNDERWRITER" AS "VICEUNDERWRITER", 
+      "V_BOND_ABS"."UNDERWRITER" AS "UNDERWRITER", 
+      "V_BOND_ABS"."FUNDINSTITUTION" AS "FUNDINSTITUTION", 
+      "V_BOND_ABS"."REGULATOR" AS "REGULATOR", 
+      "V_BOND_ABS"."AUDITINGOFFICES" AS "AUDITINGOFFICES", 
+      "V_BOND_ABS"."LEGALADVISOR" AS "LEGALADVISOR", 
+      "V_BOND_ABS"."TRUSTEE" AS "TRUSTEE", 
+      "V_BOND_ABS"."ADVERTISINGAGENCY" AS "ADVERTISINGAGENCY", 
+      "V_BOND_ABS"."UDL_ASE" AS "UDL_ASE", 
+      "V_BOND_ABS"."GUAOR_NAME" AS "GUAOR_NAME", 
+      "V_BOND_ABS"."INTE_START_DATE" AS "INTE_START_DATE", 
+      "V_BOND_ABS"."ACTU_END_DATE" AS "ACTU_END_DATE", 
+      "V_BOND_ABS"."RATE_TYPE_PAR" AS "RATE_TYPE_PAR", 
+      "V_BOND_ABS"."RATETYPENAME" AS "RATETYPENAME", 
+      "V_BOND_ABS"."BASE_RATE_PAR" AS "BASE_RATE_PAR", 
+      "V_BOND_ABS"."BASERATENAME" AS "BASERATENAME", 
+      "V_BOND_ABS"."ISS_COUP_RATE" AS "ISS_COUP_RATE", 
+      "V_BOND_ABS"."BAS_SPR" AS "BAS_SPR", 
+      "V_BOND_ABS"."INTE_PAY_FREQ" AS "INTE_PAY_FREQ", 
+      "V_BOND_ABS"."FIR_PAY_DATE" AS "FIR_PAY_DATE", 
+      "V_BOND_ABS"."MATU_PAY_DATE" AS "MATU_PAY_DATE", 
+      "V_BOND_ABS"."BOND_CRED_LEVEL" AS "BOND_CRED_LEVEL", 
+      "V_BOND_ABS"."BONDRATINGAGENCYCN" AS "BONDRATINGAGENCYCN", 
+      "V_BOND_ABS"."BONDRATINGAGENCYEN" AS "BONDRATINGAGENCYEN", 
+      "V_BOND_ABS"."RATING" AS "RATING", 
+      "V_BOND_ABS"."RATINGAGENCYCN" AS "RATINGAGENCYCN", 
+      "V_BOND_ABS"."RATINGAGENCYEN" AS "RATINGAGENCYEN", 
+      "V_BOND_ABS"."ISS_DATE" AS "ISS_DATE", 
+      "V_BOND_ABS"."AUCTIONTYPE" AS "AUCTIONTYPE", 
+      "V_BOND_ABS"."AUCTIONMETHOD" AS "AUCTIONMETHOD", 
+      "V_BOND_ABS"."AUCTIONCODE" AS "AUCTIONCODE"
+      FROM "ZCX"."V_BOND_ABS" "V_BOND_ABS"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="BOND_BASIC_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="BOND_ID" Type="number" Precision="12" />
+          <Property Name="BOND_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="ISIN_CODE" Type="varchar2" MaxLength="12" />
+          <Property Name="BOND_FULL_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="BOND_CODE" Type="varchar2" MaxLength="20" />
+          <Property Name="BOND_SHORT_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="SPE_SHORT_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="ENG_FULL_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="ENG_SHORT_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="BOND_MATU" Type="number" Precision="18" Scale="4" />
+          <Property Name="MATU_UNIT_PAR" Type="number" Precision="4" />
+          <Property Name="BOND_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="IS_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="LIST_DATE" Type="date" />
+          <Property Name="SEC_MAR_PAR" Type="number" Precision="4" />
+          <Property Name="LIST_SECT_PAR" Type="number" Precision="4" />
+          <Property Name="LIST_STA_PAR" Type="number" Precision="4" />
+          <Property Name="ASE_LEVEL_PAR" Type="number" Precision="4" />
+          <Property Name="BOND_FORM_PAR" Type="number" Precision="4" />
+          <Property Name="ISS_STA_PAR" Type="number" Precision="4" />
+          <Property Name="IS_LIST_PAR" Type="number" Precision="4" />
+          <Property Name="IS_CROS_MAR_PAR" Type="number" Precision="4" />
+          <Property Name="PLEDGE_CODE" Type="varchar2" MaxLength="12" />
+          <Property Name="PLEDGE_NAME" Type="varchar2" MaxLength="30" />
+          <Property Name="CROS_MAR_DES" Type="varchar2" MaxLength="400" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ZCX.BOND_FIN_BALA_TABB' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="BOND_FIN_BALA_TABB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="COM_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="SHEET_MARK_PAR" Type="number" Precision="2" />
+          <Property Name="SHEET_ATTR_PAR" Type="number" Precision="2" />
+          <Property Name="BS_01" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_0101" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_02" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_03" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_04" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_05" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_06" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_07" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_08" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_09" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_0901" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_10" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_11" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_12" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_13" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_14" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_15" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_16" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_17" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_18" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_19" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_20" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_21" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_22" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_23" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_24" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_25" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_26" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_27" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_28" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_29" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_30" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_31" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_3101" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_32" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_33" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_34" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_35" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_36" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_37" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_38" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_39" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_40" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_4001" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_41" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_42" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_43" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_44" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_45" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_46" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_47" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_48" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_49" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_50" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_51" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_52" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_53" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_54" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_55" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_56" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_57" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_5701" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_58" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_59" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_60" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_61" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_62" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_63" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_64" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_65" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_66" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_67" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_68" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_69" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_70" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_71" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_72" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_73" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_74" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_75" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_76" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_77" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_78" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_79" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_80" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_81" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_82" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_83" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_84" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_85" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_86" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_87" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_88" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_89" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_90" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_91" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_92" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_93" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_94" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_95" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_96" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_97" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_98" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_99" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_100" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_101" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_102" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_103" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_104" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_105" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_106" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_107" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_108" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_109" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_110" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_111" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_112" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_113" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_114" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_115" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_116" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_117" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_118" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_119" Type="number" Precision="20" Scale="4" />
+          <Property Name="BS_120" Type="number" Precision="20" Scale="4" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ZCX.BOND_FIN_CASH_TACB' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="BOND_FIN_CASH_TACB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="COM_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="START_DATE" Type="date" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="SHEET_MARK_PAR" Type="number" Precision="2" />
+          <Property Name="SHEET_ATTR_PAR" Type="number" Precision="2" />
+          <Property Name="CF_01" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_02" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_03" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_04" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_05" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_06" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_07" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_08" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_09" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_10" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_11" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_12" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_13" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_14" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_15" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_16" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_17" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_18" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_19" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_20" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_21" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_22" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_23" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_24" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_25" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_26" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_27" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_28" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_29" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_30" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_31" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_32" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_33" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_34" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_35" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_36" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_37" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_38" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_39" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_40" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_41" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_42" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_4201" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_43" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_44" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_45" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_46" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_47" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_48" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_49" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_4901" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_50" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_51" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_52" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_53" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_54" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_55" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_56" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_57" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_58" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_59" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_60" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_61" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_62" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_63" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_64" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_65" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_66" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_67" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_68" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_69" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_70" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_71" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_72" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_73" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_74" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_75" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_76" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_77" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_78" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_79" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_80" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_81" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_82" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_83" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_84" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_85" Type="number" Precision="20" Scale="4" />
+          <Property Name="CF_86" Type="number" Precision="20" Scale="4" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ZCX.BOND_FIN_PROF_TAPB' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="BOND_FIN_PROF_TAPB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="COM_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="START_DATE" Type="date" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="SHEET_MARK_PAR" Type="number" Precision="2" />
+          <Property Name="SHEET_ATTR_PAR" Type="number" Precision="2" />
+          <Property Name="PF_01" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_02" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_03" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_0301" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_0302" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_04" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_0401" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_0402" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_0403" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_0404" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_0405" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_05" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_06" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_0601" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_07" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_08" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_09" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_10" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_11" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_12" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_13" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_14" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_15" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_16" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_17" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_18" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_19" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_20" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_21" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_22" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_23" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_24" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_25" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_26" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_27" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_28" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_29" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_30" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_31" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_3101" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_32" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_33" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_34" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_35" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_3501" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_36" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_37" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_38" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_39" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_40" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_41" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_42" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_43" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_44" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_45" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_46" Type="number" Precision="20" Scale="4" />
+          <Property Name="PF_47" Type="number" Precision="20" Scale="4" />
+        </EntityType>
+        <EntityType Name="BOND_ISS_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="BOND_ID" Type="number" Precision="12" />
+          <Property Name="OPT_DES" Type="varchar2" MaxLength="3000" />
+          <Property Name="ISS_DECL_DATE" Type="date" />
+          <Property Name="ISS_OBJ" Type="varchar2" MaxLength="600" />
+          <Property Name="ISS_CLS" Type="varchar2" MaxLength="600" />
+          <Property Name="ISS_FEE_RATE" Type="number" Precision="18" Scale="6" />
+          <Property Name="ISS_START_DATE" Type="date" />
+          <Property Name="ISS_END_DATE" Type="date" />
+          <Property Name="PLAN_ISS_AMUT" Type="number" Precision="20" Scale="4" />
+          <Property Name="COLL_CAP_PURP" Type="varchar2" MaxLength="2000" />
+          <Property Name="PAY_START_DATE" Type="date" />
+          <Property Name="PAY_END_DATE" Type="date" />
+          <Property Name="SUBS_UNIT" Type="number" Precision="18" Scale="4" />
+          <Property Name="LEAST_SUBS_UNIT" Type="number" Precision="18" Scale="4" />
+          <Property Name="DISTRI_OBJ" Type="varchar2" MaxLength="600" />
+          <Property Name="UNDE_CLS_PAR" Type="number" Precision="4" />
+          <Property Name="BOKEP_DATE" Type="date" />
+          <Property Name="ACTU_ISS_AMUT" Type="number" Precision="20" Scale="4" />
+          <Property Name="ACTU_FIR_ISS_AMUT" Type="number" Precision="20" Scale="4" />
+          <Property Name="ISS_PRI" Type="number" Precision="18" Scale="4" />
+          <Property Name="BOND_PAR_VAL" Type="number" Precision="18" Scale="4" />
+          <Property Name="BID_DATE" Type="date" />
+          <Property Name="DEBT_REG_DATE" Type="date" />
+          <Property Name="BOND_ISS_YEAR" Type="number" Precision="4" />
+          <Property Name="IS_REPU_PAR" Type="number" Precision="4" />
+          <Property Name="IS_REDEM_PAR" Type="number" Precision="4" />
+          <Property Name="IS_RESA_PAR" Type="number" Precision="4" />
+          <Property Name="IS_HEDGE_PAR" Type="number" Precision="4" />
+          <Property Name="IS_TAX_FREE_PAR" Type="number" Precision="4" />
+          <Property Name="IS_GUAR_PAR" Type="number" Precision="4" />
+          <Property Name="CURY_CLS_PAR" Type="number" Precision="4" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ZCX.BOND_ISSER_INFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="BOND_ISSER_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="BOND_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="ORG_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="ISSER_TYPE_PAR" Type="number" Precision="2" />
+          <Property Name="ISSER_CHAN_DATE" Type="date" />
+          <Property Name="IS_NEW_ISSER" Type="number" Precision="2" />
+        </EntityType>
+        <EntityType Name="BOND_RATE_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="BOND_ID" Type="number" Precision="12" />
+          <Property Name="RATE_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="IS_SEGM_PAR" Type="number" Precision="4" />
+          <Property Name="INTE_PAY_CLS_PAR" Type="number" Precision="4" />
+          <Property Name="INTE_PAY_FREQ" Type="number" Precision="3" />
+          <Property Name="INTE_CALCU_CLS_PAR" Type="number" Precision="4" />
+          <Property Name="REPAY_CLS_PAY_PAR" Type="number" Precision="4" />
+          <Property Name="SIMP_COMP_INTE_PAR" Type="number" Precision="4" />
+          <Property Name="INTE_START_DATE" Type="date" />
+          <Property Name="ACTU_END_DATE" Type="date" />
+          <Property Name="THEO_END_DATE" Type="date" />
+          <Property Name="YEAR_PAY_DATE" Type="varchar2" MaxLength="40" />
+          <Property Name="FIR_PAY_DATE" Type="date" />
+          <Property Name="ISS_COUP_RATE" Type="number" Precision="7" Scale="4" />
+          <Property Name="BASE_RATE_PAR" Type="number" Precision="4" />
+          <Property Name="INIT_BASE_RATE_DATE" Type="date" />
+          <Property Name="BASE_RATE" Type="number" Precision="7" Scale="4" />
+          <Property Name="BAS_SPR" Type="number" Precision="7" Scale="4" />
+          <Property Name="OPT_EXTRA_SPR" Type="number" Precision="7" Scale="4" />
+          <Property Name="EXTRA_SPR_SEQ_NUM" Type="number" Precision="3" />
+          <Property Name="RATE_CEIL" Type="number" Precision="7" Scale="4" />
+          <Property Name="RATE_FLOOR" Type="number" Precision="7" Scale="4" />
+          <Property Name="IS_INTE_COMP_PAR" Type="number" Precision="4" />
+          <Property Name="COMP_RATE" Type="number" Precision="7" Scale="4" />
+          <Property Name="YTM_INTE_COMP" Type="number" Precision="7" Scale="4" />
+          <Property Name="REF_YIELD" Type="number" Precision="9" Scale="4" />
+          <Property Name="YEAR_PAY_MATU" Type="varchar2" MaxLength="300" />
+          <Property Name="MATU_PAY_DATE" Type="date" />
+          <Property Name="EXER_PAY_DATE" Type="varchar2" MaxLength="400" />
+          <Property Name="PAY_FEE_RATE" Type="number" Precision="18" Scale="4" />
+          <Property Name="PAY_CLS_DES" Type="varchar2" MaxLength="2000" />
+          <Property Name="PAY_MATU" Type="varchar2" MaxLength="300" />
+          <Property Name="NEW_COUP_RATE" Type="number" Precision="9" Scale="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ZCX.BOND_SIZE_CHAN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="BOND_SIZE_CHAN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="BOND_ID" Type="number" Precision="12" />
+          <Property Name="DECL_DATE" Type="date" />
+          <Property Name="END_DATE" Type="date" />
+          <Property Name="TOTAL_SIZE" Type="number" Precision="20" Scale="6" />
+          <Property Name="EXCHANGE_IB_SIZE" Type="number" Precision="20" Scale="6" />
+          <Property Name="EXCHANGE_SIZE" Type="number" Precision="20" Scale="6" />
+          <Property Name="SH_SIZE" Type="number" Precision="20" Scale="6" />
+          <Property Name="SZ_SIZE" Type="number" Precision="20" Scale="6" />
+          <Property Name="IB_SIZE" Type="number" Precision="20" Scale="6" />
+          <Property Name="OTC_SIZE" Type="number" Precision="20" Scale="6" />
+          <Property Name="OTHER_SIZE" Type="number" Precision="20" Scale="6" />
+          <Property Name="SIZE_CHAN" Type="number" Precision="20" Scale="6" />
+          <Property Name="CHAN_TYPE_PAR" Type="number" Precision="4" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ZCX.FUNDAMENTALFIELDMAPPING' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="FUNDAMENTALFIELDMAPPING">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FIELD_NAME" />
+            <PropertyRef Name="FUNDAMENATAL_TYPE" />
+            <PropertyRef Name="ENGLISH_NAME" />
+            <PropertyRef Name="CHINESE_NAME" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" />
+          <Property Name="FIELD_NAME" Type="varchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FUNDAMENATAL_TYPE" Type="varchar2" Nullable="false" MaxLength="50" />
+          <Property Name="MAPPING_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="ENGLISH_NAME" Type="varchar2" Nullable="false" MaxLength="100" />
+          <Property Name="CHINESE_NAME" Type="nvarchar2" Nullable="false" MaxLength="100" />
+          <Property Name="FIELD_INDEX" Type="number" />
+          <Property Name="PARENT_ID" Type="number" />
+          <Property Name="IS_PARENT" Type="number" />
+          <Property Name="INDENT_LEVEL" Type="number" />
+        </EntityType>
+        <EntityType Name="PUB_AREA_CODE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="AREA_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="AREA_TYPE_PAR" Type="number" Precision="1" />
+          <Property Name="ADMI_LEVE_PAR" Type="number" Precision="1" />
+          <Property Name="NAT_CODE" Type="varchar2" MaxLength="20" />
+          <Property Name="ISO_CODE_TWO" Type="varchar2" MaxLength="2" />
+          <Property Name="ISO_CODE_THR" Type="varchar2" MaxLength="3" />
+          <Property Name="AREA_CHI_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="AREA_CHI_SHORT_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="AREA_ENG_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="AREA_ENG_SHORT_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="TIME_DIFF" Type="number" Precision="5" Scale="2" />
+          <Property Name="POST_CODE" Type="varchar2" MaxLength="10" />
+          <Property Name="AREA_CODE" Type="varchar2" MaxLength="10" />
+          <Property Name="START_DATE" Type="date" />
+          <Property Name="IS_VALID" Type="number" Precision="1" />
+          <Property Name="DIS_DATE" Type="date" />
+          <Property Name="SUB_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="AREA_UNI_CODE1" Type="number" Precision="12" />
+          <Property Name="AREA_NAME1" Type="varchar2" MaxLength="100" />
+          <Property Name="AREA_UNI_CODE2" Type="number" Precision="12" />
+          <Property Name="AREA_NAME2" Type="varchar2" MaxLength="100" />
+          <Property Name="AREA_UNI_CODE3" Type="number" Precision="12" />
+          <Property Name="AREA_NAME3" Type="varchar2" MaxLength="100" />
+          <Property Name="AREA_UNI_CODE4" Type="number" Precision="12" />
+          <Property Name="AREA_NAME4" Type="varchar2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PUB_CURY_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="CURY_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="CURY_CHI_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="CURY_ENG_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="CURY_OLD_SIGN" Type="varchar2" MaxLength="50" />
+          <Property Name="CURY_STAN_SIGN" Type="varchar2" MaxLength="10" />
+          <Property Name="CURY_DES" Type="varchar2" MaxLength="200" />
+          <Property Name="AREA_UNI_CODE" Type="varchar2" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="PUB_ORG_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="ORG_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="ORG_CHI_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="CHI_SHORT_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="ORG_ENG_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="ENG_SHORT_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="CHI_SPE_SHORT_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="REG_CAP" Type="number" Precision="24" Scale="4" />
+          <Property Name="CURY_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="REG_ADDR" Type="varchar2" MaxLength="240" />
+          <Property Name="AREA_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="OFFI_ADDR" Type="varchar2" MaxLength="240" />
+          <Property Name="POST_CODE" Type="varchar2" MaxLength="10" />
+          <Property Name="COM_WEB" Type="varchar2" MaxLength="60" />
+          <Property Name="LEG_PER" Type="varchar2" MaxLength="80" />
+          <Property Name="GEN_MAN" Type="varchar2" MaxLength="40" />
+          <Property Name="ORG_CON_PER" Type="varchar2" MaxLength="80" />
+          <Property Name="ORG_TEL" Type="varchar2" MaxLength="60" />
+          <Property Name="ORG_FAX" Type="varchar2" MaxLength="60" />
+          <Property Name="ORG_MAIL_ADDR" Type="varchar2" MaxLength="200" />
+          <Property Name="ORG_EST_DATE" Type="varchar2" MaxLength="10" />
+          <Property Name="CUS_CON_TEL" Type="varchar2" MaxLength="60" />
+          <Property Name="ORG_STA_PAR" Type="number" Precision="2" />
+          <Property Name="IC_REG_CODE" Type="varchar2" MaxLength="60" />
+          <Property Name="NAT_TAX_REG_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="LOC_TAX_REG_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="ORG_CLA_BIG_PAR" Type="number" Precision="10" />
+          <Property Name="ORG_CLA_MID_PAR" Type="number" Precision="10" />
+          <Property Name="ORG_CLA_SMA_PAR" Type="number" Precision="10" />
+          <Property Name="ORG_ORGA_FORM_PAR" Type="number" Precision="1" />
+          <Property Name="PARE_COM_CODE" Type="number" Precision="12" />
+          <Property Name="TOP_ORG_CODE" Type="number" Precision="12" />
+          <Property Name="HIGH_LEVEL_ORG_CODE" Type="number" Precision="12" />
+          <Property Name="HIE_CODE" Type="number" Precision="12" />
+          <Property Name="ORG_ABBR" Type="varchar2" MaxLength="3000" />
+          <Property Name="ORG_MAIN_BUSI" Type="clob" />
+          <Property Name="ORG_SID_BUSI" Type="clob" />
+          <Property Name="DIS_DATE" Type="date" />
+          <Property Name="DIS_REAS" Type="varchar2" MaxLength="3000" />
+          <Property Name="ORG_LIST_PAR" Type="number" Precision="1" />
+          <Property Name="IF_ISS_BOND" Type="number" Precision="1" />
+          <Property Name="LIST_MKT" Type="number" Precision="1" />
+          <Property Name="FILE_PATH" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PUB_PAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="PAR_SYS_CODE" Type="number" Precision="12" />
+          <Property Name="PAR_SYS_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="PAR_CODE" Type="number" Precision="12" />
+          <Property Name="PAR_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="PAR_ENG_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="PAR_UNIT" Type="varchar2" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="RATE_ORG_INFO_F">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="COM_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="COM_CHI_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="COM_CHI_SHORT_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="COM_SPE_SHORT_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="COM_ENG_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="COM_ENG_SHORT_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="TYPE_BIG_PAR" Type="number" Precision="10" />
+          <Property Name="COM_ORGA_FORM_PAR" Type="number" Precision="1" />
+          <Property Name="PARE_COM_CODE" Type="number" Precision="12" />
+          <Property Name="COM_STP" Type="varchar2" MaxLength="40" />
+          <Property Name="STP_TEL" Type="varchar2" MaxLength="60" />
+          <Property Name="STP_TAX" Type="varchar2" MaxLength="60" />
+          <Property Name="STP_CON_ADDR" Type="varchar2" MaxLength="200" />
+          <Property Name="STP_MAIL" Type="varchar2" MaxLength="40" />
+          <Property Name="SEC_REPR_NAME" Type="varchar2" MaxLength="40" />
+          <Property Name="SEC_REPR_TEL" Type="varchar2" MaxLength="60" />
+          <Property Name="SEC_REPR_TAX" Type="varchar2" MaxLength="60" />
+          <Property Name="SEC_REPR_CON_ADDR" Type="varchar2" MaxLength="200" />
+          <Property Name="SEC_REPR_MAIL" Type="varchar2" MaxLength="40" />
+          <Property Name="INFO_DISC_PER" Type="varchar2" MaxLength="40" />
+          <Property Name="INFO_DISC_PAP" Type="varchar2" MaxLength="200" />
+          <Property Name="INFO_DISC_WEB" Type="varchar2" MaxLength="160" />
+          <Property Name="REG_ADDR" Type="varchar2" MaxLength="240" />
+          <Property Name="AREA_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="REG_ADDR_POST" Type="varchar2" MaxLength="10" />
+          <Property Name="OFFI_ADDR" Type="varchar2" MaxLength="240" />
+          <Property Name="OFFI_ADDR_POST" Type="varchar2" MaxLength="10" />
+          <Property Name="COM_ADDR" Type="varchar2" MaxLength="240" />
+          <Property Name="COM_ADDR_POST" Type="varchar2" MaxLength="10" />
+          <Property Name="COM_WEB" Type="varchar2" MaxLength="60" />
+          <Property Name="COM_CON_PER" Type="varchar2" MaxLength="60" />
+          <Property Name="COM_TEL" Type="varchar2" MaxLength="60" />
+          <Property Name="CUS_CON_TEL" Type="varchar2" MaxLength="60" />
+          <Property Name="COM_FAX" Type="varchar2" MaxLength="60" />
+          <Property Name="MAIL_ADDR" Type="varchar2" MaxLength="200" />
+          <Property Name="REG_CAP" Type="number" Precision="24" Scale="4" />
+          <Property Name="CURY_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="LEG_PER" Type="varchar2" MaxLength="40" />
+          <Property Name="GEN_MAN" Type="varchar2" MaxLength="40" />
+          <Property Name="EST_DATE" Type="varchar2" MaxLength="10" />
+          <Property Name="IC_REG_CODE" Type="varchar2" MaxLength="60" />
+          <Property Name="NAT_TAX_REG_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="LOC_TAX_REG_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="TER_ACC_OFFI_CODE" Type="number" Precision="12" />
+          <Property Name="TER_ACC" Type="varchar2" MaxLength="40" />
+          <Property Name="LAWER_OFFI_CODE" Type="number" Precision="12" />
+          <Property Name="COM_LAWER" Type="varchar2" MaxLength="60" />
+          <Property Name="CAP_ESTI_ORG_CODE" Type="number" Precision="12" />
+          <Property Name="ESTI_STAFF" Type="varchar2" MaxLength="200" />
+          <Property Name="MAIN_BUS" Type="clob" />
+          <Property Name="SID_BUS" Type="clob" />
+          <Property Name="COM_PRO" Type="varchar2" MaxLength="3000" />
+          <Property Name="COM_HIS" Type="varchar2" MaxLength="3000" />
+          <Property Name="STAFF_SUM" Type="number" Precision="8" />
+          <Property Name="STA_PAR" Type="number" Precision="10" />
+          <Property Name="DIS_DATE" Type="date" />
+          <Property Name="DIS_REAS" Type="varchar2" MaxLength="3000" />
+          <Property Name="IS_LIST_PAR" Type="number" Precision="1" />
+          <Property Name="TYPE_MID_PAR" Type="number" Precision="10" />
+        </EntityType>
+        <EntityType Name="RATE_REP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="ISVALID" Type="number" Precision="1" />
+          <Property Name="CCXEID" Type="timestamp" />
+          <Property Name="RATE_ID" Type="number" Precision="12" />
+          <Property Name="RATE_WRIT_DATE" Type="date" />
+          <Property Name="RATE_PUBL_DATE" Type="date" />
+          <Property Name="ORG_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="RESER_NAME" Type="varchar2" MaxLength="150" />
+          <Property Name="RATE_TITLE" Type="varchar2" MaxLength="200" />
+          <Property Name="RATE_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="RATE_PAG" Type="number" Precision="8" />
+          <Property Name="RATE_FILE_SIZE" Type="number" Precision="12" />
+          <Property Name="RATE_FILE_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="RATE_FILE_PATH" Type="varchar2" MaxLength="255" />
+          <Property Name="ATT_PATH_MD5" Type="varchar2" MaxLength="32" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ZCX.V_BOND_ABS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="V_BOND_ABS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Nullable="false" Precision="12" />
+          <Property Name="BOND_ID" Type="number" Precision="12" />
+          <Property Name="BOND_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="BOND_FULL_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="ENG_FULL_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="BOND_CODE" Type="varchar2" MaxLength="20" />
+          <Property Name="BOND_SHORT_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="ENG_SHORT_NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="ISIN_CODE" Type="varchar2" MaxLength="12" />
+          <Property Name="BOND_MATU" Type="number" Precision="18" Scale="4" />
+          <Property Name="MATU_UNIT_PAR" Type="number" Precision="4" />
+          <Property Name="UNIT" Type="varchar2" MaxLength="200" />
+          <Property Name="LIST_DATE" Type="date" />
+          <Property Name="BOND_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="BONDCLASSCN" Type="nvarchar2" MaxLength="100" />
+          <Property Name="BONDCLASSEN" Type="varchar2" MaxLength="100" />
+          <Property Name="SEC_MAR_PAR" Type="number" Precision="4" />
+          <Property Name="ISSUEMARKET" Type="varchar2" MaxLength="200" />
+          <Property Name="ISS_DECL_DATE" Type="date" />
+          <Property Name="ISS_START_DATE" Type="date" />
+          <Property Name="ISS_END_DATE" Type="date" />
+          <Property Name="ACTU_ISS_AMUT" Type="number" />
+          <Property Name="ISS_PRI" Type="number" Precision="18" Scale="4" />
+          <Property Name="IS_REDEM_PAR" Type="number" Precision="4" />
+          <Property Name="IS_RESA_PAR" Type="number" Precision="4" />
+          <Property Name="IS_GUAR_PAR" Type="number" Precision="4" />
+          <Property Name="TOTAL_SIZE" Type="number" />
+          <Property Name="ISSUER_ORG_UNI_CODE" Type="number" Precision="12" />
+          <Property Name="ISSUERCN" Type="varchar2" MaxLength="200" />
+          <Property Name="ISSUEREN" Type="varchar2" MaxLength="200" />
+          <Property Name="SPONSOR" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="LEADUNDERWRITER" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="VICEUNDERWRITER" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="UNDERWRITER" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="FUNDINSTITUTION" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="REGULATOR" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="AUDITINGOFFICES" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="LEGALADVISOR" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="TRUSTEE" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="ADVERTISINGAGENCY" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="UDL_ASE" Type="varchar2" MaxLength="1000" />
+          <Property Name="GUAOR_NAME" Type="nvarchar2" MaxLength="2000" />
+          <Property Name="INTE_START_DATE" Type="date" />
+          <Property Name="ACTU_END_DATE" Type="date" />
+          <Property Name="RATE_TYPE_PAR" Type="number" Precision="4" />
+          <Property Name="RATETYPENAME" Type="varchar2" MaxLength="200" />
+          <Property Name="BASE_RATE_PAR" Type="number" Precision="4" />
+          <Property Name="BASERATENAME" Type="varchar2" MaxLength="200" />
+          <Property Name="ISS_COUP_RATE" Type="number" Precision="7" Scale="4" />
+          <Property Name="BAS_SPR" Type="number" Precision="7" Scale="4" />
+          <Property Name="INTE_PAY_FREQ" Type="number" Precision="3" />
+          <Property Name="FIR_PAY_DATE" Type="date" />
+          <Property Name="MATU_PAY_DATE" Type="date" />
+          <Property Name="BOND_CRED_LEVEL" Type="varchar2" MaxLength="20" />
+          <Property Name="BONDRATINGAGENCYCN" Type="varchar2" MaxLength="200" />
+          <Property Name="BONDRATINGAGENCYEN" Type="varchar2" MaxLength="200" />
+          <Property Name="RATING" Type="varchar2" MaxLength="60" />
+          <Property Name="RATINGAGENCYCN" Type="varchar2" MaxLength="200" />
+          <Property Name="RATINGAGENCYEN" Type="varchar2" MaxLength="200" />
+          <Property Name="ISS_DATE" Type="date" />
+          <Property Name="AUCTIONTYPE" Type="varchar2" MaxLength="200" />
+          <Property Name="AUCTIONMETHOD" Type="varchar2" MaxLength="200" />
+          <Property Name="AUCTIONCODE" Type="varchar2" MaxLength="200" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ZCXEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BOND_ISS_INFO" EntityType="Model.BOND_ISS_INFO" />
+          <EntitySet Name="BOND_RATE_INFO" EntityType="Model.BOND_RATE_INFO" />
+          <EntitySet Name="PUB_AREA_CODE" EntityType="Model.PUB_AREA_CODE" />
+          <EntitySet Name="PUB_CURY_TYPE" EntityType="Model.PUB_CURY_TYPE" />
+          <EntitySet Name="PUB_ORG_INFO" EntityType="Model.PUB_ORG_INFO" />
+          <EntitySet Name="PUB_PAR" EntityType="Model.PUB_PAR" />
+          <EntitySet Name="RATE_ORG_INFO_F" EntityType="Model.RATE_ORG_INFO_F" />
+          <EntitySet Name="RATE_REP" EntityType="Model.RATE_REP" />
+          <EntitySet Name="FUNDAMENTALFIELDMAPPING" EntityType="Model.FUNDAMENTALFIELDMAPPING" />
+          <EntitySet Name="BOND_BASIC_INFO" EntityType="Model.BOND_BASIC_INFO" />
+          <EntitySet Name="V_BOND_ABS" EntityType="Model.V_BOND_ABS" />
+          <EntitySet Name="BOND_ISSER_INFO" EntityType="Model.BOND_ISSER_INFO" />
+          <EntitySet Name="BOND_FIN_BALA_TABB" EntityType="Model.BOND_FIN_BALA_TABB" />
+          <EntitySet Name="BOND_FIN_CASH_TACB" EntityType="Model.BOND_FIN_CASH_TACB" />
+          <EntitySet Name="BOND_FIN_PROF_TAPB" EntityType="Model.BOND_FIN_PROF_TAPB" />
+          <EntitySet Name="BOND_SIZE_CHAN" EntityType="Model.BOND_SIZE_CHAN" />
+        </EntityContainer>
+        <EntityType Name="BOND_ISS_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ISVALID" Type="Int16" />
+          <Property Name="CCXEID" Type="DateTime" Precision="6" />
+          <Property Name="BOND_ID" Type="Int64" />
+          <Property Name="OPT_DES" Type="String" MaxLength="3000" Unicode="false" FixedLength="false" />
+          <Property Name="ISS_DECL_DATE" Type="DateTime" />
+          <Property Name="ISS_OBJ" Type="String" MaxLength="600" Unicode="false" FixedLength="false" />
+          <Property Name="ISS_CLS" Type="String" MaxLength="600" Unicode="false" FixedLength="false" />
+          <Property Name="ISS_FEE_RATE" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="ISS_START_DATE" Type="DateTime" />
+          <Property Name="ISS_END_DATE" Type="DateTime" />
+          <Property Name="PLAN_ISS_AMUT" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="COLL_CAP_PURP" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="PAY_START_DATE" Type="DateTime" />
+          <Property Name="PAY_END_DATE" Type="DateTime" />
+          <Property Name="SUBS_UNIT" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="LEAST_SUBS_UNIT" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="DISTRI_OBJ" Type="String" MaxLength="600" Unicode="false" FixedLength="false" />
+          <Property Name="UNDE_CLS_PAR" Type="Int16" />
+          <Property Name="BOKEP_DATE" Type="DateTime" />
+          <Property Name="ACTU_ISS_AMUT" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="ACTU_FIR_ISS_AMUT" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="ISS_PRI" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="BOND_PAR_VAL" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="BID_DATE" Type="DateTime" />
+          <Property Name="DEBT_REG_DATE" Type="DateTime" />
+          <Property Name="BOND_ISS_YEAR" Type="Int16" />
+          <Property Name="IS_REPU_PAR" Type="Int16" />
+          <Property Name="IS_REDEM_PAR" Type="Int16" />
+          <Property Name="IS_RESA_PAR" Type="Int16" />
+          <Property Name="IS_HEDGE_PAR" Type="Int16" />
+          <Property Name="IS_TAX_FREE_PAR" Type="Int16" />
+          <Property Name="IS_GUAR_PAR" Type="Int16" />
+          <Property Name="CURY_CLS_PAR" Type="Int16" />
+        </EntityType>
+        <EntityType Name="BOND_RATE_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ISVALID" Type="Int16" />
+          <Property Name="CCXEID" Type="DateTime" Precision="6" />
+          <Property Name="BOND_ID" Type="Int64" />
+          <Property Name="RATE_TYPE_PAR" Type="Int16" />
+          <Property Name="IS_SEGM_PAR" Type="Int16" />
+          <Property Name="INTE_PAY_CLS_PAR" Type="Int16" />
+          <Property Name="INTE_PAY_FREQ" Type="Int16" />
+          <Property Name="INTE_CALCU_CLS_PAR" Type="Int16" />
+          <Property Name="REPAY_CLS_PAY_PAR" Type="Int16" />
+          <Property Name="SIMP_COMP_INTE_PAR" Type="Int16" />
+          <Property Name="INTE_START_DATE" Type="DateTime" />
+          <Property Name="ACTU_END_DATE" Type="DateTime" />
+          <Property Name="THEO_END_DATE" Type="DateTime" />
+          <Property Name="YEAR_PAY_DATE" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="FIR_PAY_DATE" Type="DateTime" />
+          <Property Name="ISS_COUP_RATE" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="BASE_RATE_PAR" Type="Int16" />
+          <Property Name="INIT_BASE_RATE_DATE" Type="DateTime" />
+          <Property Name="BASE_RATE" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="BAS_SPR" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="OPT_EXTRA_SPR" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="EXTRA_SPR_SEQ_NUM" Type="Int16" />
+          <Property Name="RATE_CEIL" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="RATE_FLOOR" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="IS_INTE_COMP_PAR" Type="Int16" />
+          <Property Name="COMP_RATE" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="YTM_INTE_COMP" Type="Decimal" Precision="7" Scale="4" />
+          <Property Name="REF_YIELD" Type="Decimal" Precision="9" Scale="4" />
+          <Property Name="YEAR_PAY_MATU" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="MATU_PAY_DATE" Type="DateTime" />
+          <Property Name="EXER_PAY_DATE" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="PAY_FEE_RATE" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PAY_CLS_DES" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="PAY_MATU" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="NEW_COUP_RATE" Type="Decimal" Precision="9" Scale="6" />
+        </EntityType>
+        <EntityType Name="PUB_AREA_CODE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ISVALID" Type="Int16" />
+          <Property Name="CCXEID" Type="DateTime" Precision="6" />
+          <Property Name="AREA_UNI_CODE" Type="Int64" />
+          <Property Name="AREA_TYPE_PAR" Type="Int16" />
+          <Property Name="ADMI_LEVE_PAR" Type="Int16" />
+          <Property Name="NAT_CODE" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ISO_CODE_TWO" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="ISO_CODE_THR" Type="String" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_CHI_NAME" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_CHI_SHORT_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_ENG_NAME" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_ENG_SHORT_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TIME_DIFF" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="POST_CODE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_CODE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="START_DATE" Type="DateTime" />
+          <Property Name="IS_VALID" Type="Int16" />
+          <Property Name="DIS_DATE" Type="DateTime" />
+          <Property Name="SUB_UNI_CODE" Type="Int64" />
+          <Property Name="AREA_UNI_CODE1" Type="Int64" />
+          <Property Name="AREA_NAME1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_UNI_CODE2" Type="Int64" />
+          <Property Name="AREA_NAME2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_UNI_CODE3" Type="Int64" />
+          <Property Name="AREA_NAME3" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_UNI_CODE4" Type="Int64" />
+          <Property Name="AREA_NAME4" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PUB_CURY_TYPE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ISVALID" Type="Int16" />
+          <Property Name="CCXEID" Type="DateTime" Precision="6" />
+          <Property Name="CURY_TYPE_PAR" Type="Int16" />
+          <Property Name="CURY_CHI_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CURY_ENG_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CURY_OLD_SIGN" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CURY_STAN_SIGN" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CURY_DES" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_UNI_CODE" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PUB_ORG_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ISVALID" Type="Int16" />
+          <Property Name="CCXEID" Type="DateTime" Precision="6" />
+          <Property Name="ORG_UNI_CODE" Type="Int64" />
+          <Property Name="ORG_CHI_NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CHI_SHORT_NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_ENG_NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="ENG_SHORT_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CHI_SPE_SHORT_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="REG_CAP" Type="Decimal" Precision="24" Scale="4" />
+          <Property Name="CURY_TYPE_PAR" Type="Int16" />
+          <Property Name="REG_ADDR" Type="String" MaxLength="240" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_UNI_CODE" Type="Int64" />
+          <Property Name="OFFI_ADDR" Type="String" MaxLength="240" Unicode="false" FixedLength="false" />
+          <Property Name="POST_CODE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="COM_WEB" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="LEG_PER" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="GEN_MAN" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_CON_PER" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_TEL" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_FAX" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_MAIL_ADDR" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_EST_DATE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CUS_CON_TEL" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_STA_PAR" Type="Int16" />
+          <Property Name="IC_REG_CODE" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="NAT_TAX_REG_CODE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LOC_TAX_REG_CODE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_CLA_BIG_PAR" Type="Int32" />
+          <Property Name="ORG_CLA_MID_PAR" Type="Int32" />
+          <Property Name="ORG_CLA_SMA_PAR" Type="Int32" />
+          <Property Name="ORG_ORGA_FORM_PAR" Type="Int16" />
+          <Property Name="PARE_COM_CODE" Type="Int64" />
+          <Property Name="TOP_ORG_CODE" Type="Int64" />
+          <Property Name="HIGH_LEVEL_ORG_CODE" Type="Int64" />
+          <Property Name="HIE_CODE" Type="Int64" />
+          <Property Name="ORG_ABBR" Type="String" MaxLength="3000" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_MAIN_BUSI" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_SID_BUSI" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="DIS_DATE" Type="DateTime" />
+          <Property Name="DIS_REAS" Type="String" MaxLength="3000" Unicode="false" FixedLength="false" />
+          <Property Name="ORG_LIST_PAR" Type="Int16" />
+          <Property Name="IF_ISS_BOND" Type="Int16" />
+          <Property Name="LIST_MKT" Type="Int16" />
+          <Property Name="FILE_PATH" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PUB_PAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ISVALID" Type="Int16" />
+          <Property Name="CCXEID" Type="DateTime" Precision="6" />
+          <Property Name="PAR_SYS_CODE" Type="Int64" />
+          <Property Name="PAR_SYS_NAME" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="PAR_CODE" Type="Int64" />
+          <Property Name="PAR_NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="PAR_ENG_NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="PAR_UNIT" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="RATE_ORG_INFO_F">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ISVALID" Type="Int16" />
+          <Property Name="CCXEID" Type="DateTime" Precision="6" />
+          <Property Name="COM_UNI_CODE" Type="Int64" />
+          <Property Name="COM_CHI_NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="COM_CHI_SHORT_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="COM_SPE_SHORT_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="COM_ENG_NAME" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="COM_ENG_SHORT_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TYPE_BIG_PAR" Type="Int32" />
+          <Property Name="COM_ORGA_FORM_PAR" Type="Int16" />
+          <Property Name="PARE_COM_CODE" Type="Int64" />
+          <Property Name="COM_STP" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="STP_TEL" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="STP_TAX" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="STP_CON_ADDR" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="STP_MAIL" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="SEC_REPR_NAME" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="SEC_REPR_TEL" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="SEC_REPR_TAX" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="SEC_REPR_CON_ADDR" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="SEC_REPR_MAIL" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="INFO_DISC_PER" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="INFO_DISC_PAP" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="INFO_DISC_WEB" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+          <Property Name="REG_ADDR" Type="String" MaxLength="240" Unicode="false" FixedLength="false" />
+          <Property Name="AREA_UNI_CODE" Type="Int64" />
+          <Property Name="REG_ADDR_POST" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="OFFI_ADDR" Type="String" MaxLength="240" Unicode="false" FixedLength="false" />
+          <Property Name="OFFI_ADDR_POST" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="COM_ADDR" Type="String" MaxLength="240" Unicode="false" FixedLength="false" />
+          <Property Name="COM_ADDR_POST" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="COM_WEB" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="COM_CON_PER" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="COM_TEL" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="CUS_CON_TEL" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="COM_FAX" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="MAIL_ADDR" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="REG_CAP" Type="Decimal" Precision="24" Scale="4" />
+          <Property Name="CURY_TYPE_PAR" Type="Int16" />
+          <Property Name="LEG_PER" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="GEN_MAN" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="EST_DATE" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="IC_REG_CODE" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="NAT_TAX_REG_CODE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LOC_TAX_REG_CODE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TER_ACC_OFFI_CODE" Type="Int64" />
+          <Property Name="TER_ACC" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="LAWER_OFFI_CODE" Type="Int64" />
+          <Property Name="COM_LAWER" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="CAP_ESTI_ORG_CODE" Type="Int64" />
+          <Property Name="ESTI_STAFF" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="MAIN_BUS" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="SID_BUS" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="COM_PRO" Type="String" MaxLength="3000" Unicode="false" FixedLength="false" />
+          <Property Name="COM_HIS" Type="String" MaxLength="3000" Unicode="false" FixedLength="false" />
+          <Property Name="STAFF_SUM" Type="Int32" />
+          <Property Name="STA_PAR" Type="Int32" />
+          <Property Name="DIS_DATE" Type="DateTime" />
+          <Property Name="DIS_REAS" Type="String" MaxLength="3000" Unicode="false" FixedLength="false" />
+          <Property Name="IS_LIST_PAR" Type="Int16" />
+          <Property Name="TYPE_MID_PAR" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RATE_REP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="ISVALID" Type="Int16" />
+          <Property Name="CCXEID" Type="DateTime" Precision="6" />
+          <Property Name="RATE_ID" Type="Int64" />
+          <Property Name="RATE_WRIT_DATE" Type="DateTime" />
+          <Property Name="RATE_PUBL_DATE" Type="DateTime" />
+          <Property Name="ORG_UNI_CODE" Type="Int64" />
+          <Property Name="RESER_NAME" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="RATE_TITLE" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="RATE_TYPE_PAR" Type="Int16" />
+          <Property Name="RATE_PAG" Type="Int32" />
+          <Property Name="RATE_FILE_SIZE" Type="Int64" />
+          <Property Name="RATE_FILE_TYPE_PAR" Type="Int16" />
+          <Property Name="RATE_FILE_PATH" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ATT_PATH_MD5" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="FUNDAMENTALFIELDMAPPING">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FIELD_NAME" />
+            <PropertyRef Name="FUNDAMENATAL_TYPE" />
+            <PropertyRef Name="ENGLISH_NAME" />
+            <PropertyRef Name="CHINESE_NAME" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="38" Scale="0" />
+          <Property Type="String" Name="FIELD_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FUNDAMENATAL_TYPE" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MAPPING_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENGLISH_NAME" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CHINESE_NAME" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="FIELD_INDEX" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="PARENT_ID" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="IS_PARENT" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="INDENT_LEVEL" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="BOND_BASIC_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="DateTime" Name="CCXEID" Precision="6" />
+          <Property Type="Int64" Name="BOND_ID" />
+          <Property Type="Int64" Name="BOND_UNI_CODE" />
+          <Property Type="String" Name="ISIN_CODE" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BOND_FULL_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BOND_CODE" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BOND_SHORT_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SPE_SHORT_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENG_FULL_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENG_SHORT_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="BOND_MATU" Precision="18" Scale="4" />
+          <Property Type="Int16" Name="MATU_UNIT_PAR" />
+          <Property Type="Int16" Name="BOND_TYPE_PAR" />
+          <Property Type="Int16" Name="IS_TYPE_PAR" />
+          <Property Type="DateTime" Name="LIST_DATE" />
+          <Property Type="Int16" Name="SEC_MAR_PAR" />
+          <Property Type="Int16" Name="LIST_SECT_PAR" />
+          <Property Type="Int16" Name="LIST_STA_PAR" />
+          <Property Type="Int16" Name="ASE_LEVEL_PAR" />
+          <Property Type="Int16" Name="BOND_FORM_PAR" />
+          <Property Type="Int16" Name="ISS_STA_PAR" />
+          <Property Type="Int16" Name="IS_LIST_PAR" />
+          <Property Type="Int16" Name="IS_CROS_MAR_PAR" />
+          <Property Type="String" Name="PLEDGE_CODE" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PLEDGE_NAME" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CROS_MAR_DES" MaxLength="400" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="V_BOND_ABS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int64" Name="BOND_ID" />
+          <Property Type="Int64" Name="BOND_UNI_CODE" />
+          <Property Type="String" Name="BOND_FULL_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENG_FULL_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BOND_CODE" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BOND_SHORT_NAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ENG_SHORT_NAME" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISIN_CODE" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="BOND_MATU" Precision="18" Scale="4" />
+          <Property Type="Int16" Name="MATU_UNIT_PAR" />
+          <Property Type="String" Name="UNIT" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LIST_DATE" />
+          <Property Type="Int16" Name="BOND_TYPE_PAR" />
+          <Property Type="String" Name="BONDCLASSCN" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BONDCLASSEN" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="SEC_MAR_PAR" />
+          <Property Type="String" Name="ISSUEMARKET" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ISS_DECL_DATE" />
+          <Property Type="DateTime" Name="ISS_START_DATE" />
+          <Property Type="DateTime" Name="ISS_END_DATE" />
+          <Property Type="Decimal" Name="ACTU_ISS_AMUT" Precision="38" Scale="0" />
+          <Property Type="Decimal" Name="ISS_PRI" Precision="18" Scale="4" />
+          <Property Type="Int16" Name="IS_REDEM_PAR" />
+          <Property Type="Int16" Name="IS_RESA_PAR" />
+          <Property Type="Int16" Name="IS_GUAR_PAR" />
+          <Property Type="Decimal" Name="TOTAL_SIZE" Precision="38" Scale="0" />
+          <Property Type="Int64" Name="ISSUER_ORG_UNI_CODE" />
+          <Property Type="String" Name="ISSUERCN" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ISSUEREN" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SPONSOR" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LEADUNDERWRITER" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VICEUNDERWRITER" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UNDERWRITER" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FUNDINSTITUTION" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="REGULATOR" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AUDITINGOFFICES" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LEGALADVISOR" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TRUSTEE" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ADVERTISINGAGENCY" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UDL_ASE" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GUAOR_NAME" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="INTE_START_DATE" />
+          <Property Type="DateTime" Name="ACTU_END_DATE" />
+          <Property Type="Int16" Name="RATE_TYPE_PAR" />
+          <Property Type="String" Name="RATETYPENAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="BASE_RATE_PAR" />
+          <Property Type="String" Name="BASERATENAME" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="ISS_COUP_RATE" Precision="7" Scale="4" />
+          <Property Type="Decimal" Name="BAS_SPR" Precision="7" Scale="4" />
+          <Property Type="Int16" Name="INTE_PAY_FREQ" />
+          <Property Type="DateTime" Name="FIR_PAY_DATE" />
+          <Property Type="DateTime" Name="MATU_PAY_DATE" />
+          <Property Type="String" Name="BOND_CRED_LEVEL" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BONDRATINGAGENCYCN" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BONDRATINGAGENCYEN" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RATING" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RATINGAGENCYCN" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RATINGAGENCYEN" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ISS_DATE" />
+          <Property Type="String" Name="AUCTIONTYPE" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AUCTIONMETHOD" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AUCTIONCODE" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BOND_ISSER_INFO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="DateTime" Name="CCXEID" Precision="6" />
+          <Property Type="Int64" Name="BOND_UNI_CODE" />
+          <Property Type="Int64" Name="ORG_UNI_CODE" />
+          <Property Type="Int16" Name="ISSER_TYPE_PAR" />
+          <Property Type="DateTime" Name="ISSER_CHAN_DATE" />
+          <Property Type="Int16" Name="IS_NEW_ISSER" />
+        </EntityType>
+        <EntityType Name="BOND_FIN_BALA_TABB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="DateTime" Name="CCXEID" Precision="6" />
+          <Property Type="Int64" Name="COM_UNI_CODE" />
+          <Property Type="DateTime" Name="END_DATE" />
+          <Property Type="Int16" Name="SHEET_MARK_PAR" />
+          <Property Type="Int16" Name="SHEET_ATTR_PAR" />
+          <Property Type="Decimal" Name="BS_01" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_0101" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_02" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_03" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_04" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_05" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_06" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_07" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_08" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_09" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_0901" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_10" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_11" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_12" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_13" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_14" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_15" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_16" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_17" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_18" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_19" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_20" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_21" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_22" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_23" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_24" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_25" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_26" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_27" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_28" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_29" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_30" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_31" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_3101" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_32" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_33" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_34" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_35" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_36" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_37" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_38" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_39" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_40" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_4001" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_41" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_42" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_43" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_44" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_45" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_46" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_47" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_48" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_49" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_50" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_51" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_52" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_53" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_54" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_55" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_56" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_57" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_5701" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_58" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_59" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_60" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_61" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_62" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_63" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_64" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_65" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_66" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_67" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_68" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_69" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_70" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_71" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_72" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_73" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_74" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_75" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_76" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_77" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_78" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_79" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_80" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_81" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_82" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_83" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_84" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_85" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_86" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_87" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_88" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_89" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_90" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_91" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_92" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_93" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_94" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_95" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_96" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_97" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_98" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_99" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_100" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_101" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_102" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_103" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_104" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_105" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_106" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_107" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_108" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_109" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_110" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_111" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_112" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_113" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_114" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_115" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_116" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_117" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_118" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_119" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="BS_120" Precision="20" Scale="4" />
+        </EntityType>
+        <EntityType Name="BOND_FIN_CASH_TACB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="DateTime" Name="CCXEID" Precision="6" />
+          <Property Type="Int64" Name="COM_UNI_CODE" />
+          <Property Type="DateTime" Name="START_DATE" />
+          <Property Type="DateTime" Name="END_DATE" />
+          <Property Type="Int16" Name="SHEET_MARK_PAR" />
+          <Property Type="Int16" Name="SHEET_ATTR_PAR" />
+          <Property Type="Decimal" Name="CF_01" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_02" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_03" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_04" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_05" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_06" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_07" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_08" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_09" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_10" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_11" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_12" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_13" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_14" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_15" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_16" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_17" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_18" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_19" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_20" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_21" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_22" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_23" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_24" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_25" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_26" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_27" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_28" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_29" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_30" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_31" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_32" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_33" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_34" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_35" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_36" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_37" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_38" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_39" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_40" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_41" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_42" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_4201" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_43" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_44" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_45" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_46" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_47" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_48" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_49" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_4901" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_50" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_51" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_52" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_53" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_54" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_55" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_56" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_57" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_58" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_59" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_60" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_61" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_62" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_63" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_64" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_65" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_66" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_67" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_68" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_69" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_70" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_71" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_72" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_73" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_74" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_75" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_76" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_77" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_78" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_79" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_80" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_81" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_82" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_83" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_84" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_85" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="CF_86" Precision="20" Scale="4" />
+        </EntityType>
+        <EntityType Name="BOND_FIN_PROF_TAPB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="DateTime" Name="CCXEID" Precision="6" />
+          <Property Type="Int64" Name="COM_UNI_CODE" />
+          <Property Type="DateTime" Name="START_DATE" />
+          <Property Type="DateTime" Name="END_DATE" />
+          <Property Type="Int16" Name="SHEET_MARK_PAR" />
+          <Property Type="Int16" Name="SHEET_ATTR_PAR" />
+          <Property Type="Decimal" Name="PF_01" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_02" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_03" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_0301" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_0302" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_04" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_0401" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_0402" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_0403" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_0404" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_0405" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_05" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_06" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_0601" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_07" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_08" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_09" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_10" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_11" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_12" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_13" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_14" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_15" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_16" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_17" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_18" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_19" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_20" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_21" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_22" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_23" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_24" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_25" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_26" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_27" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_28" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_29" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_30" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_31" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_3101" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_32" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_33" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_34" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_35" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_3501" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_36" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_37" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_38" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_39" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_40" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_41" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_42" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_43" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_44" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_45" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_46" Precision="20" Scale="4" />
+          <Property Type="Decimal" Name="PF_47" Precision="20" Scale="4" />
+        </EntityType>
+        <EntityType Name="BOND_SIZE_CHAN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="Int16" Name="ISVALID" />
+          <Property Type="DateTime" Name="CCXEID" Precision="6" />
+          <Property Type="Int64" Name="BOND_ID" />
+          <Property Type="DateTime" Name="DECL_DATE" />
+          <Property Type="DateTime" Name="END_DATE" />
+          <Property Type="Decimal" Name="TOTAL_SIZE" Precision="20" Scale="6" />
+          <Property Type="Decimal" Name="EXCHANGE_IB_SIZE" Precision="20" Scale="6" />
+          <Property Type="Decimal" Name="EXCHANGE_SIZE" Precision="20" Scale="6" />
+          <Property Type="Decimal" Name="SH_SIZE" Precision="20" Scale="6" />
+          <Property Type="Decimal" Name="SZ_SIZE" Precision="20" Scale="6" />
+          <Property Type="Decimal" Name="IB_SIZE" Precision="20" Scale="6" />
+          <Property Type="Decimal" Name="OTC_SIZE" Precision="20" Scale="6" />
+          <Property Type="Decimal" Name="OTHER_SIZE" Precision="20" Scale="6" />
+          <Property Type="Decimal" Name="SIZE_CHAN" Precision="20" Scale="6" />
+          <Property Type="Int16" Name="CHAN_TYPE_PAR" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ZCXEntities">
+          <EntitySetMapping Name="BOND_ISS_INFO">
+            <EntityTypeMapping TypeName="Model.BOND_ISS_INFO">
+              <MappingFragment StoreEntitySet="BOND_ISS_INFO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="BOND_ID" ColumnName="BOND_ID" />
+                <ScalarProperty Name="OPT_DES" ColumnName="OPT_DES" />
+                <ScalarProperty Name="ISS_DECL_DATE" ColumnName="ISS_DECL_DATE" />
+                <ScalarProperty Name="ISS_OBJ" ColumnName="ISS_OBJ" />
+                <ScalarProperty Name="ISS_CLS" ColumnName="ISS_CLS" />
+                <ScalarProperty Name="ISS_FEE_RATE" ColumnName="ISS_FEE_RATE" />
+                <ScalarProperty Name="ISS_START_DATE" ColumnName="ISS_START_DATE" />
+                <ScalarProperty Name="ISS_END_DATE" ColumnName="ISS_END_DATE" />
+                <ScalarProperty Name="PLAN_ISS_AMUT" ColumnName="PLAN_ISS_AMUT" />
+                <ScalarProperty Name="COLL_CAP_PURP" ColumnName="COLL_CAP_PURP" />
+                <ScalarProperty Name="PAY_START_DATE" ColumnName="PAY_START_DATE" />
+                <ScalarProperty Name="PAY_END_DATE" ColumnName="PAY_END_DATE" />
+                <ScalarProperty Name="SUBS_UNIT" ColumnName="SUBS_UNIT" />
+                <ScalarProperty Name="LEAST_SUBS_UNIT" ColumnName="LEAST_SUBS_UNIT" />
+                <ScalarProperty Name="DISTRI_OBJ" ColumnName="DISTRI_OBJ" />
+                <ScalarProperty Name="UNDE_CLS_PAR" ColumnName="UNDE_CLS_PAR" />
+                <ScalarProperty Name="BOKEP_DATE" ColumnName="BOKEP_DATE" />
+                <ScalarProperty Name="ACTU_ISS_AMUT" ColumnName="ACTU_ISS_AMUT" />
+                <ScalarProperty Name="ACTU_FIR_ISS_AMUT" ColumnName="ACTU_FIR_ISS_AMUT" />
+                <ScalarProperty Name="ISS_PRI" ColumnName="ISS_PRI" />
+                <ScalarProperty Name="BOND_PAR_VAL" ColumnName="BOND_PAR_VAL" />
+                <ScalarProperty Name="BID_DATE" ColumnName="BID_DATE" />
+                <ScalarProperty Name="DEBT_REG_DATE" ColumnName="DEBT_REG_DATE" />
+                <ScalarProperty Name="BOND_ISS_YEAR" ColumnName="BOND_ISS_YEAR" />
+                <ScalarProperty Name="IS_REPU_PAR" ColumnName="IS_REPU_PAR" />
+                <ScalarProperty Name="IS_REDEM_PAR" ColumnName="IS_REDEM_PAR" />
+                <ScalarProperty Name="IS_RESA_PAR" ColumnName="IS_RESA_PAR" />
+                <ScalarProperty Name="IS_HEDGE_PAR" ColumnName="IS_HEDGE_PAR" />
+                <ScalarProperty Name="IS_TAX_FREE_PAR" ColumnName="IS_TAX_FREE_PAR" />
+                <ScalarProperty Name="IS_GUAR_PAR" ColumnName="IS_GUAR_PAR" />
+                <ScalarProperty Name="CURY_CLS_PAR" ColumnName="CURY_CLS_PAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOND_RATE_INFO">
+            <EntityTypeMapping TypeName="Model.BOND_RATE_INFO">
+              <MappingFragment StoreEntitySet="BOND_RATE_INFO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="BOND_ID" ColumnName="BOND_ID" />
+                <ScalarProperty Name="RATE_TYPE_PAR" ColumnName="RATE_TYPE_PAR" />
+                <ScalarProperty Name="IS_SEGM_PAR" ColumnName="IS_SEGM_PAR" />
+                <ScalarProperty Name="INTE_PAY_CLS_PAR" ColumnName="INTE_PAY_CLS_PAR" />
+                <ScalarProperty Name="INTE_PAY_FREQ" ColumnName="INTE_PAY_FREQ" />
+                <ScalarProperty Name="INTE_CALCU_CLS_PAR" ColumnName="INTE_CALCU_CLS_PAR" />
+                <ScalarProperty Name="REPAY_CLS_PAY_PAR" ColumnName="REPAY_CLS_PAY_PAR" />
+                <ScalarProperty Name="SIMP_COMP_INTE_PAR" ColumnName="SIMP_COMP_INTE_PAR" />
+                <ScalarProperty Name="INTE_START_DATE" ColumnName="INTE_START_DATE" />
+                <ScalarProperty Name="ACTU_END_DATE" ColumnName="ACTU_END_DATE" />
+                <ScalarProperty Name="THEO_END_DATE" ColumnName="THEO_END_DATE" />
+                <ScalarProperty Name="YEAR_PAY_DATE" ColumnName="YEAR_PAY_DATE" />
+                <ScalarProperty Name="FIR_PAY_DATE" ColumnName="FIR_PAY_DATE" />
+                <ScalarProperty Name="ISS_COUP_RATE" ColumnName="ISS_COUP_RATE" />
+                <ScalarProperty Name="BASE_RATE_PAR" ColumnName="BASE_RATE_PAR" />
+                <ScalarProperty Name="INIT_BASE_RATE_DATE" ColumnName="INIT_BASE_RATE_DATE" />
+                <ScalarProperty Name="BASE_RATE" ColumnName="BASE_RATE" />
+                <ScalarProperty Name="BAS_SPR" ColumnName="BAS_SPR" />
+                <ScalarProperty Name="OPT_EXTRA_SPR" ColumnName="OPT_EXTRA_SPR" />
+                <ScalarProperty Name="EXTRA_SPR_SEQ_NUM" ColumnName="EXTRA_SPR_SEQ_NUM" />
+                <ScalarProperty Name="RATE_CEIL" ColumnName="RATE_CEIL" />
+                <ScalarProperty Name="RATE_FLOOR" ColumnName="RATE_FLOOR" />
+                <ScalarProperty Name="IS_INTE_COMP_PAR" ColumnName="IS_INTE_COMP_PAR" />
+                <ScalarProperty Name="COMP_RATE" ColumnName="COMP_RATE" />
+                <ScalarProperty Name="YTM_INTE_COMP" ColumnName="YTM_INTE_COMP" />
+                <ScalarProperty Name="REF_YIELD" ColumnName="REF_YIELD" />
+                <ScalarProperty Name="YEAR_PAY_MATU" ColumnName="YEAR_PAY_MATU" />
+                <ScalarProperty Name="MATU_PAY_DATE" ColumnName="MATU_PAY_DATE" />
+                <ScalarProperty Name="EXER_PAY_DATE" ColumnName="EXER_PAY_DATE" />
+                <ScalarProperty Name="PAY_FEE_RATE" ColumnName="PAY_FEE_RATE" />
+                <ScalarProperty Name="PAY_CLS_DES" ColumnName="PAY_CLS_DES" />
+                <ScalarProperty Name="PAY_MATU" ColumnName="PAY_MATU" />
+                <ScalarProperty Name="NEW_COUP_RATE" ColumnName="NEW_COUP_RATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUB_AREA_CODE">
+            <EntityTypeMapping TypeName="Model.PUB_AREA_CODE">
+              <MappingFragment StoreEntitySet="PUB_AREA_CODE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="AREA_UNI_CODE" ColumnName="AREA_UNI_CODE" />
+                <ScalarProperty Name="AREA_TYPE_PAR" ColumnName="AREA_TYPE_PAR" />
+                <ScalarProperty Name="ADMI_LEVE_PAR" ColumnName="ADMI_LEVE_PAR" />
+                <ScalarProperty Name="NAT_CODE" ColumnName="NAT_CODE" />
+                <ScalarProperty Name="ISO_CODE_TWO" ColumnName="ISO_CODE_TWO" />
+                <ScalarProperty Name="ISO_CODE_THR" ColumnName="ISO_CODE_THR" />
+                <ScalarProperty Name="AREA_CHI_NAME" ColumnName="AREA_CHI_NAME" />
+                <ScalarProperty Name="AREA_CHI_SHORT_NAME" ColumnName="AREA_CHI_SHORT_NAME" />
+                <ScalarProperty Name="AREA_ENG_NAME" ColumnName="AREA_ENG_NAME" />
+                <ScalarProperty Name="AREA_ENG_SHORT_NAME" ColumnName="AREA_ENG_SHORT_NAME" />
+                <ScalarProperty Name="TIME_DIFF" ColumnName="TIME_DIFF" />
+                <ScalarProperty Name="POST_CODE" ColumnName="POST_CODE" />
+                <ScalarProperty Name="AREA_CODE" ColumnName="AREA_CODE" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="IS_VALID" ColumnName="IS_VALID" />
+                <ScalarProperty Name="DIS_DATE" ColumnName="DIS_DATE" />
+                <ScalarProperty Name="SUB_UNI_CODE" ColumnName="SUB_UNI_CODE" />
+                <ScalarProperty Name="AREA_UNI_CODE1" ColumnName="AREA_UNI_CODE1" />
+                <ScalarProperty Name="AREA_NAME1" ColumnName="AREA_NAME1" />
+                <ScalarProperty Name="AREA_UNI_CODE2" ColumnName="AREA_UNI_CODE2" />
+                <ScalarProperty Name="AREA_NAME2" ColumnName="AREA_NAME2" />
+                <ScalarProperty Name="AREA_UNI_CODE3" ColumnName="AREA_UNI_CODE3" />
+                <ScalarProperty Name="AREA_NAME3" ColumnName="AREA_NAME3" />
+                <ScalarProperty Name="AREA_UNI_CODE4" ColumnName="AREA_UNI_CODE4" />
+                <ScalarProperty Name="AREA_NAME4" ColumnName="AREA_NAME4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUB_CURY_TYPE">
+            <EntityTypeMapping TypeName="Model.PUB_CURY_TYPE">
+              <MappingFragment StoreEntitySet="PUB_CURY_TYPE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="CURY_TYPE_PAR" ColumnName="CURY_TYPE_PAR" />
+                <ScalarProperty Name="CURY_CHI_NAME" ColumnName="CURY_CHI_NAME" />
+                <ScalarProperty Name="CURY_ENG_NAME" ColumnName="CURY_ENG_NAME" />
+                <ScalarProperty Name="CURY_OLD_SIGN" ColumnName="CURY_OLD_SIGN" />
+                <ScalarProperty Name="CURY_STAN_SIGN" ColumnName="CURY_STAN_SIGN" />
+                <ScalarProperty Name="CURY_DES" ColumnName="CURY_DES" />
+                <ScalarProperty Name="AREA_UNI_CODE" ColumnName="AREA_UNI_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUB_ORG_INFO">
+            <EntityTypeMapping TypeName="Model.PUB_ORG_INFO">
+              <MappingFragment StoreEntitySet="PUB_ORG_INFO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="ORG_UNI_CODE" ColumnName="ORG_UNI_CODE" />
+                <ScalarProperty Name="ORG_CHI_NAME" ColumnName="ORG_CHI_NAME" />
+                <ScalarProperty Name="CHI_SHORT_NAME" ColumnName="CHI_SHORT_NAME" />
+                <ScalarProperty Name="ORG_ENG_NAME" ColumnName="ORG_ENG_NAME" />
+                <ScalarProperty Name="ENG_SHORT_NAME" ColumnName="ENG_SHORT_NAME" />
+                <ScalarProperty Name="CHI_SPE_SHORT_NAME" ColumnName="CHI_SPE_SHORT_NAME" />
+                <ScalarProperty Name="REG_CAP" ColumnName="REG_CAP" />
+                <ScalarProperty Name="CURY_TYPE_PAR" ColumnName="CURY_TYPE_PAR" />
+                <ScalarProperty Name="REG_ADDR" ColumnName="REG_ADDR" />
+                <ScalarProperty Name="AREA_UNI_CODE" ColumnName="AREA_UNI_CODE" />
+                <ScalarProperty Name="OFFI_ADDR" ColumnName="OFFI_ADDR" />
+                <ScalarProperty Name="POST_CODE" ColumnName="POST_CODE" />
+                <ScalarProperty Name="COM_WEB" ColumnName="COM_WEB" />
+                <ScalarProperty Name="LEG_PER" ColumnName="LEG_PER" />
+                <ScalarProperty Name="GEN_MAN" ColumnName="GEN_MAN" />
+                <ScalarProperty Name="ORG_CON_PER" ColumnName="ORG_CON_PER" />
+                <ScalarProperty Name="ORG_TEL" ColumnName="ORG_TEL" />
+                <ScalarProperty Name="ORG_FAX" ColumnName="ORG_FAX" />
+                <ScalarProperty Name="ORG_MAIL_ADDR" ColumnName="ORG_MAIL_ADDR" />
+                <ScalarProperty Name="ORG_EST_DATE" ColumnName="ORG_EST_DATE" />
+                <ScalarProperty Name="CUS_CON_TEL" ColumnName="CUS_CON_TEL" />
+                <ScalarProperty Name="ORG_STA_PAR" ColumnName="ORG_STA_PAR" />
+                <ScalarProperty Name="IC_REG_CODE" ColumnName="IC_REG_CODE" />
+                <ScalarProperty Name="NAT_TAX_REG_CODE" ColumnName="NAT_TAX_REG_CODE" />
+                <ScalarProperty Name="LOC_TAX_REG_CODE" ColumnName="LOC_TAX_REG_CODE" />
+                <ScalarProperty Name="ORG_CLA_BIG_PAR" ColumnName="ORG_CLA_BIG_PAR" />
+                <ScalarProperty Name="ORG_CLA_MID_PAR" ColumnName="ORG_CLA_MID_PAR" />
+                <ScalarProperty Name="ORG_CLA_SMA_PAR" ColumnName="ORG_CLA_SMA_PAR" />
+                <ScalarProperty Name="ORG_ORGA_FORM_PAR" ColumnName="ORG_ORGA_FORM_PAR" />
+                <ScalarProperty Name="PARE_COM_CODE" ColumnName="PARE_COM_CODE" />
+                <ScalarProperty Name="TOP_ORG_CODE" ColumnName="TOP_ORG_CODE" />
+                <ScalarProperty Name="HIGH_LEVEL_ORG_CODE" ColumnName="HIGH_LEVEL_ORG_CODE" />
+                <ScalarProperty Name="HIE_CODE" ColumnName="HIE_CODE" />
+                <ScalarProperty Name="ORG_ABBR" ColumnName="ORG_ABBR" />
+                <ScalarProperty Name="ORG_MAIN_BUSI" ColumnName="ORG_MAIN_BUSI" />
+                <ScalarProperty Name="ORG_SID_BUSI" ColumnName="ORG_SID_BUSI" />
+                <ScalarProperty Name="DIS_DATE" ColumnName="DIS_DATE" />
+                <ScalarProperty Name="DIS_REAS" ColumnName="DIS_REAS" />
+                <ScalarProperty Name="ORG_LIST_PAR" ColumnName="ORG_LIST_PAR" />
+                <ScalarProperty Name="IF_ISS_BOND" ColumnName="IF_ISS_BOND" />
+                <ScalarProperty Name="LIST_MKT" ColumnName="LIST_MKT" />
+                <ScalarProperty Name="FILE_PATH" ColumnName="FILE_PATH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUB_PAR">
+            <EntityTypeMapping TypeName="Model.PUB_PAR">
+              <MappingFragment StoreEntitySet="PUB_PAR">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="PAR_SYS_CODE" ColumnName="PAR_SYS_CODE" />
+                <ScalarProperty Name="PAR_SYS_NAME" ColumnName="PAR_SYS_NAME" />
+                <ScalarProperty Name="PAR_CODE" ColumnName="PAR_CODE" />
+                <ScalarProperty Name="PAR_NAME" ColumnName="PAR_NAME" />
+                <ScalarProperty Name="PAR_ENG_NAME" ColumnName="PAR_ENG_NAME" />
+                <ScalarProperty Name="PAR_UNIT" ColumnName="PAR_UNIT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RATE_ORG_INFO_F">
+            <EntityTypeMapping TypeName="Model.RATE_ORG_INFO_F">
+              <MappingFragment StoreEntitySet="RATE_ORG_INFO_F">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="COM_UNI_CODE" ColumnName="COM_UNI_CODE" />
+                <ScalarProperty Name="COM_CHI_NAME" ColumnName="COM_CHI_NAME" />
+                <ScalarProperty Name="COM_CHI_SHORT_NAME" ColumnName="COM_CHI_SHORT_NAME" />
+                <ScalarProperty Name="COM_SPE_SHORT_NAME" ColumnName="COM_SPE_SHORT_NAME" />
+                <ScalarProperty Name="COM_ENG_NAME" ColumnName="COM_ENG_NAME" />
+                <ScalarProperty Name="COM_ENG_SHORT_NAME" ColumnName="COM_ENG_SHORT_NAME" />
+                <ScalarProperty Name="TYPE_BIG_PAR" ColumnName="TYPE_BIG_PAR" />
+                <ScalarProperty Name="COM_ORGA_FORM_PAR" ColumnName="COM_ORGA_FORM_PAR" />
+                <ScalarProperty Name="PARE_COM_CODE" ColumnName="PARE_COM_CODE" />
+                <ScalarProperty Name="COM_STP" ColumnName="COM_STP" />
+                <ScalarProperty Name="STP_TEL" ColumnName="STP_TEL" />
+                <ScalarProperty Name="STP_TAX" ColumnName="STP_TAX" />
+                <ScalarProperty Name="STP_CON_ADDR" ColumnName="STP_CON_ADDR" />
+                <ScalarProperty Name="STP_MAIL" ColumnName="STP_MAIL" />
+                <ScalarProperty Name="SEC_REPR_NAME" ColumnName="SEC_REPR_NAME" />
+                <ScalarProperty Name="SEC_REPR_TEL" ColumnName="SEC_REPR_TEL" />
+                <ScalarProperty Name="SEC_REPR_TAX" ColumnName="SEC_REPR_TAX" />
+                <ScalarProperty Name="SEC_REPR_CON_ADDR" ColumnName="SEC_REPR_CON_ADDR" />
+                <ScalarProperty Name="SEC_REPR_MAIL" ColumnName="SEC_REPR_MAIL" />
+                <ScalarProperty Name="INFO_DISC_PER" ColumnName="INFO_DISC_PER" />
+                <ScalarProperty Name="INFO_DISC_PAP" ColumnName="INFO_DISC_PAP" />
+                <ScalarProperty Name="INFO_DISC_WEB" ColumnName="INFO_DISC_WEB" />
+                <ScalarProperty Name="REG_ADDR" ColumnName="REG_ADDR" />
+                <ScalarProperty Name="AREA_UNI_CODE" ColumnName="AREA_UNI_CODE" />
+                <ScalarProperty Name="REG_ADDR_POST" ColumnName="REG_ADDR_POST" />
+                <ScalarProperty Name="OFFI_ADDR" ColumnName="OFFI_ADDR" />
+                <ScalarProperty Name="OFFI_ADDR_POST" ColumnName="OFFI_ADDR_POST" />
+                <ScalarProperty Name="COM_ADDR" ColumnName="COM_ADDR" />
+                <ScalarProperty Name="COM_ADDR_POST" ColumnName="COM_ADDR_POST" />
+                <ScalarProperty Name="COM_WEB" ColumnName="COM_WEB" />
+                <ScalarProperty Name="COM_CON_PER" ColumnName="COM_CON_PER" />
+                <ScalarProperty Name="COM_TEL" ColumnName="COM_TEL" />
+                <ScalarProperty Name="CUS_CON_TEL" ColumnName="CUS_CON_TEL" />
+                <ScalarProperty Name="COM_FAX" ColumnName="COM_FAX" />
+                <ScalarProperty Name="MAIL_ADDR" ColumnName="MAIL_ADDR" />
+                <ScalarProperty Name="REG_CAP" ColumnName="REG_CAP" />
+                <ScalarProperty Name="CURY_TYPE_PAR" ColumnName="CURY_TYPE_PAR" />
+                <ScalarProperty Name="LEG_PER" ColumnName="LEG_PER" />
+                <ScalarProperty Name="GEN_MAN" ColumnName="GEN_MAN" />
+                <ScalarProperty Name="EST_DATE" ColumnName="EST_DATE" />
+                <ScalarProperty Name="IC_REG_CODE" ColumnName="IC_REG_CODE" />
+                <ScalarProperty Name="NAT_TAX_REG_CODE" ColumnName="NAT_TAX_REG_CODE" />
+                <ScalarProperty Name="LOC_TAX_REG_CODE" ColumnName="LOC_TAX_REG_CODE" />
+                <ScalarProperty Name="TER_ACC_OFFI_CODE" ColumnName="TER_ACC_OFFI_CODE" />
+                <ScalarProperty Name="TER_ACC" ColumnName="TER_ACC" />
+                <ScalarProperty Name="LAWER_OFFI_CODE" ColumnName="LAWER_OFFI_CODE" />
+                <ScalarProperty Name="COM_LAWER" ColumnName="COM_LAWER" />
+                <ScalarProperty Name="CAP_ESTI_ORG_CODE" ColumnName="CAP_ESTI_ORG_CODE" />
+                <ScalarProperty Name="ESTI_STAFF" ColumnName="ESTI_STAFF" />
+                <ScalarProperty Name="MAIN_BUS" ColumnName="MAIN_BUS" />
+                <ScalarProperty Name="SID_BUS" ColumnName="SID_BUS" />
+                <ScalarProperty Name="COM_PRO" ColumnName="COM_PRO" />
+                <ScalarProperty Name="COM_HIS" ColumnName="COM_HIS" />
+                <ScalarProperty Name="STAFF_SUM" ColumnName="STAFF_SUM" />
+                <ScalarProperty Name="STA_PAR" ColumnName="STA_PAR" />
+                <ScalarProperty Name="DIS_DATE" ColumnName="DIS_DATE" />
+                <ScalarProperty Name="DIS_REAS" ColumnName="DIS_REAS" />
+                <ScalarProperty Name="IS_LIST_PAR" ColumnName="IS_LIST_PAR" />
+                <ScalarProperty Name="TYPE_MID_PAR" ColumnName="TYPE_MID_PAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RATE_REP">
+            <EntityTypeMapping TypeName="Model.RATE_REP">
+              <MappingFragment StoreEntitySet="RATE_REP">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="RATE_ID" ColumnName="RATE_ID" />
+                <ScalarProperty Name="RATE_WRIT_DATE" ColumnName="RATE_WRIT_DATE" />
+                <ScalarProperty Name="RATE_PUBL_DATE" ColumnName="RATE_PUBL_DATE" />
+                <ScalarProperty Name="ORG_UNI_CODE" ColumnName="ORG_UNI_CODE" />
+                <ScalarProperty Name="RESER_NAME" ColumnName="RESER_NAME" />
+                <ScalarProperty Name="RATE_TITLE" ColumnName="RATE_TITLE" />
+                <ScalarProperty Name="RATE_TYPE_PAR" ColumnName="RATE_TYPE_PAR" />
+                <ScalarProperty Name="RATE_PAG" ColumnName="RATE_PAG" />
+                <ScalarProperty Name="RATE_FILE_SIZE" ColumnName="RATE_FILE_SIZE" />
+                <ScalarProperty Name="RATE_FILE_TYPE_PAR" ColumnName="RATE_FILE_TYPE_PAR" />
+                <ScalarProperty Name="RATE_FILE_PATH" ColumnName="RATE_FILE_PATH" />
+                <ScalarProperty Name="ATT_PATH_MD5" ColumnName="ATT_PATH_MD5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FUNDAMENTALFIELDMAPPING">
+            <EntityTypeMapping TypeName="Model.FUNDAMENTALFIELDMAPPING">
+              <MappingFragment StoreEntitySet="FUNDAMENTALFIELDMAPPING">
+                <ScalarProperty Name="INDENT_LEVEL" ColumnName="INDENT_LEVEL" />
+                <ScalarProperty Name="IS_PARENT" ColumnName="IS_PARENT" />
+                <ScalarProperty Name="PARENT_ID" ColumnName="PARENT_ID" />
+                <ScalarProperty Name="FIELD_INDEX" ColumnName="FIELD_INDEX" />
+                <ScalarProperty Name="CHINESE_NAME" ColumnName="CHINESE_NAME" />
+                <ScalarProperty Name="ENGLISH_NAME" ColumnName="ENGLISH_NAME" />
+                <ScalarProperty Name="MAPPING_NAME" ColumnName="MAPPING_NAME" />
+                <ScalarProperty Name="FUNDAMENATAL_TYPE" ColumnName="FUNDAMENATAL_TYPE" />
+                <ScalarProperty Name="FIELD_NAME" ColumnName="FIELD_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOND_BASIC_INFO">
+            <EntityTypeMapping TypeName="Model.BOND_BASIC_INFO">
+              <MappingFragment StoreEntitySet="BOND_BASIC_INFO">
+                <ScalarProperty Name="CROS_MAR_DES" ColumnName="CROS_MAR_DES" />
+                <ScalarProperty Name="PLEDGE_NAME" ColumnName="PLEDGE_NAME" />
+                <ScalarProperty Name="PLEDGE_CODE" ColumnName="PLEDGE_CODE" />
+                <ScalarProperty Name="IS_CROS_MAR_PAR" ColumnName="IS_CROS_MAR_PAR" />
+                <ScalarProperty Name="IS_LIST_PAR" ColumnName="IS_LIST_PAR" />
+                <ScalarProperty Name="ISS_STA_PAR" ColumnName="ISS_STA_PAR" />
+                <ScalarProperty Name="BOND_FORM_PAR" ColumnName="BOND_FORM_PAR" />
+                <ScalarProperty Name="ASE_LEVEL_PAR" ColumnName="ASE_LEVEL_PAR" />
+                <ScalarProperty Name="LIST_STA_PAR" ColumnName="LIST_STA_PAR" />
+                <ScalarProperty Name="LIST_SECT_PAR" ColumnName="LIST_SECT_PAR" />
+                <ScalarProperty Name="SEC_MAR_PAR" ColumnName="SEC_MAR_PAR" />
+                <ScalarProperty Name="LIST_DATE" ColumnName="LIST_DATE" />
+                <ScalarProperty Name="IS_TYPE_PAR" ColumnName="IS_TYPE_PAR" />
+                <ScalarProperty Name="BOND_TYPE_PAR" ColumnName="BOND_TYPE_PAR" />
+                <ScalarProperty Name="MATU_UNIT_PAR" ColumnName="MATU_UNIT_PAR" />
+                <ScalarProperty Name="BOND_MATU" ColumnName="BOND_MATU" />
+                <ScalarProperty Name="ENG_SHORT_NAME" ColumnName="ENG_SHORT_NAME" />
+                <ScalarProperty Name="ENG_FULL_NAME" ColumnName="ENG_FULL_NAME" />
+                <ScalarProperty Name="SPE_SHORT_NAME" ColumnName="SPE_SHORT_NAME" />
+                <ScalarProperty Name="BOND_SHORT_NAME" ColumnName="BOND_SHORT_NAME" />
+                <ScalarProperty Name="BOND_CODE" ColumnName="BOND_CODE" />
+                <ScalarProperty Name="BOND_FULL_NAME" ColumnName="BOND_FULL_NAME" />
+                <ScalarProperty Name="ISIN_CODE" ColumnName="ISIN_CODE" />
+                <ScalarProperty Name="BOND_UNI_CODE" ColumnName="BOND_UNI_CODE" />
+                <ScalarProperty Name="BOND_ID" ColumnName="BOND_ID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_BOND_ABS">
+            <EntityTypeMapping TypeName="Model.V_BOND_ABS">
+              <MappingFragment StoreEntitySet="V_BOND_ABS">
+                <ScalarProperty Name="AUCTIONCODE" ColumnName="AUCTIONCODE" />
+                <ScalarProperty Name="AUCTIONMETHOD" ColumnName="AUCTIONMETHOD" />
+                <ScalarProperty Name="AUCTIONTYPE" ColumnName="AUCTIONTYPE" />
+                <ScalarProperty Name="ISS_DATE" ColumnName="ISS_DATE" />
+                <ScalarProperty Name="RATINGAGENCYEN" ColumnName="RATINGAGENCYEN" />
+                <ScalarProperty Name="RATINGAGENCYCN" ColumnName="RATINGAGENCYCN" />
+                <ScalarProperty Name="RATING" ColumnName="RATING" />
+                <ScalarProperty Name="BONDRATINGAGENCYEN" ColumnName="BONDRATINGAGENCYEN" />
+                <ScalarProperty Name="BONDRATINGAGENCYCN" ColumnName="BONDRATINGAGENCYCN" />
+                <ScalarProperty Name="BOND_CRED_LEVEL" ColumnName="BOND_CRED_LEVEL" />
+                <ScalarProperty Name="MATU_PAY_DATE" ColumnName="MATU_PAY_DATE" />
+                <ScalarProperty Name="FIR_PAY_DATE" ColumnName="FIR_PAY_DATE" />
+                <ScalarProperty Name="INTE_PAY_FREQ" ColumnName="INTE_PAY_FREQ" />
+                <ScalarProperty Name="BAS_SPR" ColumnName="BAS_SPR" />
+                <ScalarProperty Name="ISS_COUP_RATE" ColumnName="ISS_COUP_RATE" />
+                <ScalarProperty Name="BASERATENAME" ColumnName="BASERATENAME" />
+                <ScalarProperty Name="BASE_RATE_PAR" ColumnName="BASE_RATE_PAR" />
+                <ScalarProperty Name="RATETYPENAME" ColumnName="RATETYPENAME" />
+                <ScalarProperty Name="RATE_TYPE_PAR" ColumnName="RATE_TYPE_PAR" />
+                <ScalarProperty Name="ACTU_END_DATE" ColumnName="ACTU_END_DATE" />
+                <ScalarProperty Name="INTE_START_DATE" ColumnName="INTE_START_DATE" />
+                <ScalarProperty Name="GUAOR_NAME" ColumnName="GUAOR_NAME" />
+                <ScalarProperty Name="UDL_ASE" ColumnName="UDL_ASE" />
+                <ScalarProperty Name="ADVERTISINGAGENCY" ColumnName="ADVERTISINGAGENCY" />
+                <ScalarProperty Name="TRUSTEE" ColumnName="TRUSTEE" />
+                <ScalarProperty Name="LEGALADVISOR" ColumnName="LEGALADVISOR" />
+                <ScalarProperty Name="AUDITINGOFFICES" ColumnName="AUDITINGOFFICES" />
+                <ScalarProperty Name="REGULATOR" ColumnName="REGULATOR" />
+                <ScalarProperty Name="FUNDINSTITUTION" ColumnName="FUNDINSTITUTION" />
+                <ScalarProperty Name="UNDERWRITER" ColumnName="UNDERWRITER" />
+                <ScalarProperty Name="VICEUNDERWRITER" ColumnName="VICEUNDERWRITER" />
+                <ScalarProperty Name="LEADUNDERWRITER" ColumnName="LEADUNDERWRITER" />
+                <ScalarProperty Name="SPONSOR" ColumnName="SPONSOR" />
+                <ScalarProperty Name="ISSUEREN" ColumnName="ISSUEREN" />
+                <ScalarProperty Name="ISSUERCN" ColumnName="ISSUERCN" />
+                <ScalarProperty Name="ISSUER_ORG_UNI_CODE" ColumnName="ISSUER_ORG_UNI_CODE" />
+                <ScalarProperty Name="TOTAL_SIZE" ColumnName="TOTAL_SIZE" />
+                <ScalarProperty Name="IS_GUAR_PAR" ColumnName="IS_GUAR_PAR" />
+                <ScalarProperty Name="IS_RESA_PAR" ColumnName="IS_RESA_PAR" />
+                <ScalarProperty Name="IS_REDEM_PAR" ColumnName="IS_REDEM_PAR" />
+                <ScalarProperty Name="ISS_PRI" ColumnName="ISS_PRI" />
+                <ScalarProperty Name="ACTU_ISS_AMUT" ColumnName="ACTU_ISS_AMUT" />
+                <ScalarProperty Name="ISS_END_DATE" ColumnName="ISS_END_DATE" />
+                <ScalarProperty Name="ISS_START_DATE" ColumnName="ISS_START_DATE" />
+                <ScalarProperty Name="ISS_DECL_DATE" ColumnName="ISS_DECL_DATE" />
+                <ScalarProperty Name="ISSUEMARKET" ColumnName="ISSUEMARKET" />
+                <ScalarProperty Name="SEC_MAR_PAR" ColumnName="SEC_MAR_PAR" />
+                <ScalarProperty Name="BONDCLASSEN" ColumnName="BONDCLASSEN" />
+                <ScalarProperty Name="BONDCLASSCN" ColumnName="BONDCLASSCN" />
+                <ScalarProperty Name="BOND_TYPE_PAR" ColumnName="BOND_TYPE_PAR" />
+                <ScalarProperty Name="LIST_DATE" ColumnName="LIST_DATE" />
+                <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+                <ScalarProperty Name="MATU_UNIT_PAR" ColumnName="MATU_UNIT_PAR" />
+                <ScalarProperty Name="BOND_MATU" ColumnName="BOND_MATU" />
+                <ScalarProperty Name="ISIN_CODE" ColumnName="ISIN_CODE" />
+                <ScalarProperty Name="ENG_SHORT_NAME" ColumnName="ENG_SHORT_NAME" />
+                <ScalarProperty Name="BOND_SHORT_NAME" ColumnName="BOND_SHORT_NAME" />
+                <ScalarProperty Name="BOND_CODE" ColumnName="BOND_CODE" />
+                <ScalarProperty Name="ENG_FULL_NAME" ColumnName="ENG_FULL_NAME" />
+                <ScalarProperty Name="BOND_FULL_NAME" ColumnName="BOND_FULL_NAME" />
+                <ScalarProperty Name="BOND_UNI_CODE" ColumnName="BOND_UNI_CODE" />
+                <ScalarProperty Name="BOND_ID" ColumnName="BOND_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOND_ISSER_INFO">
+            <EntityTypeMapping TypeName="Model.BOND_ISSER_INFO">
+              <MappingFragment StoreEntitySet="BOND_ISSER_INFO">
+                <ScalarProperty Name="IS_NEW_ISSER" ColumnName="IS_NEW_ISSER" />
+                <ScalarProperty Name="ISSER_CHAN_DATE" ColumnName="ISSER_CHAN_DATE" />
+                <ScalarProperty Name="ISSER_TYPE_PAR" ColumnName="ISSER_TYPE_PAR" />
+                <ScalarProperty Name="ORG_UNI_CODE" ColumnName="ORG_UNI_CODE" />
+                <ScalarProperty Name="BOND_UNI_CODE" ColumnName="BOND_UNI_CODE" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOND_FIN_BALA_TABB">
+            <EntityTypeMapping TypeName="Model.BOND_FIN_BALA_TABB">
+              <MappingFragment StoreEntitySet="BOND_FIN_BALA_TABB">
+                <ScalarProperty Name="BS_120" ColumnName="BS_120" />
+                <ScalarProperty Name="BS_119" ColumnName="BS_119" />
+                <ScalarProperty Name="BS_118" ColumnName="BS_118" />
+                <ScalarProperty Name="BS_117" ColumnName="BS_117" />
+                <ScalarProperty Name="BS_116" ColumnName="BS_116" />
+                <ScalarProperty Name="BS_115" ColumnName="BS_115" />
+                <ScalarProperty Name="BS_114" ColumnName="BS_114" />
+                <ScalarProperty Name="BS_113" ColumnName="BS_113" />
+                <ScalarProperty Name="BS_112" ColumnName="BS_112" />
+                <ScalarProperty Name="BS_111" ColumnName="BS_111" />
+                <ScalarProperty Name="BS_110" ColumnName="BS_110" />
+                <ScalarProperty Name="BS_109" ColumnName="BS_109" />
+                <ScalarProperty Name="BS_108" ColumnName="BS_108" />
+                <ScalarProperty Name="BS_107" ColumnName="BS_107" />
+                <ScalarProperty Name="BS_106" ColumnName="BS_106" />
+                <ScalarProperty Name="BS_105" ColumnName="BS_105" />
+                <ScalarProperty Name="BS_104" ColumnName="BS_104" />
+                <ScalarProperty Name="BS_103" ColumnName="BS_103" />
+                <ScalarProperty Name="BS_102" ColumnName="BS_102" />
+                <ScalarProperty Name="BS_101" ColumnName="BS_101" />
+                <ScalarProperty Name="BS_100" ColumnName="BS_100" />
+                <ScalarProperty Name="BS_99" ColumnName="BS_99" />
+                <ScalarProperty Name="BS_98" ColumnName="BS_98" />
+                <ScalarProperty Name="BS_97" ColumnName="BS_97" />
+                <ScalarProperty Name="BS_96" ColumnName="BS_96" />
+                <ScalarProperty Name="BS_95" ColumnName="BS_95" />
+                <ScalarProperty Name="BS_94" ColumnName="BS_94" />
+                <ScalarProperty Name="BS_93" ColumnName="BS_93" />
+                <ScalarProperty Name="BS_92" ColumnName="BS_92" />
+                <ScalarProperty Name="BS_91" ColumnName="BS_91" />
+                <ScalarProperty Name="BS_90" ColumnName="BS_90" />
+                <ScalarProperty Name="BS_89" ColumnName="BS_89" />
+                <ScalarProperty Name="BS_88" ColumnName="BS_88" />
+                <ScalarProperty Name="BS_87" ColumnName="BS_87" />
+                <ScalarProperty Name="BS_86" ColumnName="BS_86" />
+                <ScalarProperty Name="BS_85" ColumnName="BS_85" />
+                <ScalarProperty Name="BS_84" ColumnName="BS_84" />
+                <ScalarProperty Name="BS_83" ColumnName="BS_83" />
+                <ScalarProperty Name="BS_82" ColumnName="BS_82" />
+                <ScalarProperty Name="BS_81" ColumnName="BS_81" />
+                <ScalarProperty Name="BS_80" ColumnName="BS_80" />
+                <ScalarProperty Name="BS_79" ColumnName="BS_79" />
+                <ScalarProperty Name="BS_78" ColumnName="BS_78" />
+                <ScalarProperty Name="BS_77" ColumnName="BS_77" />
+                <ScalarProperty Name="BS_76" ColumnName="BS_76" />
+                <ScalarProperty Name="BS_75" ColumnName="BS_75" />
+                <ScalarProperty Name="BS_74" ColumnName="BS_74" />
+                <ScalarProperty Name="BS_73" ColumnName="BS_73" />
+                <ScalarProperty Name="BS_72" ColumnName="BS_72" />
+                <ScalarProperty Name="BS_71" ColumnName="BS_71" />
+                <ScalarProperty Name="BS_70" ColumnName="BS_70" />
+                <ScalarProperty Name="BS_69" ColumnName="BS_69" />
+                <ScalarProperty Name="BS_68" ColumnName="BS_68" />
+                <ScalarProperty Name="BS_67" ColumnName="BS_67" />
+                <ScalarProperty Name="BS_66" ColumnName="BS_66" />
+                <ScalarProperty Name="BS_65" ColumnName="BS_65" />
+                <ScalarProperty Name="BS_64" ColumnName="BS_64" />
+                <ScalarProperty Name="BS_63" ColumnName="BS_63" />
+                <ScalarProperty Name="BS_62" ColumnName="BS_62" />
+                <ScalarProperty Name="BS_61" ColumnName="BS_61" />
+                <ScalarProperty Name="BS_60" ColumnName="BS_60" />
+                <ScalarProperty Name="BS_59" ColumnName="BS_59" />
+                <ScalarProperty Name="BS_58" ColumnName="BS_58" />
+                <ScalarProperty Name="BS_5701" ColumnName="BS_5701" />
+                <ScalarProperty Name="BS_57" ColumnName="BS_57" />
+                <ScalarProperty Name="BS_56" ColumnName="BS_56" />
+                <ScalarProperty Name="BS_55" ColumnName="BS_55" />
+                <ScalarProperty Name="BS_54" ColumnName="BS_54" />
+                <ScalarProperty Name="BS_53" ColumnName="BS_53" />
+                <ScalarProperty Name="BS_52" ColumnName="BS_52" />
+                <ScalarProperty Name="BS_51" ColumnName="BS_51" />
+                <ScalarProperty Name="BS_50" ColumnName="BS_50" />
+                <ScalarProperty Name="BS_49" ColumnName="BS_49" />
+                <ScalarProperty Name="BS_48" ColumnName="BS_48" />
+                <ScalarProperty Name="BS_47" ColumnName="BS_47" />
+                <ScalarProperty Name="BS_46" ColumnName="BS_46" />
+                <ScalarProperty Name="BS_45" ColumnName="BS_45" />
+                <ScalarProperty Name="BS_44" ColumnName="BS_44" />
+                <ScalarProperty Name="BS_43" ColumnName="BS_43" />
+                <ScalarProperty Name="BS_42" ColumnName="BS_42" />
+                <ScalarProperty Name="BS_41" ColumnName="BS_41" />
+                <ScalarProperty Name="BS_4001" ColumnName="BS_4001" />
+                <ScalarProperty Name="BS_40" ColumnName="BS_40" />
+                <ScalarProperty Name="BS_39" ColumnName="BS_39" />
+                <ScalarProperty Name="BS_38" ColumnName="BS_38" />
+                <ScalarProperty Name="BS_37" ColumnName="BS_37" />
+                <ScalarProperty Name="BS_36" ColumnName="BS_36" />
+                <ScalarProperty Name="BS_35" ColumnName="BS_35" />
+                <ScalarProperty Name="BS_34" ColumnName="BS_34" />
+                <ScalarProperty Name="BS_33" ColumnName="BS_33" />
+                <ScalarProperty Name="BS_32" ColumnName="BS_32" />
+                <ScalarProperty Name="BS_3101" ColumnName="BS_3101" />
+                <ScalarProperty Name="BS_31" ColumnName="BS_31" />
+                <ScalarProperty Name="BS_30" ColumnName="BS_30" />
+                <ScalarProperty Name="BS_29" ColumnName="BS_29" />
+                <ScalarProperty Name="BS_28" ColumnName="BS_28" />
+                <ScalarProperty Name="BS_27" ColumnName="BS_27" />
+                <ScalarProperty Name="BS_26" ColumnName="BS_26" />
+                <ScalarProperty Name="BS_25" ColumnName="BS_25" />
+                <ScalarProperty Name="BS_24" ColumnName="BS_24" />
+                <ScalarProperty Name="BS_23" ColumnName="BS_23" />
+                <ScalarProperty Name="BS_22" ColumnName="BS_22" />
+                <ScalarProperty Name="BS_21" ColumnName="BS_21" />
+                <ScalarProperty Name="BS_20" ColumnName="BS_20" />
+                <ScalarProperty Name="BS_19" ColumnName="BS_19" />
+                <ScalarProperty Name="BS_18" ColumnName="BS_18" />
+                <ScalarProperty Name="BS_17" ColumnName="BS_17" />
+                <ScalarProperty Name="BS_16" ColumnName="BS_16" />
+                <ScalarProperty Name="BS_15" ColumnName="BS_15" />
+                <ScalarProperty Name="BS_14" ColumnName="BS_14" />
+                <ScalarProperty Name="BS_13" ColumnName="BS_13" />
+                <ScalarProperty Name="BS_12" ColumnName="BS_12" />
+                <ScalarProperty Name="BS_11" ColumnName="BS_11" />
+                <ScalarProperty Name="BS_10" ColumnName="BS_10" />
+                <ScalarProperty Name="BS_0901" ColumnName="BS_0901" />
+                <ScalarProperty Name="BS_09" ColumnName="BS_09" />
+                <ScalarProperty Name="BS_08" ColumnName="BS_08" />
+                <ScalarProperty Name="BS_07" ColumnName="BS_07" />
+                <ScalarProperty Name="BS_06" ColumnName="BS_06" />
+                <ScalarProperty Name="BS_05" ColumnName="BS_05" />
+                <ScalarProperty Name="BS_04" ColumnName="BS_04" />
+                <ScalarProperty Name="BS_03" ColumnName="BS_03" />
+                <ScalarProperty Name="BS_02" ColumnName="BS_02" />
+                <ScalarProperty Name="BS_0101" ColumnName="BS_0101" />
+                <ScalarProperty Name="BS_01" ColumnName="BS_01" />
+                <ScalarProperty Name="SHEET_ATTR_PAR" ColumnName="SHEET_ATTR_PAR" />
+                <ScalarProperty Name="SHEET_MARK_PAR" ColumnName="SHEET_MARK_PAR" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="COM_UNI_CODE" ColumnName="COM_UNI_CODE" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOND_FIN_CASH_TACB">
+            <EntityTypeMapping TypeName="Model.BOND_FIN_CASH_TACB">
+              <MappingFragment StoreEntitySet="BOND_FIN_CASH_TACB">
+                <ScalarProperty Name="CF_86" ColumnName="CF_86" />
+                <ScalarProperty Name="CF_85" ColumnName="CF_85" />
+                <ScalarProperty Name="CF_84" ColumnName="CF_84" />
+                <ScalarProperty Name="CF_83" ColumnName="CF_83" />
+                <ScalarProperty Name="CF_82" ColumnName="CF_82" />
+                <ScalarProperty Name="CF_81" ColumnName="CF_81" />
+                <ScalarProperty Name="CF_80" ColumnName="CF_80" />
+                <ScalarProperty Name="CF_79" ColumnName="CF_79" />
+                <ScalarProperty Name="CF_78" ColumnName="CF_78" />
+                <ScalarProperty Name="CF_77" ColumnName="CF_77" />
+                <ScalarProperty Name="CF_76" ColumnName="CF_76" />
+                <ScalarProperty Name="CF_75" ColumnName="CF_75" />
+                <ScalarProperty Name="CF_74" ColumnName="CF_74" />
+                <ScalarProperty Name="CF_73" ColumnName="CF_73" />
+                <ScalarProperty Name="CF_72" ColumnName="CF_72" />
+                <ScalarProperty Name="CF_71" ColumnName="CF_71" />
+                <ScalarProperty Name="CF_70" ColumnName="CF_70" />
+                <ScalarProperty Name="CF_69" ColumnName="CF_69" />
+                <ScalarProperty Name="CF_68" ColumnName="CF_68" />
+                <ScalarProperty Name="CF_67" ColumnName="CF_67" />
+                <ScalarProperty Name="CF_66" ColumnName="CF_66" />
+                <ScalarProperty Name="CF_65" ColumnName="CF_65" />
+                <ScalarProperty Name="CF_64" ColumnName="CF_64" />
+                <ScalarProperty Name="CF_63" ColumnName="CF_63" />
+                <ScalarProperty Name="CF_62" ColumnName="CF_62" />
+                <ScalarProperty Name="CF_61" ColumnName="CF_61" />
+                <ScalarProperty Name="CF_60" ColumnName="CF_60" />
+                <ScalarProperty Name="CF_59" ColumnName="CF_59" />
+                <ScalarProperty Name="CF_58" ColumnName="CF_58" />
+                <ScalarProperty Name="CF_57" ColumnName="CF_57" />
+                <ScalarProperty Name="CF_56" ColumnName="CF_56" />
+                <ScalarProperty Name="CF_55" ColumnName="CF_55" />
+                <ScalarProperty Name="CF_54" ColumnName="CF_54" />
+                <ScalarProperty Name="CF_53" ColumnName="CF_53" />
+                <ScalarProperty Name="CF_52" ColumnName="CF_52" />
+                <ScalarProperty Name="CF_51" ColumnName="CF_51" />
+                <ScalarProperty Name="CF_50" ColumnName="CF_50" />
+                <ScalarProperty Name="CF_4901" ColumnName="CF_4901" />
+                <ScalarProperty Name="CF_49" ColumnName="CF_49" />
+                <ScalarProperty Name="CF_48" ColumnName="CF_48" />
+                <ScalarProperty Name="CF_47" ColumnName="CF_47" />
+                <ScalarProperty Name="CF_46" ColumnName="CF_46" />
+                <ScalarProperty Name="CF_45" ColumnName="CF_45" />
+                <ScalarProperty Name="CF_44" ColumnName="CF_44" />
+                <ScalarProperty Name="CF_43" ColumnName="CF_43" />
+                <ScalarProperty Name="CF_4201" ColumnName="CF_4201" />
+                <ScalarProperty Name="CF_42" ColumnName="CF_42" />
+                <ScalarProperty Name="CF_41" ColumnName="CF_41" />
+                <ScalarProperty Name="CF_40" ColumnName="CF_40" />
+                <ScalarProperty Name="CF_39" ColumnName="CF_39" />
+                <ScalarProperty Name="CF_38" ColumnName="CF_38" />
+                <ScalarProperty Name="CF_37" ColumnName="CF_37" />
+                <ScalarProperty Name="CF_36" ColumnName="CF_36" />
+                <ScalarProperty Name="CF_35" ColumnName="CF_35" />
+                <ScalarProperty Name="CF_34" ColumnName="CF_34" />
+                <ScalarProperty Name="CF_33" ColumnName="CF_33" />
+                <ScalarProperty Name="CF_32" ColumnName="CF_32" />
+                <ScalarProperty Name="CF_31" ColumnName="CF_31" />
+                <ScalarProperty Name="CF_30" ColumnName="CF_30" />
+                <ScalarProperty Name="CF_29" ColumnName="CF_29" />
+                <ScalarProperty Name="CF_28" ColumnName="CF_28" />
+                <ScalarProperty Name="CF_27" ColumnName="CF_27" />
+                <ScalarProperty Name="CF_26" ColumnName="CF_26" />
+                <ScalarProperty Name="CF_25" ColumnName="CF_25" />
+                <ScalarProperty Name="CF_24" ColumnName="CF_24" />
+                <ScalarProperty Name="CF_23" ColumnName="CF_23" />
+                <ScalarProperty Name="CF_22" ColumnName="CF_22" />
+                <ScalarProperty Name="CF_21" ColumnName="CF_21" />
+                <ScalarProperty Name="CF_20" ColumnName="CF_20" />
+                <ScalarProperty Name="CF_19" ColumnName="CF_19" />
+                <ScalarProperty Name="CF_18" ColumnName="CF_18" />
+                <ScalarProperty Name="CF_17" ColumnName="CF_17" />
+                <ScalarProperty Name="CF_16" ColumnName="CF_16" />
+                <ScalarProperty Name="CF_15" ColumnName="CF_15" />
+                <ScalarProperty Name="CF_14" ColumnName="CF_14" />
+                <ScalarProperty Name="CF_13" ColumnName="CF_13" />
+                <ScalarProperty Name="CF_12" ColumnName="CF_12" />
+                <ScalarProperty Name="CF_11" ColumnName="CF_11" />
+                <ScalarProperty Name="CF_10" ColumnName="CF_10" />
+                <ScalarProperty Name="CF_09" ColumnName="CF_09" />
+                <ScalarProperty Name="CF_08" ColumnName="CF_08" />
+                <ScalarProperty Name="CF_07" ColumnName="CF_07" />
+                <ScalarProperty Name="CF_06" ColumnName="CF_06" />
+                <ScalarProperty Name="CF_05" ColumnName="CF_05" />
+                <ScalarProperty Name="CF_04" ColumnName="CF_04" />
+                <ScalarProperty Name="CF_03" ColumnName="CF_03" />
+                <ScalarProperty Name="CF_02" ColumnName="CF_02" />
+                <ScalarProperty Name="CF_01" ColumnName="CF_01" />
+                <ScalarProperty Name="SHEET_ATTR_PAR" ColumnName="SHEET_ATTR_PAR" />
+                <ScalarProperty Name="SHEET_MARK_PAR" ColumnName="SHEET_MARK_PAR" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="COM_UNI_CODE" ColumnName="COM_UNI_CODE" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOND_FIN_PROF_TAPB">
+            <EntityTypeMapping TypeName="Model.BOND_FIN_PROF_TAPB">
+              <MappingFragment StoreEntitySet="BOND_FIN_PROF_TAPB">
+                <ScalarProperty Name="PF_47" ColumnName="PF_47" />
+                <ScalarProperty Name="PF_46" ColumnName="PF_46" />
+                <ScalarProperty Name="PF_45" ColumnName="PF_45" />
+                <ScalarProperty Name="PF_44" ColumnName="PF_44" />
+                <ScalarProperty Name="PF_43" ColumnName="PF_43" />
+                <ScalarProperty Name="PF_42" ColumnName="PF_42" />
+                <ScalarProperty Name="PF_41" ColumnName="PF_41" />
+                <ScalarProperty Name="PF_40" ColumnName="PF_40" />
+                <ScalarProperty Name="PF_39" ColumnName="PF_39" />
+                <ScalarProperty Name="PF_38" ColumnName="PF_38" />
+                <ScalarProperty Name="PF_37" ColumnName="PF_37" />
+                <ScalarProperty Name="PF_36" ColumnName="PF_36" />
+                <ScalarProperty Name="PF_3501" ColumnName="PF_3501" />
+                <ScalarProperty Name="PF_35" ColumnName="PF_35" />
+                <ScalarProperty Name="PF_34" ColumnName="PF_34" />
+                <ScalarProperty Name="PF_33" ColumnName="PF_33" />
+                <ScalarProperty Name="PF_32" ColumnName="PF_32" />
+                <ScalarProperty Name="PF_3101" ColumnName="PF_3101" />
+                <ScalarProperty Name="PF_31" ColumnName="PF_31" />
+                <ScalarProperty Name="PF_30" ColumnName="PF_30" />
+                <ScalarProperty Name="PF_29" ColumnName="PF_29" />
+                <ScalarProperty Name="PF_28" ColumnName="PF_28" />
+                <ScalarProperty Name="PF_27" ColumnName="PF_27" />
+                <ScalarProperty Name="PF_26" ColumnName="PF_26" />
+                <ScalarProperty Name="PF_25" ColumnName="PF_25" />
+                <ScalarProperty Name="PF_24" ColumnName="PF_24" />
+                <ScalarProperty Name="PF_23" ColumnName="PF_23" />
+                <ScalarProperty Name="PF_22" ColumnName="PF_22" />
+                <ScalarProperty Name="PF_21" ColumnName="PF_21" />
+                <ScalarProperty Name="PF_20" ColumnName="PF_20" />
+                <ScalarProperty Name="PF_19" ColumnName="PF_19" />
+                <ScalarProperty Name="PF_18" ColumnName="PF_18" />
+                <ScalarProperty Name="PF_17" ColumnName="PF_17" />
+                <ScalarProperty Name="PF_16" ColumnName="PF_16" />
+                <ScalarProperty Name="PF_15" ColumnName="PF_15" />
+                <ScalarProperty Name="PF_14" ColumnName="PF_14" />
+                <ScalarProperty Name="PF_13" ColumnName="PF_13" />
+                <ScalarProperty Name="PF_12" ColumnName="PF_12" />
+                <ScalarProperty Name="PF_11" ColumnName="PF_11" />
+                <ScalarProperty Name="PF_10" ColumnName="PF_10" />
+                <ScalarProperty Name="PF_09" ColumnName="PF_09" />
+                <ScalarProperty Name="PF_08" ColumnName="PF_08" />
+                <ScalarProperty Name="PF_07" ColumnName="PF_07" />
+                <ScalarProperty Name="PF_0601" ColumnName="PF_0601" />
+                <ScalarProperty Name="PF_06" ColumnName="PF_06" />
+                <ScalarProperty Name="PF_05" ColumnName="PF_05" />
+                <ScalarProperty Name="PF_0405" ColumnName="PF_0405" />
+                <ScalarProperty Name="PF_0404" ColumnName="PF_0404" />
+                <ScalarProperty Name="PF_0403" ColumnName="PF_0403" />
+                <ScalarProperty Name="PF_0402" ColumnName="PF_0402" />
+                <ScalarProperty Name="PF_0401" ColumnName="PF_0401" />
+                <ScalarProperty Name="PF_04" ColumnName="PF_04" />
+                <ScalarProperty Name="PF_0302" ColumnName="PF_0302" />
+                <ScalarProperty Name="PF_0301" ColumnName="PF_0301" />
+                <ScalarProperty Name="PF_03" ColumnName="PF_03" />
+                <ScalarProperty Name="PF_02" ColumnName="PF_02" />
+                <ScalarProperty Name="PF_01" ColumnName="PF_01" />
+                <ScalarProperty Name="SHEET_ATTR_PAR" ColumnName="SHEET_ATTR_PAR" />
+                <ScalarProperty Name="SHEET_MARK_PAR" ColumnName="SHEET_MARK_PAR" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="COM_UNI_CODE" ColumnName="COM_UNI_CODE" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BOND_SIZE_CHAN">
+            <EntityTypeMapping TypeName="Model.BOND_SIZE_CHAN">
+              <MappingFragment StoreEntitySet="BOND_SIZE_CHAN">
+                <ScalarProperty Name="CHAN_TYPE_PAR" ColumnName="CHAN_TYPE_PAR" />
+                <ScalarProperty Name="SIZE_CHAN" ColumnName="SIZE_CHAN" />
+                <ScalarProperty Name="OTHER_SIZE" ColumnName="OTHER_SIZE" />
+                <ScalarProperty Name="OTC_SIZE" ColumnName="OTC_SIZE" />
+                <ScalarProperty Name="IB_SIZE" ColumnName="IB_SIZE" />
+                <ScalarProperty Name="SZ_SIZE" ColumnName="SZ_SIZE" />
+                <ScalarProperty Name="SH_SIZE" ColumnName="SH_SIZE" />
+                <ScalarProperty Name="EXCHANGE_SIZE" ColumnName="EXCHANGE_SIZE" />
+                <ScalarProperty Name="EXCHANGE_IB_SIZE" ColumnName="EXCHANGE_IB_SIZE" />
+                <ScalarProperty Name="TOTAL_SIZE" ColumnName="TOTAL_SIZE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="DECL_DATE" ColumnName="DECL_DATE" />
+                <ScalarProperty Name="BOND_ID" ColumnName="BOND_ID" />
+                <ScalarProperty Name="CCXEID" ColumnName="CCXEID" />
+                <ScalarProperty Name="ISVALID" ColumnName="ISVALID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ZCX" ZoomLevel="71">
+        <EntityTypeShape EntityType="Model.BOND_ISS_INFO" Width="1.5" PointX="0.75" PointY="0.75" Height="7.5570279947916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.BOND_RATE_INFO" Width="1.5" PointX="2.75" PointY="0.75" Height="7.941630859375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PUB_AREA_CODE" Width="1.5" PointX="4.75" PointY="0.75" Height="6.4032194010416656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PUB_CURY_TYPE" Width="1.5" PointX="6.75" PointY="0.75" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PUB_ORG_INFO" Width="1.5" PointX="6.75" PointY="4.75" Height="9.67234375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PUB_PAR" Width="1.5" PointX="8.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RATE_ORG_INFO_F" Width="1.5" PointX="8.75" PointY="4.75" Height="12.941468098958332" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RATE_REP" Width="1.5" PointX="0.75" PointY="9.75" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FUNDAMENTALFIELDMAPPING" Width="1.5" PointX="3.375" PointY="9.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="Model.BOND_BASIC_INFO" Width="1.5" PointX="11.375" PointY="0.75" Height="6.4032194010416674" />
+        <EntityTypeShape EntityType="Model.V_BOND_ABS" Width="1.5" PointX="11.375" PointY="8.75" Height="13.133769531250003" />
+        <EntityTypeShape EntityType="Model.BOND_ISSER_INFO" Width="1.5" PointX="13.375" PointY="0.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="Model.BOND_FIN_BALA_TABB" Width="1.5" PointX="3.75" PointY="13.75" Height="26.402568359375003" />
+        <EntityTypeShape EntityType="Model.BOND_FIN_CASH_TACB" Width="1.5" PointX="13.75" PointY="4.75" Height="19.479716796875003" />
+        <EntityTypeShape EntityType="Model.BOND_FIN_PROF_TAPB" Width="1.5" PointX="0.75" PointY="14.75" Height="13.518372395833332" />
+        <EntityTypeShape EntityType="Model.BOND_SIZE_CHAN" Width="1.5" PointX="15.75" PointY="0.75" Height="4.0956022135416674" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

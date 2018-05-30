@@ -1,0 +1,823 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+	<source-db>
+		<type>sybase</type>
+		<conn>Driver={Adaptive Server Enterprise};server=10.185.132.40;port=4074;uid=reporter;password=reporter;</conn>
+	</source-db>
+	<destination-db>
+		<type>sqlserver</type>
+		<conn>Server=10.35.63.141;Database=AINT2_Luna;Failover Partner=10.35.63.142;Pooling=true;Uid=sa;Pwd=p@ssw0rd</conn>
+	</destination-db>
+	<sql-command-timeout>1800</sql-command-timeout>
+	<mappings>
+		<table-mapping source="govcorp..asset" destination="[ejv].[govcorp.asset]">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="amt_iss_public"/>
+			<column-mapping source="amt_iss_tot"/>
+			<column-mapping source="annuity_fl"/>
+			<column-mapping source="asset_cf_corr_dt"/>
+			<column-mapping source="asset_duplicate_cd"/>
+			<column-mapping source="asset_info_src_cd"/>
+			<column-mapping source="asset_last_chg_dt"/>
+			<column-mapping source="asset_setup_dt"/>
+			<column-mapping source="asset_status_cd"/>
+			<column-mapping source="asset_subtype_cd"/>
+			<column-mapping source="asset_templt_cd"/>
+			<column-mapping source="asset_ticker"/>
+			<column-mapping source="asset_type_cd"/>
+			<column-mapping source="bank_qualified_fl"/>
+			<column-mapping source="bankwatch_rating_cd"/>
+			<column-mapping source="bankwatch_rating_dt"/>
+			<column-mapping source="bridge_symbol"/>
+			<column-mapping source="call_terms_fl"/>
+			<column-mapping source="call_type_cd"/>
+			<column-mapping source="capitalization_fl"/>
+			<column-mapping source="clawback_type_cd"/>
+			<column-mapping source="cntry_of_iss_cd"/>
+			<column-mapping source="common_code_nm"/>
+			<column-mapping source="convertible_fl"/>
+			<column-mapping source="cpn_class_cd"/>
+			<column-mapping source="cpn_type_cd"/>
+			<column-mapping source="credit_sensitive_fl"/>
+			<column-mapping source="cur_amt_out_dt"/>
+			<column-mapping source="cur_amt_outsd"/>
+			<column-mapping source="cur_int_leg_nm"/>
+			<column-mapping source="cur_prin_curr_cd"/>
+			<column-mapping source="cur_prin_leg_nm"/>
+			<column-mapping source="currency_cd"/>
+			<column-mapping source="current_cpn"/>
+			<column-mapping source="dbs_pid"/>
+			<column-mapping source="dcs_type_cd"/>
+			<column-mapping source="debt_svc_cd"/>
+			<column-mapping source="debt_type_cd"/>
+			<column-mapping source="defeased_fl"/>
+			<column-mapping source="denom_incr"/>
+			<column-mapping source="denom_type_cd"/>
+			<column-mapping source="descr"/>
+			<column-mapping source="descr_detail"/>
+			<column-mapping source="distribution_src_cd"/>
+			<column-mapping source="dom_settle_cal_cd"/>
+			<column-mapping source="dom_settle_val"/>
+			<column-mapping source="domin_rating_cd"/>
+			<column-mapping source="domin_rating_dt"/>
+			<column-mapping source="dp_rating_cd"/>
+			<column-mapping source="dp_rating_dt"/>
+			<column-mapping source="ds_subtype_cd"/>
+			<column-mapping source="ds_type_cd"/>
+			<column-mapping source="dual_cur_fl"/>
+			<column-mapping source="emerging_market_fl"/>
+			<column-mapping source="equity_clawback_fl"/>
+			<column-mapping source="euroclear_nm"/>
+			<column-mapping source="eusd_tax_fl"/>
+			<column-mapping source="exch_listed_fl"/>
+			<column-mapping source="exdiv_cal_cd"/>
+			<column-mapping source="exdiv_val"/>
+			<column-mapping source="exec_quote_fl"/>
+			<column-mapping source="exp_maturity_dt"/>
+			<column-mapping source="extend_terms_fl"/>
+			<column-mapping source="fig_rule_cd"/>
+			<column-mapping source="first_cpn_dt"/>
+			<column-mapping source="first_reset_dt"/>
+			<column-mapping source="fitch_ibca_rating_cd"/>
+			<column-mapping source="fitch_ibca_rating_dt"/>
+			<column-mapping source="fitch_rating_cd"/>
+			<column-mapping source="fitch_rating_dt"/>
+			<column-mapping source="float_formula"/>
+			<column-mapping source="float_index"/>
+			<column-mapping source="float_mult"/>
+			<column-mapping source="float_offset"/>
+			<column-mapping source="for_settle_val"/>
+			<column-mapping source="full_bridge_symbol"/>
+			<column-mapping source="fund_terms_fl"/>
+			<column-mapping source="funged_fl"/>
+			<column-mapping source="guarantee_fl"/>
+			<column-mapping source="ibca_rating_cd"/>
+			<column-mapping source="ibca_rating_dt"/>
+			<column-mapping source="ibs_control_nm"/>
+			<column-mapping source="inflation_protect_fl"/>
+			<column-mapping source="int_idx_lnk_fl"/>
+			<column-mapping source="isin_nm"/>
+			<column-mapping source="isin_src_cd"/>
+			<column-mapping source="last_cpn_dt"/>
+			<column-mapping source="last_reset_dt"/>
+			<column-mapping source="latest_rating_cd"/>
+			<column-mapping source="latest_rating_eff_dt"/>
+			<column-mapping source="latest_rating_src_cd"/>
+			<column-mapping source="lead_undwrt_cd"/>
+			<column-mapping source="life_cap"/>
+			<column-mapping source="life_floor"/>
+			<column-mapping source="mandatory_tender_dt"/>
+			<column-mapping source="maturity_dt"/>
+			<column-mapping source="mdy_debt_class_cd"/>
+			<column-mapping source="mdy_rating_cd"/>
+			<column-mapping source="mdy_rating_dt"/>
+			<column-mapping source="mdy_st_rtng_cd"/>
+			<column-mapping source="mdy_st_rtng_dt"/>
+			<column-mapping source="mdy_watch_cd"/>
+			<column-mapping source="mdy_watch_dt"/>
+			<column-mapping source="min_credit_rating_cd"/>
+			<column-mapping source="min_denom"/>
+			<column-mapping source="mtn_fl"/>
+			<column-mapping source="mtn_shelf_id"/>
+			<column-mapping source="multistep_flt_fl"/>
+			<column-mapping source="native_yld_type_cd"/>
+			<column-mapping source="next_call_dt"/>
+			<column-mapping source="next_call_px"/>
+			<column-mapping source="next_mand_tender_dt"/>
+			<column-mapping source="next_pay_dt"/>
+			<column-mapping source="next_put_dt"/>
+			<column-mapping source="next_put_px"/>
+			<column-mapping source="next_reset_dt"/>
+			<column-mapping source="next_sink_amt"/>
+			<column-mapping source="next_sink_dt"/>
+			<column-mapping source="nsin_agn_cd"/>
+			<column-mapping source="nsin_nm"/>
+			<column-mapping source="oid_fl"/>
+			<column-mapping source="orig_amt_iss"/>
+			<column-mapping source="orig_dated_dt"/>
+			<column-mapping source="orig_iss_dt"/>
+			<column-mapping source="pay_cal_cd"/>
+			<column-mapping source="pay_cal_val"/>
+			<column-mapping source="pay_freq_cd"/>
+			<column-mapping source="pay_in_part_fl"/>
+			<column-mapping source="perpetual_fl"/>
+			<column-mapping source="physical_form_cd"/>
+			<column-mapping source="pik_csh_pmt_dt"/>
+			<column-mapping source="pik_fl"/>
+			<column-mapping source="pik_inkind_pmt_dt"/>
+			<column-mapping source="poison_put_fl"/>
+			<column-mapping source="preferred_ric"/>
+			<column-mapping source="primary_quote_id"/>
+			<column-mapping source="prin_idx_lnk_fl"/>
+			<column-mapping source="private_place_fl"/>
+			<column-mapping source="project_name"/>
+			<column-mapping source="prosp_on_file_fl"/>
+			<column-mapping source="prosp_suppl_dt"/>
+			<column-mapping source="prosp_suppl_nm"/>
+			<column-mapping source="prospectus_dt"/>
+			<column-mapping source="put_terms_fl"/>
+			<column-mapping source="rcs_class_cd"/>
+			<column-mapping source="record_dt_cd"/>
+			<column-mapping source="record_dt_val"/>
+			<column-mapping source="redemption_val"/>
+			<column-mapping source="refund_dt"/>
+			<column-mapping source="rrps_ric"/>
+			<column-mapping source="rtfi_us_elig_cd"/>
+			<column-mapping source="rtr_ticker"/>
+			<column-mapping source="sec_class_cd"/>
+			<column-mapping source="secondary_insu_fl"/>
+			<column-mapping source="secured_fl"/>
+			<column-mapping source="series"/>
+			<column-mapping source="settle_bus_ctr_cd"/>
+			<column-mapping source="sovr_class_cd"/>
+			<column-mapping source="sp_debt_class_cd"/>
+			<column-mapping source="sp_rating_cd"/>
+			<column-mapping source="sp_rating_dt"/>
+			<column-mapping source="sp_st_rtng_cd"/>
+			<column-mapping source="sp_st_rtng_dt"/>
+			<column-mapping source="sp_watch_cd"/>
+			<column-mapping source="sp_watch_dt"/>
+			<column-mapping source="spec_put_fl"/>
+			<column-mapping source="standard_yld_type_cd"/>
+			<column-mapping source="status_eff_dt"/>
+			<column-mapping source="status_of_document"/>
+			<column-mapping source="stick_suppl_fl"/>
+			<column-mapping source="strip_total"/>
+			<column-mapping source="strippable_fl"/>
+			<column-mapping source="tap_end_dt"/>
+			<column-mapping source="tap_issue_fl"/>
+			<column-mapping source="tax_call_fl"/>
+			<column-mapping source="tax_status_cd"/>
+			<column-mapping source="tot_prog_amt"/>
+			<column-mapping source="trace_cd"/>
+			<column-mapping source="trace_grade_cd"/>
+			<column-mapping source="unit_cd"/>
+			<column-mapping source="valoren_nm"/>
+			<column-mapping source="warrants_fl"/>
+			<column-mapping source="withholding_tax"/>
+			<column-mapping source="wpk_nm"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<!--Added mapping by Yuan Yong-->
+			<column-mapping source="issuer_id" destination="issuerId"/>
+			<column-mapping source="day_count_cd"/>
+			<filter>
+				<![CDATA[(asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime}]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..asset_ident" destination="[ejv].[govcorp.asset_ident]">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="id_cd" isKey="true"/>
+			<column-mapping source="id_eff_dt" isKey="true"/>
+			<column-mapping source="id_number" />
+			<column-mapping source="iss_type_cd"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<filter>
+				<![CDATA[asset_id in (select asset_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..rate_sched" destination="[ejv].[govcorp.rate_sched]">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rate_eff_dt" isKey="true"/>
+			<column-mapping source="cpn_rate"/>
+			<column-mapping source="cpn_rate_nonannual"/>
+			<column-mapping source="deter_dt"/>
+			<column-mapping source="last_chg_dt"/>
+			<column-mapping source="rate_src_cd"/>
+			<column-mapping source="unadj_reset_dt"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<filter>
+				<![CDATA[asset_id in (select asset_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..rating" destination="[ejv].[govcorp.rating]">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rating_src_cd" isKey="true"/>
+			<column-mapping source="outlook_cd"/>
+			<column-mapping source="outlook_eff_dt"/>
+			<column-mapping source="preliminary_fl"/>
+			<column-mapping source="prev_rating_cd"/>
+			<column-mapping source="prev_rating_dt"/>
+			<column-mapping source="rating_cd"/>
+			<column-mapping source="rating_eff_dt"/>
+			<column-mapping source="rating_endorsement"/>
+			<column-mapping source="rating_suffix_cd"/>
+			<column-mapping source="unsolicited_fl"/>
+			<column-mapping source="verified_dt"/>
+			<column-mapping source="watch_cd"/>
+			<column-mapping source="watch_eff_dt"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<filter>
+				<![CDATA[asset_id in (select asset_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..rating_hist" destination="[ejv].[govcorp.rating_hist]">
+			<column-mapping source="asset_id" destination="assetId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rating_eff_dt" isKey="true"/>
+			<column-mapping source="rating_src_cd" isKey="true"/>
+			<column-mapping source="preliminary_fl"/>
+			<column-mapping source="rating_cd"/>
+			<column-mapping source="rating_endorsement"/>
+			<column-mapping source="rating_suffix_cd"/>
+			<column-mapping source="src_info_cd"/>
+			<column-mapping source="unsolicited_fl"/>
+			<column-mapping source="verified_dt"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<filter>
+				<![CDATA[asset_id in (select asset_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..party" destination="[ejv].[govcorp.party]">
+			<column-mapping source="party_id" destination="partyId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="active_fl"/>
+			<column-mapping source="bankruptcy_fl"/>
+			<column-mapping source="com_stock_cd"/>
+			<column-mapping source="cur_form15_dt"/>
+			<column-mapping source="cur_immed_parent_id"/>
+			<column-mapping source="cur_ultimate_parent_id"/>
+			<column-mapping source="doc_report_entity_id"/>
+			<column-mapping source="eusd_gov_rel_fl"/>
+			<column-mapping source="financials_filed_fl"/>
+			<column-mapping source="fiscal_yr_end"/>
+			<column-mapping source="form15_fl"/>
+			<column-mapping source="ibs_issuer_nm"/>
+			<column-mapping source="indu_sector_cd"/>
+			<column-mapping source="indu_subsector_cd"/>
+			<column-mapping source="issuer_orgid"/>
+			<column-mapping source="legal_counsel_id"/>
+			<column-mapping source="mdy_issuer_rating_cd"/>
+			<column-mapping source="mdy_issuer_rating_dt"/>
+			<column-mapping source="mdy_issuer_watch_cd"/>
+			<column-mapping source="mdy_issuer_watch_dt"/>
+			<column-mapping source="orig_immed_parent_id"/>
+			<column-mapping source="orig_ultimate_parent_id"/>
+			<column-mapping source="party_address"/>
+			<column-mapping source="party_bridge_symbol"/>
+			<column-mapping source="party_city"/>
+			<column-mapping source="party_cntry_cd"/>
+			<column-mapping source="party_cntry_incorp_cd"/>
+			<column-mapping source="party_general_alias_name"/>
+			<column-mapping source="party_last_chg_dt"/>
+			<column-mapping source="party_legal_name"/>
+			<column-mapping source="party_long_name"/>
+			<column-mapping source="party_native_long_name"/>
+			<column-mapping source="party_native_short_name"/>
+			<column-mapping source="party_phone_number"/>
+			<column-mapping source="party_region"/>
+			<column-mapping source="party_rtr_ticker"/>
+			<column-mapping source="party_setup_dt"/>
+			<column-mapping source="party_short_name"/>
+			<column-mapping source="party_state_incorp"/>
+			<column-mapping source="party_ticker"/>
+			<column-mapping source="party_url"/>
+			<column-mapping source="party_validated_dt"/>
+			<column-mapping source="party_yr_incorp"/>
+			<column-mapping source="party_zipcode"/>
+			<column-mapping source="primary_naic_cd"/>
+			<column-mapping source="primary_sic_cd"/>
+			<column-mapping source="private_co_fl"/>
+			<column-mapping source="sovr_class_cd"/>
+			<column-mapping source="sp_indu_cd"/>
+			<column-mapping source="sp_issuer_short_rating_cd"/>
+			<column-mapping source="sp_issuer_short_rating_dt"/>
+			<column-mapping source="sp_issuer_long_rating_cd"/>
+			<column-mapping source="sp_issuer_long_rating_dt"/>
+			<column-mapping source="sp_issuer_watch_cd"/>
+			<column-mapping source="sp_issuer_watch_dt"/>
+			<column-mapping source="stockval_nm"/>
+			<column-mapping source="tax_struct_type_cd"/>
+			<filter>
+				<![CDATA[party_id in (select issuer_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})  AND party_last_chg_dt <= {CurrentSyncTime}]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..party_rating" destination="[ejv].[govcorp.party_rating]">
+			<column-mapping source="party_id" destination="partyId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="party_rating_src_cd" isKey="true"/>
+			<column-mapping source="party_rating_scope_cd" isKey="true"/>
+			<column-mapping source="party_outlook_cd"/>
+			<column-mapping source="party_outlook_eff_dt"/>
+			<column-mapping source="party_preliminary_fl"/>
+			<column-mapping source="party_prev_rating_cd"/>
+			<column-mapping source="party_prev_rating_dt"/>
+			<column-mapping source="party_rating_cd"/>
+			<column-mapping source="party_rating_eff_dt"/>
+			<column-mapping source="party_unsolicited_fl"/>
+			<column-mapping source="party_verified_dt"/>
+			<column-mapping source="party_watch_cd"/>
+			<column-mapping source="party_watch_eff_dt"/>
+			<filter>
+				<![CDATA[party_id in (select party_id from govcorp..party where party_id in (select issuer_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})  AND party_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..party_rating_hist" destination="[ejv].[govcorp.party_rating_hist]">
+			<column-mapping source="party_id" destination="partyId" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="party_rating_eff_dt" isKey="true"/>
+			<column-mapping source="party_rating_src_cd" isKey="true"/>
+			<column-mapping source="party_rating_scope_cd" isKey="true"/>
+			<column-mapping source="party_preliminary_fl"/>
+			<column-mapping source="party_rating_cd"/>
+			<column-mapping source="party_unsolicited_fl"/>
+			<column-mapping source="party_verified_dt"/>
+			<filter>
+				<![CDATA[party_id in (select party_id from govcorp..party where party_id in (select issuer_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})  AND party_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..idxref_id_obj_xref_quote x inner join govcorp..quote q on q.quote_id = x.quote_id" destination="[ejv].[govcorp.asset_ric]">
+			<column-mapping source="quote_id" sourceTableAlias="q" isKey="true"/>
+			<column-mapping source="asset_id" sourceTableAlias="q" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="active_fl" sourceTableAlias="q"/>
+			<column-mapping source="currency_cd" sourceTableAlias="q"/>
+			<column-mapping source="idn_contrib_cd" sourceTableAlias="q"/>
+			<column-mapping source="pe" sourceTableAlias="q"/>
+			<column-mapping source="price_src_cd" sourceTableAlias="q"/>
+			<column-mapping source="id_scope_id" sourceTableAlias="x"/>
+			<column-mapping source="id_type_cd" sourceTableAlias="x" isKey="true"/>
+			<column-mapping source="id_value" sourceTableAlias="x" isKey="true"/>
+			<column-mapping source="id_upper" sourceTableAlias="x"/>
+			<column-mapping source="obj_type_cd" sourceTableAlias="x"/>
+			<column-mapping source="current_fl" sourceTableAlias="x"/>
+			<column-mapping source="" destination="id_type" value="E"/>
+			<filter>
+				<![CDATA[x.quote_id IN (SELECT quote_id FROM govcorp..quote WHERE asset_id IN (select asset_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})) AND x.id_type_cd NOT IN ('EPS')]]>
+			</filter>
+		</table-mapping>
+
+
+
+		<table-mapping source="gcodes..price_source" destination="[ejv].[gcodes.price_source]">
+			<column-mapping source="price_src_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="contrib_comp_fl"/>
+			<column-mapping source="description"/>
+			<column-mapping source="global_region_cd"/>
+			<column-mapping source="last_chg_dt"/>
+			<column-mapping source="price_src"/>
+			<column-mapping source="setup_dt"/>
+			<column-mapping source="idn_contrib_type_cd"/>
+			<column-mapping source="contrib_loc_cd"/>
+			<column-mapping source="mkt_exch_cd"/>
+			<filter>
+				<![CDATA[last_chg_dt >= {LastSyncTime} AND last_chg_dt <= {CurrentSyncTime}]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="gcodes..currency_cds" destination="[ejv].[gcodes.currency_cds]">
+			<column-mapping source="currency_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="currency_descr"/>
+			<column-mapping source="iso_cur_cd"/>
+			<column-mapping source="iso_cur_descr"/>
+			<column-mapping source="iso_cur_numeric"/>
+			<column-mapping source="active_fl"/>
+			<column-mapping source="cur_cd"/>
+			<column-mapping source="factor"/>
+			<column-mapping source="permid"/>
+			<column-mapping source="inflation_adjusted_fl"/>
+			<column-mapping source="pre_emu_curr_fl"/>
+		</table-mapping>
+
+		<table-mapping source="govcorp..asset2" destination="[ejv].[govcorp.asset2]">
+			<column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="aaoifi_compliant_fl"/>
+			<column-mapping source="addl_credit_fl"/>
+			<column-mapping source="announcement_dt"/>
+			<column-mapping source="borrower_id"/>
+			<column-mapping source="calc_disable_rsn"/>
+			<column-mapping source="callable_notation"/>
+			<column-mapping source="cav_maturity_amt"/>
+			<column-mapping source="cdc_asset_class_cd"/>
+			<column-mapping source="cfi"/>
+			<column-mapping source="conver_cd"/>
+			<column-mapping source="cur_accr_dt"/>
+			<column-mapping source="cur_int_defer_fl"/>
+			<column-mapping source="cusip_change_cd"/>
+			<column-mapping source="cusip_change_dt"/>
+			<column-mapping source="dfrd_int_cnvrsn_dt"/>
+			<column-mapping source="facility"/>
+			<column-mapping source="facility_amt"/>
+			<column-mapping source="flip_opt_cd"/>
+			<column-mapping source="flip_opt_dt"/>
+			<column-mapping source="green_bond_fl"/>
+			<column-mapping source="issue_id"/>
+			<column-mapping source="liquidation_preference_cd"/>
+			<column-mapping source="local_iss_dt"/>
+			<column-mapping source="next_par_call_dt"/>
+			<column-mapping source="next_par_call_px"/>
+			<column-mapping source="odd_first_cpn_fl"/>
+			<column-mapping source="odd_last_cpn_fl"/>
+			<column-mapping source="orig_cusip_type_cd"/>
+			<column-mapping source="prerefunded_fl"/>
+			<column-mapping source="prtl_redemp_fl"/>
+			<column-mapping source="reoffered_dt"/>
+			<column-mapping source="reoffered_fl"/>
+			<column-mapping source="repo_elig_fl"/>
+			<!--<column-mapping source="repo_elig_id" destination="repo_elig_id"/>-->
+			<column-mapping source="risk_classifications_cd"/>
+			<column-mapping source="risk_country_cd"/>
+			<column-mapping source="security_cd"/>
+			<column-mapping source="seniority_cd"/>
+			<column-mapping source="series"/>
+			<column-mapping source="sharia_opinion_fl"/>
+			<column-mapping source="solvability_ratio"/>
+			<column-mapping source="straight_bond_fl"/>
+			<column-mapping source="sukuk_structure_fl"/>
+			<column-mapping source="super_sinker_fl"/>
+			<column-mapping source="survivor_opt_fl"/>
+			<column-mapping source="tier_capital_cd"/>
+			<column-mapping source="us_baby_bond_fl"/>
+			<filter>
+				<![CDATA[asset_id in (select asset_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="govcorp..amt_outsd_hist" destination="[ejv].[govcorp.amt_outsd_hist]">
+			<column-mapping source="amt_out_dt" isKey="true"/>
+			<column-mapping source="amt_outsd"/>
+			<column-mapping source="amt_outsd_chg_cd"/>
+			<column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="currency_cd"/>
+			<column-mapping source="factor"/>
+			<column-mapping source="iss_px"/>
+			<column-mapping source="iss_yld"/>
+			<column-mapping source="outsd_src_cd"/>
+			<filter>
+				<![CDATA[asset_id in (select asset_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013' AND asset_last_chg_dt >= {LastSyncTime} AND asset_last_chg_dt <= {CurrentSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="ejv_common..govcorp_price" destination="[ejv].[common.govcorp_price]" isKeepObsoleteDestinationData="true">
+			<column-mapping source="asset_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="closing_price"/>
+			<column-mapping source="offer_price"/>
+			<column-mapping source="mean_price"/>
+			<column-mapping source="trade_dt" isKey="true"/>
+			<filter>
+				<![CDATA[price_src = 'EJV' AND asset_id in (select asset_id from govcorp..asset where (asset_id in(select a3.asset_id from(select a1.asset_id,a1.issuer_id,a2.borrower_id from govcorp..asset a1 left join  govcorp..asset2 a2 on a1.asset_id = a2.asset_id) a3,(select party_id from govcorp..party where party_cntry_cd in ('CN','RU','KZ','UA','BH','KW','OM','QA','SA','AE','SG','ZA','GH','KE','NG')) a4 where (a3.issuer_id in (a4.party_id) or a3.borrower_id in (a4.party_id))) OR sec_class_cd = 'DSUM' OR asset_id in ({CustomBonds})) and maturity_dt > '1/1/2013')]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="gcodes..rating_agency_cds" destination="[ejv].[gcodes.rating_agency_cds]">
+			<column-mapping source="rating_agency_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rating_agency_descr"/>
+			<column-mapping source="rating_agency_url"/>
+			<column-mapping source="active_fl"/>
+			<filter>
+				<![CDATA[rating_agency_cd in (
+                select rating_agency_cd
+                from gcodes..rating_src_cds 
+                where rating_src_cd in (
+                  select distinct rating_src_cd 
+                  from gcodes..rating_conversion_cds
+                  where equiv_rating_src_cd ='PBS'))]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="gcodes..rating_src_cds" destination="[ejv].[gcodes.rating_src_cds]">
+			<column-mapping source="rating_src_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="rating_src_descr"/>
+			<column-mapping source="rating_type_cd"/>
+			<column-mapping source="rating_agency_cd"/>
+			<column-mapping source="active_fl"/>
+			<filter>
+				<![CDATA[rating_src_cd in (
+                select distinct rating_src_cd 
+                from 
+                gcodes..rating_conversion_cds)]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="gcodes..indu_sector_cds" destination="[ejv].[gcodes.indu_sector_cds]">
+			<column-mapping source="indu_sector_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="indu_sector_descr"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..indu_subsector_cds" destination="[ejv].[gcodes.indu_subsector_cds]">
+			<column-mapping source="indu_subsector_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="indu_sector_cd"/>
+			<column-mapping source="indu_subsector_descr"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..sp_indu_cds" destination="[ejv].[gcodes.sp_indu_cds]">
+			<column-mapping source="sp_indu_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="sp_indu_num"/>
+			<column-mapping source="sp_indu_descr"/>
+			<column-mapping source="sp_indu_sub_descr"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..ds_type_cds" destination="[ejv].[gcodes.ds_type_cds]">
+			<column-mapping source="ds_type_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="ds_type_descr"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..ds_subtype_cds" destination="[ejv].[gcodes.ds_subtype_cds]">
+			<column-mapping source="ds_subtype_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="ds_subtype_cntry_cd"/>
+			<column-mapping source="ds_subtype_descr"/>
+			<column-mapping source="ds_type_cd"/>
+		</table-mapping>
+
+		<table-mapping source="rigs..rt_n_indx" destination="[ejv].[rigs.rt_n_indx]">
+			<column-mapping source="ask_value"/>
+			<column-mapping source="bid_value"/>
+			<column-mapping source="bridge_symbol"/>
+			<column-mapping source="bus_ctr_cd"/>
+			<column-mapping source="cal_cd"/>
+			<column-mapping source="cal_val"/>
+			<column-mapping source="contrib_cd"/>
+			<column-mapping source="crncy_denom_cd"/>
+			<column-mapping source="dbs_pid"/>
+			<column-mapping source="dbs_ticker"/>
+			<column-mapping source="freq_cd"/>
+			<column-mapping source="indx_id" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="indx_ric"/>
+			<column-mapping source="last_chg_dt"/>
+			<column-mapping source="local_snap_time"/>
+			<column-mapping source="long_name"/>
+			<column-mapping source="mkt_value"/>
+			<column-mapping source="mkt_value_eff_dt"/>
+			<column-mapping source="novalue_cd"/>
+			<column-mapping source="orig_src_cd"/>
+			<column-mapping source="orig_term_cd"/>
+			<column-mapping source="price_quote_cd"/>
+			<column-mapping source="primary_fl"/>
+			<column-mapping source="quot_cntry_cd"/>
+			<column-mapping source="quot_cntry_tz_cd"/>
+			<column-mapping source="rigs_type_cd"/>
+			<column-mapping source="rigs_unit_cd"/>
+			<column-mapping source="rule_cd"/>
+			<column-mapping source="setup_dt"/>
+			<column-mapping source="short_name"/>
+			<column-mapping source="vendor_cd"/>
+			<filter>
+				<![CDATA[indx_ric in('USD1MFSR=','USD3MFSR=','USD6MFSR=','HIHKD3MD=','MBHD1MD=','MBHD3MD=','MBHD6MD=','MBHD1YD=','SASAR1MD=','SASAR3MD=','SASAR6MD=','SASAR1YD=','EURIBOR1MD=','EURIBOR3MD=','EURIBOR6MD=','EURIBOR1YD=','EUR1MFSR=','EUR3MFSR=','EUR6MFSR=','EUR1YFSR=','EURIB3651MD=','EURIB3653MD=','EURIB3656MD=','EURIB3651YD=') AND (mkt_value_eff_dt >= {LastSyncDate} or last_chg_dt >={LastSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="rigs..rt_n_indx_level" destination="[ejv].[rigs.rt_n_indx_level]" isKeepObsoleteDestinationData="true">
+			<column-mapping source="rowid" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="indx_id"/>
+			<column-mapping source="eff_dt"/>
+			<column-mapping source="ask_value"/>
+			<column-mapping source="bid_value"/>
+			<column-mapping source="last_chg_dt"/>
+			<column-mapping source="mkt_value"/>
+			<filter>
+				<![CDATA[indx_id in (select indx_id from rigs..rt_n_indx where indx_ric in ('USD1MFSR=','USD3MFSR=','USD6MFSR=','HIHKD3MD=','MBHD1MD=','MBHD3MD=','MBHD6MD=','MBHD1YD=','SASAR1MD=','SASAR3MD=','SASAR6MD=','SASAR1YD=','EURIBOR1MD=','EURIBOR3MD=','EURIBOR6MD=','EURIBOR1YD=','EUR1MFSR=','EUR3MFSR=','EUR6MFSR=','EUR1YFSR=','EURIB3651MD=','EURIB3653MD=','EURIB3656MD=','EURIB3651YD=')) AND (eff_dt >= {LastSyncDate} or last_chg_dt >={LastSyncTime})]]>
+			</filter>
+		</table-mapping>
+
+		<table-mapping source="gcodes..cntry_cds" destination="[ejv].[gcodes.cntry_cds]">
+			<column-mapping source="cntry_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="country_name"/>
+			<column-mapping source="iso_scntry_cd"/>
+			<column-mapping source="iso_lcntry_cd"/>
+			<column-mapping source="iso_cntry_descr"/>
+			<column-mapping source="iso_cntry_numeric"/>
+			<column-mapping source="global_region_cd"/>
+			<column-mapping source="active_fl"/>
+			<column-mapping source="permid"/>
+			<column-mapping source="cntry_id"/>
+		</table-mapping>
+
+		<table-mapping source="gcodes..cntry_currency_hist_xref" destination="[ejv].[gcodes.cntry_currency_hist_xref]" isKeepObsoleteDestinationData="false">
+			<column-mapping source="iso_scntry_cd" isKey="true" isImmutableKey="true"/>
+			<column-mapping source="iso_cur_cd" isKey="true" />
+			<column-mapping source="retire_dt" isKey="true" />
+			<column-mapping source="active_fl" isKey="true" />
+		</table-mapping>
+
+	</mappings>
+
+	<post-sync-tasks>
+		<task name="Luna.DataSync.Core.CheckIndexForFloatingRateNoteTask"/>
+	</post-sync-tasks>
+
+	<custom-bonds>
+		<!-- G7 bonds -->
+		<asset-id>0x0004050794b54265</asset-id>
+		<asset-id>0x000405085c054818</asset-id>
+		<asset-id>0x0004050957083a6d</asset-id>
+		<asset-id>0x0004050930087c4c</asset-id>
+		<asset-id>0x000405091168f687</asset-id>
+		<asset-id>0x0004050957315b35</asset-id>
+		<asset-id>0x00040509116e3b4c</asset-id>
+		<asset-id>0x00040509117c0663</asset-id>
+		<asset-id>0x00040508e97a1f85</asset-id>
+		<asset-id>0x00040508e9811d7c</asset-id>
+		<asset-id>0x00040509559176ba</asset-id>
+		<asset-id>0x000405092b7296c7</asset-id>
+		<asset-id>0x00040504f5950560</asset-id>
+		<asset-id>0x000405091c700367</asset-id>
+		<asset-id>0x000405020c0fc3c3</asset-id>
+		<asset-id>0x000405056c1fc8bf</asset-id>
+		<asset-id>0x0004050931235a40</asset-id>
+		<asset-id>0x0003f90139fe80bc</asset-id>
+		<asset-id>0x0003f903198ecda3</asset-id>
+		<asset-id>0x00040501fb2a9342</asset-id>
+		<asset-id>0x00040505020caaa0</asset-id>
+		<asset-id>0x000405092167c38d</asset-id>
+		<asset-id>0x0003e700c3e934fa</asset-id>
+		<asset-id>0x000405095808d189</asset-id>
+		<asset-id>0x000405092b83b212</asset-id>
+		<asset-id>0x00040505be965f73</asset-id>
+		<asset-id>0x00040504ed721f85</asset-id>
+		<asset-id>0x000405088b827878</asset-id>
+		<asset-id>0x00040504f01f648e</asset-id>
+		<asset-id>0x000405088b7448be</asset-id>
+		<asset-id>0x00040503dc2f0cfd</asset-id>
+		<asset-id>0x00038600c963a08f</asset-id>
+		<asset-id>0x0004050406bf44f8</asset-id>
+		<asset-id>0x00040508d8967c3b</asset-id>
+		<asset-id>0x0002a0008488923c</asset-id>
+		<asset-id>0x0003f90127c47961</asset-id>
+		<asset-id>0x000405006e580c3b</asset-id>
+		<asset-id>0x0004050226f964b8</asset-id>
+		<asset-id>0x00040506fd3315dc</asset-id>
+		<asset-id>0x0004050391b23415</asset-id>
+		<asset-id>0x0002a00024279c3d</asset-id>
+		<asset-id>0x000405011592f87f</asset-id>
+		<asset-id>0x000405054a614669</asset-id>
+		<asset-id>0x0004050775ac924d</asset-id>
+		<asset-id>0x000405087dba7cb2</asset-id>
+		<asset-id>0x0004050775828879</asset-id>
+		<asset-id>0x000405087db8b975</asset-id>
+		<asset-id>0x000405087df1d154</asset-id>
+		<asset-id>0x00040501a5b47362</asset-id>
+		<asset-id>0x0004050477ff0885</asset-id>
+		<asset-id>0x000405087de062f6</asset-id>
+		<asset-id>0x0003e701483f3daf</asset-id>
+		<asset-id>0x0003f9027b48c60d</asset-id>
+		<asset-id>0x000405014a493437</asset-id>
+		<asset-id>0x00040503edef9a9a</asset-id>
+		<asset-id>0x00040507eaa6f8b2</asset-id>
+		<asset-id>0x0002460000021553</asset-id>
+		<asset-id>0x0002a00043246ca9</asset-id>
+		<asset-id>0x00040502d3b05e3e</asset-id>
+		<asset-id>0x00040508a042876c</asset-id>
+		<asset-id>0x00040509350097aa</asset-id>
+		<asset-id>0x000405093504526b</asset-id>
+		<asset-id>0x00040508a043b359</asset-id>
+		<asset-id>0x000405093504be87</asset-id>
+		<asset-id>0x00038600975afcb4</asset-id>
+		<asset-id>0x00038601023d57ec</asset-id>
+		<asset-id>0x00038601f3481926</asset-id>
+		<asset-id>0x0004050906e010fe</asset-id>
+		<asset-id>0x0003f90103162fc1</asset-id>
+		<asset-id>0x00038600647123b3</asset-id>
+		<asset-id>0x00040501d8d8bcbc</asset-id>
+		<asset-id>0x000386014a8d0241</asset-id>
+		<asset-id>0x00040508deffcae2</asset-id>
+		<asset-id>0x00040502b723be29</asset-id>
+		<asset-id>0x0002a00064c39c99</asset-id>
+		<asset-id>0x000405009c0f188a</asset-id>
+		<asset-id>0x0004050214ae2d94</asset-id>
+		<asset-id>0x00040507a9a75a52</asset-id>
+		<asset-id>0x00040507f91e00e1</asset-id>
+		<asset-id>0x0004050859a105f4</asset-id>
+		<asset-id>0x000405092d54c0b1</asset-id>
+		<asset-id>0x000405092d5a700f</asset-id>
+		<asset-id>0x00040508add94c31</asset-id>
+		<asset-id>0x00040507eab8481c</asset-id>
+		<asset-id>0x000405024230ee9f</asset-id>
+		<asset-id>0x00040507adc92f4d</asset-id>
+		<asset-id>0x0003f900065c8525</asset-id>
+		<asset-id>0x00040502dcf57953</asset-id>
+		<asset-id>0x0002460000017633</asset-id>
+		<asset-id>0x0003f901729d3125</asset-id>
+		<asset-id>0x0003f900c9ec38e7</asset-id>
+		<asset-id>0x000405004e05da90</asset-id>
+		<asset-id>0x000405015c5dc8c9</asset-id>
+		<asset-id>0x00040503ed58f542</asset-id>
+		<asset-id>0x00040506d75b76fd</asset-id>
+		<asset-id>0x0003e700dfaa5bca</asset-id>
+		<asset-id>0x0003f90226522ca0</asset-id>
+		<asset-id>0x0003860134817544</asset-id>
+		<asset-id>0x000405052722a3a2</asset-id>
+		<asset-id>0x0003f9031509d431</asset-id>
+		<asset-id>0x000386029b9c9414</asset-id>
+		<asset-id>0x0002a0002d04a42f</asset-id>
+		<asset-id>0x000386004ab85e29</asset-id>
+		<asset-id>0x0003e700edeefb1c</asset-id>
+		<asset-id>0x0004050775932ccc</asset-id>
+		<asset-id>0x0004050153f4c067</asset-id>
+		<!-- VE055409692= & VE053359132= -->
+		<asset-id>0x00040503EB420EA5</asset-id>
+		<asset-id>0x00040503379DFE56</asset-id>
+		<!-- Reuters Portfolio -->
+		<asset-id>0x000405109b7b22d3</asset-id>
+		<asset-id>0x000405092704ae85</asset-id>
+		<asset-id>0x0004050927051933</asset-id>
+		<asset-id>0x0004050dd80c3ae2</asset-id>
+		<asset-id>0x0004050553a352a6</asset-id>
+		<asset-id>0x0004050bfd0e37ce</asset-id>
+		<asset-id>0x0004050bfcf8bfb1</asset-id>
+		<asset-id>0x00040500d972973d</asset-id>
+		<asset-id>0x00040508ff935035</asset-id>
+		<asset-id>0x0002a00068975508</asset-id>
+		<asset-id>0x0003e70064eba6cd</asset-id>
+		<asset-id>0x0003e700267cfd43</asset-id>
+		<asset-id>0x0003e701574d3bc4</asset-id>
+		<asset-id>0x0003f9004f9dfed6</asset-id>
+		<asset-id>0x0003f9014f7e16dc</asset-id>
+		<asset-id>0x0003f90159df2558</asset-id>
+		<asset-id>0x0003f901cf4ff289</asset-id>
+		<asset-id>0x000405005f3f7819</asset-id>
+		<asset-id>0x000405005f40c3dd</asset-id>
+		<asset-id>0x0004050061336536</asset-id>
+		<asset-id>0x000405006134beea</asset-id>
+		<asset-id>0x0004050074b3be78</asset-id>
+		<asset-id>0x0004050074b40fce</asset-id>
+		<asset-id>0x000405008e7a0aff</asset-id>
+		<asset-id>0x000405008e7a0bfe</asset-id>
+		<asset-id>0x0004050090c094c5</asset-id>
+		<asset-id>0x0004050093f53a5d</asset-id>
+		<asset-id>0x00040500ce4e68e9</asset-id>
+		<asset-id>0x00040501177f81e9</asset-id>
+		<asset-id>0x00040501484d7570</asset-id>
+		<asset-id>0x000405016feee564</asset-id>
+		<asset-id>0x000405016fef2cac</asset-id>
+		<asset-id>0x00040501775f527a</asset-id>
+		<asset-id>0x0004050177647e6d</asset-id>
+		<asset-id>0x000405017a7d0e09</asset-id>
+		<asset-id>0x000405021fbfce6d</asset-id>
+		<asset-id>0x00040502dd005789</asset-id>
+		<asset-id>0x00040502dd0134eb</asset-id>
+		<asset-id>0x00040503ab09f757</asset-id>
+		<asset-id>0x00040503ba276df2</asset-id>
+		<asset-id>0x00040503ba2778e7</asset-id>
+		<asset-id>0x00040503c90f8c48</asset-id>
+		<asset-id>0x00040503cbcc9491</asset-id>
+		<asset-id>0x00040503f0912f4c</asset-id>
+		<asset-id>0x00040504140e1a05</asset-id>
+		<asset-id>0x00040504153a002a</asset-id>
+		<asset-id>0x0004050417a855ef</asset-id>
+		<asset-id>0x0004050459752801</asset-id>
+		<asset-id>0x000405052a1a784c</asset-id>
+		<asset-id>0x000405052a1ac0f4</asset-id>
+		<asset-id>0x00040508410bf4b7</asset-id>
+		<asset-id>0x00040508412ab3d1</asset-id>
+		<asset-id>0x00040506b05df913</asset-id>
+		<asset-id>0x00040507da1edd1f</asset-id>
+		<asset-id>0x00040507eab7bee5</asset-id>
+		<asset-id>0x000405090fa92886</asset-id>
+		<asset-id>0x0004050957a500fa</asset-id>
+		<asset-id>0x00040509bfbb9b97</asset-id>
+		<asset-id>0x0004050c420eda9b</asset-id>
+		<asset-id>0x0004050c420f1252</asset-id>
+		<asset-id>0x0004050e96d3c882</asset-id>
+		<asset-id>0x0004050eaaaca6af</asset-id>
+		<asset-id>0x0004050f7a5ec5ef</asset-id>
+		<asset-id>0x0004050f97ef96e0</asset-id>
+		<asset-id>0x0004050fff3da06c</asset-id>
+		<asset-id>0x000405104937b7d8</asset-id>
+		<asset-id>0x000405104937b8d7</asset-id>
+		<asset-id>0x000405106a660c11</asset-id>
+		<asset-id>0x0004051070c02b8a</asset-id>
+		<asset-id>0x0004051070db1da7</asset-id>
+	</custom-bonds>
+</settings>

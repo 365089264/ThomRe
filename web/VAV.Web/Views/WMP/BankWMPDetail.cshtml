@@ -1,0 +1,94 @@
+﻿@using VAV.Web.Common
+@model VAV.Web.ViewModels.WMP.BankWMPDetailViewModel
+@{
+    var tabName ="bankWMPDetailTabs" + @Model.InnerCode;
+}
+    <h2 class="dailogH2">@Model.ViewProd.PRD_NAME</h2>
+    <div id="@tabName" class="bankWMPDetailTabs">
+        <ul>
+            <li><a href="#tabs-@Model.InnerCode-1">@Resources.Global.WMP_BasicInformation</a></li>
+            <li><a href="#tabs-@Model.InnerCode-2">@Resources.Global.WMP_BenefitsAndRisks</a></li>
+            <li><a href="#tabs-@Model.InnerCode-3">@Resources.Global.WMP_PurchaseInformation</a></li>
+            <li><a href="#tabs-@Model.InnerCode-4">@Resources.Global.WMP_AdditionalInformation</a></li>
+        </ul>
+        <div id="tabs-@Model.InnerCode-1">
+            <table class="datatable"  style="line-height: 20px">
+                <tbody>
+                    <tr><td class="highlight">@Resources.Global.WMP_ProductName</td><td colspan="3">@Model.ViewProd.PRD_NAME</td></tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.WMP_ProductCode</td><td>@Model.ViewProd.PRD_CODE</td>
+                        <td class="highlight">@Resources.Global.WMP_CommissionedCurrency</td><td>@Model.ViewProd.ENTR_CURNCY_NAME</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.WMP_BankName</td><td>@Model.ViewProd.BANK_NAME</td>
+                        <td class="highlight">@Resources.Global.WMP_Yield_Type</td><td>@Model.ViewProd.PRD_TYPE_NAME</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.WMP_DelegatedAdministrationPeriod</td><td>@Model.ViewProd.PRD_SYS</td>
+                        <td class="highlight">@Resources.Global.WMP_TheHighestExpectedRevenue</td><td>@UIGenerator.FormatCellValue(Model.ViewProd.PRD_MAX_YLD_DE,"decimal")</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.WMP_SalesStartDate</td><td>@UIGenerator.FormatDateTime(Model.ViewProd.SELL_ORG_DATE)</td>
+                        <td class="highlight">@Resources.Global.WMP_SalesEndDate</td><td>@UIGenerator.FormatDateTime(Model.ViewProd.SELL_END_DATE)</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.WMP_Investment_Amount</td><td>@Model.ViewProd.ENTR_MIN_CURNCY</td>
+                        <td class="highlight">@Resources.Global.WMP_InterestPaymentPeriod</td><td colspan="3">@Model.ViewProd.PAY_CYC_NAME</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.WMP_Revenue_Start_Date</td><td >@UIGenerator.FormatDateTime(Model.ViewProd.INC_ORG_DATE)</td>
+                        <td class="highlight">@Resources.Global.WMP_Revenue_End_Date</td><td >@UIGenerator.FormatDateTime(Model.ViewProd.END_DATE)</td>
+                    </tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_Sales_Region</td><td colspan="3">@Model.ViewProd.ISS_AREA</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_ReturnOfPrincipalAndInterestWay</td><td colspan="3">@Model.ViewProd.RETN_TYPE</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_Brokerage</td><td colspan="3">@Model.ViewProd.AC_ORG</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_ExpertComments</td><td colspan="3">@Model.ViewProd.EXP_VIEW</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_ProductFeatures</td><td colspan="3">@Model.ViewProd.FEAT</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="tabs-@Model.InnerCode-2">
+            <table class="datatable"  style="line-height: 20px">
+                <tbody>
+                    <tr><td class="highlight">@Resources.Global.WMP_TypeOfInvestmentTargets</td><td>@Model.ViewProd.INV_OBJ</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_TheHighestExpectedRevenue</td><td>@UIGenerator.FormatCellValue(@Model.ViewProd.PRD_MAX_YLD_DE, "decimal")</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_ActualAnnualRateOfReturn</td><td>@UIGenerator.FormatCellValue(@Model.ViewProd.MAT_ACTU_YLD,"decimal")</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_YieldDescription</td><td>@Model.ViewProd.YLD_DET</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_IncomeCalculatedOnTheBasis</td><td>@Model.ViewProd.INC_CLA_BASIS</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_RiskRating</td><td>@Model.ViewProd.RIST_RTNG_DTL</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_LiquidityRating</td><td>@Model.ViewProd.LIQ_RTNG_DTL</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_RiskWarning</td><td>@Model.ViewProd.RIST_WARE</td></tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div id="tabs-@Model.InnerCode-3">
+            <table class="datatable"  style="line-height: 20px">
+                <tbody>
+                    <tr><td class="highlight">@Resources.Global.WMP_CommissionedStartingAmount</td><td>@Model.ViewProd.ENTR_MIN_CURNCY</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_CommissionAmountIncrements</td><td>@Model.ViewProd.CURNCY_INCR_UNIT</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_TheConditionsOfPurchaseDescription</td><td>@Model.ViewProd.AD_PRC_CND</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="tabs-@Model.InnerCode-4">
+            <table class="datatable"  style="line-height: 20px">
+                <tbody>
+                    <tr><td class="highlight">@Resources.Global.WMP_EarlyTerminationAndExtensionInstructions</td><td>@Model.ViewProd.TRM_DLY_REMARK</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_EarlyTerminationCondition</td><td>@Model.ViewProd.AD_TRM_CND</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_EarlyTerminationDateDescription</td><td>@Model.ViewProd.AD_TRM_DATE_DTL</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_RedemptionDateDescription</td><td>@Model.ViewProd.CALL_DATE_DTL</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_BanksMayBeTerminated</td><td>@Model.ViewProd.IS_BNK_BRG_FRD_NAME</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_TheCustomerCanRedeem</td><td>@Model.ViewProd.IS_CST_BRG_FRD_NAME</td></tr>
+                    <tr><td class="highlight">@Resources.Global.WMP_Pledged</td><td>@Model.ViewProd.IS_PLEDGE_NAME</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+    $(function() {
+        $("#@tabName").tabs();
+    } )
+</script>

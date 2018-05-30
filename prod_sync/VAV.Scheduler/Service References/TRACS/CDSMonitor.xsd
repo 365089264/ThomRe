@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://TRACS.ThomsonReuters.com/CDSMonitor" elementFormDefault="qualified" targetNamespace="http://TRACS.ThomsonReuters.com/CDSMonitor" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/Common" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/" />
+  <xs:complexType name="CDSRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://TRACS.ThomsonReuters.com/" base="q1:ServiceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CalculationMode" nillable="true" type="tns:CalculationModeEnum" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfCommonCDSRequestItem" />
+          <xs:element minOccurs="0" name="SpreadChoice" nillable="true" type="tns:SpreadChoiceEnum" />
+          <xs:element minOccurs="0" name="TradeDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ZCCurveChoice" nillable="true" type="tns:ZCCurveChoiceEnum" />
+          <xs:element xmlns:q2="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ZeroCurveList" nillable="true" type="q2:ArrayOfZeroCurveRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CDSRequest" nillable="true" type="tns:CDSRequest" />
+  <xs:simpleType name="CalculationModeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ISDAStandardModel" />
+      <xs:enumeration value="CDSPar" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CalculationModeEnum" nillable="true" type="tns:CalculationModeEnum" />
+  <xs:complexType name="ArrayOfCommonCDSRequestItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CommonCDSRequestItem" nillable="true" type="tns:CommonCDSRequestItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCommonCDSRequestItem" nillable="true" type="tns:ArrayOfCommonCDSRequestItem" />
+  <xs:complexType name="CommonCDSRequestItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplyFlatCurve" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CDS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CDSAnchorType" nillable="true" type="tns:CDSAnchorType" />
+      <xs:element minOccurs="0" name="CDSAnchorValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CreditCurve" nillable="true" type="tns:CreditCurveRequest" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DealSpread" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="FlatCurveSpread" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="FlatRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Notional" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="tns:TransactionType" />
+      <xs:element minOccurs="0" name="RecoveryRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ReferenceKey" type="xs:int" />
+      <xs:element minOccurs="0" name="Source" nillable="true" type="tns:SourceEnum" />
+      <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TierRecovery" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="TradeConvention" nillable="true" type="tns:TradeConvention" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommonCDSRequestItem" nillable="true" type="tns:CommonCDSRequestItem" />
+  <xs:simpleType name="CDSAnchorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Upfront" />
+      <xs:enumeration value="Price" />
+      <xs:enumeration value="ConventionalSpread" />
+      <xs:enumeration value="CashAmount" />
+      <xs:enumeration value="NPV" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CDSAnchorType" nillable="true" type="tns:CDSAnchorType" />
+  <xs:complexType name="CreditCurveRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfCreditCurveRequest.Point" />
+      <xs:element minOccurs="0" name="RecoveryRate" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditCurveRequest" nillable="true" type="tns:CreditCurveRequest" />
+  <xs:complexType name="ArrayOfCreditCurveRequest.Point">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CreditCurveRequest.Point" nillable="true" type="tns:CreditCurveRequest.Point" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCreditCurveRequest.Point" nillable="true" type="tns:ArrayOfCreditCurveRequest.Point" />
+  <xs:complexType name="CreditCurveRequest.Point">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CDSSpread" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditCurveRequest.Point" nillable="true" type="tns:CreditCurveRequest.Point" />
+  <xs:simpleType name="TransactionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Buy" />
+      <xs:enumeration value="Sell" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TransactionType" nillable="true" type="tns:TransactionType" />
+  <xs:simpleType name="SourceEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ThomsonReutersEOD" />
+      <xs:enumeration value="MarkitEOD" />
+      <xs:enumeration value="MarkitIntraday" />
+      <xs:enumeration value="GFI" />
+      <xs:enumeration value="ICAP" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SourceEnum" nillable="true" type="tns:SourceEnum" />
+  <xs:simpleType name="TradeConvention">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="T1" />
+      <xs:enumeration value="T3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TradeConvention" nillable="true" type="tns:TradeConvention" />
+  <xs:complexType name="CDSIndexRequestItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonCDSRequestItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Constituents" nillable="true" type="tns:ArrayOfCDSSingleNameRequestItem" />
+          <xs:element minOccurs="0" name="IncludeConstituents" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IndexFactor" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CDSIndexRequestItem" nillable="true" type="tns:CDSIndexRequestItem" />
+  <xs:complexType name="ArrayOfCDSSingleNameRequestItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CDSSingleNameRequestItem" nillable="true" type="tns:CDSSingleNameRequestItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCDSSingleNameRequestItem" nillable="true" type="tns:ArrayOfCDSSingleNameRequestItem" />
+  <xs:complexType name="CDSSingleNameRequestItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonCDSRequestItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReferenceBondID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ReferenceBondIDType" nillable="true" type="q3:SecurityIdType" />
+          <xs:element xmlns:q4="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ReferenceBondPriceYieldAnchorType" nillable="true" type="q4:ReferenceBondPriceYieldAnchorType" />
+          <xs:element minOccurs="0" name="ReferenceBondPriceYieldAnchorValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="RelativeValue" nillable="true" type="tns:RelativeValueEnum" />
+          <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CDSSingleNameRequestItem" nillable="true" type="tns:CDSSingleNameRequestItem" />
+  <xs:simpleType name="RelativeValueEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nearest" />
+      <xs:enumeration value="BondMaturity" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RelativeValueEnum" nillable="true" type="tns:RelativeValueEnum" />
+  <xs:simpleType name="SpreadChoiceEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AssetSwapSpread" />
+      <xs:enumeration value="ZeroVolatilitySpread" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SpreadChoiceEnum" nillable="true" type="tns:SpreadChoiceEnum" />
+  <xs:simpleType name="ZCCurveChoiceEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ZCCurve" />
+      <xs:enumeration value="ISDA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ZCCurveChoiceEnum" nillable="true" type="tns:ZCCurveChoiceEnum" />
+  <xs:complexType name="CDSResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://TRACS.ThomsonReuters.com/" base="q5:ServiceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CashSettlementDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfCommonCDSResponseItem" />
+          <xs:element minOccurs="0" name="SpreadChoice" nillable="true" type="tns:SpreadChoiceEnum" />
+          <xs:element minOccurs="0" name="TradeDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ZCCurveChoice" nillable="true" type="tns:ZCCurveChoiceEnum" />
+          <xs:element xmlns:q6="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ZeroCouponCurves" nillable="true" type="q6:ArrayOfZeroCurveResponse" />
+          <xs:element xmlns:q7="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ZeroCurveList" nillable="true" type="q7:ArrayOfZeroCurveResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CDSResponse" nillable="true" type="tns:CDSResponse" />
+  <xs:complexType name="ArrayOfCommonCDSResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CommonCDSResponseItem" nillable="true" type="tns:CommonCDSResponseItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCommonCDSResponseItem" nillable="true" type="tns:ArrayOfCommonCDSResponseItem" />
+  <xs:complexType name="CommonCDSResponseItem">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://TRACS.ThomsonReuters.com/" base="q8:ServiceItemResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccrualStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Accrued" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="BreakevenSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CDS" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CashAmount" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CashSettlementDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ConventionalSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CreditCurve" nillable="true" type="tns:CreditCurve" />
+          <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DealSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FlatCurveSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FlatProbability" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FullProbability" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="IRDV01" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="MaturityDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NPV" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Notional" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ParSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Position" nillable="true" type="tns:TransactionType" />
+          <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Principal" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="RecoveryRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="RedID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferenceKey" type="xs:int" />
+          <xs:element minOccurs="0" name="ReplacementSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Source" nillable="true" type="tns:SourceEnum" />
+          <xs:element minOccurs="0" name="SpreadDV01" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TierRecovery" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="TradeConvention" nillable="true" type="tns:TradeConvention" />
+          <xs:element minOccurs="0" name="Upfront" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CommonCDSResponseItem" nillable="true" type="tns:CommonCDSResponseItem" />
+  <xs:complexType name="CreditCurve">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfCreditCurve.Point" />
+      <xs:element minOccurs="0" name="Recovery" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="RecoveryRate" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditCurve" nillable="true" type="tns:CreditCurve" />
+  <xs:complexType name="ArrayOfCreditCurve.Point">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CreditCurve.Point" nillable="true" type="tns:CreditCurve.Point" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCreditCurve.Point" nillable="true" type="tns:ArrayOfCreditCurve.Point" />
+  <xs:complexType name="CreditCurve.Point">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CDSSpread" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DefaultProbability" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="IsCalculated" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditCurve.Point" nillable="true" type="tns:CreditCurve.Point" />
+  <xs:complexType name="CDSSingleNameResponseItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonCDSResponseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeInSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FitchRating" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FitchRatingDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FlatProba" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FullProba" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="IssuerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MoodysRating" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MoodysRatingDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ReferenceBondAssetSwapSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReferenceBondID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q9="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ReferenceBondIDType" nillable="true" type="q9:SecurityIdType" />
+          <xs:element minOccurs="0" name="ReferenceBondPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReferenceBondYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReferenceBondZSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="RelativeBasis" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="RelativeValue" nillable="true" type="tns:RelativeValueEnum" />
+          <xs:element minOccurs="0" name="SAndPRating" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SAndPRatingDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Sector" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Seniority" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ticker" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CDSSingleNameResponseItem" nillable="true" type="tns:CDSSingleNameResponseItem" />
+  <xs:complexType name="CDSIndexResponseItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonCDSResponseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Constituents" nillable="true" type="tns:ArrayOfCDSSingleNameResponseItem" />
+          <xs:element minOccurs="0" name="FairValuePrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FairValueSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="FairValueTimeStamp" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IncludeConstituents" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IndexFactor" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="IndexID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IndexSkewPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="IndexSkewSpread" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="IsOnTheRun" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CDSIndexResponseItem" nillable="true" type="tns:CDSIndexResponseItem" />
+  <xs:complexType name="ArrayOfCDSSingleNameResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CDSSingleNameResponseItem" nillable="true" type="tns:CDSSingleNameResponseItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCDSSingleNameResponseItem" nillable="true" type="tns:ArrayOfCDSSingleNameResponseItem" />
+  <xs:complexType name="CDSIConstituentsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://TRACS.ThomsonReuters.com/" base="q10:ServiceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IndexREDCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CDSIConstituentsRequest" nillable="true" type="tns:CDSIConstituentsRequest" />
+  <xs:complexType name="CDSIConstituentsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://TRACS.ThomsonReuters.com/" base="q11:ServiceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CDSIConstituents" nillable="true" type="tns:ArrayOfCDSIConstituent" />
+          <xs:element minOccurs="0" name="IndexREDCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CDSIConstituentsResponse" nillable="true" type="tns:CDSIConstituentsResponse" />
+  <xs:complexType name="ArrayOfCDSIConstituent">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CDSIConstituent" nillable="true" type="tns:CDSIConstituent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCDSIConstituent" nillable="true" type="tns:ArrayOfCDSIConstituent" />
+  <xs:complexType name="CDSIConstituent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrganizationShortName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RED6" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CDSIConstituent" nillable="true" type="tns:CDSIConstituent" />
+  <xs:complexType name="CDSICacheUpdateRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://TRACS.ThomsonReuters.com/" base="q12:ServiceRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CDSICacheUpdateRequest" nillable="true" type="tns:CDSICacheUpdateRequest" />
+</xs:schema>

@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="TRACS.ThomsonReuters.com" elementFormDefault="qualified" targetNamespace="TRACS.ThomsonReuters.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/BondDealMonitor" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/CDSMonitor" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/Luna" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/Common" />
+  <xs:element name="TestService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestServiceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestServiceResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BondDealMonitor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://TRACS.ThomsonReuters.com/BondDealMonitor" minOccurs="0" name="bondDealMonitorBdmRequest" nillable="true" type="q1:BDMRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BondDealMonitorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://TRACS.ThomsonReuters.com/BondDealMonitor" minOccurs="0" name="BondDealMonitorResult" nillable="true" type="q2:BDMResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CDSMonitor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://TRACS.ThomsonReuters.com/CDSMonitor" minOccurs="0" name="cdsMonitorCdsRequest" nillable="true" type="q3:CDSRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CDSMonitorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://TRACS.ThomsonReuters.com/CDSMonitor" minOccurs="0" name="CDSMonitorResult" nillable="true" type="q4:CDSResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CDSMonitor2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://TRACS.ThomsonReuters.com/CDSMonitor" minOccurs="0" name="cdsMonitorCdsRequest" nillable="true" type="q5:CDSRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CDSMonitor2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://TRACS.ThomsonReuters.com/CDSMonitor" minOccurs="0" name="CDSMonitor2Result" nillable="true" type="q6:CDSResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCDSIConstituents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://TRACS.ThomsonReuters.com/CDSMonitor" minOccurs="0" name="request" nillable="true" type="q7:CDSIConstituentsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCDSIConstituentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://TRACS.ThomsonReuters.com/CDSMonitor" minOccurs="0" name="GetCDSIConstituentsResult" nillable="true" type="q8:CDSIConstituentsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCDSIConstituentsCache">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://TRACS.ThomsonReuters.com/CDSMonitor" minOccurs="0" name="request" nillable="true" type="q9:CDSICacheUpdateRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCDSIConstituentsCacheResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://TRACS.ThomsonReuters.com/" minOccurs="0" name="UpdateCDSIConstituentsCacheResult" nillable="true" type="q10:ServiceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LunaPricer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://TRACS.ThomsonReuters.com/Luna" minOccurs="0" name="lunaRequest" nillable="true" type="q11:LunaRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LunaPricerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://TRACS.ThomsonReuters.com/Luna" minOccurs="0" name="LunaPricerResult" nillable="true" type="q12:LunaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GeneralLunaPricer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://TRACS.ThomsonReuters.com/Luna" minOccurs="0" name="request" nillable="true" type="q13:GeneralLunaRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GeneralLunaPricerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://TRACS.ThomsonReuters.com/Luna" minOccurs="0" name="GeneralLunaPricerResult" nillable="true" type="q14:GeneralLunaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetZeroCurves">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="request" nillable="true" type="q15:ZeroCurvesRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetZeroCurvesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="GetZeroCurvesResult" nillable="true" type="q16:ZeroCurvesResponce" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Version">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VersionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

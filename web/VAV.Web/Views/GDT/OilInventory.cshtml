@@ -1,0 +1,77 @@
+﻿@using VAV.Web.ViewModels.GDT
+@model GdtInventoryViewModel
+@{
+    var inventoryPageId = "inventoryPage" + @Model.ContentId;
+    var inventoryChartContainerId = "inventoryChartContainer" + @Model.ContentId;
+    var inventoryPageDetailTableId = "inventoryPageDetailTable" + @Model.ContentId;
+    var inventoryTopChartddlId = "inventoryTopChartddlId" + @Model.ContentId;
+    
+}
+<div id="@inventoryPageId" class="StatisticalContent" style="min-width:500px;width:-webkit-calc(100% - 3px);padding:0px 0px;margin:-2px 0px 0px -2px;">
+    <div class="Statistical">
+        <div class="StatisticalTop" style="height: 60%;">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Resources.CnE.GDT_InventoryTitle</span>
+                    <div style="float:right; display:inline-table;">
+                        <span class="colorBlock-header-span" style="padding-left:0;">@Resources.Global.Chart_Type</span>
+                        <select id="@inventoryTopChartddlId" style="width:80px;margin-right: 10px;" onchange="EnergyInventory.refreshTopChart(this.value,'@Model.ContentId');">
+                            <option value="column">@Resources.Global.ChatType_Column</option>
+                            <option value="spline">@Resources.Global.ChatType_Line</option>
+                        </select>
+                        <a id="excel@(@Model.ContentId)" href="#" class="exportExcel" onclick="EnergyInventory.ExportExcelInventoryDetails(this,'@Model.ContentId','@Model.ReportId','@Model.ItemId');">
+                            <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                        </a>
+                    </div>
+                </div>
+                <div id="@inventoryChartContainerId" style="position: absolute; height: 90%; width:99%;  width: -webkit-calc(99%-2px); height: -webkit-calc(90%+1px ); margin:0px 0px 0px 0px;padding:0px 0px 0px 0px;padding-top:1px">
+                </div>
+            </div>
+        </div>
+        <div class="StatisticalBottom" style="height: 40%;">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 10px);">
+                <div class="colorBlock-header">
+                    <a href="#" class="exportExcel" onclick="EnergyInventory.ExportExcelInventoryTable(this,'@Model.ContentId','@Model.ReportId','@Model.ItemId');">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div style="height: -webkit-calc(100% - 24px); overflow: auto">
+                    <table id="@inventoryPageDetailTableId" data-report="@Model.ReportId" data-item="@Model.ItemId" data-legend="@Model.Legend" class="datatable Zebra" style="white-space: nowrap;cursor: pointer;">
+                        <thead>
+                            <tr class="hr">
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div>@Resources.Global.SourceEs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () { 
+        var data = @{ Html.RenderAction("GetEnergyInventoryData", "GDT", 
+                                        new{
+                                            isHTML = true,
+                                            id = Model.ReportId,
+                                            itemId = Model.ItemId
+                                            }
+                                        ); 
+                    };
+        EnergyInventory.UpdateInventoryTableData(data.table,'@Model.ContentId');
+        EnergyInventory.UpdateInventoryChartData(data.chart.series,'@Model.ContentId');
+        amplify.subscribe('RefreshChart', function () {
+            var parent = $('#@inventoryChartContainerId');
+            setTimeout(function() {
+                                    if(parent.parent().width()){
+                                        EnergyInventory.arrHighCharts['@Model.ContentId'].setSize(parent.parent().width(), parent.parent().height()-25, false);
+                                    }
+                }, 1000
+            );
+        });
+    });
+</script>

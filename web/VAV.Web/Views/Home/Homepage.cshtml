@@ -1,0 +1,113 @@
+﻿@using System.Threading
+@model VAV.Web.ViewModels.Home.HomepageViewModel
+<div style="min-width: 800px;height:100%;overflow-y: auto; display: flex;">
+    <main style="flex: 1;">
+        <div class="colorBlock">
+            <div class="colorBlock-header">
+                <span class="colorBlock-header-span">@Resources.Global.Homepage_Hot</span>
+            </div>
+            <div class="home-group">
+                @foreach (var file in Model.HotItems)
+                {
+                    <div class="home-cell">
+                        <a href="javascript:void(0);" onclick="IPPCommon.DownloadFile(@file.ID)">@file.Name</a>
+                    </div>
+                }
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+        @foreach (var module in Model.Modules.Where(m => m.ISMAIN==1).OrderBy(m=>m.DISPLAYORDER))
+        {
+            @Html.DisplayFor(model => module, "HomeModuleTemplate")
+        }
+    </main>
+    <aside style="width:270px;">
+        <div class="colorBlock">
+            <div class="colorBlock-header">
+                <span class="colorBlock-header-span">@Resources.IPP.IPP_Announcement</span>
+            </div>
+            <div style="padding: 10px; height: 85px; overflow: hidden;color:#ff8a15;">
+                <marquee behavior="scroll" direction="up" scrollamount="1" height="100%" onmouseover="stop()"
+                         onmouseout="start()">
+                    @foreach (var item in Model.Announcements)
+                    {
+                        <div class="home-announcement">@Html.Raw(item.Content)</div>
+                        <hr/>
+                        <br/>
+                    }
+                </marquee>
+            </div>
+        </div>
+        <section class="colorBlock">
+            <div class="colorBlock-header" onclick="Homepage.OpenHomeItem('Url', 'cpurl://apps.cp./Apps/SH-HK_Connect/?tab=6', '');">
+                <span class="colorBlock-header-span">@Resources.Global.MeetChinaTitle</span><span class="colorBlock-header-span" style="float:right;">@Resources.Global.Common_More</span>
+            </div>
+            <div style="margin-right:5px;margin-left:5px;">
+            <iframe  frameborder="0" width="100%" height="100%" style="border:0px;min-height:400px;" src="https://apac1.app.kaltura.cp.thomsonreuters.com/kwf/widget/cmw/instanceid/1_7ii9kgnr/cid/2558823/itemsInPlaylist/3/theme/nvs/locale/cn/pn/China%20Market%20Analytics/playerName/Eikon/wtype/EIKON_MEET_CHINA_CMA"></iframe>
+            </div>
+        </section>
+        @foreach (var module in Model.Modules.Where(m => m.ISMAIN==0).OrderBy(m => m.DISPLAYORDER))
+        {
+            @Html.DisplayFor(model => module, "HomeModuleTemplate")
+        }
+    </aside>
+    <div style="clear: both;"></div>
+</div>
+<script type="text/javascript" ri_sdk="true" src="@ViewBag.InsiderUrl"></script>
+<script>
+    var Homepage = (function (my) {
+        my.OpenHomeItem = function (type, typevalue, typeparam) {
+            switch (type) {
+                case 'Url':
+                    openUrl(typevalue);
+                    break;
+                case 'Chart':
+                    CommonJet.OpenGraphRic(typevalue);
+                    break;
+                case 'Quote':
+                    CommonJet.OpenQuoteObjectRic(typevalue);
+                    break;
+                case 'QuoteList':
+                    CommonJet.OpenQuoteListRic(typevalue);
+                    break;
+                case 'News':
+                    CommonJet.OpenNewsRicWithKeyword(typevalue, typeparam);
+                    break;
+                case 'File':
+                    downloadFile(typevalue);
+                    break;
+                case 'Rmlink':
+                    openChatroom(typevalue);
+                    break;
+
+            }
+        };
+        my.OpenIppTopic = function (id) {
+            IPPCommon.OpenTopic(id);
+        };
+
+
+        function openChatroom(name) {
+            window.open('rmchat://room/thomsonreuters.com/' + name);
+        }
+
+        function downloadFile(id) {
+            location.href = "/Home/DownloadHomeItem/" + id;
+        }
+
+        function openUrl(url) {
+            if (url)
+                window.open(url);
+            else
+                return;
+        }
+        return my;
+    } (Homepage || {}));
+    // amd support
+    if (typeof define === 'function' && define.amd) {
+        define('Homepage', [], function () {
+            return Homepage;
+        });
+    }
+
+</script>

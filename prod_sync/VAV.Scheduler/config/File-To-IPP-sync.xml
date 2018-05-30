@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=filedb;Password=filedb;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=ipp;Password=ipp;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <date-key>
+    <table>FileInfo</table>
+    <column>LastChangeDate</column>
+  </date-key>
+  <delta-hours>
+    2
+  </delta-hours>
+  <mappings>
+    <table-mapping source="GetNewInstitution" destination="Topic">
+      <column-mapping source="SyncCode" destination="SyncCode" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ModuleID" destination="ModuleID" isKey="true"/>
+      <column-mapping source="NameCn" destination="NameCn"/>
+      <column-mapping source="NameEn" destination="NameEn"/>
+      <column-mapping source="DesCn" destination="DescriptionCn"/>
+      <column-mapping source="DesEn" destination="DescriptionEn"/>
+      <column-mapping source="Creater" destination="Creater"/>
+      <column-mapping source="IsApprove" destination="IsApprove"/>
+      <column-mapping source="IsInternalApprove" destination="IsInternalApprove"/>
+      <column-mapping source="IsDirectDelete" destination="IsDirectDelete"/>
+      <column-mapping source="Hits" destination="Hits"/>
+      <!--<column-mapping source="Image" destination="Image"/>-->
+      <column-mapping source="RMLink" destination="RMLink"/>
+      <column-mapping source="Tag" destination="Tag"/>
+      <column-mapping source="CreateDate" destination="CreateDate"/>
+      <column-mapping source="ImageName" destination="ImageName"/>
+      <column-mapping source="LastChangeDate" destination="LastChangeDate"/>
+      <filter>
+        <![CDATA[LastChangeDate > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND LastChangeDate <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="GetNewFile" destination="FileInfo">
+      <column-mapping source="SyncId" destination="SyncId" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="TitleCn" destination="TitleCn"/>
+      <column-mapping source="TitleEn" destination="TitleEn"/>
+      <column-mapping source="Status" destination="Status"/>
+      <column-mapping source="SubmitDate" destination="SubmitDate"/>
+      <column-mapping source="Approver" destination="Approver"/>
+      <column-mapping source="FileType" destination="FileType"/>
+      <column-mapping source="Ric" destination="Ric"/>
+      <column-mapping source="Hits" destination="Hits"/>
+      <column-mapping source="Rating" destination="Rating"/>
+      <column-mapping source="DescrCn" destination="DescrCn"/>
+      <column-mapping source="DescrEn" destination="DescrEn"/>
+      <column-mapping source="AuthorRM" destination="AuthorRM"/>
+      <column-mapping source="AuthorEmail" destination="AuthorEmail"/>
+      <column-mapping source="Tag" destination="Tag"/>
+      <column-mapping source="UploadType" destination="UploadType"/>
+      <column-mapping source="Sources" destination="Source"/>
+      <column-mapping source="ReportDate" destination="ReportDate"/>
+      <column-mapping source="IsCommunicatable" destination="IsCommunicatable"/>
+      <column-mapping source="FileName" destination="FileName"/>
+      <!-- to avoid duplicate rows, when find max(LastChangeDate) -->
+      <column-mapping source="Submiter" destination="SubmitterID"/>
+      <column-mapping source="SyncTopicCode" destination="SyncTopicCode"/>
+      <column-mapping source="SyncModuleID" destination="SyncModuleID"/>
+      <column-mapping source="LastChangeDate" destination="LastChangeDate"/>
+      <filter>
+        <![CDATA[LastChangeDate > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND LastChangeDate <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>

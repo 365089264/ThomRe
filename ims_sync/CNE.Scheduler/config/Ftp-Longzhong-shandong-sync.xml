@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;</conn>
+  </source-db>
+  <fileSavePath>C:\DataFeedFtp\longzhong\</fileSavePath>
+  <hostname>10.35.63.144</hostname>
+  <username>ftpupload</username>
+  <password>ftpupload</password>
+  <targetDir>longzhong</targetDir>
+  <fileName>longzhong_shandong_{fileDateFormat}.xls</fileName>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <mappings>
+ 
+    <table-mapping source="View_SdLocalDevice_Ftp" destination="DeviceStatistics" >
+      <column-mapping source="code"/>
+      <column-mapping source="CompanyName_CN"/>
+      <column-mapping source="CompanyName_EN"/>      
+      <column-mapping source="DeviceName_CN"/>
+      <column-mapping source="DeviceName_EN"/>      
+      <column-mapping source="YieldByTon"/>
+      <column-mapping source="YieldByBarrel"/>
+      <column-mapping source="ReDate"/>
+      <column-mapping source="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate >= substr('{LastSyncTime}',0,11)]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="View_SdLocalRate_Ftp" destination="TotalOperatingRate" >
+      <column-mapping source="code"/>
+      <column-mapping source="ReDate"/>
+      <column-mapping source="OperatingRate"/>
+      <column-mapping source="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="View_SdLocalDayOutput_Ftp" destination="DayProduction" >     
+      <column-mapping source="code"/>
+      <column-mapping source="refinerycode"/> 
+      <column-mapping source="CompanyName_EN"/>
+      <column-mapping source="CompanyName_CN"/>       
+      <column-mapping source="refineryname"/>        
+      <column-mapping source="ReDate"/>
+      <column-mapping source="outputvalue"/>
+      <column-mapping source="Unit_CN"/>
+      <column-mapping source="Unit_EN"/>
+      <column-mapping source="outputtype"/>      
+      <column-mapping source="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate >= substr('{LastSyncTime}',0,11)]]>
+      </filter>
+    </table-mapping>    
+    
+    <table-mapping source="View_SdLocalMonthOutput_Ftp" destination="MonthProduction" >
+      <column-mapping source="code"/>
+      <column-mapping source="ReDate"/>
+      <column-mapping source="outputvalue"/>
+      <column-mapping source="Unit_CN"/>
+      <column-mapping source="Unit_EN"/>
+      <column-mapping source="outputtype"/>
+      <column-mapping source="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>      
+    
+    <table-mapping source="View_SdLocalProfit_Ftp" destination="Profit" >
+      <column-mapping source="code"/>
+      <column-mapping source="ReDate"/>
+      <column-mapping source="profitvalue"/>
+      <column-mapping source="profittype"/>      
+      <column-mapping source="Unit_CN"/>
+      <column-mapping source="Unit_EN"/>      
+      <column-mapping source="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="View_SdLocalTotalStock_Ftp" destination="TotalStock" >
+      <column-mapping source="code"/>
+      <column-mapping source="ReDate"/>
+      <column-mapping source="stock"/>
+      <column-mapping source="stocktype"/>
+      <column-mapping source="Unit_CN"/>
+      <column-mapping source="Unit_EN"/>
+      <column-mapping source="CreateDate"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>    
+    
+    
+    <table-mapping source="View_SdLocalIndex_Ftp" destination="SdIndex" >
+      <column-mapping source="code"/>
+      <column-mapping source="indexvalue"/>
+      <column-mapping source="ReDate"/>
+      <column-mapping source="CreateDate"/>
+      <column-mapping source="indextype"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>        
+    
+    <table-mapping source="View_SdLocalValuation_Ftp" destination="SdValuation" >
+      <column-mapping source="code"/>
+      <column-mapping source="ProductName"/>
+      <column-mapping source="ModelName"/>
+      <column-mapping source="AreaName"/>
+      <column-mapping source="Unit_CN"/>
+      <column-mapping source="Unit_EN"/>
+      <column-mapping source="PriceDate"/>
+      <column-mapping source="Price"/>
+      <column-mapping source="ChangeRate"/>
+      <column-mapping source="stand"/>      
+      <column-mapping source="CreateDate"/>
+      <column-mapping source="valuetype"/>
+      <filter>
+        <![CDATA[CreateDate >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>       
+    
+ 
+    
+    
+  </mappings>
+</settings>

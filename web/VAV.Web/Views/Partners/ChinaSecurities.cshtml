@@ -1,0 +1,245 @@
+﻿@using VAV.Web.Common
+@{
+    Layout = null;
+    var datePickerId = "datePicker" + @ViewBag.ID;
+    var endDatePickerId = "endDatePicker" + @ViewBag.ID;
+    var startDate = DateTime.Now.AddMonths(-1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var titleID = "title" + @ViewBag.ID; ;
+    var codeID = "code" + @ViewBag.ID; ;
+    var queryButtonId = "query" + @ViewBag.ID;
+    var contentId = "content" + @ViewBag.ID;
+}
+<div class="colorBlock" id="ChinaSecurities_@ViewBag.ID" style="min-width:1000px;">
+    <div class="Statisticalfilter" style="height: 70px;">
+        <div style="float: left; margin-top:5px;">
+            <div style="height: 27px;">
+                <div style="float: left;">
+                    <label style="margin-left: 10px;">@Resources.Global.Report_Query_From</label>
+                    <input type="text" id="@datePickerId" value="@startDate" class="dateInput" style="margin-left: 10px;" readonly/>
+                    <label style="margin-left: 10px;">@Resources.Global.Report_Query_End</label>
+                    <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput" style="margin-left: 10px;" readonly/>
+                </div>
+                <div style="float: left; margin-left: 10px;">
+                    <input type="button" id="@queryButtonId" value="@Resources.Global.Report_Query" style="margin-left: 10px;" onclick="ChinaSecurities.Query(@ViewBag.ID,'auto',1);"/>
+                </div>
+            </div>
+            <div style="height: 27px; margin-top:5px;">
+                <div style="float: left; margin-left: 10px;">
+                    <input id="@titleID" name="contentSearch" type="radio"  checked="checked" value="title"  />
+                    <label for="@titleID" >@Resources.Global.BankWMP_Research_ReportTitle</label>
+                    <input id="@codeID" name="contentSearch" type="radio" value="code" disabled="disabled"   style="margin-left: 40px;" />
+                    <label  for="@codeID">@Resources.Global.CompanyCode</label>
+                    <input id="@contentId" name="@contentId" class="text" style="width: 126px; margin-left:23px;" type="text" />
+                </div>
+            </div>
+        </div>
+        <div style="float: right; width: 350px; height: 70px; text-align: center;">
+            <div style="float: right; padding-right:10px;">
+                <a target="_blank" href="http://www.cs.com.cn/"><img height="60px" class="" src="../../Content/images/CS_Logo.png" /></a>
+            </div>
+            <div style="float: right; padding-right: 10px;">
+                <img class="" height="60px" width="60px" src="../../Content/images/CS_ios.jpg" /><br />
+                ios
+            </div>
+            <div style="float: right; padding-right: 10px;">
+                <img class="" height="60px" width="60px" src="../../Content/images/CS_Android.jpg" /><br />
+                Android
+            </div>
+        </div>
+    </div>
+</div>
+<div id="csecureblock" class="colorBlock" style="height: 91%; height: -webkit-calc(100% - 71px); min-width: 1000px;">
+    <div id="chinaSecuritiesDetail" style="height: 91%; height: -webkit-calc(100% - 5px);" >
+        <div class="colorBlock-header vavtab">
+            <ul>
+                <li><a href="#chinaSecuritiesTenDiv">@Resources.Global.ChinaSecurities_Ten</a></li>
+                <li><a href="#chinaSecuritiesNoticeDiv">@Resources.Global.ChinaSecurities_Notice</a></li>
+            </ul>
+        </div>
+        <div id="chinaSecuritiesTenDiv" style="height: 91%; height: -webkit-calc(100% - 71px); ">
+            <div id="tenEmptyMessage_@ViewBag.ID" style="display: none; margin-left: 10px;">@Resources.Global.Empty_Result</div>
+            <div id="tenPager_@ViewBag.ID">
+                <div id="tenPaginateLabel_@ViewBag.ID" class="paginateOfLable">
+                    1 of 100</div>
+                <div style="width: 300px; float: right; padding-right: 80px">
+                    <div id="tenPaginate_@ViewBag.ID">
+                    </div>
+                </div>
+                <div style="clear: both">
+                </div>
+            </div>
+            <div style="height: 91%; height: -webkit-calc(100%); min-width: 528px; overflow:auto;">
+                <table id="tenTableId_@ViewBag.ID" class="datatable Zebra" style="cursor: pointer;">
+                    <thead>
+                        <tr class="hr">
+                            <th>
+                                @Resources.Global.BankWMP_Research_ReportTitle
+                            </th>
+                            <th>
+                                @Resources.Global.ChinaSecurities_Published
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div>@Resources.Global.SourceSecurity</div>
+            </div>
+        </div>
+        <div id="chinaSecuritiesNoticeDiv" style="height: 91%; height: -webkit-calc(100% - 71px); ">
+                <div id="noticeEmptyMessage_@ViewBag.ID" style="display: none; margin-left: 10px;">@Resources.Global.Empty_Result</div>
+                <div id="noticePager_@ViewBag.ID">
+                    <div id="noticePaginateLabel_@ViewBag.ID" class="paginateOfLable">
+                        1 of 100</div>
+                    <div style="width: 300px; float: right; padding-right: 80px">
+                        <div id="noticePaginate_@ViewBag.ID">
+                        </div>
+                    </div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div style="height: 95%; height: -webkit-calc(100%); min-width: 528px; overflow:auto;"">
+                    <table id="noticeTableId_@ViewBag.ID" class="datatable Zebra" style="cursor: pointer;">
+                        <thead>
+                            <tr class="hr">
+                                <th>
+                                    @Resources.Global.BankWMP_Research_ReportTitle
+                                </th>
+                                <th>
+                                    @Resources.Global.ChinaSecurities_Code
+                                </th>
+                                <th>
+                                    @Resources.Global.ChinaSecurities_Published 
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div>@Resources.Global.SourceSecurity</div>
+                </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var ChinaSecurities = (function (my) {
+        my.SwitchDiv = function (reportId) {
+            ChinaSecurities.Query(reportId, 'notice', 1);
+        };
+        my.Query = function (reportId, category, page) {
+            if (category == 'auto') {
+                if ($('#chinaSecuritiesTenDiv').eq(0).css('display') != 'none') {
+                    category = 'ten';
+                } else {
+                    category = 'notice';
+                }
+            }
+            var content = $("input[name='contentSearch']:checked").val();
+            var title = (content == 'title' ? $('#content' + reportId).val() : '');
+            var code = (content == 'code' ? $('#content' + reportId).val() : '');
+            AjaxWithBlock($('#ChinaSecurities_' + reportId).parent(), '/Partners/GetChinaSecuritiesData',
+            {
+                category: category,
+                title: title,
+                code: code,
+                startDate: $("#datePicker" + reportId).val(),
+                endDate: $("#endDatePicker" + reportId).val(),
+                startPage: page,
+                pageSize: 50
+            }, function (data) {
+                switch (category) {
+                    case 'ten':
+                        if (data.Total == 0) {
+                            $("#tenEmptyMessage_" + reportId).show();
+                            $("#tenPager_" + reportId).hide();
+                            $("#tenTableId_" + reportId).hide();
+                        } else {
+                            $("#tenEmptyMessage_" + reportId).hide();
+                            $("#tenPager_" + reportId).show();
+                            $("#tenTableId_" + reportId).show();
+                            ChinaSecurities.BuildTable('tenTableId_' + reportId, data);
+                            ChinaSecurities.UpdateReportPagination(data, category, reportId, '@Resources.Global.WMP_of', '@Resources.Global.Paginate_First', '@Resources.Global.Paginate_Last');
+                        }
+                        break;
+                    default:
+                        if (data.Total == 0) {
+                            $("#noticeEmptyMessage_" + reportId).show();
+                            $("#noticePager_" + reportId).hide();
+                            $("#noticeTableId_" + reportId).hide();
+                        } else {
+                            $("#noticeEmptyMessage_" + reportId).hide();
+                            $("#noticePager_" + reportId).show();
+                            $("#noticeTableId_" + reportId).show();
+                            ChinaSecurities.BuildTable('noticeTableId_' + reportId, data);
+                            ChinaSecurities.UpdateReportPagination(data, category, reportId, '@Resources.Global.WMP_of', '@Resources.Global.Paginate_First', '@Resources.Global.Paginate_Last');
+                        }
+                        break;
+                }
+            });
+        };
+        my.BuildTable = function (id, tableData) {
+            var body = $('#' + id + ' tbody').empty();
+            var rowTemplate = '<tr onclick="ChinaSecurities.RefreshIframe(this,\'' + id + '\',\'${url}\')">';
+            $.each(tableData.ColumTemplate, function (key, value) {
+                 rowTemplate += '<td style="text-align: left;">${' + value.ColumnName + '}</td>';
+            });
+            rowTemplate += '</tr>';
+            $.template('templateTable' + id, rowTemplate);
+            $.tmpl('templateTable' + id, tableData.RowData).appendTo(body);
+        };
+        my.RefreshIframe = function (row, id, url) {
+            window.open(url, 'newwindow');
+            $("#" + id + " .SelectedRow").removeClass("SelectedRow");
+            $(row).addClass("SelectedRow");
+        };
+        my.UpdateReportPagination = function (data, category, reportId, text, ftext, ltext) {
+            my.UpdatePaginationLabel(data.CurrentPage, 50, data.Total, category, reportId, text);
+            $('#' + category + 'Paginate_' + reportId).paginate({
+                count: Math.ceil(data.Total / 50),
+                start: data.CurrentPage,
+                display: 50,
+                border: false,
+                text_color: '#00B3E3',
+                background_color: 'none',
+                text_hover_color: '#28D2FF',
+                background_hover_color: 'none',
+                images: false,
+                mouse: 'press',
+                onChange: function (page) {
+                    ChinaSecurities.Query(reportId, 'auto', page);
+                },
+                firstText: ftext,
+                lastText: ltext
+            });
+        };
+        my.UpdatePaginationLabel = function (current, pageSize, total, category, reportId, text) {
+            var start = (current - 1) * pageSize + 1;
+            var end = current * pageSize;
+            if (end > total) end = total;
+            $('#' + category + 'PaginateLabel_' + reportId).html(start + '-' + end + text + total);
+        };
+        return my;
+    } (ChinaSecurities || {}));
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        $("#chinaSecuritiesDetail").tabs({
+            activate: function() {
+                var active = $("#chinaSecuritiesDetail").tabs("option", "active");
+                if (active == 0) {
+                    $('#title' + @ViewBag.ID).click();
+                    $('#code' + @ViewBag.ID).attr("disabled","disabled"); 
+                } else {
+                     $('#code' + @ViewBag.ID).removeAttr("disabled");
+                }
+                
+            } 
+        });
+        ChinaSecurities.Query('@ViewBag.ID', 'ten', 1);
+        ChinaSecurities.Query('@ViewBag.ID', 'notice', 1);
+    });
+</script>

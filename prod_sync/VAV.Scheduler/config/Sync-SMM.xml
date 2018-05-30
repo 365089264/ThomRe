@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="metals_smm_shanghai" destination="metals_smm_shanghai" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="id" destination="id"/>
+      <column-mapping source="code" destination="code" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="productName" destination="productName" isKey="true"/>
+      <column-mapping source="unit" destination="unit"/>
+      <column-mapping source="specification" destination="specification"/>
+      <column-mapping source="grade" destination="grade"/>
+      <column-mapping source="brand" destination="brand"/>
+      <column-mapping source="locationOfSale" destination="locationOfSale"/>
+      <column-mapping source="locationOfProduction" destination="locationOfProduction"/>
+      <column-mapping source="producer" destination="producer"/>
+      <column-mapping source="lowestPrice" destination="lowestPrice"/>
+      <column-mapping source="highestPrice" destination="highestPrice"/>
+      <column-mapping source="updateDate" destination="updateDate" isKey="true"/>
+      <column-mapping source="fetchTime" destination="fetchTime"/>
+      <column-mapping source="Lanuage" destination="Lanuage" isKey="true"/>
+      <filter>
+        <![CDATA[ code is not null and updateDate is not null and  fetchTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND fetchTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="metals_smm_industry" destination="metals_smm_industry" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="id" destination="id" isKey="true"/>
+      <column-mapping source="code" destination="code" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="datatype" destination="datatype"/>
+      <column-mapping source="dataname" destination="dataname" isKey="true"/>
+      <column-mapping source="unit" destination="unit"/>
+      <column-mapping source="figure" destination="figure"/>
+      <column-mapping source="updateDate" destination="updateDate" />
+      <column-mapping source="fetchTime" destination="fetchTime"/>
+      <column-mapping source="Lanuage" destination="Lanuage" isKey="true" />
+      <column-mapping source="priceDate" destination="priceDate" isKey="true" />
+      <filter>
+        <![CDATA[ code is not null  and fetchTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND fetchTime<= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+
+
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

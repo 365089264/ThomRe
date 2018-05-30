@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="Data_Contracts.Common" elementFormDefault="qualified" targetNamespace="Data_Contracts.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/Common" />
+  <xs:complexType name="CurveId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurveName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CurveType" type="q1:CurveType" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsSingle" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RIC" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurveId" nillable="true" type="tns:CurveId" />
+  <xs:complexType name="ArrayOfCurve">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Curve" nillable="true" type="tns:Curve" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurve" nillable="true" type="tns:ArrayOfCurve" />
+  <xs:complexType name="Curve">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurveId" nillable="true" type="tns:CurveId" />
+      <xs:element xmlns:q2="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="DayCount" nillable="true" type="q2:DayCountBasis" />
+      <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfCurve.CurvePoint" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Curve" nillable="true" type="tns:Curve" />
+  <xs:complexType name="ArrayOfCurve.CurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Curve.CurvePoint" nillable="true" type="tns:Curve.CurvePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurve.CurvePoint" nillable="true" type="tns:ArrayOfCurve.CurvePoint" />
+  <xs:complexType name="Curve.CurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DiscountFactor" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Shift" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Volatility" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Curve.CurvePoint" nillable="true" type="tns:Curve.CurvePoint" />
+</xs:schema>

@@ -1,0 +1,98 @@
+﻿@using VAV.DAL.Common
+@{
+    var pageid = ViewBag.ID + ViewBag.Page;
+    var topChart = "topUnlistedDetailChart" + pageid;
+    var topChartType = topChart + "type";
+    var bottomChart = "bottomUnlistedDetailChart" + pageid;
+    var bottomChartType = bottomChart + "type";
+    var tableName = "fundamentalDetail" + pageid;
+    var period = "period" + pageid;
+    var viewBy = "viewBy" + pageid;
+    var years = "years" + pageid;
+    var unit = "unit" + pageid;
+    var pageTag = "FD" + pageid;
+    var refreshURL = VirtualPathUtility.ToAbsolute("~/Fundamental/GetNonListTableData");
+    var emptyMsgID = "emptyMessage" + pageid;
+    var graphID = "FDGraph" + pageid;
+    var exportURL = VirtualPathUtility.ToAbsolute("~/Fundamental/GetDetailTableExcel");
+}
+<div id="@pageTag" style="margin: 5px 0px 5px 10px;">
+    @Resources.Global.Period
+    <select id="@period" class="largeSelect" style="width:145px;">
+        <option value="Y" selected="selected">@Resources.Global.Annual</option>
+        <option value="Q">@Resources.Global.Quarterly</option>
+    </select>
+    @Resources.Global.ViewBy
+    <select id="@viewBy" class="largeSelect" style="width:145px;">
+        <option value="RawReport">@Resources.Global.Fundamental_OriginalReport</option>
+        @if (ViewBag.Page == "tabb")
+        {
+            <option value="AssetRatio">@Resources.Global.Fundamental_ProportionofAssets</option>
+        }
+        <option value="YoY" >@Resources.Global.Fundamental_YoYGrowth</option>
+        <option value="QoQ" hidden="hidden">@Resources.Global.Fundamental_RingGrowth</option>
+    </select>
+    @Resources.Global.Years
+    <select id="@years" class="smallSelect">
+        <option value="0">@Resources.Global.Type_All</option>
+        <option value="1" hidden="hidden">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected="selected">5</option>
+    </select>
+    <label style="margin-left: 10px;">@Resources.Global.Report_Unit</label>
+    <select id="@unit" class="smallSelect">
+        <option value="100M">@Resources.Global.Unit_Option_100M</option>
+        <option value="M" selected="selected">@Resources.Global.Unit_Option_M</option>
+        <option value="10K">@Resources.Global.Unit_Option_10K</option>
+        <option value="K">@Resources.Global.Unit_Option_K</option>
+        <option value="P" hidden="hidden">%</option>
+    </select>
+    <input type="button" value="@Resources.Global.Report_Query" onclick="Fundamental.RefreshDetailData('@ViewBag.ID','@ViewBag.Page','@refreshURL')">
+    <a href="#" class="exportExcel" onclick="Fundamental.ExportDetailTableExcel(this, '@ViewBag.ID','@ViewBag.Page','@exportURL')">
+        <img alt="Export" src="/Content/themes/base/images/excel_icon.png">
+    </a>
+</div>
+<div class="rightTD" style="width: 65%; float: left; height: 90%; height: -webkit-calc(100% - 35px);overflow: auto;">
+    <table id="@tableName" class="datatable Zebra" style="cursor: pointer;white-space:nowrap;">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div id="@emptyMsgID" style="display:none; margin-left:10px;">@Resources.Global.Empty_Result</div>
+    <div>@Resources.Global.Source</div>
+</div>
+<div style="width: 35%; float: left; height: 90%; height: -webkit-calc(100% - 50px);">
+    <div class="colorBlock" style="height: 50%; overflow: hidden">
+        <div class="colorBlock-header">
+            <span class="colorBlock-header-span">@Resources.Global.Fundamental_GraphicDisplay</span>
+        </div>
+        <label style="margin-left: 10px;">@Resources.Global.Chart_Type</label>
+        <select id="@topChartType" onchange="Fundamental.DetailChartTypeChanged('@topChart','@pageid')" style="width: 120px">
+            <option value="column">@Resources.Global.ChatType_Column</option>
+            <option value="line" selected="selected">@Resources.Global.ChatType_Line</option>
+        </select>
+        <div id="@topChart" style="height: 90%; height: -webkit-calc(100% - 50px);">
+        </div>
+    </div>
+    <div class="colorBlock" style="height: 50%; overflow: hidden">
+        <div class="colorBlock-header">
+            <span id="@graphID" class="colorBlock-header-span" tag="@Resources.Global.Fundamental_SummaryGraph"></span>
+        </div>
+        <label style="margin-left: 10px;">@Resources.Global.Chart_Type</label>
+        <select id="@bottomChartType" onchange="Fundamental.DetailChartTypeChanged('@bottomChart','@pageid')" style="width: 120px">
+            <option value="column">@Resources.Global.ChatType_Column</option>
+            <option value="line">@Resources.Global.ChatType_Line</option>
+        </select>
+        <div id="@bottomChart" style="height: 90%; height: -webkit-calc(100% - 50px);">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(function() {
+    var initalData = @{ Html.RenderAction("GetNonListTableData", "Fundamental", new { period = "Y", viewBy = "RawReport", years = 5, unit = ConstValues.Unit_M, id = ViewBag.ID, page = ViewBag.page }); }
+    Fundamental.BuildFundamentalDetail(initalData, '@pageid');
+});
+</script>

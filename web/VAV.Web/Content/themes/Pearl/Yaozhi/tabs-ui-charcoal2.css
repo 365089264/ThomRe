@@ -1,0 +1,68 @@
+
+body{line-height:20px;}/*缺了此句会导致ie下tab的显示出现1像素的空白位*/
+body{font-family:'Lucida Sans Unicode','Lucida Grande','Lucida Sans','DejaVu Sans Condensed',sans-serif;
+font-size:12px;}
+.box{
+width:700px;
+}
+
+/* root element for tabs  */
+ul.css-tabs {
+    margin-left:4px;
+    padding:0;
+    height:32px;
+	overflow:hidden;
+    
+}
+
+/* single tab */
+ul.css-tabs li {
+    float:left;
+	width:100%;
+
+    margin-top:3px;
+    list-style-type:none;
+}
+ul.css-tabs li:nth-child(2n-1) {
+background:#d5d5d5;
+}
+/* link inside the tab. uses a background image */
+ul.css-tabs a {
+    float:left;
+    width:100%;
+    display:block;
+    padding:3px 5px 8px 8px;
+	 padding-right:8px;
+   height:18px;
+   cursor: pointer;
+background:#f7f3f7;
+border-bottom: solid 1px #dedbde;
+
+
+}
+
+ul.css-tabs a:hover {
+background:#0096ce;
+    color:#fff;
+}
+
+/* selected tab */
+ul.css-tabs a.current {
+
+background:#0096ce;
+    color:#fff;
+    
+}
+
+
+/* tab pane */
+.css-panes div {
+margin-top:2px;
+background-color: #efefef;
+
+font-size: 12px;
+
+border-radius: 3px;
+}
+
+

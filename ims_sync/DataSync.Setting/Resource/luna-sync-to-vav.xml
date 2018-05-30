@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>sqlserver</type>
+    <conn>Data Source=10.35.63.141;Initial Catalog=AINT2_Luna;User ID=sa;Password=p@ssw0rd</conn>
+  </source-db>
+  <destination-db>
+    <type>MYSQL</type>
+    <conn>server=10.34.4.232;port=3306;database=vav;uid=root;pwd=reutadmin;charset=gb2312;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <mappings>
+
+    <table-mapping source="ChineseBondName" destination="chinesebondname">
+      <column-mapping source="assetId" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="chinese_bond_name"/>
+    </table-mapping>
+    
+    <table-mapping source="Indices" destination="Indices">
+      <column-mapping source="IndicesId" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="index_name"/>
+      <column-mapping source="index_chinese_name"/>
+      <column-mapping source="ric"/>
+      <column-mapping source="contributor"/>
+      <column-mapping source="location"/>
+      <column-mapping source="last_value_change_date"/>
+      <column-mapping source="short_name"/>
+      <column-mapping source="rate_setup_visible"/>
+    </table-mapping>
+
+    <table-mapping source="InterestRateValues" destination="InterestRateValues">
+      <column-mapping source="InterestRateValuesId" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="InterestRateId"/>
+      <column-mapping source="RIC"/>
+      <column-mapping source="InterestRateName"/>
+      <column-mapping source="InterestRateLocalName"/>
+      <column-mapping source="currency"/>
+      <column-mapping source="valueDate"/>
+      <column-mapping source="valueTime"/>
+      <column-mapping source="value"/>
+      <column-mapping source="Contributor"/>
+      <column-mapping source="Location"/>
+      <column-mapping source="LastModifyDate"/>
+      <column-mapping source="CreDate"/>
+      <column-mapping source="Ver"/>
+      <column-mapping source="ProdPermission"/>
+      <column-mapping source="short_name"/>
+      <filter>
+        <![CDATA[CreDate >= {LastSyncTime} AND CreDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+  
+  <custom-bonds>
+  </custom-bonds>
+</settings>

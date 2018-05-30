@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=zcx;Password=zcx;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=zcx;Password=zcx;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    
+    <table-mapping source="BOND_BASIC_INFO" destination="BOND_BASIC_INFO" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    
+    <table-mapping source="BOND_FIN_BALA_TABB" destination="BOND_FIN_BALA_TABB" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    
+    <table-mapping source="BOND_FIN_CASH_TACB" destination="BOND_FIN_CASH_TACB" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    
+    <table-mapping source="BOND_FIN_PROF_TAPB" destination="BOND_FIN_PROF_TAPB" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BOND_ISS_INFO" destination="BOND_ISS_INFO" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BOND_ISSER_INFO" destination="BOND_ISSER_INFO" isOmitColumns="true" isSync="true">
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE" isKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="BOND_RATE_INFO" destination="BOND_RATE_INFO" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="ISSUERATING" destination="ISSUERATING" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="ISSUERRATING" destination="ISSUERRATING" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="PUB_AREA_CODE" destination="PUB_AREA_CODE" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="PUB_CURY_TYPE" destination="PUB_CURY_TYPE" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="PUB_ORG_INFO" destination="PUB_ORG_INFO" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="PUB_PAR" destination="PUB_PAR" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="RATE_ORG_INFO_F" destination="RATE_ORG_INFO_F" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="RATE_FINA_HIS" destination="RATE_FINA_HIS" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="RATE_ORG_CRED_HIS" destination="RATE_ORG_CRED_HIS" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="RATE_REP" destination="RATE_REP" isOmitColumns="true" isSync="true">
+      <column-mapping source="ID" destination="ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID >= TO_DATE({LastSyncTime}, 'mm/dd/yyyy:hh:mi:ssam') AND CCXEID <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

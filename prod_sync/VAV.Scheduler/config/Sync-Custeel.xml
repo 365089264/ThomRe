@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="CompanyFlow" destination="CompanyFlow" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="areaName" destination="areaName"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="sheetName" destination="sheetName"  isKey="true" />
+      <column-mapping source="re_date" destination="re_date"  isKey="true" />
+      <column-mapping source="areaNum" destination="areaNum"/>
+      <column-mapping source="unit" destination="unit"/>
+      <column-mapping source="isTotal" destination="isTotal"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CusteelData" destination="CusteelData" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="code" destination="code" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="DBSetID" destination="DBSetID"/>
+      <column-mapping source="time" destination="time" isKey="true"/>
+      <column-mapping source="price" destination="price"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CusteelMarketingOutputData" destination="CusteelMarketingOutputData" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="code" destination="code"/>
+      <column-mapping source="cnname" destination="cnname"/>
+      <column-mapping source="re_date" destination="re_date"/>
+      <column-mapping source="sheet_no" destination="sheet_no"/>
+      <column-mapping source="unit" destination="unit"/>
+      <column-mapping source="Output_Month" destination="Output_Month"/>
+      <column-mapping source="Sell_Totle_Month" destination="Sell_Totle_Month"/>
+      <column-mapping source="Sell_Direct_Month" destination="Sell_Direct_Month"/>
+      <column-mapping source="Sell_Distribution_Month" destination="Sell_Distribution_Month"/>
+      <column-mapping source="Sell_Retail_Month" destination="Sell_Retail_Month"/>
+      <column-mapping source="Sell_Branch_Month" destination="Sell_Branch_Month"/>
+      <column-mapping source="Sell_Export_Month" destination="Sell_Export_Month"/>
+      <column-mapping source="Stock_Increase_Month" destination="Stock_Increase_Month"/>
+      <column-mapping source="Output_YTD" destination="Output_YTD"/>
+      <column-mapping source="Sell_Totle_YTD" destination="Sell_Totle_YTD"/>
+      <column-mapping source="Sell_Direct_YTD" destination="Sell_Direct_YTD"/>
+      <column-mapping source="Sell_Distribution_YTD" destination="Sell_Distribution_YTD"/>
+      <column-mapping source="Sell_Retail_YTD" destination="Sell_Retail_YTD"/>
+      <column-mapping source="Sell_Branch_YTD" destination="Sell_Branch_YTD"/>
+      <column-mapping source="Sell_Export_YTD" destination="Sell_Export_YTD"/>
+      <column-mapping source="Stock_Opening" destination="Stock_Opening"/>
+      <column-mapping source="Stock_Closing" destination="Stock_Closing"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[ SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="CusteelTargets" destination="CusteelTargets" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="code" destination="code"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="targetName" destination="targetName"  isKey="true" />
+      <column-mapping source="targetsName" destination="targetsName"  isKey="true" />
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[ SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="ColdHotRolledSheet" destination="ColdHotRolledSheet" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="MonthDate" destination="MonthDate"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ItemName" destination="ItemName" isKey="true"/>
+      <column-mapping source="ItemValue" destination="ItemValue"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[ SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="HeavyAndMediumPlate" destination="HeavyAndMediumPlate" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true" >
+      <column-mapping source="MonthDate" destination="MonthDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ItemValue" destination="ItemValue" />
+      <column-mapping source="ItemName" destination="ItemName" isKey="true"/>
+      <column-mapping source="SyncTime" destination="SyncTime" />
+      <filter>
+        <![CDATA[SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="IndustryFinance" destination="IndustryFinance" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true" >
+      <column-mapping source="MonthDate" destination="MonthDate"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ItemName" destination="ItemName" isKey="true"/>
+      <column-mapping source="Unit" destination="Unit"/>
+      <column-mapping source="ItemValue" destination="ItemValue"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[ SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="KeyMonthOutput" destination="KeyMonthOutput" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="MonthDate" destination="MonthDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ItemValue" destination="ItemValue" />
+      <column-mapping source="ItemName" destination="ItemName" isKey="true"/>
+      <column-mapping source="SyncTime" destination="SyncTime" />
+      <filter>
+        <![CDATA[SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="OreBondedAreaInventory" destination="OreBondedAreaInventory" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="MonthDate" destination="MonthDate"  isKey="true" />
+      <column-mapping source="ItemName" destination="ItemName"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ItemValue" destination="ItemValue"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[ SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RateOfOperation" destination="RateOfOperation" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="MonthDate" destination="MonthDate"  isKey="true" />
+      <column-mapping source="ItemName" destination="ItemName"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ItemValue" destination="ItemValue"   />
+      <column-mapping source="SyncTime" destination="SyncTime"   />
+      <filter>
+        <![CDATA[SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="ScrapSteelBaseInventory" destination="ScrapSteelBaseInventory" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="MonthDate" destination="MonthDate"  isKey="true" />
+      <column-mapping source="ItemName" destination="ItemName"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ItemValue" destination="ItemValue"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[ SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="ScrapSteelSupplyDemand" destination="ScrapSteelSupplyDemand" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="MonthDate" destination="MonthDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="SupplyTotal" destination="SupplyTotal"/>
+      <column-mapping source="SupplyRecycle" destination="SupplyRecycle"/>
+      <column-mapping source="SupplyNonRecycle" destination="SupplyNonRecycle"/>
+      <column-mapping source="SupplyInnerTotal" destination="SupplyInnerTotal"/>
+      <column-mapping source="SupplyImport" destination="SupplyImport"/>
+      <column-mapping source="ConsumeTotal" destination="ConsumeTotal"/>
+      <column-mapping source="ConsumeConverter" destination="ConsumeConverter"/>
+      <column-mapping source="ConsumeElectric" destination="ConsumeElectric"/>
+      <column-mapping source="StatisticsCount" destination="StatisticsCount"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[ SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="SteelMillInventory" destination="SteelMillInventory" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true" >
+      <column-mapping source="MonthDate" destination="MonthDate"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ItemName" destination="ItemName" isKey="true"/>
+      <column-mapping source="ItemValue" destination="ItemValue"/>
+      <column-mapping source="SyncTime" destination="SyncTime"/>
+      <filter>
+        <![CDATA[ SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="TenDaysPeriodOutput" destination="TenDaysPeriodOutput" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true" >
+      <column-mapping source="MonthDate" destination="MonthDate" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="TenDays" destination="TenDays" />
+      <column-mapping source="ItemName" destination="ItemName" isKey="true"/>
+      <column-mapping source="ItemValue" destination="ItemValue" />
+      <column-mapping source="SyncTime" destination="SyncTime" />
+      <filter>
+        <![CDATA[SyncTime > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND SyncTime <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

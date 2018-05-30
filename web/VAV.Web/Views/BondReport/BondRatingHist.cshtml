@@ -1,0 +1,53 @@
+﻿@model VAV.Web.ViewModels.Bond.BondRatingHistViewModel
+@{
+    string emptyMessageId = "emptyMessage" + ViewBag.ID;
+    ViewBag.Name = @Resources.Global.Bond_History_Rating;
+}
+
+<div class="colorBlock-header">
+    <span class="colorBlock-header-span">@ViewBag.Name</span>
+</div>
+@if (Model.RatingHistData.Count == 0)
+{
+    <div id="@emptyMessageId" style="margin-left:10px;">@Resources.Global.Empty_Result</div>
+}
+else
+{
+    <div>
+    <table class="datatable Zebra" style="cursor: pointer;">
+        <thead>
+            <tr class="hr">
+                <th>@Resources.Global.Bond_Rating_Date</th>
+                <th>@Resources.Global.Bond_Rating_Type</th>
+                <th>@Resources.Global.Bond_Rating_Class</th>
+                <th>@Resources.Global.Bond_Rating_Orgnization</th>
+                <th>@Resources.Global.Bond_Rating</th>
+                <th>@Resources.Global.Bond_Rating_Prospect</th>
+                <th>@Resources.Global.Bond_Rating_Report</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var f in Model.RatingHistData)
+            {
+                var matureDate = f.RATE_DATE == null ? "" : f.RATE_DATE.ToString("yyyy-MM-dd");
+                <tr>
+                    <td>@matureDate</td>
+                    <td style="text-align:left;">@f.RATE_TYPE</td>
+                    <td style="text-align:left;">@f.RATE_CLS</td>
+                    <td style="text-align:left;">@f.RATE_ORG</td>
+                    <td style="text-align:left;">@f.RATE</td>
+                    <td style="text-align:left;">@f.RATE_PROS</td>
+                    <td style="text-align:left;">
+                        @if (@f.ContainFile)
+                        {
+                            <a class="link" href='/BondReport/DownloadRatingFile/@f.RATE_ID'>@f.RATE_TITLE</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+}
+<div>@Resources.Global.Source</div>

@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{878D83E9-0387-43BC-854F-B916F40729D0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CNE.Scheduler</RootNamespace>
+    <AssemblyName>CNE.Scheduler</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\uc166670\Desktop\tt\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Label="SlowCheetah">
+    <SlowCheetahToolsPath>$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\SlowCheetah.2.5.10.3\tools\))</SlowCheetahToolsPath>
+    <SlowCheetah_EnableImportFromNuGet Condition=" '$(SC_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
+    <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\Properties\SlowCheetah\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>
+    <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <OutputPath>bin\PROD\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AINT2|AnyCPU'">
+    <OutputPath>bin\AINT2\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>
+    </DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiveUp.Net.Common">
+      <HintPath>..\packages\MailSystem.NET\ActiveUp.Net.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveUp.Net.Imap4">
+      <HintPath>..\packages\MailSystem.NET\ActiveUp.Net.Imap4.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveUp.Net.Mail">
+      <HintPath>..\packages\MailSystem.NET\ActiveUp.Net.Mail.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\packages\Aspose.Cells.7.4.2\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Spring.net\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net">
+      <HintPath>..\packages\log4net\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Pechkin">
+      <HintPath>..\packages\Pechkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Pechkin.Synchronized">
+      <HintPath>..\packages\Pechkin.Synchronized.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=1.0.3.3, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spring.net\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="RFA7_NET100">
+      <HintPath>..\Lib\RFA7_NET100.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.2.40943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spring.net\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Scheduling.Quartz, Version=1.3.2.40943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spring.net\Spring.Scheduling.Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.OracleClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\System.Data.OracleClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VAV.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\VAV.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extension\ChinaSecurities.cs" />
+    <Compile Include="Extension\ConfigHelper.cs" />
+    <Compile Include="Extension\CtrlBreakHandler.cs" />
+    <Compile Include="Extension\DataTableSerializer.cs" />
+    <Compile Include="Extension\DBHelper.cs" />
+    <Compile Include="Extension\FileUtil.cs" />
+    <Compile Include="Extension\Imlement\BankFinPrdProspData.cs" />
+    <Compile Include="Extension\Imlement\FinPrdRrtData.cs" />
+    <Compile Include="Extension\Imlement\DiscAcceCfpData.cs" />
+    <Compile Include="Extension\Imlement\RateRepData.cs" />
+    <Compile Include="Extension\Imlement\ResInfoData.cs" />
+    <Compile Include="Extension\Model\QueueMessageFromRFA.cs" />
+    <Compile Include="Extension\Model\RmdsFid.cs" />
+    <Compile Include="Extension\Model\RmdsRic.cs" />
+    <Compile Include="Extension\NewListBond.cs" />
+    <Compile Include="Extension\NewListBondFromRfa.cs" />
+    <Compile Include="Extension\OpenMarketBase.cs" />
+    <Compile Include="Extension\OpenMarketCNREPO.cs" />
+    <Compile Include="Extension\OpenMarketMLF.cs" />
+    <Compile Include="Extension\OpenMarketOperation.cs" />
+    <Compile Include="Extension\OpenMarketSLF.cs" />
+    <Compile Include="Extension\OpenMarketSLO.cs" />
+    <Compile Include="Extension\OracleHelper.cs" />
+    <Compile Include="Extension\StartConsumer.cs" />
+    <Compile Include="Jobs\CneMigration.cs" />
+    <Compile Include="Jobs\DM12DM2Job.cs" />
+    <Compile Include="Jobs\EjvBondSyncJob.cs" />
+    <Compile Include="Jobs\EjvDsosSyncJob.cs" />
+    <Compile Include="Jobs\Ftp2SSJob.cs" />
+    <Compile Include="Extension\TROilInventoryManager.cs" />
+    <Compile Include="HTML_PDF_Tool\HtmlManager.cs" />
+    <Compile Include="HTML_PDF_Tool\InvokerMachine.cs" />
+    <Compile Include="HTML_PDF_Tool\PdfSaverByPechkin.cs" />
+    <Compile Include="HTML_PDF_Tool\StaticString.cs" />
+    <Compile Include="HTML_PDF_Tool\TaskConfigs.cs" />
+    <Compile Include="HTML_PDF_Tool\Utility.cs" />
+    <Compile Include="Extension\BaseDataHandle.cs" />
+    <Compile Include="Extension\ChinaJci.cs" />
+    <Compile Include="Extension\CofeedManager.cs" />
+    <Compile Include="Extension\CofeedProductManager.cs" />
+    <Compile Include="Extension\CoffedWeekManager.cs" />
+    <Compile Include="Extension\CompanyFlowManager.cs" />
+    <Compile Include="Extension\CusteelExcelManager.cs" />
+    <Compile Include="Extension\CusteelData.cs" />
+    <Compile Include="Extension\CusteelReutersUnnormalizedData.cs" />
+    <Compile Include="Extension\EnergyOilShandong.cs" />
+    <Compile Include="Extension\Example.cs" />
+    <Compile Include="Extension\ExcelUtil.cs" />
+    <Compile Include="Extension\FanYaExponent.cs" />
+    <Compile Include="Extension\FetchDataBase.cs" />
+    <Compile Include="Extension\FetchPriceEntity.cs" />
+    <Compile Include="Extension\FetchProductEntity.cs" />
+    <Compile Include="Extension\FtpSyncLoad.cs" />
+    <Compile Include="Extension\FxNews.cs" />
+    <Compile Include="Extension\GetFtpFileData.cs" />
+    <Compile Include="Extension\IMAP4AttFetcher.cs" />
+    <Compile Include="Extension\Lufax.cs" />
+    <Compile Include="Extension\LongZhongJob.cs" />
+    <Compile Include="Extension\MergeData.cs" />
+    <Compile Include="Extension\MetalsFanya.cs" />
+    <Compile Include="Extension\MetalsSmmShanghai.cs" />
+    <Compile Include="Extension\Model\ChinaJciCornCostEstimateDaily.cs" />
+    <Compile Include="Extension\Model\ChinaJciImportPrice.cs" />
+    <Compile Include="Extension\Model\ChinaJciInternalPrice.cs" />
+    <Compile Include="Extension\Model\ChinaJciPalmOilStocksDaily.cs" />
+    <Compile Include="Extension\Model\ChinaJciSoybeanCrushMarginsDaily.cs" />
+    <Compile Include="Extension\Model\ChinaJciSoybeanStocksDaily.cs" />
+    <Compile Include="Extension\Model\ChinaJciWheatCostEstimateDaily.cs" />
+    <Compile Include="Extension\Model\ChuChangPrice.cs" />
+    <Compile Include="Extension\Model\ChuChangProduct.cs" />
+    <Compile Include="Extension\LongZhongExcelManager.cs" />
+    <Compile Include="Extension\Model\EmailDetail.cs" />
+    <Compile Include="Extension\Model\Factory.cs" />
+    <Compile Include="Extension\Model\FanYaExponentData.cs" />
+    <Compile Include="Extension\Model\FanYaStockData.cs" />
+    <Compile Include="Extension\Model\GuoJiPrice.cs" />
+    <Compile Include="Extension\Model\GuoJiProduct.cs" />
+    <Compile Include="Extension\Model\GuoNeiPrice.cs" />
+    <Compile Include="Extension\Model\GuoNeiProduct.cs" />
+    <Compile Include="Extension\Model\Monitor.cs" />
+    <Compile Include="Extension\Model\OilPrice.cs" />
+    <Compile Include="Extension\Model\OilProduct.cs" />
+    <Compile Include="Extension\Model\PackageProduct.cs" />
+    <Compile Include="Extension\Model\PriceBase.cs" />
+    <Compile Include="Extension\Model\ProductBase.cs" />
+    <Compile Include="Extension\ModifyLongZhongMax.cs" />
+    <Compile Include="Extension\MonitorSync.cs" />
+    <Compile Include="Extension\NationalBureau.cs" />
+    <Compile Include="Extension\PriceFactory.cs" />
+    <Compile Include="Extension\ReportManager.cs" />
+    <Compile Include="Extension\Sail_Traval_Manager.cs" />
+    <Compile Include="Extension\SmmShNew.cs" />
+    <Compile Include="Extension\SyncFile.cs" />
+    <Compile Include="Extension\TimeHelper.cs" />
+    <Compile Include="Extension\WmpArea.cs" />
+    <Compile Include="HtmlSmtpAppender.cs" />
+    <Compile Include="Extension\Interface\ITableMappingOperation.cs" />
+    <Compile Include="Jobs\BankFileSyncJob.cs" />
+    <Compile Include="Jobs\ChinaJciJob.cs" />
+    <Compile Include="Jobs\ChinaSecuritiesJob.cs" />
+    <Compile Include="Jobs\ClearHistoryDataJob.cs" />
+    <Compile Include="Jobs\MySteelJob.cs" />
+    <Compile Include="Jobs\CofeedProductJob.cs" />
+    <Compile Include="Jobs\CoffedDataJob.cs" />
+    <Compile Include="Jobs\MarketDataSync.cs" />
+    <Compile Include="Jobs\NewListBondSync.cs" />
+    <Compile Include="Jobs\OpenMarketData.cs" />
+    <Compile Include="Jobs\ZCX2SSJob.cs" />
+    <Compile Include="Jobs\Genius2SSJob.cs" />
+    <Compile Include="Jobs\TROilInventoryExcelDataJob.cs" />
+    <Compile Include="Extension\CommMailBiz.cs" />
+    <Compile Include="Jobs\BOCCrawler2PDFJob.cs" />
+    <Compile Include="Jobs\FanYaExponentJob.cs" />
+    <Compile Include="Jobs\LufaxJob.cs" />
+    <Compile Include="Jobs\WmpAreaJob.cs" />
+    <Compile Include="Jobs\ZCXRR2SSAndFileDBJob.cs" />
+    <Compile Include="Jobs\CusteelExcelDataJob.cs" />
+    <Compile Include="Jobs\Sail_Traval_SH_DataJob.cs" />
+    <Compile Include="Jobs\Test.cs" />
+    <Compile Include="Jobs\LongZhongExcelJob.cs" />
+    <Compile Include="Jobs\CusteelDataJob.cs" />
+    <Compile Include="Jobs\ExampleJob.cs" />
+    <Compile Include="Jobs\FanyaJob.cs" />
+    <Compile Include="Jobs\FtpTimingDownLoad.cs" />
+    <Compile Include="Jobs\FxNewsJob.cs" />
+    <Compile Include="Jobs\GetFtpFileDataJob.cs" />
+    <Compile Include="Jobs\LongZhongJobContext.cs" />
+    <Compile Include="Jobs\MergeDataJob.cs" />
+    <Compile Include="Jobs\MonitorJob.cs" />
+    <Compile Include="Jobs\MonitorJobObject.cs" />
+    <Compile Include="Jobs\MySteelDownLoad.cs" />
+    <Compile Include="Jobs\NationalBureauJob.cs" />
+    <Compile Include="Jobs\OilchemJob.cs" />
+    <Compile Include="Jobs\Email2SSJob.cs" />
+    <Compile Include="Jobs\SmmJob.cs" />
+    <Compile Include="Jobs\CMAJobBase.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchedulerService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SchedulerService.designer.cs">
+      <DependentUpon>SchedulerService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServerInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ServerInstaller.designer.cs">
+      <DependentUpon>ServerInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CenterService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\FileStorgeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SXCoal\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.AINT2.config">
+      <DependentUpon>app.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.config">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.PROD.config">
+      <DependentUpon>app.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="etc\ExampleRFA.cfg" />
+    <None Include="etc\RDMFieldDictionary" />
+    <None Include="installer.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Service References\CenterService\DataCenterMTOMVerifyServiceImplService.wsdl" />
+    <None Include="Service References\FileStorgeService\CNE.Scheduler.FileStorgeService.fileEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\FileStorgeService\StorageServiceImplService.wsdl" />
+    <None Include="Service References\SXCoal\WebService_Data.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CenterService\" />
+    <WCFMetadataStorage Include="Service References\FileStorgeService\" />
+    <WCFMetadataStorage Include="Service References\SXCoal\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SXCoal\WebService_Data.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SXCoal\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SXCoal\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SXCoal\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CenterService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CenterService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CenterService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\MySteel-data-sync.PROD.xml">
+      <DependentUpon>MySteel-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\MySteel-data-sync.AINT2.xml">
+      <DependentUpon>MySteel-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CusteelTo144.PROD.xml">
+      <DependentUpon>CusteelTo144.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CusteelTo144.AINT2.xml">
+      <DependentUpon>CusteelTo144.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Content Include="config\CusteelTo144.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="config\EjvBond-data-sync.PROD.xml">
+      <DependentUpon>EjvBond-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\EjvBond-data-sync.AINT2.xml">
+      <DependentUpon>EjvBond-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\dsos-increment-sync.PROD.xml">
+      <DependentUpon>dsos-increment-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\dsos-increment-sync.AINT2.xml">
+      <DependentUpon>dsos-increment-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Content Include="config\dsos-increment-sync.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\EjvBond-data-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\MySteel-data-sync.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <None Include="config\ZCX2SS.PROD.xml">
+      <DependentUpon>ZCX2SS.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\ZCX2SS.AINT2.xml">
+      <DependentUpon>ZCX2SS.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Genius2SS.PROD.xml">
+      <DependentUpon>Genius2SS.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Genius2SS.AINT2.xml">
+      <DependentUpon>Genius2SS.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\MarketData-sync.PROD.xml">
+      <DependentUpon>MarketData-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\MarketData-sync.AINT2.xml">
+      <DependentUpon>MarketData-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CneMigration.AINT2.xml">
+      <DependentUpon>CneMigration.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CneMigration.PROD.xml">
+      <DependentUpon>CneMigration.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Content Include="config\CneMigration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="config\MarketData-sync.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="config\ZCXRR2SSAndFileDB.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\CusteelLongNumeric.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\ZCX2SS.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="config\Ftp-Longzhong-output-sync.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\Ftp-Longzhong-shandong-sync.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\CusteelFtp\Ftp-Custeel-10days.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\CusteelFtp\Ftp-Custeel-daily.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\CusteelFtp\Ftp-Custeel-monthly.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\Ftp-Longzhong-price-sync.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\Ftp-Cofeed-Inventory-sync.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\Ftp-SMM-data-sync.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\CusteelFtp\Ftp-Custeel-weekly.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="config\Ftp-CninaJCI-data-sync.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\Ftp-Cofeed-data-sync.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\Ftp-Map-data-sync.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\Ftp-MySteel-data-sync.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="config\Genius2SS.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="config\Monitor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="etc\enumtype.def" />
+    <Content Include="libeay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libgcc_s_dw2-1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mingwm10.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Service References\FileStorgeService\configuration91.svcinfo" />
+    <None Include="Service References\FileStorgeService\configuration.svcinfo" />
+    <None Include="Service References\FileStorgeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="ssleay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="System.Data.OracleClient.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="wkhtmltox0.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ServerInstaller.resx">
+      <DependentUpon>ServerInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CNEToolsEntities\CNEToolsEntities.csproj">
+      <Project>{E94530EA-57D4-4F6E-A47A-8C8CB803BF62}</Project>
+      <Name>CNEToolsEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataSync.Setting\DataSync.Setting.csproj">
+      <Project>{9F272130-070C-4B5C-BEE5-C26097FD8D0B}</Project>
+      <Name>DataSync.Setting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataSync\DataSync.csproj">
+      <Project>{1EBB68CE-00F7-4558-84CA-DDF7545D4525}</Project>
+      <Name>DataSync</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VAV.Monitor\VAV.Monitor.csproj">
+      <Project>{8DB7C592-3D8C-4E52-A86F-2EFC506DD213}</Project>
+      <Name>VAV.Monitor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
+  <PropertyGroup>
+    <PostBuildEvent>IF NOT EXIST "$(TargetDir)ExampleRFA.cfg" ( copy "$(ProjectDir)etc\ExampleRFA.cfg" "$(TargetDir)" )
+IF NOT EXIST "$(TargetDir)RDMFieldDictionary" ( copy "$(ProjectDir)etc\RDMFieldDictionary" "$(TargetDir)" )
+IF NOT EXIST "$(TargetDir)enumtype.def" ( copy "$(ProjectDir)etc\enumtype.def" "$(TargetDir)" )
+IF NOT EXIST "$(TargetDir)RFA7_MsgFile100.dll" ( copy "$(SolutionDir)Lib\RFA7_MsgFile100.dll" "$(TargetDir)" )
+IF NOT EXIST "$(TargetDir)RFA7_Common100.dll" ( copy "$(SolutionDir)Lib\RFA7_Common100.dll" "$(TargetDir)" )
+IF NOT EXIST "$(TargetDir)RFA7_MsgFile100_x64.dll" ( copy "$(SolutionDir)Lib\RFA7_MsgFile100_x64.dll" "$(TargetDir)" )
+IF NOT EXIST "$(TargetDir)RFA7_Common100_x64.dll" ( copy "$(SolutionDir)Lib\RFA7_Common100_x64.dll" "$(TargetDir)" )</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

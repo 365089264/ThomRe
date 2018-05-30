@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataConfig>
+  <dataSource type="JdbcDataSource"
+		name='VAV'
+        driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        url="jdbc:sqlserver://10.35.63.10;databaseName=VAV"
+        user="sa"
+        password="p@ssw0rd"/>
+
+  <dataSource type="JdbcDataSource"
+		name='IPP'
+        driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        url="jdbc:sqlserver://10.35.63.10;databaseName=IPP"
+        user="sa"
+        password="p@ssw0rd"/>
+
+  <document name="Cmaviews">
+    <entity name="bondview" dataSource="VAV" query="select bc.AssetId, bc.Code, bc.CodeList, isnull(bc.Pyc,'')as Pyc,rtrim(isnull(bc.ShortName,'')) as nameCn,rtrim(isnull(be.ShortName,'')) as nameEn,bc.Ric,bc.ExchangeCode as exchange_code,'BOND' as dispType,'OpenRic' as openType from [vav].[BondInfoCn] bc join [vav].[BondInfoEn] be on bc.AssetId = be.AssetId where bc.Code is not null">
+      <field column="AssetId" name="id"/>
+      <field column="CodeList" name="code_list"/>
+      <field column="Code" name="code"/>
+      <field column="nameCn" name="name_cn"/>
+      <field column="nameEn" name="name_en"/>
+      <field column="Pyc" name="pyc"/>
+      <field column="Ric" name="ric"/>
+      <field column="dispType" name="display_type"/>
+      <field column="openType" name="open_type"/>
+    </entity>
+
+    <entity name="issuerview" dataSource="VAV" query="SELECT ORG_UNI_CODE,ORG_CHI_NAME,CHI_SHORT_NAME,ORG_ENG_NAME,ENG_SHORT_NAME,CHI_SPE_SHORT_NAME,Disp_Type,Open_Type FROM [vav].[v_bondissuer]">
+      <field column="ORG_UNI_CODE" name="id"/>
+      <field column="ORG_CHI_NAME" name="name_cn"/>
+      <field column="ORG_ENG_NAME" name="name_en"/>
+      <field column="CHI_SHORT_NAME" name="short_name_cn"/>
+      <field column="ENG_SHORT_NAME" name="short_name_en"/>
+      <field column="CHI_SPE_SHORT_NAME" name="pyc"/>
+      <field column="Disp_Type" name="display_type"/>
+      <field column="Open_Type" name="open_type"/>
+    </entity>
+
+    <entity name="macroview" dataSource="IPP" query="select f.ID,TitleCn,TitleEn,(case when m.ID = 1 then 'MACRO' when m.ID = 8 then 'FIRR' when m.ID = 9 then 'FXRR' when m.ID = 10 then 'CERR' else 'OTHER' end) as DispType, (case f.UploadType  when 'Upload_Ric' then 'OpenChart' when 'Upload_File' then 'OpenFile' when 'Upload_Website' then 'OpenUrl' end) as OpenType,f.RIC from dbo.FileInfo f join dbo.Topic t on f.TopicID = t.ID join dbo.ModuleInfo m on t.ModuleID = m.ID where f.[Status] = 2">
+      <field column="ID" name="id"/>
+      <field column="TitleCn" name="name_cn"/>
+      <field column="TitleEn" name="name_en"/>
+      <field column="Ric" name="ric"/>
+      <field column="DispType" name="display_type"/>
+      <field column="OpenType" name="open_type"/>
+    </entity>
+
+    <entity name="reportiew" dataSource="VAV" query="SELECT c.id, c.report_id,c.english_name,c.chinese_name, c.ActionType as action_type, c.ric, 'VIEW' as display_type,'OpenReport' as open_type FROM [vav].[Menu] c where c.ActionType in (1,3) and c.IsVisible = 1">
+      <field column="id" name="id"/>
+      <field column="report_id" name="report_id"/>
+      <field column="chinese_name" name="name_cn"/>
+      <field column="english_name" name="name_en"/>
+      <field column="display_type" name="display_type"/>
+      <field column="open_type" name="open_type"/>
+      <field column="ric" name="ric"/>
+      <field column="action_type" name="action_type"/>
+    </entity>
+  
+  </document>
+</dataConfig>

@@ -1,0 +1,151 @@
+﻿@model VAV.Web.ViewModels.Upload.UploadItemViewModel
+@using VAV.Web.Localization
+@{
+}
+<div id="menuwrapper" class="wrapBack">
+	<div style="float: left;">
+	</div>
+	<div class="languageBar">
+		<a href="~/exlink/@ViewBag.ID/cn" @if (!CultureHelper.IsEnglishCulture())
+										  {@Html.Raw("style='color:#ff8800'")}>
+			简体中文</a>&nbsp;|&nbsp;<a id="lanEn" href="~/exlink/@ViewBag.ID/en" @if (CultureHelper.IsEnglishCulture())
+																			  {@Html.Raw("style='color:#ff8800'")}>English</a>
+	</div>
+</div>
+<div id="main" class="ui-layout-container content">
+	<div class="colorBlock" style="height:640px; margin-top:5px; min-width: 800px; overflow:auto;">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Resources.IPP.IPP_Uplaod_Header</span>
+    </div>
+    @using (Html.BeginForm("UploadHomeItem", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m => m.Id)
+        <div style="color:Red;">
+            <div id="alertMessage"></div>
+        </div>
+
+        <ol class="upload_ol">
+             <li>
+                <div class="UploadLeftLabel"><label>@Resources.IPP.IPP_Topic *</label></div>
+                @Html.DropDownListFor(m => m.Module, @Model.ModuleItems, new { @class = "UploadDpl" })
+            </li>
+            <li>
+                <div class="UploadLeftLabel"><label>@Resources.IPP.IPP_Title_Cn *</label></div>
+                @Html.TextBoxFor(m => m.TitleCn, new { @class = "UploadLargeDiv" })
+            </li>
+            <li>
+                <div class="UploadLeftLabel"><label>@Resources.IPP.IPP_Title_En *</label></div>
+                @Html.TextBoxFor(m => m.TitleEn, new { @class = "UploadLargeDiv" })
+            </li>
+            <li>
+                <div class="UploadLeftLabel"><label>@Resources.IPP.IPP_Desc_Cn</label></div>
+                @Html.TextAreaFor(m => m.DescriptionCn, new { @class = "UploadTextArea" })
+            </li>
+            <li>
+                <div class="UploadLeftLabel"><label>@Resources.IPP.IPP_Desc_En</label></div>
+                @Html.TextAreaFor(m => m.DescriptionEn, new { @class = "UploadTextArea" })
+            </li>
+            <li>
+                <div class="UploadLeftLabel"><label>@Resources.IPP.IPP_Upload_Type</label></div>
+                @Html.DropDownListFor(m => m.UploadType, Model.UploadTypeItems, new Dictionary<string, object> { { "onchange", "javascript:Homepage.UpdateUpload();" }, { "class", "UploadDpl" } })
+            </li>
+            <li id="Upload_Website" tag="upload">
+                <div class="UploadLeftLabel"><label>@Resources.IPP.IPP_Website</label></div>
+                @Html.TextBoxFor(m => m.Url, new { @class = "UploadLargeDiv" })
+            </li>
+            <li id="Upload_File" tag="upload">
+                <div class="UploadLeftLabel"><label>@Resources.IPP.IPP_File</label></div>
+                @Html.TextBoxFor(m => m.FileName, new { @style = "margin-left:15px; width:570px;", @readonly = "readonly" })
+                <input type="button" style="width:77px;" value="@Resources.IPP.IPP_Upload" id="uploadBtn" onclick="Homepage.Upload()" />
+                <input type="file" name="file" id="file" style="display:none"/>
+            </li>
+            <li id="Upload_Ric" tag="upload" style="height:20px;">
+                <div class="UploadLeftLabel"><label>RIC</label></div>
+                <div style="float:left;">@Html.TextBoxFor(m => m.Ric, new { @class = "UploadMiddleDiv", @style = "width:155px;" })</div>
+                <div id="ric_News">
+                    <div class="UploadRightLabel" style="width:70px;"><label>关键词</label></div>
+                    @Html.TextBoxFor(m => m.TypeParam, new { @class = "UploadMiddleDiv", @style = "width:387px;padding-top:4px;height:16px;margin-left:0px;" })
+                </div>
+            </li>
+            <li id="Upload_RMLink" tag="upload">
+                <div class="UploadLeftLabel"><label>RMLink</label></div>
+                @Html.TextBoxFor(m => m.RMLink, new { @class = "UploadLargeDiv" })
+            </li>
+            <li>
+                <div class="UploadLeftLabel"><label>创建日期</label></div>
+                <div style="float:left;">@Html.TextBoxFor(m => m.SubmitDate, new { @readonly = "readonly", @class = "UploadSmallDiv", @style = "width:155px;" })</div>
+                <div class="UploadLeftLabel" style="width:30px;"><label>可见</label></div>
+                <div style="float:left;">@Html.CheckBoxFor(m => m.IsVisible, new { style = "margin-left: 15px;" })</div> 
+                <div class="UploadRightLabel" style="width:70px;"><label>@Resources.IPP.IPP_Submiter</label></div>
+                @Html.TextBoxFor(m => m.Submiter, new { @class = "UploadMiddleDiv", @style = "width:300px;padding-top:4px;height:16px;margin-left:0px;" })
+            </li>
+        </ol>
+        <div style="margin: 20px 0px 0px 350px">
+            <input class="UploadBtn" type="button" value="取消"  id="saveBtn" onclick="window.history.back(-1); "/>
+            <input class="UploadBtn" type="submit" value="@Resources.IPP.IPP_Publish" name="submit" id="submitBtn" onclick="return Homepage.CheckFile()"/>
+            <input class="UploadBtn" type="button" value="查询列表"  id="tolist" onclick="Homepage.ToHomeItemList();"/>
+        </div>
+    }
+    </div>
+</div>
+<script type="text/javascript">
+    var Homepage = (function (my) {
+
+        my.UpdateUpload = function () {
+            var id = $("#UploadType").val();
+            $("li[id!='" + id + "'][tag='upload']").hide();
+
+            if (id.indexOf('News') > 0) {
+                $("#ric_News").show();
+            }
+            else {
+                $("#ric_News").hide();
+            }
+
+            if (id.indexOf('RIC') > 0) {
+                $("#Upload_Ric").show();
+            }
+            else {
+                $("#" + id).show();
+            }
+        }
+
+        my.CheckFile = function () {
+            return true;
+        }
+        my.ToHomeItemList = function () {
+            window.location.href = "/Home/HomeItemList";
+        }
+
+        my.Upload = function () {
+            $('#file').trigger('click');
+        }
+
+        return my;
+    } (Homepage || {}));
+
+    $(function () {
+        Homepage.UpdateUpload();
+
+        $('#file').bind('change', function () {
+            var fileList = $("#file")[0].files;
+            for (var i = 0, file; file = fileList[i]; i++) {
+                var fileName = file.name.split('.')[0];
+                if ($('#TitleCn').val() == '' && $('#TitleEn').val() == '') {
+                    $('#TitleCn').val(fileName);
+                    $('#TitleEn').val(fileName);
+                };
+                $('#FileName').val(file.name);
+            }
+        });
+
+
+        $("#SubmitDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+
+        $.datepicker.setDefaults($.datepicker.regional["@System.Threading.Thread.CurrentThread.CurrentUICulture.Name"]);
+    });
+</script>

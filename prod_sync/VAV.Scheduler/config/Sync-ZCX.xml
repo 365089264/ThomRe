@@ -1,0 +1,1628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=zcx;Password=zcx;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=ZCX;Password=zcx;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+
+    <table-mapping source="BOND_ASE_PLAN" destination="BOND_ASE_PLAN"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="PLAN_EST_DATE" destination="PLAN_EST_DATE"/>
+      <column-mapping source="CSRC_APPR_DATE" destination="CSRC_APPR_DATE"/>
+      <column-mapping source="UDL_ASE" destination="UDL_ASE"/>
+      <column-mapping source="EXPE_YIELD_CEIL" destination="EXPE_YIELD_CEIL"/>
+      <column-mapping source="EXPE_YIELD_FLOOR" destination="EXPE_YIELD_FLOOR"/>
+      <column-mapping source="LOW_TRAN_NUM" destination="LOW_TRAN_NUM"/>
+      <column-mapping source="TRAN_VOL_UNIT" destination="TRAN_VOL_UNIT"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_BASIC_INFO" destination="BOND_BASIC_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="ISIN_CODE" destination="ISIN_CODE"/>
+      <column-mapping source="BOND_FULL_NAME" destination="BOND_FULL_NAME"/>
+      <column-mapping source="BOND_CODE" destination="BOND_CODE"/>
+      <column-mapping source="BOND_SHORT_NAME" destination="BOND_SHORT_NAME"/>
+      <column-mapping source="SPE_SHORT_NAME" destination="SPE_SHORT_NAME"/>
+      <column-mapping source="ENG_FULL_NAME" destination="ENG_FULL_NAME"/>
+      <column-mapping source="ENG_SHORT_NAME" destination="ENG_SHORT_NAME"/>
+      <column-mapping source="BOND_MATU" destination="BOND_MATU"/>
+      <column-mapping source="MATU_UNIT_PAR" destination="MATU_UNIT_PAR"/>
+      <column-mapping source="BOND_TYPE_PAR" destination="BOND_TYPE_PAR"/>
+      <column-mapping source="IS_TYPE_PAR" destination="IS_TYPE_PAR"/>
+      <column-mapping source="LIST_DATE" destination="LIST_DATE"/>
+      <column-mapping source="SEC_MAR_PAR" destination="SEC_MAR_PAR"/>
+      <column-mapping source="LIST_SECT_PAR" destination="LIST_SECT_PAR"/>
+      <column-mapping source="LIST_STA_PAR" destination="LIST_STA_PAR"/>
+      <column-mapping source="ASE_LEVEL_PAR" destination="ASE_LEVEL_PAR"/>
+      <column-mapping source="BOND_FORM_PAR" destination="BOND_FORM_PAR"/>
+      <column-mapping source="ISS_STA_PAR" destination="ISS_STA_PAR"/>
+      <column-mapping source="IS_LIST_PAR" destination="IS_LIST_PAR"/>
+      <column-mapping source="IS_CROS_MAR_PAR" destination="IS_CROS_MAR_PAR"/>
+      <column-mapping source="PLEDGE_CODE" destination="PLEDGE_CODE"/>
+      <column-mapping source="PLEDGE_NAME" destination="PLEDGE_NAME"/>
+      <column-mapping source="CROS_MAR_DES" destination="CROS_MAR_DES"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_BID_INFO" destination="BOND_BID_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="ISS_DATE" destination="ISS_DATE"/>
+      <column-mapping source="ISS_TYPE_PAR" destination="ISS_TYPE_PAR"/>
+      <column-mapping source="BID_TYPE_PAR" destination="BID_TYPE_PAR"/>
+      <column-mapping source="BID_METH_PAR" destination="BID_METH_PAR"/>
+      <column-mapping source="BID_METH_DES" destination="BID_METH_DES"/>
+      <column-mapping source="BID_SBJ_PAR" destination="BID_SBJ_PAR"/>
+      <column-mapping source="BID_OBJ" destination="BID_OBJ"/>
+      <column-mapping source="BID_DOCU_NUM" destination="BID_DOCU_NUM"/>
+      <column-mapping source="PLAN_ISS_AMUT" destination="PLAN_ISS_AMUT"/>
+      <column-mapping source="PAY_AMUT" destination="PAY_AMUT"/>
+      <column-mapping source="ACTU_ISS_AMUT" destination="ACTU_ISS_AMUT"/>
+      <column-mapping source="BAS_UNDE_AMUT" destination="BAS_UNDE_AMUT"/>
+      <column-mapping source="BID_AMUT" destination="BID_AMUT"/>
+      <column-mapping source="BID_RATE_FLOOR" destination="BID_RATE_FLOOR"/>
+      <column-mapping source="BID_RATE_CEIL" destination="BID_RATE_CEIL"/>
+      <column-mapping source="RATE_STEP" destination="RATE_STEP"/>
+      <column-mapping source="BAS_BID_UNIT" destination="BAS_BID_UNIT"/>
+      <column-mapping source="LOW_BID_AMUT" destination="LOW_BID_AMUT"/>
+      <column-mapping source="HIGH_BID_AMUT" destination="HIGH_BID_AMUT"/>
+      <column-mapping source="BID_J_MUST" destination="BID_J_MUST"/>
+      <column-mapping source="BID_J" destination="BID_J"/>
+      <column-mapping source="BID_B" destination="BID_B"/>
+      <column-mapping source="VALID_BID_B" destination="VALID_BID_B"/>
+      <column-mapping source="INVALID_BID_B" destination="INVALID_BID_B"/>
+      <column-mapping source="VALID_BID_AMUT" destination="VALID_BID_AMUT"/>
+      <column-mapping source="HIGH_BID_PRI" destination="HIGH_BID_PRI"/>
+      <column-mapping source="LOW_BID_PRI" destination="LOW_BID_PRI"/>
+      <column-mapping source="BID_LACK_J" destination="BID_LACK_J"/>
+      <column-mapping source="BID_LACK_AMUT" destination="BID_LACK_AMUT"/>
+      <column-mapping source="BID_EXC_J" destination="BID_EXC_J"/>
+      <column-mapping source="BID_EXC_AMUT" destination="BID_EXC_AMUT"/>
+      <column-mapping source="WIN_BID_J" destination="WIN_BID_J"/>
+      <column-mapping source="WIN_BID_B" destination="WIN_BID_B"/>
+      <column-mapping source="WIN_BID_AMUT" destination="WIN_BID_AMUT"/>
+      <column-mapping source="SELF_WIN_BID_AMUT" destination="SELF_WIN_BID_AMUT"/>
+      <column-mapping source="HIGH_WIN_BID_PRI" destination="HIGH_WIN_BID_PRI"/>
+      <column-mapping source="LOW_WIN_BID_PRI" destination="LOW_WIN_BID_PRI"/>
+      <column-mapping source="MARG_BID_AMUT" destination="MARG_BID_AMUT"/>
+      <column-mapping source="MARG_WIN_BID_AMUT" destination="MARG_WIN_BID_AMUT"/>
+      <column-mapping source="BID_SPR" destination="BID_SPR"/>
+      <column-mapping source="ISS_PRI" destination="ISS_PRI"/>
+      <column-mapping source="WIN_BID_PRI" destination="WIN_BID_PRI"/>
+      <column-mapping source="REF_YIELD" destination="REF_YIELD"/>
+      <column-mapping source="COUP_RATE" destination="COUP_RATE"/>
+      <column-mapping source="WIN_BID_RATE" destination="WIN_BID_RATE"/>
+      <column-mapping source="BID_MULT" destination="BID_MULT"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_CASH_FLOW" destination="BOND_CASH_FLOW"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="INTE_PERI" destination="INTE_PERI"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="INTE_START_DATE" destination="INTE_START_DATE"/>
+      <column-mapping source="INTE_END_DATE" destination="INTE_END_DATE"/>
+      <column-mapping source="PAY_DATE" destination="PAY_DATE"/>
+      <column-mapping source="PAY_END_DATE" destination="PAY_END_DATE"/>
+      <column-mapping source="REG_DATE" destination="REG_DATE"/>
+      <column-mapping source="EXDIV_DATE" destination="EXDIV_DATE"/>
+      <column-mapping source="PAY_OBJ" destination="PAY_OBJ"/>
+      <column-mapping source="TAX_RATE" destination="TAX_RATE"/>
+      <column-mapping source="PAY_FEE_RATE" destination="PAY_FEE_RATE"/>
+      <column-mapping source="CASH_TYPE_PAR" destination="CASH_TYPE_PAR"/>
+      <column-mapping source="IS_NO_OPT_PERI" destination="IS_NO_OPT_PERI"/>
+      <column-mapping source="INTE_PAY" destination="INTE_PAY"/>
+      <column-mapping source="INTE_PAY_END" destination="INTE_PAY_END"/>
+      <column-mapping source="PAY_AMUT" destination="PAY_AMUT"/>
+      <column-mapping source="EXER_INTE_PAY" destination="EXER_INTE_PAY"/>
+      <column-mapping source="EXER_INTE_PAY_END" destination="EXER_INTE_PAY_END"/>
+      <column-mapping source="EXER_PAY_AMUT" destination="EXER_PAY_AMUT"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_CHAN_MERGE" destination="BOND_CHAN_MERGE"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="EXER_TYPE_PAR" destination="EXER_TYPE_PAR"/>
+      <column-mapping source="SEQ_NUM" destination="SEQ_NUM"/>
+      <column-mapping source="OPT_DES" destination="OPT_DES"/>
+      <column-mapping source="EXPECT_EXER_DATE" destination="EXPECT_EXER_DATE"/>
+      <column-mapping source="EXER_STA_PAR" destination="EXER_STA_PAR"/>
+      <column-mapping source="IS_EXER_PAR" destination="IS_EXER_PAR"/>
+      <column-mapping source="EXER_REAS_DES" destination="EXER_REAS_DES"/>
+      <column-mapping source="EXER_APL_STARTDATE" destination="EXER_APL_STARTDATE"/>
+      <column-mapping source="EXER_APL_ENDDATE" destination="EXER_APL_ENDDATE"/>
+      <column-mapping source="EXER_OPER_DATE" destination="EXER_OPER_DATE"/>
+      <column-mapping source="EXER_FLOOR_AMUT" destination="EXER_FLOOR_AMUT"/>
+      <column-mapping source="TAR_CODE" destination="TAR_CODE"/>
+      <column-mapping source="CHAN_RATIO" destination="CHAN_RATIO"/>
+      <column-mapping source="ROOT_OUT_AMUT" destination="ROOT_OUT_AMUT"/>
+      <column-mapping source="ROOT_OUT_SURPAMUT" destination="ROOT_OUT_SURPAMUT"/>
+      <column-mapping source="TAR_IN_AMUT" destination="TAR_IN_AMUT"/>
+      <column-mapping source="TAR_OUT_TOTALAMUT" destination="TAR_OUT_TOTALAMUT"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_CONV_AMUT_CHAN" destination="BOND_CONV_AMUT_CHAN"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="EVENT_TYPE_PAR" destination="EVENT_TYPE_PAR"/>
+      <column-mapping source="INIT_CONV_PRI" destination="INIT_CONV_PRI"/>
+      <column-mapping source="THIS_CONV_PRI" destination="THIS_CONV_PRI"/>
+      <column-mapping source="THIS_CONV_AMUT" destination="THIS_CONV_AMUT"/>
+      <column-mapping source="THIS_CONV_VOL" destination="THIS_CONV_VOL"/>
+      <column-mapping source="CUML_CONV_AMUT" destination="CUML_CONV_AMUT"/>
+      <column-mapping source="CUML_CONV_VOL" destination="CUML_CONV_VOL"/>
+      <column-mapping source="CUML_AVE_CONV_PRI" destination="CUML_AVE_CONV_PRI"/>
+      <column-mapping source="THIS_OPER_AMUT" destination="THIS_OPER_AMUT"/>
+      <column-mapping source="CUML_OPER_AMUT" destination="CUML_OPER_AMUT"/>
+      <column-mapping source="CONV_BOND_AMUT" destination="CONV_BOND_AMUT"/>
+      <column-mapping source="CONV_BOND_RESI_AMUT" destination="CONV_BOND_RESI_AMUT"/>
+      <column-mapping source="CONV_TOTAL_SHARE" destination="CONV_TOTAL_SHARE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_CONV_HOLDER" destination="BOND_CONV_HOLDER"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="HOLDER_NUM" destination="HOLDER_NUM"/>
+      <column-mapping source="HOLDER_NAME" destination="HOLDER_NAME"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="HOLD_AMUT" destination="HOLD_AMUT"/>
+      <column-mapping source="HOLD_VOL" destination="HOLD_VOL"/>
+      <column-mapping source="HOLD_RATIO" destination="HOLD_RATIO"/>
+      <column-mapping source="HOLD_TOT_NUM" destination="HOLD_TOT_NUM"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_CONV_ISS_INFO" destination="BOND_CONV_ISS_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="COUP_RATE_TERM" destination="COUP_RATE_TERM"/>
+      <column-mapping source="INTE_COMP_TERM" destination="INTE_COMP_TERM"/>
+      <column-mapping source="INIT_CONV_PRI_TERM" destination="INIT_CONV_PRI_TERM"/>
+      <column-mapping source="CONV_PRI_ADJU_TERM" destination="CONV_PRI_ADJU_TERM"/>
+      <column-mapping source="CONV_PRI_REV_TERM" destination="CONV_PRI_REV_TERM"/>
+      <column-mapping source="REDEM_TERM" destination="REDEM_TERM"/>
+      <column-mapping source="RESA_TERM" destination="RESA_TERM"/>
+      <column-mapping source="FORCE_CONV_TERM" destination="FORCE_CONV_TERM"/>
+      <column-mapping source="CONV_DEAL_TERM" destination="CONV_DEAL_TERM"/>
+      <column-mapping source="CONV_INTE_TERM" destination="CONV_INTE_TERM"/>
+      <column-mapping source="REDEM_PROT_DATE" destination="REDEM_PROT_DATE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_CONV_ISS_TERM" destination="BOND_CONV_ISS_TERM"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="COUP_RATE_TERM" destination="COUP_RATE_TERM"/>
+      <column-mapping source="INTE_COMP_TERM" destination="INTE_COMP_TERM"/>
+      <column-mapping source="INIT_CONV_PRI_TERM" destination="INIT_CONV_PRI_TERM"/>
+      <column-mapping source="CONV_PRI_ADJU_TERM" destination="CONV_PRI_ADJU_TERM"/>
+      <column-mapping source="CONV_PRI_REV_TERM" destination="CONV_PRI_REV_TERM"/>
+      <column-mapping source="REDEM_TERM" destination="REDEM_TERM"/>
+      <column-mapping source="RESA_TERM" destination="RESA_TERM"/>
+      <column-mapping source="FORCE_CONV_TERM" destination="FORCE_CONV_TERM"/>
+      <column-mapping source="CONV_DEAL_TERM" destination="CONV_DEAL_TERM"/>
+      <column-mapping source="CONV_INTE_TERM" destination="CONV_INTE_TERM"/>
+      <column-mapping source="REDEM_PROT_DATE" destination="REDEM_PROT_DATE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_CONV_PLACE_NEW" destination="BOND_CONV_PLACE_NEW"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="SEQ_NUM" destination="SEQ_NUM"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="ORG_NAME" destination="ORG_NAME"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="PLACE_AMUT" destination="PLACE_AMUT"/>
+      <column-mapping source="PLACE_VOL" destination="PLACE_VOL"/>
+      <column-mapping source="RETU_AMUT" destination="RETU_AMUT"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_CONV_PRI_CHAN" destination="BOND_CONV_PRI_CHAN"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="VALID_DATE" destination="VALID_DATE"/>
+      <column-mapping source="CONV_PRI" destination="CONV_PRI"/>
+      <column-mapping source="CHAN_REAS" destination="CHAN_REAS"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_FIN_BALA_TABB" destination="BOND_FIN_BALA_TABB"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="END_DATE" destination="END_DATE" isKey="true"/>
+      <column-mapping source="SHEET_MARK_PAR" destination="SHEET_MARK_PAR"/>
+      <column-mapping source="SHEET_ATTR_PAR" destination="SHEET_ATTR_PAR"/>
+      <column-mapping source="BS_01" destination="BS_01"/>
+      <column-mapping source="BS_0101" destination="BS_0101"/>
+      <column-mapping source="BS_02" destination="BS_02"/>
+      <column-mapping source="BS_03" destination="BS_03"/>
+      <column-mapping source="BS_04" destination="BS_04"/>
+      <column-mapping source="BS_05" destination="BS_05"/>
+      <column-mapping source="BS_06" destination="BS_06"/>
+      <column-mapping source="BS_07" destination="BS_07"/>
+      <column-mapping source="BS_08" destination="BS_08"/>
+      <column-mapping source="BS_09" destination="BS_09"/>
+      <column-mapping source="BS_0901" destination="BS_0901"/>
+      <column-mapping source="BS_10" destination="BS_10"/>
+      <column-mapping source="BS_11" destination="BS_11"/>
+      <column-mapping source="BS_12" destination="BS_12"/>
+      <column-mapping source="BS_13" destination="BS_13"/>
+      <column-mapping source="BS_14" destination="BS_14"/>
+      <column-mapping source="BS_15" destination="BS_15"/>
+      <column-mapping source="BS_16" destination="BS_16"/>
+      <column-mapping source="BS_17" destination="BS_17"/>
+      <column-mapping source="BS_18" destination="BS_18"/>
+      <column-mapping source="BS_19" destination="BS_19"/>
+      <column-mapping source="BS_20" destination="BS_20"/>
+      <column-mapping source="BS_21" destination="BS_21"/>
+      <column-mapping source="BS_22" destination="BS_22"/>
+      <column-mapping source="BS_23" destination="BS_23"/>
+      <column-mapping source="BS_24" destination="BS_24"/>
+      <column-mapping source="BS_25" destination="BS_25"/>
+      <column-mapping source="BS_26" destination="BS_26"/>
+      <column-mapping source="BS_27" destination="BS_27"/>
+      <column-mapping source="BS_28" destination="BS_28"/>
+      <column-mapping source="BS_29" destination="BS_29"/>
+      <column-mapping source="BS_30" destination="BS_30"/>
+      <column-mapping source="BS_31" destination="BS_31"/>
+      <column-mapping source="BS_3101" destination="BS_3101"/>
+      <column-mapping source="BS_32" destination="BS_32"/>
+      <column-mapping source="BS_33" destination="BS_33"/>
+      <column-mapping source="BS_34" destination="BS_34"/>
+      <column-mapping source="BS_35" destination="BS_35"/>
+      <column-mapping source="BS_36" destination="BS_36"/>
+      <column-mapping source="BS_37" destination="BS_37"/>
+      <column-mapping source="BS_38" destination="BS_38"/>
+      <column-mapping source="BS_39" destination="BS_39"/>
+      <column-mapping source="BS_40" destination="BS_40"/>
+      <column-mapping source="BS_4001" destination="BS_4001"/>
+      <column-mapping source="BS_41" destination="BS_41"/>
+      <column-mapping source="BS_42" destination="BS_42"/>
+      <column-mapping source="BS_43" destination="BS_43"/>
+      <column-mapping source="BS_44" destination="BS_44"/>
+      <column-mapping source="BS_45" destination="BS_45"/>
+      <column-mapping source="BS_46" destination="BS_46"/>
+      <column-mapping source="BS_47" destination="BS_47"/>
+      <column-mapping source="BS_48" destination="BS_48"/>
+      <column-mapping source="BS_49" destination="BS_49"/>
+      <column-mapping source="BS_50" destination="BS_50"/>
+      <column-mapping source="BS_51" destination="BS_51"/>
+      <column-mapping source="BS_52" destination="BS_52"/>
+      <column-mapping source="BS_53" destination="BS_53"/>
+      <column-mapping source="BS_54" destination="BS_54"/>
+      <column-mapping source="BS_55" destination="BS_55"/>
+      <column-mapping source="BS_56" destination="BS_56"/>
+      <column-mapping source="BS_57" destination="BS_57"/>
+      <column-mapping source="BS_5701" destination="BS_5701"/>
+      <column-mapping source="BS_58" destination="BS_58"/>
+      <column-mapping source="BS_59" destination="BS_59"/>
+      <column-mapping source="BS_60" destination="BS_60"/>
+      <column-mapping source="BS_61" destination="BS_61"/>
+      <column-mapping source="BS_62" destination="BS_62"/>
+      <column-mapping source="BS_63" destination="BS_63"/>
+      <column-mapping source="BS_64" destination="BS_64"/>
+      <column-mapping source="BS_65" destination="BS_65"/>
+      <column-mapping source="BS_66" destination="BS_66"/>
+      <column-mapping source="BS_67" destination="BS_67"/>
+      <column-mapping source="BS_68" destination="BS_68"/>
+      <column-mapping source="BS_69" destination="BS_69"/>
+      <column-mapping source="BS_70" destination="BS_70"/>
+      <column-mapping source="BS_71" destination="BS_71"/>
+      <column-mapping source="BS_72" destination="BS_72"/>
+      <column-mapping source="BS_73" destination="BS_73"/>
+      <column-mapping source="BS_74" destination="BS_74"/>
+      <column-mapping source="BS_75" destination="BS_75"/>
+      <column-mapping source="BS_76" destination="BS_76"/>
+      <column-mapping source="BS_77" destination="BS_77"/>
+      <column-mapping source="BS_78" destination="BS_78"/>
+      <column-mapping source="BS_79" destination="BS_79"/>
+      <column-mapping source="BS_80" destination="BS_80"/>
+      <column-mapping source="BS_81" destination="BS_81"/>
+      <column-mapping source="BS_82" destination="BS_82"/>
+      <column-mapping source="BS_83" destination="BS_83"/>
+      <column-mapping source="BS_84" destination="BS_84"/>
+      <column-mapping source="BS_85" destination="BS_85"/>
+      <column-mapping source="BS_86" destination="BS_86"/>
+      <column-mapping source="BS_87" destination="BS_87"/>
+      <column-mapping source="BS_88" destination="BS_88"/>
+      <column-mapping source="BS_89" destination="BS_89"/>
+      <column-mapping source="BS_90" destination="BS_90"/>
+      <column-mapping source="BS_91" destination="BS_91"/>
+      <column-mapping source="BS_92" destination="BS_92"/>
+      <column-mapping source="BS_93" destination="BS_93"/>
+      <column-mapping source="BS_94" destination="BS_94"/>
+      <column-mapping source="BS_95" destination="BS_95"/>
+      <column-mapping source="BS_96" destination="BS_96"/>
+      <column-mapping source="BS_97" destination="BS_97"/>
+      <column-mapping source="BS_98" destination="BS_98"/>
+      <column-mapping source="BS_99" destination="BS_99"/>
+      <column-mapping source="BS_100" destination="BS_100"/>
+      <column-mapping source="BS_101" destination="BS_101"/>
+      <column-mapping source="BS_102" destination="BS_102"/>
+      <column-mapping source="BS_103" destination="BS_103"/>
+      <column-mapping source="BS_104" destination="BS_104"/>
+      <column-mapping source="BS_105" destination="BS_105"/>
+      <column-mapping source="BS_106" destination="BS_106"/>
+      <column-mapping source="BS_107" destination="BS_107"/>
+      <column-mapping source="BS_108" destination="BS_108"/>
+      <column-mapping source="BS_109" destination="BS_109"/>
+      <column-mapping source="BS_110" destination="BS_110"/>
+      <column-mapping source="BS_111" destination="BS_111"/>
+      <column-mapping source="BS_112" destination="BS_112"/>
+      <column-mapping source="BS_113" destination="BS_113"/>
+      <column-mapping source="BS_114" destination="BS_114"/>
+      <column-mapping source="BS_115" destination="BS_115"/>
+      <column-mapping source="BS_116" destination="BS_116"/>
+      <column-mapping source="BS_117" destination="BS_117"/>
+      <column-mapping source="BS_118" destination="BS_118"/>
+      <column-mapping source="BS_119" destination="BS_119"/>
+      <column-mapping source="BS_120" destination="BS_120"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_FIN_CASH_TACB" destination="BOND_FIN_CASH_TACB"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="START_DATE" destination="START_DATE"/>
+      <column-mapping source="END_DATE" destination="END_DATE" isKey="true" />
+      <column-mapping source="SHEET_MARK_PAR" destination="SHEET_MARK_PAR"/>
+      <column-mapping source="SHEET_ATTR_PAR" destination="SHEET_ATTR_PAR"/>
+      <column-mapping source="CF_01" destination="CF_01"/>
+      <column-mapping source="CF_02" destination="CF_02"/>
+      <column-mapping source="CF_03" destination="CF_03"/>
+      <column-mapping source="CF_04" destination="CF_04"/>
+      <column-mapping source="CF_05" destination="CF_05"/>
+      <column-mapping source="CF_06" destination="CF_06"/>
+      <column-mapping source="CF_07" destination="CF_07"/>
+      <column-mapping source="CF_08" destination="CF_08"/>
+      <column-mapping source="CF_09" destination="CF_09"/>
+      <column-mapping source="CF_10" destination="CF_10"/>
+      <column-mapping source="CF_11" destination="CF_11"/>
+      <column-mapping source="CF_12" destination="CF_12"/>
+      <column-mapping source="CF_13" destination="CF_13"/>
+      <column-mapping source="CF_14" destination="CF_14"/>
+      <column-mapping source="CF_15" destination="CF_15"/>
+      <column-mapping source="CF_16" destination="CF_16"/>
+      <column-mapping source="CF_17" destination="CF_17"/>
+      <column-mapping source="CF_18" destination="CF_18"/>
+      <column-mapping source="CF_19" destination="CF_19"/>
+      <column-mapping source="CF_20" destination="CF_20"/>
+      <column-mapping source="CF_21" destination="CF_21"/>
+      <column-mapping source="CF_22" destination="CF_22"/>
+      <column-mapping source="CF_23" destination="CF_23"/>
+      <column-mapping source="CF_24" destination="CF_24"/>
+      <column-mapping source="CF_25" destination="CF_25"/>
+      <column-mapping source="CF_26" destination="CF_26"/>
+      <column-mapping source="CF_27" destination="CF_27"/>
+      <column-mapping source="CF_28" destination="CF_28"/>
+      <column-mapping source="CF_29" destination="CF_29"/>
+      <column-mapping source="CF_30" destination="CF_30"/>
+      <column-mapping source="CF_31" destination="CF_31"/>
+      <column-mapping source="CF_32" destination="CF_32"/>
+      <column-mapping source="CF_33" destination="CF_33"/>
+      <column-mapping source="CF_34" destination="CF_34"/>
+      <column-mapping source="CF_35" destination="CF_35"/>
+      <column-mapping source="CF_36" destination="CF_36"/>
+      <column-mapping source="CF_37" destination="CF_37"/>
+      <column-mapping source="CF_38" destination="CF_38"/>
+      <column-mapping source="CF_39" destination="CF_39"/>
+      <column-mapping source="CF_40" destination="CF_40"/>
+      <column-mapping source="CF_41" destination="CF_41"/>
+      <column-mapping source="CF_42" destination="CF_42"/>
+      <column-mapping source="CF_4201" destination="CF_4201"/>
+      <column-mapping source="CF_43" destination="CF_43"/>
+      <column-mapping source="CF_44" destination="CF_44"/>
+      <column-mapping source="CF_45" destination="CF_45"/>
+      <column-mapping source="CF_46" destination="CF_46"/>
+      <column-mapping source="CF_47" destination="CF_47"/>
+      <column-mapping source="CF_48" destination="CF_48"/>
+      <column-mapping source="CF_49" destination="CF_49"/>
+      <column-mapping source="CF_4901" destination="CF_4901"/>
+      <column-mapping source="CF_50" destination="CF_50"/>
+      <column-mapping source="CF_51" destination="CF_51"/>
+      <column-mapping source="CF_52" destination="CF_52"/>
+      <column-mapping source="CF_53" destination="CF_53"/>
+      <column-mapping source="CF_54" destination="CF_54"/>
+      <column-mapping source="CF_55" destination="CF_55"/>
+      <column-mapping source="CF_56" destination="CF_56"/>
+      <column-mapping source="CF_57" destination="CF_57"/>
+      <column-mapping source="CF_58" destination="CF_58"/>
+      <column-mapping source="CF_59" destination="CF_59"/>
+      <column-mapping source="CF_60" destination="CF_60"/>
+      <column-mapping source="CF_61" destination="CF_61"/>
+      <column-mapping source="CF_62" destination="CF_62"/>
+      <column-mapping source="CF_63" destination="CF_63"/>
+      <column-mapping source="CF_64" destination="CF_64"/>
+      <column-mapping source="CF_65" destination="CF_65"/>
+      <column-mapping source="CF_66" destination="CF_66"/>
+      <column-mapping source="CF_67" destination="CF_67"/>
+      <column-mapping source="CF_68" destination="CF_68"/>
+      <column-mapping source="CF_69" destination="CF_69"/>
+      <column-mapping source="CF_70" destination="CF_70"/>
+      <column-mapping source="CF_71" destination="CF_71"/>
+      <column-mapping source="CF_72" destination="CF_72"/>
+      <column-mapping source="CF_73" destination="CF_73"/>
+      <column-mapping source="CF_74" destination="CF_74"/>
+      <column-mapping source="CF_75" destination="CF_75"/>
+      <column-mapping source="CF_76" destination="CF_76"/>
+      <column-mapping source="CF_77" destination="CF_77"/>
+      <column-mapping source="CF_78" destination="CF_78"/>
+      <column-mapping source="CF_79" destination="CF_79"/>
+      <column-mapping source="CF_80" destination="CF_80"/>
+      <column-mapping source="CF_81" destination="CF_81"/>
+      <column-mapping source="CF_82" destination="CF_82"/>
+      <column-mapping source="CF_83" destination="CF_83"/>
+      <column-mapping source="CF_84" destination="CF_84"/>
+      <column-mapping source="CF_85" destination="CF_85"/>
+      <column-mapping source="CF_86" destination="CF_86"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_FIN_PROF_TAPB" destination="BOND_FIN_PROF_TAPB"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="START_DATE" destination="START_DATE"/>
+      <column-mapping source="END_DATE" destination="END_DATE" isKey="true"/>
+      <column-mapping source="SHEET_MARK_PAR" destination="SHEET_MARK_PAR"/>
+      <column-mapping source="SHEET_ATTR_PAR" destination="SHEET_ATTR_PAR"/>
+      <column-mapping source="PF_01" destination="PF_01"/>
+      <column-mapping source="PF_02" destination="PF_02"/>
+      <column-mapping source="PF_03" destination="PF_03"/>
+      <column-mapping source="PF_0301" destination="PF_0301"/>
+      <column-mapping source="PF_0302" destination="PF_0302"/>
+      <column-mapping source="PF_04" destination="PF_04"/>
+      <column-mapping source="PF_0401" destination="PF_0401"/>
+      <column-mapping source="PF_0402" destination="PF_0402"/>
+      <column-mapping source="PF_0403" destination="PF_0403"/>
+      <column-mapping source="PF_0404" destination="PF_0404"/>
+      <column-mapping source="PF_0405" destination="PF_0405"/>
+      <column-mapping source="PF_05" destination="PF_05"/>
+      <column-mapping source="PF_06" destination="PF_06"/>
+      <column-mapping source="PF_0601" destination="PF_0601"/>
+      <column-mapping source="PF_07" destination="PF_07"/>
+      <column-mapping source="PF_08" destination="PF_08"/>
+      <column-mapping source="PF_09" destination="PF_09"/>
+      <column-mapping source="PF_10" destination="PF_10"/>
+      <column-mapping source="PF_11" destination="PF_11"/>
+      <column-mapping source="PF_12" destination="PF_12"/>
+      <column-mapping source="PF_13" destination="PF_13"/>
+      <column-mapping source="PF_14" destination="PF_14"/>
+      <column-mapping source="PF_15" destination="PF_15"/>
+      <column-mapping source="PF_16" destination="PF_16"/>
+      <column-mapping source="PF_17" destination="PF_17"/>
+      <column-mapping source="PF_18" destination="PF_18"/>
+      <column-mapping source="PF_19" destination="PF_19"/>
+      <column-mapping source="PF_20" destination="PF_20"/>
+      <column-mapping source="PF_21" destination="PF_21"/>
+      <column-mapping source="PF_22" destination="PF_22"/>
+      <column-mapping source="PF_23" destination="PF_23"/>
+      <column-mapping source="PF_24" destination="PF_24"/>
+      <column-mapping source="PF_25" destination="PF_25"/>
+      <column-mapping source="PF_26" destination="PF_26"/>
+      <column-mapping source="PF_27" destination="PF_27"/>
+      <column-mapping source="PF_28" destination="PF_28"/>
+      <column-mapping source="PF_29" destination="PF_29"/>
+      <column-mapping source="PF_30" destination="PF_30"/>
+      <column-mapping source="PF_31" destination="PF_31"/>
+      <column-mapping source="PF_3101" destination="PF_3101"/>
+      <column-mapping source="PF_32" destination="PF_32"/>
+      <column-mapping source="PF_33" destination="PF_33"/>
+      <column-mapping source="PF_34" destination="PF_34"/>
+      <column-mapping source="PF_35" destination="PF_35"/>
+      <column-mapping source="PF_3501" destination="PF_3501"/>
+      <column-mapping source="PF_36" destination="PF_36"/>
+      <column-mapping source="PF_37" destination="PF_37"/>
+      <column-mapping source="PF_38" destination="PF_38"/>
+      <column-mapping source="PF_39" destination="PF_39"/>
+      <column-mapping source="PF_40" destination="PF_40"/>
+      <column-mapping source="PF_41" destination="PF_41"/>
+      <column-mapping source="PF_42" destination="PF_42"/>
+      <column-mapping source="PF_43" destination="PF_43"/>
+      <column-mapping source="PF_44" destination="PF_44"/>
+      <column-mapping source="PF_45" destination="PF_45"/>
+      <column-mapping source="PF_46" destination="PF_46"/>
+      <column-mapping source="PF_47" destination="PF_47"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_ISSER_INFO" destination="BOND_ISSER_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE" isKey="true"/>
+      <column-mapping source="ISSER_TYPE_PAR" destination="ISSER_TYPE_PAR"/>
+      <column-mapping source="ISSER_CHAN_DATE" destination="ISSER_CHAN_DATE"/>
+      <column-mapping source="IS_NEW_ISSER" destination="IS_NEW_ISSER"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_ISSUER_REG_INFO" destination="BOND_ISSUER_REG_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="SEQ_NUM" destination="SEQ_NUM"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_ISS_INFO" destination="BOND_ISS_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="OPT_DES" destination="OPT_DES"/>
+      <column-mapping source="ISS_DECL_DATE" destination="ISS_DECL_DATE"/>
+      <column-mapping source="ISS_OBJ" destination="ISS_OBJ"/>
+      <column-mapping source="ISS_CLS" destination="ISS_CLS"/>
+      <column-mapping source="ISS_FEE_RATE" destination="ISS_FEE_RATE"/>
+      <column-mapping source="ISS_START_DATE" destination="ISS_START_DATE"/>
+      <column-mapping source="ISS_END_DATE" destination="ISS_END_DATE"/>
+      <column-mapping source="PLAN_ISS_AMUT" destination="PLAN_ISS_AMUT"/>
+      <column-mapping source="COLL_CAP_PURP" destination="COLL_CAP_PURP"/>
+      <column-mapping source="PAY_START_DATE" destination="PAY_START_DATE"/>
+      <column-mapping source="PAY_END_DATE" destination="PAY_END_DATE"/>
+      <column-mapping source="SUBS_UNIT" destination="SUBS_UNIT"/>
+      <column-mapping source="LEAST_SUBS_UNIT" destination="LEAST_SUBS_UNIT"/>
+      <column-mapping source="DISTRI_OBJ" destination="DISTRI_OBJ"/>
+      <column-mapping source="UNDE_CLS_PAR" destination="UNDE_CLS_PAR"/>
+      <column-mapping source="BOKEP_DATE" destination="BOKEP_DATE"/>
+      <column-mapping source="ACTU_ISS_AMUT" destination="ACTU_ISS_AMUT"/>
+      <column-mapping source="ACTU_FIR_ISS_AMUT" destination="ACTU_FIR_ISS_AMUT"/>
+      <column-mapping source="ISS_PRI" destination="ISS_PRI"/>
+      <column-mapping source="BOND_PAR_VAL" destination="BOND_PAR_VAL"/>
+      <column-mapping source="BID_DATE" destination="BID_DATE"/>
+      <column-mapping source="DEBT_REG_DATE" destination="DEBT_REG_DATE"/>
+      <column-mapping source="BOND_ISS_YEAR" destination="BOND_ISS_YEAR"/>
+      <column-mapping source="IS_REPU_PAR" destination="IS_REPU_PAR"/>
+      <column-mapping source="IS_REDEM_PAR" destination="IS_REDEM_PAR"/>
+      <column-mapping source="IS_RESA_PAR" destination="IS_RESA_PAR"/>
+      <column-mapping source="IS_HEDGE_PAR" destination="IS_HEDGE_PAR"/>
+      <column-mapping source="IS_TAX_FREE_PAR" destination="IS_TAX_FREE_PAR"/>
+      <column-mapping source="IS_GUAR_PAR" destination="IS_GUAR_PAR"/>
+      <column-mapping source="CURY_CLS_PAR" destination="CURY_CLS_PAR"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_ISS_REG_INFO" destination="BOND_ISS_REG_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="SEQ_NUM" destination="SEQ_NUM"/>
+      <column-mapping source="REG_FILE_SEQ" destination="REG_FILE_SEQ"/>
+      <column-mapping source="BOND_TYPE_PAR" destination="BOND_TYPE_PAR"/>
+      <column-mapping source="REG_MEET_DATE" destination="REG_MEET_DATE"/>
+      <column-mapping source="INIT_REG_AMUT" destination="INIT_REG_AMUT"/>
+      <column-mapping source="CHAN_REG_AMUT" destination="CHAN_REG_AMUT"/>
+      <column-mapping source="CRED_USED" destination="CRED_USED"/>
+      <column-mapping source="CRED_SURP" destination="CRED_SURP"/>
+      <column-mapping source="VALID_END_DATE" destination="VALID_END_DATE"/>
+      <column-mapping source="FIR_ISS_END_DATE" destination="FIR_ISS_END_DATE"/>
+      <column-mapping source="IS_CAN_STAGE" destination="IS_CAN_STAGE"/>
+      <column-mapping source="LEAD_UND" destination="LEAD_UND"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="SIGN_DATE" destination="SIGN_DATE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_LIST_INFO" destination="BOND_LIST_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="BOND_UNI_CODE" destination="BOND_UNI_CODE"/>
+      <column-mapping source="LIST_DECL_DATE" destination="LIST_DECL_DATE"/>
+      <column-mapping source="LIST_DATE" destination="LIST_DATE"/>
+      <column-mapping source="LIST_SECT_PAR" destination="LIST_SECT_PAR"/>
+      <column-mapping source="SEC_MAR_PAR" destination="SEC_MAR_PAR"/>
+      <column-mapping source="LIST_STA_PAR" destination="LIST_STA_PAR"/>
+      <column-mapping source="LAST_TRADE_DATE" destination="LAST_TRADE_DATE"/>
+      <column-mapping source="STOP_TRADE_DATE" destination="STOP_TRADE_DATE"/>
+      <column-mapping source="CIRCU_AMUT" destination="CIRCU_AMUT"/>
+      <column-mapping source="THEO_DELIST_DATE" destination="THEO_DELIST_DATE"/>
+      <column-mapping source="ACTU_DELIST_DATE" destination="ACTU_DELIST_DATE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_RATE_INFO" destination="BOND_RATE_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="RATE_TYPE_PAR" destination="RATE_TYPE_PAR"/>
+      <column-mapping source="IS_SEGM_PAR" destination="IS_SEGM_PAR"/>
+      <column-mapping source="INTE_PAY_CLS_PAR" destination="INTE_PAY_CLS_PAR"/>
+      <column-mapping source="INTE_PAY_FREQ" destination="INTE_PAY_FREQ"/>
+      <column-mapping source="INTE_CALCU_CLS_PAR" destination="INTE_CALCU_CLS_PAR"/>
+      <column-mapping source="REPAY_CLS_PAY_PAR" destination="REPAY_CLS_PAY_PAR"/>
+      <column-mapping source="SIMP_COMP_INTE_PAR" destination="SIMP_COMP_INTE_PAR"/>
+      <column-mapping source="INTE_START_DATE" destination="INTE_START_DATE"/>
+      <column-mapping source="ACTU_END_DATE" destination="ACTU_END_DATE"/>
+      <column-mapping source="THEO_END_DATE" destination="THEO_END_DATE"/>
+      <column-mapping source="YEAR_PAY_DATE" destination="YEAR_PAY_DATE"/>
+      <column-mapping source="FIR_PAY_DATE" destination="FIR_PAY_DATE"/>
+      <column-mapping source="ISS_COUP_RATE" destination="ISS_COUP_RATE"/>
+      <column-mapping source="BASE_RATE_PAR" destination="BASE_RATE_PAR"/>
+      <column-mapping source="INIT_BASE_RATE_DATE" destination="INIT_BASE_RATE_DATE"/>
+      <column-mapping source="BASE_RATE" destination="BASE_RATE"/>
+      <column-mapping source="BAS_SPR" destination="BAS_SPR"/>
+      <column-mapping source="OPT_EXTRA_SPR" destination="OPT_EXTRA_SPR"/>
+      <column-mapping source="EXTRA_SPR_SEQ_NUM" destination="EXTRA_SPR_SEQ_NUM"/>
+      <column-mapping source="RATE_CEIL" destination="RATE_CEIL"/>
+      <column-mapping source="RATE_FLOOR" destination="RATE_FLOOR"/>
+      <column-mapping source="IS_INTE_COMP_PAR" destination="IS_INTE_COMP_PAR"/>
+      <column-mapping source="COMP_RATE" destination="COMP_RATE"/>
+      <column-mapping source="YTM_INTE_COMP" destination="YTM_INTE_COMP"/>
+      <column-mapping source="REF_YIELD" destination="REF_YIELD"/>
+      <column-mapping source="YEAR_PAY_MATU" destination="YEAR_PAY_MATU"/>
+      <column-mapping source="MATU_PAY_DATE" destination="MATU_PAY_DATE"/>
+      <column-mapping source="EXER_PAY_DATE" destination="EXER_PAY_DATE"/>
+      <column-mapping source="PAY_FEE_RATE" destination="PAY_FEE_RATE"/>
+      <column-mapping source="PAY_CLS_DES" destination="PAY_CLS_DES"/>
+      <column-mapping source="PAY_MATU" destination="PAY_MATU"/>
+      <column-mapping source="NEW_COUP_RATE" destination="NEW_COUP_RATE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_RELA_ORG" destination="BOND_RELA_ORG"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="ORG_TYPE_PAR" destination="ORG_TYPE_PAR"/>
+      <column-mapping source="SEQ_NUM" destination="SEQ_NUM"/>
+      <column-mapping source="ORG_CHI_NAME" destination="ORG_CHI_NAME"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_RESA_REDEM" destination="BOND_RESA_REDEM"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"  isKey="true"/>
+      <column-mapping source="OPT_TYPE_PAR" destination="OPT_TYPE_PAR"/>
+      <column-mapping source="SEQ_NUM" destination="SEQ_NUM"/>
+      <column-mapping source="OPT_DES" destination="OPT_DES"/>
+      <column-mapping source="EXER_PROC_PAR" destination="EXER_PROC_PAR"/>
+      <column-mapping source="IS_EXER_PAR" destination="IS_EXER_PAR"/>
+      <column-mapping source="EXER_REAS_PAR" destination="EXER_REAS_PAR"/>
+      <column-mapping source="EXER_REAS_DES" destination="EXER_REAS_DES"/>
+      <column-mapping source="MAY_EXER_DATE" destination="MAY_EXER_DATE"/>
+      <column-mapping source="APPL_START_DATE" destination="APPL_START_DATE"/>
+      <column-mapping source="APPL_END_DATE" destination="APPL_END_DATE"/>
+      <column-mapping source="EXER_DATE" destination="EXER_DATE"/>
+      <column-mapping source="EXER_PAR" destination="EXER_PAR"/>
+      <column-mapping source="EXER_PAR_TAXED" destination="EXER_PAR_TAXED"/>
+      <column-mapping source="IS_CONTA_INTE_PAR" destination="IS_CONTA_INTE_PAR"/>
+      <column-mapping source="CONTA_INTE" destination="CONTA_INTE"/>
+      <column-mapping source="EXER_LOW_AMUT" destination="EXER_LOW_AMUT"/>
+      <column-mapping source="REDEM_RESA_SHEET" destination="REDEM_RESA_SHEET"/>
+      <column-mapping source="REDEM_RESA_AMUT" destination="REDEM_RESA_AMUT"/>
+      <column-mapping source="PAY_DATE" destination="PAY_DATE"/>
+      <column-mapping source="COTN_DECL_DATE" destination="COTN_DECL_DATE"/>
+      <column-mapping source="RESI_AMUT" destination="RESI_AMUT"/>
+      <column-mapping source="RESI_RATE_ADD" destination="RESI_RATE_ADD"/>
+      <column-mapping source="RESE_AMUT" destination="RESE_AMUT"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BOND_SIZE_CHAN" destination="BOND_SIZE_CHAN"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="END_DATE" destination="END_DATE" isKey="true"/>
+      <column-mapping source="TOTAL_SIZE" destination="TOTAL_SIZE"/>
+      <column-mapping source="EXCHANGE_IB_SIZE" destination="EXCHANGE_IB_SIZE"/>
+      <column-mapping source="EXCHANGE_SIZE" destination="EXCHANGE_SIZE"/>
+      <column-mapping source="SH_SIZE" destination="SH_SIZE"/>
+      <column-mapping source="SZ_SIZE" destination="SZ_SIZE"/>
+      <column-mapping source="IB_SIZE" destination="IB_SIZE"/>
+      <column-mapping source="OTC_SIZE" destination="OTC_SIZE"/>
+      <column-mapping source="OTHER_SIZE" destination="OTHER_SIZE"/>
+      <column-mapping source="SIZE_CHAN" destination="SIZE_CHAN"/>
+      <column-mapping source="CHAN_TYPE_PAR" destination="CHAN_TYPE_PAR"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="COM_FIN_BANK_RISK_RATIO" destination="COM_FIN_BANK_RISK_RATIO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="SHEET_MARK_PAR" destination="SHEET_MARK_PAR"/>
+      <column-mapping source="DATA_TYPE" destination="DATA_TYPE"/>
+      <column-mapping source="FAL_SPEC_1101" destination="FAL_SPEC_1101"/>
+      <column-mapping source="FAL_SPEC_1102" destination="FAL_SPEC_1102"/>
+      <column-mapping source="FAL_SPEC_1103" destination="FAL_SPEC_1103"/>
+      <column-mapping source="FAL_SPEC_1104" destination="FAL_SPEC_1104"/>
+      <column-mapping source="FAL_SPEC_1105" destination="FAL_SPEC_1105"/>
+      <column-mapping source="FAL_SPEC_1106" destination="FAL_SPEC_1106"/>
+      <column-mapping source="FAL_SPEC_1107" destination="FAL_SPEC_1107"/>
+      <column-mapping source="FAL_SPEC_1108" destination="FAL_SPEC_1108"/>
+      <column-mapping source="FAL_SPEC_1109" destination="FAL_SPEC_1109"/>
+      <column-mapping source="FAL_SPEC_1110" destination="FAL_SPEC_1110"/>
+      <column-mapping source="FAL_SPEC_1111" destination="FAL_SPEC_1111"/>
+      <column-mapping source="FAL_SPEC_1112" destination="FAL_SPEC_1112"/>
+      <column-mapping source="FAL_SPEC_1114" destination="FAL_SPEC_1114"/>
+      <column-mapping source="FAL_SPEC_1115" destination="FAL_SPEC_1115"/>
+      <column-mapping source="FAL_SPEC_1116" destination="FAL_SPEC_1116"/>
+      <column-mapping source="FAL_SPEC_1117" destination="FAL_SPEC_1117"/>
+      <column-mapping source="FAL_SPEC_1118" destination="FAL_SPEC_1118"/>
+      <column-mapping source="FAL_SPEC_1119" destination="FAL_SPEC_1119"/>
+      <column-mapping source="FAL_SPEC_1120" destination="FAL_SPEC_1120"/>
+      <column-mapping source="FAL_SPEC_1140" destination="FAL_SPEC_1140"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="COM_FIN_FAL_ASSET_ANALY" destination="COM_FIN_FAL_ASSET_ANALY"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="SHEET_MARK_PAR" destination="SHEET_MARK_PAR"/>
+      <column-mapping source="DATA_TYPE" destination="DATA_TYPE"/>
+      <column-mapping source="FAL_SPEC_1604" destination="FAL_SPEC_1604"/>
+      <column-mapping source="FAL_SPEC_1608" destination="FAL_SPEC_1608"/>
+      <column-mapping source="FAL_SPEC_1615" destination="FAL_SPEC_1615"/>
+      <column-mapping source="FAL_SPEC_1616" destination="FAL_SPEC_1616"/>
+      <column-mapping source="FAL_SPEC_1617" destination="FAL_SPEC_1617"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="COM_FIN_FAL_LOAN" destination="COM_FIN_FAL_LOAN"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="SHEET_MARK_PAR" destination="SHEET_MARK_PAR"/>
+      <column-mapping source="DATA_TYPE" destination="DATA_TYPE"/>
+      <column-mapping source="FAL_SPEC_1301" destination="FAL_SPEC_1301"/>
+      <column-mapping source="FAL_SPEC_1311" destination="FAL_SPEC_1311"/>
+      <column-mapping source="FAL_SPEC_1312" destination="FAL_SPEC_1312"/>
+      <column-mapping source="FAL_SPEC_1401" destination="FAL_SPEC_1401"/>
+      <column-mapping source="FAL_SPEC_1402" destination="FAL_SPEC_1402"/>
+      <column-mapping source="FAL_SPEC_1403" destination="FAL_SPEC_1403"/>
+      <column-mapping source="FAL_SPEC_1404" destination="FAL_SPEC_1404"/>
+      <column-mapping source="FAL_SPEC_1405" destination="FAL_SPEC_1405"/>
+      <column-mapping source="FAL_SPEC_1406" destination="FAL_SPEC_1406"/>
+      <column-mapping source="FAL_SPEC_1407" destination="FAL_SPEC_1407"/>
+      <column-mapping source="FAL_SPEC_1408" destination="FAL_SPEC_1408"/>
+      <column-mapping source="FAL_SPEC_1409" destination="FAL_SPEC_1409"/>
+      <column-mapping source="FAL_SPEC_1410" destination="FAL_SPEC_1410"/>
+      <column-mapping source="FAL_SPEC_1411" destination="FAL_SPEC_1411"/>
+      <column-mapping source="FAL_SPEC_1412" destination="FAL_SPEC_1412"/>
+      <column-mapping source="FAL_SPEC_1413" destination="FAL_SPEC_1413"/>
+      <column-mapping source="FAL_SPEC_1414" destination="FAL_SPEC_1414"/>
+      <column-mapping source="FAL_SPEC_1415" destination="FAL_SPEC_1415"/>
+      <column-mapping source="FAL_SPEC_1416" destination="FAL_SPEC_1416"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="MAC_AREA_MANGDS_PPIMNH" destination="MAC_AREA_MANGDS_PPIMNH"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="DATA_FREQ_PAR" destination="DATA_FREQ_PAR"/>
+      <column-mapping source="BASE_PERD_PAR" destination="BASE_PERD_PAR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="MAC_IDX_PAR" destination="MAC_IDX_PAR"/>
+      <column-mapping source="A001" destination="A001"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="MAC_INDU_IDX_PAR" destination="MAC_INDU_IDX_PAR"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="PAR_SYS_CODE" destination="PAR_SYS_CODE"/>
+      <column-mapping source="PAR_SYS_NAME" destination="PAR_SYS_NAME"/>
+      <column-mapping source="PAR_CODE" destination="PAR_CODE"/>
+      <column-mapping source="PAR_NAME" destination="PAR_NAME"/>
+      <column-mapping source="PAR_ENG_NAME" destination="PAR_ENG_NAME"/>
+      <column-mapping source="PAR_UNIT" destination="PAR_UNIT"/>
+      <column-mapping source="PAR_DES" destination="PAR_DES"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="PUB_AREA_CODE" destination="PUB_AREA_CODE"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="AREA_TYPE_PAR" destination="AREA_TYPE_PAR"/>
+      <column-mapping source="ADMI_LEVE_PAR" destination="ADMI_LEVE_PAR"/>
+      <column-mapping source="NAT_CODE" destination="NAT_CODE"/>
+      <column-mapping source="ISO_CODE_TWO" destination="ISO_CODE_TWO"/>
+      <column-mapping source="ISO_CODE_THR" destination="ISO_CODE_THR"/>
+      <column-mapping source="AREA_CHI_NAME" destination="AREA_CHI_NAME"/>
+      <column-mapping source="AREA_CHI_SHORT_NAME" destination="AREA_CHI_SHORT_NAME"/>
+      <column-mapping source="AREA_ENG_NAME" destination="AREA_ENG_NAME"/>
+      <column-mapping source="AREA_ENG_SHORT_NAME" destination="AREA_ENG_SHORT_NAME"/>
+      <column-mapping source="TIME_DIFF" destination="TIME_DIFF"/>
+      <column-mapping source="POST_CODE" destination="POST_CODE"/>
+      <column-mapping source="AREA_CODE" destination="AREA_CODE"/>
+      <column-mapping source="START_DATE" destination="START_DATE"/>
+      <column-mapping source="IS_VALID" destination="IS_VALID"/>
+      <column-mapping source="DIS_DATE" destination="DIS_DATE"/>
+      <column-mapping source="SUB_UNI_CODE" destination="SUB_UNI_CODE"/>
+      <column-mapping source="AREA_UNI_CODE1" destination="AREA_UNI_CODE1"/>
+      <column-mapping source="AREA_NAME1" destination="AREA_NAME1"/>
+      <column-mapping source="AREA_UNI_CODE2" destination="AREA_UNI_CODE2"/>
+      <column-mapping source="AREA_NAME2" destination="AREA_NAME2"/>
+      <column-mapping source="AREA_UNI_CODE3" destination="AREA_UNI_CODE3"/>
+      <column-mapping source="AREA_NAME3" destination="AREA_NAME3"/>
+      <column-mapping source="AREA_UNI_CODE4" destination="AREA_UNI_CODE4"/>
+      <column-mapping source="AREA_NAME4" destination="AREA_NAME4"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="PUB_CURY_TYPE" destination="PUB_CURY_TYPE"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="CURY_TYPE_PAR" destination="CURY_TYPE_PAR"/>
+      <column-mapping source="CURY_CHI_NAME" destination="CURY_CHI_NAME"/>
+      <column-mapping source="CURY_ENG_NAME" destination="CURY_ENG_NAME"/>
+      <column-mapping source="CURY_OLD_SIGN" destination="CURY_OLD_SIGN"/>
+      <column-mapping source="CURY_STAN_SIGN" destination="CURY_STAN_SIGN"/>
+      <column-mapping source="CURY_DES" destination="CURY_DES"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="PUB_ORG_INFO" destination="PUB_ORG_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="ORG_CHI_NAME" destination="ORG_CHI_NAME"/>
+      <column-mapping source="CHI_SHORT_NAME" destination="CHI_SHORT_NAME"/>
+      <column-mapping source="ORG_ENG_NAME" destination="ORG_ENG_NAME"/>
+      <column-mapping source="ENG_SHORT_NAME" destination="ENG_SHORT_NAME"/>
+      <column-mapping source="CHI_SPE_SHORT_NAME" destination="CHI_SPE_SHORT_NAME"/>
+      <column-mapping source="REG_CAP" destination="REG_CAP"/>
+      <column-mapping source="CURY_TYPE_PAR" destination="CURY_TYPE_PAR"/>
+      <column-mapping source="REG_ADDR" destination="REG_ADDR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="OFFI_ADDR" destination="OFFI_ADDR"/>
+      <column-mapping source="POST_CODE" destination="POST_CODE"/>
+      <column-mapping source="COM_WEB" destination="COM_WEB"/>
+      <column-mapping source="LEG_PER" destination="LEG_PER"/>
+      <column-mapping source="GEN_MAN" destination="GEN_MAN"/>
+      <column-mapping source="ORG_CON_PER" destination="ORG_CON_PER"/>
+      <column-mapping source="ORG_TEL" destination="ORG_TEL"/>
+      <column-mapping source="ORG_FAX" destination="ORG_FAX"/>
+      <column-mapping source="ORG_MAIL_ADDR" destination="ORG_MAIL_ADDR"/>
+      <column-mapping source="ORG_EST_DATE" destination="ORG_EST_DATE"/>
+      <column-mapping source="CUS_CON_TEL" destination="CUS_CON_TEL"/>
+      <column-mapping source="ORG_STA_PAR" destination="ORG_STA_PAR"/>
+      <column-mapping source="IC_REG_CODE" destination="IC_REG_CODE"/>
+      <column-mapping source="NAT_TAX_REG_CODE" destination="NAT_TAX_REG_CODE"/>
+      <column-mapping source="LOC_TAX_REG_CODE" destination="LOC_TAX_REG_CODE"/>
+      <column-mapping source="ORG_CLA_BIG_PAR" destination="ORG_CLA_BIG_PAR"/>
+      <column-mapping source="ORG_CLA_MID_PAR" destination="ORG_CLA_MID_PAR"/>
+      <column-mapping source="ORG_CLA_SMA_PAR" destination="ORG_CLA_SMA_PAR"/>
+      <column-mapping source="ORG_ORGA_FORM_PAR" destination="ORG_ORGA_FORM_PAR"/>
+      <column-mapping source="PARE_COM_CODE" destination="PARE_COM_CODE"/>
+      <column-mapping source="TOP_ORG_CODE" destination="TOP_ORG_CODE"/>
+      <column-mapping source="HIGH_LEVEL_ORG_CODE" destination="HIGH_LEVEL_ORG_CODE"/>
+      <column-mapping source="HIE_CODE" destination="HIE_CODE"/>
+      <column-mapping source="ORG_ABBR" destination="ORG_ABBR"/>
+      <column-mapping source="ORG_MAIN_BUSI" destination="ORG_MAIN_BUSI"/>
+      <column-mapping source="ORG_SID_BUSI" destination="ORG_SID_BUSI"/>
+      <column-mapping source="DIS_DATE" destination="DIS_DATE"/>
+      <column-mapping source="DIS_REAS" destination="DIS_REAS"/>
+      <column-mapping source="ORG_LIST_PAR" destination="ORG_LIST_PAR"/>
+      <column-mapping source="IF_ISS_BOND" destination="IF_ISS_BOND"/>
+      <column-mapping source="LIST_MKT" destination="LIST_MKT"/>
+      <column-mapping source="FILE_PATH" destination="FILE_PATH"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="PUB_PAR" destination="PUB_PAR"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="PAR_SYS_CODE" destination="PAR_SYS_CODE"/>
+      <column-mapping source="PAR_SYS_NAME" destination="PAR_SYS_NAME"/>
+      <column-mapping source="PAR_CODE" destination="PAR_CODE"/>
+      <column-mapping source="PAR_NAME" destination="PAR_NAME"/>
+      <column-mapping source="PAR_ENG_NAME" destination="PAR_ENG_NAME"/>
+      <column-mapping source="PAR_UNIT" destination="PAR_UNIT"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_FINA_CRED_LINE" destination="RATE_FINA_CRED_LINE"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE" />
+      <column-mapping source="END_DATE" destination="END_DATE"  isKey="true"/>
+      <column-mapping source="CRED_LINE" destination="CRED_LINE"/>
+      <column-mapping source="CRED_USED" destination="CRED_USED"/>
+      <column-mapping source="CRED_SURP" destination="CRED_SURP"/>
+      <column-mapping source="CRED_DES" destination="CRED_DES"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_FINA_GUARANT" destination="RATE_FINA_GUARANT"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="DECL_DATE" destination="DECL_DATE"/>
+      <column-mapping source="GUAOR_NUM" destination="GUAOR_NUM"/>
+      <column-mapping source="GUAOR_TYPE_PAR" destination="GUAOR_TYPE_PAR"/>
+      <column-mapping source="GUAOR_NAME" destination="GUAOR_NAME"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="GUAOR_CRED_LEVEL" destination="GUAOR_CRED_LEVEL"/>
+      <column-mapping source="GUAR_METH_PAR" destination="GUAR_METH_PAR"/>
+      <column-mapping source="ASSU_GUAR_METH_PAR" destination="ASSU_GUAR_METH_PAR"/>
+      <column-mapping source="GUAR_METH_DES" destination="GUAR_METH_DES"/>
+      <column-mapping source="GUAR_AMUT" destination="GUAR_AMUT"/>
+      <column-mapping source="GUAR_AMUT_RANGE_PAR" destination="GUAR_AMUT_RANGE_PAR"/>
+      <column-mapping source="GUAR_RATIO" destination="GUAR_RATIO"/>
+      <column-mapping source="GUAR_MATU" destination="GUAR_MATU"/>
+      <column-mapping source="GUAR_START_DATE" destination="GUAR_START_DATE"/>
+      <column-mapping source="GUAR_END_DATE" destination="GUAR_END_DATE"/>
+      <column-mapping source="GUAR_OBJ" destination="GUAR_OBJ"/>
+      <column-mapping source="ISS_DEBT_MEAS" destination="ISS_DEBT_MEAS"/>
+      <column-mapping source="GUAOR_INTRO" destination="GUAOR_INTRO"/>
+      <column-mapping source="GUAR_CONTE" destination="GUAR_CONTE"/>
+      <column-mapping source="BANK_HEAD_CODE" destination="BANK_HEAD_CODE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_FINA_HIS" destination="RATE_FINA_HIS"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="RATE_WRIT_DATE" destination="RATE_WRIT_DATE" isKey="true"/>
+      <column-mapping source="RATE_PUBL_DATE" destination="RATE_PUBL_DATE"/>
+      <column-mapping source="RATE_TYPE_PAR" destination="RATE_TYPE_PAR"/>
+      <column-mapping source="RATE_CLS_PAR" destination="RATE_CLS_PAR"/>
+      <column-mapping source="BOND_CRED_LEVEL" destination="BOND_CRED_LEVEL"/>
+      <column-mapping source="BOND_CRED_LEVEL_PAR" destination="BOND_CRED_LEVEL_PAR"/>
+      <column-mapping source="BOND_CRED_LEVEL_EXP" destination="BOND_CRED_LEVEL_EXP"/>
+      <column-mapping source="RATE_PROS_PAR" destination="RATE_PROS_PAR"/>
+      <column-mapping source="RATE_POINT" destination="RATE_POINT"/>
+      <column-mapping source="CCE_ADVT" destination="CCE_ADVT"/>
+      <column-mapping source="CCE_DISADVT" destination="CCE_DISADVT"/>
+      <column-mapping source="ATT_POINT" destination="ATT_POINT"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="IS_NEW_RATE" destination="IS_NEW_RATE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_ORG_CRED_HIS" destination="RATE_ORG_CRED_HIS"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="RATE_WRIT_DATE" destination="RATE_WRIT_DATE" isKey="true" />
+      <column-mapping source="RATE_PUBL_DATE" destination="RATE_PUBL_DATE"/>
+      <column-mapping source="COM_TYPE_PAR" destination="COM_TYPE_PAR"/>
+      <column-mapping source="RATE_TYPE_PAR" destination="RATE_TYPE_PAR"/>
+      <column-mapping source="RATE_CLS_PAR" destination="RATE_CLS_PAR"/>
+      <column-mapping source="ISS_CRED_LEVEL" destination="ISS_CRED_LEVEL"/>
+      <column-mapping source="ISS_CRED_LEVEL_PAR" destination="ISS_CRED_LEVEL_PAR"/>
+      <column-mapping source="ISS_CRED_LEVEL_EXP" destination="ISS_CRED_LEVEL_EXP"/>
+      <column-mapping source="RATE_PROS_PAR" destination="RATE_PROS_PAR"/>
+      <column-mapping source="RATE_POINT" destination="RATE_POINT"/>
+      <column-mapping source="CCE_ADVT" destination="CCE_ADVT"/>
+      <column-mapping source="CCE_DISADVT" destination="CCE_DISADVT"/>
+      <column-mapping source="ATT_POINT" destination="ATT_POINT"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="IS_NEW_RATE" destination="IS_NEW_RATE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_ORG_INFO_F" destination="RATE_ORG_INFO_F"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="COM_CHI_NAME" destination="COM_CHI_NAME"/>
+      <column-mapping source="COM_CHI_SHORT_NAME" destination="COM_CHI_SHORT_NAME"/>
+      <column-mapping source="COM_SPE_SHORT_NAME" destination="COM_SPE_SHORT_NAME"/>
+      <column-mapping source="COM_ENG_NAME" destination="COM_ENG_NAME"/>
+      <column-mapping source="COM_ENG_SHORT_NAME" destination="COM_ENG_SHORT_NAME"/>
+      <column-mapping source="TYPE_BIG_PAR" destination="TYPE_BIG_PAR"/>
+      <column-mapping source="COM_ORGA_FORM_PAR" destination="COM_ORGA_FORM_PAR"/>
+      <column-mapping source="PARE_COM_CODE" destination="PARE_COM_CODE"/>
+      <column-mapping source="COM_STP" destination="COM_STP"/>
+      <column-mapping source="STP_TEL" destination="STP_TEL"/>
+      <column-mapping source="STP_TAX" destination="STP_TAX"/>
+      <column-mapping source="STP_CON_ADDR" destination="STP_CON_ADDR"/>
+      <column-mapping source="STP_MAIL" destination="STP_MAIL"/>
+      <column-mapping source="SEC_REPR_NAME" destination="SEC_REPR_NAME"/>
+      <column-mapping source="SEC_REPR_TEL" destination="SEC_REPR_TEL"/>
+      <column-mapping source="SEC_REPR_TAX" destination="SEC_REPR_TAX"/>
+      <column-mapping source="SEC_REPR_CON_ADDR" destination="SEC_REPR_CON_ADDR"/>
+      <column-mapping source="SEC_REPR_MAIL" destination="SEC_REPR_MAIL"/>
+      <column-mapping source="INFO_DISC_PER" destination="INFO_DISC_PER"/>
+      <column-mapping source="INFO_DISC_PAP" destination="INFO_DISC_PAP"/>
+      <column-mapping source="INFO_DISC_WEB" destination="INFO_DISC_WEB"/>
+      <column-mapping source="REG_ADDR" destination="REG_ADDR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="REG_ADDR_POST" destination="REG_ADDR_POST"/>
+      <column-mapping source="OFFI_ADDR" destination="OFFI_ADDR"/>
+      <column-mapping source="OFFI_ADDR_POST" destination="OFFI_ADDR_POST"/>
+      <column-mapping source="COM_ADDR" destination="COM_ADDR"/>
+      <column-mapping source="COM_ADDR_POST" destination="COM_ADDR_POST"/>
+      <column-mapping source="COM_WEB" destination="COM_WEB"/>
+      <column-mapping source="COM_CON_PER" destination="COM_CON_PER"/>
+      <column-mapping source="COM_TEL" destination="COM_TEL"/>
+      <column-mapping source="CUS_CON_TEL" destination="CUS_CON_TEL"/>
+      <column-mapping source="COM_FAX" destination="COM_FAX"/>
+      <column-mapping source="MAIL_ADDR" destination="MAIL_ADDR"/>
+      <column-mapping source="REG_CAP" destination="REG_CAP"/>
+      <column-mapping source="CURY_TYPE_PAR" destination="CURY_TYPE_PAR"/>
+      <column-mapping source="LEG_PER" destination="LEG_PER"/>
+      <column-mapping source="GEN_MAN" destination="GEN_MAN"/>
+      <column-mapping source="EST_DATE" destination="EST_DATE"/>
+      <column-mapping source="IC_REG_CODE" destination="IC_REG_CODE"/>
+      <column-mapping source="NAT_TAX_REG_CODE" destination="NAT_TAX_REG_CODE"/>
+      <column-mapping source="LOC_TAX_REG_CODE" destination="LOC_TAX_REG_CODE"/>
+      <column-mapping source="TER_ACC_OFFI_CODE" destination="TER_ACC_OFFI_CODE"/>
+      <column-mapping source="TER_ACC" destination="TER_ACC"/>
+      <column-mapping source="LAWER_OFFI_CODE" destination="LAWER_OFFI_CODE"/>
+      <column-mapping source="COM_LAWER" destination="COM_LAWER"/>
+      <column-mapping source="CAP_ESTI_ORG_CODE" destination="CAP_ESTI_ORG_CODE"/>
+      <column-mapping source="ESTI_STAFF" destination="ESTI_STAFF"/>
+      <column-mapping source="MAIN_BUS" destination="MAIN_BUS"/>
+      <column-mapping source="SID_BUS" destination="SID_BUS"/>
+      <column-mapping source="COM_PRO" destination="COM_PRO"/>
+      <column-mapping source="COM_HIS" destination="COM_HIS"/>
+      <column-mapping source="STAFF_SUM" destination="STAFF_SUM"/>
+      <column-mapping source="STA_PAR" destination="STA_PAR"/>
+      <column-mapping source="DIS_DATE" destination="DIS_DATE"/>
+      <column-mapping source="DIS_REAS" destination="DIS_REAS"/>
+      <column-mapping source="IS_LIST_PAR" destination="IS_LIST_PAR"/>
+      <column-mapping source="TYPE_MID_PAR" destination="TYPE_MID_PAR"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_ORG_INFO_G" destination="RATE_ORG_INFO_G"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="ORG_CHI_NAME" destination="ORG_CHI_NAME"/>
+      <column-mapping source="CHI_SHORT_NAME" destination="CHI_SHORT_NAME"/>
+      <column-mapping source="CHI_SPE_SHORT_NAME" destination="CHI_SPE_SHORT_NAME"/>
+      <column-mapping source="ORG_ENG_NAME" destination="ORG_ENG_NAME"/>
+      <column-mapping source="ENG_SHORT_NAME" destination="ENG_SHORT_NAME"/>
+      <column-mapping source="ORG_CLA_BIG_PAR" destination="ORG_CLA_BIG_PAR"/>
+      <column-mapping source="ORG_CLA_MID_PAR" destination="ORG_CLA_MID_PAR"/>
+      <column-mapping source="ORG_CLA_SMA_PAR" destination="ORG_CLA_SMA_PAR"/>
+      <column-mapping source="ORG_ORGA_FORM_PAR" destination="ORG_ORGA_FORM_PAR"/>
+      <column-mapping source="PARE_COM_CODE" destination="PARE_COM_CODE"/>
+      <column-mapping source="REG_ADDR" destination="REG_ADDR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="REG_ADDR_POST" destination="REG_ADDR_POST"/>
+      <column-mapping source="OFFI_ADDR" destination="OFFI_ADDR"/>
+      <column-mapping source="POST_CODE" destination="POST_CODE"/>
+      <column-mapping source="COM_ADDR" destination="COM_ADDR"/>
+      <column-mapping source="COM_ADDR_POST" destination="COM_ADDR_POST"/>
+      <column-mapping source="COM_WEB" destination="COM_WEB"/>
+      <column-mapping source="ORG_CON_PER" destination="ORG_CON_PER"/>
+      <column-mapping source="ORG_TEL" destination="ORG_TEL"/>
+      <column-mapping source="CUS_CON_TEL" destination="CUS_CON_TEL"/>
+      <column-mapping source="ORG_FAX" destination="ORG_FAX"/>
+      <column-mapping source="ORG_MAIL_ADDR" destination="ORG_MAIL_ADDR"/>
+      <column-mapping source="REG_CAP" destination="REG_CAP"/>
+      <column-mapping source="CURY_TYPE_PAR" destination="CURY_TYPE_PAR"/>
+      <column-mapping source="LEG_PER" destination="LEG_PER"/>
+      <column-mapping source="GEN_MAN" destination="GEN_MAN"/>
+      <column-mapping source="ORG_EST_DATE" destination="ORG_EST_DATE"/>
+      <column-mapping source="IC_REG_CODE" destination="IC_REG_CODE"/>
+      <column-mapping source="NAT_TAX_REG_CODE" destination="NAT_TAX_REG_CODE"/>
+      <column-mapping source="LOC_TAX_REG_CODE" destination="LOC_TAX_REG_CODE"/>
+      <column-mapping source="TER_ACC_OFFI_CODE" destination="TER_ACC_OFFI_CODE"/>
+      <column-mapping source="TER_ACC" destination="TER_ACC"/>
+      <column-mapping source="LAWER_OFFI_CODE" destination="LAWER_OFFI_CODE"/>
+      <column-mapping source="COM_LAWER" destination="COM_LAWER"/>
+      <column-mapping source="MAIN_BUSI" destination="MAIN_BUSI"/>
+      <column-mapping source="SID_BUSI" destination="SID_BUSI"/>
+      <column-mapping source="ORG_ABBR" destination="ORG_ABBR"/>
+      <column-mapping source="COM_HIS" destination="COM_HIS"/>
+      <column-mapping source="ORG_STA_PAR" destination="ORG_STA_PAR"/>
+      <column-mapping source="DIS_DATE" destination="DIS_DATE"/>
+      <column-mapping source="DIS_REAS" destination="DIS_REAS"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_ORG_INFO_R" destination="RATE_ORG_INFO_R"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="ORG_CHI_NAME" destination="ORG_CHI_NAME"/>
+      <column-mapping source="CHI_SHORT_NAME" destination="CHI_SHORT_NAME"/>
+      <column-mapping source="CHI_SPE_SHORT_NAME" destination="CHI_SPE_SHORT_NAME"/>
+      <column-mapping source="ORG_ENG_NAME" destination="ORG_ENG_NAME"/>
+      <column-mapping source="ENG_SHORT_NAME" destination="ENG_SHORT_NAME"/>
+      <column-mapping source="REG_CAP" destination="REG_CAP"/>
+      <column-mapping source="CURY_TYPE_PAR" destination="CURY_TYPE_PAR"/>
+      <column-mapping source="ORG_EST_DATE" destination="ORG_EST_DATE"/>
+      <column-mapping source="PARE_COM_CODE" destination="PARE_COM_CODE"/>
+      <column-mapping source="REG_ADDR" destination="REG_ADDR"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="OFFI_ADDR" destination="OFFI_ADDR"/>
+      <column-mapping source="POST_CODE" destination="POST_CODE"/>
+      <column-mapping source="COM_WEB" destination="COM_WEB"/>
+      <column-mapping source="LEG_PER" destination="LEG_PER"/>
+      <column-mapping source="GEN_MAN" destination="GEN_MAN"/>
+      <column-mapping source="ORG_TEL" destination="ORG_TEL"/>
+      <column-mapping source="ORG_FAX" destination="ORG_FAX"/>
+      <column-mapping source="ORG_MAIL_ADDR" destination="ORG_MAIL_ADDR"/>
+      <column-mapping source="CUS_CON_TEL" destination="CUS_CON_TEL"/>
+      <column-mapping source="ORG_ABBR" destination="ORG_ABBR"/>
+      <column-mapping source="ORG_MAIN_BUSI" destination="ORG_MAIN_BUSI"/>
+      <column-mapping source="IC_REG_CODE" destination="IC_REG_CODE"/>
+      <column-mapping source="ORG_STA_PAR" destination="ORG_STA_PAR"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_REP" destination="RATE_REP"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="RATE_WRIT_DATE" destination="RATE_WRIT_DATE"/>
+      <column-mapping source="RATE_PUBL_DATE" destination="RATE_PUBL_DATE"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="RESER_NAME" destination="RESER_NAME"/>
+      <column-mapping source="RATE_TITLE" destination="RATE_TITLE"/>
+      <column-mapping source="RATE_TYPE_PAR" destination="RATE_TYPE_PAR"/>
+      <column-mapping source="RATE_PAG" destination="RATE_PAG"/>
+      <column-mapping source="RATE_FILE_SIZE" destination="RATE_FILE_SIZE"/>
+      <column-mapping source="RATE_FILE_TYPE_PAR" destination="RATE_FILE_TYPE_PAR"/>
+      <column-mapping source="RATE_FILE_PATH" destination="RATE_FILE_PATH"/>
+      <column-mapping source="ATT_PATH_MD5" destination="ATT_PATH_MD5"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_REP_COU" destination="RATE_REP_COU"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="AREA_UNI_CODE" destination="AREA_UNI_CODE"/>
+      <column-mapping source="CRED_LEVEL_PAR" destination="CRED_LEVEL_PAR"/>
+      <column-mapping source="RATE_PROS_PAR" destination="RATE_PROS_PAR"/>
+      <column-mapping source="CRED_LEVEL_PAR_F" destination="CRED_LEVEL_PAR_F"/>
+      <column-mapping source="RATE_PROS_PAR_F" destination="RATE_PROS_PAR_F"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_REP_INDU" destination="RATE_REP_INDU"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="INDU_NAME" destination="INDU_NAME"/>
+      <column-mapping source="ANA_RESULT" destination="ANA_RESULT"/>
+      <column-mapping source="RATE_PROS_PAR" destination="RATE_PROS_PAR"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_REP_ORG" destination="RATE_REP_ORG"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="RATE_TYPE_PAR" destination="RATE_TYPE_PAR"/>
+      <column-mapping source="RATE_CLS_PAR" destination="RATE_CLS_PAR"/>
+      <column-mapping source="ISS_CRED_LEVEL_PAR" destination="ISS_CRED_LEVEL_PAR"/>
+      <column-mapping source="RATE_PROS_PAR" destination="RATE_PROS_PAR"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_REP_SEC" destination="RATE_REP_SEC"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="SEC_UNI_CODE" destination="SEC_UNI_CODE"/>
+      <column-mapping source="RATE_TYPE_PAR" destination="RATE_TYPE_PAR"/>
+      <column-mapping source="RATE_CLS_PAR" destination="RATE_CLS_PAR"/>
+      <column-mapping source="BOND_CRED_LEVEL_PAR" destination="BOND_CRED_LEVEL_PAR"/>
+      <column-mapping source="RATE_PROS_PAR" destination="RATE_PROS_PAR"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_WATCH_BOND" destination="RATE_WATCH_BOND"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="BOND_ID" destination="BOND_ID"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="RATE_WRIT_DATE" destination="RATE_WRIT_DATE"/>
+      <column-mapping source="RATE_PUBL_DATE" destination="RATE_PUBL_DATE"/>
+      <column-mapping source="RATE_WATCH_TYPE_PAR" destination="RATE_WATCH_TYPE_PAR"/>
+      <column-mapping source="ATT_POINT" destination="ATT_POINT"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_WATCH_LIST" destination="RATE_WATCH_LIST"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="RATE_WRIT_DATE" destination="RATE_WRIT_DATE"/>
+      <column-mapping source="RATE_PUBL_DATE" destination="RATE_PUBL_DATE"/>
+      <column-mapping source="RATE_WATCH_TYPE_PAR" destination="RATE_WATCH_TYPE_PAR"/>
+      <column-mapping source="ATT_POINT" destination="ATT_POINT"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_WATCH_REP_ORG" destination="RATE_WATCH_REP_ORG"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="RATE_WATCH_TYPE_PAR" destination="RATE_WATCH_TYPE_PAR"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RATE_WATCH_REP_SEC" destination="RATE_WATCH_REP_SEC"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RATE_ID" destination="RATE_ID"/>
+      <column-mapping source="SEC_UNI_CODE" destination="SEC_UNI_CODE"/>
+      <column-mapping source="RATE_WATCH_TYPE_PAR" destination="RATE_WATCH_TYPE_PAR"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RES_INFO" destination="RES_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RES_ID" destination="RES_ID"/>
+      <column-mapping source="RES_WRIT_DATE" destination="RES_WRIT_DATE"/>
+      <column-mapping source="RES_PUBL_DATE" destination="RES_PUBL_DATE"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="RESER_NAME" destination="RESER_NAME"/>
+      <column-mapping source="RES_TITLE" destination="RES_TITLE"/>
+      <column-mapping source="RES_TYPE_PAR" destination="RES_TYPE_PAR"/>
+      <column-mapping source="RES_PAG" destination="RES_PAG"/>
+      <column-mapping source="RES_FILE_SIZE" destination="RES_FILE_SIZE"/>
+      <column-mapping source="RES_ABST" destination="RES_ABST"/>
+      <column-mapping source="RES_FILE_TYPE_PAR" destination="RES_FILE_TYPE_PAR"/>
+      <column-mapping source="RES_FILE_PATH" destination="RES_FILE_PATH"/>
+      <column-mapping source="INDU_UNI_CODE1" destination="INDU_UNI_CODE1"/>
+      <column-mapping source="INDU_UNI_CODE3" destination="INDU_UNI_CODE3"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="RES_PEO_REP_SUB" destination="RES_PEO_REP_SUB"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="RES_ID" destination="RES_ID"/>
+      <column-mapping source="REP_ATTR_PAR" destination="REP_ATTR_PAR"/>
+      <column-mapping source="REP_TYPE_PAR" destination="REP_TYPE_PAR"/>
+      <column-mapping source="REP_SEQ_NUM" destination="REP_SEQ_NUM"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="STK_BASIC_INFO" destination="STK_BASIC_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="STK_UNI_CODE" destination="STK_UNI_CODE"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="STK_CODE" destination="STK_CODE"/>
+      <column-mapping source="STK_SHORT_NAME" destination="STK_SHORT_NAME"/>
+      <column-mapping source="SPE_SHORT_NAME" destination="SPE_SHORT_NAME"/>
+      <column-mapping source="STK_TYPE_PAR" destination="STK_TYPE_PAR"/>
+      <column-mapping source="LIST_DATE" destination="LIST_DATE"/>
+      <column-mapping source="SEC_MAR_PAR" destination="SEC_MAR_PAR"/>
+      <column-mapping source="LIST_SECT_PAR" destination="LIST_SECT_PAR"/>
+      <column-mapping source="LIST_STA_PAR" destination="LIST_STA_PAR"/>
+      <column-mapping source="ISIN_CODE" destination="ISIN_CODE"/>
+      <column-mapping source="CURY_TYPE_PAR" destination="CURY_TYPE_PAR"/>
+      <column-mapping source="DELIST_DATE" destination="DELIST_DATE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="STK_FIN_NOTE_CASH_BANK" destination="STK_FIN_NOTE_CASH_BANK"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="COM_UNI_CODE" destination="COM_UNI_CODE"/>
+      <column-mapping source="END_DATE" destination="END_DATE"/>
+      <column-mapping source="SHEET_MARK_PAR" destination="SHEET_MARK_PAR"/>
+      <column-mapping source="A100" destination="A100"/>
+      <column-mapping source="A200" destination="A200"/>
+      <column-mapping source="A210" destination="A210"/>
+      <column-mapping source="A220" destination="A220"/>
+      <column-mapping source="A230" destination="A230"/>
+      <column-mapping source="A240" destination="A240"/>
+      <column-mapping source="A250" destination="A250"/>
+      <column-mapping source="A999" destination="A999"/>
+      <column-mapping source="SPEC_DES" destination="SPEC_DES"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="WARR_BASIC_INFO" destination="WARR_BASIC_INFO"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ISVALID" destination="ISVALID"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="WARR_UNI_CODE" destination="WARR_UNI_CODE"/>
+      <column-mapping source="WARR_FULL_NAME" destination="WARR_FULL_NAME"/>
+      <column-mapping source="WARR_SHORT_NAME" destination="WARR_SHORT_NAME"/>
+      <column-mapping source="SPE_SHORT_NAME" destination="SPE_SHORT_NAME"/>
+      <column-mapping source="WARR_CODE" destination="WARR_CODE"/>
+      <column-mapping source="ENG_FULL_NAME" destination="ENG_FULL_NAME"/>
+      <column-mapping source="ENG_SHORT_NAME" destination="ENG_SHORT_NAME"/>
+      <column-mapping source="EXER_CODE" destination="EXER_CODE"/>
+      <column-mapping source="EXER_SHORT_NAME" destination="EXER_SHORT_NAME"/>
+      <column-mapping source="SEC_UNI_CODE" destination="SEC_UNI_CODE"/>
+      <column-mapping source="MATU_DAY" destination="MATU_DAY"/>
+      <column-mapping source="MATU_START_DATE" destination="MATU_START_DATE"/>
+      <column-mapping source="MATU_END_DATE" destination="MATU_END_DATE"/>
+      <column-mapping source="EXER_START_DATE" destination="EXER_START_DATE"/>
+      <column-mapping source="EXER_END_DATE" destination="EXER_END_DATE"/>
+      <column-mapping source="WARR_ATTR_PAR" destination="WARR_ATTR_PAR"/>
+      <column-mapping source="WARR_TYPE_PAR" destination="WARR_TYPE_PAR"/>
+      <column-mapping source="EXER_METH_PAR" destination="EXER_METH_PAR"/>
+      <column-mapping source="SET_METH_PAR" destination="SET_METH_PAR"/>
+      <column-mapping source="INIT_EXER_PRI" destination="INIT_EXER_PRI"/>
+      <column-mapping source="INIT_EXER_RATIO" destination="INIT_EXER_RATIO"/>
+      <column-mapping source="ISS_DECL_DATE" destination="ISS_DECL_DATE"/>
+      <column-mapping source="ORG_UNI_CODE" destination="ORG_UNI_CODE"/>
+      <column-mapping source="ISS_TYPE_PAR" destination="ISS_TYPE_PAR"/>
+      <column-mapping source="ISS_METH" destination="ISS_METH"/>
+      <column-mapping source="ISS_DATE" destination="ISS_DATE"/>
+      <column-mapping source="ISS_OBJ" destination="ISS_OBJ"/>
+      <column-mapping source="REGI_DATE" destination="REGI_DATE"/>
+      <column-mapping source="ISS_BASE_VOL" destination="ISS_BASE_VOL"/>
+      <column-mapping source="VOL_PER_SHARE" destination="VOL_PER_SHARE"/>
+      <column-mapping source="ISS_VOL" destination="ISS_VOL"/>
+      <column-mapping source="TO_ACCOUNT_DATE" destination="TO_ACCOUNT_DATE"/>
+      <column-mapping source="LIST_DECL_DATE" destination="LIST_DECL_DATE"/>
+      <column-mapping source="LIST_DATE" destination="LIST_DATE"/>
+      <column-mapping source="SEC_MAR_PAR" destination="SEC_MAR_PAR"/>
+      <column-mapping source="LIST_VOL" destination="LIST_VOL"/>
+      <column-mapping source="LIST_STA_PAR" destination="LIST_STA_PAR"/>
+      <column-mapping source="LAST_TRADE_DATE" destination="LAST_TRADE_DATE"/>
+      <column-mapping source="ACTU_DELIST_DATE" destination="ACTU_DELIST_DATE"/>
+      <column-mapping source="ISIN_CODE" destination="ISIN_CODE"/>
+      <filter>
+        <![CDATA[ISVALID=1 and CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="ISSUERATING" destination="ISSUERATING"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="ETL_FLAG" destination="ETL_FLAG"/>
+      <column-mapping source="ACTION_INDICATOR" destination="ACTION_INDICATOR"/>
+      <column-mapping source="ISSUE_ID" destination="ISSUE_ID"/>
+      <column-mapping source="SHANGHAI_CODE" destination="SHANGHAI_CODE"/>
+      <column-mapping source="SHANGHAI_LIST_DATE" destination="SHANGHAI_LIST_DATE"/>
+      <column-mapping source="SHENZHEN_CODE" destination="SHENZHEN_CODE"/>
+      <column-mapping source="SHENZHEN_LIST_DATE" destination="SHENZHEN_LIST_DATE"/>
+      <column-mapping source="INTER_BANK_CODE" destination="INTER_BANK_CODE"/>
+      <column-mapping source="INTER_BANK_LIST_DATE" destination="INTER_BANK_LIST_DATE"/>
+      <column-mapping source="ISIN" destination="ISIN"/>
+      <column-mapping source="ISSUER_ID" destination="ISSUER_ID"/>
+      <column-mapping source="ISSUER_NAME_ENGLISH" destination="ISSUER_NAME_ENGLISH"/>
+      <column-mapping source="ISSUER_NAME_CHINESE" destination="ISSUER_NAME_CHINESE"/>
+      <column-mapping source="ISSUER_SECTOR" destination="ISSUER_SECTOR"/>
+      <column-mapping source="COUNTRY_CODE_ISSUER" destination="COUNTRY_CODE_ISSUER"/>
+      <column-mapping source="STATE_OR_PROVINCE_ISSUER" destination="STATE_OR_PROVINCE_ISSUER"/>
+      <column-mapping source="ISSUE_DESCRIPTION" destination="ISSUE_DESCRIPTION"/>
+      <column-mapping source="SERIES" destination="SERIES"/>
+      <column-mapping source="CLASS_OR_TRANCHE" destination="CLASS_OR_TRANCHE"/>
+      <column-mapping source="MATURITY_DATE" destination="MATURITY_DATE"/>
+      <column-mapping source="ORIGINAL_AMOUNT" destination="ORIGINAL_AMOUNT"/>
+      <column-mapping source="CURRENCY_CODE" destination="CURRENCY_CODE"/>
+      <column-mapping source="COUPON_RATE" destination="COUPON_RATE"/>
+      <column-mapping source="COUPON_TYPE" destination="COUPON_TYPE"/>
+      <column-mapping source="SENIORITY" destination="SENIORITY"/>
+      <column-mapping source="DEBT_CLASS" destination="DEBT_CLASS"/>
+      <column-mapping source="ISSUE_STATUS" destination="ISSUE_STATUS"/>
+      <column-mapping source="AGENCY_CODE" destination="AGENCY_CODE"/>
+      <column-mapping source="RATING_DIRECTION" destination="RATING_DIRECTION"/>
+      <column-mapping source="RATING_CLASS" destination="RATING_CLASS"/>
+      <column-mapping source="RATING_TYPE" destination="RATING_TYPE"/>
+      <column-mapping source="RATING_CODE" destination="RATING_CODE"/>
+      <column-mapping source="RATING_DATE" destination="RATING_DATE"  isKey="true" />
+      <column-mapping source="RATING_OUTLOOK" destination="RATING_OUTLOOK"/>
+      <column-mapping source="RATING_OUTLOOK_DATE" destination="RATING_OUTLOOK_DATE"/>
+      <column-mapping source="RATING_CREDITWATCH" destination="RATING_CREDITWATCH"/>
+      <column-mapping source="RATING_CREDITWATCH_DATE" destination="RATING_CREDITWATCH_DATE"/>
+      <column-mapping source="PRIOR_RATING_CODE" destination="PRIOR_RATING_CODE"/>
+      <column-mapping source="PRIOR_RATING_DATE" destination="PRIOR_RATING_DATE"/>
+      <column-mapping source="PRIOR_RATING_OUTLOOK" destination="PRIOR_RATING_OUTLOOK"/>
+      <column-mapping source="PRIOR_RATING_OUTLOOK_DATE" destination="PRIOR_RATING_OUTLOOK_DATE"/>
+      <column-mapping source="PRIOR_RATING_CREDITWATCH" destination="PRIOR_RATING_CREDITWATCH"/>
+      <column-mapping source="PRIOR_CREDITWATCH_DATE" destination="PRIOR_CREDITWATCH_DATE"/>
+      <column-mapping source="UNSOLICITED_RATING_FLAG" destination="UNSOLICITED_RATING_FLAG"/>
+      <column-mapping source="PRELIMINARY_FLAG" destination="PRELIMINARY_FLAG"/>
+      <column-mapping source="RATING_ENDORSEMENT" destination="RATING_ENDORSEMENT"/>
+      <column-mapping source="CUSIP" destination="CUSIP"/>
+      <column-mapping source="TAIWAN_CODE" destination="TAIWAN_CODE"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="ISSUERRATING" destination="ISSUERRATING"   isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="ID" destination="ID"  isKey="true" isImmutableKey="true"/>
+      <column-mapping source="CCXEID" destination="CCXEID"/>
+      <column-mapping source="ETL_FLAG" destination="ETL_FLAG"/>
+      <column-mapping source="ACTION_INDICATOR" destination="ACTION_INDICATOR"/>
+      <column-mapping source="ISSUER_ID" destination="ISSUER_ID"/>
+      <column-mapping source="ISSUER_NAME_ENGLISH" destination="ISSUER_NAME_ENGLISH"/>
+      <column-mapping source="ISSUER_NAME_CHINESE" destination="ISSUER_NAME_CHINESE"/>
+      <column-mapping source="ISSUER_SECTOR" destination="ISSUER_SECTOR"/>
+      <column-mapping source="COUNTRY_CODE" destination="COUNTRY_CODE"/>
+      <column-mapping source="STATE_PROVINCE" destination="STATE_PROVINCE"/>
+      <column-mapping source="CURRENCY_CODE" destination="CURRENCY_CODE"/>
+      <column-mapping source="AGENCY_CODE" destination="AGENCY_CODE"/>
+      <column-mapping source="RATING_DIRECTION" destination="RATING_DIRECTION"/>
+      <column-mapping source="RATING_CLASS" destination="RATING_CLASS"/>
+      <column-mapping source="RATING_TYPE" destination="RATING_TYPE"/>
+      <column-mapping source="RATING_CODE" destination="RATING_CODE"/>
+      <column-mapping source="RATING_DATE" destination="RATING_DATE" isKey="true"/>
+      <column-mapping source="RATING_OUTLOOK" destination="RATING_OUTLOOK"/>
+      <column-mapping source="RATING_OUTLOOK_DATE" destination="RATING_OUTLOOK_DATE"/>
+      <column-mapping source="RATING_CREDITWATCH" destination="RATING_CREDITWATCH"/>
+      <column-mapping source="RATING_CREDITWATCH_DATE" destination="RATING_CREDITWATCH_DATE"/>
+      <column-mapping source="PRIOR_RATING_CODE" destination="PRIOR_RATING_CODE"/>
+      <column-mapping source="PRIOR_RATING_DATE" destination="PRIOR_RATING_DATE"/>
+      <column-mapping source="PRIOR_RATING_OUTLOOK" destination="PRIOR_RATING_OUTLOOK"/>
+      <column-mapping source="PRIOR_RATING_OUTLOOK_DATE" destination="PRIOR_RATING_OUTLOOK_DATE"/>
+      <column-mapping source="PRIOR_RATING_CREDITWATCH" destination="PRIOR_RATING_CREDITWATCH"/>
+      <column-mapping source="PRIOR_CREDITWATCH_DATE" destination="PRIOR_CREDITWATCH_DATE"/>
+      <column-mapping source="UNSOLICITED_RATING_FLAG" destination="UNSOLICITED_RATING_FLAG"/>
+      <column-mapping source="PRELIMINARY_FLAG" destination="PRELIMINARY_FLAG"/>
+      <column-mapping source="RATING_ENDORSEMENT" destination="RATING_ENDORSEMENT"/>
+      <column-mapping source="SHANGHAI_EXCHANGE_CODE" destination="SHANGHAI_EXCHANGE_CODE"/>
+      <column-mapping source="SHENZHEN_EXCHANGE_CODE" destination="SHENZHEN_EXCHANGE_CODE"/>
+      <column-mapping source="HONG_KONG_EXCHANGE_CODE" destination="HONG_KONG_EXCHANGE_CODE"/>
+      <column-mapping source="TAIWAN_MOPS_CODE" destination="TAIWAN_MOPS_CODE"/>
+      <filter>
+        <![CDATA[ CCXEID > TO_TIMESTAMP({FromStamp},'MM/DD/YYYY HH:MI:SS.FF am') AND CCXEID <= TO_TIMESTAMP({CurrentSyncStamp},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

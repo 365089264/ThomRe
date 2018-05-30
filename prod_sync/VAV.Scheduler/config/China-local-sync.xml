@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db><!--before run this job, create db Chinalocal to store chine local misc data-->
+    <type>sqlserver</type>
+    <conn>Server=10.35.63.144;Database=Chinalocal;Pooling=true;Uid=sa;Pwd=p@ssw0rd</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=chinalocal;Password=chinalocal;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+
+    <table-mapping source="[dbo].[LufaxProduct]" destination="LufaxProduct" isSqlServer="true" isSync="true">
+      <column-mapping source="ChannelID" destination="ChannelID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[ModifyDate >= {LastSyncTime} AND ModifyDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="[dbo].[LufaxDetail]" destination="LufaxDetail" isSqlServer="true" isSync="true">
+      <column-mapping source="ChannelID" destination="ChannelID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Name" destination="Name" isKey="true"/>
+      <filter>
+        <![CDATA[CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="[dbo].[ChinaSecuritiesNotice]" destination="ChinaSecuritiesNotice" isSqlServer="true" isSync="true">
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="[dbo].[ChinaSecuritiesTen]" destination="ChinaSecuritiesTen" isSqlServer="true" isSync="true">
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CreateDate >= {LastSyncTime} AND CreateDate <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="[dbo].[OTC_Market_Companies]" destination="OTC_Market_Companies" isSqlServer="true" isSync="true">
+      <column-mapping source="Ticker" destination="Ticker" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="Name" destination="Name" />
+      <column-mapping source="Full_Name" destination="Full_Name" />
+      <column-mapping source="ORG_ID" destination="ORG_ID" />
+      <column-mapping source="RepoNo" destination="RepoNo" />
+      <column-mapping source="English_Name" destination="English_Name" />
+      <column-mapping source="CTime" destination="CTime" />
+      <column-mapping source="MTime" destination="MTime" />
+      <filter>
+        <![CDATA[CTime >= {LastSyncTime} AND CTime <= {CurrentSyncTime}]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

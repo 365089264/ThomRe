@@ -1,0 +1,42 @@
+﻿<div style="display: none;" id="columnChooser">
+    <table>
+        <tr>
+            <td><h2>@Resources.Global.AvailableColumns</h2></td>
+            <td></td>
+            <td><h2>@Resources.Global.SelectedColumns</h2></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="altFlexibleContainer selistAdd">
+                    <div class="columnContent">
+                        <ul class="selectbox" id="AvaiableColumns"></ul>
+                    </div>
+                </div>
+            </td>
+            <td style="padding: 0 20px;">
+                <input type="button" disabled="disabled" id="columnChooser_addBtn" onclick="ColumnManager.AddSelected();" class="fixedwidth" value="&gt;&gt; @Resources.Global.Add " />
+                <input type="button" disabled="disabled" id="columnChooser_removeBtn" onclick="ColumnManager.RemoveSelected();" class="fixedwidth" value="@Resources.Global.Delete &lt;&lt;" />
+                <input type="button" disabled="disabled" id="columnChooser_upBtn" onclick="ColumnManager.SetUp();" class="fixedwidth" value="@Resources.Global.Up" />
+                <input type="button" disabled="disabled" id="columnChooser_downBtn" onclick="ColumnManager.SetDown();" class="fixedwidth" value="@Resources.Global.Down" />
+            </td>
+            <td>
+                <div class="altFlexibleContainer selistAdd">
+                    <div class="columnContent">
+                        <ul class="selectbox" id="SelectedColumns"></ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="bottom-line"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td style="padding: 20px 0 10px 0; text-align: right;">
+                <input id="columnChooser_OKbtn" type="button" value="@Resources.Global.OK" onclick="ColumnManager.SaveSetting();"/>
+                <input type="button" value="@Resources.Global.Cancel" onclick="ColumnManager.Cancel();"/>
+            </td>
+        </tr>
+    </table>
+</div>

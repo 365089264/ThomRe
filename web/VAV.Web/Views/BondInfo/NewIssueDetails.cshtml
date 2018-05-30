@@ -1,0 +1,369 @@
+﻿@using VAV.Web.Common
+@{
+    var refreshUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/GetNewIssueDetailData");
+    var exportUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForNewIssue");
+    var datePickerId = "datePicker" + ViewBag.ID;
+    var endDatePickerId = "endDatePicker" + ViewBag.ID;
+
+    int year = DateTime.Now.Year;
+    int month = 12;
+
+    if (DateTime.Now.Month == 1)
+    {
+        year = DateTime.Now.Year - 1;
+    }
+    else
+    {
+        month = DateTime.Now.Month - 1;
+    }
+    var startDate = new DateTime(year, month, 1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+    var advancedButton = "advanced" + ViewBag.ID;
+    var themeName = ThemeHelper.GetTheme(Request);
+}
+
+<div class="colorBlock" style="min-width:955px;">
+    <div class="Statisticalfilter">
+        <div>
+            <label style="margin-left: 10px;">@Resources.Global.Report_Query_From</label>
+            <input id="@datePickerId" name="@datePickerId" value="@startDate" type="text" readonly = "readonly" class = "dateInput" style = "margin-left:10px;width: 95px;" />
+            <label style="margin-left: 10px;">@Resources.Global.Report_Query_End</label>
+            <input id="@endDatePickerId" name="@endDatePickerId" value="@endDate" type="text" readonly = "readonly" class = "dateInput" style = "margin-left:10px;width: 95px;" />
+            <label style="margin-left:8px;">@Resources.Global.Type_Bond_Class</label>
+            <select id="AssetClass@(ViewBag.ID)" name="AssetClass@(ViewBag.ID)" class = "medium2Select" multiple = "multiple" >
+            @foreach (var assert in UIStaticDataCache.Instance.AssetClass)
+            {
+                <option value="@assert.Value" selected="@assert.Selected">@assert.Text
+                </option>
+            }
+            </select>
+            <input type="button" value="@Resources.Global.Report_Query" onclick="BondInfo.UpdateNewIssueDetails(@ViewBag.ID)"/>
+            <input type="button" value="@Resources.Global.AdvancedSearch" onclick="AdvanceQuery(this,@advancedButton,'#newIssueDetailsDiv','@Resources.Global.AdvancedSearch','@Resources.Global.HideAdvancedSearch', '-webkit-calc(100% - 29px)','-webkit-calc(100% - 69px)')"/>
+            <input type="button" value="@Resources.Global.ColumnChooser" onclick="BondInfo.UpdateNewIssueDetailsColumnChosser(@ViewBag.ID)" />
+            <input type="button" value="@Resources.Global.Reset_Columns_Setting" onclick="BondInfo.ResetNewIssueDetailsColumnChosser(@ViewBag.ID)" />
+        </div>
+        <div id="@advancedButton" style="display: none">
+                <label>@Resources.Global.Bond_Coupon_class</label>
+                <select id="CouponClass@(ViewBag.ID)" name="CouponClass@(ViewBag.ID)" class = "medium2Select" style="width: 120px;" >
+                @foreach (var coupon in UIStaticDataCache.Instance.CouponClass)
+                {
+                    <option value="@coupon.Value" selected="@coupon.Selected">@coupon.Text
+                    </option>
+                }
+                </select>
+                <label style="margin-left:10px;">@Resources.Global.Type_Option</label>
+                <select id="OptionClass@(ViewBag.ID)" name="OptionClass@(ViewBag.ID)" class = "medium2Select" style="width: 120px;" >
+                @foreach (var option in UIStaticDataCache.Instance.OptionClass)
+                {
+                    <option value="@option.Value" selected="@option.Selected">@option.Text
+                    </option>
+                }
+                </select>
+                <label style="margin-left:10px;">@Resources.Global.Type_Bond_Rating</label>
+                <select id="Rating@(ViewBag.ID)" name="Rating@(ViewBag.ID)" class = "medium2Select" style="margin-left:2px; width:110px;" >
+                @foreach (var option in UIStaticDataCache.Instance.BondRatingClass)
+                {
+                    <option value="@option.Value" selected="@option.Selected">@option.Text
+                    </option>
+                }
+                </select>
+                <label style="margin-left:10px;">@Resources.Global.Bond_Markets</label>
+                <select id="BondMarket@(ViewBag.ID)" name="BondMarket@(ViewBag.ID)" class = "medium2Select" style="margin-left:2px; width:110px;" >
+                @foreach (var option in UIStaticDataCache.Instance.BondMarkets)
+                {
+                    <option value="@option.Value" selected="@option.Selected">@option.Text
+                    </option>
+                }
+                </select>
+                <br />
+                <label style="padding-right:12px; ">@Resources.Global.Bond_IS_Muncipal_Bond</label>
+                <select id="MDClass@(ViewBag.ID)" name="MDClass@(ViewBag.ID)" class = "medium2Select" style="width: 120px;" >
+                @foreach (var option in HtmlUtil.CookSelectOptions("MDBondOption"))
+                {
+                    <option value="@option.Value" selected="@option.Selected">@option.Text
+                    </option>
+                }
+                </select>
+                <label style="margin-left: 10px;">@Resources.Global.Common_Other_Class</label>
+                <select id="OthBondClass@(ViewBag.ID)" name="OthBondClass@(ViewBag.ID)" class = "medium2Select" style="width: 120px;" >
+                @foreach (var option in HtmlUtil.CookSelectOptions("OthBondClass"))
+                {
+                    <option value="@option.Value" selected="@option.Selected">@option.Text
+                    </option>
+                }
+                </select>
+                <label style="margin-left:10px;">@Resources.Global.Bond_Trustee</label>
+                <select id="BondTrustee@(ViewBag.ID)" name="BondTrustee@(ViewBag.ID)" class = "medium2Select" style="margin-left:2px; width:110px;" >
+                @foreach (var option in UIStaticDataCache.Instance.BondTrustees)
+                {
+                    <option value="@option.Value" selected="@option.Selected">@option.Text
+                    </option>
+                }
+                </select>
+                <label style="margin-left:10px;">@Resources.Global.Type_Bond_Code</label>
+                <input id="BondCode@(ViewBag.ID)" name="BondCode@(ViewBag.ID)" type="text" class = "text" style = "width:110px;" placeholder="@Resources.Global.SearchPlaceholderByBond" />
+        </div>
+    </div>
+</div>
+
+<div id="newIssueDetailsGroup" class="colorBlock" style="height: 91%;height: -webkit-calc(100% - 48px);min-width:955px;">
+    <div class="colorBlock-header" >
+        <div id="pricePagePaginateOfLabel@(ViewBag.ID)" class="paginateOfLable">
+        </div>
+        <a href="#" class="exportExcel" onclick="BondInfo.ExportExcelNewIssueDetail(this, @ViewBag.ID);">
+            <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+        </a>
+        <div style="width: 300px; float: right; padding-right: 80px">
+            <div id="pricePagePaginate@(ViewBag.ID)">
+            </div>
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+    <div id="newIssueDetailsDiv" style="height: 95%; height: -webkit-calc(100% - 29px);min-width:328px; overflow: auto">
+        <table id="newIssueDetailsTable" class="datatable Zebra" style="cursor: pointer;">
+            <thead>
+                <tr class="hr">
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div>@Resources.Global.Source</div>
+    </div>
+</div>
+<script type="text/javascript">
+    var BondInfo = (function (my) {
+        my.UpdateNewIssueDetails = function (id,page) {
+            if (page == null) page = 1;
+            var checkedValues = BondInfo.GetCheckedMultiSelectValue("AssetClass" + @ViewBag.ID);
+            if(!checkedValues || /^\s*$/.test(checkedValues)){
+                alert("@Resources.Global.Alert_Select_Asset");
+                return false;
+            }
+            AjaxWithBlock($('#newIssueDetailsGroup'), "@refreshUrl",
+                {
+                    startDate: $("#@datePickerId").val(),
+                    endDate: $("#@endDatePickerId").val(),
+                    bondClass: JSON.stringify(checkedValues),
+                    couponClass: $('#CouponClass' + id).val(),
+                    optionClass: $('#OptionClass' + id).val(),
+                    bondRating: $("#Rating" + id).val(),
+                    bondCode: $("#BondCode" + id).val(),
+                    bondMarket: $("#BondMarket" + id).val(),
+                    bondTrustee: $("#BondTrustee" + id).val(),
+                    isMD: $("#MDClass" + id).val(),
+                    othBondClass:$("#OthBondClass" + id).val(),
+                    id: id,
+                    startPage: page,
+                    pageSize: 200
+                }, function (data) {
+                    var markup = BondInfo.BuildRowTemplate(data.ColumTemplate, '@Resources.Global.Bond_History_Rating');
+                    $.template("rowTemplate", markup);
+                    $.template("colTemp", '<th>${Name}</th>');
+                    $('#newIssueDetailsTable thead tr').empty();
+                    $.tmpl("colTemp", data.ColumTemplate).appendTo("#newIssueDetailsTable  thead tr");
+                    $('#newIssueDetailsTable tbody').empty();
+                    $.tmpl("rowTemplate", data.RowData).appendTo("#newIssueDetailsTable tbody");
+                    my.UpdateBondPagination(data, id, '@Resources.Global.WMP_of', '@Resources.Global.Paginate_First', '@Resources.Global.Paginate_Last',my.UpdateNewIssueDetails);
+                });
+        };
+        my.ExportExcelNewIssueDetail = function(link, id) {
+            var checkedValues = BondInfo.GetCheckedMultiSelectValue("AssetClass" + @ViewBag.ID);
+            if(!checkedValues || /^\s*$/.test(checkedValues)){
+                alert("@Resources.Global.Alert_Select_Asset");
+                return false;
+            }
+            $(link).attr("href",
+                "@exportUrl?startDate=" + $('#@datePickerId').val()
+                    + '&endDate=' + $('#@endDatePickerId').val()
+                        + '&bondClass=' + JSON.stringify(checkedValues)
+                            + '&couponClass=' + $('#CouponClass' + id).val()
+                                + '&optionClass=' + $('#OptionClass' + id).val()
+                                    + '&bondRating=' + $("#Rating" + id).val()
+                                        + '&bondCode=' + $("#BondCode" + id).val()
+                                           + '&bondMarket=' + $("#BondMarket" + id).val()
+                                              + '&bondTrustee=' + $("#BondTrustee" + id).val()
+                                                + '&isMD=' + $("#MDClass" + id).val()
+                                                    + '&othBondClass=' + $("#OthBondClass" + id).val()
+                                                        + '&id=' + id
+            );
+        };
+        my.UpdateNewIssueDetailsColumnChosser = function (id) {
+            ColumnManager.OpenColumnSetting(id, my.UpdateNewIssueDetails);
+        };
+        my.ResetNewIssueDetailsColumnChosser = function (id) {
+            ColumnManager.ResetColumnSetting(id, my.UpdateNewIssueDetails);
+        };
+        return my;
+    } (BondInfo || {}));
+    var BondSearch = (function(my) {
+        debugger;
+        var cache = {};
+        var key = "";
+        var storedData = {};
+        $('#BondCode@(ViewBag.ID)').autocomplete({
+            delay: 250,
+            //minLength: 1,
+            source: function(request, response) {
+                console.log('a');
+                var term = request.term;
+                key = term;
+                if (term in cache) {
+                    response(cache[term]);
+                    return;
+                }
+                $.ajax({
+                    type: 'GET',
+                    url: "/Home/AutoSuggest",
+                    data: {
+                        key: term
+                    },
+                    beforeSend: function() {
+                        storedData = null;
+                    },
+                    success: function(data) {
+                        cache[term] = data;
+                        storedData = data;
+                        response(data);
+                    },
+                    async: true
+                });
+            },
+            focus: function(event, ui) {
+                //prevent clear input
+                event.preventDefault(); // without this: keyboard movements reset the input to ''
+            },
+            select: function(event, ui) {
+                my.OpenItem(ui.item);
+                return false;
+            },
+            create: function() {
+                $(this).data('ui-autocomplete')._renderItem = function(ul, item) {
+                    my.prependClass(ul, "home_search_wraper");
+                    if ('@themeName' !== 'Pearl')
+                        ul.css({ 'border': 'solid 1px black' });
+                    var innerHtml = buildHtml(item);
+                    return $("<li>")
+                        .append(innerHtml)
+                        .appendTo(ul);
+                };
+            }
+        }).focus(function() { // show search result when focus in the input
+            $(this).autocomplete("search");
+        }).keyup(function(e) {
+            if (e.keyCode === $.ui.keyCode.ENTER && storedData) {
+                if (storedData[0]) {
+                    my.OpenItem(storedData[0]);
+                }
+            }
+        });
+
+        function buildHtml(item) {
+            var reg = new RegExp(key, 'ig');
+            var displayType = item.DisplayType;
+            var mainText = '';
+            var subText = '';
+            var mainSub = '';
+            switch (item.DisplayType) {
+            case 'BOND':
+                mainText = item.Code.replace(reg, my.AddHighlighForKeyword) + '&nbsp;&nbsp;&nbsp;' + item.NameCn.replace(reg, my.AddHighlighForKeyword);
+                mainSub = item.Pyc.replace(reg, my.AddHighlighForKeyword);
+                break;
+            default :
+                return '';
+            }
+            return $.tmpl(htmlTmpl, { displayType: displayType, mainText: mainText, subText: subText, mainSub: mainSub });
+        }
+
+        var htmlTmpl = '<a><table class="home_search">' +
+            '<tr><td class="type" rowspan="2">${displayType}</td>' +
+            '<td class="title">{{html mainText}}</td>' +
+            '<td align="right">{{html mainSub}}</td>' +
+            '</tr>' +
+            '<tr><td class="subtitle">{{html subText}}</td></tr></table></a>';
+
+
+        my.OpenItem = function(item) {
+            //LogUsage('Full text search');
+            switch (item.DisplayType) {
+            case 'BOND':
+                $("#BondCode" + @ViewBag.ID).val(item.Code);
+                //my.OpenRic(item.Ric);
+                break;
+            }
+        };
+
+        my.OpenRic = function(ric) {
+            //window.open('cpurl://views.cp./Explorer/Default.aspx?s=' + ric + '&st=RIC');
+            openProd(ric);
+        };
+
+        function openProd(prodric) {
+            var data = {
+                target: "popup",
+                // open a popup window
+                location: {
+                    x: 200,
+                    y: 100,
+                    width: 600,
+                    height: 400
+                },
+                name: "Quote Object",
+                // open a Quote Object
+                entities: [
+                    {
+                        type: "COMP",
+                        "RIC": "0#" + prodric
+                    }
+                ]
+            };
+            JET.navigate(data);
+
+        }
+
+        my.OpenResearchReport = function(url) {
+            window.location.href = url;
+        };
+
+        my.OpenIssuer = function(item) {
+            Fundamental.OpenFundamentalDetail(item.Id, item.NameCn);
+        };
+
+
+        // add highlight class on keyword
+        my.AddHighlighForKeyword = function(match) {
+            return '<span class="highlight">' + match + '</span>';
+        };
+
+        // add class in the first position of class list
+        my.prependClass = function(sel, strClass) {
+            var $el = jQuery(sel);
+            if ($el.hasClass(strClass)) {
+                return;
+            }
+
+            var classes = $el.attr('class');
+            classes = strClass + ' ' + classes;
+            $el.attr('class', classes);
+        };
+
+        return my;
+    }(BondSearch || {}));
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        $("#AssetClass@(ViewBag.ID)").multiselect({
+            buttonMinWidth: 115,
+            menuMinWidth: 240,
+            checkAllText: '@Resources.Global.Select_All',
+            uncheckAllText: '@Resources.Global.Unselect_All',
+            noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+            selectedText: '# @Resources.Global.Selected'
+        });
+        BondInfo.UpdateNewIssueDetails(@ViewBag.ID);
+    });
+</script>

@@ -1,0 +1,907 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A9266A3-733F-4081-A857-748E08A1F881}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VAV.Scheduler</RootNamespace>
+    <AssemblyName>VAV.Scheduler</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\UC206612\Desktop\sync_next\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\bin\Scheduler\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AINT2|AnyCPU'">
+    <OutputPath>..\Bin\Scheduler\AINT2\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>..\bin\Scheduler\Release\ThomsonReuters.Luna.Scheduler.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <OutputPath>..\Bin\Scheduler\PROD\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>..\bin\Scheduler\Release\ThomsonReuters.Luna.Scheduler.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Label="SlowCheetah">
+    <SlowCheetahToolsPath>$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\SlowCheetah.2.5.14\tools\))</SlowCheetahToolsPath>
+    <SlowCheetah_EnableImportFromNuGet Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
+    <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\Properties\SlowCheetah\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>
+    <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>1ECAAEEEF26324BD4665B26C585A593427252186</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>VAV.Scheduler_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Spring.net\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net">
+      <HintPath>..\packages\log4net\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\odp.net.managed.121.1.2\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Quartz">
+      <HintPath>..\packages\Spring.net\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Simple.Data.Core.0.19.0.0\lib\net40\Simple.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Simple.Data.Ado, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Simple.Data.Ado.0.19.0.0\lib\net40\Simple.Data.Ado.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Simple.Data.Oracle.ManagedDataAccess, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Simple.Data.Oracle.ManagedDataAccess.0.19.0.0\lib\net40\Simple.Data.Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\packages\Spring.net\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Scheduling.Quartz">
+      <HintPath>..\packages\Spring.net\Spring.Scheduling.Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HtmlSmtpAppender.cs" />
+    <Compile Include="Jobs\BankFinFileSyncJob.cs" />
+    <Compile Include="Jobs\BondMiscSyncJob.cs" />
+    <Compile Include="Jobs\CashflowsSyncJob.cs" />
+    <Compile Include="Jobs\CCDCSyncJob.cs" />
+    <Compile Include="Jobs\CFETSSyncJob.cs" />
+    <Compile Include="Jobs\CfpDiscFileSyncJob.cs" />
+    <Compile Include="Jobs\ChinaJciSyncJob.cs" />
+    <Compile Include="Jobs\ChinaLocalSyncJob.cs" />
+    <Compile Include="Jobs\CofeedSyncJob.cs" />
+    <Compile Include="Jobs\SyncDeleteBond.cs" />
+    <Compile Include="Jobs\SyncEJV2.cs" />
+    <Compile Include="Jobs\DsosEJVSyncJob.cs" />
+    <Compile Include="Jobs\FileSyncBaseJob.cs" />
+    <Compile Include="Jobs\FinPrdFileSyncJob.cs" />
+    <Compile Include="Jobs\FileSyncJob.cs" />
+    <Compile Include="Jobs\FileToIppSyncJob.cs" />
+    <Compile Include="Jobs\GdtMaxSyncJbo.cs" />
+    <Compile Include="Jobs\OpenMarketSyncJob.cs" />
+    <Compile Include="Jobs\SHCVSyncJob.cs" />
+    <Compile Include="Jobs\SyncChinaSecurities.cs" />
+    <Compile Include="Jobs\SyncCneZCX.cs" />
+    <Compile Include="Jobs\SyncCusteel.cs" />
+    <Compile Include="Jobs\SyncEJV.cs" />
+    <Compile Include="Jobs\SyncFxNews.cs" />
+    <Compile Include="Jobs\SyncLongZhong.cs" />
+    <Compile Include="Jobs\SyncMysteel.cs" />
+    <Compile Include="Jobs\SyncNational.cs" />
+    <Compile Include="Jobs\SyncNewBondList.cs" />
+    <Compile Include="Jobs\SyncSdLocalRefinery.cs" />
+    <Compile Include="Jobs\SyncSmm.cs" />
+    <Compile Include="Jobs\SyncTROilInventory.cs" />
+    <Compile Include="Jobs\SyncZCX.cs" />
+    <Compile Include="Jobs\ZcxFileSyncJob.cs" />
+    <Compile Include="Jobs\ZCXSyncJob.cs" />
+    <Compile Include="Jobs\GeniusSyncJob.cs" />
+    <Compile Include="Jobs\VavJobObject.cs" />
+    <Compile Include="SchedulerService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SchedulerService.Designer.cs">
+      <DependentUpon>SchedulerService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ServerInstaller.Designer.cs">
+      <DependentUpon>ServerInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\TRACS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\ConfigHelper.cs" />
+    <Compile Include="Util\DBHelper.cs" />
+    <Compile Include="Util\SolrClient.cs" />
+    <Compile Include="Util\SyncUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.AINT2.config">
+      <DependentUpon>app.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="app.PROD.config">
+      <DependentUpon>app.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="installer.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\SlowCheetah\SlowCheetah.Transforms.targets" />
+    <None Include="Service References\TRACS\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\BondDealMonitor.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\CDSMonitor.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\Common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\Common1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\Common2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\Data_Contracts.Common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\Luna.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\service.wsdl" />
+    <None Include="Service References\TRACS\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\SysMon.AppTrace.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\TRACS.ThomsonReuters.com.wsdl" />
+    <None Include="Service References\TRACS\TRACS.ThomsonReuters.com.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRACS\VAV.Scheduler.TRACS.BDMResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TRACS\VAV.Scheduler.TRACS.CDSIConstituentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TRACS\VAV.Scheduler.TRACS.CDSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TRACS\VAV.Scheduler.TRACS.GeneralLunaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TRACS\VAV.Scheduler.TRACS.LunaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TRACS\VAV.Scheduler.TRACS.ServiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TRACS\VAV.Scheduler.TRACS.ZeroCurvesResponce.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ServerInstaller.resx">
+      <DependentUpon>ServerInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataSync.Setting\DataSync.Setting.csproj">
+      <Project>{9F272130-070C-4B5C-BEE5-C26097FD8D0B}</Project>
+      <Name>DataSync.Setting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataSync\DataSync.csproj">
+      <Project>{1EBB68CE-00F7-4558-84CA-DDF7545D4525}</Project>
+      <Name>DataSync</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VAV.Monitor\VAV.Monitor.csproj">
+      <Project>{8DB7C592-3D8C-4E52-A86F-2EFC506DD213}</Project>
+      <Name>VAV.Monitor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VAVToolsEntities\VAVToolsEntities.csproj">
+      <Project>{54B13031-A56E-4387-8256-CAB2C8C4551C}</Project>
+      <Name>VAVToolsEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\ZCX-rate-file-sync.AINT2.xml">
+      <DependentUpon>ZCX-rate-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\ZCX-rate-file-sync.PROD.xml">
+      <DependentUpon>ZCX-rate-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Bank-fin-file-sync.AINT2.xml">
+      <DependentUpon>Bank-fin-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Bank-fin-file-sync.PROD.xml">
+      <DependentUpon>Bank-fin-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Bank-fin-file-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Cfp-disc-file-sync.AINT2.xml">
+      <DependentUpon>Cfp-disc-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Cfp-disc-file-sync.PROD.xml">
+      <DependentUpon>Cfp-disc-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CCDC-data-sync.AINT2.xml">
+      <DependentUpon>CCDC-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CCDC-data-sync.PROD.xml">
+      <DependentUpon>CCDC-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Bank-fin-file-sync.Debug.xml">
+      <DependentUpon>Bank-fin-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Bond-misc-sync.Debug.xml">
+      <DependentUpon>Bond-misc-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CCDC-data-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\CFETS-data-sync.AINT2.xml">
+      <DependentUpon>CFETS-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CFETS-data-sync.PROD.xml">
+      <DependentUpon>CFETS-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CCDC-data-sync.Debug.xml">
+      <DependentUpon>CCDC-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CFETS-data-sync.Debug.xml">
+      <DependentUpon>CFETS-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\CFETS-data-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\Cfp-disc-file-sync.Debug.xml">
+      <DependentUpon>Cfp-disc-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Cfp-disc-file-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Fin-prd-file-sync.AINT2.xml">
+      <DependentUpon>Fin-prd-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Fin-prd-file-sync.PROD.xml">
+      <DependentUpon>Fin-prd-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\ChinaJCI.AINT2.xml">
+      <DependentUpon>ChinaJCI.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\ChinaJCI.PROD.xml">
+      <DependentUpon>ChinaJCI.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\China-local-sync.Debug.xml">
+      <DependentUpon>China-local-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\ChinaJCI.Debug.xml">
+      <DependentUpon>ChinaJCI.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\ChinaJCI.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\Cofeed.AINT2.xml">
+      <DependentUpon>Cofeed.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Cofeed.PROD.xml">
+      <DependentUpon>Cofeed.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Cofeed.Debug.xml">
+      <DependentUpon>Cofeed.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Cofeed.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Sync-Custeel.AINT2.xml">
+      <DependentUpon>Sync-Custeel.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-Custeel.PROD.xml">
+      <DependentUpon>Sync-Custeel.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-FxNews.AINT2.xml">
+      <DependentUpon>Sync-FxNews.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-FxNews.PROD.xml">
+      <DependentUpon>Sync-FxNews.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-LongZhong.AINT2.xml">
+      <DependentUpon>Sync-LongZhong.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-LongZhong.PROD.xml">
+      <DependentUpon>Sync-LongZhong.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-MySteel.AINT2.xml">
+      <DependentUpon>Sync-MySteel.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-MySteel.PROD.xml">
+      <DependentUpon>Sync-MySteel.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-National.AINT2.xml">
+      <DependentUpon>Sync-National.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-National.PROD.xml">
+      <DependentUpon>Sync-National.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-SdLocalRefinery.AINT2.xml">
+      <DependentUpon>Sync-SdLocalRefinery.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-SdLocalRefinery.PROD.xml">
+      <DependentUpon>Sync-SdLocalRefinery.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-SMM.AINT2.xml">
+      <DependentUpon>Sync-SMM.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-SMM.PROD.xml">
+      <DependentUpon>Sync-SMM.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-TROil.AINT2.xml">
+      <DependentUpon>Sync-TROil.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-TROil.PROD.xml">
+      <DependentUpon>Sync-TROil.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-CneZCX.AINT2.xml">
+      <DependentUpon>Sync-CneZCX.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-CneZCX.PROD.xml">
+      <DependentUpon>Sync-CneZCX.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-ChinaSecurities.AINT2.xml">
+      <DependentUpon>Sync-ChinaSecurities.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-ChinaSecurities.PROD.xml">
+      <DependentUpon>Sync-ChinaSecurities.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\File-data-sync.Debug.xml">
+      <DependentUpon>File-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\File-To-IPP-sync.Debug.xml">
+      <DependentUpon>File-To-IPP-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Fin-prd-file-sync.Debug.xml">
+      <DependentUpon>Fin-prd-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\GdtConfig.Debug.xml">
+      <DependentUpon>GdtConfig.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Genius-data-sync.Debug.xml">
+      <DependentUpon>Genius-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\OpenMarket-data-sync.Debug.xml">
+      <DependentUpon>OpenMarket-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\SHCV-data-sync.Debug.xml">
+      <DependentUpon>SHCV-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-ChinaSecurities.Debug.xml">
+      <DependentUpon>Sync-ChinaSecurities.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-ChinaSecurities.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\Sync-CneZCX.Debug.xml">
+      <DependentUpon>Sync-CneZCX.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-CneZCX.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Sync-Custeel.Debug.xml">
+      <DependentUpon>Sync-Custeel.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-FxNews.Debug.xml">
+      <DependentUpon>Sync-FxNews.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-LongZhong.Debug.xml">
+      <DependentUpon>Sync-LongZhong.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-MySteel.Debug.xml">
+      <DependentUpon>Sync-MySteel.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-National.Debug.xml">
+      <DependentUpon>Sync-National.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-SdLocalRefinery.Debug.xml">
+      <DependentUpon>Sync-SdLocalRefinery.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-SMM.Debug.xml">
+      <DependentUpon>Sync-SMM.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-TROil.Debug.xml">
+      <DependentUpon>Sync-TROil.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-TROil.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Sync-SdLocalRefinery.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Sync-National.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Sync-SMM.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Sync-LongZhong.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Sync-FxNews.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Sync-MySteel.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Sync-Custeel.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\Fin-prd-file-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\OpenMarket-data-sync.AINT2.xml">
+      <DependentUpon>OpenMarket-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\OpenMarket-data-sync.PROD.xml">
+      <DependentUpon>OpenMarket-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\GdtConfig.AINT2.xml">
+      <DependentUpon>GdtConfig.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\GdtConfig.PROD.xml">
+      <DependentUpon>GdtConfig.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\GdtConfig.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\OpenMarket-data-sync.xml">
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\SHCV-data-sync.AINT2.xml">
+      <DependentUpon>SHCV-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\SHCV-data-sync.PROD.xml">
+      <DependentUpon>SHCV-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\SHCV-data-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\ZCX-data-sync.Debug.xml">
+      <DependentUpon>ZCX-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\ZCX-rate-file-sync.Debug.xml">
+      <DependentUpon>ZCX-rate-file-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\ZCX-rate-file-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="Service References\TRACS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TRACS\configuration.svcinfo" />
+    <None Include="Service References\TRACS\configuration91.svcinfo" />
+    <None Include="config\File-data-sync.AINT2.xml">
+      <DependentUpon>File-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\File-data-sync.PROD.xml">
+      <DependentUpon>File-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Bond-misc-sync.AINT2.xml">
+      <DependentUpon>Bond-misc-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Bond-misc-sync.PROD.xml">
+      <DependentUpon>Bond-misc-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Bond-misc-sync.xml">
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\China-local-sync.AINT2.xml">
+      <DependentUpon>China-local-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\China-local-sync.PROD.xml">
+      <DependentUpon>China-local-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Cashflows-data-sync.Debug.xml">
+      <DependentUpon>Cashflows-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Cashflows-data-sync.AINT2.xml">
+      <DependentUpon>Cashflows-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Cashflows-data-sync.PROD.xml">
+      <DependentUpon>Cashflows-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Cashflows-data-sync.xml">
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\China-local-sync.xml">
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\dsos-new-increment-sync.Debug.xml">
+      <DependentUpon>dsos-new-increment-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\dsos-new-increment-sync.AINT2.xml">
+      <DependentUpon>dsos-new-increment-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\dsos-new-increment-sync.PROD.xml">
+      <DependentUpon>dsos-new-increment-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\dsos-new-increment-sync.xml">
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\File-data-sync.xml">
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+    <None Include="config\ZCX-data-sync.AINT2.xml">
+      <DependentUpon>ZCX-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\ZCX-data-sync.PROD.xml">
+      <DependentUpon>ZCX-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\File-To-IPP-sync.AINT2.xml">
+      <DependentUpon>File-To-IPP-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\File-To-IPP-sync.PROD.xml">
+      <DependentUpon>File-To-IPP-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\File-To-IPP-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\ZCX-data-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="config\Genius-data-sync.AINT2.xml">
+      <DependentUpon>Genius-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Genius-data-sync.PROD.xml">
+      <DependentUpon>Genius-data-sync.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Genius-data-sync.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\TRACS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\Sync-ZCX.PROD.xml">
+      <DependentUpon>Sync-ZCX.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-ZCX.AINT2.xml">
+      <DependentUpon>Sync-ZCX.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-ZCX.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\Sync-ZCX.Debug.xml">
+      <DependentUpon>Sync-ZCX.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\Sync-NewBondList.Debug.xml">
+      <DependentUpon>Sync-NewBondList.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-NewBondList.AINT2.xml">
+      <DependentUpon>Sync-NewBondList.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\Sync-NewBondList.PROD.xml">
+      <DependentUpon>Sync-NewBondList.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Content Include="config\Sync-NewBondList.xml">
+      <TransformOnBuild>true</TransformOnBuild>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="config\EJVMigration2.PROD.xml">
+      <DependentUpon>EJVMigration2.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\EJVMigration2.AINT2.xml">
+      <DependentUpon>EJVMigration2.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\EJVMigration2.Debug.xml">
+      <DependentUpon>EJVMigration2.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\EJVMigration.PROD.xml">
+      <DependentUpon>EJVMigration.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\EJVMigration.AINT2.xml">
+      <DependentUpon>EJVMigration.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="config\EJVMigration.Debug.xml">
+      <DependentUpon>EJVMigration.xml</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Content Include="config\EJVMigration2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <Content Include="config\EJVMigration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

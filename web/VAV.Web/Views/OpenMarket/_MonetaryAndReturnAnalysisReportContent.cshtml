@@ -1,0 +1,180 @@
+﻿@using VAV.Web.ViewModels.OpenMarket;
+@using VAV.Web.Extensions;
+@using VAV.DAL.Common;
+@model MaRAnalysisReportViewModel
+@{
+    Layout = null;
+    var reportDivID = "report" + Model.ID;
+    var topDivID = "top" + Model.ID;
+    var bottomDivID = "bottomDiv" + Model.ID;
+    var sumGrid = new WebGrid(Model.SumGrid, canPage: false, canSort: false, ajaxUpdateContainerId: "gridDiv" + Model.ID);
+    var openMarketExportUrl = VirtualPathUtility.ToAbsolute("~/OpenMarket/ExportMaRSummaryReport");
+    var exportType = @ViewData["Type" + Model.ID] == null ? "" : @ViewData["Type" + Model.ID].ToString();
+    var exportStartDate = @ViewData["StartDate" + Model.ID] == null ? "" : @ViewData["StartDate" + Model.ID].ToString();
+    var exportEndDate = @ViewData["EndDate" + Model.ID] == null ? "" : @ViewData["EndDate" + Model.ID].ToString();
+    var exportUnit = @ViewData["Unit" + Model.ID] == null ? "" : @ViewData["Unit" + Model.ID].ToString();
+}
+<div>
+    <input type="hidden" id="exportTypeSum_@Model.ID" value="@exportType"/>
+    <input type="hidden" id="exportStartDateSum_@Model.ID"  value="@exportStartDate"/>
+    <input type="hidden" id="exportEndDateSum_@Model.ID"  value="@exportEndDate"/>
+    <input type="hidden" id="exportUnitSum_@Model.ID" value="@exportUnit"/>
+</div>
+<div id="@reportDivID" class="Statistical " style="min-width:1000px;">
+    <div id="@topDivID" class="StatisticalTop">
+        <div class="StatisticalLeft" style="width:53%;">
+            <div class="colorBlock colorBlockMaxHeight">
+                <div class="colorBlock-header" style="height: 100%">
+                    <div style="min-width:500px;">
+                        <span class="colorBlock-header-span" style="padding-right:0;">@Model.SumGridDisplayName</span>
+                        <div style="float:right; display:inline-table;">
+                            <span class="colorBlock-header-span" style="padding-left:0;">@Resources.Global.ImmaturityAmount</span>
+                            @*<label>@Resources.Global.Report_Type &nbsp;</label>*@
+                            <select id="ImmaturityAmountType@(Model.ID)" style="width:80px;">
+                                <option value="@ConstValues.Type_All">@Resources.Global.Type_All</option>
+                                <option value="@ConstValues.Type_CBankBill">@Resources.Global.Type_CBankBill</option>
+                                <option id="fmd@(Model.ID)" value="@ConstValues.Type_FMD">@Resources.Global.Type_Fmd</option>
+                                <option value="@ConstValues.Type_Repo">@Resources.Global.Type_Repo</option>
+                                <option value="@ConstValues.Type_ReverseRepo">@Resources.Global.Type_ReverseRepo</option>
+                                <option value="@ConstValues.Type_MLF">@Resources.Global.OpenMarketMLFAlias</option>
+                            </select>
+                            <label style="margin: 10px;" id="ImmaturityAmount">@( (-Model.ImmaturityAmount.CBankBill + Model.ImmaturityAmount.ReverseRepo - Model.ImmaturityAmount.Repo).ToString("n0"))</label>
+                            <a href="#" class="exportExcel" onclick="ExportReportOpenMarketMaRReport(this, @Model.ID, '@openMarketExportUrl');">
+                                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                            </a>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div id="gridDiv_@Model.ID" class="gridTable">
+                        @if (Model.SumGrid.Count() > 0 && Model.SummaryGridColumns != null)
+                        {
+                            List<ExtendedWebGridColumn> columns = new List<ExtendedWebGridColumn>();
+                            foreach (var column in Model.SummaryGridColumns)
+                            {
+                                var col = new ExtendedWebGridColumn();
+                                col.Header = column.DisplayHeader;
+                                col.ColumnName = column.ColumnName;
+                                col.ColumnFormatString = column.ColumnFormat;
+                                col.Format = (item) => GetFormat(item, col.ColumnFormatString, col.ColumnName);
+                                columns.Add(col);
+                            }
+
+                            object attributes = new object();
+                            if (Model.IsStatisticalReport)
+                            {
+                                attributes = new { @id = "gridWithHoverStyle" + Model.ID, onclick = "GetOpenMarketMaRASelectedRow('" + Model.ID + "');", style = "cursor: pointer" };
+
+                                columns.Insert(1, new ExtendedWebGridColumn()
+                                {
+                                    ColumnName = "Category",
+                                    Style = "Hide"
+                                });
+                            }
+                    
+                            @sumGrid.GetHtmlWithExtraHeader(tableStyle: "datatable", headerStyle: "hr", alternatingRowStyle: "row-e", columns: columns, htmlAttributes: attributes, displayInChinese: true, hideIdColumn: true, hideColumnName: "Category");
+                        }
+                        @functions{
+                            private object GetFormat(object row, string format, string columnName)
+                            {
+                                var dataRow = (WebGridRow)row;
+                                if (string.Compare(format, "Date", true) == 0)
+                                    return DateTime.Parse(dataRow[columnName].ToString()).ToString("yyyy-MM-dd");
+                                return string.Format("{0:N2}", dataRow[columnName]);
+                            }
+
+                            public class ExtendedWebGridColumn : WebGridColumn
+                            {
+                                /// <summary>
+                                /// The style of this column.
+                                /// </summary>
+                                public string ColumnFormatString { get; set; }
+                            }
+                        }
+                        <div>@Resources.Global.Source</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="StatisticalRight" style="width:47%;">
+            <div class="colorBlock colorBlockMaxHeight">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Model.ChartDisplayName</span>
+                </div>
+                <form >
+                <input type="button" value="@Resources.Global.View_LargeChart" onclick="showLargeChart('@Model.ID',true)" style="margin-left:25px;"/>
+                </form>
+                <div id="chart_container_top_@Model.ID" class="StatisticalChartContainer">
+                    @Html.Raw(Model.ChartService.GetOpenChart(null, Model.Chart).ToHtmlString())
+                </div>
+                <div id="chart_container_top_large_@Model.ID" style="margin-left:25px;margin-top:5px;display:none;">
+                    @Html.Raw(Model.ChartService.GetLargeBondChart(null, Model.Chart).ToHtmlString())
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="OpenMarketMaRADetailedGrid_@Model.ID" class="StatisticalBottom">
+        <div id="@bottomDivID" class="StatisticalBottomInnerDiv">
+            <div class="colorBlock colorBlockMaxHeight">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Model.DetailedGridDisplayName</span>
+                    <a id="exportButton_@Model.ID" class="exportExcel" href="#" onclick="ExportOpenMarketMaRADetailedReport(this, @Model.ID);">
+                        <img alt="Export"  src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                </div>
+                <div id="detailedGridDiv_@Model.ID" style="height: 90%;height: -webkit-calc(100% - 31px);overflow: auto;">
+                    @Html.Partial("_DetailDataReportTable", new DetailDataReportViewModel { ID = Model.ID, Content = Model.DetailGrid })
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+var Imamount = {
+    cbb:"@Model.ImmaturityAmount.CBankBill.ToString("n0")",
+    fmd:"@Model.ImmaturityAmount.FMD.ToString("n0")",
+    rp:"@Model.ImmaturityAmount.Repo.ToString("n0")",
+    rrp:"@Model.ImmaturityAmount.ReverseRepo.ToString("n0")",
+    mlf:"@Model.ImmaturityAmount.Mlf.ToString("n0")",
+    all:"@Model.ImmaturityAmount.All.ToString("n0")"
+};
+
+
+function updateImamountSelect(){
+    updateImamountValue();
+}
+
+function updateImamountValue(){
+            var type = $("#ImmaturityAmountType@(Model.ID)").val();
+            if(type == "@ConstValues.Type_All"){
+                $("#ImmaturityAmount").text(Imamount.all);
+            }
+            if(type == "@ConstValues.Type_CBankBill"){
+                $("#ImmaturityAmount").text(Imamount.cbb);
+            }
+            if(type == "@ConstValues.Type_FMD"){
+                $("#ImmaturityAmount").text(Imamount.fmd);
+            }
+            if(type == "@ConstValues.Type_Repo"){
+                $("#ImmaturityAmount").text(Imamount.rp);
+            }
+            if(type == "@ConstValues.Type_ReverseRepo"){
+                $("#ImmaturityAmount").text(Imamount.rrp);
+            }
+            if(type == "@ConstValues.Type_MLF"){
+                $("#ImmaturityAmount").text(Imamount.mlf);
+            }
+}
+
+
+    $(function () {
+        $('#gridWithHoverStyle' + @Model.ID + ' tr').mouseover(function () {
+            $(this).addClass('HoverRow');
+        }).mouseout(function () {
+            $(this).removeClass('HoverRow');
+        });
+
+        $("#ImmaturityAmountType@(Model.ID)").change(updateImamountValue);
+        $("#includeFmd@(Model.ID)").change(updateImamountSelect);
+        updateImamountSelect();
+    });
+    </script>
+    </div>

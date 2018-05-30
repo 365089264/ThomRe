@@ -1,0 +1,299 @@
+﻿@using VAV.Web
+@model VAV.Web.ViewModels.BondInfo.ABSDetailViewModel
+
+<div class="colorBlock-header">
+    <span class="colorBlock-header-span">@Model.VBondAbs.Bond_Full_Display</span>
+</div>
+
+<div id="accordion" style="overflow-y: auto; max-height: -webkit-calc(100% - 50px);">
+    <div id="baseInfo">
+        @*<div class="colorBlock-header" style="height: 32px;"><span class="colorBlock-header-span">@Resources.Global.Bond_Info</span></div>*@
+        <div class="bankWMPDetailTabs css-panes">
+            <div class="colorBlock-header" style="height: 32px;"><span class="colorBlock-header-span">@Resources.Global.Bond_DetailInfo</span></div>
+            <table class="datatable" style="line-height: 20px;">
+                <tbody>
+                    <tr>
+                        <td style="width: 15%;" class="highlight">@Resources.Global.Bond_Full_Name</td>
+                        <td style="width: 35%;">@Model.VBondAbs.Bond_Full_Display</td>
+                        <td style="width: 15%;" class="highlight">@Resources.Global.Type_Bond_Code</td>
+                        <td style="width: 35%;">@Model.VBondAbs.BOND_CODE</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_Name</td>
+                        <td>@Model.VBondAbs.Bond_Short_Display</td>
+                        <td class="highlight">@Resources.Global.Bond_MaturityDate</td>
+                        <td>@string.Format("{0} {1}", Model.VBondAbs.BOND_MATUDisplay, Model.VBondAbs.UNIT)</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_IssueTotal</td>
+                        <td>@Model.VBondAbs.ACTU_ISS_AMUTDisplay</td>
+                        <td class="highlight">@Resources.Global.Type_Coupon_Type</td>
+                        <td>@Model.VBondAbs.RATETYPENAME</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_Coupon_Rate</td>
+                        <td>@Model.VBondAbs.ISS_COUP_RATEDisplay</td>
+                        <td class="highlight">@Resources.Global.Bond_FloatOffset</td>
+                        <td>@Model.VBondAbs.BAS_SPRDisplay</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_Float_Index</td>
+                        <td>@Model.VBondAbs.BASERATENAME</td>
+                        <td class="highlight">@Resources.Global.Coupon_Frequency</td>
+                        <td>@Model.VBondAbs.INTE_PAY_FREQ</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_UnderlyingAsset</td>
+                        <td>@Model.VBondAbs.UDL_ASE</td>
+                        <td style="width: 15%;" class="highlight">@Resources.Global.Bond_AnnoucementDate</td>
+                        <td style="width: 35%;">@Model.VBondAbs.ISS_DECL_DATEDisplay</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 15%;" class="highlight">@Resources.Global.Bond_IssueDate</td>
+                        <td style="width: 35%;">@Model.VBondAbs.ISS_START_DATEDisplay - @Model.VBondAbs.ISS_END_DATEDisplay</td>
+                        <td style="width: 15%;" class="highlight">@Resources.Global.Bond_Value_Date</td>
+                        <td style="width: 35%;">@Model.VBondAbs.INTE_START_DATEDisplay</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 15%;" class="highlight">@Resources.Global.Maturity_Date</td>
+                        <td style="width: 35%;">@Model.VBondAbs.ACTU_END_DATEDisplay</td>
+                        <td class="highlight">@Resources.Global.Bond_FirstPayDate</td>
+                        <td>@Model.VBondAbs.FIR_PAY_DATEDisplay</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_MaturityPayDate</td>
+                        <td>@Model.VBondAbs.MATU_PAY_DATEDisplay</td>
+                        <td class="highlight">@Resources.Global.Bond_InitiatingMechanism</td>
+                        <td>@Model.VBondAbs.SPONSOR</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_Issuer</td>
+                        <td>@Model.VBondAbs.Issuer_Display</td>
+                        <td class="highlight">@Resources.Global.Bond_LeadUnderWriter</td>
+                        <td>@Model.VBondAbs.LEADUNDERWRITER</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_DeputyUnderWriter</td>
+                        <td>@Model.VBondAbs.VICEUNDERWRITER</td>
+                        <td class="highlight">@Resources.Global.Underwriters_Title</td>
+                        <td>@Model.VBondAbs.UNDERWRITER</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_FundCustodian</td>
+                        <td>@Model.VBondAbs.FUNDINSTITUTION</td>
+                        <td class="highlight">@Resources.Global.Bond_Regulator</td>
+                        <td>@Model.VBondAbs.REGULATOR</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_Auditor</td>
+                        <td>@Model.VBondAbs.AUDITINGOFFICES</td>
+                        <td class="highlight">@Resources.Global.Bond_Counsel</td>
+                        <td>@Model.VBondAbs.LEGALADVISOR</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_Deposit</td>
+                        <td>@Model.VBondAbs.TRUSTEE</td>
+                        <td class="highlight">@Resources.Global.Bond_Promote</td>
+                        <td>@Model.VBondAbs.ADVERTISINGAGENCY</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_IsRedemption</td>
+                        <td>@IntConverter.ConvertInt2String(Model.VBondAbs.IS_REDEM_PAR)</td>
+                        <td class="highlight">@Resources.Global.Bond_IsResale</td>
+                        <td>@IntConverter.ConvertInt2String(Model.VBondAbs.IS_RESA_PAR)</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_IsGuarantee</td>
+                        <td>@IntConverter.ConvertInt2String(Model.VBondAbs.IS_GUAR_PAR)</td>
+                        <td class="highlight">@Resources.Global.Bond_Guarantor</td>
+                        <td>@Model.VBondAbs.GUAOR_NAME</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 15%;" class="highlight">@Resources.Global.Bond_BidDate</td>
+                        <td style="width: 35%;">@Model.VBondAbs.ISS_DATEDisplay</td>
+                        <td style="width: 15%;" class="highlight">@Resources.Global.Bond_BidType</td>
+                        <td style="width: 35%;">@Model.VBondAbs.AUCTIONTYPE</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_BidWay</td>
+                        <td>@Model.VBondAbs.AUCTIONMETHOD</td>
+                        <td class="highlight">@Resources.Global.Bond_BidInvitation</td>
+                        <td>@Model.VBondAbs.AUCTIONCODE</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">@Resources.Global.Bond_Markets</td>
+                        <td>@Model.VBondAbs.ISSUEMARKET</td>
+                        <td class="highlight">@Resources.Global.Bond_ISBN</td>
+                        <td>@Model.VBondAbs.ISIN_CODE</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="bankWMPDetailTabs css-panes">
+        <div class="colorBlock-header" style="height: 32px;"><span class="colorBlock-header-span">@Resources.Global.Bond_ScaleChange</span></div>
+        <div class="ui-layout-pane" style="height: 90%; height: -webkit-calc(100% - 57px); min-width: 328px; overflow: auto">
+            @if (Model.ListBondSizeChan.Count == 0)
+            {
+                <span style="margin-left: 10px;">@Resources.Global.Empty_Result</span>
+            }
+            else
+            {
+                <table class="datatable Zebra">
+                    <thead>
+                        <tr class="hr">
+                            <th>
+                                @Resources.Global.Date
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_ScaleChangeType
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_ScaleChangeAmount
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_ScaleChangeBalance
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListBondSizeChan)
+                        {
+                            <tr>
+                                <td>@item.End_DateDisplay</td>
+                                <td>@item.CHAN_TYPE_PARNAME</td>
+                                <td style="text-align: right;">@item.SIZE_CHANDisplay</td>
+                                <td style="text-align: right;">@item.TOTAL_SIZEDisplay</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+    <div class="bankWMPDetailTabs css-panes">
+        <div class="colorBlock-header" style="height: 32px;"><span class="colorBlock-header-span">@Resources.Global.Bond_Issuer_Rating</span></div>
+        <div class="ui-layout-pane" style="height: 90%; height: -webkit-calc(100% - 57px); min-width: 328px; overflow: auto">
+            @if (Model.ListRateOrgCredHis.Count == 0)
+            {
+                <span style="margin-left: 10px;">@Resources.Global.Empty_Result</span>
+            }
+            else
+            {
+                <table class="datatable Zebra">
+                    <thead>
+                        <tr class="hr">
+                            <th>
+                                @Resources.Global.Bond_Rating_Date
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_Rating_Type
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_Rating_Class
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_Rating_Orgnization
+                            </th>
+                            <th>
+                                @Resources.Global.Issuer_Rate
+                            </th>
+                            <th>
+                                @Resources.Global.RATE_POINT
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_Rating_Prospect
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_Rating_Report
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListRateOrgCredHis)
+                        {
+                            <tr>
+                                <td>@item.RATE_WRIT_DATE.ToString("yyyy-MM-dd")</td>
+                                <td>@item.RATE_TYPE</td>
+                                <td>@item.RATE_CLS</td>
+                                <td>@item.Org</td>
+                                <td>@item.ISS_CRED_LEVEL</td>
+                                <td><a class="width-limited link" href="javascript:ShowDialog('@Resources.Global.RATE_POINT', @Json.Encode(@item.RATE_POINT))">@item.RATE_POINT</a></td>
+                                <td>@item.RATE_PROS</td>
+                                <td title="@item.RATE_TITLE">
+                                    @if (item.ContainFile)
+                                    {
+                                        <a class="width-limited link" style="max-width: 250px;" href="@Url.Action("DownloadRatingFile", "Fundamental", new { id = item.RATE_ID })">@item.RATE_TITLE</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+    <div class="bankWMPDetailTabs css-panes">
+        <div class="colorBlock-header" style="height: 32px;"><span class="colorBlock-header-span">@Resources.Global.Type_Bond_Rating</span></div>
+        <div class="ui-layout-pane" style="height: 90%; height: -webkit-calc(100% - 57px); min-width: 328px; overflow: auto">
+            @if (Model.BondRatingHist.Count == 0)
+            {
+                <span style="margin-left: 10px;">@Resources.Global.Empty_Result</span>
+            }
+            else
+            {
+                <table class="datatable Zebra">
+                    <thead>
+                        <tr class="hr">
+                            <th>
+                                @Resources.Global.Bond_Rating_Date
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_Rating_Type
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_Rating_Class
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_Rating_Orgnization
+                            </th>
+                            <th>
+                                @Resources.Global.Issuer_Rate
+                            </th>
+                            @*                    <th>
+                        @Resources.Global.RATE_POINT
+                    </th>*@
+                            <th>
+                                @Resources.Global.Bond_Rating_Prospect
+                            </th>
+                            <th>
+                                @Resources.Global.Bond_Rating_Report
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.BondRatingHist)
+                        {
+                            var matureDate = item.RATE_DATE == null ? "" : item.RATE_DATE.ToString("yyyy-MM-dd");
+                            <tr>
+                                <td>@matureDate</td>
+                                <td style="text-align: left;">@item.RATE_TYPE</td>
+                                <td style="text-align: left;">@item.RATE_CLS</td>
+                                <td style="text-align: left;">@item.RATE_ORG</td>
+                                <td style="text-align: left;">@item.RATE</td>
+                                <td style="text-align: left;">@item.RATE_PROS</td>
+                                <td style="text-align: left;">
+                                    @if (item.ContainFile)
+                                    {
+                                        <a class="link" href='/BondReport/DownloadRatingFile/@item.RATE_ID'>@item.RATE_TITLE</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
+

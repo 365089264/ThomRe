@@ -1,0 +1,957 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AINT2|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8726650-04A0-41C8-9CB3-237AB65C8CD4}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VAV.Web</RootNamespace>
+    <AssemblyName>VAV.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\packages\Aspose.Cells.7.4.2\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net">
+      <HintPath>..\packages\log4net\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNet.Highcharts, Version=1.1.0.0, Culture=neutral, PublicKeyToken=88854f873df851bf, processorArchitecture=MSIL">
+      <HintPath>..\packages\HighChartsWrapper\DotNet.Highcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.24160419\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SolrNet">
+      <HintPath>..\packages\SolrNet.0.3.1\lib\SolrNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc3">
+      <HintPath>..\packages\Unity.Mvc3.1.2\lib\net40\Unity.Mvc3.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\CnE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CnE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\CnE.zh.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CnE.zh.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Global.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Global.zh.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.zh.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\IPP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IPP.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\IPP.zh.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IPP.zh.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\WMP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMP.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\WMP.zh.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WMP.zh.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Common\ChartContentResult.cs" />
+    <Compile Include="Common\HtmlUtil.cs" />
+    <Compile Include="Common\JsonExcelParameter.cs" />
+    <Compile Include="Common\JsonTableExcelResult.cs" />
+    <Compile Include="Common\JsonTableExcelResultWithCustomFormat.cs" />
+    <Compile Include="Common\JsonTableGroupExcelResult.cs" />
+    <Compile Include="Common\MimeHelper.cs" />
+    <Compile Include="Common\ThemeHelper.cs" />
+    <Compile Include="Common\UIGenerator.cs" />
+    <Compile Include="Common\UIStaticDataCache.cs" />
+    <Compile Include="Common\UserSettingHelper.cs" />
+    <Compile Include="Controllers\AdController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BondInfoController.cs" />
+    <Compile Include="Controllers\BondReportController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
+    <Compile Include="Controllers\CnEBaseController.cs" />
+    <Compile Include="Controllers\CNEController.cs" />
+    <Compile Include="Controllers\GDTController.cs" />
+    <Compile Include="Controllers\FundamentalController.cs" />
+    <Compile Include="Controllers\HealthCheckController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageExportController.cs" />
+    <Compile Include="Controllers\IPPController.cs" />
+    <Compile Include="Controllers\MacroeconomyController.cs" />
+    <Compile Include="Controllers\OpenMarketController.cs" />
+    <Compile Include="Controllers\CDCController.cs" />
+    <Compile Include="Controllers\PartnersController.cs" />
+    <Compile Include="Controllers\PdfViewController.cs" />
+    <Compile Include="Controllers\ResearchReportController.cs" />
+    <Compile Include="Controllers\StructureReportController.cs" />
+    <Compile Include="Controllers\UserSettingController.cs" />
+    <Compile Include="Controllers\WMPController.cs" />
+    <Compile Include="Extensions\IntConverter.cs" />
+    <Compile Include="Extensions\DateTimeExtension.cs" />
+    <Compile Include="Extensions\ExcelUtil.cs" />
+    <Compile Include="Extensions\JsonpHelper.cs" />
+    <Compile Include="Extensions\OpenMarketExtension.cs" />
+    <Compile Include="Extensions\ExcelResult.cs" />
+    <Compile Include="Extensions\PdfConverter.cs" />
+    <Compile Include="Extensions\ReportControllerFactory.cs" />
+    <Compile Include="Extensions\SDLRChartExcelResult.cs" />
+    <Compile Include="Extensions\WebGridExtension.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\CultureHelper.cs" />
+    <Compile Include="Extensions\DebugHelper.cs" />
+    <Compile Include="Localization\Localization.cs" />
+    <Compile Include="Service References\UserSetting\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BondInfo\BondFutureSampleViewModel.cs" />
+    <Compile Include="ViewModels\BondInfo\ABSDetailViewModel.cs" />
+    <Compile Include="ViewModels\BondInfo\CityAndLocalBondViewModel.cs" />
+    <Compile Include="ViewModels\BondInfo\DimsumBondAnalysisViewModel.cs" />
+    <Compile Include="ViewModels\BondInfo\UnderwritersRankingViewModel.cs" />
+    <Compile Include="ViewModels\Bond\BondIssueRateReport.cs" />
+    <Compile Include="ViewModels\Bond\BondIssueAmountReport.cs" />
+    <Compile Include="ViewModels\Bond\BondRatingHistViewModel.cs" />
+    <Compile Include="ViewModels\CNE\CneBaseViewModel.cs" />
+    <Compile Include="ViewModels\Fundamental\OTCMarketCompaniesViewModel.cs" />
+    <Compile Include="ViewModels\Fundamental\NonlistIssuerDetailViewModel.cs" />
+    <Compile Include="ViewModels\Fundamental\NonlistIssuerViewModel.cs" />
+    <Compile Include="ViewModels\GDT\GdtBalanceTableViewModel.cs" />
+    <Compile Include="ViewModels\GDT\GdtInventoryViewModel.cs" />
+    <Compile Include="ViewModels\GDT\GdtBaseViewModel.cs" />
+    <Compile Include="ViewModels\GDT\GdtOutputViewModel.cs" />
+    <Compile Include="ViewModels\GDT\GdtPriceViewModel.cs" />
+    <Compile Include="ViewModels\GDT\GdtSalesViewModel.cs" />
+    <Compile Include="ViewModels\Home\AutoSuggestViewModel.cs" />
+    <Compile Include="ViewModels\Home\HomepageViewModel.cs" />
+    <Compile Include="ViewModels\Home\SearchContentViewModel.cs" />
+    <Compile Include="ViewModels\Home\IndexViewModel.cs" />
+    <Compile Include="ViewModels\Home\TreeViewModel.cs" />
+    <Compile Include="ViewModels\IPP\Topic.cs" />
+    <Compile Include="ViewModels\IPP\File.cs" />
+    <Compile Include="ViewModels\MacroEconomy\ItemListViewModel.cs" />
+    <Compile Include="ViewModels\OpenMarket\RatesAnalysisReportViewModel.cs" />
+    <Compile Include="ViewModels\OpenMarket\DetailDataReportViewModel.cs" />
+    <Compile Include="ViewModels\OpenMarket\MaRAnalysisReportViewModel.cs" />
+    <Compile Include="ViewModels\Report\BaseReportViewModel.cs" />
+    <Compile Include="ViewModels\Report\BasicReportViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Report\ChartViewModel.cs" />
+    <Compile Include="ViewModels\Report\InstitutionViewModel.cs" />
+    <Compile Include="ViewModels\Report\StatisticalReportViewModel.cs" />
+    <Compile Include="ViewModels\ResearchReport\ReportSearchViewModel.cs" />
+    <Compile Include="ViewModels\ResearchReport\ResearchReportViewModel.cs" />
+    <Compile Include="ViewModels\Upload\HomeItemModel.cs" />
+    <Compile Include="ViewModels\Upload\UploadItem.cs" />
+    <Compile Include="ViewModels\WMP\BankWMPDetailViewModel.cs" />
+    <Compile Include="ViewModels\WMP\BankWMPIssueTrendViewModel.cs" />
+    <Compile Include="ViewModels\WMP\BankWMPViewModel.cs" />
+    <Compile Include="ViewModels\WMP\BankWMPReportViewModel.cs" />
+    <Compile Include="ViewModels\WMP\BrokerContentModel.cs" />
+    <Compile Include="ViewModels\WMP\BrokerWMPDetailViewModel.cs" />
+    <Compile Include="ViewModels\WMP\BrokerWMPFeeViewModel.cs" />
+    <Compile Include="ViewModels\WMP\BrokerWMPFinIdxViewModel.cs" />
+    <Compile Include="ViewModels\WMP\TrustWMPDetailViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\images\a02.png" />
+    <Content Include="Content\images\a20.png" />
+    <Content Include="Content\images\Banner_cn2.png" />
+    <Content Include="Content\images\Banner_en2.png" />
+    <Content Include="Content\images\chart_gray.png" />
+    <Content Include="Content\images\chart_light.png" />
+    <Content Include="Content\images\CS_Android.jpg" />
+    <Content Include="Content\images\CS_ios.jpg" />
+    <Content Include="Content\images\CS_Logo.png" />
+    <Content Include="Content\images\koidn.ico" />
+    <Content Include="Content\images\lfex_er.JPG" />
+    <Content Include="Content\images\lfex_er.png" />
+    <Content Include="Content\images\lfex_log.png" />
+    <Content Include="Content\images\loadingWithText.gif" />
+    <Content Include="Content\images\loading_bg.png" />
+    <Content Include="Content\images\monitor32.png" />
+    <Content Include="Content\images\OpenMarketCodeLink.PNG" />
+    <Content Include="Content\images\yaozhi.jpg" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\app_home_64_n.png" />
+    <Content Include="Content\themes\base\images\icon-download.png" />
+    <Content Include="Content\themes\base\images\lfex_base.png" />
+    <Content Include="Content\themes\base\images\multimedianews.ico" />
+    <Content Include="Content\themes\base\images\trvisionlogocn.png" />
+    <Content Include="Content\themes\base\images\trvisionlogo.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.multiselect.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\themes\Charcoal\images\close3.png" />
+    <Content Include="Content\themes\Charcoal\images\close2.png" />
+    <Content Include="Content\themes\Charcoal\images\icons.png" />
+    <Content Include="Content\themes\Charcoal\images\icons_circle.png" />
+    <Content Include="Content\themes\Charcoal\images\icons_text.png" />
+    <Content Include="Content\themes\Charcoal\images\ico_search_16_h.png" />
+    <Content Include="Content\themes\Charcoal\images\ico_search_16_n.png" />
+    <Content Include="Content\themes\Charcoal\images\lefx_rm.png" />
+    <Content Include="Content\themes\Charcoal\images\refresh.png" />
+    <Content Include="Content\themes\Charcoal\images\search-dark.png" />
+    <Content Include="Content\themes\Charcoal\images\spinner.png" />
+    <Content Include="Content\themes\Charcoal\images\sprite-ui-icons-scheme2.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-icons_EFEFF0_256x240_2.png" />
+    <Content Include="Content\themes\Charcoal\images\ui_icons_8.png" />
+    <Content Include="Content\themes\Charcoal\IPPSite.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.menubar.css" />
+    <Content Include="Content\themes\Charcoal\jsTreestyle.css" />
+    <Content Include="Content\themes\Charcoal\layout-default-latest.css" />
+    <Content Include="Content\themes\base\images\date_icon.png" />
+    <Content Include="Content\themes\base\images\excel_icon.png" />
+    <Content Include="Content\themes\base\images\select_arrow.png" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\Charcoal\images\animated-overlay.gif" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\themes\Charcoal\images\spbg.png" />
+    <Content Include="Content\themes\Charcoal\images\tree_zibra.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-bg_flat_0_FF9C00_40x100.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-bg_flat_0_ffffff_40x100.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-bg_flat_75_242424_40x100.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-bg_flat_75_2C2C2C_40x100.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-bg_glass_50_000000_1x400 %282%29.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-bg_glass_50_000000_1x400.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-bg_glass_50_316ac5_1x400.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-bg_glass_50_826438_1x400.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-icons_bfbfbf_256x240 %285%29.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-icons_bfbfbf_256x240.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-icons_EFEFF0_256x240 %288%29.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-icons_EFEFF0_256x240.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-icons_ffffff_256x240 %2811%29.png" />
+    <Content Include="Content\themes\Charcoal\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\Charcoal\jquery-ui.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.all.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.base.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.button.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.core.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.menu.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.slider.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.theme.css" />
+    <Content Include="Content\themes\Charcoal\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\Charcoal\paginate.css" />
+    <Content Include="Content\themes\Charcoal\rating.css" />
+    <Content Include="Content\themes\Charcoal\Yaozhi\global-s.css" />
+    <Content Include="Content\themes\Charcoal\Yaozhi\tabs-ui-charcoal2.css" />
+    <Content Include="Content\themes\Pearl\images\animated-overlay.gif" />
+    <Content Include="Content\themes\Pearl\images\close2.png" />
+    <Content Include="Content\themes\Pearl\images\close3.png" />
+    <Content Include="Content\themes\Pearl\images\dropdown.blue.png" />
+    <Content Include="Content\themes\Pearl\images\icons-pearl.png" />
+    <Content Include="Content\themes\Pearl\images\icons_19x19.png" />
+    <Content Include="Content\themes\Pearl\images\icons_circle.png" />
+    <Content Include="Content\themes\Pearl\images\icons_text.png" />
+    <Content Include="Content\themes\Pearl\images\ico_search_16_d.png" />
+    <Content Include="Content\themes\Pearl\images\ico_search_16_n.png" />
+    <Content Include="Content\themes\Pearl\images\lefx_rm.png" />
+    <Content Include="Content\themes\Pearl\images\refresh.png" />
+    <Content Include="Content\themes\Pearl\images\search-white.png" />
+    <Content Include="Content\themes\Pearl\images\sprite-ui-icons-scheme2.png" />
+    <Content Include="Content\themes\Pearl\images\ui-bg_flat_0_666666_40x100.png" />
+    <Content Include="Content\themes\Pearl\images\ui-bg_flat_0_999999_40x100.png" />
+    <Content Include="Content\themes\Pearl\images\ui-bg_flat_0_ffffff_40x100.png" />
+    <Content Include="Content\themes\Pearl\images\ui-bg_glass_0_0394cb_1x400.png" />
+    <Content Include="Content\themes\Pearl\images\ui-bg_glass_0_5c5c5c_1x400.png" />
+    <Content Include="Content\themes\Pearl\images\ui-bg_glass_0_f2f2f2_1x400.png" />
+    <Content Include="Content\themes\Pearl\images\ui-bg_glass_0_fef1ec_1x400.png" />
+    <Content Include="Content\themes\Pearl\images\ui-bg_glass_0_fefae1_1x400.png" />
+    <Content Include="Content\themes\Pearl\images\ui-bg_highlight-soft_0_eeeeee_1x100.png" />
+    <Content Include="Content\themes\Pearl\images\ui-icons_007ec0_256x240.png" />
+    <Content Include="Content\themes\Pearl\images\ui-icons_1e9ff1_256x240.png" />
+    <Content Include="Content\themes\Pearl\images\ui-icons_9bbcce_256x240.png" />
+    <Content Include="Content\themes\Pearl\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\Pearl\images\ui-icons_fe9400_256x240.png" />
+    <Content Include="Content\themes\Pearl\images\ui-icons_ffb224_256x240.png" />
+    <Content Include="Content\themes\Pearl\IPPSite.css" />
+    <Content Include="Content\themes\Pearl\jquery-ui.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.all.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.base.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.button.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.core.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.menu.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.menubar.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.slider.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.theme.css" />
+    <Content Include="Content\themes\Pearl\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\Pearl\jsTreestyle.css" />
+    <Content Include="Content\themes\Pearl\layout-default-latest.css" />
+    <Content Include="Content\themes\Pearl\paginate.css" />
+    <Content Include="Content\themes\Pearl\rating.css" />
+    <Content Include="Content\themes\Pearl\Site.css" />
+    <Content Include="Content\themes\Pearl\Yaozhi\global-pearl.css" />
+    <Content Include="Content\themes\Pearl\Yaozhi\tabs-ui-charcoal2.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\themes\Charcoal\Site.css" />
+    <Content Include="gsdll32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gsdll64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gswin32.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gswin32c.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gswin64.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gswin64c.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\amplify-vsdoc.js" />
+    <Content Include="Scripts\amplify.js" />
+    <Content Include="Scripts\amplify.min.js" />
+    <Content Include="Scripts\Angular\angular-route.js" />
+    <Content Include="Scripts\Angular\angular-route.min.js" />
+    <Content Include="Scripts\Angular\angular.js" />
+    <Content Include="Scripts\Angular\angular.min.js" />
+    <Content Include="Scripts\BondInfo\BondInfoCommon.js" />
+    <Content Include="Scripts\CnE\Coal.js" />
+    <Content Include="Scripts\CnE\CommodityNews.js" />
+    <Content Include="Scripts\CnE\GDTBalanceTable.js" />
+    <Content Include="Scripts\CnE\GDTEnergyInventory.js" />
+    <Content Include="Scripts\CnE\GDTInventory.js" />
+    <Content Include="Scripts\CnE\GDTCommon.js" />
+    <Content Include="Scripts\CnE\GDTOutput.js" />
+    <Content Include="Scripts\CnE\GDTSales.js" />
+    <Content Include="Scripts\Common\hierarchy.js" />
+    <Content Include="Scripts\Common\wmp.compare.detail.js" />
+    <Content Include="Scripts\D3\d3.js" />
+    <Content Include="Scripts\D3\d3.min.js" />
+    <Content Include="Scripts\D3\datamaps.all.js" />
+    <Content Include="Scripts\D3\topojson.js" />
+    <Content Include="Scripts\D3\topojson.min.js" />
+    <Content Include="Scripts\Highstock\adapters\standalone-framework.js" />
+    <Content Include="Scripts\Highstock\adapters\standalone-framework.src.js" />
+    <Content Include="Scripts\Highstock\highcharts-3d.js" />
+    <Content Include="Scripts\Highstock\highcharts-3d.src.js" />
+    <Content Include="Scripts\Highstock\highcharts-more.js" />
+    <Content Include="Scripts\Highstock\highcharts-more.src.js" />
+    <Content Include="Scripts\Highstock\highstock.js" />
+    <Content Include="Scripts\Highstock\highstock.src.js" />
+    <Content Include="Scripts\Highstock\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highstock\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highstock\modules\data.js" />
+    <Content Include="Scripts\Highstock\modules\data.src.js" />
+    <Content Include="Scripts\Highstock\modules\drilldown.js" />
+    <Content Include="Scripts\Highstock\modules\drilldown.src.js" />
+    <Content Include="Scripts\Highstock\modules\exporting.js" />
+    <Content Include="Scripts\Highstock\modules\exporting.src.js" />
+    <Content Include="Scripts\Highstock\modules\funnel.js" />
+    <Content Include="Scripts\Highstock\modules\funnel.src.js" />
+    <Content Include="Scripts\Highstock\modules\heatmap.js" />
+    <Content Include="Scripts\Highstock\modules\heatmap.src.js" />
+    <Content Include="Scripts\Highstock\modules\no-data-to-display.js" />
+    <Content Include="Scripts\Highstock\modules\no-data-to-display.src.js" />
+    <Content Include="Scripts\Highstock\modules\solid-gauge.js" />
+    <Content Include="Scripts\Highstock\modules\solid-gauge.src.js" />
+    <Content Include="Scripts\Highstock\modules\technical-indicators.src.js" />
+    <Content Include="Scripts\Highstock\themes\dark-blue.js" />
+    <Content Include="Scripts\Highstock\themes\dark-green.js" />
+    <Content Include="Scripts\Highstock\themes\dark-unica.js" />
+    <Content Include="Scripts\Highstock\themes\gray.js" />
+    <Content Include="Scripts\Highstock\themes\grid-light.js" />
+    <Content Include="Scripts\Highstock\themes\grid.js" />
+    <Content Include="Scripts\Highstock\themes\pearl.js" />
+    <Content Include="Scripts\Highstock\themes\sand-signika.js" />
+    <Content Include="Scripts\Highstock\themes\skies.js" />
+    <Content Include="Scripts\i18n\CnE.en_US.js" />
+    <Content Include="Scripts\CnE\GDTprice.js" />
+    <Content Include="Scripts\i18n\CnE.zh_CN.js" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="Scripts\Common\wmp.compare.js" />
+    <Content Include="Scripts\Datepicker-zh.js" />
+    <Content Include="Scripts\DatePicker.js" />
+    <Content Include="Scripts\Fundamental\FundamentalCommon.js" />
+    <Content Include="Scripts\GPL-LICENSE.txt" />
+    <Content Include="Scripts\i18n\wmp.compare.en_US.js" />
+    <Content Include="Scripts\i18n\wmp.compare.zh_CN.js" />
+    <Content Include="Scripts\IPP\Common.js" />
+    <Content Include="Scripts\IPP\FileBrowser.js" />
+    <Content Include="Scripts\IPP\FileEditer.js" />
+    <Content Include="Scripts\IPP\IPPGlobal.en_US.js" />
+    <Content Include="Scripts\IPP\IPPGlobal.zh_CN.js" />
+    <Content Include="Scripts\IPP\MyDocument.js" />
+    <Content Include="Scripts\IPP\TopicEditer.js" />
+    <Content Include="Scripts\JET\JET.js" />
+    <Content Include="Scripts\JET\plugins\Quotes.js" />
+    <Content Include="Scripts\jquery-2.1.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
+    <Content Include="Scripts\jquery.ba-outside-events.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.jstree.js" />
+    <Content Include="Scripts\jquery.layout-latest.js" />
+    <Content Include="Scripts\jquery.mask.js" />
+    <Content Include="Scripts\jquery.mtz.monthpicker.js" />
+    <Content Include="Scripts\jquery.multiselect.js" />
+    <Content Include="Scripts\jquery.paginate.js" />
+    <Content Include="Scripts\jquery.scrollabletab.js" />
+    <Content Include="Scripts\jquery.tmpl.js" />
+    <Content Include="Scripts\jquery.tmpl.min.js" />
+    <Content Include="Scripts\jquery.tools.js" />
+    <Content Include="Scripts\jquery.ui.menubar.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MIT-LICENSE.txt" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\README.txt" />
+    <Content Include="Scripts\ReportCore.js" />
+    <Content Include="Scripts\Slider\jssor.core.js" />
+    <Content Include="Scripts\Slider\jssor.slider.js" />
+    <Content Include="Scripts\Slider\jssor.utils.js" />
+    <Content Include="Scripts\StructuredReport\StructuredReport.js" />
+    <Content Include="Scripts\VAV_1_0.js" />
+    <Content Include="Scripts\WMP\WMPCommon.js" />
+    <Content Include="Scripts\WMP\WMPCompare.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="App_Data\Document\Chinese Treasury Monitor.xlsx" />
+    <Content Include="AddIISPermission.bat" />
+    <Content Include="Scripts\D3\chinaCN.json" />
+    <Content Include="Scripts\D3\chinaEN.json" />
+    <Content Include="gsdll64.lib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\PublishProfiles\cma.pubxml" />
+    <None Include="Scripts\jquery-2.1.0.min.map" />
+    <None Include="Service References\UserSetting\configuration91.svcinfo" />
+    <None Include="Service References\UserSetting\configuration.svcinfo">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserSetting\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Unity.Mvc3.README.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Service References\UserSetting\VAV.Web.UserSetting.GetAllUserDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserSetting\VAV.Web.UserSetting.GetUserDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserSetting\VAV.Web.UserSetting.SetUserDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <Content Include="Views\OpenMarket\_DetailDataReportTable.cshtml" />
+    <Content Include="Views\BondInfo\ScheduledIssueDetails.cshtml" />
+    <Content Include="Views\BondInfo\NewIssueDetails.cshtml" />
+    <Content Include="Views\BondInfo\NewListDetails.cshtml" />
+    <Content Include="Views\BondInfo\QueueToListDetails.cshtml" />
+    <Content Include="Views\Home\_Tree.cshtml" />
+    <Content Include="Views\Shared\ColumnChooser.cshtml" />
+    <Content Include="Views\MacroEconomy\ItemList.cshtml" />
+    <Content Include="Views\BondInfo\DimsumBondAnalysis.cshtml" />
+    <Content Include="Views\WMP\BankWMP.cshtml" />
+    <Content Include="Views\WMP\BankWMPDetail.cshtml" />
+    <Content Include="Views\Fundamental\NonlistIssuer.cshtml" />
+    <Content Include="Views\Fundamental\NonlistIssuerDetailMain.cshtml" />
+    <Content Include="Views\Fundamental\NonlistIssuerDetailTable.cshtml" />
+    <Content Include="Views\ResearchReport\ResearchReport.cshtml" />
+    <Content Include="Views\Home\External.cshtml" />
+    <Content Include="Views\WMP\BankWMPReport.cshtml" />
+    <Content Include="Views\WMP\BankWMPIssueTrend.cshtml" />
+    <Content Include="Views\WMP\TrustWMP.cshtml" />
+    <Content Include="Views\WMP\BankWMPYieldTrend.cshtml" />
+    <Content Include="Views\WMP\TrustWMPDetail.cshtml" />
+    <Content Include="Views\WMP\BankWMPCompare.cshtml" />
+    <Content Include="Views\ResearchReport\ReportSearch.cshtml" />
+    <Content Include="Views\Ad\YaozhiEn.cshtml" />
+    <Content Include="Views\Ad\YaozhiCn.cshtml" />
+    <Content Include="Views\Shared\YaozhiLayout.cshtml" />
+    <Content Include="Views\IPP\IPPHome.cshtml" />
+    <Content Include="Views\IPP\FileBrowser.cshtml" />
+    <Content Include="Views\IPP\MyDocument.cshtml" />
+    <Content Include="Views\IPP\TopicEditor.cshtml" />
+    <Content Include="Views\IPP\FileEditor.cshtml" />
+    <Content Include="Views\IPP\_IPPLayout.cshtml" />
+    <Content Include="Views\IPP\_ViewStart.cshtml" />
+    <Content Include="Views\IPP\PrePublish.cshtml" />
+    <Content Include="Views\IPP\Published.cshtml" />
+    <Content Include="Views\IPP\PreApprove.cshtml" />
+    <Content Include="Views\IPP\TopicManagement.cshtml" />
+    <Content Include="Views\IPP\Approved.cshtml" />
+    <Content Include="Views\IPP\FavoriteFiles.cshtml" />
+    <Content Include="Views\IPP\FavoriteTopics.cshtml" />
+    <Content Include="Views\IPP\RatingDailog.cshtml" />
+    <Content Include="Views\GDT\GDTViews.cshtml" />
+    <Content Include="Views\GDT\Price.cshtml" />
+    <Content Include="Views\WMP\TrustWMPCompare.cshtml" />
+    <Content Include="Views\GDT\FanYaPrice.cshtml" />
+    <Content Include="Views\WMP\BrokerWMPDetail.cshtml" />
+    <Content Include="Views\WMP\BrokerWMP.cshtml" />
+    <Content Include="Views\GDT\Output.cshtml" />
+    <Content Include="Views\ResearchReport\PdfViewer.cshtml" />
+    <Content Include="Views\WMP\BrokerWMPCompare.cshtml" />
+    <Content Include="Views\WMP\BrokerNetWorth.cshtml" />
+    <Content Include="Views\WMP\BrokerFee.cshtml" />
+    <Content Include="Views\Home\Commodity.cshtml" />
+    <Content Include="Views\WMP\BrokerBonus.cshtml" />
+    <Content Include="Views\WMP\BrokerFinIdx.cshtml" />
+    <Content Include="Views\WMP\BrokerContent.cshtml" />
+    <Content Include="Views\GDT\Inventory.cshtml" />
+    <Content Include="Views\GDT\Sales.cshtml" />
+    <Content Include="Views\BondReport\BondRatingHist.cshtml" />
+    <Content Include="Views\CNE\ShandongLocalRefinery.cshtml" />
+    <Content Include="Views\CNE\CommodityNews.cshtml" />
+    <Content Include="Views\Fundamental\NonlistIssuerRating.cshtml" />
+    <Content Include="Views\CNE\Coal.cshtml" />
+    <Content Include="Views\Home\Homepage.cshtml" />
+    <Content Include="Views\Home\HomeItemEditor.cshtml" />
+    <Content Include="Views\CNE\TrafficScheduling.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\HomeModuleTemplate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\HomeItemTemplate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\HomeItemAsideTemplate.cshtml" />
+    <Content Include="Views\GDT\BalanceTable.cshtml" />
+    <Content Include="Views\BondInfo\CityAndLocalBondAnalytics.cshtml" />
+    <Content Include="Views\Fundamental\OTCMarketCompanies.cshtml" />
+    <Content Include="Views\Partners\ChinaSecurities.cshtml" />
+    <Content Include="Views\BondInfo\UnderwritersRanking.cshtml" />
+    <Content Include="Views\OpenMarket\OpenMarketSearch.cshtml" />
+    <Content Include="Views\GDT\OilInventory.cshtml" />
+    <Content Include="Views\BondInfo\ABSDetail.cshtml" />
+    <Content Include="Views\BondInfo\BondAbsList.cshtml" />
+    <Content Include="Views\BondReport\BondIssuanceMatures.cshtml" />
+    <Content Include="Views\CDC\_ReportTable.cshtml" />
+    <Content Include="Views\StructureReport\BasicReport.cshtml" />
+    <Content Include="Views\Home\HomeItemList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cache\" />
+    <Folder Include="Report\image\" />
+    <Folder Include="Report\PDF\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CDC\BasicReport.cshtml" />
+    <Content Include="Views\CDC\StatisticalReport.cshtml" />
+    <Content Include="Views\CDC\_StatisticalReportTable.cshtml" />
+    <Content Include="Views\CDC\_StatisticalReportDetailTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Global.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Global.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Global.zh.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Global.zh.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VAV.DAL\VAV.DAL.csproj">
+      <Project>{8AE140CD-999D-494C-ADDA-C435B2A5B54C}</Project>
+      <Name>VAV.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VAV.Entities\VAV.Entities.csproj">
+      <Project>{5278F65E-CE51-4269-A848-2F22E380CD64}</Project>
+      <Name>VAV.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VAV.Model\VAV.Model.csproj">
+      <Project>{7B9D70F9-9990-4AF2-88BF-E3664D01133D}</Project>
+      <Name>VAV.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BondReport\RateOfIssues.cshtml" />
+    <Content Include="Views\BondReport\IssueAmountReport.cshtml" />
+    <Content Include="Views\BondReport\_IssueAmountStatistical.cshtml" />
+    <Content Include="Views\BondReport\_BondDetail.cshtml" />
+    <Content Include="Views\BondReport\_IssueAmountReportContent.cshtml" />
+    <Content Include="Views\BondReport\_IssueRatesStatistical.cshtml" />
+    <Content Include="Views\OpenMarket\MonetaryAndReturnAnalysisReport.cshtml" />
+    <Content Include="Views\OpenMarket\_MonetaryAndReturnAnalysisReportContent.cshtml" />
+    <Content Include="Web.AINT2.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.PROD.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\OpenMarket\RatesAnalysisReport.cshtml" />
+    <Content Include="Views\OpenMarket\_RatesAnalysisContent.cshtml" />
+    <None Include="Service References\UserSetting\AAA-ASUserManagementPort.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserSetting\AAA-ASUserManagement_1.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\UserSetting\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\IPP.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>IPP.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\IPP.zh.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>IPP.zh.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\CnE.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CnE.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\CnE.zh.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>CnE.zh.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\WMP.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>WMP.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\WMP.zh.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>WMP.zh.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>3222</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+    <Message Text="Transfom Config." />
+    <TransformXml Source="C:\Jenkins_Slave\workspace\CMA\VAV.Web\web.config" Transform="C:\Jenkins_Slave\workspace\CMA\VAV.Web\Web.AINT2.config" Destination="C:\Jenkins_Slave\workspace\CMA\VAV.Web\web2.config" />
+    <Message Text="Done Transfom Config." />
+  </Target>-->
+</Project>

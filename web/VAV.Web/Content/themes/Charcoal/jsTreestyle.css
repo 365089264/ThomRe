@@ -1,0 +1,49 @@
+
+#innerTree  .ui-state-default {
+    border: 0px solid #000000;
+    background: transparent;
+}
+
+#innerTree .ui-state-active, .ui-widget-content {
+
+    font-weight: normal;
+    color: white;
+    border: 0px;
+}
+
+#innerTree .jstree-clicked {
+    color: #ff8000;
+    font-weight: bold;
+
+}
+
+#innerTree{width:100%;}
+
+.treeBackground {
+    background: url("./images/tree_zibra.png") repeat scroll left top !important;
+    display: table;
+}
+
+.jstree a {
+    height: 32px !important;
+    line-height: 32px !important;
+    cursor: pointer;
+}
+.jstree a:hover {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.jstree li {
+    min-height: 16px !important;
+    line-height: 16px!important;
+}
+
+#innerTree ins.ui-icon-triangle-1-se
+{ background-position: -241px -191px;  
+    
+    }
+    
+ #innerTree ins.ui-icon-triangle-1-e
+{
+  background-position: -224px -191px;
+    }

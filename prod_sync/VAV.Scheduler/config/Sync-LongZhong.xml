@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=cne;Password=cne;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <!--<table-mapping source="LongZhong_LeaveFactoryProduc" destination="LongZhong_LeaveFactoryProduc" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="productName" destination="productName"/>
+      <column-mapping source="modelName" destination="modelName"/>
+      <column-mapping source="areaName" destination="areaName"/>
+      <column-mapping source="unit" destination="unit"/>
+      <column-mapping source="memo" destination="memo"/>
+      <column-mapping source="manufactureName" destination="manufactureName"/>
+    </table-mapping>
+    <table-mapping source="LongZhong_InterNationalProdu" destination="LongZhong_InterNationalProdu" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="productName" destination="productName"/>
+      <column-mapping source="modelName" destination="modelName"/>
+      <column-mapping source="areaName" destination="areaName"/>
+      <column-mapping source="unit" destination="unit"/>
+      <column-mapping source="memo" destination="memo"/>
+    </table-mapping>
+    <table-mapping source="LongZhong_NationalProduct" destination="LongZhong_NationalProduct" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="productName" destination="productName"/>
+      <column-mapping source="modelName" destination="modelName"/>
+      <column-mapping source="areaName" destination="areaName"/>
+      <column-mapping source="unit" destination="unit"/>
+      <column-mapping source="memo" destination="memo"/>
+      <column-mapping source="marketName" destination="marketName"/>
+      <column-mapping source="manufactureName" destination="manufactureName"/>
+    </table-mapping>
+    <table-mapping source="LongZhong_OilProduct" destination="LongZhong_OilProduct" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="productName" destination="productName"/>
+      <column-mapping source="modelName" destination="modelName"/>
+      <column-mapping source="areaName" destination="areaName"/>
+      <column-mapping source="unit" destination="unit"/>
+      <column-mapping source="memo" destination="memo"/>
+      <column-mapping source="marketName" destination="marketName"/>
+    </table-mapping>-->
+    <table-mapping source="LongZhong_InternationalPrice" destination="LongZhong_InternationalPrice" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="priceDate" destination="priceDate" isKey="true"/>
+      <column-mapping source="memo" destination="memo"/>
+      <column-mapping source="price" destination="price"/>
+      <column-mapping source="lowPrice" destination="lowPrice"/>
+      <column-mapping source="highPrice" destination="highPrice"/>
+      <column-mapping source="priceType" destination="priceType"/>
+      <column-mapping source="updateDate" destination="updateDate"/>
+      <column-mapping source="fetchunix" destination="fetchunix"/>
+      <filter>
+        <![CDATA[ fetchunix > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND fetchunix <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="LongZhong_LeaveFactoryPrice" destination="LongZhong_LeaveFactoryPrice" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="priceDate" destination="priceDate" isKey="true"/>
+      <column-mapping source="memo" destination="memo"/>
+      <column-mapping source="price" destination="price"/>
+      <column-mapping source="updateDate" destination="updateDate"/>
+      <column-mapping source="fetchunix" destination="fetchunix"/>
+      <filter>
+        <![CDATA[ fetchunix > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND fetchunix <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="LongZhong_NationalPrice" destination="LongZhong_NationalPrice" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="priceDate" destination="priceDate" isKey="true"/>
+      <column-mapping source="memo" destination="memo"/>
+      <column-mapping source="price" destination="price"/>
+      <column-mapping source="lowPrice" destination="lowPrice"/>
+      <column-mapping source="highPrice" destination="highPrice"/>
+      <column-mapping source="updateDate" destination="updateDate"/>
+      <column-mapping source="fetchunix" destination="fetchunix"/>
+      <filter>
+        <![CDATA[ fetchunix > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND fetchunix <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="LongZhong_OilPrice" destination="LongZhong_OilPrice" isOmitColumns="true" isSync="true" isKeepObsoleteDestinationData="true">
+      <column-mapping source="id" destination="id" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="priceDate" destination="priceDate" isKey="true"/>
+      <column-mapping source="memo" destination="memo"/>
+      <column-mapping source="price" destination="price"/>
+      <column-mapping source="zsyPrice" destination="zsyPrice"/>
+      <column-mapping source="zshPrice" destination="zshPrice"/>
+      <column-mapping source="updateDate" destination="updateDate"/>
+      <column-mapping source="fetchunix" destination="fetchunix"/>
+      <filter>
+        <![CDATA[ fetchunix > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND fetchunix <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="LongZhong_Yield" destination="LongZhong_Yield" isOmitColumns="true" isSync="true"  isKeepObsoleteDestinationData="true">
+      <column-mapping source="code" destination="code" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="cnname" destination="cnname"/>
+      <column-mapping source="period" destination="period"/>
+      <column-mapping source="end_date" destination="end_date" isKey="true"/>
+      <column-mapping source="yield" destination="yield"/>
+      <column-mapping source="fetchunix" destination="fetchunix"/>
+      <filter>
+        <![CDATA[ fetchunix > TO_DATE({FromTime}, 'mm/dd/yyyy:hh:mi:ssam') AND fetchunix <= TO_DATE({CurrentSyncTime}, 'mm/dd/yyyy:hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

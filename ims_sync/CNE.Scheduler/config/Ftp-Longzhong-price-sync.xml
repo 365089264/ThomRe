@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=cne;Password=cne;</conn>
+  </source-db>
+  <fileSavePath>C:\DataFeedFtp\longzhong\</fileSavePath>
+  <hostname>10.35.63.144</hostname>
+  <username>ftpupload</username>
+  <password>ftpupload</password>
+  <targetDir>longzhong</targetDir>
+  <fileName>longzhong_price_{fileDateFormat}.xls</fileName>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <mappings>
+ 
+    <table-mapping source="View_LongzhongPrice_Energy_Ftp" destination="EnergyPrice" >
+ 
+      <column-mapping source="keyWord"        />
+      <column-mapping source="re_date"        />
+      <column-mapping source="price"          />
+      <column-mapping source="createTime"          />
+      <column-mapping source="tabType"       />
+      <column-mapping source="ProductName_EN" />
+      <column-mapping source="ProductName_CN" />
+      <column-mapping source="ModelName_EN"   />
+      <column-mapping source="ModelName_CN"   />
+      <column-mapping source="Area_EN"        />
+      <column-mapping source="Area_CN"        />
+      <column-mapping source="Unit_EN"        />
+      <column-mapping source="Unit_CN"        />
+    
+      <filter>
+        <![CDATA[ createTime >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>    
+     
+    <table-mapping source="View_LongzhongPrice_Chemical" destination="ChemicalPrice" >
+ 
+      <column-mapping source="keyWord"        />
+      <column-mapping source="re_date"        />
+      <column-mapping source="price"          />
+      <column-mapping source="createTime"          />
+      <column-mapping source="tabType"       />
+      <column-mapping source="ProductName_EN" />
+      <column-mapping source="ProductName_CN" />
+      <column-mapping source="ModelName_EN"   />
+      <column-mapping source="ModelName_CN"   />
+      <column-mapping source="Area_EN"        />
+      <column-mapping source="Area_CN"        />
+      <column-mapping source="Unit_EN"        />
+      <column-mapping source="Unit_CN"        /> 
+    
+      <filter>
+        <![CDATA[ createTime >= '{LastSyncTime}']]>
+      </filter>
+    </table-mapping>        
+    
+    
+    
+  </mappings>
+</settings>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=bonddb;Password=bonddb;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=bonddb;Password=bonddb;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="NEWLISTEDBONDS" destination="NEWLISTEDBONDS"  isSync="true" isKeepObsoleteDestinationData="true" >
+      <column-mapping source="RIC" destination="RIC" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="BONDLOCALID" destination="BONDLOCALID"/>
+      <column-mapping source="BONDLOCALNAME" destination="BONDLOCALNAME"/>
+      <column-mapping source="BONDNAME" destination="BONDNAME"/>
+      <column-mapping source="MARKET" destination="MARKET"/>
+      <column-mapping source="CURRENCY" destination="CURRENCY"/>
+      <column-mapping source="MATURITYDATE" destination="MATURITYDATE"/>
+      <column-mapping source="ISSUEDATE" destination="ISSUEDATE" isKey="true"/>
+      <column-mapping source="ISSUEAMOUNT" destination="ISSUEAMOUNT"/>
+      <column-mapping source="ISSUEPRICE" destination="ISSUEPRICE"/>
+      <column-mapping source="VALUEDATE" destination="VALUEDATE" isKey="true"/>
+      <column-mapping source="HIGHPRICE" destination="HIGHPRICE"/>
+      <column-mapping source="LOWPRICE" destination="LOWPRICE"/>
+      <column-mapping source="CLOSEPRICE" destination="CLOSEPRICE"/>
+      <column-mapping source="LASTPRICE" destination="LASTPRICE"/>
+      <column-mapping source="PRICECHANGE" destination="PRICECHANGE"/>
+      <column-mapping source="YIELDCHANGE" destination="YIELDCHANGE"/>
+      <column-mapping source="ACCUMULATEDVOLUMN" destination="ACCUMULATEDVOLUMN"/>
+      <column-mapping source="CREDATE" destination="CREDATE"/>
+      <filter>
+        <![CDATA[ ISSUEDATE is not null and VALUEDATE is not null and CREDATE > TO_TIMESTAMP({LastSyncTime},'MM/DD/YYYY HH:MI:SS.FF am') AND CREDATE <= TO_TIMESTAMP({CurrentSyncTime},'MM/DD/YYYY HH:MI:SS.FF am')]]>
+      </filter>
+    </table-mapping>
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

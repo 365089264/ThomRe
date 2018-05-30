@@ -1,0 +1,106 @@
+﻿@model VAV.Web.ViewModels.MacroEconomy.ItemListViewModel
+
+@{
+    var exportUrl = VirtualPathUtility.ToAbsolute("~/Chart/GetChartByName");
+    string clientEvent = "";
+}
+
+<div class="colorBlock cloWrap-back" style="height:91%;height:-webkit-calc(100% - 10px); overflow:auto;">
+    <div style="min-width:1011px;">
+
+    @for (int l = 0; l < 2; l++)
+    {
+        var css = l % 2 == 0 ? "colWrap-left" : "colWrap-right";
+        var nodeList = l % 2 == 0 ? Model.ItemListLeft : Model.ItemListRight;
+        
+        <div class="@css">
+        @foreach (var node in nodeList)
+        {
+            var style = "";
+
+            foreach (var i in node.Children)
+            {
+                if (i.Children.Count() != 0)
+                {
+                    style = "padding-left:0px;margin:0px;";
+                    break;
+                }
+            }
+            
+            <div class="boxContainer" style="float:left;">
+                <div class="altFlexibleContainer">
+                    <div class="boxheader">
+                        <span>
+                            @node.DisplayName
+                        </span>
+                    </div>
+                    <div>
+                        <ul class="menulist" style="@style">
+                            @foreach (var childNode in node.Children)
+                            {
+                                //id==886 means here is RMB 100 highlight
+                                clientEvent = Model.MenuNodeId == 886 ? 
+                                                    "MacroEconomy.OpenRMBHighlightChart(this, '" + childNode.Ric + "')": 
+                                                    "MacroEconomy.OpenMacroEconomyChart(this, '" + childNode.Ric + "')";
+                                
+                                if (childNode.Children.Count() == 0)
+                                {
+                                    <li><a href="#" onclick="@clientEvent">@childNode.DisplayName</a></li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <h2 class="boxsubheader">@childNode.DisplayName</h2>
+                                        <ul class="submenulist">
+                                            @foreach (var c in childNode.Children)
+                                            {
+                                                clientEvent = Model.MenuNodeId == 886 ? 
+                                                             "MacroEconomy.OpenRMBHighlightChart(this, '" + c.Ric + "')" : 
+                                                             "MacroEconomy.OpenMacroEconomyChart(this, '" + c.Ric + "')";
+                                                <li><a href="#" onclick="@clientEvent">@c.DisplayName</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    }
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var MacroEconomy = (function (my) {
+        my.OpenRMBHighlightChart = function (link, name) {
+            $(link).attr("href", "@exportUrl?name=" + name);
+            $(link).css("color", "#ff8000");
+        };
+
+        my.OpenMacroEconomyChart = function (link, ric) {
+            $(link).css("color", "#ff8000");
+            var data = {
+                target: "popup",
+                location: {
+                    x: 200,
+                    y: 100,
+                    width: 600,
+                    height: 400
+                },
+                name: "Graph",
+                entities: [{
+                    "RIC": ric
+                }]
+            };
+            if (JET) {
+                JET.navigate(data);
+            }
+        };
+        return my;
+    } (MacroEconomy || {}));
+</script>

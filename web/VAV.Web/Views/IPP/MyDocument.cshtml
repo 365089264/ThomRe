@@ -1,0 +1,23 @@
+﻿@Scripts.Render("~/js/angular")
+@Scripts.Render("~/js/ippCommon")
+@Scripts.Render("~/js/ippMyDocument")
+<div class="colorBlock" data-ng-app="mydocument" data-ng-controller="MainCtl">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Resources.IPP.IPP_MyDocument</span>
+    </div>
+    <div class="ippTab ui-tabs ui-widget ui-widget-content">
+        <ul class="ui-tabs-nav ui-helper-clearfix">
+            <li><a href="/ipp/MyDocument/FavoriteFiles" data-ng-class="{active: selectTab=='myFavorites'}">@Resources.IPP.IPP_MyFavorite</a></li>
+            <li><a href="/ipp/MyDocument/prePublish" data-ng-class="{active: selectTab=='prePublish'}">@Resources.IPP.IPP_PrePublished</a></li>
+            <li><a href="/ipp/MyDocument/published" data-ng-class="{active: selectTab=='published'}">@Resources.IPP.IPP_Published</a></li>
+             @if (ViewBag.InternalUser)
+             {
+                 <li><a href="/ipp/MyDocument/preApprove" data-ng-class="{active: selectTab=='preApprove'}">@Resources.IPP.IPP_PendingApprove</a></li>
+                 <li><a href="/ipp/MyDocument/approved" data-ng-class="{active: selectTab=='approved'}">@Resources.IPP.IPP_Approveds</a></li>
+                 <li><a href="/ipp/MyDocument/topicManagement" data-ng-class="{active: selectTab=='topicManagement'}">@Resources.IPP.IPP_TopicManagement</a></li>
+             }
+        </ul>
+        <div data-ng-view></div>
+    </div>
+    <hr/>
+</div>

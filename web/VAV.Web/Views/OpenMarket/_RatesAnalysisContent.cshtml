@@ -1,0 +1,30 @@
+﻿@using VAV.Web.ViewModels.OpenMarket
+@model RatesAnalysisReportViewModel
+@{
+    Layout = null;
+}
+<div class="colorBlock" style="height: 50%">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Model.ChartDisplayName</span>
+        <input type="button" value="@Resources.Global.Save_Pic" onclick="showLargeBondChart('open_market_rate_analysis_large_chart_container')" style="margin-top: 7px;float: right;margin-right: 10px;"/>
+    </div>
+    <div id="open_market_rate_analysis_container" style="margin: 10px auto; overflow: auto;
+        height: 85%; height: -webkit-calc(100% - 48px)">
+        @Html.Raw(Model.ChartService.GetOpenChart(null, Model.Chart).ToHtmlString())
+    </div>
+    <div id="open_market_rate_analysis_large_chart_container" style="margin-left: 25px;
+        margin-top: 5px; display: none;">
+        @Html.Raw( Model.ChartService.GetLargeBondChart(null, Model.Chart).ToHtmlString())
+    </div>
+</div>
+<div class="colorBlock" style="height: 50%">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Model.GridDisplayName</span> 
+            <a id="exportButton_@Model.ID" href="#"class="exportExcel" onclick="ExportRatesAnalysisReport(this, @Model.ID);">
+                        <img alt="Export"  src="~/Content/themes/base/images/excel_icon.png" />
+            </a>
+    </div>
+    <div id="detailedGridDiv_@Model.ID" style="overflow: auto;height: 85%;height:-webkit-calc(100% - 48px)">
+        @Html.Partial("_DetailDataReportTable", new DetailDataReportViewModel { ID = Model.ID, Content = Model.GridData })
+    </div>
+</div>

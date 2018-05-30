@@ -1,0 +1,332 @@
+﻿@using VAV.Web.Common
+@{
+    string refreshUrl = VirtualPathUtility.ToAbsolute("~/WMP/GetBrokerWMPData");
+    string exportUrl = VirtualPathUtility.ToAbsolute("~/WMP/ExportExcelWMPBrokerData");
+
+    string datePickerId = "datePicker" + ViewBag.ID;
+    string endDatePickerId = "endDatePicker" + ViewBag.ID;
+    string prodSateId = "prodSate" + ViewBag.ID;
+    string investTypeId = "investType" + ViewBag.ID;
+    string isQdiiId = "IS_QDII" + ViewBag.ID;
+    string productNameId = "productName" + ViewBag.ID;
+    string bankSelectId = "bankSelect" + ViewBag.ID;
+    string lastOrderById = "lastOrderBy" + ViewBag.ID;
+    string emptyMessageId = "emptyMessage" + ViewBag.ID;
+    string advancedButton = "advanced" + ViewBag.ID;
+    string pagerId = "page" + ViewBag.ID;
+    string wmpBrokerDataId = "wmpBrokerData" + ViewBag.ID;
+    string wmpPaginateOfLabelId = "wmpPaginateOfLabel" + ViewBag.ID;
+    string wmpPaginateId = "wmpPaginate" + ViewBag.ID;
+    string wmpDataTableId = "wmpDataTable" + ViewBag.ID;
+    string pmInputId = "pmInput" + ViewBag.ID;
+    string orgnameSelectId = "orgnameSelect" + ViewBag.ID;
+    string prodTypeSelectId = "prodTypeSelect" + ViewBag.ID;
+    string lowestTypeId = "lowestType" + ViewBag.ID;
+    string dateTypeSelectId = "dateTypeSelect" + ViewBag.ID;
+    string includeDateId = "includeDate" + ViewBag.ID;
+
+    string startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).ToString("yyyy-MM-dd");
+    string endDate = DateTime.Now.ToString("yyyy-MM-dd");
+
+    var selectedProducts = Html.Raw(Request.QueryString["products"] ?? "[]");
+}
+
+
+<div class="colorBlock" style="min-width: 982px;">
+    <div class="Statisticalfilter">
+        <div style="height: 25px;">
+            <div class="wmpDiv">@Resources.WMP.Broker_Orgname</div>
+            <div style="float: left;">
+                @Html.DropDownList(orgnameSelectId, UIStaticDataCache.Instance.WmpBrokerOrgType, new { @class = "largeSelect", multiple = "multiple" })
+            </div>
+            <div class="wmpDivSec">@Resources.WMP.Broker_CFP_TYPE</div>
+            <div style="float: left;">
+                @Html.DropDownList(@prodTypeSelectId, UIStaticDataCache.Instance.WMPBrokerProdType, new { @class = "largeSelect" })
+            </div>
+            <div style="float: left;">
+                <input type="button" value="@Resources.Global.Report_Query" onclick="WMP.QueryWMPBrokerData(1,true)"/>
+                <input type="button" value="@Resources.Global.AdvancedSearch" onclick="AdvanceQuery(this,@advancedButton,'#@wmpBrokerDataId','@Resources.Global.AdvancedSearch','@Resources.Global.HideAdvancedSearch','-webkit-calc(100% - 59px)','-webkit-calc(100% - 135px)')"/>
+                <input type="button" value="@Resources.Global.ColumnChooser" onclick="ColumnManager.OpenColumnSetting(@ViewBag.ID, function(){WMP.QueryWMPBrokerData(1,true)})" />
+                <input type="button" value="@Resources.Global.Reset_Columns_Setting" onclick="ColumnManager.ResetColumnSetting(@ViewBag.ID,function(){WMP.QueryWMPBrokerData(1,true)})" />
+            </div>
+        </div>
+        <div id="@advancedButton" style="clear:both;display: none">
+            <div style="height: 25px;">
+                <div class="wmpDiv">@Resources.WMP.Broker_INVEST_CLS</div>
+                <div style="float: left;">@Html.DropDownList(investTypeId, UIStaticDataCache.Instance.WMPBrokerInvestType, new { @class = "largeSelect" })
+                </div>
+                <div class="wmpDivSec">@Resources.WMP.Broker_LOWEST_Amount</div>
+                <div style="float: left;">@Html.DropDownList(lowestTypeId, UIStaticDataCache.Instance.WMPBrokerLowestType, new { @class = "largeSelect" })
+                </div>
+                <div class="wmpDivSec">@Resources.WMP.Broker_IS_QDII</div>
+                <div style="float: left;">@Html.DropDownList(isQdiiId, UIStaticDataCache.Instance.WMPBrokerQdiiType, new { @class = "largeSelect" })
+                </div>
+                <div class="wmpDivSec">@Resources.WMP.Broker_PROD_STATE</div>
+                <div style="float: left;">@Html.DropDownList(prodSateId, UIStaticDataCache.Instance.WMPBrokerStateType, new { @class = "largeSelect" })
+                </div>
+            </div>
+            <div style="height: 25px;">
+                <div class="wmpDiv">@Resources.WMP.Broker_MAG_ORG</div>
+                <div style="float: left;">@Html.DropDownList(bankSelectId, UIStaticDataCache.Instance.WMPBrokerBankType, new { @class = "largeSelect", multiple = "multiple" })
+                </div>
+                <div class="wmpDivSec"><input id="@includeDateId" type="checkbox" /> </div>
+                <div style="float: left;">@Html.DropDownList(dateTypeSelectId, HtmlUtil.CookSelectOptions("WmpBrokerDateType"), new { @class = "largeSelect" })
+                </div>
+                <div class="wmpDivSec">
+                    @Resources.Global.WMP_Sale_Date_From</div>
+                <div style="float: left;">@Html.TextBox(@datePickerId, @startDate, new { @class = "dateInput", @readonly = "readonly", @style = "width:118px;" })
+                </div>
+                <div class="wmpDivSec">@Resources.Global.WMP_Sale_Date_To</div>
+                <div style="float: left;">@Html.TextBox(@endDatePickerId, @endDate, new { @class = "dateInput", @readonly = "readonly", @style = "width:118px;" })
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div style="height: 25px;">
+                <div class="wmpDiv">@Resources.Global.WMP_Prod_Name</div>
+                <div style="float: left;">@Html.TextBox(@productNameId, "", new { @class = "text", @style = "width:116px;" })
+                </div>
+                <div class="wmpDivSec" style="margin:3px 0 0 0;width: 98px;">@Resources.Global.Product_Manager</div>
+                <div style="float: left;">@Html.TextBox(pmInputId, "", new { @class = "text", @style = "width:116px;" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tablewrapper@(ViewBag.ID)" class="colorBlock" style="height: 91%; height: -webkit-calc(100% - 43px);
+    min-width: 955px;">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@ViewBag.Name</span> <a href="#" class="exportExcel" onclick="WMP.ExportExcelWMPBrokerData(this, @ViewBag.ID);">
+            <img alt="Export" title="@Resources.Global.Export_Max" src="~/Content/themes/base/images/excel_icon.png" />
+        </a>
+    </div>
+    <div id="@emptyMessageId" style="display:none; margin-left:10px;">@Resources.Global.Empty_Result</div>
+    <div id="@pagerId">
+        <div id="@wmpPaginateOfLabelId" class="paginateOfLable">
+            1 of 100</div>
+        <div style="width: 300px; float: right; padding-right: 80px">
+            <div id="@wmpPaginateId">
+            </div>
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+    <div id="@wmpBrokerDataId" style="height: 95%; height: -webkit-calc(100% - 60px); min-width: 328px; overflow: auto">
+        <table id="@wmpDataTableId" class="datatable Zebra" style="cursor: pointer;">
+            <thead>
+                <tr class="hr">
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <input id="@lastOrderById" type="hidden" value="" />
+        <div>@Resources.Global.Source</div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var WMP = (function (my) {
+        function updateBrokerPaginate(data) {
+            var start = (data.CurrentPage - 1) * data.PageSize + 1;
+            var end = data.CurrentPage * data.PageSize;
+            if(end > data.Total) end = data.Total;
+            $('#@wmpPaginateOfLabelId').html(start + '-' + end + '@Resources.Global.WMP_of' + data.Total);
+            $('#@wmpPaginateId').paginate({
+                count: Math.ceil(data.Total/data.PageSize),
+                start: data.CurrentPage,
+                display: 10,
+                border: false,
+                text_color: '#00B3E3',
+                background_color: 'none',
+                text_hover_color: '#28D2FF',
+                background_hover_color: 'none',
+                images: false,
+                mouse: 'press',
+                onChange: function (page) {
+                    my.QueryWMPBrokerData(page,false);
+                },
+                firstText:'@Resources.Global.Paginate_First',
+                lastText:'@Resources.Global.Paginate_Last'
+            });
+        }
+        my.UpdateWMPBrokerData = function (data,rh,updatePage) {
+            if(rh) {
+                $.template("colTemp", '<th class="sortColumn" tag="${Sort}" onclick="WMP.SortWMPBrokerData(this, \'${ColumnName}\')">${Name}<span></span></th>');
+                $('#@wmpDataTableId thead tr').empty();
+                $("#@wmpDataTableId thead tr").append('<th>' + WMP.wmpcomparelanguage.compareButtonText + '</th>');
+                $.tmpl("colTemp", data.ColumTemplate).appendTo("#@wmpDataTableId thead tr");
+            }
+            var markup = WMP.BuildRowTemplate(data.ColumTemplate,'/WMP/BrokerWMPDetail/');
+            markup = markup.replace('<tr>','<tr><td><input type="checkbox"  data-inner-code="${INNER_CODE}" data-prd-name="${CFPNAME}" /></td>');
+            $.template("rowTemplate", markup);
+            $('#@wmpDataTableId tbody').empty();
+            $.tmpl("rowTemplate", data.RowData).appendTo("#@wmpDataTableId tbody");
+
+            updatePage = typeof updatePage !== 'undefined' ? updatePage : true;
+            if(updatePage){
+                if(typeof my.brokerCmp != "undefined"){
+                    my.brokerCmp.updatePage();
+                }
+            }
+
+            updateBrokerPaginate(data);
+        };
+        my.SortWMPBrokerData = function(th, orderColumn) {
+            my.AddSortWMPBankTag(th, orderColumn);
+            $("#@wmpDataTableId").data('orderby',orderColumn + " " + $(th).attr('tag'));
+            my.QueryWMPBrokerData(1,false);
+        };
+        my.QueryWMPBrokerData = function(page,rh) {
+            var orgs='all';
+            if($("#@orgnameSelectId option").length==0)
+            {
+                return;;
+            }
+            if($("#@orgnameSelectId option").length!=$("#@orgnameSelectId option:selected").length)
+            {
+                orgs=$("#@orgnameSelectId").val().join();
+            }
+            var banks='all';
+            if($("#@bankSelectId option").length==0)
+            {
+                return;;
+            }
+            if($("#@bankSelectId option").length!=$("#@bankSelectId option:selected").length)
+            {
+                banks=$("#@bankSelectId").val().join();
+            }
+            AjaxWithBlock($('#tablewrapper@(ViewBag.ID)').parent(), "/WMP/GetBrokerWMPData",
+            {
+                includeDate: $("#@includeDateId").is(':checked'),
+                orgs: orgs,
+                prodType: $('#@prodTypeSelectId').val(),
+                investType: $('#@investTypeId').val(),
+                lowest: $('#@lowestTypeId').val(),
+                isQdii: $('#@isQdiiId').val(),
+                prodState: $('#@prodSateId').val(),
+                banks: banks,
+                queryDateType: $('#@dateTypeSelectId').val(),
+                startDate: $('#@datePickerId').val(),
+                endDate: $('#@endDatePickerId').val(),
+                prodName: $('#@productNameId').val(),
+                pmName: $('#@pmInputId').val(),
+                order: $("#@wmpDataTableId").data('orderby'),
+                id: @ViewBag.ID,
+                startPage: page
+            }, function(data) {
+                if (data.Total == 0) {
+                    $("#@emptyMessageId").show();
+                    $("#@pagerId").hide();
+                    $("#@wmpDataTableId").hide();
+                } else {
+                    $("#@emptyMessageId").hide();
+                    $("#@pagerId").show();
+                    $("#@wmpDataTableId").show();
+                    WMP.UpdateWMPBrokerData(data, rh);
+                }
+            });
+        };
+        my.ExportExcelWMPBrokerData = function(link, id) {
+            var orgs='all';
+            if($("#@orgnameSelectId option").length==0)
+            {
+                return;;
+            }
+            if($("#@orgnameSelectId option").length!=$("#@orgnameSelectId option:selected").length)
+            {
+                orgs=$("#@orgnameSelectId").val().join();
+            }
+            var banks='all';
+            if($("#@bankSelectId option").length==0)
+            {
+                return;;
+            }
+            if($("#@bankSelectId option").length!=$("#@bankSelectId option:selected").length)
+            {
+                banks=$("#@bankSelectId").val().join();
+            }
+
+            $(link).attr("href",
+                "@exportUrl?includeDate=" + $("#@includeDateId").is(':checked')
+                            +"&queryDateType=" + $('#@dateTypeSelectId').val()
+                                + '&banks=' + banks
+                                    + '&orgs=' + orgs
+                                        + '&prodType=' + $('#@prodTypeSelectId').val()
+                                            + '&investType=' +$('#@investTypeId').val()
+                                               + '&lowest=' + $('#@lowestTypeId').val()
+                                                   +'&prodState=' + $('#@prodSateId').val()
+                                                        +'&startDate=' + $("#@datePickerId").val()
+                                                            + '&endDate=' + $('#@endDatePickerId').val()
+                                                                + '&prodName=' + $('#@productNameId').val()
+                                                                    +'&isQdii='+$('#@isQdiiId').val()
+                                                                        +'&pmName=' + $('#@pmInputId').val()
+                                                                            + '&order=' + $("#@wmpDataTableId").data('orderby')
+                                                                                +'&startPage=' + $('#@wmpPaginateId .jPag-current').text()
+                                                                                    + '&id=' + id);
+        };
+
+        return my;
+    } (WMP || {}));
+
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        $("#@orgnameSelectId").multiselect({
+            buttonMinWidth: 130,
+            menuMinWidth: 240,
+            checkAllText: '@Resources.Global.Select_All',
+            uncheckAllText: '@Resources.Global.Unselect_All',
+            noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+            selectedText: '# @Resources.Global.Selected'
+        });
+        $("#@bankSelectId").multiselect({
+            buttonMinWidth: 130,
+            menuMinWidth: 240,
+            checkAllText: '@Resources.Global.Select_All',
+            uncheckAllText: '@Resources.Global.Unselect_All',
+            noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+            selectedText: '# @Resources.Global.Selected'
+        });
+
+
+        var wmpBrokerData = @{ Html.RenderAction("GetBrokerWMPData", "WMP", new
+                             {
+                                 includeDate = false,
+                                 orgs = "all",
+                                 prodType = "all",
+                                 investType = "all",
+                                 lowest = "all",
+                                 isQdii = "all",
+                                 prodState = "all",
+                                 banks = "all",
+                                 queryDateType = "all",
+                                 startDate = startDate,
+                                 endDate = endDate,
+                                 prodName = "",
+                                 pmName = "",
+                                 order = "",
+                                 id = ViewBag.ID,
+                                 startPage = 1,
+                                 isHTML = true
+                             }); } ;
+        $("#@wmpDataTableId").data('orderby', '');
+        WMP.UpdateWMPBrokerData(wmpBrokerData,true,false);
+        var cmp = $("#@wmpBrokerDataId").wmpcompare({
+            defaultItems: @selectedProducts,
+            reportId: 67,
+            tabName: WMP.wmpcomparelanguage.BrokerProductsTitle,
+            trace: WMP.wmpcomparelanguage.BrokerProductsTitle,
+            title: WMP.wmpcomparelanguage.BrokerProductsTitle,
+            itemClickHandler: function(code, name) {
+                WMP.OpenBankWMPDetail(code, name, '/WMP/BrokerWMPDetail/');
+            }
+        });
+
+        WMP.brokerCmp = cmp;
+    });
+
+</script>

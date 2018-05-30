@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=filedb;Password=filedb;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=filedb;Password=filedb;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <date-key>
+    <table>RATE_REP_DATA</table>
+    <column>ccxeid</column>
+  </date-key>
+  <delta-hours>
+    24
+  </delta-hours>
+
+  <mappings>
+
+    <table-mapping source="RATE_REP_DATA" destination="RATE_REP_DATA" isOmitColumns="true" isSync="true" isSyncFile ="true" pathRoot="|ZCX|RATE" pathColumn="RATE_FILE_PATH" >
+      <column-mapping source="RATE_ID" destination="RATE_ID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[CCXEID > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND CCXEID <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND ISSYNCED = 1]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

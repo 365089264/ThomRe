@@ -1,0 +1,611 @@
+﻿@model VAV.Web.ViewModels.BondInfo.DimsumBondAnalysisViewModel
+@using VAV.DAL.Common
+@using VAV.Web.Common
+@{
+    var datePickerId = "datePicker" + @Model.ID;
+    var endDatePickerId = "endDatePicker" + @Model.ID;
+
+    var startDate = DateTime.Now.AddYears(-1).ToString("yyyy-MM-dd");
+    var endDate = DateTime.Now.ToString("yyyy-MM-dd");
+
+    var typeSelectId = "tselect" + @Model.ID;
+    var unitSelectId = "uselect" + @Model.ID;
+    var queryButtonId = "query" + @Model.ID;
+    var contentDivId = "contentDiv" + @Model.ID;
+    var reportDivID = "report" + Model.ID;
+    var topDivID = "top" + Model.ID;
+    var bottomDivID = "bottomDiv" + Model.ID;
+    var refreshUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/GetDimSumData");
+    var refreshDetailURL = VirtualPathUtility.ToAbsolute("~/BondInfo/GetDimSumDetailData");
+    var exportDetailUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForDimSumDetail");
+    var exportSummaryUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForDimSumSummary");
+    var exportExcelForBottomChartUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelFroBottomChart");
+    var exportExcelForSummaryChartUrl = VirtualPathUtility.ToAbsolute("~/BondInfo/ExportExcelForSummaryChart");
+    var tabid = "tab" + Model.ID;
+}
+<div class="colorBlock" style="min-width: 880px;">
+    <div id="filterDiv@(Model.ID)" style="margin: 5px 0px 0px 10px; height: 27px;">
+        <div style="float: left;">
+            @Resources.Global.Report_Query_From
+            <input type="text" id="@datePickerId" value="@startDate" class="dateInput" readonly="readonly" />
+            <label style="margin-left: 10px;">@Resources.Global.Report_Query_End</label>
+            <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput" readonly="readonly" />
+            <label style="margin-left: 10px;">@Resources.Global.Report_Type</label>
+            @Html.DropDownList(typeSelectId, HtmlUtil.CookSelectOptions("dimSumBond_option"), new { @class = "medium2Select", @style = "width:auto;" })
+            <label style="margin-left: 10px;">@Resources.Global.Report_Unit</label>
+            @Html.DropDownList(unitSelectId, HtmlUtil.CookSelectOptions("unit"), new { @class = "smallSelect" })
+            <input type="button" id="@queryButtonId" value="@Resources.Global.Report_Query" onclick="BondInfo.UpdateDimSumData(@Model.ID)"/>
+        </div>
+        <div style="float:right; margin:10px 10px 0px 0px">
+            <a target="_blank" href="cpurl://apps.cp./cms/?pageid=offshore-overview" class="commonlink">@Resources.Global.Global_RMB</a>
+        </div>
+    </div>
+</div>
+<div id="@contentDivId" class="StatisticalContent" style="min-width:880px;">
+    <div id="@reportDivID" class="Statistical">
+        <div id="@topDivID" class="StatisticalTop">
+            <div class="StatisticalLeft" style="width: 45%;">
+                <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                    <div class="colorBlock-header">
+                        <div>
+                            <span class="colorBlock-header-span">@Resources.Global.Title_Statistics</span> <a href="#" class="exportExcel"
+                                onclick="BondInfo.ExportExcelDimSumSummary(this, @Model.ID)">
+                                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <div id="gridDiv_@Model.ID" class="gridTable">
+                        <table id="dimsumSmmaryTable" class="datatable Zebra" style="cursor: pointer;">
+                            <thead>
+                                <tr class="hr">
+                                    @foreach (var col in HtmlUtil.CookOptions("dimSumBondSummary_Header"))
+                                    {
+                                        <th>@col.Name
+                                        </th> 
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                         <div>@Resources.Global.Source</div>
+                    </div>
+                </div>
+            </div>
+            <div id="dimsumTopRightDiv" class="StatisticalRight" style="width: 55%;">
+                <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                    <div class="colorBlock-header">
+                        <div>
+                            <span class="colorBlock-header-span">@Resources.Global.Title_StatisticsChart</span> <a href="#" class="exportExcel"
+                                onclick="BondInfo.ExportExcelForSummaryChart(this, @Model.ID)">
+                                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <label for="timeperiod@(Model.ID)" style="margin-left: 10px;">@Resources.Global.Frequency</label>
+                    <select id="timeperiod@(Model.ID)" onchange="BondInfo.dimsumChartChange()" style="width: auto;">
+                        <option value="m">@Resources.Global.SummarizingFrequency_Month</option>
+                        <option value="q">@Resources.Global.SummarizingFrequency_Quarter</option>
+                        <option value="h">@Resources.Global.Half_Year</option>
+                        <option value="y">@Resources.Global.SummarizingFrequency_Year</option>
+                    </select>
+                    <label for="dimsumDataType" style="margin-left: 0">@Resources.Global.Chart_Item</label>
+                    <select id="dimsumDataType" onchange="BondInfo.dimsumChartChange()" style="width: auto;">
+                        <option value="DimSum_Column_IBalance">@Resources.Global.DimSum_Column_IBalance</option>
+                        <option value="DimSum_Column_Issues">@Resources.Global.DimSum_Column_Issues</option>
+                        <option value="DimSum_Column_IssuesPtn">@Resources.Global.DimSum_Column_IssuesPtn</option>
+                        <option value="DimSum_Column_IssueAmount">@Resources.Global.DimSum_Column_IssueAmount</option>
+                        <option value="DimSum_Column_IssueAmountPtn">@Resources.Global.DimSum_Column_IssueAmountPtn</option>
+                        <option value="DimSum_Column_Maturities">@Resources.Global.DimSum_Column_Maturities</option>
+                        <option value="DimSum_Column_MaturitiesPtn">@Resources.Global.DimSum_Column_MaturitiesPtn</option>
+                        <option value="DimSum_Column_MaturityAmount">@Resources.Global.DimSum_Column_MaturityAmount</option>
+                        <option value="DimSum_Column_MaturityAmountPtn">@Resources.Global.DimSum_Column_MaturityAmountPtn</option>
+                        <option value="DimSum_Column_EndBalance">@Resources.Global.DimSum_Column_EndBalance</option>
+                    </select>
+                    <label for="dimsumChartType" style="margin-left: 0;">@Resources.Global.Chart_Type</label>
+                    <select id="dimsumChartType" onchange="BondInfo.dimsumChartChange()" style="width: auto;">
+                        <option value="bar">@Resources.Global.ChatType_Column</option>
+                        <option value="pie">@Resources.Global.ChatType_Pie</option>
+                    </select>
+                    <input type="button" value="@Resources.Global.View_LargeChart" onclick="BondInfo.showDimSumLargeChart()" />
+                    <div id="dimsumChartContainer" class="StatisticalChartContainer"></div>
+                </div>
+            </div>
+        </div>
+        <div id="statistical_report_detail_@Model.ID" class="StatisticalBottom vavtab" style="padding: 0;">
+            <ul>
+                <li><a href="#@(tabid)-1">@Resources.Global.Title_Detail</a></li>
+                <li><a href="#@(tabid)-2">@Resources.Global.DimsumBottomChartTabTitle</a></li>
+            </ul>
+            <div id="@(tabid)-1" class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 40px);">
+                <div class="colorBlock-header">
+                    <div style="float: left;padding-left: 10px;line-height:26px;"><input id="issue@(Model.ID)" type="radio" name="term" value="issue" onclick="BondInfo.UpdateDimSumDetail(@Model.ID)" checked="checked" />
+                        <label for="issue@(Model.ID)" style="font-size: 12px;">@Resources.Global.Issue_Bonds</label>
+                        <input id="maturity@(Model.ID)" type="radio" name="term" value="maturity" style="margin-left: 10px;" onclick="BondInfo.UpdateDimSumDetail(@Model.ID)" />
+                        <label for="maturity@(Model.ID)" style="font-size: 12px;">@Resources.Global.Maturity_Bonds</label>
+                    </div>
+                    <a href="#" class="exportExcel" onclick="BondInfo.ExportExcelDimSumDetail(this, @Model.ID);">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>              
+                    <input type="button" value="@Resources.Global.Reset_Columns_Setting" style="float: right; margin: 3px 10px 0px 0px;" onclick="BondInfo.ResetDimSumColumnChosser(@Model.ID)" />
+                    <input type="button" value="@Resources.Global.ColumnChooser" style="float: right; margin-top: 3px;" onclick="BondInfo.UpdateDimSumColumnChosser(@Model.ID)" /> 
+                    <div style="width: 300px; float: right; padding-right: 80px">
+                        <div id="pricePagePaginate@(Model.ID)">
+                        </div>
+                    </div>
+                    <div id="pricePagePaginateOfLabel@(Model.ID)" class="paginateOfLable" style="float: right;">
+                    </div>
+                    <div style="clear: both">
+                    </div> 
+                </div>
+                <div id="@bottomDivID" class="gridTable" style="width:100%;">
+                    <table id="dimsumDetailTable" class="datatable Zebra" style="cursor: pointer;">
+                        <thead>
+                            <tr class="hr">
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div>@Resources.Global.Source</div>
+                </div>
+            </div>
+            <div id="@(tabid)-2" class="colorBlock" style="height: 100%;height: calc(100% - 40px);">
+                <label style="margin-left: 10px;">@Resources.Global.Chart_Type</label>
+                <select id="dimsumBottomChartType" onchange="BondInfo.RefreshDimsumBottomChart()"
+                        style="width: 120px">
+                    <option value="column" selected="selected">@Resources.Global.ChatType_Column</option>
+                    <option value="line">@Resources.Global.ChatType_Line</option>
+                </select>
+                <label style="margin-left: 10px;">@Resources.Global.Frequency</label>
+                    <select id="bottomPeriod@(Model.ID)" onchange="BondInfo.DimsumBottomChartChange()" style="width: auto;">
+                        <option value="m">@Resources.Global.SummarizingFrequency_Month</option>
+                        <option value="q">@Resources.Global.SummarizingFrequency_Quarter</option>
+                        <option value="h">@Resources.Global.Half_Year</option>
+                        <option value="y">@Resources.Global.SummarizingFrequency_Year</option>
+                    </select>
+                    <label style="margin-left: 0">@Resources.Global.Chart_Item</label>
+                    <select id="bottomDataType@(Model.ID)" onchange="BondInfo.DimsumBottomChartChange()" style="width: auto;">
+                        <option value="DimSum_Column_IBalance">@Resources.Global.DimSum_Column_IBalance</option>
+                        <option value="DimSum_Column_Issues">@Resources.Global.DimSum_Column_Issues</option>
+                        <option value="DimSum_Column_IssuesPtn">@Resources.Global.DimSum_Column_IssuesPtn</option>
+                        <option value="DimSum_Column_IssueAmount">@Resources.Global.DimSum_Column_IssueAmount</option>
+                        <option value="DimSum_Column_IssueAmountPtn">@Resources.Global.DimSum_Column_IssueAmountPtn</option>
+                        <option value="DimSum_Column_Maturities">@Resources.Global.DimSum_Column_Maturities</option>
+                        <option value="DimSum_Column_MaturitiesPtn">@Resources.Global.DimSum_Column_MaturitiesPtn</option>
+                        <option value="DimSum_Column_MaturityAmount">@Resources.Global.DimSum_Column_MaturityAmount</option>
+                        <option value="DimSum_Column_MaturityAmountPtn">@Resources.Global.DimSum_Column_MaturityAmountPtn</option>
+                        <option value="DimSum_Column_EndBalance">@Resources.Global.DimSum_Column_EndBalance</option>
+                    </select>
+                <a href="#" class="exportExcel" onclick="BondInfo.ExportExcelFroBottomChart(this, @Model.ID)">
+                    <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                </a>
+                <div id="dimsumBottomChart" class="StatisticalChartContainer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var BondInfo = (function (my) {
+
+        var lastOrder = "";
+
+        my.BuildTable = function(data) {
+            /*build top table first*/
+            var markup = BondInfo.BuildDimSumSummaryRowTemplate(@Model.ID);
+            $.template("rowTemplate", markup);
+            $('#dimsumSmmaryTable tbody').empty();
+            $.tmpl("rowTemplate", data.TopTable).appendTo("#dimsumSmmaryTable tbody");
+            $("#dimsumSmmaryTable tbody > tr:first").addClass("SelectedRow");
+            my.BuildBottomTableHeader(data.BottomTable);
+            my.BuildBottomTable(data.BottomTable);
+            my.UpdateDimPagination(data.BottomTable, @Model.ID,null, '@Resources.Global.WMP_of', '@Resources.Global.Paginate_First', '@Resources.Global.Paginate_Last',my.UpdateDimSumDetail);
+        };
+
+        my.BuildBottomTableHeader = function(data) {
+            $.template("colTemp", '<th class="sortColumn" tag="${Sort}" onclick="BondInfo.SortDimsumColumn(this, \'${ColumnName}\')">${Name}<span></span></th>');
+            $('#dimsumDetailTable thead tr').empty();
+            $.tmpl("colTemp", data.ColumTemplate).appendTo("#dimsumDetailTable thead tr");
+        };
+
+        my.BuildBottomTable = function(data) {
+            var markup = BondInfo.BuildRowTemplate_DimsumBondAnalysis(data.ColumTemplate, '@Resources.Global.Bond_History_Rating');
+            $.template("rowTemplate", markup);
+            $('#dimsumDetailTable tbody').empty();
+            $.tmpl("rowTemplate", data.RowData).appendTo("#dimsumDetailTable tbody");
+        };
+
+        my.SortDimsumColumn = function(th, order){
+            var direction = $(th).attr('tag');
+            $("#dimsumDetailTable .sortColumn").attr('tag', '');
+
+            switch (direction) {
+                case "ASC":
+                    $(th).attr('tag', 'DESC');
+                    order = order + " " + $(th).attr('tag');
+                    break;
+                case "DESC":
+                    $(th).attr('tag', '');
+                    order = "";
+                    break;
+                case "":
+                    $(th).attr('tag', 'ASC');
+                    order = order + " " + $(th).attr('tag');
+                    break;
+                default:
+                    break;
+            }
+            lastOrder = order;
+            my.UpdateDimSumDetail(@Model.ID, order);
+        };
+
+        my.resetDimsumChart = function(chartObj) {
+            if ($("#tabs>#" + @Model.ID).is(":visible")) {
+                var parent = $('#dimsumChartContainer');
+                setTimeout(function() {
+                    chartObj.setSize(parent.width() - 10, parent.height() - 5, false);
+                }, 200);
+            }
+            if ($("#@(tabid)-2").is(":visible")) {
+                if (BondInfo.dimsumBottomChartObj) {
+                    var bottomChartParent = $('#dimsumBottomChart');
+                    setTimeout(function() {
+                        BondInfo.dimsumBottomChartObj.setSize(bottomChartParent.width() - 10, bottomChartParent.height() - 5, false);
+                    }, 200);
+                }
+            }
+        };
+        my.dimsumChartChange = function() {
+            AjaxWithBlock($('#dimsumTopRightDiv'), "/BondInfo/GetChartData",
+                {
+                    rate: $("#timeperiod@(Model.ID)").val(),
+                    chartType: $('#dimsumChartType').val(),
+                    dataType: $('#dimsumDataType').val(),
+                    start: $("#@datePickerId").val(),
+                    end: $("#@endDatePickerId").val(),
+                    category: $('#@typeSelectId').val(),
+                    unit: $('#@unitSelectId').val()
+                }, my.RefreshDimSumChart);
+        };
+
+        my.RefreshDimSumChart = function(data) {
+            BondInfo.dimsumChartArg = data;
+            var chartParameter = _buildChartParameter(data, 'dimsumChartContainer');
+            BondInfo.dimsumChartObj = new Highcharts.Chart(chartParameter);
+        };
+
+        function _buildChartParameter(data,target) {
+            var param;
+            if (data.ChartType == 'pie') {
+                param =  _buildPieChartParameters(data, target);
+            }
+            else
+            {
+                param = _buildBarChartParameters(data, target);
+                var dataType = $('#dimsumDataType').val();
+                switch (dataType) {
+                    case 'DimSum_Column_IssuesPtn':
+                    case 'DimSum_Column_IssueAmountPtn':
+                    case 'DimSum_Column_MaturitiesPtn':
+                    case 'DimSum_Column_MaturityAmountPtn':
+                        param.yAxis.max = 100;
+                        break;
+                    default:
+                }
+            }
+            param.credits = { href: 'http://thomsonreuters.com/', text: '@Resources.Global.Source' };
+            param.title = {
+                text: '@Resources.Global.DimSumBondStatisticsChart'+ $('#dimsumDataType option[value="' + $('#dimsumDataType').val() + '"]').text()
+            };
+            return param;
+        }
+        function _buildPieChartParameters(chartData, target) {
+            return {
+                chart: {
+                    renderTo: target
+                },
+                tooltip: { formatter: function() { return '<b>' + this.point.name + '</b>: ' + Highcharts.numberFormat(this.y, chartData.Decimal); } },
+                series: [{
+                    type: 'pie',
+                    name: chartData.YText,
+                    data: chartData.PieSeriesData
+                }]
+            };
+        };
+        function _buildBarChartParameters(chartData, target) {
+            return {
+                chart: {
+                    renderTo: target,
+                    type: 'column'
+                },
+                tooltip: {
+                    formatter: function() {
+                        return '<b>'+ this.x +'</b><br/>'+
+                            this.series.name +': '+  Highcharts.numberFormat(this.y,chartData.Decimal) +'<br/>'+
+                            '@Resources.Global.Total : '+  Highcharts.numberFormat(this.point.stackTotal,chartData.Decimal);
+                    }
+                },
+                xAxis: {
+                    categories: chartData.ColumnCategories
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: chartData.YText
+                    },
+                    stackLabels: {
+                        enabled: false
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: false,
+                            formatter: function() { return Highcharts.numberFormat(this.y, chartData.Decimal); }
+                        },
+                        borderWidth: 0, pointPadding: 0.2
+                    }
+                },
+                series: chartData.ColumnSeriesData
+            };
+        };
+
+        my.showDimSumLargeChart = function() {
+            $('<div id="largeDimsumChart"></div>').dialog({
+                resizable: false,
+                height: 500,
+                width: 700,
+                modal: true,
+                open: function() {
+                    debugger;
+                    var chartParameter = _buildChartParameter(BondInfo.dimsumChartArg, 'largeDimsumChart');
+                    var largeChart = new Highcharts.Chart(chartParameter);
+                },
+                close: function() {
+                    $('#largeDimsumChart').dialog("destroy");
+                }
+            });
+        };
+        my.UpdateDimSumData = function(id) {
+            var startDate = parseDate($('#@datePickerId').val());
+            var endDate = parseDate($('#@endDatePickerId').val());
+            if(startDate>endDate)
+            {
+                alert('@Resources.Global.DateVerifyWarning');
+                return;
+            }
+
+            AjaxWithBlock($('#@contentDivId'), "@refreshUrl",
+                {
+                    rate: $("#timeperiod@(Model.ID)").val(),
+                    start: $('#@datePickerId').val(),
+                    end: $('#@endDatePickerId').val(),
+                    category: $('#@typeSelectId').val(),
+                    unit: $('#@unitSelectId').val(),
+                    id: id,
+                    chartType: $('#dimsumChartType').val(),
+                    dataType: $('#dimsumDataType').val(),
+                    bottomDataType:$('#bottomDataType@(Model.ID)').val(),
+                    bottomRate:$('#bottomPeriod@(Model.ID)').val(),
+                    term:$('input:radio[name=term]:checked').val()
+                }, function(data) {
+                    BondInfo.BuildTable(data);
+                    BondInfo.RefreshDimSumChart(data.Chart);
+                    BondInfo.BuildDimsumBottomChart(data.BottomChart);
+                });
+        };
+
+        //For handling click event triggered in the summary table
+        my.RefreshDimSumDetail = function(row, id) {
+            $("#dimsumSmmaryTable .SelectedRow").removeClass("SelectedRow");
+            $(row).addClass("SelectedRow");
+            my.UpdateDimSumDetail(id);
+            my.DimsumBottomChartChange();
+        };
+
+        //For handling event triggered when updating and reseting column chooser
+        my.UpdateDimSumDetail = function(id, order,page) {
+            lastOrder = "";
+            if (page == null) page = 1;
+            AjaxWithBlock($('#@bottomDivID'), "@refreshDetailURL",
+                {
+                    start: $('#@datePickerId').val(),
+                    end: $('#@endDatePickerId').val(),
+                    category: $('#@typeSelectId').val(),
+                    typeValue: $('#dimsumSmmaryTable .SelectedRow').attr('tag'),
+                    unit: $('#@unitSelectId').val(),
+                    term: $('input:radio[name=term]:checked').val(),
+                    id: id,
+                    order: order,
+                    startPage: page,
+                    pageSize: 300
+                }, function(data) {
+                    if(typeof order === "undefined")
+                    {
+                        $(".sortColumn").attr('tag', '');
+                        my.BuildBottomTableHeader(data);
+                    }
+                    my.BuildBottomTable(data);
+                    my.UpdateDimPagination(data, id,order, '@Resources.Global.WMP_of', '@Resources.Global.Paginate_First', '@Resources.Global.Paginate_Last',my.UpdateDimSumDetail);
+                });
+        };
+        my.UpdateDimPagination = function (data, reportId,order, text, ftext, ltext, callback) {
+            debugger;
+            if (data.Total == 0) {
+                $('#pricePagePaginateOfLabel' + reportId + ',#pricePagePaginate' + reportId).hide();
+                return;
+            } else {
+                $('#pricePagePaginateOfLabel' + reportId + ',#pricePagePaginate' + reportId).show();
+            }
+            my.UpdateDimPaginationLabel(data.CurrentPage, 300, data.Total, reportId, text);
+            $('#pricePagePaginate' + reportId).paginate({
+                count: Math.ceil(data.Total / 300),
+                start: data.CurrentPage,
+                display: 10,
+                border: false,
+                text_color: '#00B3E3',
+                background_color: 'none',
+                text_hover_color: '#28D2FF',
+                background_hover_color: 'none',
+                images: false,
+                mouse: 'press',
+                onChange: function (page) {
+                    callback(reportId,order, page);
+                },
+                firstText: ftext,
+                lastText: ltext
+            });
+        };
+        my.UpdateDimPaginationLabel = function (current, pageSize, total, reportId, text) {
+            debugger;
+            my.page = current;
+            var start = (current - 1) * pageSize + 1;
+            var end = current * pageSize;
+            if (end > total) end = total;
+            $('#pricePagePaginateOfLabel' + reportId).html(start + '-' + end + text + total);
+        };
+        my.UpdateDimSumColumnChosser = function(id) {
+            ColumnManager.OpenColumnSetting(id, my.UpdateDimSumDetail);
+        };
+
+        my.ResetDimSumColumnChosser = function(id) {
+            ColumnManager.ResetColumnSetting(id, my.UpdateDimSumDetail);
+        };
+        my.page = 1;
+        my.ExportExcelDimSumDetail = function(link, id) {
+            $(link).attr("href",
+                "@exportDetailUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()
+                        + '&category=' +  $('#@typeSelectId').val()
+                            + '&typeValue=' + $('#dimsumSmmaryTable .SelectedRow').attr('tag')
+                                + '&unit=' + $('#@unitSelectId').val()
+                                    + '&term=' + $('input:radio[name=term]:checked').val()
+                                        + '&reportName=@Model.Name'
+                                            + '&id=' + id
+                                                + '&order=' + lastOrder
+                                                +'&startPage='+my.page
+                                                +'&pageSize=300'
+            );
+        };
+
+        my.ExportExcelDimSumSummary = function(link, id) {
+            $(link).attr("href",
+                "@exportSummaryUrl?start=" + $('#@datePickerId').val()
+                    + '&end=' + $('#@endDatePickerId').val()
+                        + '&category=' +  $('#@typeSelectId').val()
+                            + '&unit=' + $('#@unitSelectId').val()
+                                + '&reportName=@Model.Name'
+                + '&id=' + id
+            );
+        };
+
+        my.ExportExcelFroBottomChart = function(link, id){
+            $(link).attr("href",
+               "@exportExcelForBottomChartUrl?start=" + $('#@datePickerId').val()
+                   + '&end=' + $('#@endDatePickerId').val()
+                       + '&category=' +  $('#@typeSelectId').val()
+                           + '&unit=' + $('#@unitSelectId').val()
+                              + '&dataType=' + $('#bottomDataType@(Model.ID)').val()
+                                 + '&rate=' + $('#bottomPeriod@(Model.ID)').val()
+                                    + '&typeValue=' + $('#dimsumSmmaryTable .SelectedRow').attr('tag')
+                                       //+ '&id=' + id
+           );
+        };
+
+        my.ExportExcelForSummaryChart = function(link, id){
+            $(link).attr("href",
+               "@exportExcelForSummaryChartUrl?start=" + $('#@datePickerId').val()
+                   + '&end=' + $('#@endDatePickerId').val()
+                       + '&category=' +  $('#@typeSelectId').val()
+                           + '&unit=' + $('#@unitSelectId').val()
+                              + '&dataType=' + $('#dimsumDataType').val()
+                                 + '&rate=' + $('#timeperiod@(Model.ID)').val()
+           );
+        };
+
+        //bottom chart below:
+        my.DimsumBottomChartChange = function() {
+            AjaxWithBlock($('#dimsumBottomChart'), '@Url.Action("GetDimsumBottomChart","BondInfo")', {
+                start: $('#@datePickerId').val(),
+                end: $('#@endDatePickerId').val(),
+                category: $('#@typeSelectId').val(),
+                unit: $('#@unitSelectId').val(),
+                dataType: $('#bottomDataType@(Model.ID)').val(),
+                rate: $('#bottomPeriod@(Model.ID)').val(),
+                typeValue: $('#dimsumSmmaryTable .SelectedRow').attr('tag')
+            }, BondInfo.BuildDimsumBottomChart);
+        };
+
+        my.BuildDimsumBottomChart = function(data) {
+            BondInfo.dimsumBottomChartData = data;
+
+            var chartParameter = {
+                chart: {
+                    renderTo: 'dimsumBottomChart',
+                    type: $('#dimsumBottomChartType').val()
+                },
+                title: {
+                    text: '@Resources.Global.DimsumBottomChartTitle' +'(' + $("#@typeSelectId option:selected").text()
+                         + ') - ' + $('#bottomDataType@(Model.ID) option[value="' + $('#bottomDataType@(Model.ID)').val() + '"]').text()
+                },
+                xAxis: {
+                    categories: data.ColumnCategories
+                },
+                yAxis: {
+                    title: { text: data.YText },
+                },
+                series: data.SeriesData,
+                tooltip: {
+                    formatter: function() {
+                        var s = this.x;
+                        s += '<br/><span style="color:' + this.point.series.color + '">' + this.point.series.name + '</span>: ' + Highcharts.numberFormat(this.point.y, data.Decimal);
+                        return s;
+                    }
+                }
+            };
+
+            BondInfo.dimsumBottomChartObj = new Highcharts.Chart(chartParameter);
+        };
+
+        my.RefreshDimsumBottomChart = function() {
+            my.BuildDimsumBottomChart(BondInfo.dimsumBottomChartData);
+        };
+
+
+        return my;
+
+    } (BondInfo || {}));
+
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+        var dimSumData = @{ Html.RenderAction("GetDimSumData", "BondInfo", new
+                            {
+                                start = startDate, 
+                                end = endDate, 
+                                category = ConstValues.Option_DomicileOfIssuer, 
+                                unit = ConstValues.Unit_100M, 
+                                chartType = "bar", 
+                                id = Model.ID, 
+                                dataType = "DimSum_Column_IBalance" ,
+                                isHTML = true,
+                                bottomRate = "m",
+                                bottomDataType = "DimSum_Column_IBalance",
+                                term="issue",
+                                startPage= 1,
+                                pageSize= 300
+                            }); };
+        BondInfo.BuildTable(dimSumData);
+        BondInfo.RefreshDimSumChart(dimSumData.Chart);
+        BondInfo.BuildDimsumBottomChart(dimSumData.BottomChart);
+        //BondInfo.resetDimsumChart(BondInfo.dimsumChartObj);
+        amplify.subscribe('RefreshChart', function () { BondInfo.resetDimsumChart(BondInfo.dimsumChartObj); });
+        $( "#statistical_report_detail_@Model.ID" ).tabs({});
+    });
+
+</script>

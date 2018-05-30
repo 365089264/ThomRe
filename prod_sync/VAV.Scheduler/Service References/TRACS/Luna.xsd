@@ -1,0 +1,1021 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://TRACS.ThomsonReuters.com/Luna" elementFormDefault="qualified" targetNamespace="http://TRACS.ThomsonReuters.com/Luna" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/Common" />
+  <xs:import namespace="http://TRACS.ThomsonReuters.com/" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:complexType name="LunaRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://TRACS.ThomsonReuters.com/" base="q1:ServiceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CalculateFloatingRateNoteAsFixedRateBond" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CurveRequestList" nillable="true" type="tns:ArrayOfCurveRequest" />
+          <xs:element minOccurs="0" name="EnableShift" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FundingCost" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfLUNACommonBondRequest" />
+          <xs:element minOccurs="0" name="LunaIndices" nillable="true" type="tns:ArrayOfLunaIndex" />
+          <xs:element minOccurs="0" name="PricingMode" nillable="true" type="tns:PricingMode" />
+          <xs:element xmlns:q2="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PxType" nillable="true" type="q2:PxType" />
+          <xs:element minOccurs="0" name="ReinvestmentRate" nillable="true" type="xs:double" />
+          <xs:element xmlns:q3="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RepoRateList" nillable="true" type="q3:ArrayOfRepoRateRequest" />
+          <xs:element minOccurs="0" name="ReportCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="YieldShift" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="YieldWorkoutType" nillable="true" type="tns:ListYieldWorkoutType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaRequest" nillable="true" type="tns:LunaRequest" />
+  <xs:complexType name="ArrayOfCurveRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CurveRequest" nillable="true" type="tns:CurveRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurveRequest" nillable="true" type="tns:ArrayOfCurveRequest" />
+  <xs:complexType name="CurveRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurveIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurveName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CurveSource" type="q4:CurveSource" />
+      <xs:element xmlns:q5="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CurveType" nillable="true" type="q5:LunaCurveType" />
+      <xs:element xmlns:q6="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="InterpolationMode" nillable="true" type="q6:InterpolationMode" />
+      <xs:element minOccurs="0" name="OverriddenPoints" nillable="true" type="tns:ArrayOfCurveRequest.CurvePoint" />
+      <xs:element minOccurs="0" name="PivotDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShiftDate" nillable="true" type="xs:dateTime" />
+      <xs:element xmlns:q7="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="ShiftType" nillable="true" type="q7:CurveShiftType" />
+      <xs:element minOccurs="0" name="ShiftValue" nillable="true" type="xs:double" />
+      <xs:element xmlns:q8="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="SpreadType" nillable="true" type="q8:CurveShiftType" />
+      <xs:element minOccurs="0" name="SpreadValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="UserShiftScenario" nillable="true" type="tns:ArrayOfCurveRequest.ShiftedCurvePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurveRequest" nillable="true" type="tns:CurveRequest" />
+  <xs:complexType name="ArrayOfCurveRequest.CurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CurveRequest.CurvePoint" nillable="true" type="tns:CurveRequest.CurvePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurveRequest.CurvePoint" nillable="true" type="tns:ArrayOfCurveRequest.CurvePoint" />
+  <xs:complexType name="CurveRequest.CurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurveRequest.CurvePoint" nillable="true" type="tns:CurveRequest.CurvePoint" />
+  <xs:complexType name="ArrayOfCurveRequest.ShiftedCurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CurveRequest.ShiftedCurvePoint" nillable="true" type="tns:CurveRequest.ShiftedCurvePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurveRequest.ShiftedCurvePoint" nillable="true" type="tns:ArrayOfCurveRequest.ShiftedCurvePoint" />
+  <xs:complexType name="CurveRequest.ShiftedCurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Delta" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurveRequest.ShiftedCurvePoint" nillable="true" type="tns:CurveRequest.ShiftedCurvePoint" />
+  <xs:complexType name="ArrayOfLUNACommonBondRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LUNACommonBondRequest" nillable="true" type="tns:LUNACommonBondRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLUNACommonBondRequest" nillable="true" type="tns:ArrayOfLUNACommonBondRequest" />
+  <xs:complexType name="LUNACommonBondRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaCommonRequestItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdjustPaymentDates" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AsOfDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BondId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CalculateFloatingRateNoteAsFixedRateBond" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CapitalNormalization" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CashFlowsEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CashFlowsStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="CoCDayCountBasis" nillable="true" type="q9:Enumerations.DayCountBasis" />
+          <xs:element minOccurs="0" name="CurveName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DetailedCostOfCarryOutput" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HistoricalPriceAskField" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HistoricalPriceBidField" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IndexName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PeriodEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PeriodStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PositionTable" nillable="true" type="tns:PositionTable" />
+          <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+          <xs:element xmlns:q10="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PriceType" nillable="true" type="q10:QuoteType" />
+          <xs:element xmlns:q11="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PxType" nillable="true" type="q11:PxType" />
+          <xs:element minOccurs="0" name="RequestTimestamp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SettlementDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SettlementRule" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Yield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="YieldWorkoutType" nillable="true" type="tns:InstrumentYieldWorkoutType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LUNACommonBondRequest" nillable="true" type="tns:LUNACommonBondRequest" />
+  <xs:complexType name="LunaCommonRequestItem">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="LunaCommonRequestItem" nillable="true" type="tns:LunaCommonRequestItem" />
+  <xs:complexType name="LUNAFloatingRateNoteRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LUNACommonBondRequest">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CalculationMethod" nillable="true" type="q12:CalcMethod" />
+          <xs:element minOccurs="0" name="CurrentCoupon" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ProjectedIndex" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReferenceData" nillable="true" type="tns:FRNReferenceData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LUNAFloatingRateNoteRequest" nillable="true" type="tns:LUNAFloatingRateNoteRequest" />
+  <xs:complexType name="FRNReferenceData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonReferenceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdfStructure" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FRNFormula" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FRNIndexRic" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FRNReferenceData" nillable="true" type="tns:FRNReferenceData" />
+  <xs:complexType name="CommonReferenceData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdfinSettlementStructure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BondStructure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Coupon" type="xs:double" />
+      <xs:element minOccurs="0" name="IssuerDomicilCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Maturity" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PrincipalCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RateStructure" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommonReferenceData" nillable="true" type="tns:CommonReferenceData" />
+  <xs:complexType name="FRBReferenceData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonReferenceData">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FRBReferenceData" nillable="true" type="tns:FRBReferenceData" />
+  <xs:complexType name="LUNAFixedRateBondRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LUNACommonBondRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReferenceData" nillable="true" type="tns:FRBReferenceData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LUNAFixedRateBondRequest" nillable="true" type="tns:LUNAFixedRateBondRequest" />
+  <xs:complexType name="OpenRepo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaCommonRequestItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CashFlowElements" nillable="true" type="tns:LunaOTCGenericCashFlowElements" />
+          <xs:element minOccurs="0" name="IssueDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MaturityDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NotionalAmount" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="NotionalCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SettlementDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TradeDate" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OpenRepo" nillable="true" type="tns:OpenRepo" />
+  <xs:complexType name="LunaOTCGenericCashFlowElements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Table" nillable="true" type="tns:ArrayOfLunaOTCGenericCashFlowElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericCashFlowElements" nillable="true" type="tns:LunaOTCGenericCashFlowElements" />
+  <xs:complexType name="ArrayOfLunaOTCGenericCashFlowElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LunaOTCGenericCashFlowElement" nillable="true" type="tns:LunaOTCGenericCashFlowElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLunaOTCGenericCashFlowElement" nillable="true" type="tns:ArrayOfLunaOTCGenericCashFlowElement" />
+  <xs:complexType name="LunaOTCGenericCashFlowElement">
+    <xs:sequence>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AccruedCalculation" nillable="true" type="q13:Enumerations.AccruedCalculation" />
+      <xs:element minOccurs="0" name="BaseInstrumentUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaseInstrumentUnitType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaseValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BaseValueDenominator" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CashFlowAdjustment" nillable="true" type="xs:boolean" />
+      <xs:element xmlns:q14="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CashFlowElementType" nillable="true" type="q14:CashFlowElementTypeEnum" />
+      <xs:element minOccurs="0" name="CashFlowSchedules" nillable="true" type="tns:ArrayOfLunaOTCGenericCashFlowSchedule" />
+      <xs:element minOccurs="0" name="CollateralInput" nillable="true" type="tns:Collateral" />
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="CouponCalculationMethod" nillable="true" type="q15:Enumerations.CouponCalculationMethod" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Formula" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnderlyingInstrumentCalculationMethod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnderlyingInstrumentFixingFrequency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnderlyingInstrumentFixingLag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnderlyingInstrumentIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnderlyingInstrumentIdentifierType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnderlyingInterestRate" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericCashFlowElement" nillable="true" type="tns:LunaOTCGenericCashFlowElement" />
+  <xs:complexType name="ArrayOfLunaOTCGenericCashFlowSchedule">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LunaOTCGenericCashFlowSchedule" nillable="true" type="tns:LunaOTCGenericCashFlowSchedule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLunaOTCGenericCashFlowSchedule" nillable="true" type="tns:ArrayOfLunaOTCGenericCashFlowSchedule" />
+  <xs:complexType name="LunaOTCGenericCashFlowSchedule">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Calendar" nillable="true" type="xs:string" />
+      <xs:element xmlns:q16="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CashFlowScheduleType" nillable="true" type="q16:CashFlowScheduleTypeEnum" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="DateMovingConvention" nillable="true" type="q17:Enumerations.DateMovingConventionType" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="EndOfMonthConvention" nillable="true" type="q18:Enumerations.EndOfMonthConvention" />
+      <xs:element minOccurs="0" name="FirstRegularCouponDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstRegularDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FixingLag" nillable="true" type="xs:string" />
+      <xs:element xmlns:q19="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="Frequency" nillable="true" type="q19:Frequency" />
+      <xs:element minOccurs="0" name="LastRegularCouponDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastRegularDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericCashFlowSchedule" nillable="true" type="tns:LunaOTCGenericCashFlowSchedule" />
+  <xs:complexType name="Collateral">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="RelatedInstrumentIdentifier" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Collateral" nillable="true" type="tns:Collateral" />
+  <xs:complexType name="LunaOTCGenericInputs">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaOTCGenericInputsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="OptimizedCalculations" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SettlementDate" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericInputs" nillable="true" type="tns:LunaOTCGenericInputs" />
+  <xs:complexType name="LunaOTCGenericInputsBase">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaCommonRequestItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CashFlowElements" nillable="true" type="tns:LunaOTCGenericCashFlowElements" />
+          <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="CoCDayCountBasis" nillable="true" type="q20:Enumerations.DayCountBasis" />
+          <xs:element minOccurs="0" name="DetailedCostOfCarryOutput" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GainDayCountBasis" nillable="true" type="q21:Enumerations.DayCountBasis" />
+          <xs:element xmlns:q22="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="HistoricalCashFlows" nillable="true" type="q22:ArrayOfCashflow" />
+          <xs:element minOccurs="0" name="IndexName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IssueDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MaturityDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NotionalAmount" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="NotionalCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PeriodEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PeriodStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PositionTable" nillable="true" type="tns:PositionTable" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericInputsBase" nillable="true" type="tns:LunaOTCGenericInputsBase" />
+  <xs:complexType name="PositionTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Positions" nillable="true" type="tns:ArrayOfPosition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PositionTable" nillable="true" type="tns:PositionTable" />
+  <xs:complexType name="ArrayOfPosition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Position" nillable="true" type="tns:Position" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPosition" nillable="true" type="tns:ArrayOfPosition" />
+  <xs:complexType name="Position">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DirtyPrice" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="PositionAmount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="TransactionDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Position" nillable="true" type="tns:Position" />
+  <xs:complexType name="Swap">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaCommonRequestItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CalculateKeyRateDuration" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CashFlowsEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CashFlowsStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="CoCDayCountBasis" nillable="true" type="q23:Enumerations.DayCountBasis" />
+          <xs:element minOccurs="0" name="DetailedCostOfCarryOutput" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GainDayCountBasis" nillable="true" type="q24:Enumerations.DayCountBasis" />
+          <xs:element xmlns:q25="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="HistoricalCashFlows" nillable="true" type="q25:ArrayOfCashflow" />
+          <xs:element minOccurs="0" name="IndexName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IssueDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="LegItems" nillable="true" type="tns:ArrayOfLeg" />
+          <xs:element minOccurs="0" name="MaturityDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NotionalAmount" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="NotionalCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PeriodEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PeriodStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PositionTable" nillable="true" type="tns:PositionTable" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Swap" nillable="true" type="tns:Swap" />
+  <xs:complexType name="ArrayOfLeg">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Leg" nillable="true" type="tns:Leg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLeg" nillable="true" type="tns:ArrayOfLeg" />
+  <xs:complexType name="Leg">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CashFlowElements" nillable="true" type="tns:ArrayOfCashFlowElement" />
+      <xs:element minOccurs="0" name="DiscountCurveName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForwardCurveName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Leg" nillable="true" type="tns:Leg" />
+  <xs:complexType name="ArrayOfCashFlowElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CashFlowElement" nillable="true" type="tns:CashFlowElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCashFlowElement" nillable="true" type="tns:ArrayOfCashFlowElement" />
+  <xs:complexType name="CashFlowElement">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="CashFlowElement" nillable="true" type="tns:CashFlowElement" />
+  <xs:complexType name="DU">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CashFlowElement">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BaseInstrumentUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BaseInstrumentUnitType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BaseValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DU" nillable="true" type="tns:DU" />
+  <xs:complexType name="Generic">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CashFlowElement">
+        <xs:sequence>
+          <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AccruedCalculation" nillable="true" type="q26:Enumerations.AccruedCalculation" />
+          <xs:element minOccurs="0" name="BaseInstrumentUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BaseInstrumentUnitType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BaseValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="BaseValueDenominator" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CashFlowAdjustment" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q27="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CashFlowElementType" nillable="true" type="q27:CashFlowElementTypeEnum" />
+          <xs:element minOccurs="0" name="CashFlowSchedules" nillable="true" type="tns:ArrayOfLunaOTCGenericCashFlowSchedule" />
+          <xs:element minOccurs="0" name="CollateralInput" nillable="true" type="tns:Collateral" />
+          <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="CouponCalculationMethod" nillable="true" type="q28:Enumerations.CouponCalculationMethod" />
+          <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Formula" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UnderlyingInstrumentCalculationMethod" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnderlyingInstrumentFixingFrequency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnderlyingInstrumentFixingLag" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnderlyingInstrumentIdentifier" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnderlyingInstrumentIdentifierType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnderlyingInterestRate" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Generic" nillable="true" type="tns:Generic" />
+  <xs:complexType name="Received">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Leg">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Received" nillable="true" type="tns:Received" />
+  <xs:complexType name="Paid">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Leg">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Paid" nillable="true" type="tns:Paid" />
+  <xs:complexType name="LunaOTCGenericIRSInputs">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaOTCGenericInputsBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericIRSInputs" nillable="true" type="tns:LunaOTCGenericIRSInputs" />
+  <xs:simpleType name="InstrumentYieldWorkoutType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="YTM" />
+      <xs:enumeration value="YTA" />
+      <xs:enumeration value="YTB" />
+      <xs:enumeration value="YTW" />
+      <xs:enumeration value="YTC" />
+      <xs:enumeration value="YTP" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InstrumentYieldWorkoutType" nillable="true" type="tns:InstrumentYieldWorkoutType" />
+  <xs:complexType name="ArrayOfLunaIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LunaIndex" nillable="true" type="tns:LunaIndex" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLunaIndex" nillable="true" type="tns:ArrayOfLunaIndex" />
+  <xs:complexType name="LunaIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IndexName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IndexPoints" nillable="true" type="tns:ArrayOfLunaIndexPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LunaIndex" nillable="true" type="tns:LunaIndex" />
+  <xs:complexType name="ArrayOfLunaIndexPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LunaIndexPoint" nillable="true" type="tns:LunaIndexPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLunaIndexPoint" nillable="true" type="tns:ArrayOfLunaIndexPoint" />
+  <xs:complexType name="LunaIndexPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FundingCost" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ReinvestmentRate" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LunaIndexPoint" nillable="true" type="tns:LunaIndexPoint" />
+  <xs:simpleType name="PricingMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FromMarketPrice" />
+      <xs:enumeration value="FromCurve" />
+      <xs:enumeration value="FromPriceAndCurve" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PricingMode" nillable="true" type="tns:PricingMode" />
+  <xs:simpleType name="ListYieldWorkoutType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="YTM" />
+      <xs:enumeration value="YTA" />
+      <xs:enumeration value="YTN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ListYieldWorkoutType" nillable="true" type="tns:ListYieldWorkoutType" />
+  <xs:complexType name="LunaResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q29="http://TRACS.ThomsonReuters.com/" base="q29:ServiceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreditCurves" nillable="true" type="tns:ArrayOfCreditCurveResponse" />
+          <xs:element minOccurs="0" name="CrossCurrencies" nillable="true" type="tns:ArrayOfCrossCurrencyResponse" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfLunaBaseBondResponse" />
+          <xs:element minOccurs="0" name="ZeroCurves" nillable="true" type="tns:ArrayOfZeroCurveResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaResponse" nillable="true" type="tns:LunaResponse" />
+  <xs:complexType name="ArrayOfCreditCurveResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CreditCurveResponse" nillable="true" type="tns:CreditCurveResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCreditCurveResponse" nillable="true" type="tns:ArrayOfCreditCurveResponse" />
+  <xs:complexType name="CreditCurveResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CurveBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfCreditCurveResponse.CreditCurvePoint" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreditCurveResponse" nillable="true" type="tns:CreditCurveResponse" />
+  <xs:complexType name="CurveBase">
+    <xs:sequence>
+      <xs:element xmlns:q30="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="AppliedSpreadType" nillable="true" type="q30:CurveShiftType" />
+      <xs:element minOccurs="0" name="AppliedSpreadValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CurveName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurveRIC" nillable="true" type="xs:string" />
+      <xs:element xmlns:q31="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CurveShiftType" nillable="true" type="q31:CurveShiftType" />
+      <xs:element xmlns:q32="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="InterpolationMode" nillable="true" type="q32:InterpolationMode" />
+      <xs:element minOccurs="0" name="IsSpreadApplied" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PivotDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RealShift" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ShiftDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurveBase" nillable="true" type="tns:CurveBase" />
+  <xs:complexType name="ZeroCurveResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CurveBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Points" nillable="true" type="tns:ArrayOfZeroCurveResponse.ZeroCurvePoint" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZeroCurveResponse" nillable="true" type="tns:ZeroCurveResponse" />
+  <xs:complexType name="ArrayOfZeroCurveResponse.ZeroCurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZeroCurveResponse.ZeroCurvePoint" nillable="true" type="tns:ZeroCurveResponse.ZeroCurvePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZeroCurveResponse.ZeroCurvePoint" nillable="true" type="tns:ArrayOfZeroCurveResponse.ZeroCurvePoint" />
+  <xs:complexType name="ZeroCurveResponse.ZeroCurvePoint">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CurveBase.CurvePoint">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DiscountFactor" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedDiscountFactor" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ZeroCurveResponse.ZeroCurvePoint" nillable="true" type="tns:ZeroCurveResponse.ZeroCurvePoint" />
+  <xs:complexType name="CurveBase.CurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ShiftedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShiftedRate" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Tenor" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurveBase.CurvePoint" nillable="true" type="tns:CurveBase.CurvePoint" />
+  <xs:complexType name="ArrayOfCreditCurveResponse.CreditCurvePoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CreditCurveResponse.CreditCurvePoint" nillable="true" type="tns:CreditCurveResponse.CreditCurvePoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCreditCurveResponse.CreditCurvePoint" nillable="true" type="tns:ArrayOfCreditCurveResponse.CreditCurvePoint" />
+  <xs:complexType name="CreditCurveResponse.CreditCurvePoint">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CurveBase.CurvePoint">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreditCurveResponse.CreditCurvePoint" nillable="true" type="tns:CreditCurveResponse.CreditCurvePoint" />
+  <xs:complexType name="ArrayOfCrossCurrencyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CrossCurrencyResponse" nillable="true" type="tns:CrossCurrencyResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCrossCurrencyResponse" nillable="true" type="tns:ArrayOfCrossCurrencyResponse" />
+  <xs:complexType name="CrossCurrencyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrencyPair" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExchangeRate" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CrossCurrencyResponse" nillable="true" type="tns:CrossCurrencyResponse" />
+  <xs:complexType name="ArrayOfLunaBaseBondResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LunaBaseBondResponse" nillable="true" type="tns:LunaBaseBondResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLunaBaseBondResponse" nillable="true" type="tns:ArrayOfLunaBaseBondResponse" />
+  <xs:complexType name="LunaBaseBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaCommonResponseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Accrued" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AccruedInterestOneDayMore" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AsOfDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BPV" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="BondId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q33="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="BondType" type="q33:BondType" />
+          <xs:element xmlns:q34="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="Cashflows" nillable="true" type="q34:ArrayOfCashflow" />
+          <xs:element minOccurs="0" name="CleanPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Convexity" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CostOfCarryTable" nillable="true" type="tns:CostOfCarryTable" />
+          <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="GrossPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ModifiedDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="PricingMode" nillable="true" type="tns:PricingMode" />
+          <xs:element xmlns:q35="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PxType" nillable="true" type="q35:PxType" />
+          <xs:element minOccurs="0" name="ShiftedAccrued" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedAccruedInterestOneDayMore" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedAvgLife" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedBPV" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedConvexity" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedModDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedPrice" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedYield" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="Yield" nillable="true" type="xs:double" />
+          <xs:element xmlns:q36="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="YieldWorkoutType" nillable="true" type="q36:YieldWorkoutType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaBaseBondResponse" nillable="true" type="tns:LunaBaseBondResponse" />
+  <xs:complexType name="LunaCommonResponseItem">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q37="http://TRACS.ThomsonReuters.com/" base="q37:ServiceItemResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaCommonResponseItem" nillable="true" type="tns:LunaCommonResponseItem" />
+  <xs:complexType name="LunaOTCOpenRepoResponseItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaCommonResponseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccruedInterest" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AccruedInterestOneDayMore" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCOpenRepoResponseItem" nillable="true" type="tns:LunaOTCOpenRepoResponseItem" />
+  <xs:complexType name="LunaStraightBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaBaseBondResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AverageLife" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaStraightBondResponse" nillable="true" type="tns:LunaStraightBondResponse" />
+  <xs:complexType name="LunaFloatingRateBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaBaseBondResponse">
+        <xs:sequence>
+          <xs:element xmlns:q38="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="CalculationMethod" nillable="true" type="q38:CalcMethod" />
+          <xs:element minOccurs="0" name="CurrentCoupon" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="DiscountMargin" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="EffectiveDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="IndexDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ProjectedIndex" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedDiscountMargin" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedIndexDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedSimpleMargin" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedSpreadDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SimpleMargin" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SpreadDuration" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaFloatingRateBondResponse" nillable="true" type="tns:LunaFloatingRateBondResponse" />
+  <xs:complexType name="LunaOTCGenericStraightBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaOTCGenericCommonBondResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cashflows" nillable="true" type="tns:ArrayOfLunaOTCStraightBondCashFlow" />
+          <xs:element minOccurs="0" name="Delta" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericStraightBondResponse" nillable="true" type="tns:LunaOTCGenericStraightBondResponse" />
+  <xs:complexType name="LunaOTCGenericCommonBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaOTCGenericBondResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccruedInterest" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="AccruedInterestOneDayMore" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="CostOfCarryTable" nillable="true" type="tns:CostOfCarryTable" />
+          <xs:element minOccurs="0" name="NetPresentValue" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericCommonBondResponse" nillable="true" type="tns:LunaOTCGenericCommonBondResponse" />
+  <xs:complexType name="LunaOTCGenericBondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaCommonResponseItem">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericBondResponse" nillable="true" type="tns:LunaOTCGenericBondResponse" />
+  <xs:complexType name="LunaOTCGenericFloatingRateNoteResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaOTCGenericCommonBondResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cashflows" nillable="true" type="tns:ArrayOfLunaOTCFloatingRateBondCashFlow" />
+          <xs:element minOccurs="0" name="DeltaDiscountCurve" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="DeltaForwardCurve" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCGenericFloatingRateNoteResponse" nillable="true" type="tns:LunaOTCGenericFloatingRateNoteResponse" />
+  <xs:complexType name="ArrayOfLunaOTCFloatingRateBondCashFlow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LunaOTCFloatingRateBondCashFlow" nillable="true" type="tns:LunaOTCFloatingRateBondCashFlow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLunaOTCFloatingRateBondCashFlow" nillable="true" type="tns:ArrayOfLunaOTCFloatingRateBondCashFlow" />
+  <xs:complexType name="LunaOTCFloatingRateBondCashFlow">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaOTCCommonCashFlow">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AnnualRate" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCFloatingRateBondCashFlow" nillable="true" type="tns:LunaOTCFloatingRateBondCashFlow" />
+  <xs:complexType name="LunaOTCCommonCashFlow">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Interest" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Principal" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LunaOTCCommonCashFlow" nillable="true" type="tns:LunaOTCCommonCashFlow" />
+  <xs:complexType name="LunaOTCInterestRateSwapItemResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaCommonResponseItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cashflows" nillable="true" type="tns:ArrayOfIRSCashflow" />
+          <xs:element minOccurs="0" name="CostOfCarryTable" nillable="true" type="tns:CostOfCarryTable" />
+          <xs:element minOccurs="0" name="KeyRateDurationData" nillable="true" type="tns:ArrayOfKeyRateDurationData" />
+          <xs:element minOccurs="0" name="NetPresentValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="PaidLegAccrued" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="PaidLegAccruedOneDayMore" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="PaidLegDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="PaidLegNPV" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="PaidLegPVBP" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="PaidLegSensitivity" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReceivedLegAccrued" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReceivedLegAccruedOneDayMore" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReceivedLegDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReceivedLegNPV" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReceivedLegPVBP" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReceivedLegSensitivity" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedNetPresentValue" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedPaidLegNPV" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ShiftedReceivedLegNPV" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SwapAccrued" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SwapAccruedOneDayMore" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SwapDuration" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="SwapPVBP" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCInterestRateSwapItemResponse" nillable="true" type="tns:LunaOTCInterestRateSwapItemResponse" />
+  <xs:complexType name="ArrayOfIRSCashflow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IRSCashflow" nillable="true" type="tns:IRSCashflow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIRSCashflow" nillable="true" type="tns:ArrayOfIRSCashflow" />
+  <xs:complexType name="IRSCashflow">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PaidDiscountFactor" nillable="true" type="xs:double">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PaidLegCouponPercentage" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="PaidLegCouponValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="PaidNotionalAmount" nillable="true" type="xs:double">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PaidRate" nillable="true" type="xs:double">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReceivedDiscountFactor" nillable="true" type="xs:double">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReceivedLegCouponPercentage" nillable="true" type="xs:double">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReceivedLegCouponValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ReceivedNotionalAmount" nillable="true" type="xs:double">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReceivedRate" nillable="true" type="xs:double">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IRSCashflow" nillable="true" type="tns:IRSCashflow" />
+  <xs:complexType name="CostOfCarryTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccumulatedCouponPayment" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="AccumulatedPrincipal" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CostOfCarryPoints" nillable="true" type="tns:ArrayOfCostOfCarryPoint" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DayCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SumCostCarry" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="SumGainOnCoupon" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="SumGainOnPrincipal" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CostOfCarryTable" nillable="true" type="tns:CostOfCarryTable" />
+  <xs:complexType name="ArrayOfCostOfCarryPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CostOfCarryPoint" nillable="true" type="tns:CostOfCarryPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCostOfCarryPoint" nillable="true" type="tns:ArrayOfCostOfCarryPoint" />
+  <xs:complexType name="CostOfCarryPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccumulatedCouponPayment" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="AccumulatedPrincipalPayment" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="CostOfCarry" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Days" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DirtyPriceAmount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="FundingCost" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="GainOnCoupon" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="GainOnPrincipal" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ReinvestmentRate" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CostOfCarryPoint" nillable="true" type="tns:CostOfCarryPoint" />
+  <xs:complexType name="ArrayOfKeyRateDurationData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyRateDurationData" nillable="true" type="tns:KeyRateDurationData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyRateDurationData" nillable="true" type="tns:ArrayOfKeyRateDurationData" />
+  <xs:complexType name="KeyRateDurationData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurveName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KeyRateDuration" nillable="true" type="tns:ArrayOfKeyRateDuration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KeyRateDurationData" nillable="true" type="tns:KeyRateDurationData" />
+  <xs:complexType name="ArrayOfKeyRateDuration">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyRateDuration" nillable="true" type="tns:KeyRateDuration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKeyRateDuration" nillable="true" type="tns:ArrayOfKeyRateDuration" />
+  <xs:complexType name="KeyRateDuration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PaidLegPVBP" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ReceivedLegPVBP" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="SwapPVBP" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KeyRateDuration" nillable="true" type="tns:KeyRateDuration" />
+  <xs:complexType name="ArrayOfLunaOTCStraightBondCashFlow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LunaOTCStraightBondCashFlow" nillable="true" type="tns:LunaOTCStraightBondCashFlow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLunaOTCStraightBondCashFlow" nillable="true" type="tns:ArrayOfLunaOTCStraightBondCashFlow" />
+  <xs:complexType name="LunaOTCStraightBondCashFlow">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LunaOTCCommonCashFlow">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LunaOTCStraightBondCashFlow" nillable="true" type="tns:LunaOTCStraightBondCashFlow" />
+  <xs:complexType name="ArrayOfZeroCurveResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ZeroCurveResponse" nillable="true" type="tns:ZeroCurveResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZeroCurveResponse" nillable="true" type="tns:ArrayOfZeroCurveResponse" />
+  <xs:complexType name="GeneralLunaRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q39="http://TRACS.ThomsonReuters.com/" base="q39:ServiceRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AsOfDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CurvePreferences" nillable="true" type="tns:ArrayOfCurvePreference" />
+          <xs:element minOccurs="0" name="EnableShift" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FundingCost" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="GovCorpOptions" nillable="true" type="tns:GovCorpOptions" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfLunaCommonRequestItem" />
+          <xs:element minOccurs="0" name="LunaIndices" nillable="true" type="tns:ArrayOfLunaIndex" />
+          <xs:element minOccurs="0" name="MarketData" nillable="true" type="tns:ArrayOfCurveRequest" />
+          <xs:element minOccurs="0" name="PreferInstrumentCurveNames" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ReinvestmentRate" nillable="true" type="xs:double" />
+          <xs:element minOccurs="0" name="ReportCurrency" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestTimestamp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShiftDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SuppressIRSCashflowsDetails" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="YieldShift" nillable="true" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GeneralLunaRequest" nillable="true" type="tns:GeneralLunaRequest" />
+  <xs:complexType name="ArrayOfCurvePreference">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CurvePreference" nillable="true" type="tns:CurvePreference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurvePreference" nillable="true" type="tns:ArrayOfCurvePreference" />
+  <xs:complexType name="CurvePreference">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurveName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurvePreference" nillable="true" type="tns:CurvePreference" />
+  <xs:complexType name="DiscountCurvePreference">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CurvePreference">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DiscountCurvePreference" nillable="true" type="tns:DiscountCurvePreference" />
+  <xs:complexType name="ForwardCurvePreference">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CurvePreference">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ForwardCurvePreference" nillable="true" type="tns:ForwardCurvePreference" />
+  <xs:complexType name="GovCorpOptions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CalculateFloatingRateNoteAsFixedRateBond" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PricingMode" nillable="true" type="tns:PricingMode" />
+      <xs:element xmlns:q40="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="PxType" nillable="true" type="q40:PxType" />
+      <xs:element xmlns:q41="http://TRACS.ThomsonReuters.com/Common" minOccurs="0" name="RepoRateList" nillable="true" type="q41:ArrayOfRepoRateRequest" />
+      <xs:element minOccurs="0" name="YieldWorkoutType" nillable="true" type="tns:ListYieldWorkoutType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GovCorpOptions" nillable="true" type="tns:GovCorpOptions" />
+  <xs:complexType name="ArrayOfLunaCommonRequestItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LunaCommonRequestItem" nillable="true" type="tns:LunaCommonRequestItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLunaCommonRequestItem" nillable="true" type="tns:ArrayOfLunaCommonRequestItem" />
+  <xs:complexType name="GeneralLunaResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q42="http://TRACS.ThomsonReuters.com/" base="q42:ServiceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CrossCurrencies" nillable="true" type="tns:ArrayOfCrossCurrencyResponse" />
+          <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfLunaCommonResponseItem" />
+          <xs:element minOccurs="0" name="MarketData" nillable="true" type="tns:ArrayOfCurveBase" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GeneralLunaResponse" nillable="true" type="tns:GeneralLunaResponse" />
+  <xs:complexType name="ArrayOfLunaCommonResponseItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LunaCommonResponseItem" nillable="true" type="tns:LunaCommonResponseItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLunaCommonResponseItem" nillable="true" type="tns:ArrayOfLunaCommonResponseItem" />
+  <xs:complexType name="ArrayOfCurveBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CurveBase" nillable="true" type="tns:CurveBase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurveBase" nillable="true" type="tns:ArrayOfCurveBase" />
+</xs:schema>

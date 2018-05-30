@@ -1,0 +1,123 @@
+﻿@using System.Web.Script.Serialization
+@using VAV.Web.Common;
+@using VAV.Web.ViewModels.Bond;
+
+@model BondIssueAmountReport
+@{
+    var datePickerId = "datePicker" + @Model.ID;
+    var endDatePickerId = "endDatePicker" + @Model.ID;
+    var contentDivId = "contentDiv" + @Model.ID;
+
+    var typeSelectId = "tselect" + @Model.ID;
+    var secTypeSelectId = "secTypeSelectId" + @Model.ID;
+
+    var unitSelectId = "uselect" + @Model.ID;
+
+    var startDate = ViewData["StartDate"];
+    var endDate = ViewData["EndDate"];
+    
+    var issueAmountReportUrl = VirtualPathUtility.ToAbsolute("~/BondReport/GetIssueAmountReportContent");
+    var refreshBondDetailUrl = VirtualPathUtility.ToAbsolute("~/BondReport/RefreshBondDetail");
+    var updateSubTypeOptionsUrl = VirtualPathUtility.ToAbsolute("~/BondReport/UpdateSubTypeOptions");
+    var s = new JavaScriptSerializer();
+    var topChart = s.Serialize(Model.Chart);
+
+    Layout = null;
+}
+<div class="colorBlock" style="min-width:980px;">
+    <div id="filterDiv" style="margin: 5px 0px 0px 10px; height:27px;">
+        <div style="float: left;">
+            @Resources.Global.Report_Query_From
+            <input type="text" id="@datePickerId" value="@startDate" class="dateInput" readonly/>
+            <label>@Resources.Global.Report_Query_End</label>
+            <input type="text" id="@endDatePickerId" value="@endDate" class="dateInput" readonly/>
+            <label>@Resources.Global.Report_Type</label>
+            <select id="@typeSelectId" class="medium2Select" onchange="UpdateSubTypeOptions(@Model.ID)">
+                @foreach (var o in HtmlUtil.CookOptions("bond_market_classify"))
+                {
+                    <option value="@o.ID">@o.Name</option>    
+                }
+            </select>
+        </div>
+
+        <div style="float:left;">
+            <div class="colorBlock">
+                <div id="optionDiv">@Html.DropDownList("subTypeOptionSelect", UIStaticDataCache.Instance.AssetClass, new { @class = "largeSelect", multiple = "multiple" })</div>
+            </div>
+            <input type="hidden" id="selectedOptionCount" value="0"/>
+        </div>
+
+        <div style="float: left;">
+            <input type="checkbox" id="useSecType"/>@Resources.Global.Sec_Type
+            <select id="@secTypeSelectId" name="coption" class="medium2Select">
+                @foreach (var o in HtmlUtil.CookOptions("bond_market_classify"))
+                {
+                    <option value="@o.ID">@o.Name</option>    
+                }
+            </select>
+            <label>@Resources.Global.Report_Unit</label>
+            <select id="@unitSelectId" name="unit" class="smallSelect">
+                @foreach (var o in HtmlUtil.CookOptions("unit"))
+                {
+                    <option value="@o.ID">@o.Name</option>    
+                }
+            </select>
+            
+            <input type="button" id="_queryButtonId" value="@Resources.Global.Report_Query" onclick="GetIssueAmountReport(@Model.ID)"/>
+        </div>
+        <input type="hidden" id="issueAmountReportId" value="@Model.ID"/>
+        <input type="hidden" id="issueAmountReportName" value="@Model.ReportName"/>
+    </div>
+</div>
+<div id="@contentDivId" class="StatisticalContent" style="min-width:880px;">
+    @Html.Partial("_IssueAmountReportContent", Model)
+</div>
+<script type="text/javascript">
+    window.issueAmountReportUrl = '@issueAmountReportUrl';
+    window.refreshBondDetailUrl = '@refreshBondDetailUrl';
+    window.updateSubTypeOptionsUrl = '@updateSubTypeOptionsUrl';
+
+    $(function () {
+        $("#@datePickerId, #@endDatePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+
+        refreshTopChart("@Model.ID", "@topChart");
+        $("#ui-datepicker-div").css("border", "solid 1px black");
+
+        $("#subTypeOptionSelect").multiselect({
+            buttonMinWidth: 115,
+            menuMinWidth: 240,
+            checkAllText: '@Resources.Global.Select_All',
+            uncheckAllText: '@Resources.Global.Unselect_All',
+            noneSelectedText: '@Resources.Global.Tip_PleaseSelect',
+            selectedText: '# @Resources.Global.Selected'
+        });
+    });
+
+    function updateTopCharts() {
+        refreshTopChart("@Model.ID", "@topChart");
+    }
+
+    function triggerTopChartsChange(id) {
+        $("#topchart_ddl2_" + id).change();
+    }
+
+    function UpdateSubTypeOptions(reportId) {
+        var type = $('#tselect' + reportId + ' option:selected').val();
+        $.ajax({
+            type: 'POST',
+            url: window.updateSubTypeOptionsUrl,
+            data: {
+                type: type
+            },
+            success: function (data) {
+                $("#subTypeOptionSelect").html(data);
+                $("#subTypeOptionSelect").multiselect('refresh');
+            },
+            async: true
+        });
+    }
+ </script>

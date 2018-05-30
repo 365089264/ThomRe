@@ -1,0 +1,83 @@
+﻿<div class="colorBlock ">
+    <div class="filterBlock">
+        <div style="margin: 0 10px;">
+            <label>
+                @Resources.IPP.IPP_Module
+            </label>
+            <select style="width: 150px;" data-ng-options="m as m.Name for m in modules" data-ng-model="selectedModule"
+                    data-ng-change="ModuleChanged()"></select>
+            <label>
+                @Resources.IPP.IPP_Topic
+            </label>
+            <input type="text" ng-model="topic" />
+            <input type="button" value="@Resources.IPP.IPP_Query" ng-click="queryTopic()" />
+            <input type="radio" name="favoritetype" ng-click="showFile()" style="margin-left: 20px;" /><label style="padding-left: 0;">@Resources.IPP.IPP_File</label>
+            <input type="radio" name="favoritetype" checked="checked" style="margin-left: 20px;" /><label style="padding-left: 0;">@Resources.IPP.IPP_Topic</label>
+        </div>
+    </div>
+    <div loading-block class="colorBlock">
+        <div ng-show="topics.length == 0 && showEmptyResultText" style="margin: 10px;">@Resources.Global.Empty_Result</div>
+        <div ng-show="topics.length > 0">
+            <div pagination-label class="paginateOfLable"></div>
+            <div style="width: 300px; float: right; padding-right: 80px">
+                <div pagination-pager>
+                </div>
+            </div>
+            <div style="clear: both">
+            </div>
+        </div>
+        <table ng-show="topics.length > 0" class="datatable">
+            <thead>
+                <tr>
+                    <th sort order="(isEn ? 'Topic.NAMEEN' : 'Topic.NAMECN')" by="orderBy.FIELD" asc="orderBy.asc">
+                        @Resources.IPP.IPP_Topic
+                    </th>
+                    <th sort order="(isEn ? 'ModuleInfo.NAMEEN' : 'ModuleInfo.NAMECN')" by="orderBy.FIELD" asc="orderBy.asc">
+                        @Resources.IPP.IPP_Module
+                    </th>
+                    <th sort order="'CREATER'" by="orderBy.FIELD" asc="orderBy.asc">
+                        @Resources.IPP.IPP_Creater
+                    </th>
+                    <th sort order="(isEn ? 'DESCRIPTIONEN' : 'DESCRIPTIONCN')" by="orderBy.FIELD" asc="orderBy.asc">
+                        @Resources.IPP.IPP_Descr
+                    </th>
+                    <th sort order="'CREATEDATE'" by="orderBy.FIELD" asc="orderBy.asc">
+                        @Resources.IPP.IPP_Create_Date
+                    </th>
+                    <th sort order="'HITS'" by="orderBy.FIELD" asc="orderBy.asc">
+                        @Resources.IPP.IPP_Hit
+                    </th>
+                    <th>
+                        @Resources.IPP.IPP_IsFollowing
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in topics">
+                    <td class="width-limited" title="{{ isEn ? item.NAMEEN : item.NAMECN}}">
+                        <a class="link" href="javascript:void(0);" ng-click="openTopic(item)">{{ isEn ? item.NAMEEN : item.NAMECN}}</a>
+                    </td>
+                    <td>
+                        {{(isEn ? item.MODULENAMEEN : item.MODULENAMECN)}}
+                    </td>
+                    <td>
+                        {{item.CREATER}}
+                    </td>
+                    <td class="width-limited" title="{{isEn ? item.DESCRIPTIONEN : item.DESCRIPTIONCN}}">
+                        {{ isEn ? item.DESCRIPTIONEN : item.DESCRIPTIONCN}}
+                    </td>
+                    <td>
+                        {{item.CREATEDATE}}
+                    </td>
+                    <td class="number-td">
+                        {{item.HITS}}
+                    </td>
+                    <td class="button-td">
+                        <input type="button" ng-click="toggleFollowTopic(item)" ng-hide="item.FOLLOWING" value="@Resources.IPP.IPP_Follow" />
+                        <input type="button" ng-click="toggleFollowTopic(item)" ng-show="item.FOLLOWING" value="@Resources.IPP.IPP_UnFollow" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

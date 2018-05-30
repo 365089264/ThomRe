@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=pgenius;Password=pgenius;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=filedb;Password=filedb;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+
+  <mappings>
+    <table-mapping source="BANK_FIN_PRD_PROSP" destination="BANK_FIN_PRD_PROSP_DATA"  
+                   destinationFilePath="/WMP/RROSP" pathColumn="ACCE_ROUTE">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ACCE_ROUTE" destination="ACCE_ROUTE"/>
+      <column-mapping source="CTIME" destination="CTIME"/>
+      <column-mapping source="MTIME" destination="MTIME"/>
+      <filter>
+        <![CDATA[MTIME > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND MTIME <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="BANK_FIN_PRD_PROSP" destination="BANK_FIN_PRD_PROSP_DATA"  isCheckFileSynced="true"
+                   destinationFilePath="/WMP/RROSP" pathColumn="ACCE_ROUTE">
+      <column-mapping source="INNER_CODE" destination="INNER_CODE" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ACCE_ROUTE" destination="ACCE_ROUTE"/>
+      <column-mapping source="CTIME" destination="CTIME"/>
+      <column-mapping source="MTIME" destination="MTIME"/>
+      <filter>
+        <![CDATA[ MTIME >= TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam')-1 AND MTIME <=TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    
+    <table-mapping source="FIN_PRD_RPT" destination="FIN_PRD_RPT_DATA" 
+                     destinationFilePath="/WMP/PRD_RPT" pathColumn="ACCE_ROUTE">
+      <column-mapping source="RPT_ID" destination="RPT_ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ACCE_ROUTE" destination="ACCE_ROUTE"/>
+      <column-mapping source="CTIME" destination="CTIME"/>
+      <column-mapping source="MTIME" destination="MTIME"/>
+      <filter>
+        <![CDATA[MTIME > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND MTIME <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="FIN_PRD_RPT" destination="FIN_PRD_RPT_DATA"  isCheckFileSynced="true"
+                     destinationFilePath="/WMP/PRD_RPT" pathColumn="ACCE_ROUTE">
+      <column-mapping source="RPT_ID" destination="RPT_ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ACCE_ROUTE" destination="ACCE_ROUTE"/>
+      <column-mapping source="CTIME" destination="CTIME"/>
+      <column-mapping source="MTIME" destination="MTIME"/>
+      <filter>
+        <![CDATA[ MTIME >= TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam')-1 AND MTIME <= TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="DISC_ACCE_CFP" destination="DISC_ACCE_CFP_DATA" 
+                   destinationFilePath="/WMP/DISC_CFP" pathColumn="ACCE_ROUTE">
+      <column-mapping source="DISC_ID" destination="DISC_ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ACCE_ORDER" destination="ACCE_ORDER" isKey="true" />
+      <column-mapping source="ACCE_ROUTE" destination="ACCE_ROUTE"/>
+      <column-mapping source="CTIME" destination="CTIME"/>
+      <column-mapping source="MTIME" destination="MTIME"/>
+      <filter>
+        <![CDATA[MTIME > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND MTIME <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    <table-mapping source="DISC_ACCE_CFP" destination="DISC_ACCE_CFP_DATA"  isCheckFileSynced="true"
+                   destinationFilePath="/WMP/DISC_CFP" pathColumn="ACCE_ROUTE">
+      <column-mapping source="DISC_ID" destination="DISC_ID" isKey="true" isImmutableKey="true"/>
+      <column-mapping source="ACCE_ORDER" destination="ACCE_ORDER" isKey="true" />
+      <column-mapping source="ACCE_ROUTE" destination="ACCE_ROUTE"/>
+      <column-mapping source="CTIME" destination="CTIME"/>
+      <column-mapping source="MTIME" destination="MTIME"/>
+      <filter>
+        <![CDATA[ MTIME >= TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam')-1 AND MTIME <= TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

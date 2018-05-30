@@ -1,0 +1,143 @@
+﻿@model VAV.Web.ViewModels.IPP.IPPTopic
+
+@using System.Threading
+@using VAV.Web.Common
+@using VAV.Web.Localization
+
+@{
+    Layout = null;
+    ViewBag.Title = "Top Editor";
+    var datePickerId = "TopicSubmitDate";
+    var fileSizeAlert = Resources.IPP.IPP_File_Size_Alert;
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<div class="colorBlock" style="height:600px; margin-top:5px; min-width: 800px ;overflow:auto;">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Resources.IPP.IPP_Uplaod_Topic_Header</span>
+    </div>
+    @using (Html.BeginForm("UploadTopic", "IPP", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+        <div id="alertMessage"></div>
+        
+        @Html.HiddenFor(m => m.ID)
+        <ol class="IPP_ol">
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Title_Cn *</label></div>
+                @Html.TextBoxFor(m => m.NameCn, new { @class = "IPPFELargeDiv" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Title_En *</label></div>
+                @Html.TextBoxFor(m => m.NameEn, new { @class = "IPPFELargeDiv" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Module</label></div>
+                @Html.DropDownListFor(m => m.ModuleID, @Model.ModuleItems, new { @class = "IPPFEDpl" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_thumbnail</label></div>
+                @Html.TextBoxFor(m => m.ImageName, new { @style="margin-left:15px; width:570px;" })
+                <input type="button" style="width:77px;" value="@Resources.IPP.IPP_Upload" id="uploadBtn" onclick="TopicEditor.Upload()"/>
+                <input type="file" name="image" id="image" style="display:none"/>
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Desc_Cn</label></div>
+                @Html.TextAreaFor(m => m.DescriptionCn, new { @class = "IPPFETextArea" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Desc_En</label></div>
+                @Html.TextAreaFor(m => m.DescriptionEn, new { @class = "IPPFETextArea" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel" style="padding-top:3px;"><label>@Resources.IPP.IPP_Need_Approve</label></div>
+                <div style="float:left;">
+                    <div id="approval">
+                        @Html.RadioButtonFor(m => m.IsApprove, true, new { @style = "margin-left:15px;" })<label>@Resources.IPP.IPP_Yes</label>
+                        @Html.RadioButtonFor(m => m.IsApprove, false, new { @style = "margin-left:5px;" })<label>@Resources.IPP.IPP_No</label><br />
+                    </div>
+                    <div class="inAprroval">
+                        <div style="padding-top:10px; width: 100px; margin-left:30px; float:left;"><label>@Resources.IPP.IPP_Internal_Need_Approve</label></div>
+                        <div style="float:left; margin-top:7px;">
+                            @Html.RadioButtonFor(m => m.IsInternalApprove, true, new { @style = "margin-left:5px;" })<label>@Resources.IPP.IPP_Yes</label>
+                            @Html.RadioButtonFor(m => m.IsInternalApprove, false, new { @style = "margin-left:5px;" })<label>@Resources.IPP.IPP_No</label>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="IPPFERightLabel" style="width:120px;padding-top:3px;"><label>@Resources.IPP.IPP_Allow_Edit_Delete</label></div>
+                    @Html.RadioButtonFor(m => m.IsDirectDelete, true, new { @style = "margin-left:15px;" })<label>@Resources.IPP.IPP_Yes</label>
+                    @Html.RadioButtonFor(m => m.IsDirectDelete, false, new { @style = "margin-left:5px;" })<label>@Resources.IPP.IPP_No</label>
+                <div style="clear:both;"></div> 
+            </li>
+            <li class="inAprroval">
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Approvers</label></div>
+                @Html.TextBoxFor(m => m.Approver, new { @class = "IPPFELargeDiv", placeholder = @Resources.IPP.IPP_Sperator, onfocus = "this.placeholder = ''", onblur = "this.placeholder = '" + @Resources.IPP.IPP_Sperator + "'" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_Tag</label></div>
+                @Html.TextBoxFor(m => m.Tag, new { @class = "IPPFELargeDiv", placeholder = @Resources.IPP.IPP_Sperator, onfocus = "this.placeholder = ''", onblur = "this.placeholder = '" + @Resources.IPP.IPP_Sperator + "'" })
+            </li>
+            <li>
+                <div class="IPPFELeftLabel"><label>@Resources.IPP.IPP_RM_Link</label></div>
+                @Html.TextBoxFor(m => m.RMLink, new { @class = "IPPFELargeDiv" })
+            </li>
+        </ol>
+        <div style="margin: 20px 0px 0px 350px">
+            <input type="submit" value="@Resources.IPP.IPP_Save" name="submit" id="saveBtn" onclick="return FileEditor.CheckFile()"/>
+            <input type="submit" value="@Resources.IPP.IPP_Cancle" id="cancleBtn" onclick="$('#tempDailog').dialog('close');return false;" />
+        </div>
+    }
+</div>
+
+
+<script type="text/javascript">
+    var TopicEditor = (function (my) {
+        my.CheckFile = function () {
+            var fileList = $("#image")[0].files;
+            if (fileList.length == 0 && $('#ImageName').val() == '') {
+                $('#alertMessage').text('@Resources.IPP.IPP_File_Not_Null');
+                return false;
+            }
+
+            $("#alertMessage").text('');
+            for (var i = 0, file; file = fileList[i]; i++) {
+                var fileExtension = file.name.split('.')[file.name.split('.').length - 1].toLowerCase();
+                var iConvert = (file.size / 1024).toFixed(2);
+                if (file.size > (5 * 1024 * 1024)) {
+                    $('#alertMessage').text('@Resources.IPP.IPP_File_Size_Alert');
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        };
+
+        my.Upload = function () {
+            $('#image').trigger('click');
+        }
+
+        return my;
+    } (TopicEditor || {}))
+
+    $(function () {
+        $("#approval input:radio").change(function (event) {
+            $(".inAprroval").toggle();
+        });
+
+        if ($("#IsApprove:checked").val() == 'True') {
+            $(".inAprroval").show();
+        }
+        else
+            $(".inAprroval").hide();
+
+        $.datepicker.setDefaults($.datepicker.regional["@Thread.CurrentThread.CurrentUICulture.Name"]);
+
+        $("#@datePickerId").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
+    }); 
+</script>

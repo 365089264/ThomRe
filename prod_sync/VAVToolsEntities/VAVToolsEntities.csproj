@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{54B13031-A56E-4387-8256-CAB2C8C4551C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VAVToolsEntities</RootNamespace>
+    <AssemblyName>VAVToolsEntities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BondDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BondDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BondDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BondDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BondDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="IPP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IPP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IPP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IPP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SCHEDULERLOG.cs">
+      <DependentUpon>VAVTools.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOPIC.cs">
+      <DependentUpon>IPP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VavEntityExtension.cs" />
+    <Compile Include="VAVTools.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VAVTools.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VAVTools.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VAVTools.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VAVTools.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VAVTools.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="V_BOND_CN.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_BOND_EN.cs">
+      <DependentUpon>BondDB.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="BondDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BondDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BondDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BondDB.edmx</DependentUpon>
+      <LastGenOutput>BondDB.Context.cs</LastGenOutput>
+    </None>
+    <None Include="BondDB.edmx.diagram">
+      <DependentUpon>BondDB.edmx</DependentUpon>
+    </None>
+    <None Include="BondDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BondDB.edmx</DependentUpon>
+      <LastGenOutput>BondDB.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="IPP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>IPP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <EntityDeploy Include="VAVTools.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VAVTools.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="VAVTools.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VAVTools.edmx</DependentUpon>
+      <LastGenOutput>VAVTools.Context.cs</LastGenOutput>
+    </None>
+    <None Include="VAVTools.edmx.diagram">
+      <DependentUpon>VAVTools.edmx</DependentUpon>
+    </None>
+    <None Include="VAVTools.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VAVTools.edmx</DependentUpon>
+      <LastGenOutput>VAVTools.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IPP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IPP.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="IPP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IPP.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,45 @@
+﻿@using VAV.Web.ViewModels.GDT
+@model GdtBalanceTableViewModel
+@{
+    var balanceCategoryId = "balanceCategory" + @Model.ContentId;
+    var balanceRegionId = "balanceRegion" + @Model.ContentId;
+    var balanceTableId = "balanceTable" + @Model.ContentId;
+}
+<div class="StatisticalContent" style="min-width: 500px;width:-webkit-calc(100% - 3px);padding:0px 0px;margin:-2px 0px 0px -2px; height: 100%;">
+    <div class="Statistical">
+        <div class="colorBlock">
+            <div style="margin: 5px 0px 5px 10px;">
+                @Resources.Global.Category_Variety
+                <select id="@balanceCategoryId" name="coption" class="smallSelect" onchange="BalanceTable.BuildRegionQuery('@Model.ContentId')" >
+                </select>
+                <label style="margin-left: 10px;">@Resources.CnE.CNE_Region</label>
+                <select id="@balanceRegionId" name="coption" class="largeSelect" >
+                </select>
+                <input type="button"  value="@Resources.Global.Report_Query" onclick="BalanceTable.GetTable('@Model.ContentId')"/>
+                <a href="#" class="exportExcel" onclick="BalanceTable.ExportBalanceData(this,'@Model.ContentId')">
+                    <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                </a>
+            </div>
+        </div>
+        <div class="colorBlock" style="height: 91%; height: -webkit-calc(100% - 48px)">
+            <div class="ui-layout-pane" style="height: 100%;">
+                <table id="@balanceTableId" class="datatable Zebra">
+                    <thead>
+                        <tr class="hr">
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var data = @{ Html.RenderAction("GetBalanceTabletData", "GDT", new { }); } ;
+        debugger;
+        BalanceTable.BuildQuery(data.filterData,'@Model.ContentId');
+        BalanceTable.BuildTable(data.TableData,'@Model.ContentId');
+    });
+</script>

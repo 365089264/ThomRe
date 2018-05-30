@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<dataConfig xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <dataSource type="JdbcDataSource"
+    name='VAV'
+    driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    url="jdbc:sqlserver://172.16.128.149;databaseName=VAV"
+    user="sa"
+    password="p@ssw0rd" xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
+
+  <dataSource type="JdbcDataSource"
+		name='IPP'
+    driver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    url="jdbc:sqlserver://172.16.128.149;databaseName=IPP"
+    user="sa"
+    password="p@ssw0rd" xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
+</dataConfig>

@@ -1,0 +1,62 @@
+﻿@using VAV.Web.Localization
+@{
+	var reportPath = VirtualPathUtility.ToAbsolute("~/PageManager/GetReport/");
+	var busyImageUrl = VirtualPathUtility.ToAbsolute("~/Content/images/loading.gif");
+	var getReportTableUrl = VirtualPathUtility.ToAbsolute("~/CDC/GetReportTable");
+	var refreshChartUrl = VirtualPathUtility.ToAbsolute("~/CDC/RefreshChart");
+}
+<div id="menuwrapper" class="wrapBack">
+	<div style="float: left;">
+	</div>
+	<div class="languageBar">
+		<a href="~/exlink/@ViewBag.ID/cn" @if (!CultureHelper.IsEnglishCulture())
+										  {@Html.Raw("style='color:#ff8800'")}>
+			简体中文</a>&nbsp;|&nbsp;<a id="lanEn" href="~/exlink/@ViewBag.ID/en" @if (CultureHelper.IsEnglishCulture())
+																			  {@Html.Raw("style='color:#ff8800'")}>English</a>
+	</div>
+</div>
+<div id="main" class="ui-layout-container content">
+	<div id="tabs">
+		<ul>
+			<li><a href="#@ViewBag.ID">@ViewBag.DisplayName</a> </li>
+		</ul>
+		<div id="@ViewBag.ID" class="tabMaxHeight">
+			@{
+				if (ViewBag.ID != -1)
+				{
+					Html.RenderAction("GetReport", "PageManager", new { id = ViewBag.ID });                    
+				}
+				else
+				{
+					  @("404 Page Not Fund")
+				}
+			}
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	window.reportUrl = '@reportPath';
+	window.busyImageUrl = '@busyImageUrl';
+	window.getReportTableUrl = '@getReportTableUrl';
+	window.refreshChartUrl = '@refreshChartUrl';;
+	$(function() {
+	    JET.onLoad(function() {
+	        LogUsage('');
+	        LogUsage('External Page');
+	        LogUsage('@ViewBag.Trace');
+	    });
+
+	    JET.init({ ID: "VAVWeb"});
+
+	    $.ajaxSetup({ cache: false });
+	    window.tabs = $("#tabs").tabs().scrollabletabs({
+	        onTabActive:
+	            function(e) {
+	                amplify.publish('TabActive', { reportid: e.tabid.replace('#', ''), source: "tab" });
+	                amplify.publish('RefreshChart', { source: "tab" });
+	            }
+	    });
+	    $(window).resize(function() { amplify.publish('RefreshChart', { source: "window" }); });
+	    amplify.publish('RefreshChart', { source: "window" });
+	});
+</script>

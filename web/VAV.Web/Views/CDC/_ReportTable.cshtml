@@ -1,0 +1,136 @@
+﻿@using VAV.Model.Data;
+@using System.Data;
+@using VAV.Web.Localization
+@using VAV.Web.Extensions;
+@using System.Collections;
+@using System.Dynamic;
+
+@model StandardReport
+
+@{
+    Layout = null;
+    var isStatisticReport_ = ViewData["IsStatisticReport_" + Model.ReportID] == null ? false : true;
+    var date = !isStatisticReport_ && Model.ResultDataTable.Rows.Count>0 && Model.ResultDataTable.Rows[0][0].GetType() == typeof(System.DateTime) ? Convert.ToDateTime(Model.ResultDataTable.Rows[0][0].ToString()).ToString("yyyy-MM") :
+        new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0, 0).ToString("yyyy-MM");
+    var exportStartDate = @ViewData["StartDate_" + Model.ReportID] == null ? date : @ViewData["StartDate_" + Model.ReportID].ToString();
+    var exportEndDate = @ViewData["EndDate_" + Model.ReportID] == null ? new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0, 0).ToString("yyyy-MM") : @ViewData["EndDate_" + Model.ReportID].ToString();
+    var exportUnit = @ViewData["Unit_" + Model.ReportID] == null ? "100M" : @ViewData["Unit_" + Model.ReportID].ToString();
+    var exportRowName = @ViewData["RowName_" + Model.ReportID] == null ? "1" : @ViewData["RowName_" + Model.ReportID].ToString();
+}
+
+@{
+    var grid = new WebGrid(ConvertTableToList(Model.ResultDataTable), canPage: false, canSort: false, ajaxUpdateContainerId: "gridDiv_" + Model.ReportID);
+}
+
+<div id="gridDiv_@Model.ReportID" class="gridTable">
+    @if (Model.ResultDataTable.Rows.Count > 0 && Model.Columns != null)
+    {
+        List<ExtendedWebGridColumn> columns = new List<ExtendedWebGridColumn>();
+        foreach (var column in Model.Columns)
+        {
+            var col = new ExtendedWebGridColumn();
+            col.Header = CultureHelper.IsEnglishCulture() ? column.ColumnHeaderEN??"" : column.ColumnHeaderCN??"";
+            col.ColumnName = column.ColumnName;
+            col.ColumnFormatString = column.ColumnFormat;
+            col.Format = (item) => GetFormat(item, col.ColumnFormatString, col.ColumnName);
+            columns.Add(col);
+        }
+
+        object attributes = new object();
+        bool hideIdColumn = false;
+        if (Model.IsStatisticalReport)
+        {
+            attributes = new { @id = "gridWithHoverStyle" + Model.ReportID, onclick = "GetSelectedRow('" + Model.ReportID + "');", style = "cursor: pointer" };
+
+            columns.Insert(1, new ExtendedWebGridColumn()
+                                  {
+                                      ColumnName = "ID",
+                                      Style = "Hide"
+                                  });
+            hideIdColumn = true;
+        }
+        @grid.GetHtmlWithExtraHeader(tableStyle: "datatable", headerStyle: "hr", alternatingRowStyle: "row-e", columns: columns, htmlAttributes: attributes, extraHeaders: Model.ExtraHeaderCollection, displayInChinese: true, hideIdColumn: hideIdColumn);
+    }
+    else
+    {
+        <div><br /><span style="font-family:Arial;color:#bfbfbf;font-size:12px;font-weight:normal!important;margin-left:10px;">@Model.EmptyMessage</span></div>
+    }
+
+    @functions{
+        private object GetFormat(object row, string format, string columnName)
+        {
+            var dataRow = (WebGridRow)row;
+            if (columnName == "CHINESE_NAME" && int.Parse(dataRow["ROW_LEVEL"].ToString()) == 1)
+            {
+                return MvcHtmlString.Create(string.Format("&nbsp;&nbsp;&nbsp;&nbsp;{0}", dataRow[columnName]));
+            }
+            return string.IsNullOrEmpty(format) ? dataRow[columnName] : string.Format(format, dataRow[columnName]);
+        }
+
+        public class ExtendedWebGridColumn : WebGridColumn
+        {
+            /// <summary>
+            /// The style of this column.
+            /// </summary>
+            public string ColumnFormatString { get; set; }
+        }
+
+        private List<dynamic> ConvertTableToList(DataTable dtObject)
+        {
+            return ConvertToDynamic(ConvertToDictionary(dtObject));
+        }
+
+        private List<IDictionary> ConvertToDictionary(DataTable dtObject)
+        {
+            if (dtObject == null || dtObject.Rows.Count < 0)
+                return new List<IDictionary>();
+            var columns = dtObject.Columns.Cast<DataColumn>();
+
+            var dictionaryList = dtObject.AsEnumerable()
+                .Select(dataRow => columns
+                                       .Select(column =>
+                                               new { Column = column.ColumnName, Value = dataRow[column] })
+                                       .ToDictionary(data => data.Column, data => data.Value)).ToList().ToArray();
+
+            return dictionaryList.ToList<IDictionary>();
+        }
+
+        private List<dynamic> ConvertToDynamic(List<IDictionary> dataDic)
+        {
+            if (dataDic == null || dataDic.Count < 0)
+                return null;
+            var result = new List<dynamic>();
+
+            foreach (var modelRow in dataDic)
+            {
+                var row = (IDictionary<string, object>)new ExpandoObject();
+                Dictionary<string, object> modelRowDic = (Dictionary<string, object>)modelRow;
+
+                foreach (KeyValuePair<string, object> keyValuePair in modelRowDic)
+                {
+                    row.Add(keyValuePair);
+                }
+                result.Add(row);
+            }
+            return result;
+        }
+    }
+    <div>@Resources.Global.SourceCCDC</div>
+</div>
+@if (!Model.IsStatisticalReport)
+{
+    
+    <input type="hidden" id="exportStartDate_@Model.ReportID"  value="@exportStartDate"/>
+    <input type="hidden" id="exportEndDate_@Model.ReportID"  value="@exportEndDate"/>
+    <input type="hidden" id="exportUnit_@Model.ReportID" value="@exportUnit"/>
+    <input type="hidden" id="exportRowName_@Model.ReportID" value="@exportRowName"/>
+}
+<script type="text/javascript">
+    $(function () {
+        $('#gridWithHoverStyle' + @Model.ReportID + ' tr').mouseover(function () {
+            $(this).addClass('HoverRow');
+        }).mouseout(function () {
+            $(this).removeClass('HoverRow');
+        });
+    });
+</script>

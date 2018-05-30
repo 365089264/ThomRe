@@ -1,0 +1,338 @@
+﻿@using VAV.Web.ViewModels.GDT
+@model GdtPriceViewModel
+@{
+    var pricePageId = "pricePage" + @Model.ContentId;
+    var priceChartContainerId = "priceChartContainer" + @Model.ContentId;
+    var pricePagePaginateOfLabelId = "pricePagePaginateOfLabel" + @Model.ContentId;
+    var pricePagePaginateId = "pricePagePaginate" + @Model.ContentId;
+    var pricePageDetailTableId = "pricePageDetailTable" + @Model.ContentId; 
+    var dataSource=Model.ReportId==22072?Resources.CnE.GDT_ShippingSource:Resources.CnE.GDT_FanyaSource;
+}
+
+<div id="@pricePageId" class="StatisticalContent" style="min-width:500px;width:-webkit-calc(100% - 3px);">
+    <div class="Statistical">
+        <div class="StatisticalTop">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 7px);">
+                <div class="colorBlock-header">
+                    <span class="colorBlock-header-span">@Resources.CnE.GDT_PriceTitle</span> <a href="#"  onclick="Fanya.UpdatePriceData('@Model.ReportId','@Model.ContentId');">
+                        <span class="refreshbtn"></span></a> <a href="#" class="exportExcel" onclick="Fanya.ExportExcelPriceChartDetails(this,@Model.ReportId,@Model.ItemId,'@Model.ContentId');">
+                            <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                        </a>
+                </div>
+                <div id="@priceChartContainerId" style="position: absolute; height: 90%; width:99%;  width: -webkit-calc(99% - 2px); height: -webkit-calc(90% + 5px );">
+                </div>
+            </div>
+        </div>
+        <div class="StatisticalBottom">
+            <div class="colorBlock" style="height: 100%; height: -webkit-calc(100% - 3px);">
+                <div>
+                    <div id="@pricePagePaginateOfLabelId" class="paginateOfLable">
+                    </div>
+                    <a href="#" class="exportExcel" onclick="Price.ExportExcelPriceDetails(this,'@Model.ContentId','@Model.ReportId','@Model.ItemId');">
+                        <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+                    </a>
+                    <div style="width: 300px; float: right; padding-right: 80px">
+                        <div id="@pricePagePaginateId">
+                        </div>
+                    </div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div style="height: -webkit-calc(100% - 23px); overflow: auto">
+                    <table id="@pricePageDetailTableId" class="datatable Zebra" style="white-space: nowrap;cursor: pointer;">
+                        <thead>
+                            <tr class="hr">
+                            </tr>
+                        </thead>
+                        <tbody onclick="Fanya.GetPriceSelectedRow('@Model.ContentId')">
+                        </tbody>
+                    </table>
+                    <div>@dataSource</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var Fanya = (function (my) {
+    var lastOrder = " [orderKey],[re_date] desc";
+    var bytCurrentPage = 1;
+    my.UpdatePriceChartData = function (chartData, contentId) {
+        debugger;
+        var unit="@Resources.Global.Unit"+":"+ $('#pricePageDetailTable' + contentId + ' tbody .SelectedRow').find("td").eq(5).text();
+        
+        if('22051_117'=='@Model.ContentId')
+        {unit = '';}
+       
+        var modData = [
+            {
+                name: chartData.series[0].name,
+                type: 'line',
+                id: 'primary',
+                data: chartData.series[0].data
+            }, {
+                name: Price.SMA30,
+                linkedTo: 'primary',
+                showInLegend: true,
+                type: 'trendline',
+                algorithm: 'SMA',
+                periods: 30
+            }
+        ];
+        my.Chart = Highcharts.StockChart({
+            rangeSelector: {
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m' 
+                },
+                {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                },
+                {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                },
+                {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, 
+                {
+                    type: 'year',
+                    count: 5,
+                    text: '5y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                inputDateFormat: '%Y-%m-%d',
+                inputEditDateFormat: '%Y-%m-%d',
+                inputEnabled:true,
+                selected: 0
+            },
+            chart: {
+                renderTo:'priceChartContainer' + contentId,
+                zoomType: 'x'
+            },
+            title: { text: Price.chartCommon.title },
+            yAxis: { title: { text: unit} },
+            series: modData,
+            legend: {
+                align: 'left',
+                verticalAlign: 'top',
+                x: 0,
+                y: 50,
+                layout: 'vertical',
+                floating: true,
+                enabled: true
+            },
+
+            tooltip: {
+                formatter: function () {
+                    var s = Highcharts.dateFormat('%Y-%m-%d', this.x);
+                    $.each(this.points, function (i, point) {
+                        s += '<br/><span style="color:' + point.series.color + '">' + point.series.name + '</span>: ' + Highcharts.numberFormat(point.y, 2);
+                    });
+                    return s;
+                }
+            },
+            credits: { href: 'http://thomsonreuters.com/', text:'@dataSource' }
+        });
+    };
+    my.UpdatePriceTableData = function (data, contentId,key) {
+        bytCurrentPage = data.CurrentPage;
+         var id = contentId.split('_')[0];
+         var itemId = contentId.split('_')[1];
+        if ($('#pricePageDetailTable' + contentId + ' thead tr th').length == 0) {
+            $.template("colTemp", '<th>${Name}<span></span></th>');
+            $('#pricePageDetailTable' + contentId + ' thead tr').empty();
+            $.tmpl("colTemp", data.ColumTemplate).appendTo("#pricePageDetailTable" + contentId + " thead tr");
+        }
+        var markup = my.BuildRowTemplate(data.ColumTemplate);
+        $.template("rowTemplate", markup);
+        $('#pricePageDetailTable' + contentId + ' tbody').empty();
+        $.tmpl("rowTemplate", data.RowData).appendTo("#pricePageDetailTable" + contentId + " tbody");
+        $('#pricePageDetailTable' + contentId + ' tr').mouseover(function () {
+            $(this).addClass('HoverRow');
+        }).mouseout(function () {
+            $(this).removeClass('HoverRow');
+        });
+        $('#pricePageDetailTable' + contentId + ' tbody tr').first().addClass('SelectedRow');
+        $('#pricePageDetailTable' + contentId + ' tbody tr');
+         my.GetFirstRow(contentId);
+        var start = (data.CurrentPage - 1) * data.PageSize + 1;
+        var end = data.CurrentPage * data.PageSize;
+        if (end > data.Total) end = data.Total;
+        $('#pricePagePaginateOfLabel' + contentId).html(start + '-' + end + ' of ' + data.Total);
+        if (data.Total == 0) {
+            $('#pricePagePaginateOfLabel' + contentId + ',#pricePagePaginate' + contentId).hide();
+            return;
+        } else {
+            $('#pricePagePaginateOfLabel' + contentId + ',#pricePagePaginate' + contentId).show();
+        }
+        $('#pricePagePaginate' + contentId).paginate({
+            count: Math.ceil(data.Total / data.PageSize),
+            start: data.CurrentPage,
+            display: 10,
+            border: false,
+            text_color: '#00B3E3',
+            background_color: 'none',
+            text_hover_color: '#28D2FF',
+            background_hover_color: 'none',
+            images: false,
+            mouse: 'press',
+            onChange: function (page) {
+                AjaxWithBlock($('#pricePageDetailTable' + contentId), '/GDT/GetPriceDetail', {
+                    currentPage: page,
+                    itemId: itemId,
+                    id: id,
+                    category: Price.getFilterString("pricePage" + contentId),
+                    order: lastOrder
+                }, function (mydata) { my.UpdatePriceTableData(mydata, contentId, true); });
+            },
+            firstText: "",//my.paginateCommon.firstText,
+            lastText: ""//my.paginateCommon.lastText
+        });
+
+    };
+
+    my.ExportExcelPriceDetails = function (link, contentId, reportId, itemId) {
+        $(link).attr("href", '/GDT/ExportExcelForPriceDetail'
+                            + '?reportId=' + reportId
+                            + '&itemId=' + itemId
+                            + '&currentPage=' + bytCurrentPage + '&order=' + lastOrder
+                    );
+    };
+    my.ExportExcelPriceChartDetails = function (link, reportId, itemId, contentId) {
+        var row = $('#pricePageDetailTable' + contentId + ' tbody .SelectedRow');
+        var key = row.first().find('.Hide').text();
+        var termIndex=my.Chart.rangeSelector.selected;
+        var term='';
+        switch(termIndex)
+        {
+        case 0:
+        term='1M';
+         break;
+          case 1:
+           term='3M';
+         break;
+          case 2:
+           term='6M';
+         break;
+          case 3:
+           term='1Y';
+         break;
+          case 4:
+           term='5Y';
+         break;
+          case 5:
+           term='All';
+         break;
+
+        }
+        $(link).attr("href", '/GDT/ExportExcelForFanYa' + '?reportId=' + reportId + '&itemId=' + itemId + '&key=' + key + '&term=' + term );
+    };
+
+    my.UpdatePriceData = function (reportId, containerId) {
+        var term = $('#chartTab_priceChartContainer' + containerId + ' li.stCurrentTab a').data('term');
+        var key = $('#pricePageDetailTable' + containerId + ' tr.SelectedRow').find('.Hide').text();
+        AjaxWithBlock($('#pricePage' + containerId), '/GDT/GetPriceData', {
+            id: reportId,
+            itemId: containerId.split('_')[1],
+            order: lastOrder,
+            term:term,
+            key:key
+        }, function (data) {
+            Fanya.UpdatePriceTableData(data.table, containerId,key);
+            Fanya.UpdatePriceChartData(data.chart, containerId);
+        });
+    };
+
+    my.BuildRowTemplate = function (rawData) {
+        var tpl = '<tr><td class="Hide">${KeyWord}</td>';
+        $.each(rawData, function (key, value) {
+            if (value.ColumnType == 'decimal') {
+                tpl = tpl + '<td style="text-align:right">${' + value.ColumnName + '}</td>';
+            } else if (value.ColumnName == 're_date') {
+                tpl = tpl + '<td class="date" style="text-align:left">${' + value.ColumnName + '}</td>';
+            } else {
+                tpl = tpl + '<td style="text-align:left">${' + value.ColumnName + '}</td>';
+            }
+        });
+        tpl = tpl + '</tr>';
+        return tpl;
+    };
+    my.GetPriceSelectedRow = function (contentId) {
+        var row = $('#pricePageDetailTable' + contentId + ' tbody .HoverRow');
+        $('#pricePageDetailTable' + contentId + ' tbody tr').removeClass('SelectedRow');
+        row.addClass('SelectedRow');
+        var key = row.first().find('.Hide').text();
+        var re_date = row.first().find('.date').text();
+        $.ajax({
+            type: "POST",
+            url: "/GDT/GetPriceChartDetail",
+            dataType: "json",
+            data: { itemId: contentId.split('_')[1], key: key, term: 'All', reDate: re_date },
+            success: function (data) {
+                my.UpdatePriceChartData(data, contentId);
+            }
+        });
+    };
+    my.GetFirstRow=function(contentId){
+     var row = $('#pricePageDetailTable' + contentId + ' tbody tr').first();
+        $('#pricePageDetailTable' + contentId + ' tbody tr').removeClass('SelectedRow');
+        row.addClass('SelectedRow');
+        var key = row.first().find('.Hide').text();
+        var re_date = row.first().find('.date').text();
+        $.ajax({
+            type: "POST",
+            url: "/GDT/GetPriceChartDetail",
+            dataType: "json",
+            data: { itemId: contentId.split('_')[1], key: key, term: 'All', reDate: re_date },
+            success: function (data) {
+                my.UpdatePriceChartData(data, contentId);
+            }
+        });
+    };
+    my.UpdatePriceDataBySort = function (contentId, order) {
+        AjaxWithBlock($('#pricePageDetailTable' + contentId), '/GDT/GetPriceDetail', {
+            start: $("#datePicker" + contentId).val(),
+            end: $("#endDatePicker" + contentId).val(),
+            currentPage: bytCurrentPage,
+            id: contentId.split('_')[0],
+            itemId: contentId.split('_')[1],
+            order: order
+        }, my.UpdatePriceTableData, contentId);
+    };
+    return my;
+} (Fanya || {}));
+
+    $(function () { 
+        var data = @{ Html.RenderAction("GetPriceData", "GDT",
+                                        new
+                                        {
+                                            isHTML = true,
+                                            id = Model.ReportId,
+                                            itemId = Model.ItemId,
+                                            category = "",
+                                            term = "1M"
+                                        }
+                                        ); 
+                    };
+        Fanya.UpdatePriceTableData(data.table,'@Model.ContentId');
+        Fanya.UpdatePriceChartData(data.chart,'@Model.ContentId');
+        amplify.subscribe('RefreshChart', function () {
+            var parent = $('#@priceChartContainerId');
+            setTimeout(function(){
+                                    if(parent.parent().width()){
+                                        Fanya.Chart.setSize(parent.parent().width(), parent.parent().height()-25, false);
+                                    }
+                }, 500
+            );
+        });
+    });
+</script>

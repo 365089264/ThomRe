@@ -1,0 +1,2163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Amount" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="Category_Term" xml:space="preserve">
+    <value>期限</value>
+  </data>
+  <data name="Category_Variety" xml:space="preserve">
+    <value>品种</value>
+  </data>
+  <data name="Chart_Item" xml:space="preserve">
+    <value>分析要素</value>
+  </data>
+  <data name="Chart_Type" xml:space="preserve">
+    <value>图形</value>
+  </data>
+  <data name="ChatType_Bar" xml:space="preserve">
+    <value>条形图</value>
+  </data>
+  <data name="ChatType_Column" xml:space="preserve">
+    <value>柱状图</value>
+  </data>
+  <data name="ChatType_Line" xml:space="preserve">
+    <value>折线图</value>
+  </data>
+  <data name="ChatType_Pie" xml:space="preserve">
+    <value>饼图</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>品种代码</value>
+  </data>
+  <data name="Contact_US" xml:space="preserve">
+    <value>对固定收益与外汇相关咨询,请联系 &lt;a href="mailto:Fiona.Bao@thomsonreuters.com"&gt;Fiona.Bao@thomsonreuters.com&lt;/a&gt; 对大宗商品相关咨询,请联系 &lt;a href="mailto:andy.xie@thomsonreuters.com"&gt;andy.xie@thomsonreuters.com&lt;/a&gt;</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="Direction_injection" xml:space="preserve">
+    <value>投放</value>
+  </data>
+  <data name="Direction_withdrawal" xml:space="preserve">
+    <value>回笼</value>
+  </data>
+  <data name="Home_Index_Message" xml:space="preserve">
+    <value>中国市场数据分析</value>
+  </data>
+  <data name="Issue_Date" xml:space="preserve">
+    <value>起息日期</value>
+  </data>
+  <data name="Maturity_Date" xml:space="preserve">
+    <value>到期日期</value>
+  </data>
+  <data name="Operation_Direction" xml:space="preserve">
+    <value>操作方向</value>
+  </data>
+  <data name="Operation_Type" xml:space="preserve">
+    <value>操作类型</value>
+  </data>
+  <data name="Option_Term" xml:space="preserve">
+    <value>发行期限</value>
+  </data>
+  <data name="Price_Rate" xml:space="preserve">
+    <value>价格/利率</value>
+  </data>
+  <data name="Ref_Rate" xml:space="preserve">
+    <value>参考利率</value>
+  </data>
+  <data name="Report_Category" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="Report_Expire" xml:space="preserve">
+    <value>到期</value>
+  </data>
+  <data name="Report_Query" xml:space="preserve">
+    <value>查询</value>
+  </data>
+  <data name="Report_Query_Date" xml:space="preserve">
+    <value>查询日期</value>
+  </data>
+  <data name="Report_Query_End" xml:space="preserve">
+    <value>终止日</value>
+  </data>
+  <data name="Report_Query_From" xml:space="preserve">
+    <value>起始日</value>
+  </data>
+  <data name="Report_Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Report_Unit" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="Term_Day" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="Term_Month" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="Term_Year" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="Type_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="Type_CBankBill" xml:space="preserve">
+    <value>中央银行票据</value>
+  </data>
+  <data name="Type_Repo" xml:space="preserve">
+    <value>正回购</value>
+  </data>
+  <data name="Type_ReverseRepo" xml:space="preserve">
+    <value>逆回购</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="Unit_Option_100M" xml:space="preserve">
+    <value>亿</value>
+  </data>
+  <data name="Unit_Option_10K" xml:space="preserve">
+    <value>万</value>
+  </data>
+  <data name="Unit_Option_K" xml:space="preserve">
+    <value>千</value>
+  </data>
+  <data name="Unit_Option_M" xml:space="preserve">
+    <value>百万</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>面额</value>
+  </data>
+  <data name="Type_Bond_Class" xml:space="preserve">
+    <value>债券品种</value>
+  </data>
+  <data name="Type_Bond_Rating" xml:space="preserve">
+    <value>债券评级</value>
+  </data>
+  <data name="Type_Bond_Code" xml:space="preserve">
+    <value>债券代码</value>
+  </data>
+  <data name="Type_Maturity_Term" xml:space="preserve">
+    <value>发行期限</value>
+  </data>
+  <data name="Type_Issuer_Rating" xml:space="preserve">
+    <value>主体评级</value>
+  </data>
+  <data name="Sec_Type" xml:space="preserve">
+    <value>子分类</value>
+  </data>
+  <data name="Bond_Type_ABS_MBS" xml:space="preserve">
+    <value>资产支持证券</value>
+  </data>
+  <data name="Bond_Type_Book_Entry_Treasury_Bonds" xml:space="preserve">
+    <value>记帐式国债</value>
+  </data>
+  <data name="Bond_Type_CentralBank_Bills" xml:space="preserve">
+    <value>央行票据</value>
+  </data>
+  <data name="Bond_Type_Certificate_Treasury_Bonds" xml:space="preserve">
+    <value>凭证式国债</value>
+  </data>
+  <data name="Bond_Type_Collecting_Bonds" xml:space="preserve">
+    <value>集合企业债</value>
+  </data>
+  <data name="Bond_Type_Commercial_Bank_Bonds" xml:space="preserve">
+    <value>商业银行债券</value>
+  </data>
+  <data name="Bond_Type_Commercial_Paper" xml:space="preserve">
+    <value>短期融资券</value>
+  </data>
+  <data name="Bond_Type_Enterprise_Collecting_Notes" xml:space="preserve">
+    <value>集合票据</value>
+  </data>
+  <data name="Bond_Type_Government_Agency" xml:space="preserve">
+    <value>政府支持机构债</value>
+  </data>
+  <data name="Bond_Type_Government_Backed_Bonds" xml:space="preserve">
+    <value>政府支持债券</value>
+  </data>
+  <data name="Bond_Type_Local_Corporate_Bonds" xml:space="preserve">
+    <value>地方企业债</value>
+  </data>
+  <data name="Bond_Type_Medium_Term_Notes" xml:space="preserve">
+    <value>中期票据</value>
+  </data>
+  <data name="Bond_Type_Municipal" xml:space="preserve">
+    <value>地方政府债</value>
+  </data>
+  <data name="Bond_Type_National_Corporate_Bonds" xml:space="preserve">
+    <value>中央企业债</value>
+  </data>
+  <data name="Bond_Type_NonBank_Financial_Institution_Bonds" xml:space="preserve">
+    <value>非银行金融机构债</value>
+  </data>
+  <data name="Bond_Type_Other_Instruments" xml:space="preserve">
+    <value>其它</value>
+  </data>
+  <data name="Bond_Type_Policy_Bank_Bonds" xml:space="preserve">
+    <value>政策性银行债券</value>
+  </data>
+  <data name="Bond_Type_Private_Placement_Notes" xml:space="preserve">
+    <value>定向工具</value>
+  </data>
+  <data name="Bond_Type_Savings_Bonds" xml:space="preserve">
+    <value>储蓄国债</value>
+  </data>
+  <data name="Bond_Type_Securities_Firm_Bonds" xml:space="preserve">
+    <value>证券公司债</value>
+  </data>
+  <data name="Bond_Type_Securities_Firm_Commercial_Paper" xml:space="preserve">
+    <value>证券公司短期融资券</value>
+  </data>
+  <data name="Bond_Type_Special_Financial_Bonds" xml:space="preserve">
+    <value>特种金融债</value>
+  </data>
+  <data name="Bond_Type_Super_Short_Term_Commercial_Paper" xml:space="preserve">
+    <value>超短期融资券</value>
+  </data>
+  <data name="Bond_Type_Supranational" xml:space="preserve">
+    <value>国际机构债券</value>
+  </data>
+  <data name="CurrentContext" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="Term_10Y" xml:space="preserve">
+    <value>10年</value>
+  </data>
+  <data name="Term_15Y" xml:space="preserve">
+    <value>15年</value>
+  </data>
+  <data name="Term_1Y" xml:space="preserve">
+    <value>1年</value>
+  </data>
+  <data name="Term_20Y" xml:space="preserve">
+    <value>20年</value>
+  </data>
+  <data name="Term_2Y" xml:space="preserve">
+    <value>2年</value>
+  </data>
+  <data name="Term_30Y" xml:space="preserve">
+    <value>30年</value>
+  </data>
+  <data name="Term_3M" xml:space="preserve">
+    <value>三个月</value>
+  </data>
+  <data name="Term_3Y" xml:space="preserve">
+    <value>3年</value>
+  </data>
+  <data name="Term_5Y" xml:space="preserve">
+    <value>5年</value>
+  </data>
+  <data name="Term_6M" xml:space="preserve">
+    <value>六个月</value>
+  </data>
+  <data name="Term_7Y" xml:space="preserve">
+    <value>7年</value>
+  </data>
+  <data name="Term_9M" xml:space="preserve">
+    <value>九个月</value>
+  </data>
+  <data name="BondIssue_Type" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="BondIssue_Issues" xml:space="preserve">
+    <value>发行只数</value>
+  </data>
+  <data name="BondIssue_Issues_PCT" xml:space="preserve">
+    <value>发行只数比例(%)</value>
+  </data>
+  <data name="BondIssue_Issue_Amt" xml:space="preserve">
+    <value>发行面额</value>
+  </data>
+  <data name="BondIssue_Issues_Amt_PCT" xml:space="preserve">
+    <value>发行面额比例(%)</value>
+  </data>
+  <data name="BondIssue_Lowest_Issue_Rate" xml:space="preserve">
+    <value>最低发行票面(利差)</value>
+  </data>
+  <data name="BondIssue_Highest_Issue_Rate" xml:space="preserve">
+    <value>最高发行票面(利差)</value>
+  </data>
+  <data name="Bond_Code" xml:space="preserve">
+    <value>债券代码</value>
+  </data>
+  <data name="Bond_Name" xml:space="preserve">
+    <value>债券简称</value>
+  </data>
+  <data name="Bond_IssueDate" xml:space="preserve">
+    <value>发行日期</value>
+  </data>
+  <data name="Bond_IssueAmount" xml:space="preserve">
+    <value>实际发行量</value>
+  </data>
+  <data name="Bond_Coupon_class" xml:space="preserve">
+    <value>计息方式</value>
+  </data>
+  <data name="Bond_Coupon_Frequency" xml:space="preserve">
+    <value>付息周期</value>
+  </data>
+  <data name="Bond_Coupon_Rate" xml:space="preserve">
+    <value>票面利率(%)</value>
+  </data>
+  <data name="Bond_Value_Date" xml:space="preserve">
+    <value>起息日期</value>
+  </data>
+  <data name="Bond_Maturity_Date" xml:space="preserve">
+    <value>到期日期</value>
+  </data>
+  <data name="Bond_Listing_Date" xml:space="preserve">
+    <value>上市流通日</value>
+  </data>
+  <data name="Bond_Term" xml:space="preserve">
+    <value>发行期限</value>
+  </data>
+  <data name="Bond_Issue_Price" xml:space="preserve">
+    <value>发行价格</value>
+  </data>
+  <data name="Bond_Ref_Yield" xml:space="preserve">
+    <value>参考收益率(%)</value>
+  </data>
+  <data name="Bond_Option" xml:space="preserve">
+    <value>选择权类别</value>
+  </data>
+  <data name="Bond_ISBN" xml:space="preserve">
+    <value>ISIN码</value>
+  </data>
+  <data name="Bond_Rating" xml:space="preserve">
+    <value>债券信用评级</value>
+  </data>
+  <data name="Bond_Rating_Agency" xml:space="preserve">
+    <value>债券信用评级机构</value>
+  </data>
+  <data name="Bond_Party_Rating" xml:space="preserve">
+    <value>主体信用评级</value>
+  </data>
+  <data name="Bond_Party_Rating_Agency" xml:space="preserve">
+    <value>主体信用评级机构</value>
+  </data>
+  <data name="Bond_Rating_Hist" xml:space="preserve">
+    <value>债券历史评级</value>
+  </data>
+  <data name="Bond_CDC_Classify" xml:space="preserve">
+    <value>债券品种</value>
+  </data>
+  <data name="Bond_Issuer" xml:space="preserve">
+    <value>发行人</value>
+  </data>
+  <data name="Bond_Float_Index" xml:space="preserve">
+    <value>浮动利率基准</value>
+  </data>
+  <data name="Bond_Spread" xml:space="preserve">
+    <value>基本利差(%)</value>
+  </data>
+  <data name="Bond_Day_Count" xml:space="preserve">
+    <value>计息基准</value>
+  </data>
+  <data name="Bond_Currency" xml:space="preserve">
+    <value>发行币种</value>
+  </data>
+  <data name="Bond_Seniority" xml:space="preserve">
+    <value>优先级</value>
+  </data>
+  <data name="View_LargeChart" xml:space="preserve">
+    <value>查看大图</value>
+  </data>
+  <data name="Title_Statistics" xml:space="preserve">
+    <value>统计表</value>
+  </data>
+  <data name="Title_Detail" xml:space="preserve">
+    <value>明细表</value>
+  </data>
+  <data name="Coupon_Type_Fixed" xml:space="preserve">
+    <value>固定</value>
+  </data>
+  <data name="Coupon_Type_Float" xml:space="preserve">
+    <value>浮动</value>
+  </data>
+  <data name="Select_All" xml:space="preserve">
+    <value>选择所有</value>
+  </data>
+  <data name="Title_StatisticsChart" xml:space="preserve">
+    <value>统计图表</value>
+  </data>
+  <data name="Title_DetailChart" xml:space="preserve">
+    <value>明细图表</value>
+  </data>
+  <data name="Tip_PleaseSelect" xml:space="preserve">
+    <value>请选择</value>
+  </data>
+  <data name="Term_LT1Y" xml:space="preserve">
+    <value>1年以下</value>
+  </data>
+  <data name="Term_GT1YAndLT2Y" xml:space="preserve">
+    <value>1年~2年</value>
+  </data>
+  <data name="Term_GT2YAndLT3Y" xml:space="preserve">
+    <value>2年~3年</value>
+  </data>
+  <data name="Term_GT3YAndLT4Y" xml:space="preserve">
+    <value>3年~4年</value>
+  </data>
+  <data name="Term_GT4YAndLT5Y" xml:space="preserve">
+    <value>4年~5年</value>
+  </data>
+  <data name="Term_GT5YAndLT6Y" xml:space="preserve">
+    <value>5年~6年</value>
+  </data>
+  <data name="Term_GT6YAndLT7Y" xml:space="preserve">
+    <value>6年~7年</value>
+  </data>
+  <data name="Term_GT7YAndLT8Y" xml:space="preserve">
+    <value>7年~8年</value>
+  </data>
+  <data name="Term_GT8YAndLT9Y" xml:space="preserve">
+    <value>8年~9年</value>
+  </data>
+  <data name="Term_GT9YAndLT10Y" xml:space="preserve">
+    <value>9年~10年</value>
+  </data>
+  <data name="Term_GT10Y" xml:space="preserve">
+    <value>10年以上</value>
+  </data>
+  <data name="Type_CBankBillIE" xml:space="preserve">
+    <value>中央银行票据到期</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>项已选择</value>
+  </data>
+  <data name="Type_RepoIE" xml:space="preserve">
+    <value>正回购到期</value>
+  </data>
+  <data name="Type_ReverseRepoIE" xml:space="preserve">
+    <value>逆回购到期</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>版本号：</value>
+  </data>
+  <data name="Bond_Issue_Amt" xml:space="preserve">
+    <value>发行面额(千)</value>
+  </data>
+  <data name="Bond_Issue_Rate" xml:space="preserve">
+    <value>发行利率</value>
+  </data>
+  <data name="SummarizingFrequency_Day" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="SummarizingFrequency_Week" xml:space="preserve">
+    <value>周</value>
+  </data>
+  <data name="SummarizingFrequency_Month" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="SummarizingFrequency_Quarter" xml:space="preserve">
+    <value>季度</value>
+  </data>
+  <data name="SummarizingFrequency_Year" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="LoadingData" xml:space="preserve">
+    <value>读取数据中...</value>
+  </data>
+  <data name="Skip_Statistics" xml:space="preserve">
+    <value>统计</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>合计</value>
+  </data>
+  <data name="Type_Coupon_Type" xml:space="preserve">
+    <value>计息方式</value>
+  </data>
+  <data name="Type_Option" xml:space="preserve">
+    <value>期权方式</value>
+  </data>
+  <data name="BondIssue_End_Balance" xml:space="preserve">
+    <value>期末余额</value>
+  </data>
+  <data name="BondIssue_Initial_Balance" xml:space="preserve">
+    <value>期初余额</value>
+  </data>
+  <data name="BondIssue_Maturity_Bonds" xml:space="preserve">
+    <value>兑付只数</value>
+  </data>
+  <data name="BondIssue_Maturity_Amount" xml:space="preserve">
+    <value>兑付金额</value>
+  </data>
+  <data name="Issue_Bonds" xml:space="preserve">
+    <value>新发债券</value>
+  </data>
+  <data name="Maturity_Bonds" xml:space="preserve">
+    <value>兑付债券</value>
+  </data>
+  <data name="Title_Open_Market_Operation_Statistics" xml:space="preserve">
+    <value>公开市场操作统计</value>
+  </data>
+  <data name="Bond_Add" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="Save_Pic" xml:space="preserve">
+    <value>查看图片</value>
+  </data>
+  <data name="Tip_Other" xml:space="preserve">
+    <value>其它</value>
+  </data>
+  <data name="No_Result" xml:space="preserve">
+    <value>无该特定债券信息</value>
+  </data>
+  <data name="Bond_Issue_Rate_Chart" xml:space="preserve">
+    <value>债券发行利率走势图</value>
+  </data>
+  <data name="Bond_Issue_Rate_Grid" xml:space="preserve">
+    <value>债券发行利率走势</value>
+  </data>
+  <data name="Time_Year" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="Time_Day" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="AdvancedSearch" xml:space="preserve">
+    <value>高级搜索</value>
+  </data>
+  <data name="HideAdvancedSearch" xml:space="preserve">
+    <value>隐藏高级搜索</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>笔数</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="AvailableColumns" xml:space="preserve">
+    <value>可用列</value>
+  </data>
+  <data name="ColumnChooser" xml:space="preserve">
+    <value>自定义列</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="Down" xml:space="preserve">
+    <value>向下</value>
+  </data>
+  <data name="SelectedColumns" xml:space="preserve">
+    <value>已选择</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>向上</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="Reset_Columns_Setting" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="SourceCCDC" xml:space="preserve">
+    <value>数据来源：中债登、汤森路透</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>数据来源：汤森路透</value>
+  </data>
+  <data name="SourceSecurity" xml:space="preserve">
+    <value>数据来源：中国证券报</value>
+  </data>
+  <data name="Option_Debt_Type" xml:space="preserve">
+    <value>债务类别</value>
+  </data>
+  <data name="Option_Asset_Type" xml:space="preserve">
+    <value>资产类型</value>
+  </data>
+  <data name="Option_DomicileOfIssuer" xml:space="preserve">
+    <value>发行人地区</value>
+  </data>
+  <data name="Option_RatingInfo" xml:space="preserve">
+    <value>评级情况</value>
+  </data>
+  <data name="Option_Indu" xml:space="preserve">
+    <value>发行人行业</value>
+  </data>
+  <data name="DimSum_Column_Type" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="DimSum_Column_IBalance" xml:space="preserve">
+    <value>期初余额</value>
+  </data>
+  <data name="DimSum_Column_Issues" xml:space="preserve">
+    <value>发行只数</value>
+  </data>
+  <data name="DimSum_Column_IssuesPtn" xml:space="preserve">
+    <value>发行只数(%)</value>
+  </data>
+  <data name="DimSum_Column_IssueAmount" xml:space="preserve">
+    <value>发行面额</value>
+  </data>
+  <data name="DimSum_Column_IssueAmountPtn" xml:space="preserve">
+    <value>发行面额(%)</value>
+  </data>
+  <data name="DimSum_Column_Maturities" xml:space="preserve">
+    <value>到期只数</value>
+  </data>
+  <data name="DimSum_Column_MaturitiesPtn" xml:space="preserve">
+    <value>到期只数(%)</value>
+  </data>
+  <data name="DimSum_Column_MaturityAmount" xml:space="preserve">
+    <value>到期面额</value>
+  </data>
+  <data name="DimSum_Column_MaturityAmountPtn" xml:space="preserve">
+    <value>到期面额(%)</value>
+  </data>
+  <data name="DimSum_Column_EndBalance" xml:space="preserve">
+    <value>期末余额</value>
+  </data>
+  <data name="DimSumBondStatisticsChart" xml:space="preserve">
+    <value>点心债统计图表－</value>
+  </data>
+  <data name="Bond_Future_Sample_Note" xml:space="preserve">
+    <value>注：此页面根据中金所国债期货交割规则设计，计算结果可能与实际情况有所偏差，仅供参考</value>
+  </data>
+  <data name="DateVerifyWarning" xml:space="preserve">
+    <value>开始日期必须小于结束日期!</value>
+  </data>
+  <data name="WMP_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="WMP_Bank_Type" xml:space="preserve">
+    <value>银行类型</value>
+  </data>
+  <data name="WMP_Bank" xml:space="preserve">
+    <value>银行</value>
+  </data>
+  <data name="WMP_Currency" xml:space="preserve">
+    <value>委托货币</value>
+  </data>
+  <data name="WMP_Yield_Type" xml:space="preserve">
+    <value>收益类型</value>
+  </data>
+  <data name="WMP_Prod_State" xml:space="preserve">
+    <value>产品状态</value>
+  </data>
+  <data name="WMP_Prod_Term" xml:space="preserve">
+    <value>期限</value>
+  </data>
+  <data name="WMP_Initial_Amount" xml:space="preserve">
+    <value>起始金额</value>
+  </data>
+  <data name="WMP_Invest_Bid_Type" xml:space="preserve">
+    <value>投资标的类型</value>
+  </data>
+  <data name="WMP_Expect_Yield" xml:space="preserve">
+    <value>预期收益率</value>
+  </data>
+  <data name="WMP_Sale_Date" xml:space="preserve">
+    <value>销售起始日</value>
+  </data>
+  <data name="WMP_Sale_Date_From" xml:space="preserve">
+    <value>从</value>
+  </data>
+  <data name="WMP_Sale_Date_To" xml:space="preserve">
+    <value>到</value>
+  </data>
+  <data name="WMP_Sale_Object" xml:space="preserve">
+    <value>发售对象</value>
+  </data>
+  <data name="WMP_Prod_Name" xml:space="preserve">
+    <value>产品名称</value>
+  </data>
+  <data name="WMP_Pstate_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="WMP_Pstate_PreSale" xml:space="preserve">
+    <value>预售</value>
+  </data>
+  <data name="WMP_Pstate_InSale" xml:space="preserve">
+    <value>在售</value>
+  </data>
+  <data name="WMP_Pstate_StopSale" xml:space="preserve">
+    <value>停售</value>
+  </data>
+  <data name="WMP_Term_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="WMP_Term_LT_1M" xml:space="preserve">
+    <value>1月以内</value>
+  </data>
+  <data name="WMP_Term_1M_3M" xml:space="preserve">
+    <value>1月~3月</value>
+  </data>
+  <data name="WMP_Term_3M_6M" xml:space="preserve">
+    <value>3月~6月</value>
+  </data>
+  <data name="WMP_Term_6M_12M" xml:space="preserve">
+    <value>6月~12月</value>
+  </data>
+  <data name="WMP_Term_GT_12M" xml:space="preserve">
+    <value>1年以上</value>
+  </data>
+  <data name="WMP_Term_Unpublished" xml:space="preserve">
+    <value>未发布</value>
+  </data>
+  <data name="WMP_InitAmount_ALL" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="WMP_InitAmount_LT_50TH" xml:space="preserve">
+    <value>5万以下</value>
+  </data>
+  <data name="WMP_InitAmount_50TH_100TH" xml:space="preserve">
+    <value>5万-10万</value>
+  </data>
+  <data name="WMP_InitAmount_100TH_200TH" xml:space="preserve">
+    <value>10万-20万</value>
+  </data>
+  <data name="WMP_InitAmount_200TH_500TH" xml:space="preserve">
+    <value>20万-50万</value>
+  </data>
+  <data name="WMP_InitAmount_500TH_1000TH" xml:space="preserve">
+    <value>50万-100万</value>
+  </data>
+  <data name="WMP_InitAmount_GT_1000TH" xml:space="preserve">
+    <value>100万以上</value>
+  </data>
+  <data name="WMP_Yield_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="WMP_Yield_LT_2hpt" xml:space="preserve">
+    <value>2.5%以下</value>
+  </data>
+  <data name="WMP_Yield_2h_5pt" xml:space="preserve">
+    <value>2.5%-5%</value>
+  </data>
+  <data name="WMP_Yield_5pt_10pt" xml:space="preserve">
+    <value>5%-10%</value>
+  </data>
+  <data name="WMP_Yield_GT_10pt" xml:space="preserve">
+    <value>10%以上</value>
+  </data>
+  <data name="WMP_Yield_Unpublished" xml:space="preserve">
+    <value>未发布</value>
+  </data>
+  <data name="Bond_Future_Contract" xml:space="preserve">
+    <value>合约</value>
+  </data>
+  <data name="Bond_Future_Coupon_Date_From" xml:space="preserve">
+    <value>交割期从</value>
+  </data>
+  <data name="Bond_Future_Coupon_Date_To" xml:space="preserve">
+    <value>到</value>
+  </data>
+  <data name="Bond_Future_Include_Unlisted" xml:space="preserve">
+    <value>包括未上市债券</value>
+  </data>
+  <data name="Bond_Future_Remaining_Term" xml:space="preserve">
+    <value>剩余期限(年)</value>
+  </data>
+  <data name="Bond_Future_Term_Greater_Than_Zero" xml:space="preserve">
+    <value>剩余期限必须大于0</value>
+  </data>
+  <data name="Bond_Future_Term_Invalid" xml:space="preserve">
+    <value>期限区间无效</value>
+  </data>
+  <data name="WMP_BasicInformation" xml:space="preserve">
+    <value>基本信息</value>
+  </data>
+  <data name="WMP_AdditionalInformation" xml:space="preserve">
+    <value>附加说明</value>
+  </data>
+  <data name="WMP_BankName" xml:space="preserve">
+    <value>银行名称</value>
+  </data>
+  <data name="WMP_BanksMayBeTerminated" xml:space="preserve">
+    <value>银行是否可提前终止</value>
+  </data>
+  <data name="WMP_BenefitsAndRisks" xml:space="preserve">
+    <value>收益与风险</value>
+  </data>
+  <data name="WMP_Brokerage" xml:space="preserve">
+    <value>代销机构</value>
+  </data>
+  <data name="WMP_CommissionAmountIncrements" xml:space="preserve">
+    <value>委托金额递增单位</value>
+  </data>
+  <data name="WMP_CommissionedCurrency" xml:space="preserve">
+    <value>委托币种</value>
+  </data>
+  <data name="WMP_CommissionedStartingAmount" xml:space="preserve">
+    <value>委托起始金额</value>
+  </data>
+  <data name="WMP_EarlyTerminationCondition" xml:space="preserve">
+    <value>提前中止终止条件</value>
+  </data>
+  <data name="WMP_EarlyTerminationDateDescription" xml:space="preserve">
+    <value>提前中止终止日说明</value>
+  </data>
+  <data name="WMP_IncomeCalculatedOnTheBasis" xml:space="preserve">
+    <value>收益计算基础</value>
+  </data>
+  <data name="WMP_InterestPaymentPeriod" xml:space="preserve">
+    <value>付息周期</value>
+  </data>
+  <data name="WMP_LiquidityRating" xml:space="preserve">
+    <value>流动性评级</value>
+  </data>
+  <data name="WMP_Pledged" xml:space="preserve">
+    <value>是否能被质押</value>
+  </data>
+  <data name="WMP_ProductCode" xml:space="preserve">
+    <value>产品代码</value>
+  </data>
+  <data name="WMP_ProductName" xml:space="preserve">
+    <value>产品名称</value>
+  </data>
+  <data name="WMP_PurchaseInformation" xml:space="preserve">
+    <value>购买信息</value>
+  </data>
+  <data name="WMP_RedemptionDateDescription" xml:space="preserve">
+    <value>赎回日说明</value>
+  </data>
+  <data name="WMP_ReturnOfPrincipalAndInterestWay" xml:space="preserve">
+    <value>本息返还方式</value>
+  </data>
+  <data name="WMP_RiskRating" xml:space="preserve">
+    <value>风险评级</value>
+  </data>
+  <data name="WMP_SalesEndDate" xml:space="preserve">
+    <value>销售结束日期</value>
+  </data>
+  <data name="WMP_SalesStartDate" xml:space="preserve">
+    <value>销售起始日期</value>
+  </data>
+  <data name="WMP_TheCustomerCanRedeem" xml:space="preserve">
+    <value>客户是否可提前赎回</value>
+  </data>
+  <data name="WMP_TypeOfInvestmentTargets" xml:space="preserve">
+    <value>投资标的类型</value>
+  </data>
+  <data name="WMP_ActualAnnualRateOfReturn" xml:space="preserve">
+    <value>实际年收益率(%)</value>
+  </data>
+  <data name="WMP_DelegatedAdministrationPeriod" xml:space="preserve">
+    <value>委托管理期限</value>
+  </data>
+  <data name="WMP_EarlyTerminationAndExtensionInstructions" xml:space="preserve">
+    <value>提前终止和延期说明</value>
+  </data>
+  <data name="WMP_ExpertComments" xml:space="preserve">
+    <value>专家点评</value>
+  </data>
+  <data name="WMP_Investment_Amount" xml:space="preserve">
+    <value>投资金额</value>
+  </data>
+  <data name="WMP_ProductFeatures" xml:space="preserve">
+    <value>产品特色</value>
+  </data>
+  <data name="WMP_Revenue_End_Date" xml:space="preserve">
+    <value>收益结束日期</value>
+  </data>
+  <data name="WMP_RiskWarning" xml:space="preserve">
+    <value>风险提示</value>
+  </data>
+  <data name="WMP_Sales_Region" xml:space="preserve">
+    <value>销售地区</value>
+  </data>
+  <data name="WMP_TheConditionsOfPurchaseDescription" xml:space="preserve">
+    <value>申购条件说明</value>
+  </data>
+  <data name="WMP_TheHighestExpectedRevenue" xml:space="preserve">
+    <value>预期最高年收益率(%)</value>
+  </data>
+  <data name="WMP_YieldDescription" xml:space="preserve">
+    <value>收益率说明</value>
+  </data>
+  <data name="Paginate_First" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="Paginate_Last" xml:space="preserve">
+    <value>尾页</value>
+  </data>
+  <data name="WMP_of" xml:space="preserve">
+    <value> 共 </value>
+  </data>
+  <data name="Unselect_All" xml:space="preserve">
+    <value>取消全部</value>
+  </data>
+  <data name="Alert_Select_Asset" xml:space="preserve">
+    <value>请选择债券品种</value>
+  </data>
+  <data name="Empty_Result" xml:space="preserve">
+    <value>无符合条件数据</value>
+  </data>
+  <data name="WMP_Revenue_Start_Date" xml:space="preserve">
+    <value>收益起始日期</value>
+  </data>
+  <data name="Bond_Future_Report_Name" xml:space="preserve">
+    <value>国债期货可交割券明细</value>
+  </data>
+  <data name="WMP_ExcelOutputTitle" xml:space="preserve">
+    <value>理财产品明细</value>
+  </data>
+  <data name="UnlistIsser_Abbreviation" xml:space="preserve">
+    <value>公司简称</value>
+  </data>
+  <data name="UnlistIsser_Abb_PY" xml:space="preserve">
+    <value>拼音简称</value>
+  </data>
+  <data name="UnlistIsser_Balance_Sheet" xml:space="preserve">
+    <value>资产负债表</value>
+  </data>
+  <data name="UnlistIsser_Bar_Line_Graph" xml:space="preserve">
+    <value>柱状图/线图</value>
+  </data>
+  <data name="UnlistIsser_Bond_Code" xml:space="preserve">
+    <value>债券代码</value>
+  </data>
+  <data name="UnlistIsser_Bond_Issue_List" xml:space="preserve">
+    <value>债券发行列表</value>
+  </data>
+  <data name="UnlistIsser_Bond_List" xml:space="preserve">
+    <value>债券列表</value>
+  </data>
+  <data name="UnlistIsser_Cash_Flow" xml:space="preserve">
+    <value>现金流量表</value>
+  </data>
+  <data name="UnlistIsser_Company_Name" xml:space="preserve">
+    <value>公司名称</value>
+  </data>
+  <data name="UnlistIsser_Company_Profile" xml:space="preserve">
+    <value>公司简介</value>
+  </data>
+  <data name="UnlistIsser_Company_Website" xml:space="preserve">
+    <value>总公司网址</value>
+  </data>
+  <data name="UnlistIsser_Com_Form" xml:space="preserve">
+    <value>公司性质</value>
+  </data>
+  <data name="UnlistIsser_Com_Stp" xml:space="preserve">
+    <value>董事会秘书</value>
+  </data>
+  <data name="UnlistIsser_Com_Type" xml:space="preserve">
+    <value>公司类型</value>
+  </data>
+  <data name="UnlistIsser_Contact" xml:space="preserve">
+    <value>联系电话</value>
+  </data>
+  <data name="UnlistIsser_Established_Date" xml:space="preserve">
+    <value>成立时间</value>
+  </data>
+  <data name="UnlistIsser_Graphic_Display" xml:space="preserve">
+    <value>图形显示</value>
+  </data>
+  <data name="UnlistIsser_Income_Statement" xml:space="preserve">
+    <value>利润表</value>
+  </data>
+  <data name="UnlistIsser_Industry" xml:space="preserve">
+    <value>行业</value>
+  </data>
+  <data name="UnlistIsser_Pare_Com" xml:space="preserve">
+    <value>母公司</value>
+  </data>
+  <data name="UnlistIsser_Period" xml:space="preserve">
+    <value>期间</value>
+  </data>
+  <data name="UnlistIsser_Period_End" xml:space="preserve">
+    <value>期间结束日期</value>
+  </data>
+  <data name="UnlistIsser_Registered_Address" xml:space="preserve">
+    <value>公司注册地址</value>
+  </data>
+  <data name="UnlistIsser_Stp_Tel" xml:space="preserve">
+    <value>董秘联系电话</value>
+  </data>
+  <data name="UnlistIsser_Summary_Graph" xml:space="preserve">
+    <value>汇总图</value>
+  </data>
+  <data name="UnlistIsser_View_By" xml:space="preserve">
+    <value>查看方式</value>
+  </data>
+  <data name="UnlistIsser_Years" xml:space="preserve">
+    <value>年数</value>
+  </data>
+  <data name="Coupon_Frequency" xml:space="preserve">
+    <value>付息频率</value>
+  </data>
+  <data name="Next_Payment_Date" xml:space="preserve">
+    <value>下一付息日</value>
+  </data>
+  <data name="Previous_Payment_Date" xml:space="preserve">
+    <value>上一付息日</value>
+  </data>
+  <data name="UnlistIsser_Eng_Abb" xml:space="preserve">
+    <value>英文简称</value>
+  </data>
+  <data name="Bond_AnnoucementDate" xml:space="preserve">
+    <value>公告日期</value>
+  </data>
+  <data name="Bond_FloatOffset" xml:space="preserve">
+    <value>固定利差(%)</value>
+  </data>
+  <data name="Bond_Full_Name" xml:space="preserve">
+    <value>债券名称</value>
+  </data>
+  <data name="Bond_Issue_Amount" xml:space="preserve">
+    <value>发行规模(亿)</value>
+  </data>
+  <data name="Bond_PartyRatingSrcDescr" xml:space="preserve">
+    <value>主体评级机构</value>
+  </data>
+  <data name="Bond_PayDate" xml:space="preserve">
+    <value>缴款日</value>
+  </data>
+  <data name="Bond_RatingSrcDescr" xml:space="preserve">
+    <value>债券评级机构</value>
+  </data>
+  <data name="Short_Name" xml:space="preserve">
+    <value>债券简称</value>
+  </data>
+  <data name="Fundation_PeriodEndDate" xml:space="preserve">
+    <value>期间结束日期</value>
+  </data>
+  <data name="Fundamental_GraphicDisplay" xml:space="preserve">
+    <value>财务明细走势图</value>
+  </data>
+  <data name="Fundamental_SummaryGraph" xml:space="preserve">
+    <value>走势图</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>期间</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>查看方式</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>年数</value>
+  </data>
+  <data name="Annual" xml:space="preserve">
+    <value>年度</value>
+  </data>
+  <data name="Fundamental_OriginalReport" xml:space="preserve">
+    <value>原始报告</value>
+  </data>
+  <data name="Fundamental_ProportionofAssets" xml:space="preserve">
+    <value>资产占比</value>
+  </data>
+  <data name="Fundamental_RingGrowth" xml:space="preserve">
+    <value>环比增长</value>
+  </data>
+  <data name="Fundamental_YoYGrowth" xml:space="preserve">
+    <value>同比增长</value>
+  </data>
+  <data name="Quarterly" xml:space="preserve">
+    <value>季度</value>
+  </data>
+  <data name="UnlistIsser_COM_ADDR" xml:space="preserve">
+    <value>联系地址</value>
+  </data>
+  <data name="UnlistIsser_COM_ADDR_POST" xml:space="preserve">
+    <value>联系地邮编</value>
+  </data>
+  <data name="UnlistIsser_COM_CON_PER" xml:space="preserve">
+    <value>公司联系人</value>
+  </data>
+  <data name="UnlistIsser_COM_FAX" xml:space="preserve">
+    <value>公司传真</value>
+  </data>
+  <data name="UnlistIsser_COM_HIS" xml:space="preserve">
+    <value>成立情况与历史沿革</value>
+  </data>
+  <data name="UnlistIsser_COM_TEL" xml:space="preserve">
+    <value>公司电话</value>
+  </data>
+  <data name="UnlistIsser_CUS_CON_TEL" xml:space="preserve">
+    <value>客服联系电话</value>
+  </data>
+  <data name="UnlistIsser_GEN_MAN" xml:space="preserve">
+    <value>总经理</value>
+  </data>
+  <data name="UnlistIsser_IC_REG_CODE" xml:space="preserve">
+    <value>工商登记号_营业执照注册号</value>
+  </data>
+  <data name="UnlistIsser_LEG_PER" xml:space="preserve">
+    <value>法人代表</value>
+  </data>
+  <data name="UnlistIsser_LOC_TAX_REG_CODE" xml:space="preserve">
+    <value>地税税务登记号</value>
+  </data>
+  <data name="UnlistIsser_MAIL_ADDR" xml:space="preserve">
+    <value>公司电子邮件地址</value>
+  </data>
+  <data name="UnlistIsser_MAIN_BUS" xml:space="preserve">
+    <value>主营业务</value>
+  </data>
+  <data name="UnlistIsser_NAT_TAX_REG_CODE" xml:space="preserve">
+    <value>国税税务登记号</value>
+  </data>
+  <data name="UnlistIsser_OFFI_ADDR" xml:space="preserve">
+    <value>办公地址</value>
+  </data>
+  <data name="UnlistIsser_OFFI_ADDR_POST" xml:space="preserve">
+    <value>办公地邮编</value>
+  </data>
+  <data name="UnlistIsser_REG_ADDR" xml:space="preserve">
+    <value>注册地址</value>
+  </data>
+  <data name="UnlistIsser_REG_ADDR_POST" xml:space="preserve">
+    <value>注册地邮编</value>
+  </data>
+  <data name="UnlistIsser_REG_CAP" xml:space="preserve">
+    <value>注册资本</value>
+  </data>
+  <data name="UnlistIsser_SID_BUS" xml:space="preserve">
+    <value>兼营业务</value>
+  </data>
+  <data name="UnlistIsser_STAFF_SUM" xml:space="preserve">
+    <value>员工总数</value>
+  </data>
+  <data name="UnlistIsser_STP_CON_ADDR" xml:space="preserve">
+    <value>董秘联系地址</value>
+  </data>
+  <data name="UnlistIsser_STP_MAIL" xml:space="preserve">
+    <value>董秘电子邮件地址</value>
+  </data>
+  <data name="UnlistIsser_STP_TAX" xml:space="preserve">
+    <value>董秘传真</value>
+  </data>
+  <data name="ExcelOutputFileName" xml:space="preserve">
+    <value>报表.xls</value>
+  </data>
+  <data name="UnlistIsser_Page_Title" xml:space="preserve">
+    <value>债券发行人明细</value>
+  </data>
+  <data name="UnlistIsser_Hide_No_Data_Issuer" xml:space="preserve">
+    <value>隐藏无财务数据发行人</value>
+  </data>
+  <data name="Bond_Future_Comprehensive_Analysis" xml:space="preserve">
+    <value>综合分析</value>
+  </data>
+  <data name="DownloadFileName" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="Option_Issue_Country" xml:space="preserve">
+    <value>发行市场</value>
+  </data>
+  <data name="BankWMP_Research_StartDate" xml:space="preserve">
+    <value>报告日期</value>
+  </data>
+  <data name="BankWMP_Research_EndDate" xml:space="preserve">
+    <value>到</value>
+  </data>
+  <data name="BankWMP_Research_Title" xml:space="preserve">
+    <value>报告明细</value>
+  </data>
+  <data name="BankWMP_Research_ReportTitle" xml:space="preserve">
+    <value>标题</value>
+  </data>
+  <data name="BankWMP_Research_ReportType" xml:space="preserve">
+    <value>报告类型</value>
+  </data>
+  <data name="BankWMP_Research_ReportDate" xml:space="preserve">
+    <value>报告日期</value>
+  </data>
+  <data name="BankWMP_Research_ReportAuthor" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="BankWMP_Research_Download" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="BankWMP_Research_ReportInterval" xml:space="preserve">
+    <value>报告期</value>
+  </data>
+  <data name="WMP_QDII_All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="WMP_QDII_No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="WMP_QDII_Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Type_Fmd" xml:space="preserve">
+    <value>中央国库现金管理</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>频率</value>
+  </data>
+  <data name="Half_Year" xml:space="preserve">
+    <value>半年</value>
+  </data>
+  <data name="Type_FMDIE" xml:space="preserve">
+    <value>中央国库现金管理到期</value>
+  </data>
+  <data name="WMP_Trend_C_1" xml:space="preserve">
+    <value>人民币</value>
+  </data>
+  <data name="WMP_Trend_C_13" xml:space="preserve">
+    <value>新加坡元</value>
+  </data>
+  <data name="WMP_Trend_C_19" xml:space="preserve">
+    <value>新西兰元</value>
+  </data>
+  <data name="WMP_Trend_C_2" xml:space="preserve">
+    <value>港币</value>
+  </data>
+  <data name="WMP_Trend_C_27" xml:space="preserve">
+    <value>澳元</value>
+  </data>
+  <data name="WMP_Trend_C_3" xml:space="preserve">
+    <value>美元</value>
+  </data>
+  <data name="WMP_Trend_C_4" xml:space="preserve">
+    <value>日元</value>
+  </data>
+  <data name="WMP_Trend_C_5" xml:space="preserve">
+    <value>英镑</value>
+  </data>
+  <data name="WMP_Trend_C_6" xml:space="preserve">
+    <value>欧元</value>
+  </data>
+  <data name="WMP_Trend_C_8" xml:space="preserve">
+    <value>加拿大元</value>
+  </data>
+  <data name="WMP_Trend_C_9" xml:space="preserve">
+    <value>澳门元</value>
+  </data>
+  <data name="WMP_Trend_EY_2hpt_5pt" xml:space="preserve">
+    <value>2.5%-5%</value>
+  </data>
+  <data name="WMP_Trend_EY_5pt_10pt" xml:space="preserve">
+    <value>5%-10%</value>
+  </data>
+  <data name="WMP_Trend_EY_GT10pt" xml:space="preserve">
+    <value>10%以上</value>
+  </data>
+  <data name="WMP_Trend_EY_LT2hpt" xml:space="preserve">
+    <value>2.5%以下</value>
+  </data>
+  <data name="WMP_Trend_EY_Unpublished" xml:space="preserve">
+    <value>未发布</value>
+  </data>
+  <data name="WMP_Trend_IBT_1" xml:space="preserve">
+    <value>组合投资类</value>
+  </data>
+  <data name="WMP_Trend_IBT_10" xml:space="preserve">
+    <value>货币外汇类</value>
+  </data>
+  <data name="WMP_Trend_IBT_11" xml:space="preserve">
+    <value>衍生品投资</value>
+  </data>
+  <data name="WMP_Trend_IBT_12" xml:space="preserve">
+    <value>固定收益类资产</value>
+  </data>
+  <data name="WMP_Trend_IBT_13" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="WMP_Trend_IBT_14" xml:space="preserve">
+    <value>结构型</value>
+  </data>
+  <data name="WMP_Trend_IBT_15" xml:space="preserve">
+    <value>券商资产管理类</value>
+  </data>
+  <data name="WMP_Trend_IBT_2" xml:space="preserve">
+    <value>信托贷款类</value>
+  </data>
+  <data name="WMP_Trend_IBT_3" xml:space="preserve">
+    <value>票据类</value>
+  </data>
+  <data name="WMP_Trend_IBT_4" xml:space="preserve">
+    <value>信贷资产类</value>
+  </data>
+  <data name="WMP_Trend_IBT_5" xml:space="preserve">
+    <value>证券投资类</value>
+  </data>
+  <data name="WMP_Trend_IBT_6" xml:space="preserve">
+    <value>权益投资类</value>
+  </data>
+  <data name="WMP_Trend_IBT_7" xml:space="preserve">
+    <value>债券投资类</value>
+  </data>
+  <data name="WMP_Trend_IBT_8" xml:space="preserve">
+    <value>贵金属类</value>
+  </data>
+  <data name="WMP_Trend_IBT_9" xml:space="preserve">
+    <value>商品类</value>
+  </data>
+  <data name="WMP_Trend_PT_Unpublished" xml:space="preserve">
+    <value>未发布</value>
+  </data>
+  <data name="WMP_Trend_PT_1MTo3M" xml:space="preserve">
+    <value>1-3个月</value>
+  </data>
+  <data name="WMP_Trend_PT_3MTo6M" xml:space="preserve">
+    <value>3-6个月</value>
+  </data>
+  <data name="WMP_Trend_PT_6MTo12M" xml:space="preserve">
+    <value>6-12个月</value>
+  </data>
+  <data name="WMP_Trend_PT_GT12M" xml:space="preserve">
+    <value>1年以上</value>
+  </data>
+  <data name="WMP_Trend_PT_LT1M" xml:space="preserve">
+    <value>1个月以内</value>
+  </data>
+  <data name="WMP_Trend_YT_100" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="WMP_Trend_YT_1" xml:space="preserve">
+    <value>人民币</value>
+  </data>
+  <data name="WMP_Trend_YT_2" xml:space="preserve">
+    <value>外汇</value>
+  </data>
+  <data name="WMP_Trend_YT_3" xml:space="preserve">
+    <value>保本固定</value>
+  </data>
+  <data name="WMP_Trend_YT_5" xml:space="preserve">
+    <value>保本浮动</value>
+  </data>
+  <data name="WMP_Trend_YT_6" xml:space="preserve">
+    <value>非保本浮动</value>
+  </data>
+  <data name="WMP_Trend_C_0" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="WMP_Trend_IBT_100" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="WMP_Trend_Column_IssueAmount" xml:space="preserve">
+    <value>发行面额(亿)</value>
+  </data>
+  <data name="WMP_Financial_Details" xml:space="preserve">
+    <value>理财明细</value>
+  </data>
+  <data name="WMP_Subtotals" xml:space="preserve">
+    <value>分类汇总</value>
+  </data>
+  <data name="WMP_Summary_Frequency" xml:space="preserve">
+    <value>汇总频率</value>
+  </data>
+  <data name="WMP_The_Results" xml:space="preserve">
+    <value>分析结果</value>
+  </data>
+  <data name="Term_1YTO2Y" xml:space="preserve">
+    <value>1年到2年</value>
+  </data>
+  <data name="Term_6MTO1Y" xml:space="preserve">
+    <value>6个月到1年</value>
+  </data>
+  <data name="Term_GT2Y" xml:space="preserve">
+    <value>大于2年</value>
+  </data>
+  <data name="Term_LT6M" xml:space="preserve">
+    <value>6个月以下</value>
+  </data>
+  <data name="WMP_Trust_Company_Info" xml:space="preserve">
+    <value>公司信息</value>
+  </data>
+  <data name="WMP_Trust_Pruduct_Info" xml:space="preserve">
+    <value>产品信息</value>
+  </data>
+  <data name="WMP_Trust_PRD_NAME" xml:space="preserve">
+    <value>信托产品全称</value>
+  </data>
+  <data name="WMP_Trust_PROM_STARTDATE" xml:space="preserve">
+    <value>推介起始日</value>
+  </data>
+  <data name="WMP_Trust_TRUST_SNAME" xml:space="preserve">
+    <value>信托产品简称</value>
+  </data>
+  <data name="WMP_Trust_ACTU_ISS_SIZE" xml:space="preserve">
+    <value>实际发行规模(万)</value>
+  </data>
+  <data name="WMP_Trust_ACT_YLD" xml:space="preserve">
+    <value>实际年收益率(%)</value>
+  </data>
+  <data name="WMP_Trust_ACT_YLD_REMARK" xml:space="preserve">
+    <value>实际年收益率说明</value>
+  </data>
+  <data name="WMP_Trust_BUILD_DATE" xml:space="preserve">
+    <value>成立日期</value>
+  </data>
+  <data name="WMP_Trust_CRED_ENHA_MODE" xml:space="preserve">
+    <value>信用增级方式</value>
+  </data>
+  <data name="WMP_Trust_ENAME" xml:space="preserve">
+    <value>英文名称</value>
+  </data>
+  <data name="WMP_Trust_ENDDATE" xml:space="preserve">
+    <value>到期日期</value>
+  </data>
+  <data name="WMP_Trust_EXP_YLD" xml:space="preserve">
+    <value>预计年收益率(%)</value>
+  </data>
+  <data name="WMP_Trust_EXP_YLD_REMARK" xml:space="preserve">
+    <value>预计年收益率说明</value>
+  </data>
+  <data name="WMP_Trust_FIN_CYC" xml:space="preserve">
+    <value>理财周期</value>
+  </data>
+  <data name="WMP_Trust_INV_FLD" xml:space="preserve">
+    <value>投资领域</value>
+  </data>
+  <data name="WMP_Trust_ISS_YEAR" xml:space="preserve">
+    <value>发行年度</value>
+  </data>
+  <data name="WMP_Trust_IS_STRU" xml:space="preserve">
+    <value>是否结构化</value>
+  </data>
+  <data name="WMP_Trust_MIN_CAP" xml:space="preserve">
+    <value>投资门槛(万)</value>
+  </data>
+  <data name="WMP_Trust_MIN_CAP_REMARK" xml:space="preserve">
+    <value>认购资金递增说明</value>
+  </data>
+  <data name="WMP_Trust_ORGNAME" xml:space="preserve">
+    <value>信托公司</value>
+  </data>
+  <data name="WMP_Trust_PLAN_ISS_SIZE" xml:space="preserve">
+    <value>预期发行规模(万)</value>
+  </data>
+  <data name="WMP_Trust_PRD_REMARK" xml:space="preserve">
+    <value>产品说明</value>
+  </data>
+  <data name="WMP_Trust_PROM_ENDDATE" xml:space="preserve">
+    <value>推介终止日</value>
+  </data>
+  <data name="WMP_Trust_REGION" xml:space="preserve">
+    <value>所属地区</value>
+  </data>
+  <data name="WMP_Trust_REGI_CAP" xml:space="preserve">
+    <value>注册资本</value>
+  </data>
+  <data name="WMP_Trust_TRUST_MNG" xml:space="preserve">
+    <value>信托投资经理</value>
+  </data>
+  <data name="WMP_Trust_TRUST_TYPE" xml:space="preserve">
+    <value>信托类型</value>
+  </data>
+  <data name="ImmaturityAmount" xml:space="preserve">
+    <value>未到期余额</value>
+  </data>
+  <data name="WMP_Trust_ADD_CAP" xml:space="preserve">
+    <value>最低追加金额(万)</value>
+  </data>
+  <data name="WMP_Trust_ALERT_LINE" xml:space="preserve">
+    <value>净值警戒/预警线</value>
+  </data>
+  <data name="WMP_Trust_ALERT_LINE_REMARK" xml:space="preserve">
+    <value>警戒/预警线说明</value>
+  </data>
+  <data name="WMP_Trust_CURNCY_NAME" xml:space="preserve">
+    <value>币种</value>
+  </data>
+  <data name="WMP_Trust_FEE_REMARK" xml:space="preserve">
+    <value>费率说明</value>
+  </data>
+  <data name="WMP_Trust_INCOME_TYPE" xml:space="preserve">
+    <value>收益类型</value>
+  </data>
+  <data name="WMP_Trust_INVEST_REMARK" xml:space="preserve">
+    <value>投资范围说明</value>
+  </data>
+  <data name="WMP_Trust_IS_BRG_FRD_NAME" xml:space="preserve">
+    <value>是否可提前终止</value>
+  </data>
+  <data name="WMP_Trust_IS_CURNCY_NAME" xml:space="preserve">
+    <value>是否货币式</value>
+  </data>
+  <data name="WMP_Trust_IS_DLY_NAME" xml:space="preserve">
+    <value>是否可延期</value>
+  </data>
+  <data name="WMP_Trust_IS_MERGE" xml:space="preserve">
+    <value>是否合并披露</value>
+  </data>
+  <data name="WMP_Trust_IS_PE_NAME" xml:space="preserve">
+    <value>是否私募基金</value>
+  </data>
+  <data name="WMP_Trust_IS_TOT" xml:space="preserve">
+    <value>是否TOT</value>
+  </data>
+  <data name="WMP_Trust_OPEN_REMARK" xml:space="preserve">
+    <value>开放日说明</value>
+  </data>
+  <data name="WMP_Trust_PERI_TYPE_NAME" xml:space="preserve">
+    <value>期限类型</value>
+  </data>
+  <data name="WMP_Trust_PRD_STATUS" xml:space="preserve">
+    <value>产品状态</value>
+  </data>
+  <data name="WMP_Trust_REMARK" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="WMP_Trust_RIST_WARE" xml:space="preserve">
+    <value>风险提示</value>
+  </data>
+  <data name="WMP_Trust_SEC_INVEST_TYPE" xml:space="preserve">
+    <value>证券投资类型</value>
+  </data>
+  <data name="WMP_Trust_STOP_LINE" xml:space="preserve">
+    <value>净值止损/平仓线</value>
+  </data>
+  <data name="WMP_Trust_STOP_LINE_REMARK" xml:space="preserve">
+    <value>止损/平仓线说明</value>
+  </data>
+  <data name="WMP_Trust_Org_CNAME" xml:space="preserve">
+    <value>发行机构</value>
+  </data>
+  <data name="WMP_Trust_Org_CURNCY_NAME" xml:space="preserve">
+    <value>注册资本币种</value>
+  </data>
+  <data name="WMP_Trust_Org_MSTAFF_NUM" xml:space="preserve">
+    <value>管理人员数量</value>
+  </data>
+  <data name="WMP_Trust_Org_NATION_NAME" xml:space="preserve">
+    <value>国别或地区</value>
+  </data>
+  <data name="WMP_Trust_Org_POSTCODE" xml:space="preserve">
+    <value>邮政编码</value>
+  </data>
+  <data name="WMP_Trust_Org_REPR_EMAIL" xml:space="preserve">
+    <value>证券事务代表邮箱</value>
+  </data>
+  <data name="WMP_Trust_Org_STAFF_NUM" xml:space="preserve">
+    <value>雇员总数</value>
+  </data>
+  <data name="WMP_Trust_Org_TSTAFF_NUM" xml:space="preserve">
+    <value>技术人员数量</value>
+  </data>
+  <data name="WMP_ExpectedIssueSize" xml:space="preserve">
+    <value>预期发行规模</value>
+  </data>
+  <data name="WMP_ExpectedYield" xml:space="preserve">
+    <value>预期年收益率</value>
+  </data>
+  <data name="WMP_InstitutionType" xml:space="preserve">
+    <value>机构类型</value>
+  </data>
+  <data name="WMP_InvestmentField" xml:space="preserve">
+    <value>投资领域</value>
+  </data>
+  <data name="WMP_InvestmentThreshold" xml:space="preserve">
+    <value>投资门槛</value>
+  </data>
+  <data name="WMP_PrivateFund" xml:space="preserve">
+    <value>私募基金</value>
+  </data>
+  <data name="WMP_ProductState" xml:space="preserve">
+    <value>产品状态</value>
+  </data>
+  <data name="WMP_TrustCompany" xml:space="preserve">
+    <value>信托公司</value>
+  </data>
+  <data name="WMP_TrustProductName" xml:space="preserve">
+    <value>信托产品名称</value>
+  </data>
+  <data name="WMP_TrustType" xml:space="preserve">
+    <value>信托类型</value>
+  </data>
+  <data name="Local10KSuffix" xml:space="preserve">
+    <value>万</value>
+  </data>
+  <data name="WMP_AnnouncementDate" xml:space="preserve">
+    <value>公告日期</value>
+  </data>
+  <data name="WMP_MaturityDate" xml:space="preserve">
+    <value>到期日</value>
+  </data>
+  <data name="WMP_RecommendationClosingDate" xml:space="preserve">
+    <value>推介终止日</value>
+  </data>
+  <data name="WMP_RecommendationStartingDate" xml:space="preserve">
+    <value>推介起始日</value>
+  </data>
+  <data name="WMP_StartingDate" xml:space="preserve">
+    <value>成立日期</value>
+  </data>
+  <data name="WMP_BankWMPCompare" xml:space="preserve">
+    <value>银行理财产品比较</value>
+  </data>
+  <data name="Common_More" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="RS_ReportSearch" xml:space="preserve">
+    <value>研究报告查询</value>
+  </data>
+  <data name="RS_ReportTitle" xml:space="preserve">
+    <value>报告名称</value>
+  </data>
+  <data name="RS_Orgnization" xml:space="preserve">
+    <value>机构</value>
+  </data>
+  <data name="WMP_CompareResult" xml:space="preserve">
+    <value>比较结果</value>
+  </data>
+  <data name="WMP_FadeOutTheSame" xml:space="preserve">
+    <value>淡化相同</value>
+  </data>
+  <data name="WMP_HideTheSame" xml:space="preserve">
+    <value>隐藏相同</value>
+  </data>
+  <data name="WMP_Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="WMP_NewName" xml:space="preserve">
+    <value>新名称</value>
+  </data>
+  <data name="WMP_Select" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="WMP_ShowAll" xml:space="preserve">
+    <value>显示全部</value>
+  </data>
+  <data name="Development_Manager" xml:space="preserve">
+    <value>开发经理</value>
+  </data>
+  <data name="Product_Manager" xml:space="preserve">
+    <value>产品经理</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="WMP_DeleteBoxTitle" xml:space="preserve">
+    <value>删除保存的比较搜索</value>
+  </data>
+  <data name="WMP_DeleteConfirm" xml:space="preserve">
+    <value>您确定要删除保存的比较{0}吗？</value>
+  </data>
+  <data name="ReportSearch" xml:space="preserve">
+    <value>Eikon研究报告搜索</value>
+  </data>
+  <data name="Export_Max" xml:space="preserve">
+    <value>一次最多可导出2000条记录</value>
+  </data>
+  <data name="CnE_PriceTitle" xml:space="preserve">
+    <value>价格曲线</value>
+  </data>
+  <data name="WMP_Trust_Compare_Title" xml:space="preserve">
+    <value>信托产品比较</value>
+  </data>
+  <data name="WoldCup" xml:space="preserve">
+    <value>2014巴西世界杯</value>
+  </data>
+  <data name="Common_Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Common_No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="Bond_Type_Corporate_Bonds" xml:space="preserve">
+    <value>公司债</value>
+  </data>
+  <data name="Bond_Type_Enterprise_Bonds" xml:space="preserve">
+    <value>企业债</value>
+  </data>
+  <data name="Bond_Type_SMEPPBonds" xml:space="preserve">
+    <value>中小企业私幕债</value>
+  </data>
+  <data name="Bond_Type_Certificate_Deposit" xml:space="preserve">
+    <value>同业存单</value>
+  </data>
+  <data name="Bond_IS_Muncipal_Bond" xml:space="preserve">
+    <value>城投债</value>
+  </data>
+  <data name="Common_Other_Class" xml:space="preserve">
+    <value>其它分类</value>
+  </data>
+  <data name="Contact_CNE" xml:space="preserve">
+    <value>对大宗商品相关咨询,请联系 &lt;a href="mailto:andy.xie@thomsonreuters.com"&gt;andy.xie@thomsonreuters.com&lt;/a&gt;</value>
+  </data>
+  <data name="Bond_DimSum_Class_Detail" xml:space="preserve">
+    <value>分类明细</value>
+  </data>
+  <data name="Bond_DimSum_Summary" xml:space="preserve">
+    <value>汇总</value>
+  </data>
+  <data name="Global_RMB" xml:space="preserve">
+    <value>离岸人民币主页面</value>
+  </data>
+  <data name="DimsumBottomChartTabTitle" xml:space="preserve">
+    <value>分类统计图</value>
+  </data>
+  <data name="DimsumBottomChartTitle" xml:space="preserve">
+    <value>点心债分类统计图</value>
+  </data>
+  <data name="Content_Manager" xml:space="preserve">
+    <value>大宗商品内容经理</value>
+  </data>
+  <data name="Bond_Issuer_Rating" xml:space="preserve">
+    <value>发行人历史评级</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="Bond_History_Rating" xml:space="preserve">
+    <value>债券历史评级</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>搜索债券,发行人,宏观指标,研报</value>
+  </data>
+  <data name="Bond_Rating_Date" xml:space="preserve">
+    <value>评级日期</value>
+  </data>
+  <data name="Bond_Rating_Type" xml:space="preserve">
+    <value>评级类型</value>
+  </data>
+  <data name="Bond_Rating_Class" xml:space="preserve">
+    <value>评级种类</value>
+  </data>
+  <data name="Bond_Rating_Orgnization" xml:space="preserve">
+    <value>评级机构</value>
+  </data>
+  <data name="Bond_Rating_Prospect" xml:space="preserve">
+    <value>评级展望</value>
+  </data>
+  <data name="Bond_Rating_Report" xml:space="preserve">
+    <value>评级报告</value>
+  </data>
+  <data name="Issuer_Rate" xml:space="preserve">
+    <value>评级</value>
+  </data>
+  <data name="RATE_POINT" xml:space="preserve">
+    <value>评级观点</value>
+  </data>
+  <data name="Homepage" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="Homepage_Hot" xml:space="preserve">
+    <value>热门发布</value>
+  </data>
+  <data name="Lfex_Invest_Type" xml:space="preserve">
+    <value>投资类型</value>
+  </data>
+  <data name="Lfex_Term" xml:space="preserve">
+    <value>期限</value>
+  </data>
+  <data name="Lfex_Issue_Amount" xml:space="preserve">
+    <value>发行规模</value>
+  </data>
+  <data name="Lfex_Expected_Yield" xml:space="preserve">
+    <value>预期收益率</value>
+  </data>
+  <data name="Lfex_Prod_State" xml:space="preserve">
+    <value>产品状态</value>
+  </data>
+  <data name="Lfex_Prod_Name" xml:space="preserve">
+    <value>产品名称</value>
+  </data>
+  <data name="Lfex_Prod_Custom" xml:space="preserve">
+    <value>产品定制</value>
+  </data>
+  <data name="Lfex_Prod_Operation" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Lfex_Prod_Reservation" xml:space="preserve">
+    <value>预约</value>
+  </data>
+  <data name="Lfex_New" xml:space="preserve">
+    <value>新</value>
+  </data>
+  <data name="Lfex_Customer_Service" xml:space="preserve">
+    <value>客户服务</value>
+  </data>
+  <data name="Lfex_Wechat" xml:space="preserve">
+    <value>Lfex微关注</value>
+  </data>
+  <data name="Lfex_Goto_Website" xml:space="preserve">
+    <value>点击进入陆金所Lfex官网</value>
+  </data>
+  <data name="WMP_Region" xml:space="preserve">
+    <value>发行地区</value>
+  </data>
+  <data name="WMP_City" xml:space="preserve">
+    <value>城市</value>
+  </data>
+  <data name="LfexShowMessage" xml:space="preserve">
+    <value>没有明细</value>
+  </data>
+  <data name="Lfex_Contact1" xml:space="preserve">
+    <value>客服1</value>
+  </data>
+  <data name="Lfex_Contact2" xml:space="preserve">
+    <value>客服2</value>
+  </data>
+  <data name="Lfex_Entrusted_Debt_Business" xml:space="preserve">
+    <value>委托债权交易</value>
+  </data>
+  <data name="Lfex_Receivables_Transfer" xml:space="preserve">
+    <value>应收账款转让</value>
+  </data>
+  <data name="Lfex_Note_Beneficiary_Right" xml:space="preserve">
+    <value>票据收益权转让</value>
+  </data>
+  <data name="Lfex_Structured_Innovative" xml:space="preserve">
+    <value>信用卡资产证券化</value>
+  </data>
+  <data name="Lfex_Other_Beneficiary_Right" xml:space="preserve">
+    <value>车贷及其它收益权</value>
+  </data>
+  <data name="Lfex_ELDBR_Business" xml:space="preserve">
+    <value>委托贷款债权收益权转让</value>
+  </data>
+  <data name="Lfex_Others" xml:space="preserve">
+    <value>其它精品推荐</value>
+  </data>
+  <data name="Lfex_InSale" xml:space="preserve">
+    <value>在售</value>
+  </data>
+  <data name="Lfex_NoSale" xml:space="preserve">
+    <value>停售</value>
+  </data>
+  <data name="Lfex_Negotiation" xml:space="preserve">
+    <value>协商议定</value>
+  </data>
+  <data name="SupplyDemand" xml:space="preserve">
+    <value>供需项</value>
+  </data>
+  <data name="CityBondInfo_Detail" xml:space="preserve">
+    <value>明细</value>
+  </data>
+  <data name="CityBondInfo_Graphic" xml:space="preserve">
+    <value>走势图</value>
+  </data>
+  <data name="CityBondInfo_StatisticsChart" xml:space="preserve">
+    <value>统计图</value>
+  </data>
+  <data name="CityBondInfo_City" xml:space="preserve">
+    <value>城投债</value>
+  </data>
+  <data name="CityBondInfo_Cmap" xml:space="preserve">
+    <value>中国地图</value>
+  </data>
+  <data name="CityBondInfo_Local" xml:space="preserve">
+    <value>地方政府债</value>
+  </data>
+  <data name="Bond_IssueComment" xml:space="preserve">
+    <value>发行备注</value>
+  </data>
+  <data name="Bond_WI_TYPE_CD" xml:space="preserve">
+    <value>续发</value>
+  </data>
+  <data name="Bond_Markets" xml:space="preserve">
+    <value>流通市场</value>
+  </data>
+  <data name="Bond_Trustee" xml:space="preserve">
+    <value>托管机构</value>
+  </data>
+  <data name="CompanyCode" xml:space="preserve">
+    <value>代码</value>
+  </data>
+  <data name="SearchPlaceholderByBond" xml:space="preserve">
+    <value>搜索债券</value>
+  </data>
+  <data name="ChinaSecurities_Code" xml:space="preserve">
+    <value>上市公司代码</value>
+  </data>
+  <data name="ChinaSecurities_Notice" xml:space="preserve">
+    <value>公告解读</value>
+  </data>
+  <data name="ChinaSecurities_Published" xml:space="preserve">
+    <value>刊发时间</value>
+  </data>
+  <data name="ChinaSecurities_Ten" xml:space="preserve">
+    <value>中证十条</value>
+  </data>
+  <data name="Underwriters_TopTen" xml:space="preserve">
+    <value>前十排名图</value>
+  </data>
+  <data name="Underwriters_Amount" xml:space="preserve">
+    <value>承销金额</value>
+  </data>
+  <data name="Underwriters_Amount_PCT" xml:space="preserve">
+    <value>承销比例(%)</value>
+  </data>
+  <data name="Underwriters_Issues" xml:space="preserve">
+    <value>发行数量</value>
+  </data>
+  <data name="Underwriters_Ranking" xml:space="preserve">
+    <value>排名</value>
+  </data>
+  <data name="Underwriters_Title" xml:space="preserve">
+    <value>承销商</value>
+  </data>
+  <data name="NewsTitle" xml:space="preserve">
+    <value>新闻</value>
+  </data>
+  <data name="OpenMarketMLF" xml:space="preserve">
+    <value>中期借贷便利</value>
+  </data>
+  <data name="OpenMarketOperation" xml:space="preserve">
+    <value>公开市场操作</value>
+  </data>
+  <data name="OpenMarketSLF" xml:space="preserve">
+    <value>常备借贷便利</value>
+  </data>
+  <data name="OpenMarketSLO" xml:space="preserve">
+    <value>短期流动性调节工具</value>
+  </data>
+  <data name="SLFTitle" xml:space="preserve">
+    <value>央行常备借贷便利操作表</value>
+  </data>
+  <data name="SLOTitle" xml:space="preserve">
+    <value>央行短期流动性调节工具</value>
+  </data>
+  <data name="CityBondInfo_ByArea" xml:space="preserve">
+    <value>按发行地区</value>
+  </data>
+  <data name="CityBondInfo_ByIssuer" xml:space="preserve">
+    <value>按发行人</value>
+  </data>
+  <data name="Bond_UnMaturity" xml:space="preserve">
+    <value>未到期债券</value>
+  </data>
+  <data name="BondIssue_End_Issues" xml:space="preserve">
+    <value>期末只数</value>
+  </data>
+  <data name="Bond_Auditor" xml:space="preserve">
+    <value>审计机构</value>
+  </data>
+  <data name="Bond_DetailInfo" xml:space="preserve">
+    <value>详细信息</value>
+  </data>
+  <data name="Bond_BidDate" xml:space="preserve">
+    <value>招标日期</value>
+  </data>
+  <data name="Bond_BidInfo" xml:space="preserve">
+    <value>招标信息</value>
+  </data>
+  <data name="Bond_BidInvitation" xml:space="preserve">
+    <value>招标标的</value>
+  </data>
+  <data name="Bond_BidType" xml:space="preserve">
+    <value>招标类型</value>
+  </data>
+  <data name="Bond_BidWay" xml:space="preserve">
+    <value>招标方式</value>
+  </data>
+  <data name="Bond_Counsel" xml:space="preserve">
+    <value>法律顾问</value>
+  </data>
+  <data name="Bond_Deposit" xml:space="preserve">
+    <value>托管机构</value>
+  </data>
+  <data name="Bond_DeputyUnderWriter" xml:space="preserve">
+    <value>副主承销商</value>
+  </data>
+  <data name="Bond_FirstPayDate" xml:space="preserve">
+    <value>首次兑付日</value>
+  </data>
+  <data name="Bond_FundCustodian" xml:space="preserve">
+    <value>资金保管机构</value>
+  </data>
+  <data name="Bond_Guarantor" xml:space="preserve">
+    <value>担保人</value>
+  </data>
+  <data name="Bond_Info" xml:space="preserve">
+    <value>债券资料信息</value>
+  </data>
+  <data name="Bond_IsGuarantee" xml:space="preserve">
+    <value>是否有担保</value>
+  </data>
+  <data name="Bond_IsRedemption" xml:space="preserve">
+    <value>是否可回赎回</value>
+  </data>
+  <data name="Bond_IsResale" xml:space="preserve">
+    <value>是否可回赎</value>
+  </data>
+  <data name="Bond_IssueInfo" xml:space="preserve">
+    <value>发行信息</value>
+  </data>
+  <data name="Bond_IssueTotal" xml:space="preserve">
+    <value>发行总额(万)</value>
+  </data>
+  <data name="Bond_LeadUnderWriter" xml:space="preserve">
+    <value>主承销商</value>
+  </data>
+  <data name="Bond_MaturityDate" xml:space="preserve">
+    <value>债券期限</value>
+  </data>
+  <data name="Bond_MaturityPayDate" xml:space="preserve">
+    <value>本息兑付日</value>
+  </data>
+  <data name="Bond_Promote" xml:space="preserve">
+    <value>推广机构</value>
+  </data>
+  <data name="Bond_RateFactor" xml:space="preserve">
+    <value>利率要素</value>
+  </data>
+  <data name="Bond_Regulator" xml:space="preserve">
+    <value>监管机构</value>
+  </data>
+  <data name="Bond_ScaleChange" xml:space="preserve">
+    <value>规模变动</value>
+  </data>
+  <data name="Bond_ScaleChangeAmount" xml:space="preserve">
+    <value>变动额(万)</value>
+  </data>
+  <data name="Bond_ScaleChangeBalance" xml:space="preserve">
+    <value>余额(万)</value>
+  </data>
+  <data name="Bond_ScaleChangeType" xml:space="preserve">
+    <value>变动类型</value>
+  </data>
+  <data name="Bond_UnderlyingAsset" xml:space="preserve">
+    <value>基础资产</value>
+  </data>
+  <data name="Bond_InitiatingMechanism" xml:space="preserve">
+    <value>发起机构</value>
+  </data>
+  <data name="Bond_OtherType" xml:space="preserve">
+    <value>其它债券分类</value>
+  </data>
+  <data name="Bond_Type" xml:space="preserve">
+    <value>债券类别</value>
+  </data>
+  <data name="SourceEs" xml:space="preserve">
+    <value>数据来源：汤森路透预测</value>
+  </data>
+  <data name="BondIssue_End_Issues_PCT" xml:space="preserve">
+    <value>期末只数比例(%)</value>
+  </data>
+  <data name="Bond_IssuranceMaturesGraph" xml:space="preserve">
+    <value>债券发行与到期统计走势图</value>
+  </data>
+  <data name="ExchangeName" xml:space="preserve">
+    <value>交易市场</value>
+  </data>
+  <data name="MeetChinaTitle" xml:space="preserve">
+    <value>汇聚中国</value>
+  </data>
+  <data name="WMP_Trend_C_1000" xml:space="preserve">
+    <value>未发布</value>
+  </data>
+  <data name="Type_MLF" xml:space="preserve">
+    <value>中期借贷便利</value>
+  </data>
+  <data name="Type_MLFIE" xml:space="preserve">
+    <value>中期借贷便利到期</value>
+  </data>
+  <data name="OpenMarketMLFAlias" xml:space="preserve">
+    <value>中期借贷便利</value>
+  </data>
+  <data name="SourceCfets" xml:space="preserve">
+    <value>数据来源：外汇交易中心、汤森路透</value>
+  </data>
+  <data name="SourceSCH" xml:space="preserve">
+    <value>数据来源：上海清算所、汤森路透</value>
+  </data>
+</root>

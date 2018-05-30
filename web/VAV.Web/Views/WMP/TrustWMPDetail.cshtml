@@ -1,0 +1,440 @@
+﻿@using VAV.Web.Common
+@model VAV.Web.ViewModels.WMP.TrustWMPDetailViewModel
+@{
+    var tabName = "trustWMPDetailTabs" + @Model.InnerCode;
+}
+<h2 class="dailogH2">@Model.ViewProd.PRD_NAME</h2>
+<div id="@tabName" class="bankWMPDetailTabs">
+    <ul>
+        <li><a href="#tabs-@Model.InnerCode-1">@Resources.Global.WMP_Trust_Pruduct_Info</a></li>
+        <li><a href="#tabs-@Model.InnerCode-2">@Resources.Global.WMP_Trust_Company_Info</a></li>
+    </ul>
+    <div id="tabs-@Model.InnerCode-1">
+        <table class="datatable" style="line-height: 20px">
+            <tbody>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_PRD_NAME
+                    </td>
+                    <td>@Model.ViewProd.PRD_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_PROM_STARTDATE
+                    </td>
+                    <td>@(Model.ViewProd.PROM_STARTDATE.HasValue ? Model.ViewProd.PROM_STARTDATE.Value.ToString("yyyy-MM-dd") : "")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_TRUST_SNAME
+                    </td>
+                    <td>@Model.ViewProd.TRUST_SNAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_PROM_ENDDATE
+                    </td>
+                    <td>@(Model.ViewProd.PROM_ENDDATE.HasValue ? Model.ViewProd.PROM_ENDDATE.Value.ToString("yyyy-MM-dd") : "")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_ORGNAME
+                    </td>
+                    <td>@Model.ViewProd.ORGNAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_FIN_CYC
+                    </td>
+                    <td>@Model.ViewProd.FIN_CYC
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_INV_FLD
+                    </td>
+                    <td>@Model.ViewProd.INV_FLD_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_BUILD_DATE
+                    </td>
+                    <td>@(Model.ViewProd.BUILD_DATE.HasValue ? Model.ViewProd.BUILD_DATE.Value.ToString("yyyy-MM-dd") : "")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_TRUST_MNG
+                    </td>
+                    <td>@Model.ViewProd.TRUST_MNG
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_ENDDATE
+                    </td>
+                    <td>@(Model.ViewProd.ENDDATE.HasValue ? Model.ViewProd.ENDDATE.Value.ToString("yyyy-MM-dd") : "")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_TRUST_TYPE
+                    </td>
+                    <td>@Model.ViewProd.TRUST_TYPE_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_PLAN_ISS_SIZE
+                    </td>
+                    <td>@(Model.ViewProd.PLAN_ISS_SIZE.HasValue ? Model.ViewProd.PLAN_ISS_SIZE.Value.ToString("n") : "")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_IS_STRU
+                    </td>
+                    <td>@Model.ViewProd.IS_STRU_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_ACTU_ISS_SIZE
+                    </td>
+                    <td>@(Model.ViewProd.ACTU_ISS_SIZE.HasValue ? Model.ViewProd.ACTU_ISS_SIZE.Value.ToString("n") : "")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_EXP_YLD
+                    </td>
+                    <td>@(Model.ViewProd.EXP_YLD.HasValue ? Model.ViewProd.EXP_YLD.Value.ToString("n") : "")
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_IS_MERGE
+                    </td>
+                    <td>@Model.ViewProd.IS_MERGE_NAME
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_ACT_YLD
+                    </td>
+                    <td>@(Model.ViewProd.ACT_YLD.HasValue ? Model.ViewProd.ACT_YLD.Value.ToString("n") : "")
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_MIN_CAP
+                    </td>
+                    <td>@(Model.ViewProd.MIN_CAP.HasValue ? Model.ViewProd.MIN_CAP.Value.ToString("n") : "")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_PERI_TYPE_NAME
+                    </td>
+                    <td>@Model.ViewProd.PERI_TYPE_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_OPEN_REMARK
+                    </td>
+                    <td>@Model.ViewProd.OPEN_REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_IS_BRG_FRD_NAME
+                    </td>
+                    <td>@Model.ViewProd.IS_BRG_FRD_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_IS_DLY_NAME
+                    </td>
+                    <td>@Model.ViewProd.IS_DLY_NAME
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_IS_PE_NAME
+                    </td>
+                    <td>@Model.ViewProd.IS_PE_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_IS_CURNCY_NAME
+                    </td>
+                    <td>@Model.ViewProd.IS_CURNCY_NAME
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_IS_TOT
+                    </td>
+                    <td>@Model.ViewProd.IS_TOT_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_SEC_INVEST_TYPE
+                    </td>
+                    <td>@Model.ViewProd.SEC_INVEST_TYPE
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_CURNCY_NAME
+                    </td>
+                    <td>@Model.ViewProd.CURNCY_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_INCOME_TYPE
+                    </td>
+                    <td>@Model.ViewProd.INCOME_TYPE_NAME
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_ADD_CAP
+                    </td>
+                    <td colspan="3">@(Model.ViewProd.ADD_CAP.HasValue ? Model.ViewProd.ADD_CAP.Value.ToString("n") : "")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_PRD_STATUS
+                    </td>
+                    <td colspan="3">@Model.ViewProd.PRD_STATUS_NAME
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_INVEST_REMARK
+                    </td>
+                    <td colspan="3">@Model.ViewProd.INVEST_REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_FEE_REMARK
+                    </td>
+                    <td colspan="3">@Model.ViewProd.FEE_REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_RIST_WARE
+                    </td>
+                    <td colspan="3">@Model.ViewProd.RIST_WARE
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_ALERT_LINE
+                    </td>
+                    <td colspan="3">@Model.ViewProd.ALERT_LINE
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_ALERT_LINE_REMARK
+                    </td>
+                    <td colspan="3">@Model.ViewProd.ALERT_LINE_REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_STOP_LINE
+                    </td>
+                    <td colspan="3">@Model.ViewProd.STOP_LINE
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_STOP_LINE_REMARK
+                    </td>
+                    <td colspan="3">@Model.ViewProd.STOP_LINE_REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_REMARK
+                    </td>
+                    <td colspan="3">@Model.ViewProd.REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_PRD_REMARK
+                    </td>
+                    <td colspan="3">@Model.ViewProd.PRD_REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_EXP_YLD_REMARK
+                    </td>
+                    <td colspan="3">@Model.ViewProd.EXP_YLD_REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_ACT_YLD_REMARK
+                    </td>
+                    <td colspan="3">@Model.ViewProd.ACT_YLD_REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_MIN_CAP_REMARK
+                    </td>
+                    <td colspan="3">@Model.ViewProd.MIN_CAP_REMARK
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_CRED_ENHA_MODE
+                    </td>
+                    <td colspan="3">@Model.ViewProd.CRED_ENHA_MODE
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="tabs-@Model.InnerCode-2">
+        <table class="datatable" style="line-height: 20px">
+            <tbody>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_Company_Name
+                    </td>
+                    <td>@Model.ViewProd.ORGNAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_ENAME
+                    </td>
+                    <td>@Model.OrgProfile.ENAME
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_Abb_PY
+                    </td>
+                    <td>@Model.OrgProfile.CSPELL
+                    </td>
+                    <td class="highlight">@Resources.Global.UnlistIsser_Eng_Abb
+                    </td>
+                    <td>@Model.OrgProfile.ESNAME
+                    </td>
+                </tr>
+                @*<tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_REGI_CAP
+                    </td>
+                    <td>@(Model.OrgProfile.REGI_CAP.HasValue ? Model.OrgProfile.REGI_CAP.Value.ToString("n") : "")
+                    </td>
+                </tr>*@
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_GEN_MAN
+                    </td>
+                    <td>@Model.OrgProfile.GEN_MANAGER
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_BUILD_DATE
+                    </td>
+                    <td>@(Model.OrgProfile.BUILD_DATE.HasValue ? Model.OrgProfile.BUILD_DATE.Value.ToString("yyyy-MM-dd") : "")
+                    </td>
+                </tr>
+                @*<tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_REGION
+                    </td>
+                    <td>@Model.OrgProfile.REGION_NAME
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_Org_NATION_NAME
+                    </td>
+                    <td>@Model.OrgProfile.NATION_NAME
+                    </td>
+                </tr>*@
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_REG_ADDR
+                    </td>
+                    <td>@Model.OrgProfile.REGI_ADDR
+                    </td>
+                    <td class="highlight">@Resources.Global.UnlistIsser_OFFI_ADDR
+                    </td>
+                    <td>@Model.OrgProfile.OFFICE_ADDR
+                    </td>
+                </tr>
+                <tr>
+                    @*<td class="highlight">@Resources.Global.WMP_Trust_Org_POSTCODE
+                    </td>
+                    <td>@Model.OrgProfile.POSTCODE
+                    </td>*@
+                    <td class="highlight">@Resources.Global.UnlistIsser_COM_CON_PER
+                    </td>
+                    <td>@Model.OrgProfile.CONTACT_PERSON
+                    </td>
+                    <td class="highlight">@Resources.Global.Bond_AnnoucementDate
+                    </td>
+                    <td>@(Model.OrgProfile.DECLAREDATE.HasValue ? Model.OrgProfile.DECLAREDATE.Value.ToString("yyyy-MM-dd") : "")
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_COM_TEL
+                    </td>
+                    <td>@Model.OrgProfile.TEL
+                    </td>
+                    <td class="highlight">@Resources.Global.UnlistIsser_COM_FAX
+                    </td>
+                    <td>@Model.OrgProfile.FAX
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_MAIL_ADDR
+                    </td>
+                    <td>@Model.OrgProfile.EMAIL
+                    </td>
+                    <td class="highlight">@Resources.Global.UnlistIsser_Company_Website
+                    </td>
+                    <td><a href="@Model.OrgProfile.WEB_SITE" class="link" target="_blank">@Model.OrgProfile.WEB_SITE</a>
+                    </td>
+                </tr>
+                @*<tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_Org_REPR_EMAIL
+                    </td>
+                    <td>@Model.OrgProfile.REPR_EMAIL
+                    </td>
+                    <td class="highlight">@Resources.Global.WMP_Trust_Org_STAFF_NUM
+                    </td>
+                    <td>@Model.OrgProfile.STAFF_NUM
+                    </td>
+                </tr>*@
+                @*<tr>
+                    <td class="highlight">@Resources.Global.WMP_Trust_Org_TSTAFF_NUM
+                    </td>
+                    <td>@Model.OrgProfile.TSTAFF_NUM
+                    </td>
+                </tr>*@
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_IC_REG_CODE
+                    </td>
+                    <td>@Model.OrgProfile.REGI_NO
+                    </td>
+                    <td class="highlight">@Resources.Global.UnlistIsser_NAT_TAX_REG_CODE
+                    </td>
+                    <td>@Model.OrgProfile.NTAX_NO
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_LOC_TAX_REG_CODE
+                    </td>
+                    <td>@Model.OrgProfile.LTAX_NO
+                    </td>
+                    <td class="highlight">@Resources.Global.UnlistIsser_LEG_PER
+                    </td>
+                    <td>@Model.OrgProfile.LEG_PERSON
+                    </td>
+                </tr>
+                <tr>
+                    @*
+                    <td class="highlight">@Resources.Global.WMP_Trust_Org_CNAME
+                    </td>
+                    <td>@Model.OrgProfile.CNAME
+                    </td>*@
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_Com_Stp
+                    </td>
+                    <td>@Model.OrgProfile.BOARD_SECTRY
+                    </td>
+                    <td class="highlight">@Resources.Global.UnlistIsser_Stp_Tel
+                    </td>
+                    <td>@Model.OrgProfile.SECTRY_TEL
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_STP_TAX
+                    </td>
+                    <td>@Model.OrgProfile.SECTRY_FAX
+                    </td>
+                    <td class="highlight">@Resources.Global.UnlistIsser_STP_CON_ADDR
+                    </td>
+                    <td>@Model.OrgProfile.CONTACT_ADDR
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_STP_MAIL
+                    </td>
+                    <td>@Model.OrgProfile.SECTRY_EMAIL
+                    </td>
+                    <td class="highlight">@Resources.Global.UnlistIsser_CUS_CON_TEL
+                    </td>
+                    <td>@Model.OrgProfile.SERVICE_TEL
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_MAIN_BUS
+                    </td>
+                    <td colspan="3">@Model.OrgProfile.PRI_BIZ
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_SID_BUS
+                    </td>
+                    <td colspan="3">@Model.OrgProfile.NON_PRI_BIZ
+                    </td>
+                </tr>
+                <tr>
+                    <td class="highlight">@Resources.Global.UnlistIsser_Company_Profile
+                    </td>
+                    <td colspan="3">@Model.OrgProfile.BRIEF_INTRO
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#@tabName").tabs();
+    })
+</script>

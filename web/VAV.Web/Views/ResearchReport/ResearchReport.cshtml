@@ -1,0 +1,69 @@
+﻿@model VAV.Web.ViewModels.ResearchReport.ResearchReportViewModel
+@using VAV.Web.Common
+
+<div class="colorBlock" style="height: 99%; height: -webkit-calc(100%-8px);">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Model.Name</span>
+    </div>
+    <div class="ui-layout-pane" style="height: 91%; height: -webkit-calc(100% - 30px);
+        min-width: 328px; overflow: auto">
+        @foreach (var inst in Model.INSTITUTIONINFO)
+        {
+            <div class="selistCredit">
+                <div class="listh">
+                    <span>
+                        <img width="300" height="36" src="@inst.LogoPath" alt="@inst.DisplayName" title="@inst.DisplayName"/>
+                    </span>
+                </div>
+                <div class="altFlexibleContainer listaset ">
+                    <table class="selistinfo">
+                         @foreach (var ftype in Model.InstitList.Where(re=>re.Code==inst.CODE).Select(g => new { g.FileTypeDisplayName,g.FileTypeNameEn }).Distinct())
+                        {
+                            <tr>
+                                <th>
+                                    <b>@ftype.FileTypeDisplayName</b>
+                                    <a class="link" style="float:right;" href="#" onclick="RS.GoToReportSearch(',@(inst.CODE),', ',@(ftype.FileTypeNameEn),')">@Resources.Global.Common_More</a>
+                                </th>
+                            </tr>
+                            foreach (var file in Model.InstitList.Where(re => re.Code == inst.CODE&&re.FileTypeNameEn==ftype.FileTypeNameEn).OrderByDescending(re=>re.ReportDate))
+                            {
+                            <tr>
+                                <td>
+                                    @(file.ReportDate.HasValue ? file.ReportDate.Value.ToString("yyyy-MM-dd") : "")
+                                    &nbsp;&nbsp; <a class="link"  href="#" title="@file.FileDisplayName" onclick="RS.DownloadFile(this,@file.FileId,'@file.Extension')">
+                                        @HtmlUtil.Truncate(file.FileDisplayName, 24)</a>
+                                </td>
+                            </tr>
+                            }
+                        }
+                    </table>
+                </div>
+                <div style="clear: both;">
+                </div>
+            </div>
+
+        }</div>
+</div>
+
+<script type="text/javascript">
+    var RS = (function (my) {
+
+        my.GoToReportSearch = function (orgCode, reportType) {
+            CloseReport(62);
+            OpenReport('62', '@Resources.Global.RS_ReportSearch', 'Research Report Search', '', '', { orgCode: orgCode, fileType: reportType });
+        };
+        my.DownloadFile = function (dom,fileID,ext) {
+            $.get("/ResearchReport/GeResUrl?id=" + fileID, function (data) {
+                if (data.indexOf('DownloadFile') > 0) {
+                    window.location.href = data;
+                } else {
+                    window.open(data, new Date(), 'toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no,width=800px,height=780px,left=300px,top=150px');
+                }
+
+            });
+            $(dom).css("color", "#ff8000");
+        };
+
+        return my;
+    } (RS || {}));
+</script>

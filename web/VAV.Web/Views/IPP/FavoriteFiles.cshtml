@@ -1,0 +1,114 @@
+﻿<div class="colorBlock ">
+    <div class="filterBlock">
+        <div style="margin: 0 10px;">
+            <label>
+                @Resources.IPP.IPP_Module
+            </label>
+            <select style="width: 150px;" data-ng-options="m as m.Name for m in modules" data-ng-model="selectedModule"
+                    data-ng-change="UpdateTopic()"></select>
+            <label>
+                @Resources.IPP.IPP_Topic
+            </label>
+            <select style="width: 150px;" data-ng-options="t as t.Name for t in topics" data-ng-model="selectedTopic"
+                    ng-change="TopicChanged()"></select>
+            <label>
+                @Resources.IPP.IPP_Title
+            </label>
+            <input type="text" ng-model="title" />
+            <input type="button" value="@Resources.IPP.IPP_Query" ng-click="queryFile()" />
+            <input type="radio" name="favoritetype" checked="checked" style="margin-left: 20px;" /><label style="padding-left: 0;">@Resources.IPP.IPP_File</label>
+            <input type="radio" name="favoritetype" ng-click="showTopic()" style="margin-left: 20px;" /><label style="padding-left: 0;">@Resources.IPP.IPP_Topic</label>
+        </div>
+    </div>
+    <div loading-block class="colorBlock">
+        <div ng-show="files.length == 0 && showEmptyResultText" style="margin: 10px;">@Resources.Global.Empty_Result</div>
+        <div ng-show="files.length > 0">
+            <div pagination-label class="paginateOfLable"></div>
+            <div style="width: 300px; float: right; padding-right: 80px">
+                <div pagination-pager>
+                </div>
+            </div>
+            <div style="clear: both">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table ng-show="files.length > 0" class="datatable">
+                <thead>
+                    <tr>
+                        <th sort order="(isEn ? 'TITLEEN' : 'TITLECN')" by="orderBy.FIELD" asc="orderBy.asc">
+                            @Resources.IPP.IPP_Title
+                        </th>
+                        <th sort order="(isEn ? 'ModuleInfo.NAMEEN' : 'ModuleInfo.NAMECN')" by="orderBy.FIELD" asc="orderBy.asc">
+                            @Resources.IPP.IPP_Module
+                        </th>
+                        <th sort order="(isEn ? 'Topic.NAMEEN' : 'Topic.NAMECN')" by="orderBy.FIELD" asc="orderBy.asc">
+                            @Resources.IPP.IPP_Topic
+                        </th>
+                        <th sort order="'AUTHOR'" by="orderBy.FIELD" asc="orderBy.asc">
+                            @Resources.IPP.IPP_Author
+                        </th>
+                        <th sort order="'SUBMITER'" by="orderBy.FIELD" asc="orderBy.asc">
+                            @Resources.IPP.IPP_Submiter
+                        </th>
+                        <th sort order="'SUBMITDATE'" by="orderBy.FIELD" asc="orderBy.asc">
+                            @Resources.IPP.IPP_Submit_Date
+                        </th>
+                        <th sort order="(isEn ? 'DESCREN' : 'DESCRCN')" by="orderBy.FIELD" asc="orderBy.asc">
+                            @Resources.IPP.IPP_Descr
+                        </th>
+                        <th sort order="'FileInfo.HITS'" by="orderBy.FIELD" asc="orderBy.asc">
+                            @Resources.IPP.IPP_Hit
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_IsFollowing
+                        </th>
+                        <th>
+                            @Resources.IPP.IPP_Rating
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in files">
+                        <td class="width-limited" title="{{ isEn ? item.TITLEEN : item.TITLECN}}">
+                            <a class="link" href="javascript:void(0);" ng-click="donwload(item.ID)">{{ isEn ? item.TITLEEN : item.TITLECN}}</a>
+                        </td>
+                        <td class="width-limited" title="{{(isEn ? item.MODULENAMEEN : item.MODULENAMECN)}}">
+                            {{(isEn ? item.MODULENAMEEN : item.MODULENAMECN)}}
+                        </td>
+                        <td class="width-limited" title="{{(isEn ? item.TOPICNAMEEN : item.TOPICNAMECN)}}">
+                            {{(isEn ? item.TOPICNAMEEN : item.TOPICNAMECN)}}
+                        </td>
+                        <td class="width-limited" ng-switch on="item.AUTHORRM != ''" title="RM:      {{item.AUTHORRM}}
+Email:  {{item.AUTHOREmail}}">
+                            <a ng-switch-when="true" class="link" ng-href="rm://{{item.AUTHORRM}}/?message=Hi">{{item.AUTHOR}}</a>
+                            <span ng-switch-when="false">{{item.AUTHOR}}</span>
+                            <span ng-switch-default>{{item.AUTHOR}}</span>
+                        </td>
+                        <td ng-switch on="item.SUBMITERRM != ''" title="RM:      {{item.SUBMITERRM}}
+Email:  {{item.SUBMITER}}">
+                            <a ng-switch-when="true" class="link" ng-href="rm://{{item.SUBMITERRM}}/?message=Hi">{{item.SUBMITERName}}</a>
+                            <span ng-switch-when="false">{{item.SUBMITERNAME}}</span>
+                            <span ng-switch-default>{{item.SUBMITERNAME}}</span>
+                        </td>
+                        <td>
+                            {{item.SUBMITDATE}}
+                        </td>
+                        <td class="width-limited" title="{{isEn ? item.DESCREN : item.DESCRCN}}">
+                            {{ isEn ? item.DESCREN : item.DESCRCN}}
+                        </td>
+                        <td class="number-td">
+                            {{item.HITS}}
+                        </td>
+                        <td class="button-td">
+                            <input type="button" ng-click="toggleFollowFile(item)" ng-hide="item.FOLLOWING" value="@Resources.IPP.IPP_Follow" />
+                            <input type="button" ng-click="toggleFollowFile(item)" ng-show="item.FOLLOWING" value="@Resources.IPP.IPP_UnFollow" />
+                        </td>
+                        <td>
+                            <div ipp-rating rating-value="item.RATING" max="5" on-rating-selected="saveRatingToServer(item.ID)"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+</div>

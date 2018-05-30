@@ -1,0 +1,20 @@
+﻿@model VAV.Entities.HOMEMODULE
+<section class="colorBlock">
+    <div class="colorBlock-header">
+        <span class="colorBlock-header-span">@Model.DisplayName</span>
+    </div>
+    <div class="home-group">
+        @foreach (var item in Model.HOMEITEMs.Where(i => i.ISVALID==1).OrderBy(i => i.DISPLAYORDER).ThenByDescending(i => i.MTIME))
+        {
+            if (Model.ISMAIN==1)
+            {
+                @Html.DisplayFor(m => item, "HomeItemTemplate")
+            }
+            else
+            {
+                @Html.DisplayFor(m => item, "HomeItemAsideTemplate")
+            }
+        }
+        <div style="clear: both;"></div>
+    </div>
+</section>

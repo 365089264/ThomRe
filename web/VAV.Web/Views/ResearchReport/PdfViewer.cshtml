@@ -1,0 +1,120 @@
+﻿@model List<string>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    <style type="text/css">
+        .jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn
+        {
+            position: absolute;
+            cursor: pointer;
+            display: block;
+            background: url(/Content/images/a02.png) no-repeat;
+            overflow: hidden;
+        }
+        .jssora03l
+        {
+            background-position: -3px -33px;
+        }
+        .jssora03r
+        {
+            background-position: -63px -33px;
+        }
+        .jssora03l:hover
+        {
+            background-position: -123px -33px;
+        }
+        .jssora03r:hover
+        {
+            background-position: -183px -33px;
+        }
+        .jssora03ldn
+        {
+            background-position: -243px -33px;
+        }
+        .jssora03rdn
+        {
+            background-position: -303px -33px;
+        }
+    </style>
+    <script type="text/javascript">
+        function AutoResizeImage(maxWidth, maxHeight, objImg) {
+            var img = new Image();
+            img.src = objImg.src;
+            var hRatio;
+            var wRatio;
+            var Ratio = 1;
+            var w = img.width;
+            var h = img.height;
+            wRatio = maxWidth / w;
+            hRatio = maxHeight / h;
+            if (maxWidth == 0 && maxHeight == 0) {
+                Ratio = 1;
+            } else if (maxWidth == 0) {//
+                if (hRatio < 1) Ratio = hRatio;
+            } else if (maxHeight == 0) {
+                if (wRatio < 1) Ratio = wRatio;
+            } else if (wRatio < 1 || hRatio < 1) {
+                Ratio = (wRatio <= hRatio ? wRatio : hRatio);
+            }
+            if (Ratio < 1) {
+                w = w * Ratio;
+                h = h * Ratio;
+            }
+            objImg.height = h;
+            objImg.width = w;
+        }
+        function JustifyPic() {
+            var w = $(this).width();
+            var h = $(this).height();
+            $("#slide[debug-id=slide-board]").css("top", (h - $("#slide[debug-id=slide-board]").height()) / 2 + 'px');
+            $("#slide[debug-id=slide-board]").css("left", (w - $("#slide[debug-id=slide-board]").width()) / 2 + 'px');
+            $("span").parent().width(w + 'px');
+            $("span").parent().height(h + 'px');
+        }
+        jQuery(document).ready(function ($) {
+            //JustifyPic();
+            var options = {
+                $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+                $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
+                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 0,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
+                }
+            };
+
+            var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+            $(window).resize(function () {
+                //JustifyPic();
+            })
+        });
+    </script>
+</head>
+<body >
+  @*  <div id="slider1_container" style="position: relative; top: 0px; left: 0px;width:1050px;height:1500px">
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width:1050px;height:1500px; overflow: hidden;" id="slide">*@
+            @{
+                foreach (var img in Model)
+                {
+              @*  <div>*@
+                    <img  src="@img&id=1"   alt=''  style="width:100%;"/>
+                     
+                <hr />
+               @* </div>*@
+           
+                }
+            }
+      @*  </div>
+        <span u="arrowleft" class="jssora03l" style="width: 55px; height: 55px; top: 350px;
+            left: 0px;"></span>
+        <span u="arrowright" class="jssora03r" style="width: 55px; height: 55px; top: 350px;
+            right: 0px"></span>
+      
+    </div>*@
+</body>
+</html>

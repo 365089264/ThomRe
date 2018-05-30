@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <source-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.143)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = cmadb)));User Id=filedb;Password=filedb;Unicode=True;</conn>
+  </source-db>
+  <destination-db>
+    <type>oracle</type>
+    <conn>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.35.63.24)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME = CMADB)));User Id=filedb;Password=filedb;Unicode=True;</conn>
+  </destination-db>
+  <sql-command-timeout>1800</sql-command-timeout>
+  <date-key>
+    <table>FILEDETAIL</table>
+    <column>mtime</column>
+  </date-key>
+  <delta-hours>
+    0
+  </delta-hours>
+
+  <mappings>
+    <table-mapping source="BUSINESSTYPEINFO" destination="BUSINESSTYPEINFO" isOmitColumns="true" isSync="true" >
+      <column-mapping source="CODE" destination="CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND MTIME <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+   
+    <table-mapping source="FILETYPEINFO" destination="FILETYPEINFO" isOmitColumns="true" isSync="true" >
+      <column-mapping source="CODE" destination="CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND MTIME <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="INSTITUTIONINFO" destination="INSTITUTIONINFO" isOmitColumns="true" isSync="true" isSyncFile ="true" pathRoot="|RR" extColumn="EXTENSION" >
+      <column-mapping source="CODE" destination="CODE" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND MTIME <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+
+    <table-mapping source="FILEDETAIL" destination="FILEDETAIL" isOmitColumns="true" isSync="true" isSyncFile ="true" pathRoot="|RR" pathColumn="PHYSICAL_PATH" extColumn="EXTENSION" >
+      <column-mapping source="FILEID" destination="FILEID" isKey="true" isImmutableKey="true"/>
+      <filter>
+        <![CDATA[MTIME > TO_TIMESTAMP({LastSyncTime}, 'mm/dd/yyyy hh:mi:ssam') AND MTIME <= TO_TIMESTAMP({CurrentSyncTime}, 'mm/dd/yyyy hh:mi:ssam')]]>
+      </filter>
+    </table-mapping>
+    
+  
+  </mappings>
+
+  <post-sync-tasks>
+  </post-sync-tasks>
+
+  <custom-bonds>
+  </custom-bonds>
+</settings>
+
+

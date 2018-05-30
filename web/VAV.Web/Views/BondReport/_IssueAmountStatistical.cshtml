@@ -1,0 +1,90 @@
+﻿@using VAV.Model.Data.Bond;
+
+@model IEnumerable<BondIssueAmount>
+
+@{
+    Layout = null;
+    var useSubType = ViewData["UseSubType"] as bool?;
+}
+
+<table class="datatable" style="cursor:pointer;">
+    <thead>
+        <tr class="hr">
+            <th align="center">
+                @Resources.Global.BondIssue_Type
+            </th>
+            <th align="center">
+                @Resources.Global.BondIssue_Issues
+            </th>
+            <th align="center">
+                @Resources.Global.BondIssue_Issues_PCT
+            </th>
+            <th align="center">
+                @Resources.Global.BondIssue_Issue_Amt
+            </th>
+            <th align="center">
+                @Resources.Global.BondIssue_Issues_Amt_PCT
+            </th>
+            <th align="center">
+                @Resources.Global.BondIssue_Lowest_Issue_Rate
+            </th>
+            <th align="center">
+                @Resources.Global.BondIssue_Highest_Issue_Rate
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            string firstRowClass = "SelectedRow";
+            foreach (var r in Model)
+            {
+                var amount = r.IssuesAmount == null ? "" : string.Format("{0:N2}", r.IssuesAmount);
+                var issues = string.Format("{0:N0}", r.Issues);
+                string name = string.IsNullOrEmpty(r.SubTypName) ? Resources.Global.Tip_Other : r.SubTypName;
+                string type = r.Type;
+                string subType = r.SubType ?? "";
+                string style = "text-align:left; text-indent:40px;";
+                string isParent = "false";
+                string tdCssClass = "";
+                string trCssClass = firstRowClass + " " + (string.IsNullOrEmpty(r.Type) ? "other" :  r.Type);
+                string classSelector = "";
+                
+                
+                if (r.IsParent==1)
+                {
+                    name = string.IsNullOrEmpty(r.TypeName) ? Resources.Global.Tip_Other : r.TypeName;
+                    isParent = "true";
+                    style = "text-align:left;";
+
+                    if ((bool)useSubType)
+                    {
+                        tdCssClass = "expand";
+                        trCssClass = firstRowClass != "" ?  firstRowClass : "";
+                        classSelector = (string.IsNullOrEmpty(r.Type) ? "other" : r.Type);
+                    }
+                }
+
+                <tr onclick="RefreshBondDetail(this,@r.Issues,'@Resources.Global.WMP_of', '@type', '@subType', '@isParent')" class="@trCssClass">
+                    <td><div class="@tdCssClass" onclick="ShowDetail(this, '@classSelector', event)" style="float:left;"/><div style="@style">@name</div>
+                    </td>
+                    <td align="right">@r.Issues
+                    </td>
+                    <td align="right">@r.IssuesPercent
+                    </td>
+                    <td align="right">@amount
+                    </td>
+                    <td align="right">@r.IssuesAmountPercent
+                    </td>
+                    <td align="right">@r.LowestIssueRate
+                    </td>
+                    <td align="right">@r.HighestIssueRate
+                    </td>
+                </tr>
+                
+                firstRowClass = "";
+            }
+        }
+    </tbody>
+</table>
+<div>@Resources.Global.Source</div>

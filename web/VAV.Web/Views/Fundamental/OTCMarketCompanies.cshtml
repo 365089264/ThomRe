@@ -1,0 +1,227 @@
+﻿@model VAV.Web.ViewModels.Fundamental.OTCMarketCompaniesViewModel
+@using VAV.Web.Common
+@{
+ 
+    var tableId = "table" + Model.ID;
+
+    var queryButtonId = "query" + Model.ID;
+    var filterDivId = "filterDiv" + Model.ID;
+    var contentDivId = "contentDiv" + Model.ID;
+    var queryInputId = "txtQuery" + Model.ID;
+    
+
+    var pageSize = 50;
+
+    var exportDetailUrl = Url.Action("ExportExcelForOTC", "Fundamental");
+    var ajaxUrl = Url.Action("GetOTCCompanies", "Fundamental");
+
+    var rdoCompanyInputId = "rdoCompany" + Model.ID;
+    var rdoCodeInputId = "rdoCode" + Model.ID;
+
+}
+<div class="colorBlock" style="min-width: 1010px;">
+    <div id="@filterDivId" class="Statisticalfilter">
+        <div style="float: left;">
+            <input type="radio" name="rdoInput" id="@rdoCompanyInputId" checked="checked" value="1" /><label for="@rdoCompanyInputId">@Resources.Global.UnlistIsser_Company_Name</label>
+            <input type="radio" name="rdoInput"  id="@rdoCodeInputId" value="0" /><label for="@rdoCodeInputId">@Resources.Global.CompanyCode</label>
+            <input id="@queryInputId" type="text" maxlength="200" style="width:120px;" />
+        </div>
+        <div>
+            <input style="margin-left:5px;" id="@queryButtonId" onclick="Fundamental.UpdateData('',1);" type="button" value="@Resources.Global.Report_Query" />
+            <a href="#" class="exportExcel" onclick="Fundamental.ExportExcel(this, @Model.ID);">
+                <img alt="Export" src="~/Content/themes/base/images/excel_icon.png" />
+            </a>
+        </div>
+    </div>
+</div>
+<div id="@contentDivId" class="colorBlock" style="height: 91%; height: -webkit-calc(100% - 49px); ">
+    <div id="emptyMessage@(Model.ID)" style="display:none; margin-left:10px;">@Resources.Global.Empty_Result</div>
+    <div id="pager@(Model.ID)">
+        <div id="wmpPaginateOfLabel@(Model.ID)" class="paginateOfLable">
+            1 of 100</div>
+        <div style="width: 300px; float: right; padding-right: 80px">
+            <div id="wmpPaginate@(Model.ID)">
+            </div>
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+    <div class="ui-layout-pane" style="height: 90%; height: -webkit-calc(100% - 57px);
+        min-width: 328px; overflow: auto">
+        <table id="@tableId" class="datatable Zebra" style="cursor: pointer;">
+            <thead>
+                <tr class="hr">
+ 
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div>@Resources.Global.Source</div>
+    </div>
+</div>
+﻿
+<script type="text/javascript">
+
+$(":radio[name=rdoInput]").change(function(){
+    $("#@queryInputId").val("");
+});
+
+    var Fundamental = (function (my) {
+        
+        var lastOrder;
+
+        my.BuildTable = function (data) {
+ 
+        if ($('#@tableId thead tr th').length == 0) {
+            $.template("colTemp", '<th  class="sortColumn" tag="" onclick="Fundamental.SortColumn( this, \'${ColumnName}\')">${Name}<span></span></th>');
+            $('#@tableId thead tr').empty();
+
+            $.tmpl("colTemp", data.ColumTemplate).appendTo('#@tableId thead tr');
+        }
+        var markup = my.BuildRowTemplate(data.ColumTemplate);
+        $.template("rowTemplate", markup);
+        $('#@tableId tbody').empty();
+        $.tmpl("rowTemplate", data.RowData).appendTo("#@tableId tbody");
+
+         
+        };
+
+        my.BuildRowTemplate = function (rawData) {
+        var tpl = '<tr>';
+        $.each(rawData, function (key, value) {
+        if(value.ColumnName.indexOf("Name")!=-1){
+            tpl = tpl + '<td class="textLeft"><a href="cpurl://views.cp./Explorer/EVzCORPxPRIVzOV_TEST.aspx?s=${ORG_ID}&st=Orgid" class="link" target="_blank">${'+value.ColumnName+'}</a></td>';
+        }
+         else if (value.ColumnType != 'decimal') {
+                tpl = tpl + '<td class="textLeft">${' + value.ColumnName + '}</td>';
+            } else {
+                tpl = tpl + '<td>${' + value.ColumnName + '}</td>';
+            }
+        });
+        tpl = tpl + '</tr>';
+        return tpl;
+        };
+
+        my.UpdateData = function(order,currentPage){
+            AjaxWithBlock(
+                    $('#@contentDivId'), 
+                    "@ajaxUrl",
+                    {
+                        rid : @Model.ID,
+                        IsCompany : $(":radio[name=rdoInput]:checked").val(),
+                        query : $("#@queryInputId").val(),
+                        order : order,
+                        currentPage: currentPage,
+                        pageSize: @pageSize
+                    }, 
+                    function (data) {
+                    if (data.Total == 0) {
+                        $("#emptyMessage@(Model.ID)").show();
+                        $("#pager@(Model.ID)").hide();
+                        $("#@tableId").hide();
+                    }
+                    else {
+                        $("#emptyMessage@(Model.ID)").hide();
+                        $("#pager@(Model.ID)").show();
+                        $("#@tableId").show();
+                        if(order == "")
+                            $(".sortColumn").attr('tag', '');
+                        my.UpdatePagination(data);
+                        my.BuildTable(data);
+                    }
+                }
+            );
+        };
+
+        my.SortColumn = function(th, order){
+            var direction = $(th).attr('tag');
+            $(".sortColumn").attr('tag', '');
+            
+            switch (direction) {
+                case "ASC":
+                    $(th).attr('tag', 'DESC');
+                    order = order + " " + $(th).attr('tag');
+                    break;
+                case "DESC":
+                    $(th).attr('tag', '');
+                    order = "";
+                    break;
+                case "":
+                    $(th).attr('tag', 'ASC');
+                    order = order + " " + $(th).attr('tag');
+                    break;
+                default:
+                    break;
+            }
+            lastOrder = order;
+            my.UpdateData(order,1);
+
+        };
+
+        my.UpdatePaginationOfLabel = function(current,pageSize,total) {
+//            var start = (current - 1) * pageSize + 1;
+//            var end = current * pageSize;
+//            if(end > total) end = total;
+//             $('#wmpPaginateOfLabel@(Model.ID)').html(start + '-' + end + '@Resources.Global.WMP_of' + total);
+
+            $('#wmpPaginateOfLabel@(Model.ID)').html(1 + '-' + total + '@Resources.Global.WMP_of' + total);
+        };
+
+        my.UpdatePagination = function(data) {
+         my.UpdatePaginationOfLabel(data.CurrentPage, data.PageSize, data.Total);
+//         $('#wmpPaginate@(Model.ID)').paginate({
+//                count: Math.ceil(data.Total/data.PageSize),
+//                start: data.CurrentPage,
+//                display: 10,
+//                border: false,
+//                text_color: '#00B3E3',
+//                background_color: 'none',
+//                text_hover_color: '#28D2FF',
+//                background_hover_color: 'none',
+//                images: false,
+//                mouse: 'press',
+//                onChange: function (page) {
+//                    Fundamental.UpdateData(lastOrder,page);
+//                },
+//                firstText: '@Resources.Global.Paginate_First',
+//                lastText: '@Resources.Global.Paginate_Last'
+//            });
+        };
+
+        my.ExportExcel = function (link, id) {
+            $(link).attr("href",
+                "@exportDetailUrl?rid=@Model.ID&IsCompany=" + $(":radio[name=rdoInput]:checked").val()
+                    + '&query=' + $("#@queryInputId").val()
+                    + '&reportName=@Model.Name'
+            );
+        };
+
+        return my;
+    } (Fundamental || {}));
+
+    $(function () {
+        $("#@filterDivId input").keyup(function (e) {
+            if (e.keyCode == 13) {
+                Fundamental.UpdateData("",1);
+            }
+        });
+        var data = @{ Html.RenderAction(
+                                        "GetOTCCompanies",
+                                        "Fundamental",
+                                        new
+                                        {
+                                            rid = Model.ID,
+                                            IsCompany = 1 ,
+                                            currentPage = 1,
+                                            pageSize = pageSize,
+                                            hideNodata = false,
+                                            isHTML = true
+                                        }
+                                        );
+                        };
+        Fundamental.UpdatePagination(data);
+        Fundamental.BuildTable(data);
+    });
+
+</script>

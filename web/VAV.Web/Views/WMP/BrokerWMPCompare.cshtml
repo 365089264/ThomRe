@@ -1,0 +1,26 @@
+﻿<div id="compare@(ViewBag.ID)" style="height: 100%;">
+</div>
+<script type="text/javascript">
+    $(function () {
+        
+        var products = @{ Html.RenderAction("GetBrokerWMPCompareData", "WMP", new { ids = Request.QueryString["products"], isHTML = true }); };
+
+        $("#compare@(ViewBag.ID)").compareDetail({
+            compareId: @ViewBag.ID,
+            products: products,
+            queryUrl: "WMP/GetBrokerWMPCompareData",
+            itemClickHandler: function(code, name) {
+                WMP.OpenBankWMPDetail(code, name, '/WMP/BrokerWMPDetail/');
+            },
+            exportFun: function(link, ids) {
+                $(link).attr("href", "/WMP/ExportExelForBrokerWMPCompare?ids=" + ids + "&reportName=@ViewBag.Name");
+            },
+            addMoreFun: function(items) {
+                OpenReport(66, WMP.wmpcomparelanguage.BrokerProductsTitle, 'Broker Products', '', '', { products: JSON.stringify(items) });
+                if (typeof WMP.brokerCmp != "undefined") {
+                    WMP.brokerCmp.updateSelectedProducts(items);
+                }
+            }
+        });
+    });
+</script>

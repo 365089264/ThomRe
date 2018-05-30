@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ac50c595-3c44-4fa1-90de-8e3cb6837394" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TRACS.ThomsonReuters.com.wsdl" MetadataType="Wsdl" ID="ac33c5a9-3d1a-4ed8-b45f-3692b43b4e58" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="6a7e83d8-7bac-4a2a-b754-bcb60ac0d5da" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="TRACS.ThomsonReuters.com.xsd" MetadataType="Schema" ID="e5137d26-ab6e-4e64-b320-f317a7e94fd7" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="4654eacf-d37d-4545-96ae-db6ab0f4ec5c" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="BondDealMonitor.xsd" MetadataType="Schema" ID="847d736c-5743-43f0-9c4b-40c083c1a9b9" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="f5275d7f-ce36-4701-891a-10cc9b202f42" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="SysMon.AppTrace.xsd" MetadataType="Schema" ID="80eda4f0-f17d-49d8-8a81-4e2107ee6114" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="Common.xsd" MetadataType="Schema" ID="65e8238a-aea3-4dbe-ba8f-00c5da297f64" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="Common1.xsd" MetadataType="Schema" ID="cf542c9c-8a80-4e48-bff6-3f8655eda80a" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="Data_Contracts.Common.xsd" MetadataType="Schema" ID="cb00d999-1d86-498d-990b-5c7d66b0fc89" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="1f548a29-241b-478d-9720-6baff02a2bb0" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="CDSMonitor.xsd" MetadataType="Schema" ID="57f7c2ba-536a-490b-99ac-a8c377e969a5" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="Luna.xsd" MetadataType="Schema" ID="c217d626-5ee6-4dba-b0ad-09f08c114bd9" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+    <MetadataFile FileName="Common2.xsd" MetadataType="Schema" ID="89eea9d3-1eb8-4e7e-a107-7c6af376bd68" SourceId="1" SourceUrl="http://10.90.140.54/TRACSweb/FixedIncomeAnalytics.svc/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

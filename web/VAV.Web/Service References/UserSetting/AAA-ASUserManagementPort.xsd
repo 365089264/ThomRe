@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsdws="http://www.reuters.com/ns/2008/08/15/webservices/AAA-AccessServices_1" elementFormDefault="qualified" targetNamespace="http://www.reuters.com/ns/2008/08/15/webservices/AAA-AccessServices_1" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="AccessServiceFaultResponse">
+    <xsd:complexType>
+      <xsd:sequence maxOccurs="unbounded">
+        <xsd:element name="Fault">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="FaultCode" type="xsd:string" />
+              <xsd:element name="FaultMessage" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:simpleType name="SSOTokenIdType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="UUIDType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="UserIdType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="EmailAddressType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="ErrorCodeType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="ErrorTextType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="ServiceType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="NetworkType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="URLType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="GeographicalRegionType">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:simpleType name="TotalRecordType">
+    <xsd:restriction base="xsd:int">
+      <xsd:minInclusive value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="StartIndexType">
+    <xsd:restriction base="xsd:int">
+      <xsd:minInclusive value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="EndIndexType">
+    <xsd:restriction base="xsd:int">
+      <xsd:minInclusive value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="UUIDListType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="uuid" type="xsdws:UUIDType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserIdListType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="userId" type="xsdws:UserIdType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="EmailAddressListType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="emailAddress" type="xsdws:EmailAddressType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserListType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="user" type="xsdws:UserType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserAttributeType">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string" />
+      <xsd:element minOccurs="0" name="value" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserAttributeMapType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="userAttribute" type="xsdws:UserAttributeType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserType">
+    <xsd:all>
+      <xsd:element name="uuid" type="xsdws:UUIDType" />
+      <xsd:element name="attributeMap" type="xsdws:UserAttributeMapType" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="SearchParametersType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="sortByAttribute">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="UserId" />
+            <xsd:enumeration value="FirstName" />
+            <xsd:enumeration value="LastName" />
+            <xsd:enumeration value="FullName" />
+            <xsd:enumeration value="LocalFirstName" />
+            <xsd:enumeration value="LocalLastName" />
+            <xsd:enumeration value="EmailAddress" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="startIndex" type="xsdws:StartIndexType" />
+      <xsd:element minOccurs="0" name="endIndex" type="xsdws:EndIndexType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceAccessPointType">
+    <xsd:all>
+      <xsd:element minOccurs="0" name="geographicalRegion" type="xsdws:GeographicalRegionType" />
+      <xsd:element minOccurs="0" name="service" type="xsdws:ServiceType" />
+      <xsd:element minOccurs="0" name="network" type="xsdws:NetworkType" />
+      <xsd:element minOccurs="0" name="url" type="xsdws:URLType" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ServiceAccessPointListType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="serviceAccessPoint" type="xsdws:ServiceAccessPointType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FreeTrialType">
+    <xsd:all>
+      <xsd:element minOccurs="0" name="name" type="xsd:string" />
+      <xsd:element minOccurs="0" name="description" type="xsd:string" />
+      <xsd:element minOccurs="0" name="endDate" type="xsd:dateTime" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="FreeTrialListType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" name="freeTrial" type="xsdws:FreeTrialType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="FindUser">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="searchString" type="xsd:string" />
+        <xsd:element minOccurs="0" name="attributeMap" type="xsdws:UserAttributeMapType" />
+        <xsd:element minOccurs="0" name="searchParameters" type="xsdws:SearchParametersType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="FindUserResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="users" type="xsdws:UserListType" />
+        <xsd:element minOccurs="0" name="totalRecord" type="xsdws:TotalRecordType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AuthenticateUser">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="userId" type="xsdws:UserIdType" />
+        <xsd:element name="password" type="xsd:string" />
+        <xsd:element minOccurs="0" name="takeESOControl" type="xsd:boolean" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="AuthenticateUserResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="ssoTokenId" type="xsdws:SSOTokenIdType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="ValidateToken">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="ssoTokenId" type="xsdws:SSOTokenIdType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="ValidateTokenResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="ssoTokenId" type="xsdws:SSOTokenIdType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Logout">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ssoTokenId" type="xsdws:SSOTokenIdType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="LogoutResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetUserDetails">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="uuid" type="xsdws:UUIDType" />
+        <xsd:element minOccurs="0" name="attributeMap" type="xsdws:UserAttributeMapType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetUserDetailsResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="user" type="xsdws:UserType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetAllUserDetails">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="uuid" type="xsdws:UUIDType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetAllUserDetailsResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="user" type="xsdws:UserType" />
+        <xsd:element minOccurs="0" name="serviceAccessPoints" type="xsdws:ServiceAccessPointListType" />
+        <xsd:element minOccurs="0" name="freeTrials" type="xsdws:FreeTrialListType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SetUserDetails">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="uuid" type="xsdws:UUIDType" />
+        <xsd:element name="adminUuid" type="xsdws:UUIDType" />
+        <xsd:element minOccurs="0" name="attributeMap" type="xsdws:UserAttributeMapType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SetUserDetailsResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetUsersByUUID">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="uuids" type="xsdws:UUIDListType" />
+        <xsd:element minOccurs="0" name="searchParameters" type="xsdws:SearchParametersType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetUsersByUUIDResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="users" type="xsdws:UserListType" />
+        <xsd:element minOccurs="0" name="notFound" type="xsdws:UUIDListType" />
+        <xsd:element minOccurs="0" name="totalRecord" type="xsdws:TotalRecordType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetUsersByUserId">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="userIds" type="xsdws:UserIdListType" />
+        <xsd:element minOccurs="0" name="searchParameters" type="xsdws:SearchParametersType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetUsersByUserIdResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="users" type="xsdws:UserListType" />
+        <xsd:element minOccurs="0" name="notFound" type="xsdws:UserIdListType" />
+        <xsd:element minOccurs="0" name="totalRecord" type="xsdws:TotalRecordType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetUsersByEmailAddress">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="emailAdress" type="xsdws:EmailAddressListType" />
+        <xsd:element minOccurs="0" name="searchParameters" type="xsdws:SearchParametersType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetUsersByEmailAddressResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="users" type="xsdws:UserListType" />
+        <xsd:element minOccurs="0" name="notFound" type="xsdws:EmailAddressListType" />
+        <xsd:element minOccurs="0" name="totalRecord" type="xsdws:TotalRecordType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetSAP">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="uuid" type="xsdws:UUIDType" />
+        <xsd:element name="service" type="xsdws:ServiceType" />
+        <xsd:element name="network" type="xsdws:NetworkType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetSAPResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="url" type="xsdws:URLType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetAllSAP">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="uuid" type="xsdws:UUIDType" />
+        <xsd:element name="network" type="xsdws:NetworkType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetAllSAPResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="serviceAccessPoints" type="xsdws:ServiceAccessPointListType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetFreeTrial">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="uuid" type="xsdws:UUIDType" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="GetFreeTrialResponse">
+    <xsd:complexType>
+      <xsd:all>
+        <xsd:element name="errorCode" type="xsdws:ErrorCodeType" />
+        <xsd:element name="errorText" type="xsdws:ErrorTextType" />
+        <xsd:element minOccurs="0" name="freeTrials" type="xsdws:FreeTrialListType" />
+      </xsd:all>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
